@@ -1,0 +1,153 @@
+*{
+    box-sizing: border-box;
+}
+.y_wrap{
+   width: 1500px;
+   height: 3000px;
+   
+   margin: 0 auto;
+   }
+.bigCtg_area {
+   width: 150px;
+   height: 500px;
+  
+  
+   float: left;
+   text-align: left;
+   
+}
+.y_main {
+   width: 1154px;
+   height: 2500px;
+   padding: 10px;
+   margin: 5px;
+   /*border: 2px solid red;*/
+   float: left;
+}
+.y_new{
+   width: 100px;
+   height: 300px;
+   padding: 10px;
+   margin: 5px;
+   border: 1px solid black;
+   float: left;
+   z-index: 9999;
+}
+
+.bigTitle{
+   font-size: 20px;
+   font-weight: 600;
+   padding-left: 0; 
+
+}
+.cate1{
+   list-style: none;
+   text-decoration: none;
+   font-size: 15px;
+   font-weight: normal;
+}
+.cate1 > a{
+   list-style: none;
+   text-decoration: none;
+   font-size: 15px;
+   font-weight: normal;
+}
+.detail_wrap {
+   /*border: 1px solid blue;*/
+   width: 1100px;
+   height: 400px;
+   margin: auto;
+   float: left;
+   
+}
+
+.img_section{
+   width: 300px;
+   height: 400px;
+   padding: 5px;
+   float: left;
+   
+}
+
+.detail_bookInfo{
+   width: 600px;
+   height: 400px;
+   padding: 15px;
+  /* background-color: burlywood;*/
+   float: left;
+}
+.detail_bookPay{
+   width: 198px;
+   height: 400px;
+   padding: 10px;
+
+   float: left;
+  /* border: 2px solid brown;*/
+}
+.detail_bookImg{
+   margin: 20px;
+   
+}
+.wifi{
+   margin-top: 15px;
+   margin-left: 90px;
+   display: block;
+}
+.bookInfo_section{
+   margin: 10px 0px; 
+   /*background-color: brown;*/
+   
+}
+.bookInfo_section > span{
+   display: inline-block;
+   margin-bottom: 10px;
+}
+.detail_review > a{
+   list-style: none;
+   text-decoration: none;
+}
+.info_Price > span {
+   margin-bottom: 15px;
+   display: inline-block;
+}
+
+.detail_bookPay{
+   margin-top: 100px;
+}
+.detail_bookPay > div {
+   margin: 20px;
+}
+
+.detail_section1{
+   margin-top: 15px;
+   float: left;
+   border: 2px solid black;
+   width: 1100px;
+   height: 300px;
+   text-align: center;
+   margin-bottom: 30px;
+   font-size: 15px;
+   
+ 
+}
+.detail_section2{
+   margin-top: 15px;
+   float: left;
+   border: 2px solid black;
+   width: 1100px;
+   height: 300px;
+   text-align: center;
+   line-height: 300px;
+   font-size: 30px;
+}
+.table{
+   float: left;
+   width: 600px;
+   height: 250px;
+}
+.quick{
+   display: none;
+   
+}
+
+/*-----------------------------------------------*/

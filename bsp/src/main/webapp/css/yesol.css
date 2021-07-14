@@ -1,0 +1,129 @@
+/*공통----------------------------------------------------------------------- */
+
+
+.main_form{
+    width: 100%;
+}
+#side,#main{
+    float: left;
+}
+#side{
+    width: 150px;
+}
+#main{
+    width: 1154px;
+    color: black;
+}
+#article{
+    margin: 40px;
+} */
+#article > p , h4 {
+    margin: 20px;
+    padding: 10px;
+  
+} 
+.button_m{
+    font-size:14px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:4px 20px; min-width:64px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
+    }
+.button_s{
+    font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
+}
+.mem_content > h1{
+    text-align: center;
+}
+#article > h4{
+    text-align: center;
+    padding: 20px 0;
+}
+/*buy_form----------------------------------------------------------------------- */
+
+#buy_tb, #buy_now, #order_tb, #order_list_tb, #return_list_tb,#return_list_detil_tb, #retrn_popup {
+    width: 98%;
+    border: 1px rgb(206, 205, 205) solid ;
+    text-align: left;
+    border-collapse: collapse;
+    margin: auto;
+    border-spacing: 10px
+}
+td{
+    border: 1px rgb(206, 205, 205) solid ;
+    padding: 10px;
+}
+ #del, #ant, #price, #bseq_ea, #stock, .bseq_ea{
+    text-align: center;
+}
+
+/*cart_form----------------------------------------------------------------------- */
+#cart_tb{
+    width: 90%;
+    border-collapse: collapse;
+    padding: 20px;
+    margin: auto;
+}
+.cart_s td {
+ border-left: none;
+ border-right: none;
+ border-top: none;
+ border-bottom: none;
+}
+/*order_form/order_list_form----------------------------------------------------------------------- */
+#order_tb, #order_list_tb{
+    text-align: center;
+}
+/*return_form---------------------------------------------------------------------- */
+.retrn_main_higt .main_form  {
+    height: 2300px;  /* textarea출력후 길이(제일 긴 페이지) */
+}
+.retrn_radio{
+    padding: 30px;
+}
+.retrn_tb {
+    text-align: center;
+    margin: auto;
+    border-spacing: 10px
+   
+}
+.hwrap > h4 {
+    padding: 10px 0;
+}
+.pwrap > p {
+    padding: 10px 0;
+}
+#retrn_product{
+    width: 50%;
+     border: 1px rgb(206, 205, 205) solid ;
+     border-collapse:collapse ;
+ }
+#retrn_info_val{
+    text-align: left;
+}
+
+#retrn_info td, #retrn_account td{
+ border-left: none;
+ border-right: none;
+ border-top: none;
+ border-bottom: none;
+ padding: 0px;
+}
+/*return_list_form---------------------------------------------------------------------- */
+#return_list_tb, #return_list_detil_tb {
+    text-align: center;
+}
+
+#retrn_popup_form {
+    width: 99%;    
+    border: 1px rgb(206, 205, 205) solid;
+    border-collapse: collapse;
+    padding: 20px;
+    margin: auto;
+    color: black;
+}
+#retrn_popup td{
+    border: 1px rgb(206, 205, 205) solid;
+    padding: 8px;
+    text-align: center;
+}
+.buy_submit{
+    text-align: center;
+    margin-top: 30px;
+}

@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.mypage_ad{
+    width: 110px;
+    border: black 1px solid ;
+    height: 200px;
+    top: 330px; left: 1631px;
+    position: absolute;
+    z-index: 9999;
+}
+.mypage_ad_name{
+    background-color: #999;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    position: relative;
+}
+.img_area{
+    width: 70px;
+    margin: 10px auto;
+    text-align: center;
+}
+.mypage_ad_name>p{
+    margin: 0;
+}

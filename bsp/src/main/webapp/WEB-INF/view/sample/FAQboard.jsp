@@ -23,7 +23,7 @@
         <div class="wrap">
             <div class="support_search">
                 <div class="support_welcome">
-                    <li><a class="support_w1">BSP 고객센터 입니다.</a></li>
+                    <li><a class="support_w1">BSP 고객센터 입니다!!!!!.</a></li>
                     <li><a class="support_w2">무엇을 도와드릴까요?</a></li>
                 </div>
                 <div class="support_searchBar">

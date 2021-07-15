@@ -6,91 +6,93 @@ import util.CommonVo;
 
 public class BoardVo extends CommonVo {
 	
-	private int Q_No;
-	private int Q_Cate_no;
-	private int M_NO;
-	private String Q_Title;
-	private String Q_Content;
-	private Timestamp Q_RegDate;
-	private int Q_ReadCount;
-	private String Q_Filename_org;	// 사용자가첨부한 원본파일명
-	private String Q_Filename_real;	// 서버에 저장된 실제파일명
+	private int q_no;
+	private int q_cate_no;
+	private int m_no;
+	private String q_title;
+	private String q_content;
+	private Timestamp q_regdate;
+	private int Q_readcount;
+	private String q_Filename_org;	// 사용자가첨부한 원본파일명
+	private String q_Filename_real;	// 서버에 저장된 실제파일명
 	
 	private String isDel;
 	private String name;
 	
-	public int getQ_No() {
-		return Q_No;
+	
+	
+	public int getQ_no() {
+		return q_no;
 	}
 
-	public void setQ_No(int q_No) {
-		Q_No = q_No;
+	public void setQ_no(int q_no) {
+		this.q_no = q_no;
 	}
 
-	public int getQ_Cate_no() {
-		return Q_Cate_no;
+	public int getQ_cate_no() {
+		return q_cate_no;
 	}
 
-	public void setQ_Cate_no(int q_Cate_no) {
-		Q_Cate_no = q_Cate_no;
+	public void setQ_cate_no(int q_cate_no) {
+		this.q_cate_no = q_cate_no;
 	}
 
-	public int getM_NO() {
-		return M_NO;
+	public int getM_no() {
+		return m_no;
 	}
 
-	public void setM_NO(int m_NO) {
-		M_NO = m_NO;
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
 	}
 
-	public String getQ_Title() {
-		return Q_Title;
+	public String getQ_title() {
+		return q_title;
 	}
 
-	public void setQ_Title(String q_Title) {
-		Q_Title = q_Title;
+	public void setQ_title(String q_title) {
+		this.q_title = q_title;
 	}
 
-	public String getQ_Content() {
-		return Q_Content;
+	public String getQ_content() {
+		return q_content;
 	}
 
-	public void setQ_Content(String q_Content) {
-		Q_Content = q_Content;
+	public void setQ_content(String q_content) {
+		this.q_content = q_content;
 	}
 
-	public Timestamp getQ_RegDate() {
-		return Q_RegDate;
+	public Timestamp getQ_regdate() {
+		return q_regdate;
 	}
 
-	public void setQ_RegDate(Timestamp q_RegDate) {
-		Q_RegDate = q_RegDate;
+	public void setQ_regdate(Timestamp q_regdate) {
+		this.q_regdate = q_regdate;
 	}
 
-	public int getQ_ReadCount() {
-		return Q_ReadCount;
+	public int getQ_readcount() {
+		return Q_readcount;
 	}
 
-	public void setQ_ReadCount(int q_ReadCount) {
-		Q_ReadCount = q_ReadCount;
+	public void setQ_readcount(int q_readcount) {
+		Q_readcount = q_readcount;
 	}
 
 	public String getQ_Filename_org() {
-		return Q_Filename_org;
+		return q_Filename_org;
 	}
 
 	public void setQ_Filename_org(String q_Filename_org) {
-		Q_Filename_org = q_Filename_org;
+		this.q_Filename_org = q_Filename_org;
 	}
 
 	public String getQ_Filename_real() {
-		return Q_Filename_real;
+		return q_Filename_real;
 	}
 
 	public void setQ_Filename_real(String q_Filename_real) {
-		Q_Filename_real = q_Filename_real;
+		this.q_Filename_real = q_Filename_real;
 	}
-	
+
 	public String getName() {
 		return name;
 	}

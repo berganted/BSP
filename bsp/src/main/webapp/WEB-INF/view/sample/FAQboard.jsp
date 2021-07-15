@@ -130,7 +130,6 @@
                                     <th>제목</th>
                                     <th>작성자</th>
                                     <th>작성일</th>
-                                    <th>조회수</th>
                                 </tr>
                             </thead>
                             <tbody>      
@@ -141,15 +140,14 @@
                         </c:if>                        
 						<c:forEach var="vo" items="${list}">     
                             <tr>
-                                <td>${vo.Q_NO }</td>
+                                <td>${vo.q_no }</td>
                                 <td class="txt_l">
-                                    <a href="board_view.html?Q_No=${vo.Q_No }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.Q_Title }</a>
+                                    <a href="board_view.html?Q_No=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
                                 </td>
                                 <td class="FAQboard_writer">
                                     ${vo.name }
                                 </td>
-                                <td class="date">${vo.Q_Regdate }</td>
-                                <td>${vo.Q_ReadCount }</td>
+                                <td class="date">${vo.q_regdate }</td>
                             </tr>
                         </c:forEach>	
                                                 

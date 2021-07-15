@@ -16,7 +16,7 @@
         text-align: center;
         color: white;
     }
-</style>
+</style>   
 <body>
     <h1>
         무통장 입금시 결제 완료~<br>

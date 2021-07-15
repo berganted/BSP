@@ -73,9 +73,7 @@
                         <tr>
                             <input type="radio" name="reason" value="1" onclick="showTextarea(this.value,'etc_view');"> 단순변심 
                             <input type="radio" name="reason" value="2" onclick="showTextarea(this.value,'etc_view');"> 상품불량 
-                            <input type="radio" name="reason" value="3" onclick="showTextarea(this.value,'etc_view');"> 재결제 
-                            <input type="radio" name="reason" value="4" onclick="showTextarea(this.value,'etc_view');"> 기타
-
+                            <input type="radio" name="reason" value="3" onclick="showTextarea(this.value,'etc_view');"> 기타
                         <div id="etc_view" style="display:none">
                             <textarea id="reason_etc_view"  name="reason"  rows="5" cols="50">사유를 입력해주세요!</textarea><br>
                         </div>

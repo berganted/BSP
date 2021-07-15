@@ -29,6 +29,7 @@ public class BoardServiceImpl implements BoardService {
 		vo.setEndPage(endPage);
 		vo.setTotCount(totCount);
 		vo.setTotPage(totPage);
+		System.out.println(vo);
 		return dao.selectAll(vo);
 	}
 

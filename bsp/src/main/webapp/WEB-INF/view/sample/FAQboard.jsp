@@ -139,9 +139,9 @@
                                 <td class="first" colspan="5">등록된 글이 없습니다.</td>
                             </tr>
                         </c:if>
-                        <c:forEach var="vo" items="${list }">     
+                        <c:forEach var="vo" items="${list}">     
                             <tr>
-                                <td>${vo.no }</td>
+                                <td>${vo.Q_NO }</td>
                                 <td class="txt_l">
                                     <a href="board_view.html?Q_No=${vo.Q_No }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.Q_Title }</a>
                                 </td>

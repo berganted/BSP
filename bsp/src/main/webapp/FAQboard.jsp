@@ -141,7 +141,7 @@
                         </c:if>
                         <c:forEach var="vo" items="${list }">     
                             <tr>
-                                <td>${vo.no }</td>
+                                <td>${vo.Q_No }</td>
                                 <td class="txt_l">
                                     <a href="board_view.html?Q_No=${vo.Q_No }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.Q_Title }</a>
                                 </td>
@@ -175,7 +175,7 @@
                         <div class="bbsSearch">
                         <form method="get" name="searchForm" id="searchForm" action="">
                             <span class="srchSelect">
-                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();" style="width:50px;">
                                     <option value="Q_Regdate" <c:if test="${param.orderby=='Q_Regdate'}">selected</c:if>>작성일</option>
                                     <option value="Q_ReadCount" <c:if test="${param.orderby=='Q_ReadCount'}">selected</c:if>>조회수</option>
                                 </select>

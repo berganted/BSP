@@ -20,7 +20,7 @@
 </head>
 <body> 
         <%@ include file="/WEB-INF/view/include/header.jsp" %>
-        <!-- visual 부분 입니다! -->  
+        <!-- visual 부분 입니다 -->  
         <div class="wrap">
             <div class="support_search">
                 <div class="support_welcome">
@@ -139,7 +139,19 @@
                                 <td class="first" colspan="5">등록된 글이 없습니다.</td>
                             </tr>
                         </c:if>                        
-
+						<c:forEach var="vo" items="${list}">     
+                            <tr>
+                                <td>${vo.Q_NO }</td>
+                                <td class="txt_l">
+                                    <a href="board_view.html?Q_No=${vo.Q_No }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.Q_Title }</a>
+                                </td>
+                                <td class="FAQboard_writer">
+                                    ${vo.name }
+                                </td>
+                                <td class="date">${vo.Q_Regdate }</td>
+                                <td>${vo.Q_ReadCount }</td>
+                            </tr>
+                        </c:forEach>	
                                                 
                         </tbody>
                     </table>

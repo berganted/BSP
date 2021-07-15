@@ -30,4 +30,8 @@ public class UserDao {
 	public int delete(UserVo vo) {
 		return sessionTemplate.delete("user.delete", vo);
 	}
+	public int isDuplicateld(String id) {
+		return sessionTemplate.selectOne("user.isDuplicateld", id);
+
+	}
 }

@@ -16,9 +16,9 @@ public class UserVo extends CommonVo {
 	private String M_Email_d;
 
 	private String M_Tel;
-	private String add_1;
-	private String add_2;
-	private String add_3;
+	private String M_Zipcord;
+	private String M_Addr1;
+	private String M_Addr2;
 	private String gender;
 	private Timestamp M_Regdate;
 	private String M_Delflag;
@@ -66,23 +66,24 @@ public class UserVo extends CommonVo {
 	public void setM_Tel(String m_Tel) {
 		M_Tel = m_Tel;
 	}
-	public String getAdd_1() {
-		return add_1;
+	
+	public String getM_Zipcord() {
+		return M_Zipcord;
 	}
-	public void setAdd_1(String add_1) {
-		this.add_1 = add_1;
+	public void setM_Zipcord(String m_Zipcord) {
+		M_Zipcord = m_Zipcord;
 	}
-	public String getAdd_2() {
-		return add_2;
+	public String getM_Addr1() {
+		return M_Addr1;
 	}
-	public void setAdd_2(String add_2) {
-		this.add_2 = add_2;
+	public void setM_Addr1(String m_Addr1) {
+		M_Addr1 = m_Addr1;
 	}
-	public String getAdd_3() {
-		return add_3;
+	public String getM_Addr2() {
+		return M_Addr2;
 	}
-	public void setAdd_3(String add_3) {
-		this.add_3 = add_3;
+	public void setM_Addr2(String m_Addr2) {
+		M_Addr2 = m_Addr2;
 	}
 	public String getGender() {
 		return gender;

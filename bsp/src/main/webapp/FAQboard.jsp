@@ -16,7 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
-    	
+    <script src="/bsp/js/main.js"></script>	
 </head>
 <body> 
         <%@ include file="/WEB-INF/view/include/header.jsp" %>
@@ -32,7 +32,7 @@
                         <input type="text" placeholder="검색어를 입력하세요">
                     </form>
                     <div class="support_searchIcon">
-                        <img src="/bsp/img/logo/Search.png">
+                        <img src="img/logo/Search.png">
                     </div>
                 </div>
             </div>
@@ -130,6 +130,7 @@
                                     <th>제목</th>
                                     <th>작성자</th>
                                     <th>작성일</th>
+                                    <th>조회수</th>
                                 </tr>
                             </thead>
                             <tbody>      
@@ -137,20 +138,20 @@
                             <tr>
                                 <td class="first" colspan="5">등록된 글이 없습니다.</td>
                             </tr>
-                        </c:if>                        
-						<c:forEach var="vo" items="${list}">     
+                        </c:if>
+                        <c:forEach var="vo" items="${list }">     
                             <tr>
-                                <td>${vo.q_no }</td>
+                                <td>${vo.Q_No }</td>
                                 <td class="txt_l">
-                                    <a href="board_view.html?Q_No=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
+                                    <a href="board_view.html?Q_No=${vo.Q_No }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.Q_Title }</a>
                                 </td>
                                 <td class="FAQboard_writer">
                                     ${vo.name }
                                 </td>
-                                <td class="date">${vo.q_regdate }</td>
+                                <td class="date">${vo.Q_Regdate }</td>
+                                <td>${vo.Q_ReadCount }</td>
                             </tr>
-                        </c:forEach>	
-                                                
+                        </c:forEach>
                         </tbody>
                     </table>
                     <div class="btnSet"  style="text-align:right;">
@@ -158,14 +159,14 @@
                     </div>
                     <div class="pagenate clear">
                         <ul class='paging'>
-                        <c:if test="${boardVo.strPage > boardVo.pageRange}">
-                        	<li><a href="FAQboard.do?reqPage=${boardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
+                        <c:if test="${boardVo.startPage > boardVo.pageRange}">
+                        	<li><a href="index.do?reqPage=${boardVo.startPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
                         </c:if>
-                        <c:forEach var="rp" begin="${boardVo.strPage}" end="${boardVo.endPage }">
-                            <li><a href='FAQboard.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==boardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                        <c:forEach var="rp" begin="${boardVo.startPage}" end="${boardVo.endPage }">
+                            <li><a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==boardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${boardVo.totPage > boardVo.endPage}">
-                        	<li><a href="FAQboard.do?reqPage=${boardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
+                        	<li><a href="index.do?reqPage=${boardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
                         </c:if>
                         </ul> 
                     </div>
@@ -174,7 +175,7 @@
                         <div class="bbsSearch">
                         <form method="get" name="searchForm" id="searchForm" action="">
                             <span class="srchSelect">
-                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();" style="width:50px;">
                                     <option value="Q_Regdate" <c:if test="${param.orderby=='Q_Regdate'}">selected</c:if>>작성일</option>
                                     <option value="Q_ReadCount" <c:if test="${param.orderby=='Q_ReadCount'}">selected</c:if>>조회수</option>
                                 </select>

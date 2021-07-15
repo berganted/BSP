@@ -108,7 +108,7 @@ public class BoardController {
 			model.addAttribute("url", "index.do");
 		} else {
 			model.addAttribute("msg", "수정실패");
-			model.addAttribute("url", "edit.do?Q_No="+vo.getQ_No());
+			model.addAttribute("url", "edit.do?Q_No="+vo.getQ_NO());
 		}
 		return "include/alert";
 	}

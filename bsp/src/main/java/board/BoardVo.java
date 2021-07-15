@@ -6,7 +6,7 @@ import util.CommonVo;
 
 public class BoardVo extends CommonVo {
 	
-	private int Q_No;
+	private int Q_NO;
 	private int Q_Cate_no;
 	private int M_NO;
 	private String Q_Title;
@@ -19,12 +19,12 @@ public class BoardVo extends CommonVo {
 	private String isDel;
 	private String name;
 	
-	public int getQ_No() {
-		return Q_No;
+	public int getQ_NO() {
+		return Q_NO;
 	}
 
 	public void setQ_No(int q_No) {
-		Q_No = q_No;
+		Q_NO = q_No;
 	}
 
 	public int getQ_Cate_no() {

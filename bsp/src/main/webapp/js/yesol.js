@@ -102,7 +102,7 @@
         //라디오 버튼 기타 클릭시 textarea 출력
         function showTextarea(v, id) {
             // 라디오 버튼 value 값 조건 비교
-            if (v == "4") {
+            if (v == "3") {
                 document.getElementById(id).style.display = ""; // 보여줌
             } else {
                 document.getElementById(id).style.display = "none"; // 숨김

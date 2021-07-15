@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceimpl implements UserService {
 	@Autowired
-	UserDao dao ;
+	UserDao dao ; 
 	@Override
 	public List<UserVo> selectAll(UserVo vo) {
 		int totCount = dao.count(vo);	
@@ -47,6 +47,10 @@ public class UserServiceimpl implements UserService {
 	public int delete(UserVo vo) {
 		return dao.delete(vo);
 		 
+	}
+	@Override
+	public int isDuplicateld(String id) {
+		return dao.isDuplicateld(id);
 	}
 
 }

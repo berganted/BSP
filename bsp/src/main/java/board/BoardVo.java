@@ -24,7 +24,7 @@ public class BoardVo extends CommonVo {
 	}
 
 	public void setQ_No(int q_No) {
-		Q_No = q_No;
+		Q_NO = q_No;
 	}
 
 	public int getQ_Cate_no() {

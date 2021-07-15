@@ -20,7 +20,7 @@
 </head>
 <body> 
         <%@ include file="/WEB-INF/view/include/header.jsp" %>
-        <!-- visual 부분 입니다 -->  
+        <!-- visual 부분 입니다! -->  
         <div class="wrap">
             <div class="support_search">
                 <div class="support_welcome">
@@ -138,8 +138,9 @@
                             <tr>
                                 <td class="first" colspan="5">등록된 글이 없습니다.</td>
                             </tr>
-                        </c:if>
-                        
+                        </c:if>                        
+
+                                                
                         </tbody>
                     </table>
                     <div class="btnSet"  style="text-align:right;">

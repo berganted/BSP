@@ -40,7 +40,7 @@
                                     
                         <div class="btnSet clear">
                             <div class="fl_l"><a href="FAQboard.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}" class="btn">목록으로</a></div>
-                            <c:if test="${userInfo.no == vo.m_no }">
+                            <c:if test="${userInfo.m_no == vo.q_no }">
                             <div class="fl_l"><a href="board_edit.do?no=${vo.q_no}" class="btn">수정</a></div>
                             <div class="fl_l"><a href="javascript:isDel();" class="btn">삭제</a></div>
                         	</c:if>
@@ -59,14 +59,14 @@
     			$.ajax({
     				url:'delete.do',
     				data:{
-    					'no':${vo.no}
+    					'no':${vo.q_no}
     				},
     				method:'post',
     				success:function(res) {
     					console.log(res);
     					if (res.trim() == 'true') {
     						alert('정상적으로 삭제되었습니다.');
-    						location.href='index.do';
+    						location.href='FAQboard.do';
     					} else {
     						alert('삭제 실패');
     					}

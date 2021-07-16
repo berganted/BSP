@@ -30,7 +30,7 @@
    <mvc:view-controller path="/sample/index.do"/>
    <mvc:view-controller path="/sample/join.do"/>
    <mvc:view-controller path="/sample/login.do"/>
-   <mvc:view-controller path="/sample/board_list.do"/>
+   <!-- <mvc:view-controller path="/sample/board_list.do"/> -->
    <mvc:view-controller path="/sample/board_view.do"/>
    <mvc:view-controller path="/sample/board_write.do"/>   
    <mvc:view-controller path="/sample/board_edit.do"/>   

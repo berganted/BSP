@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<sql id="boardWhere">
+		<where>
+			<if test="sval != null and sval != ''">
+				<if test="stype == 'all'">
+					title LIKE '%${sval}%' OR content LIKE '%${sval}%'
+				</if>
+				<if test="stype != 'all'">
+					${stype} LIKE '%${sval}%'
+				</if>
+			</if>
+			<if test="m_no != 0">
+				AND m_no=#{m_no}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="selectAll" resultType="board.BoardVo" parameterType="board.BoardVo">
+		SELECT *, (SELECT M_Name FROM user WHERE q_board.m_no=user.m_no) AS name FROM q_board
+		<include refid="boardWhere"/>
+		ORDER BY ${orderby} ${direct}
+		LIMIT ${strIdx},${pageRow}
+	</select>
+	
+	<select id="count" resultType="int" parameterType="board.BoardVo">
+		SELECT COUNT(*) FROM q_board
+		<include refid="boardWhere"/>
+	</select>
+	
+	<select id="detail" resultType="board.BoardVo" parameterType="board.BoardVo">
+		SELECT * FROM q_board WHERE q_no = #{q_no}
+	</select>
+	
+	<update id="updateReadcount" parameterType="board.BoardVo">
+		UPDATE q_board SET q_readcount=q_readcount+1 WHERE q_no = #{q_no}
+	</update>
+	
+	<insert id="insert" parameterType="board.BoardVo">
+		INSERT INTO q_board (q_title, q_content,q_regdate, q_readcount, q_filename_org, q_filename_real, m_no)
+		VALUES (#{q_title}, #{q_content}, NOW(), 0, #{q_filename_org}, #{q_filename_real}, #{m_no})
+	</insert>
+	
+	<update id="update" parameterType="board.BoardVo">
+		UPDATE q_board SET
+			q_title=#{q_title}, q_content=#{q_content}
+			<if test="filename_org != null">
+				, q_filename_org=#{q_filename_org}, q_filename_real=#{q_filename_real}
+			</if>
+		WHERE q_no=#{q_no}
+	</update>
+	
+	<update id="delFilename" parameterType="board.BoardVo">
+		UPDATE q_board SET
+			q_filename_org='', q_filename_real=''
+		WHERE q_no=#{q_no}
+	</update>
+	
+	<delete id="delete" parameterType="board.BoardVo">
+		DELETE FROM q_board WHERE q_no=#{q_no}
+	</delete>
+	
+</mapper>

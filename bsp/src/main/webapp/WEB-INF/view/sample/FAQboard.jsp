@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,12 +11,25 @@
     <title>FAQboard</title>    
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>    
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="/bsp/css/index.css">
+    <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/main.js"></script>	
+    <script src="/bsp/js/index.js"></script>
+    
+    <script>
+    function move() {
+    	location.href='board_write.do';
+    	/* <c:if test="${!empty userInfo}">
+    	location.href='board_write.do';
+    	</c:if>
+    	<c:if test="${empty userInfo}">
+    	alert('로그인 후 사용가능합니다.');
+    	</c:if> */
+    	
+    }
+    </script>
+    	
 </head>
 <body> 
         <%@ include file="/WEB-INF/view/include/header.jsp" %>
@@ -23,7 +37,7 @@
         <div class="wrap">
             <div class="support_search">
                 <div class="support_welcome">
-                    <li><a class="support_w1">BSP 고객센터 입니다!!!!!.</a></li>
+                    <li><a class="support_w1">BSP 고객센터 입니다.</a></li>
                     <li><a class="support_w2">무엇을 도와드릴까요?</a></li>
                 </div>
                 <div class="support_searchBar">
@@ -31,7 +45,7 @@
                         <input type="text" placeholder="검색어를 입력하세요">
                     </form>
                     <div class="support_searchIcon">
-                        <img src="img/logo/Search.png">
+                        <img src="/bsp/img/logo/Search.png">
                     </div>
                 </div>
             </div>
@@ -115,7 +129,7 @@
         
                     <div class="bbs">
                         <table class="FAQboard_list">
-                        <p><span><strong>총 100개</strong>  |  1/10페이지</span></p>
+                        <p><span><strong>총 ${boardVo.totCount }개</strong>  |  ${boardVo.reqPage}/${boardVo.totPage }페이지</span></p>
                             <caption>게시판 목록</caption>
                             <colgroup>
                                 <col width="80px" />
@@ -132,65 +146,67 @@
                                 </tr>
                             </thead>
                             <tbody>      
-                                <tr>
-                                    <td>10</td>
-                                    <td class="txt_l">
-                                        <a href="board_view.html">게시글 제목</a>
-                                    </td>
-                                    <td class="FAQboard_writer">
-                                        홍길동
-                                    </td>
-                                    <td class="date">2021-01-01</td>
-                                </tr>
-                                <tr>
-                                    <td>9</td>
-                                    <td class="txt_l">
-                                        <a href="board_view.html">게시글 제목</a>
-                                    </td>
-                                    <td class="FAQboard_writer">
-                                        홍길동
-                                    </td>
-                                    <td class="date">2021-01-01</td>
-                                </tr>
-                                <tr>
-                                    <td>8</td>
-                                    <td class="txt_l">
-                                        <a href="board_view.html">게시글 제목</a>
-                                    </td>
-                                    <td class="FAQboard_writer">
-                                        홍길동
-                                    </td>
-                                    <td class="date">2021-01-01</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <div class="btnSet"  style="text-align:right;">
-                            <a class="FAQboard_btn" href="board_write.html">글작성 </a>
-                        </div>
-                        <div class="pagenate clear">
-                            <ul class='paging'>
-                                <li><a href='javascript:;' class='current'>1</a></li>
-                                <li><a href='javascript:;'>2</a></li>
-                                <li><a href='javascript:;'>3</a></li>
-                            </ul> 
-                        </div>
+                                <c:if test="${empty list }">
+                            <tr>
+                                <td class="first" colspan="5">등록된 글이 없습니다.</td>
+                            </tr>
+                        </c:if>                        
+						<c:forEach var="vo" items="${list}">     
+                            <tr>
+                                <td>${vo.q_no }</td>
+                                <td class="txt_l">
+                                    <a href="board_view.html?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
+                                </td>
+                                <td class="FAQboard_writer">
+                                    ${vo.name }
+                                </td>
+                                <td class="date">${vo.q_regdate }</td>
+                            </tr>
+                        </c:forEach>	
+                                                
+                        </tbody>
+                    </table>
+                    <div class="btnSet"  style="text-align:right;">
+                        <a class="FAQboard_btn" href="javascript:move();">글작성 </a>
+                    </div>
+                    <div class="pagenate clear">
+                        <ul class='paging'>
+                        <c:if test="${boardVo.strPage > boardVo.pageRange}">
+                        	<li><a href="FAQboard.do?reqPage=${boardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
+                        </c:if>
+                        <c:forEach var="rp" begin="${boardVo.strPage}" end="${boardVo.endPage }">
+                            <li><a href='FAQboard.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==boardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                        </c:forEach>
+                        <c:if test="${boardVo.totPage > boardVo.endPage}">
+                        	<li><a href="FAQboard.do?reqPage=${boardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
+                        </c:if>
+                        </ul> 
+                    </div>
                     
                         <!-- 페이지처리 -->
                         <div class="bbsSearch">
-                            <form method="get" name="searchForm" id="searchForm" action="">
-                                <span class="srchSelect">
-                                    <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
-                                        <option value="all">전체</option>
-                                        <option value="title">제목</option>
-                                        <option value="contents">내용</option>
-                                    </select>
-                                </span>
-                                <span class="searchWord">
-                                    <input type="text" id="sval" name="sval" value=""  title="검색어 입력">
-                                    <input type="button" id="" value="검색" title="검색" style="background-image: url(img/ico_search.png);">
-                                </span>
-                            </form>                            
-                        </div>                 
+                        <form method="get" name="searchForm" id="searchForm" action="">
+                            <span class="srchSelect">
+                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                    <option value="q_regdate" <c:if test="${param.orderby=='q_regdate'}">selected</c:if>>작성일</option>
+                                    <option value="q_readcount" <c:if test="${param.orderby=='q_readcount'}">selected</c:if>>조회수</option>
+                                </select>
+                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                    <option value="DESC" <c:if test="${param.direct=='DESC'}">selected</c:if>>내림차순</option>
+                                    <option value="ASC" <c:if test="${param.direct=='ASC'}">selected</c:if>>오름차순</option>
+                                </select>
+                                <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
+                                    <option value="all">전체</option>
+                                    <option value="q_title" <c:if test="${param.stype=='q_title'}">selected</c:if>>제목</option>
+                                    <option value="q_content" <c:if test="${param.stype=='q_content'}">selected</c:if>>내용</option>
+                                </select>
+                            </span>
+                            <span class="searchWord">
+                                <input type="text" id="sval" name="sval" value="${param.sval }"  title="검색어 입력">
+                                <input type="button" id="" value="검색" title="검색" onclick="$('#searchForm').submit();">
+                            </span>
+                        </form>                        
+                    </div>                 
                     </div>
                 </div>
             </div>

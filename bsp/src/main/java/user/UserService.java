@@ -10,4 +10,5 @@ public interface UserService {
 	UserVo edit(UserVo vo);
 	int update(UserVo vo);
 	 int delete(UserVo vo);
+	 int isDuplicateld(String id);
 }

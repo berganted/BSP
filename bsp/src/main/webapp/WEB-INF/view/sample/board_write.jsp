@@ -9,24 +9,33 @@
     <title>Document</title>    
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="/bsp/css/index.css">
+    <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="js/index.js"></script>
-    <script src="js/main.js"></script>
-
-
+    <script src="/bsp/js/index.js"></script>
+	<script>
+	<script>
+	function goSave() {
+		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []); // 이렇게 쓰라고 네이버에서 지정해 둔 것.
+		$("#frm").submit();
+	}
+	var oEditors;
+	$(function(){
+		oEditors = setEditor("content"); // 반드시 id를 적어야한다
+	});
+    </script>
+    
 </head>
 <body>
-    <div id='header'></div>
-    <div class="wrap">
-        <div class="FAQboard_sub">
+    <%@ include file="/WEB-INF/view/include/header.jsp" %>
+    <div class="FAQboard_sub">
             <div class="FAQboard_size">
                 <h3 class="sub_title">문의글 작성</h3>
     
                 <div class="bbs">
-                <form method="post" name="frm" id="frm" action="" enctype="multipart/form-data" >
+                <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
+                <input type="hidden" name="user_no" value="${userInfo.no }">    
                     <table class="board_write">
                         <tbody>
                         <tr>
@@ -38,20 +47,24 @@
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="contents" id="contents"></textarea>
+                                <textarea name="content" id="content" style="width:100%"></textarea>
                             </td>
+                        </tr>
+                        <tr>
+                        	<th>파일첨부</th>
+                        	<td>
+                        		<input type="file" name="file">
+                        	</td>
                         </tr>
                         </tbody>
                     </table>
                     <div class="btnSet"  style="text-align:right;">
-                        <a class="FAQboard_btn" href="FAQboard.html">저장 </a>
+                        <a class="FAQboard_btn" href="javascript:goSave();">저장 </a>
                     </div>
                     </form>
                 </div>
             </div>
         </div>
-        
-    </div>
-    <div id="footer"></div>
+    <%@ include file="/WEB-INF/view/include/footer.jsp" %> 
 </body>
 </html>

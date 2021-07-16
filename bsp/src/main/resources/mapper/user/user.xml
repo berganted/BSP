@@ -34,15 +34,15 @@
 		
 	
 		<insert id="insert" parameterType="user.UserVo">
-			INSERT INTO user (M_ID,M_PWD,M_Name,M_Email,M_Email_d,M_Tel,add_1,add_2,add_3,gender,M_regdate,M_Point,M_Delflag,M_Deldate) 
-			VALUES( #{M_ID}, md5(#{M_PWD}),#{M_Name},#{M_Email},#{M_Email_d},#{M_Tel},#{add_1},#{add_2},#{add_3},#{gender}, Now(),0,'n',0 )
+			INSERT INTO user (M_ID,M_PWD,M_Name,M_Email,M_Email_d,M_Tel,M_Zipcord,M_Addr1,M_Addr2,gender,M_regdate,M_Point,M_Delflag,M_Deldate) 
+			VALUES( #{M_ID}, md5(#{M_PWD}),#{M_Name},#{M_Email},#{M_Email_d},#{M_Tel},#{M_Zipcord},#{M_Addr1},#{M_Addr2},#{gender}, Now(),0,'n',0 )
 		</insert>
 		<update id="update" parameterType="user.UserVo">
 			UPDATE user SET
 				pwd=md5(#{pwd}),email=#{email}
-				,tel=#{tel},zipcode=#{zipcode}
+				,tel=#{tel},zipcode=#{zipcode} 
 				,addr1=#{addr1},addr2=#{addr2}
-				
+				 
 			WHERE no=#{no}
 		</update>	
 		
@@ -51,7 +51,10 @@
 		</delete>	
 		
 		<select id="join" parameterType="user.UserVo">
-		
+		  
+		</select>
+		<select id="isDuplicateld" resultType="int" parameterType="user.UserVo">
+			SELECT count(*) from user WHERE M_ID=#{M_ID}
 		</select>
 		
 	</mapper>

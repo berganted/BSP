@@ -3,9 +3,9 @@
     function openZipSearch() {
          new daum.Postcode({
             oncomplete: function (data) {
-                $('[name=add_1]').val(data.zonecode); // 우편번호 (5자리)
-                $('[name=add_2]').val(data.address);
-                $('[name=add_3]').val(data.buildingName);
+               $('[name=M_Zipcord]').val(data.zonecode); // 우편번호 (5자리)
+                $('[name=M_Addr1]').val(data.address);
+                $('[name=M_Addr2]').val(data.buildingName);
                 }
             }).open();
     }
@@ -112,9 +112,9 @@
         function openZipSearch() {
             new daum.Postcode({
                  oncomplete: function (data) {
-                    $('[name=add_1]').val(data.zonecode); // 우편번호 (5자리)
-                    $('[name=add_2]').val(data.address);
-                    $('[name=add_3]').val(data.buildingName);
+                    $('[name=M_Zipcord]').val(data.zonecode); // 우편번호 (5자리)
+                    $('[name=M_Addr1]').val(data.address);
+                    $('[name=M_Addr2]').val(data.buildingName);
                     }
                 }).open();
             }

@@ -63,7 +63,7 @@
                 <div class="pwrap"><p><input type="text" id="pInput" value="팝업창 값 받아오는것"><br>
                     * 추가배송/회수 등 조치가 필요한 상품과 수량을 체크해주십시오.<br>
                  </p>
-                </div>
+                </div>   
                 <hr>
                     <table id="retrn_reason" class="retrn_tb">
                         <div class="hwrap"><h4>사유선택</h4></div>

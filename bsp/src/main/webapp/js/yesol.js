@@ -135,3 +135,13 @@
             self.close();
         }
     }
+/*replace_form----------------------------------------------------------------------- */
+ function setDisplay(){
+    if($('input:radio[id=replace_divide]').is(':checked')){
+        $('.replace_reason_option_tb').show();
+        $('.addDeli_reason_option_tb').hide();
+    }else{
+        $('.addDeli_reason_option_tb').show();
+        $('.replace_reason_option_tb').hide();
+    }
+}

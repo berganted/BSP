@@ -159,14 +159,14 @@
                     </div>
                     <div class="pagenate clear">
                         <ul class='paging'>
-                        <c:if test="${boardVo.startPage > boardVo.pageRange}">
-                        	<li><a href="index.do?reqPage=${boardVo.startPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
+                        <c:if test="${boardVo.strPage > boardVo.pageRange}">
+                        	<li><a href="FAQboard.do?reqPage=${boardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
                         </c:if>
-                        <c:forEach var="rp" begin="${boardVo.startPage}" end="${boardVo.endPage }">
-                            <li><a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==boardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                        <c:forEach var="rp" begin="${boardVo.strPage}" end="${boardVo.endPage }">
+                            <li><a href='FAQboard.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==boardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${boardVo.totPage > boardVo.endPage}">
-                        	<li><a href="index.do?reqPage=${boardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
+                        	<li><a href="FAQboard.do?reqPage=${boardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
                         </c:if>
                         </ul> 
                     </div>
@@ -176,8 +176,8 @@
                         <form method="get" name="searchForm" id="searchForm" action="">
                             <span class="srchSelect">
                                 <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();" style="width:50px;">
-                                    <option value="Q_Regdate" <c:if test="${param.orderby=='Q_Regdate'}">selected</c:if>>작성일</option>
-                                    <option value="Q_ReadCount" <c:if test="${param.orderby=='Q_ReadCount'}">selected</c:if>>조회수</option>
+                                    <option value="q_regdate" <c:if test="${param.orderby=='q_regdate'}">selected</c:if>>작성일</option>
+                                    <option value="q_readcount" <c:if test="${param.orderby=='q_readcount'}">selected</c:if>>조회수</option>
                                 </select>
                                 <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
                                     <option value="DESC" <c:if test="${param.direct=='DESC'}">selected</c:if>>내림차순</option>
@@ -185,8 +185,8 @@
                                 </select>
                                 <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
                                     <option value="all">전체</option>
-                                    <option value="Q_Title" <c:if test="${param.stype=='Q_Title'}">selected</c:if>>제목</option>
-                                    <option value="Q_Content" <c:if test="${param.stype=='Q_Content'}">selected</c:if>>내용</option>
+                                    <option value="q_title" <c:if test="${param.stype=='q_title'}">selected</c:if>>제목</option>
+                                    <option value="q_content" <c:if test="${param.stype=='q_content'}">selected</c:if>>내용</option>
                                 </select>
                             </span>
                             <span class="searchWord">

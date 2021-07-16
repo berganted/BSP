@@ -16,15 +16,11 @@
 <link rel="stylesheet" href="/bsp/css/reset.css">
 <script type="text/javascript">
 $(function(){
-	$('#qwer > select').change(function(){
-	    var msg2 = $(this).val();
-	    $('#emailv2').val(msg2);
-	    if(msg2 ==""){
-	        $('#emailv2').show();
-	    }else{
-	        $('#emailv2').hide();
-	    }
-	 })
+	
+	console.log($('#emailv').val());
+	console.log($('#emailv2').val());
+
+	 
 });
 
 function searchId() {
@@ -47,6 +43,29 @@ function searchId() {
 	});
 	
 }
+function searchpwd() {
+	$.ajax({
+		url:'searchPwd.do',
+		method:'post',
+		data:{
+			m_id:$("#m_id").val(),
+			m_email:$("#email2").val(),
+			m_email_d:$('#emailv2').val()
+		},
+		success:function(res){
+			if (res.trim()=='ok'){
+				alert('임시비밀번호를 이메일로 발송하였습니다. 이메일을 확인해 주세요')
+			}else{
+				alert('아이디/이메일이 올바르지 않습니다.')
+			}
+			return false;
+		},
+		error:function(res) {
+			console.log(res);
+		}
+	});
+  }
+	
 </script>
 
 <body>
@@ -72,7 +91,7 @@ function searchId() {
                     <li id='msg'></li>
                     </div>
                     <div class="find_next">
-                        <button class="btn" onclick="searchId();">찾기</button>
+                        <button class="btn" id="id_find">찾기</button>
                         </div>
                     </div>
                 
@@ -84,20 +103,20 @@ function searchId() {
                         <span class="find_info">01. 아이디 입력>02. 본인 확인>03. 비밀번호 재설정</span>
                     </div>
                     <div class="find_name"> 
-                        <span class="find_labale">아이디</span> <span class="find_content"><input type="text"></span>    
+                        <span class="find_labale">아이디</span> <span class="find_content"><input type="text" id="m_id" name="m_id"></span>    
                     </div>
                     <div class="find_name">
-                         <span class="up_spanlable_2">이메일</span>
-                            <span class="up_spancon_t" id="qwer"><input type="text" name="m_email" id="email2"  style="width: 20%;">@<input type="text" name="m_email_d" id="emailv2"  value="naver.com" style="width: 20%;">   
+                        <span class="find_labale">이메일</span>
+                                <span class="up_spancon_t1"><input type="text" name="m_email" id="email2"  style="width: 20%;">@<input type="text" name="m_email_d" id="emailv2"  value="naver.com" style="width: 20%;">   
                                 <select style="width: 30%;">
                                 <option value="naver.com">naver.com</option>
                                 <option value="gmail.com">gmail.com</option>
                                 <option value="daum.net">daum.net</option>                      
                                 <option value="">직접입력</option>                      
-                            </select></span>     
+                            </select></span>      
                     </div>
                     <div class="find_next">
-                        <button class="btn"  onclick="location.href=''">찾기</button>
+                        <button class="btn" id="pwd_find" >찾기</button>
                         </div>
                     </div>
             <form action=""></form>
@@ -110,5 +129,28 @@ function searchId() {
     <jsp:include page="../include/footer.jsp"></jsp:include>
     
 </body>
+<script type="text/javascript">
+$(function() {
+	$('#pwd_find').click(function() {
+		console.log('pwd');
+		searchpwd();
+	});	
+	$('#id_find').click(function() {
+		searchId();
+	})
+	$('.up_spancon_t1 > select').change(function(){
+		console.log(5);
+        var msg1 = $(this).val();
+        $('#emailv2').val(msg1);
+        console.log($('#emailv2').val())
+        if(msg1 ==""){
+            $('#emailv2').show();
+        }else{
+            $('#emailv2').hide();
+        }
+       })   
+})
+
+</script>
 
 </html>

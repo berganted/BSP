@@ -13,9 +13,10 @@
     <script src="js/main.js"></script>
     <script src="js/big.js"></script>
     <title>Document</title>
- 
 
     <style>
+        
+        
     #all{
         width: 100px; 
         height: 30px; 
@@ -37,12 +38,85 @@
     .button_s{
     font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
     }
-    .number{
-        margin-left: 45px;
-    }
-     
-    </style>
+ 
+    .best_indexWrap{    
+   border: 1px solid gray;
+   width: 1000px;
+   height: 120px;
+   margin: auto;
+   margin-top: 20px;
+   text-decoration: none;
+   color: black;
+   
+   text-align: left;
+   border-radius: 30px;
 
+   
+}
+
+.best_wrap {
+    width: 1150px;
+    height: auto;
+    /* border: 3px solid red; */
+    margin-left: 100px;
+    margin-top: 20px;
+    padding: 20px 20px 0px 20px;
+
+}
+.best_clickNum {
+   position: relative;
+   font-size: 15px;
+   margin-top: 10px;
+   
+}
+.best_clickNum > *{
+   margin: 15px 10px;
+}
+
+.bestmain_top{
+    margin-left: 100px;
+   margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+    </style>
+    <script>
+
+
+// 전체선택해제
+    const $container = document.querySelector('.container');
+    const $inputs = [...$container.children];
+    const $agreeBtn = document.querySelector('.all');
+
+    $all.onclick = () => {
+      if ($inputs.filter(input => input.checked).length === $inputs.length) {
+        $inputs.forEach(input => { input.checked = false; });
+      } else {
+        $inputs.forEach(input => {
+          input.checked = true;
+        });
+      }
+    };
+    
+
+
+
+
+    //베스트체크 전체선택
+    function selectAll(selectAll)  {
+  const checkboxes 
+       = document.getElementsByName('bestcheck');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked;
+  })
+}
+    </script>
 </head>
 <body>
     <div id='header'></div>
@@ -52,20 +126,16 @@
         </div>  
 
         <div class="mem_content">
-            <h2 class="main_top">임신 / 출산</h2>
-            <div class="smallCtg_area"> 
-                <div class="cate2"><a href="#">임신</a></div> 
-                <div class="cate2"><a href="#">태교</a></div> 
-               
-
-            </div>
-            <div class="indexWrap">
+            <h1 class="bestmain_top">외국도서 종합 베스트셀러</h1>
+            
+       
+            <div class="best_indexWrap">
                 <div class="indexPlace">
-                    <span class="original"><a href="#">기본순</a></span>
-                    <span class="sell"><a href="#">판매량순</a></span>
-                    <span class="new"><a href="#">신상품순</a></span>
-                    <span class="lowPrice"><a href="#">최저가순</a></span>
-                    <span class="highPrice"><a href="#">최고가순</a></span>
+                    <span class="original"><a class="link" href="#">기본순</a></span>
+                    <span class="sell"><a class="link"  href="#">판매량순</a></span>
+                    <span class="new"><a class="link"  href="#">신상품순</a></span>
+                    <span class="lowPrice"><a class="link"  href="#">최저가순</a></span>
+                    <span class="highPrice"><a class="link"  href="#">최고가순</a></span>
                     
                    
                     
@@ -81,7 +151,7 @@
                     <br>
                     <hr>
                                        
-                    <div class="clickNum">
+                    <div class="best_clickNum">
                         <a href="#" class="click_first"><<</a>
                         <a href="#" class="click_prev"><</a>
                         <strong class="num">1</strong>
@@ -96,18 +166,22 @@
                         <a href="#" class="num">10</a>
                         <a href="/24/Category/Display/001001001003?PageNumber=11" class="click_next"> > </a>
                         <a href="/24/Category/Display/001001001003?PageNumber=48" class="click_end">>></a>   
-                        <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택
-                             
+                     
+                      
+                        <input type='checkbox' name='bestcheck'   onclick='selectAll(this)'/>   전체선택
                     </div>
+              
                     
 
                 </div>
          
             </div>
             <!-- 1 -->
+            <div class="best_wrap">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><img src = "img/newEye3.jpg" style="height: 250px; width: 180px;"></div>
+                    <div class="best_rank" style="font-size: 19px;">1.</div>
+                    <div class="s_bookImg"><img src = "img/book2.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
@@ -132,15 +206,11 @@
                         <div class="s_pay1">
                             <input type="checkbox" name="bestcheck" >
                             &nbsp;
-                          
-                           
-                                <div class="number">
-                                    <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="5">
-                                      <button class="button_s" type="button" id="increaseQuantity">+</button>
-                                  </div> 
-                                      
-                        
+                            <div class="number" style="margin-left: 40px;">
+                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
+                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
+                              </div> 
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" >
@@ -151,10 +221,12 @@
                     </div>
                 </div>
              </div>
+             <hr>
              <!-- 2 -->
-             <div class="SmallIndex_book">
+            <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><img src = "img/newEye3.jpg" style="height: 250px; width: 180px;"></div>
+                    <div class="best_rank" style="font-size: 19px;">2.</div>
+                    <div class="s_bookImg"><img src = "img/newStar4.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
@@ -179,15 +251,16 @@
                         <div class="s_pay1">
                             <input type="checkbox" name="bestcheck" >
                             &nbsp;
-                          
-                           
-                                <div class="number">
-                                    <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                    <button class="button_s" type="button" id="increaseQuantity">+</button>
-                                  </div> 
-                                      
-                        
+                            <td id="ant">
+                                <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
+                                </td>
+                            <!-- <td id="ant2">
+                                <button class="button" type="button" style="padding: 3px 5px;" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button" type ="button" style="padding: 3px 5px;" onclick="fnCalCount('p',this);">+</button> 
+                            </td> -->
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" >
@@ -198,10 +271,12 @@
                     </div>
                 </div>
              </div>
+             <hr>
              <!-- 3 -->
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><img src = "img/newEye1.jpg" style="height: 250px; width: 180px;"></div>
+                    <div class="best_rank" style="font-size: 19px;">3.</div>
+                    <div class="s_bookImg"><img src = "img/newStar6.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
@@ -226,11 +301,16 @@
                         <div class="s_pay1">
                             <input type="checkbox" name="bestcheck" >
                             &nbsp;
-                             <div class="number">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
+                            <td id="ant">
+                                <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
+                                </td>
+                            <!-- <td id="ant2">
+                                <button class="button" type="button" style="padding: 3px 5px;" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button" type ="button" style="padding: 3px 5px;" onclick="fnCalCount('p',this);">+</button> 
+                            </td> -->
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" >
@@ -241,10 +321,12 @@
                     </div>
                 </div>
              </div>
+             <hr>
              <!-- 4 -->
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><img src = "img/newStar2.jpg" style="height: 250px; width: 180px;"></div>
+                    <div class="best_rank" style="font-size: 19px;">4.</div>
+                    <div class="s_bookImg"><img src = "img/book.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
@@ -269,11 +351,16 @@
                         <div class="s_pay1">
                             <input type="checkbox" name="bestcheck" >
                             &nbsp;
-                            <div class="number">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
+                            <td id="ant">
+                                <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
+                                </td>
+                            <!-- <td id="ant2">
+                                <button class="button" type="button" style="padding: 3px 5px;" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button" type ="button" style="padding: 3px 5px;" onclick="fnCalCount('p',this);">+</button> 
+                            </td> -->
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" >
@@ -284,11 +371,12 @@
                     </div>
                 </div>
              </div>
-
+             <hr>
              <!-- 5 -->
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><img src = "img/book2.jpg" style="height: 250px; width: 180px;"></div>
+                    <div class="best_rank" style="font-size: 19px;">5.</div>
+                    <div class="s_bookImg"><img src = "img/newStar4.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
@@ -313,11 +401,16 @@
                         <div class="s_pay1">
                             <input type="checkbox" name="bestcheck" >
                             &nbsp;
-                            <div class="number">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
+                            <td id="ant">
+                                <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
+                                </td>
+                            <!-- <td id="ant2">
+                                <button class="button" type="button" style="padding: 3px 5px;" onclick="fnCalCount('m', this);">-</button>
+                                <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                                <button  class="button" type ="button" style="padding: 3px 5px;" onclick="fnCalCount('p',this);">+</button> 
+                            </td> -->
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" >
@@ -334,7 +427,8 @@
 
           
         
-            </div>   
+            </div> 
+        </div>  
         <aside class="mypage_ad">
             <div class="mypage_ad_name"><p>최근본상품</p></div>
             <div class="img_area">

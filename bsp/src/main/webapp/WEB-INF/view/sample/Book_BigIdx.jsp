@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="css/base.css">
-   
+    <link rel="stylesheet" href="css/big.css">
      <script src="js/main.js"></script>
      <script src="js/big.js"></script>
      
@@ -30,6 +30,7 @@
         </div>  
         <div class="mem_content">
             
+
             <div class="BigIndex_newEye">가정살림</div>
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->

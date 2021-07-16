@@ -1,7 +1,5 @@
 package user;
 
-import java.io.File;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 
 
@@ -45,11 +42,11 @@ public class UserController {
 	public String insert(Model model , UserVo vo,  HttpServletRequest req , HttpServletResponse res) {
 		int r = service.insert(vo);
 		if(r > 0) {
-			model.addAttribute("reulst", "true");
+			model.addAttribute("result", "true");
 		}else {
-			model.addAttribute("reulst", "false");
+			model.addAttribute("result", "false");
 		}
-		return "include/reulst";			
+		return "include/result";			
 }
 	@RequestMapping("/user/isDuplicateld.do")
 	public String isDuplicateld(Model model, @RequestParam String id ) {

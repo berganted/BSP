@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +12,42 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/big.css">
     <script src="js/main.js"></script>
+    <script src="js/big.js"></script>
+    
     
     <title>Document</title>
-  
+    <style>
+
+.button_m{
+    font-size:14px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:4px 20px; min-width:64px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
+    }
+    .button_s{
+    font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
+    }
+ 
+        .star-input{
+            margin: auto;
+        }
+    .star-input>.input,
+    .star-input>.input>label:hover,
+    .star-input>.input>input:focus+label,
+    .star-input>.input>input:checked+label{display: inline-block;vertical-align:middle;background:url('img/grade_img.png')no-repeat;}
+    .star-input{display:inline-block; white-space:nowrap;width:225px;height:40px;padding:25px;line-height:30px;}
+    .star-input>.input{display:inline-block;width:150px;background-size:150px;height:28px;white-space:nowrap;overflow:hidden;position: relative;}
+    .star-input>.input>input{position:absolute;width:1px;height:1px;opacity:0;}
+    star-input>.input.focus{outline:1px dotted #ddd;}
+    .star-input>.input>label{width:30px;height:0;padding:28px 0 0 0;overflow: hidden;float:left;cursor: pointer;position: absolute;top: 0;left: 0;}
+    .star-input>.input>label:hover,
+    .star-input>.input>input:focus+label,
+    .star-input>.input>input:checked+label{background-size: 150px;background-position: 0 bottom;}
+    .star-input>.input>label:hover~label{background-image: none;}
+    .star-input>.input>label[for="p1"]{width:30px;z-index:5;}
+    .star-input>.input>label[for="p2"]{width:60px;z-index:4;}
+    .star-input>.input>label[for="p3"]{width:90px;z-index:3;}
+    .star-input>.input>label[for="p4"]{width:120px;z-index:2;}
+    .star-input>.input>label[for="p5"]{width:150px;z-index:1;}
+    .star-input>output{display:inline-block;width:60px; font-size:18px;text-align:right; vertical-align:middle;}
+    </style>
   
 </head>
 <body>
@@ -25,7 +58,7 @@
             <div class="detail_wrap">
                 <div class="img_section">
                     <div class="detail_bookImg">
-                        <img src="img/book.jpg" style="width: 250px; height: 310px;">
+                        <img src="img/newEye3.jpg" style="width: 250px; height: 310px;">
                     
                     </div>
                 </div>
@@ -49,7 +82,7 @@
                                 <span class="sellPrice1" style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;">15,120원(10%할인)</span> <br>
                                 
                                 <span class="deliverInfo" style="font-size: 18px;">
-                                     배송예정 -> 경기도 고양시~ #{회원주소자동입력} ＃{주소api}
+                                     배송지 : 경기도 고양시~ 
                                 </span><br>
 
                                 <span style="font-size: 18px;"> *배송비 : 무료</span>
@@ -59,14 +92,18 @@
                 </div>
                 <div class="detail_bookPay">
                     <div class="detail_payWrap3">
-                        <span class="ing" style="font-size: 15px;">판매중</span> <br> 
-                        <input type="textarea" value="수량선택(미완성)" size="11px">
+                        <span class="ing" style="font-size: 15px;"> &emsp;&emsp;  판매중</span> <br> 
+                      <div class="number" >
+                        <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
+                        <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                          <button class="button_s" type="button" id="increaseQuantity">+</button>
+                      </div> 
                     </div>
                     <div class="detail_payWrap1">
-                       <input type="button" class="btn1" value="카트에 넣기" >
+                       <input type="button" class="btn1" value="카트에 넣기" style="margin-left: 20px;">
                     </div>
                     <div class="detail_payWrap2">
-                        <input type="button"  class="btn2" value="바로구매">
+                        <input type="button"  class="btn2" value="바로구매" style="margin-left: 20px;" >
                     </div>
                 </div>   
             </div>
@@ -159,6 +196,59 @@
                         </p>
                     </div>
              </div>
+
+            <div class="detail_section">
+                <div class="bookIndex" style="font-size:25px;"> 리뷰 </div>
+                <div class="bookIndex2" style="font-size: 17px; margin-top: -20px; margin-left: 10px; margin-bottom: 30px;">
+                    매주 10건의 우수리뷰를 선정하여 YES상품권 3만원을 드립니다</div>
+                 <br>
+
+                  <div class="book_detailReview" style="width: auto; height:400px ;"> 
+                 <div style="text-align: center;">
+                    <h1>리뷰/평점</h1>
+                </div>
+                <div style="text-align: center;">
+                <span class="star-input" >
+                    <span class="input">
+                        <input type="radio" name="star-input" value="1" id="p1">
+                        <label for="p1">1</label>
+                        <input type="radio" name="star-input" value="2" id="p2">
+                        <label for="p2">2</label>
+                        <input type="radio" name="star-input" value="3" id="p3">
+                        <label for="p3">3</label>
+                        <input type="radio" name="star-input" value="4" id="p4">
+                        <label for="p4">4</label>
+                        <input type="radio" name="star-input" value="5" id="p5">
+                        <label for="p5">5</label>
+                    </span>
+                    <output for="star-input"><b>0</b>점</output>						
+            </span>
+            </div>
+            <script src="js/jquery-1.11.3.min.js"></script>
+            <script src="js/star.js"></script>
+            <div style="text-align: center;">
+                <br>
+                 <input type="text" placeholder="리뷰를 입력하세요!" style="width:600px;height:200px;font-size:17px;" >
+                <input type="file" value="사진">
+                <input type="button" value="등록">
+            </div>
+
+        </div> 
+
+
+
+
+             </div>
+
+
+
+
+
+
+
+
+
+
         </div> 
         <aside class="mypage_ad">
             <div class="mypage_ad_name"><p>최근본상품</p></div>

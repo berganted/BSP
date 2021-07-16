@@ -64,10 +64,10 @@
 		</select>
 		
 		<select id="searchPwd" resultType="user.UserVo" parameterType="user.UserVo">
-			SELECT * FROM user WHERE m_id=#{m_id} AND m_email=#{m_email} AND m_email_d=#{m_email}
+			SELECT * FROM user WHERE m_id=#{m_id} AND m_email=#{m_email} AND m_email_d=#{m_email_d}
 		</select>
 		<update id="updateTempPwd" parameterType="user.UserVo" >
-			UPDATE user SET m_pwd = md5(#{m_pwd}) WHERE m_id=#{m_id} AND m_email=#{m_email}
+			UPDATE user SET m_pwd = md5(#{m_pwd}) WHERE m_id=#{m_id} AND m_email=#{m_email}AND m_email_d=#{m_email_d}
 		</update>
 		
 	</mapper>

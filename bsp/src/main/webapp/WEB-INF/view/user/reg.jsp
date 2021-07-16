@@ -164,12 +164,12 @@
                         <div>
                             <span class="up_spanlable">아이디</span>
                             
-                            <span class="up_spancon" style="width: 240px"><input type="text" name="M_ID" id="id"></span>
+                            <span class="up_spancon" style="width: 240px"><input type="text" name="m_id" id="id"></span>
                             <span><a href="javascript:;" id="duplBtn"  class="btn bgGray" style="height: 32px ;line-height: 32px">중복확인</a></span>
                         </div>
                         <div>
                             <span class="up_spanlable">비밀번호</span>
-                            <span class="up_spancon"><input type="password" name="M_PWD" id="pwd"></span>
+                            <span class="up_spancon"><input type="password" name="m_pwd" id="pwd"></span>
                         </div>
                         <div>
                             <span class="up_spanlable">비밀번호 확인</span>
@@ -178,15 +178,15 @@
                         <div>
                             <span class="up_spanlable">이름</span>
                             
-                            <span class="up_spancon"><input type="text" name="M_Name" id="M_Name"></span>
+                            <span class="up_spancon"><input type="text" name="m_name" id="M_Name"></span>
                         </div>
                         <div>
                             <span class="up_spanlable_2">전화번호</span>
-                            <span class="up_spancon_1"><input type="number" name="M_Tel"></span>
+                            <span class="up_spancon_1"><input type="number" name="m_tel"></span>
                         </div>
                         <div>
                             <span class="up_spanlable_2">이메일</span>
-                            <span class="up_spancon_t"><input type="text" name="M_Email" id="email"  style="width: 20%;">@<input type="text" name="M_Email_d" id="emailv"  value="naver.com" style="width: 20%;">   
+                            <span class="up_spancon_t"><input type="text" name="m_email" id="email"  style="width: 20%;">@<input type="text" name="m_email_d" id="emailv"  value="naver.com" style="width: 20%;">   
                                 <select style="width: 30%;">
                                 <option value="naver.com">naver.com</option>
                                 <option value="gmail.com">gmail.com</option>
@@ -196,16 +196,16 @@
                         </div>
                         <div class="adddiv">
                             <span class="up_spanlable_ad">우편번호</label></span>
-                            <span class="up_spancon_ad"><input type="text" size="4" name="M_Zipcord" class="postcodify_postcode6_1" /> </span>
-                                <span class="addbtn"><button class="button_s" type="button" onclick="openZipSearch();">검색</button></span> 
+                            <span class="up_spancon_ad"><input type="text" size="4" name="m_zipcord" class="postcodify_postcode6_1" /> </span>
+                                <span class="addbtn"><button class="btn bgGray button_s" type="button" onclick="openZipSearch();">검색</button></span> 
                             </div>
                             <div class="adddiv">                           
                                 <span class="up_spanlable_ad"><label>도로명주소</label></span>
-                                <span class="up_spancon"><input type="text" name="M_Addr1" class="postcodify_address" /></span>
+                                <span class="up_spancon"><input type="text" name="m_addr1" class="postcodify_address" /></span>
                             </div>
                             <div class="adddiv">
                                 <span class="up_spanlable_ad"><label>상세주소</label></span>
-                                <span class="up_spancon"><input type="text"name="M_Addr2" class="postcodify_details" /></span>
+                                <span class="up_spancon"><input type="text"name="m_addr2" class="postcodify_details" /></span>
                             </div>
                             <div>
                                 <span class="up_spanlable">성별</span>                    
@@ -216,17 +216,14 @@
                             </div>                                     
                         
                         <div class="reg_submit">
-                            <input class="reg_submitbtn" type="button" value=" 가입"  onclick="goSave();"><br><br>
-                            <input class="reg_submitbtn" type="reset" value="취소" >
+                            <input class="btn reg_submitbtn" type="button" value=" 가입"  onclick="goSave();"><br><br>
+                            <input class="btn reg_submitbtn" type="reset" value="취소" >
                         </div>
                     </form>
                 </div>
                        
             </div>
-        
-    
     </div>    
-</div>
     <jsp:include page="../include/footer.jsp"></jsp:include>
 
    

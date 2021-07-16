@@ -53,11 +53,20 @@ $(function(){
         }else{
             $('#emailv').hide();
         }
-        })   
- 
+     })
+      $('.up_spancon_t > select').change(function(){
+        var msg2 = $(this).val();
+        $('#emailv2').val(msg2);
+        if(msg2 ==""){
+            $('#emailv2').show();
+        }else{
+            $('#emailv2').hide();
+        }
+     })
+     
+  });
+
   
-    
-  }); 
   function ShowCurrentTime() {
     $.ajax({
         async: false,

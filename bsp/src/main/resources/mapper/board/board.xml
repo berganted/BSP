@@ -19,7 +19,7 @@
 	</sql>
 	
 	<select id="selectAll" resultType="board.BoardVo" parameterType="board.BoardVo">
-		SELECT *, (SELECT M_Name FROM user WHERE q_board.m_no=user.M_NO) AS name FROM q_board
+		SELECT *, (SELECT M_Name FROM user WHERE q_board.m_no=user.m_no) AS name FROM q_board
 		<include refid="boardWhere"/>
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}

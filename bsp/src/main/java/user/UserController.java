@@ -5,11 +5,13 @@ import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -88,5 +90,55 @@ public class UserController {
 //		}
 //		return "user/result";			
 //	}
+	@RequestMapping(value = "/user/login.do", method = RequestMethod.GET)
+	public String login() {
+		
+		return "user/login";
+	}
+	@RequestMapping(value = "/user/login.do", method = RequestMethod.POST)
+	public String loginexe(UserVo vo,HttpSession sess,HttpServletResponse res, HttpServletRequest req,Model model) throws Exception {
+		UserVo u = service.login(vo);
+		if(u != null) {
+			 sess.setAttribute("userInfo", u);
+			 
+			 return"redirect:/index.do";			 
+		 }else {
+			 	model.addAttribute("msg", "아이디와 비밀번호를 확인해 주세요");
+				model.addAttribute("url", "login.do");
+				return "include/alert";
+		 }
+	}
+	@RequestMapping("/user/logout.do")
+	public String logout(HttpSession sess, Model model) {
+		sess.invalidate();
+		model.addAttribute("msg", "로그아웃");
+		model.addAttribute("url", "/bsp/index.do");
+		return "include/alert";
+	}
+	@RequestMapping("/user/findidpwd.do")
+	public String findid() {
+		return "/user/findidpwd";
+	}
+	@RequestMapping(value = "user/searchId.do",method = RequestMethod.POST)
+	public String searchid2(Model model , UserVo vo) {
+		UserVo uv = service.searchid(vo);
+		String id = "";
+		if(uv!=null) {
+			id = uv.getM_id();
+		}
+		model.addAttribute("result", id);
+		return "include/result";
+	}
+	
+	@RequestMapping(value = "user/searchPwd.do",method = RequestMethod.POST)
+	public String searchpwd2(Model model , UserVo vo) {
+		UserVo uv = service.searchpwd(vo);
+		if(uv!=null) {
+			model.addAttribute("result", "ok");
+		}else {
+			model.addAttribute("result", "no");
+		}
+		return "include/result";
+	}
 	
 }

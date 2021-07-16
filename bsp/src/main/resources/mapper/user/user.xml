@@ -34,8 +34,8 @@
 		
 	
 		<insert id="insert" parameterType="user.UserVo">
-			INSERT INTO user (M_ID,M_PWD,M_Name,M_Email,M_Email_d,M_Tel,M_Zipcord,M_Addr1,M_Addr2,gender,M_regdate,M_Point,M_Delflag,M_Deldate) 
-			VALUES( #{M_ID}, md5(#{M_PWD}),#{M_Name},#{M_Email},#{M_Email_d},#{M_Tel},#{M_Zipcord},#{M_Addr1},#{M_Addr2},#{gender}, Now(),0,'n',0 )
+			INSERT INTO user (m_id,m_pwd,m_name,m_email,m_email_d,m_tel,m_zipcord,m_addr1,m_addr2,gender,m_regdate,m_point,m_delflag,m_deldate) 
+			VALUES( #{m_id}, md5(#{m_pwd}),#{m_name},#{m_email},#{m_email_d},#{m_tel},#{m_zipcord},#{m_addr1},#{m_addr2},#{gender}, Now(),0,'n',0 )
 		</insert>
 		<update id="update" parameterType="user.UserVo">
 			UPDATE user SET
@@ -54,7 +54,20 @@
 		  
 		</select>
 		<select id="isDuplicateld" resultType="int" parameterType="user.UserVo">
-			SELECT count(*) from user WHERE M_ID=#{M_ID}
+			SELECT count(*) from user WHERE M_ID=#{m_id}
 		</select>
+		<select id="login"  resultType="user.UserVo" parameterType="user.UserVo">
+			SELECT *FROM user WHERE m_id=#{m_id} AND m_pwd=md5(#{m_pwd})
+		</select>
+		<select id="searchId" resultType="user.UserVo" parameterType="user.UserVo">
+			SELECT * FROM user WHERE m_name=#{m_name} AND m_email=#{m_email} AND m_email_d=#{m_email_d}
+		</select>
+		
+		<select id="searchPwd" resultType="user.UserVo" parameterType="user.UserVo">
+			SELECT * FROM user WHERE m_id=#{m_id} AND m_email=#{m_email} AND m_email_d=#{m_email}
+		</select>
+		<update id="updateTempPwd" parameterType="user.UserVo" >
+			UPDATE user SET m_pwd = md5(#{m_pwd}) WHERE m_id=#{m_id} AND m_email=#{m_email}
+		</update>
 		
 	</mapper>

@@ -16,6 +16,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
+    
+    <script>
+    function move() {
+    	location.href='board_write.do';
+    	/* <c:if test="${!empty userInfo}">
+    	location.href='board_write.do';
+    	</c:if>
+    	<c:if test="${empty userInfo}">
+    	alert('로그인 후 사용가능합니다.');
+    	</c:if> */
+    	
+    }
+    </script>
     	
 </head>
 <body> 
@@ -142,7 +155,7 @@
                             <tr>
                                 <td>${vo.q_no }</td>
                                 <td class="txt_l">
-                                    <a href="board_view.html?Q_No=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
+                                    <a href="board_view.html?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
                                 </td>
                                 <td class="FAQboard_writer">
                                     ${vo.name }
@@ -175,8 +188,8 @@
                         <form method="get" name="searchForm" id="searchForm" action="">
                             <span class="srchSelect">
                                 <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="Q_Regdate" <c:if test="${param.orderby=='Q_Regdate'}">selected</c:if>>작성일</option>
-                                    <option value="Q_ReadCount" <c:if test="${param.orderby=='Q_ReadCount'}">selected</c:if>>조회수</option>
+                                    <option value="q_regdate" <c:if test="${param.orderby=='q_regdate'}">selected</c:if>>작성일</option>
+                                    <option value="q_readcount" <c:if test="${param.orderby=='q_readcount'}">selected</c:if>>조회수</option>
                                 </select>
                                 <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
                                     <option value="DESC" <c:if test="${param.direct=='DESC'}">selected</c:if>>내림차순</option>
@@ -184,8 +197,8 @@
                                 </select>
                                 <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
                                     <option value="all">전체</option>
-                                    <option value="Q_Title" <c:if test="${param.stype=='Q_Title'}">selected</c:if>>제목</option>
-                                    <option value="Q_Content" <c:if test="${param.stype=='Q_Content'}">selected</c:if>>내용</option>
+                                    <option value="q_title" <c:if test="${param.stype=='q_title'}">selected</c:if>>제목</option>
+                                    <option value="q_content" <c:if test="${param.stype=='q_content'}">selected</c:if>>내용</option>
                                 </select>
                             </span>
                             <span class="searchWord">

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <div class="h_wrap">
         <div class="hr"></div>
     <div class="index_wrap">
@@ -17,10 +17,18 @@
                 <a href="index.html"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
             </div>
             <div class="header_login">
-                <a href="cart.html">로그인</a>
+            <c:if test="${empty userInfo}">
+                <a href="/bsp/user/login.do">로그인</a>
                 <a href="mypage.html">회원가입</a>
                 <a href="join.html">장바구니</a>                                       
                 <a href="login.html">마이페이지</a>
+            </c:if>
+            <c:if test="${!empty userInfo}">
+				<a>${ userInfo.m_name}</a>
+				<a onclick="location.href='/bsp/user/logout.do'">로그아웃</a> 
+				<a href="join.html">장바구니</a>                                       
+                <a href="login.html">마이페이지</a>
+			</c:if>
             </div>
         </div>
         <!-- Main-menu -->

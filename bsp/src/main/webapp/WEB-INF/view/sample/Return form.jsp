@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>반품/교환 신청서</title>
+    <title>반품 신청서</title>
     <link rel='stylesheet' href='css/yesol.css'/> <!-- 예솔 css -->
     <link rel="stylesheet" href="css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -24,23 +24,18 @@
  
      <div class="mem_content" style="text-align: center;">
         <form action="" method="POST">
-            <h1>반품/교환 신청서</h1>
+            <h1>반품 신청서</h1>
             <div id="article">
                 <table id="retrn_type" class="retrn_tb" >
-                    <h4>반품/교환/회수 구분</h4>
+                    <h4>반품 구분</h4>
                        <div class="retrn_radio">
-                            <input type="radio" name="divide" value="return">반품
-                            <input type="radio" name="divide" value="replace">교환
-                            <input type="radio" name="divide" value="add">추가배송 <br>
-               
+                            <input type="radio" name="divide" value="return" checked>반품
                        </div>
                        <div class="pwrap">
                             <p>
                             * 반품 : 상품이 마음에 들지 않거나 잘못 구입한 경우
                               다른 상품으로의 교환은 불가합니다.<br> [반품] 후 새로 주문*결제 해주십시오.<br>
-                           * 교환 : 상품불량(파본*훼손) / 주문과 다른 상품 수령<br>
-                           * (누락)추가배송 : 주문상품/부록/증정품 등 누락<br>
-                            *  기타 문의 : 이 외에는 1:1고객상담>>반품/교환>>반품 혹은 교환을 이용해 주십시오.<br>
+                            * 기타 문의 : 이 외에는 게시판>>반품/교환>>반품 혹은 교환을 이용해 주십시오.<br>
                            </p>
                         </div>
                 </table>
@@ -64,13 +59,14 @@
                         </tr>
                 </table>
                 <div class="pwrap"><p><input type="text" id="pInput" value="팝업창 값 받아오는것"><br>
-                    * 반품/교환/추가배송/회수 등 조치가 필요한 상품과 수량을 체크해주십시오.<br>
+                    * 반품 조치가 필요한 상품과 수량을 체크해주십시오.<br>
                  </p>
                 </div>
                 <hr>
                     <table id="retrn_reason" class="retrn_tb">
                         <div class="hwrap"><h4>사유선택</h4></div>
                         <tr>
+                         <div class="retrn_reason_option_tb" >
                             <input type="radio" name="reason" value="1" onclick="showTextarea(this.value,'etc_view');"> 단순변심 
                             <input type="radio" name="reason" value="2" onclick="showTextarea(this.value,'etc_view');"> 상품불량 
                             <input type="radio" name="reason" value="3" onclick="showTextarea(this.value,'etc_view');"> 기타
@@ -80,7 +76,7 @@
                         <div class="pwrap">
                         <p>
                         * 단순변심 : 구입상품이 마음에 들지 않을 경우나 잘못 구입한 경우<br>
-                        * 이 외의 사유인 경우에는 1:1고객상담>>반품/교환>>반품 코너로 신고해주십시오.<br>
+                        * 이 외의 사유인 경우에는 게시판>>반품/교환>>반품 코너로 신고해주십시오.<br>
                         </p>
                         </div>
                         </tr>

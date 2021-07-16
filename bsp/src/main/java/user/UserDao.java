@@ -32,6 +32,17 @@ public class UserDao {
 	}
 	public int isDuplicateld(String id) {
 		return sessionTemplate.selectOne("user.isDuplicateld", id);
-
+	}
+	public UserVo login(UserVo vo) {
+		return sessionTemplate.selectOne("user.login",vo);
+	}
+	public UserVo searchid(UserVo vo) {
+		return sessionTemplate.selectOne("user.searchId",vo);
+	}
+	public UserVo searchpwd(UserVo vo) {
+		return sessionTemplate.selectOne("user.searchPwd",vo);
+	}
+	public int updateTempPwd(UserVo vo) {
+		return sessionTemplate.update("user.updateTempPwd",vo);
 	}
 }

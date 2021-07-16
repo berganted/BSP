@@ -24,18 +24,18 @@ public class BoardController {
 		return "sample/FAQboard";
 	}
 	
-	@RequestMapping("/board/detail.do")
+	@RequestMapping("/sample/detail.do")
 	public String detail(Model model, BoardVo vo) {
 		model.addAttribute("vo", service.detail(vo));
 		return "board/detail";
 	}
 	
-	@RequestMapping("/board/write.do")
+	@RequestMapping("/sample/write.do")
 	public String write(Model model, BoardVo vo) {
 		return "board/write";
 	}
 	
-	@RequestMapping("/board/insert.do")
+	@RequestMapping("/sample/insert.do")
 	public String insert(Model model, BoardVo vo, 
 						@RequestParam MultipartFile file, HttpServletRequest req) {
 		//service.insert(vo, filename, req)

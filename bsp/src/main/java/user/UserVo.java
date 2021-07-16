@@ -8,82 +8,82 @@ import util.CommonVo;
 public class UserVo extends CommonVo {
 	
 
-	private int M_NO;
-	private String M_Name;
-	private String M_ID;
-	private String M_PWD;
-	private String M_Email;
-	private String M_Email_d;
+	private int m_no;
+	private String m_name;
+	private String m_id;
+	private String m_pwd;
+	private String m_email;
+	private String m_email_d;
 
-	private String M_Tel;
-	private String M_Zipcord;
-	private String M_Addr1;
-	private String M_Addr2;
+	private String m_tel;
+	private String m_zipcord;
+	private String m_addr1;
+	private String m_addr2;
 	private String gender;
-	private Timestamp M_Regdate;
-	private String M_Delflag;
-	private Date M_Deldate;
-	private int M_Point;
-	public int getM_NO() {
-		return M_NO;
+	private Timestamp m_regdate;
+	private String m_delflag;
+	private String m_deldate;
+	private int m_point;
+	public int getM_no() {
+		return m_no;
 	}
-	public void setM_NO(int m_NO) {
-		M_NO = m_NO;
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
 	}
-	public String getM_Name() {
-		return M_Name;
+	public String getM_name() {
+		return m_name;
 	}
-	public void setM_Name(String m_Name) {
-		M_Name = m_Name;
-	}
-	public String getM_ID() {
-		return M_ID;
-	}
-	public void setM_ID(String m_ID) {
-		M_ID = m_ID;
-	}
-	public String getM_PWD() {
-		return M_PWD;
-	}
-	public void setM_PWD(String m_PWD) {
-		M_PWD = m_PWD;
-	}
-	public String getM_Email() {
-		return M_Email;
-	}
-	public void setM_Email(String m_Email) {
-		M_Email = m_Email;
-	}
-	public String getM_Email_d() {
-		return M_Email_d;
-	}
-	public void setM_Email_d(String m_Email_d) {
-		M_Email_d = m_Email_d;
-	}
-	public String getM_Tel() {
-		return M_Tel;
-	}
-	public void setM_Tel(String m_Tel) {
-		M_Tel = m_Tel;
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
 	}
 	
-	public String getM_Zipcord() {
-		return M_Zipcord;
+	public String getM_id() {
+		return m_id;
 	}
-	public void setM_Zipcord(String m_Zipcord) {
-		M_Zipcord = m_Zipcord;
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
-	public String getM_Addr1() {
-		return M_Addr1;
+	public String getM_pwd() {
+		return m_pwd;
 	}
-	public void setM_Addr1(String m_Addr1) {
-		M_Addr1 = m_Addr1;
+	public void setM_pwd(String m_pwd) {
+		this.m_pwd = m_pwd;
 	}
-	public String getM_Addr2() {
-		return M_Addr2;
+	public String getM_email() {
+		return m_email;
 	}
-	public void setM_Addr2(String m_Addr2) {
-		M_Addr2 = m_Addr2;
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
+	public String getM_email_d() {
+		return m_email_d;
+	}
+	public void setM_email_d(String m_email_d) {
+		this.m_email_d = m_email_d;
+	}
+	public String getM_tel() {
+		return m_tel;
+	}
+	public void setM_tel(String m_tel) {
+		this.m_tel = m_tel;
+	}
+	public String getM_zipcord() {
+		return m_zipcord;
+	}
+	public void setM_zipcord(String m_zipcord) {
+		this.m_zipcord = m_zipcord;
+	}
+	public String getM_addr1() {
+		return m_addr1;
+	}
+	public void setM_addr1(String m_addr1) {
+		this.m_addr1 = m_addr1;
+	}
+	public String getM_addr2() {
+		return m_addr2;
+	}
+	public void setM_addr2(String m_addr2) {
+		this.m_addr2 = m_addr2;
 	}
 	public String getGender() {
 		return gender;
@@ -91,33 +91,28 @@ public class UserVo extends CommonVo {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Timestamp getM_Regdate() {
-		return M_Regdate;
+	public Timestamp getM_regdate() {
+		return m_regdate;
 	}
-	public void setM_Regdate(Timestamp m_Regdate) {
-		M_Regdate = m_Regdate;
+	public void setM_regdate(Timestamp m_regdate) {
+		this.m_regdate = m_regdate;
 	}
-	public String getM_Delflag() {
-		return M_Delflag;
+	public String getM_delflag() {
+		return m_delflag;
 	}
-	public void setM_Delflag(String m_Delflag) {
-		M_Delflag = m_Delflag;
+	public void setM_delflag(String m_delflag) {
+		this.m_delflag = m_delflag;
 	}
-	public Date getM_Deldate() {
-		return M_Deldate;
+	public String getM_deldate() {
+		return m_deldate;
 	}
-	public void setM_Deldate(Date m_Deldate) {
-		M_Deldate = m_Deldate;
+	public void setM_deldate(String m_deldate) {
+		this.m_deldate = m_deldate;
 	}
-	public int getM_Point() {
-		return M_Point;
+	public int getM_point() {
+		return m_point;
 	}
-	public void setM_Point(int m_Point) {
-		M_Point = m_Point;
+	public void setM_point(int m_point) {
+		this.m_point = m_point;
 	}
-	
-	
-	
-	
-	
 }

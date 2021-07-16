@@ -19,7 +19,7 @@
 	</sql>
 	
 	<select id="selectAll" resultType="board.BoardVo" parameterType="board.BoardVo">
-		SELECT *, (SELECT M_Name FROM user WHERE q_board.m_no=user.M_NO) AS name FROM q_board
+		SELECT *, (SELECT M_Name FROM user WHERE q_board.m_no=user.m_no) AS name FROM q_board
 		<include refid="boardWhere"/>
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}
@@ -31,35 +31,35 @@
 	</select>
 	
 	<select id="detail" resultType="board.BoardVo" parameterType="board.BoardVo">
-		SELECT * FROM q_board WHERE Q_No = #{Q_No}
+		SELECT * FROM q_board WHERE q_no = #{q_no}
 	</select>
 	
 	<update id="updateReadcount" parameterType="board.BoardVo">
-		UPDATE q_board SET Q_ReadCount=Q_ReadCount+1 WHERE Q_No = #{Q_No}
+		UPDATE q_board SET q_readcount=q_readcount+1 WHERE q_no = #{q_no}
 	</update>
 	
 	<insert id="insert" parameterType="board.BoardVo">
-		INSERT INTO q_board (Q_Title, Q_Content,Q_RegDate, Q_ReadCount, Q_Filename_org, Q_Filename_real, M_NO)
-		VALUES (#{Q_Title}, #{Q_Content}, NOW(), 0, #{Q_Filename_org}, #{Q_Filename_real}, #{M_NO})
+		INSERT INTO q_board (q_title, q_content,q_regdate, q_readcount, q_filename_org, q_filename_real, m_no)
+		VALUES (#{q_title}, #{q_content}, NOW(), 0, #{q_filename_org}, #{q_filename_real}, #{m_no})
 	</insert>
 	
 	<update id="update" parameterType="board.BoardVo">
 		UPDATE q_board SET
-			Q_Title=#{Q_Title}, Q_Content=#{Q_Content}
+			q_title=#{q_title}, q_content=#{q_content}
 			<if test="filename_org != null">
-				, Q_Filename_org=#{Q_Filename_org}, Q_Filename_real=#{Q_Filename_real}
+				, q_filename_org=#{q_filename_org}, q_filename_real=#{q_filename_real}
 			</if>
-		WHERE Q_No=#{Q_No}
+		WHERE q_no=#{q_no}
 	</update>
 	
 	<update id="delFilename" parameterType="board.BoardVo">
 		UPDATE q_board SET
-			Q_Filename_org='', Q_Filename_real=''
-		WHERE Q_No=#{Q_No}
+			q_filename_org='', q_filename_real=''
+		WHERE q_no=#{q_no}
 	</update>
 	
 	<delete id="delete" parameterType="board.BoardVo">
-		DELETE FROM q_board WHERE Q_No=#{Q_No}
+		DELETE FROM q_board WHERE q_no=#{q_no}
 	</delete>
 	
 </mapper>

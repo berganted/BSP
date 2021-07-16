@@ -33,6 +33,7 @@
    <mvc:view-controller path="/sample/board_list.do"/>
    <mvc:view-controller path="/sample/board_view.do"/>
    <mvc:view-controller path="/sample/board_write.do"/>   
+   <mvc:view-controller path="/sample/board_edit.do"/>   
    <mvc:view-controller path="/sample/FAQboard.do"/>   
    
    <!-- DBCP -->

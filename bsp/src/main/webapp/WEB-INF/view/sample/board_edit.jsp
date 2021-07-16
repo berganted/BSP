@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -35,24 +36,25 @@
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
-                <input type="hidden" name="user_no" value="${userInfo.no }">    
                     <table class="board_write">
                         <tbody>
                         <tr>
                             <th>제목</th>
                             <td>
-                                <input type="text" name="title" id="title" class="wid100" value=""/>
+                                <input type="text" name="title" id="title" class="wid100" value="${vo.q_title }"/>
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="content" id="content" style="width:100%"></textarea>
+                                <textarea name="content" id="content" style="width:100%">${vo.q_content }</textarea>
                             </td>
                         </tr>
                         <tr>
                         	<th>파일첨부</th>
                         	<td>
+                        		기존파일 : ${vo.q_filename_org}
+                        		<input type="checkbox" name="isDel" value="1"><br>
                         		<input type="file" name="file">
                         	</td>
                         </tr>
@@ -61,6 +63,7 @@
                     <div class="btnSet"  style="text-align:right;">
                         <a class="FAQboard_btn" href="javascript:goSave();">저장 </a>
                     </div>
+                    <input type="hidden" name="no" value="${vo.q_no}">
                     </form>
                 </div>
             </div>

@@ -114,7 +114,7 @@ public class UserController {
 	}
 	@RequestMapping("/user/findidpwd.do")
 	public String findid() {
-		return "/user/findidpwd";
+		return "/user/findidpwd"; 
 	}
 	@RequestMapping(value = "user/searchId.do",method = RequestMethod.POST)
 	public String searchid2(Model model , UserVo vo) {

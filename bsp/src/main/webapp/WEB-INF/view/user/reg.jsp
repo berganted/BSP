@@ -196,10 +196,10 @@
                         </div>
                         <div class="adddiv">
                             <span class="up_spanlable_ad">우편번호</label></span>
-                            <span class="up_spancon_ad"><input type="text" size="4" name="m_zipcord" class="postcodify_postcode6_1" /> </span>
+                            <span class="up_spancon_ad"><input type="text" size="4" name="m_zipcode" class="postcodify_postcode6_1" /> </span>
                                 <span class="addbtn"><button class="btn bgGray button_s" type="button" onclick="openZipSearch();">검색</button></span> 
                             </div>
-                            <div class="adddiv">                           
+                            <div class="adddiv">                            
                                 <span class="up_spanlable_ad"><label>도로명주소</label></span>
                                 <span class="up_spancon"><input type="text" name="m_addr1" class="postcodify_address" /></span>
                             </div>

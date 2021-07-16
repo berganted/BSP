@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -13,11 +14,11 @@
     <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="/bsp/smarteditor/js/HuskyEZCreator.js"></script>
     <script src="/bsp/js/index.js"></script>
 	<script>
-	<script>
 	function goSave() {
-		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []); // 이렇게 쓰라고 네이버에서 지정해 둔 것.
+		oEditors.getById['content'].exec("UPDATE_CONTENTS_FIELD", []); 
 		$("#frm").submit();
 	}
 	var oEditors;
@@ -35,19 +36,19 @@
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="insert.do" enctype="multipart/form-data" >
-                <input type="hidden" name="user_no" value="${userInfo.no }">    
+                <input type="hidden" name="m_no" value="${userInfo.m_no }">    
                     <table class="board_write">
                         <tbody>
                         <tr>
-                            <th>제목</th>
+                            <th>제목</th> 
                             <td>
-                                <input type="text" name="title" id="title" class="wid100" value=""/>
+                                <input type="text" name="q_title" id="title" class="wid100" value=""/>
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="content" id="content" style="width:100%"></textarea>
+                                <textarea name="q_content" id="content" style="width:100%"></textarea>
                             </td>
                         </tr>
                         <tr>

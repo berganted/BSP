@@ -4,6 +4,7 @@
 //     }) .mouseleave(function(){
 //          $(this).find('.header_depth2').stop().slideUp(300);
 //     });
+	 	
 // });
 
 $(function(){ 
@@ -90,9 +91,50 @@ $(".support_t2").hide();
 $(".support_t").click(function(){
     $(this).parent().parent().find('.support_t2').slideToggle(10)
 });
+console.log($('.index_visual').position().left);
+	    var q_left = $('.index_visual').position().left+1550;
+	    
+	    var q_top = $('.index_visual').position().top;
+	    console.log($('.index_visual').position().q_left)
+	   
+	    $(".mypage_ad").css({
+	        'top':q_top,
+	        'left':q_left
+	    });
+	    
+	    $(window).scroll(function(){
+	        
+	        var new_top = $(window).scrollTop()+300;
+	        $(".mypage_ad").stop().animate({
+	        'top':new_top, 'left':q_left
+	        
+	    },300);
+	    })
 
 }); 
-
  
+function setEditor(holder){
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+		oAppRef: oEditors,
+		elPlaceHolder: holder,
+		sSkinURI: "/project/smarteditor/SmartEditor2Skin.html",	
+		htParams : {
+			bUseToolbar : true,				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+			bUseVerticalResizer : true,		// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+			bUseModeChanger : true,			// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+			fOnBeforeUnload : function(){
+				//alert("아싸!");	
+			}
+		}, //boolean
+		fOnAppLoad : function(){
+			//예제 코드
+			//oEditors.getById["contents"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
+		},
+		fCreator: "createSEditor2"
+	});
+	
+	return oEditors;
+} 
 
 

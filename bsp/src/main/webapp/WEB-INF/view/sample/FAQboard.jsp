@@ -19,7 +19,7 @@
     
     <script>
     function move() {
-    	location.href='board_write.do';
+    	location.href='board_write.do';   
     	/* <c:if test="${!empty userInfo}">
     	location.href='board_write.do';
     	</c:if>
@@ -133,9 +133,10 @@
                             <caption>게시판 목록</caption>
                             <colgroup>
                                 <col width="80px" />
-                                <col width="*" />
-                                <col width="100px" />
-                                <col width="100px" />
+	                            <col width="*" />
+	                            <col width="100px" />
+	                            <col width="200px" />
+	                            <col width="80px" />
                             </colgroup>
                             <thead>
                                 <tr>
@@ -143,6 +144,7 @@
                                     <th>제목</th>
                                     <th>작성자</th>
                                     <th>작성일</th>
+                                    <th>조회수</th>
                                 </tr>
                             </thead>
                             <tbody>      
@@ -155,12 +157,13 @@
                             <tr>
                                 <td>${vo.q_no }</td>
                                 <td class="txt_l">
-                                    <a href="board_view.html?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
+                                    <a href="board_view.do?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
                                 </td>
                                 <td class="FAQboard_writer">
                                     ${vo.name }
                                 </td>
                                 <td class="date">${vo.q_regdate }</td>
+                                <td>${vo.q_readcount }</td>
                             </tr>
                         </c:forEach>	
                                                 
@@ -170,7 +173,7 @@
                         <a class="FAQboard_btn" href="javascript:move();">글작성 </a>
                     </div>
                     <div class="pagenate clear">
-                        <ul class='paging'>
+                        <ul class='paging'> 
                         <c:if test="${boardVo.strPage > boardVo.pageRange}">
                         	<li><a href="FAQboard.do?reqPage=${boardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
                         </c:if>

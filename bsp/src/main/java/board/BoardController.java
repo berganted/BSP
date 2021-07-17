@@ -27,27 +27,25 @@ public class BoardController {
 	@RequestMapping("/sample/detail.do")
 	public String detail(Model model, BoardVo vo) {
 		model.addAttribute("vo", service.detail(vo));
-		return "board/detail";
+		return "sample/detail";
 	}
 	
 	@RequestMapping("/sample/write.do")
 	public String write(Model model, BoardVo vo) {
-		return "board/write";
+		return "sample/write";
 	}
 	
 	@RequestMapping("/sample/insert.do")
 	public String insert(Model model, BoardVo vo, 
 						@RequestParam MultipartFile file, HttpServletRequest req) {
 		//service.insert(vo, filename, req)
-		if (!file.isEmpty()) { // 첨부파일이 있으면
+		if (!file.isEmpty()) { // 첨부파일이 있으면!
 			try {
-				String org = file.getOriginalFilename(); // 원본파일명
+				String org = file.getOriginalFilename(); // 원본파일명..
 				String ext = ""; //확장자
 				
 				ext = org.substring(org.lastIndexOf("."));
 				String real = new Date().getTime()+ext; // 서버에 저장할 파일명
-	//			System.out.println("org:"+org);
-	//			System.out.println("real:"+real);
 				// 파일 저장
 				String path = req.getRealPath("/upload/"); // 경로
 				file.transferTo(new File(path+real)); // 경로+파일명 저장
@@ -63,21 +61,21 @@ public class BoardController {
 		// r == 0 : 비정상 -> alert -> 이전페이지로 이동
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
-			model.addAttribute("url", "index.do");
+			model.addAttribute("url", "FAQboard.do");
 		} else {
 			model.addAttribute("msg", "등록실패");
-			model.addAttribute("url", "write.do");
+			model.addAttribute("url", "write.do"); 
 		}
 		return "include/alert";
 	}
-	
-	@RequestMapping("/board/edit.do")
+	  
+	@RequestMapping("/sample/edit.do")
 	public String edit(Model model, BoardVo vo) {
 		model.addAttribute("vo", service.edit(vo));
-		return "board/edit";
+		return "sample/edit"; 
 	}
 	
-	@RequestMapping("/board/update.do")
+	@RequestMapping("/sample/update.do")
 	public String update(Model model, BoardVo vo, 
 						@RequestParam MultipartFile file, HttpServletRequest req) {
 		//service.insert(vo, filename, req)
@@ -88,8 +86,6 @@ public class BoardController {
 				
 				ext = org.substring(org.lastIndexOf("."));
 				String real = new Date().getTime()+ext; // 서버에 저장할 파일명
-	//			System.out.println("org:"+org);
-	//			System.out.println("real:"+real);
 				// 파일 저장
 				String path = req.getRealPath("/upload/"); // 경로
 				file.transferTo(new File(path+real)); // 경로+파일명 저장
@@ -105,15 +101,15 @@ public class BoardController {
 		// r == 0 : 비정상 -> alert -> 이전페이지로 이동
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
-			model.addAttribute("url", "index.do");
+			model.addAttribute("url", "FAQboard.do");
 		} else {
 			model.addAttribute("msg", "수정실패");
-			model.addAttribute("url", "edit.do?Q_No="+vo.getQ_no());
+			model.addAttribute("url", "edit.do?q_no="+vo.getQ_no());
 		}
 		return "include/alert";
 	}
 	
-	@RequestMapping("/board/delete.do")
+	@RequestMapping("/sample/delete.do")
 	public String delete(Model model, BoardVo vo, HttpServletRequest req) {
 		int r = service.delete(vo);
 		if (r > 0) {

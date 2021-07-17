@@ -27,6 +27,9 @@ public class UserDao {
 	public int update(UserVo vo) {
 		return sessionTemplate.update("user.update",vo);
 	}
+	public int updatepwd(UserVo vo) {
+		return sessionTemplate.update("user.updatepwd",vo);
+	}
 	public int delete(UserVo vo) {
 		return sessionTemplate.delete("user.delete", vo);
 	}

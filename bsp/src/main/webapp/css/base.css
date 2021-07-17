@@ -16,6 +16,11 @@
        
     
 }
+.index_visual {
+    height: 500px;
+    text-align: center;
+    float: left;
+}
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
 	-webkit-appearance: none;
@@ -68,7 +73,7 @@ input[type=number]::-webkit-outer-spin-button {
 .mem_content2{
     width: 1300px;
     margin: 30px auto;
-    
+    height: 100%;
     
 
 }
@@ -266,7 +271,7 @@ fieldset{
     width: 10%;
     height: 19px;
 }
-#email{
+#email,#email2{
     width: 60%;
 }
 #emailv{ 
@@ -399,7 +404,7 @@ select::-ms-expand{
     height: 100px;
     text-align: center;
 }
-.up_spancon_t{
+.up_spancon_t,.up_spancon_t1{
     width: 500px;
     display: inline-block;
 }

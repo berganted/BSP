@@ -81,7 +81,8 @@ function searchpwd() {
                     </div>
                     <div class="find_name">
                         <span class="find_labale">이메일</span>
-                                <span class="up_spancon_t"><input type="text" name="m_email" id="m_email"  style="width: 20%;">@<input type="text" name="m_email_d" id="emailv"  value="naver.com" style="width: 20%;">   
+                                <span class="up_spancon_t"><input type="text" name="m_email" id="m_email"  style="width: 20%;">@
+                                <input type="text" name="m_email_d" id="emailv"  value="naver.com" style="width: 20%;">   
                                 <select style="width: 30%;">
                                 <option value="naver.com">naver.com</option>
                                 <option value="gmail.com">gmail.com</option>
@@ -107,7 +108,8 @@ function searchpwd() {
                     </div>
                     <div class="find_name">
                         <span class="find_labale">이메일</span>
-                                <span class="up_spancon_t1"><input type="text" name="m_email" id="email2"  style="width: 20%;">@<input type="text" name="m_email_d" id="emailv2"  value="naver.com" style="width: 20%;">   
+                                <span class="up_spancon_t1"><input type="text" name="m_email" id="email2"  style="width: 20%;">@
+                                <input type="text" name="m_email_d" id="emailv2"  value="naver.com" style="width: 20%;">   
                                 <select style="width: 30%;">
                                 <option value="naver.com">naver.com</option>
                                 <option value="gmail.com">gmail.com</option>

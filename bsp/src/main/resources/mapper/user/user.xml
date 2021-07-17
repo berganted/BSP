@@ -34,17 +34,21 @@
 		
 	
 		<insert id="insert" parameterType="user.UserVo">
-			INSERT INTO user (m_id,m_pwd,m_name,m_email,m_email_d,m_tel,m_zipcord,m_addr1,m_addr2,gender,m_regdate,m_point,m_delflag,m_deldate) 
-			VALUES( #{m_id}, md5(#{m_pwd}),#{m_name},#{m_email},#{m_email_d},#{m_tel},#{m_zipcord},#{m_addr1},#{m_addr2},#{gender}, Now(),0,'n',0 )
+			INSERT INTO user (m_id,m_pwd,m_name,m_email,m_email_d,m_tel,m_zipcode,m_addr1,m_addr2,gender,m_regdate,m_point,m_delflag,m_deldate) 
+			VALUES( #{m_id}, md5(#{m_pwd}),#{m_name},#{m_email},#{m_email_d},#{m_tel},#{m_zipcode},#{m_addr1},#{m_addr2},#{gender}, Now(),0,'n',0 )
 		</insert>
 		<update id="update" parameterType="user.UserVo">
 			UPDATE user SET
-				pwd=md5(#{pwd}),email=#{email}
-				,tel=#{tel},zipcode=#{zipcode} 
-				,addr1=#{addr1},addr2=#{addr2}
-				 
-			WHERE no=#{no}
-		</update>	
+				m_email=#{m_email},m_email_d=#{m_email_d}
+				,m_tel=#{m_tel},m_zipcode=#{m_zipcode} 
+				,m_addr1=#{m_addr1},m_addr2=#{m_addr2}
+			WHERE m_no=#{m_no} 
+		</update>
+		<update id="updatepwd" parameterType="user.UserVo">
+			UPDATE user SET
+				pwd=md5(#{pwd})
+			WHERE no=#{no} 
+		</update>		
 		
 		<delete id="delete" parameterType="user.UserVo">
 			DELETE FROM user WHERE no=#{no}

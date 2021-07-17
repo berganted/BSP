@@ -16,7 +16,7 @@ public class UserVo extends CommonVo {
 	private String m_email_d;
 
 	private String m_tel;
-	private String m_zipcord;
+	private String m_zipcode;
 	private String m_addr1;
 	private String m_addr2;
 	private String gender;
@@ -67,12 +67,6 @@ public class UserVo extends CommonVo {
 	public void setM_tel(String m_tel) {
 		this.m_tel = m_tel;
 	}
-	public String getM_zipcord() {
-		return m_zipcord;
-	}
-	public void setM_zipcord(String m_zipcord) {
-		this.m_zipcord = m_zipcord;
-	}
 	public String getM_addr1() {
 		return m_addr1;
 	}
@@ -115,4 +109,11 @@ public class UserVo extends CommonVo {
 	public void setM_point(int m_point) {
 		this.m_point = m_point;
 	}
+	public String getM_zipcode() {
+		return m_zipcode;
+	}
+	public void setM_zipcode(String m_zipcode) {
+		this.m_zipcode = m_zipcode;
+	}
+	
 }

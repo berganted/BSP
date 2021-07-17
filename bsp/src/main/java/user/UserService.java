@@ -9,6 +9,7 @@ public interface UserService {
 	int insert(UserVo vo);
 	UserVo edit(UserVo vo);
 	int update(UserVo vo);
+	int updatepwd(UserVo vo);
 	 int delete(UserVo vo);
 	 int isDuplicateld(String id);
 	 UserVo login(UserVo vo);

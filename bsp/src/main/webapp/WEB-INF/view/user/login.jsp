@@ -29,7 +29,7 @@ function loginCheck() {
 $(function(){
 		var cookie_user_id = getLogin();
 		if(cookie_user_id != "") {
-			$("#m_Id").val(cookie_user_id);
+			$("#m_id").val(cookie_user_id);
 			$("#reg1").attr("checked", true);
 		};
 	// 아이디 저장 체크시
@@ -45,7 +45,7 @@ $(function(){
 		$("#btn_login").on("click", function(){
 			
 			if($("#reg1").is(":checked")){ // 저장 체크시
-				saveLogin($("#id").val());
+				saveLogin($("#m_id").val());
 			}else{ // 체크 해제시는 공백
 				saveLogin("");
 				}
@@ -117,7 +117,7 @@ $(function(){
                     <li><label><input type="checkbox" name="reg1" id="reg1" > 아이디저장</label></lia>
                     </div>
                     <div class="log_input">
-                        <input type="submit" class="btn" value="로그인" style="width: 279px">
+                        <input type="submit" id="btn_login" class="btn" value="로그인" style="width: 279px">
                     </div>
                      <div class="log_input">
                         <a href="findidpwd.do" class="btn" >아이디/비밀번호 찾기</a>

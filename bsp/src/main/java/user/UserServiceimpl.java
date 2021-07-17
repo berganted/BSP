@@ -77,11 +77,15 @@ public class UserServiceimpl implements UserService {
 			uv.setM_pwd(tempPwd);
 			dao.updateTempPwd(uv);
 			//이메일 전송
-			SendMail.sendMail("cksgh901@naver.com", uv.getM_email(), "임시비밀번호입니다.", "임시비밀번호:"+tempPwd);
+			SendMail.sendMail("cksgh901@naver.com", uv.getM_email()+'@'+uv.getM_email_d(), "임시비밀번호입니다.", "임시비밀번호:"+tempPwd);
 			
 		}
 		
 		return uv;
+	}
+	@Override
+	public int updatepwd(UserVo vo) {
+		return dao.updatepwd(vo);
 	}
 
 }

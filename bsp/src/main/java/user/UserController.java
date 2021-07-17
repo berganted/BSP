@@ -137,5 +137,43 @@ public class UserController {
 		}
 		return "include/result";
 	}
+	@RequestMapping("/user/mypage.do")
+	public String mypage() {
+		return "user/mypage";
+	}
+	@RequestMapping(value = "/user/update.do",method = RequestMethod.GET)
+	public String updatef() {
+		return "user/member_update";
+	}
+	@RequestMapping(value = "/user/update.do" , method = RequestMethod.POST)
+	public String update(Model model , UserVo vo, HttpServletRequest req , HttpServletResponse res) {
+			int r = service.update(vo);
+			if(r > 0) {
+				model.addAttribute("msg", "정상적으로 수정 되었습니다.");
+				model.addAttribute("url", "mypage.do");
+						
+			}else {
+				model.addAttribute("msg", "수정실패.");
+				
+			}
+			return "include/alert";			
+	}
+	@RequestMapping(value = "/user/updatepwd.do",method = RequestMethod.GET)
+	public String updatepwdf() {
+		return "user/member_update_pwd";
+	}
+	@RequestMapping(value = "/user/updatepwd.do" , method = RequestMethod.POST)
+	public String updatepwd(Model model , UserVo vo, HttpServletRequest req , HttpServletResponse res) {
+		int r = service.updatepwd(vo);
+		if(r > 0) {
+			model.addAttribute("msg", "정상적으로 수정 되었습니다.");
+			model.addAttribute("url", "mypage.do");
+			
+		}else {
+			model.addAttribute("msg", "수정실패.");
+			
+		}
+		return "include/alert";			
+	}
 	
 }

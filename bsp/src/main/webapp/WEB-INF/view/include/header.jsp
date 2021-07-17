@@ -21,7 +21,7 @@
                 <a href="/bsp/user/login.do">로그인</a>
                 <a href="/bsp/user/reg.do">회원가입</a>
                 <a href="join.html">장바구니</a>                                       
-                <a href="/bsp//user/mypage.do">마이페이지</a>
+                <a href="/bsp/user/mypage.do">마이페이지</a>
             </c:if>
             <c:if test="${!empty userInfo}">
 				<a>${ userInfo.m_name}</a>

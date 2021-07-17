@@ -32,11 +32,11 @@
                         </div>
                         <div>
                             <span class="up_spanlable">기존비밀번호</span>
-                            <span class="up_spancon"><input type="password"></span>
+                            <span class="up_spancon"><input type="password" name="m_pwd"></span>
                         </div>
                         <div>
                             <span class="up_spanlable">새 비밀번호</span>
-                            <span class="up_spancon"><input type="password"></span>
+                            <span class="up_spancon"><input type="password" name="m_pwd"></span>
                         </div>
                         <div>
                             <span class="up_spanlable">비밀번호 확인</span>

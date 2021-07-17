@@ -77,16 +77,7 @@ public class UserController {
 //			}
 //			return "include/alert";			
 //	}
-//	@RequestMapping("/user/delete.do")
-//	public String delete(Model model, UserVo vo) {
-//		int r = service.delete(vo);
-//		if(r > 0) {
-//			model.addAttribute("reulst", "true");				
-//		}else {
-//			model.addAttribute("reulst", "false");
-//		}
-//		return "user/result";			
-//	}
+//	
 	@RequestMapping(value = "/user/login.do", method = RequestMethod.GET)
 	public String login() {
 		
@@ -142,7 +133,9 @@ public class UserController {
 		return "user/mypage";
 	}
 	@RequestMapping(value = "/user/update.do",method = RequestMethod.GET)
-	public String updatef() {
+	public String updatef(UserVo vo , Model model) {
+		service.detail(vo);
+		model.addAttribute("vo", vo);
 		return "user/member_update";
 	}
 	@RequestMapping(value = "/user/update.do" , method = RequestMethod.POST)
@@ -158,22 +151,35 @@ public class UserController {
 			}
 			return "include/alert";			
 	}
-	@RequestMapping(value = "/user/updatepwd.do",method = RequestMethod.GET)
-	public String updatepwdf() {
-		return "user/member_update_pwd";
+	@RequestMapping("/user/infoidcheak.do")
+	public String cheakpwd(UserVo vo, Model model) {
+		return "user/infoidcheak";
 	}
-	@RequestMapping(value = "/user/updatepwd.do" , method = RequestMethod.POST)
-	public String updatepwd(Model model , UserVo vo, HttpServletRequest req , HttpServletResponse res) {
-		int r = service.updatepwd(vo);
+	@RequestMapping(value = "/user/infoidcheak.do", method = RequestMethod.POST)
+	public String infoidcheak(UserVo vo,HttpSession sess,HttpServletResponse res, HttpServletRequest req,Model model) throws Exception {
+		UserVo u = service.login(vo);
+		if(u != null) {
+			 sess.setAttribute("userInfo", u);
+			 return"redirect:/user/update.do";			 
+		 }else {
+			 	model.addAttribute("msg", "비밀번호를 확인해주세요");
+				model.addAttribute("url", "infoidcheak.do");
+				return "include/alert";
+		 }
+	}
+	@RequestMapping("/user/member_remove.do")
+	public String deluser() {
+		return "user/member_remove";
+	}
+	@RequestMapping("/user/delete.do")
+	public String delete(Model model, UserVo vo) {
+		int r = service.delete(vo);
 		if(r > 0) {
-			model.addAttribute("msg", "정상적으로 수정 되었습니다.");
-			model.addAttribute("url", "mypage.do");
-			
+			model.addAttribute("reulst", "true");				
 		}else {
-			model.addAttribute("msg", "수정실패.");
-			
+			model.addAttribute("reulst", "false");
 		}
-		return "include/alert";			
+		return "user/result";			
 	}
 	
 }

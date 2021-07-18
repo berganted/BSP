@@ -13,19 +13,31 @@
     <link rel="stylesheet" href="/bsp/css/base.css">
 </head>
 <script>
-    $(function(){
-        
-
-    })
+    function del() {
+    	if (confirm ('탈퇴하시겠습니까?')) {
+			$.ajax({
+				url:"delete.do",
+				data: {
+					m_no : $("#m_no").val()
+				},
+				success : function(res) {
+					if(res.trim() == 'true'){
+						alert('탈퇴되었습니다.');
+						location.href = '/bsp/index.do';
+					} else{
+						alert('비밀번호를 확인해주세요')
+					}
+				}
+			})
+	    }
+	}
 </script>
 
 <body>
     <jsp:include page="../include/header.jsp"></jsp:include>
     
     <div class="wrap">
-        <div class="mem_leftmenu_1" id="side">
             
-        </div>
         <div class="mem_content">
             <div class="remove_head">
                 <h1>회원탈퇴</h1>
@@ -44,7 +56,7 @@
             </div>
             <form action="">
             <div class="remove_content">
-             		<input type="hidden" name=m_no value="${userInfo.m_no }">
+             		<input type="hidden" id="m_no" name=m_no value="${userInfo.m_no }">
                     <div>
                         <span class="remove_title"><label>아이디</label></span>
                         <span class="remove_contents"><input type="text" value="${userInfo.m_id }" readonly></span>
@@ -55,7 +67,7 @@
                     </div>
                     <div>
                         <span class="remove_title"><label>비밀번호</label></span>
-                        <span class="remove_contents"><input type="password" ></span>
+                        <span class="remove_contents"><input type="password" name="m_pwd" id="m_pwd"></span>
                     </div>
                     <div style="text-align: center;" >
                         <span class="remove_title_1"><label>탈퇴사유</label></span><br>
@@ -70,7 +82,7 @@
                     </div>
                 
                 <div class="remove_btn">
-                    <input class="btn" type="button" value="탈퇴">
+                    <input class="btn" type="button" value="탈퇴" onclick="del();">
                     <input class="btn" type="reset"> 
                     <input class="btn" type="button" value="돌아가기">  
                 </div>

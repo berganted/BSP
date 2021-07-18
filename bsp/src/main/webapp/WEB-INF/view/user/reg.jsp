@@ -31,14 +31,14 @@
             $('#emailv').hide();
         }
         })  
-        	$('#duplBtn').click(function(){
+        $('#duplBtn').click(function(){
 		if($('#id').val().trim()==""){
 			alert('아이디를입력해주세요');
 			$('#id').focus();
 		}else{
 			$.ajax({
 				url: '<%=request.getContextPath()%>/user/isDuplicateld.do' ,
-				data: {id:$('#id').val() } ,
+				data: {m_id:$('#id').val() } ,
 				success :  function(res){
 						if(res.trim()== 'true' ){
 							alert('중복된 아이디 입니다. 다른 아이디를 입력해 주세요');
@@ -51,6 +51,32 @@
 			});
 		}
 	});
+        $('#duplBtn2').click(function(){
+    		console.log(1)
+    		if ($('#email').val().trim() == '') {
+    			alert('이메일을 입력해주세요');
+    			$('#email').focus();
+    		}else{
+    			$.ajax({
+    				url: '<%=request.getContextPath()%>/user/isDuplicateemail.do',
+    					data : {
+    						m_email : $('#email').val(),
+    						m_email_d:$('#emailv').val()
+    					},
+    					async : false,
+    					success : function(res) {
+    						if (res.trim() == 'true') {
+    							alert('중복된 이메일 입니다. 다른 이메일을 입력해 주세요');
+    							$('#email').val('');
+    							$('#email').focus();
+    							con = false;
+    							} else {
+    								alert('사용 가능한 이메일입니다.');
+    							}
+    						}
+    					});
+    		} 
+    	});
     })
     function goSave() {
 	var con = true;
@@ -78,14 +104,13 @@
 							$('#id').focus();
 							con = false;
 						} else {
-							alert('사용 가능한 아이디입니다.');
+							
 						}
 					}
 				}
 			});
 		}
-		if (con == false)
-			return;
+		
 
 		if (!/^[a-zA-z0-9]{4,12}$/.test($('#pwd').val())) {
 			alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
@@ -117,8 +142,28 @@
 			alert('이메일을 입력해주세요');
 			$('#email').focus();
 			return false;
-		}
-
+		}else{
+			$.ajax({
+				url: '<%=request.getContextPath()%>/user/isDuplicateemail.do',
+					data : {
+						m_email : $('#email').val(),
+						m_email_d:$('#emailv').val()
+					},
+					async : false,
+					success : function(res) {
+						if (res.trim() == 'true') {
+							alert('중복된 이메일 입니다. 다른 이메일을 입력해 주세요');
+							$('#email').val('');
+							$('#email').focus();
+							con = false;
+							} else {
+								alert('사용 가능한 이메일입니다.');
+					}
+				}
+			});
+		} 
+		if (con == false)
+			return;
 		if (confirm('가입하시겠습니까??')) {
 			//$("#frm").submit();
 			$.ajax({
@@ -193,7 +238,9 @@
 									<option value="gmail.com">gmail.com</option>
 									<option value="daum.net">daum.net</option>
 									<option value="">직접입력</option>
-							</select></span>
+							</select><a href="javascript:;"
+								id="duplBtn2" class="btn bgGray"
+								style="height: 32px; line-height: 32px">중복확인</a></span>
 						</div>
 
 						<div class="adddiv">

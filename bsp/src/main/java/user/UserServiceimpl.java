@@ -87,5 +87,9 @@ public class UserServiceimpl implements UserService {
 	public int updatepwd(UserVo vo) {
 		return dao.updatepwd(vo);
 	}
+	@Override
+	public int isDuplicateemail(UserVo vo) {
+		return dao.isDuplicateemail(vo);
+	}
 
 }

@@ -58,6 +58,16 @@ public class UserController {
 			}
 			return "include/result";
 	}
+	@RequestMapping("/user/isDuplicateemail.do")
+	public String isDuplicateemail(Model model,UserVo vo ) {
+			int r = service.isDuplicateemail(vo);
+			if(r == 0) {
+				model.addAttribute("result","false");
+			}else {
+				model.addAttribute("result","true");
+			}
+			return "include/result";
+	}
 //	@RequestMapping("/user/edit.do")
 //	public String edit(Model model , UserVo vo) {
 //			model.addAttribute("vo", service.edit(vo));
@@ -134,22 +144,17 @@ public class UserController {
 	}
 	@RequestMapping(value = "/user/update.do",method = RequestMethod.GET)
 	public String updatef(UserVo vo , Model model) {
-		service.detail(vo);
-		model.addAttribute("vo", vo);
 		return "user/member_update";
 	}
 	@RequestMapping(value = "/user/update.do" , method = RequestMethod.POST)
 	public String update(Model model , UserVo vo, HttpServletRequest req , HttpServletResponse res) {
 			int r = service.update(vo);
 			if(r > 0) {
-				model.addAttribute("msg", "정상적으로 수정 되었습니다.");
-				model.addAttribute("url", "mypage.do");
-						
+				model.addAttribute("result", "true");
 			}else {
-				model.addAttribute("msg", "수정실패.");
-				
+				model.addAttribute("result", "false");
 			}
-			return "include/alert";			
+			return "include/result";		
 	}
 	@RequestMapping("/user/infoidcheak.do")
 	public String cheakpwd(UserVo vo, Model model) {
@@ -172,14 +177,15 @@ public class UserController {
 		return "user/member_remove";
 	}
 	@RequestMapping("/user/delete.do")
-	public String delete(Model model, UserVo vo) {
+	public String delete(Model model, UserVo vo,HttpSession sess) {
 		int r = service.delete(vo);
 		if(r > 0) {
-			model.addAttribute("reulst", "true");				
+			model.addAttribute("result", "true");
+			sess.invalidate();
 		}else {
-			model.addAttribute("reulst", "false");
+			model.addAttribute("result", "false");
 		}
-		return "user/result";			
+		return "include/result";			
 	}
 	
 }

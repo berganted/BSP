@@ -36,6 +36,9 @@ public class UserDao {
 	public int isDuplicateld(String id) {
 		return sessionTemplate.selectOne("user.isDuplicateld", id);
 	}
+	public int isDuplicateemail(UserVo vo) {
+		return sessionTemplate.selectOne("user.isDuplicateemail", vo);
+	}
 	public UserVo login(UserVo vo) {
 		return sessionTemplate.selectOne("user.login",vo);
 	}

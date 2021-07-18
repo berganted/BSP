@@ -9,8 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="text/javascript" src="//cdn.poesis.kr/post/popup.min.js" charset="UTF-8"></script>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
     <script src="/bsp/js/main.js"></script>
+    <script src="/bsp/js/yesol.js"></script>
     <link rel="stylesheet" href="/bsp/css/style.css">
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/reset.css">
@@ -18,7 +19,6 @@
 <script type="text/javascript">
 function goSave() {
 	var con = true;
-		
 		if (!/^[a-zA-z0-9]{4,12}$/.test($('#pwd').val())) {
 			alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
 			$('#pwd').val("");
@@ -40,19 +40,30 @@ function goSave() {
 			$('#pwd_cheak').focus();
 			return false;
 		}
-		if ($('#M_Name').val().trim() == '') {
-			alert('이름을 입력해주세요');
-			$('#M_Name').focus();
-			return false;
-		}
 		if ($('#email').val().trim() == '') {
 			alert('이메일을 입력해주세요');
 			$('#email').focus();
 			return false;
 		}
-
-		
+		if (con == false)
+			return;
+		if (confirm('수정하시겠습니까???')) {
+			$.ajax({
+				url : '/bsp/user/update.do',
+				method:'post',
+				data : $('#frm').serialize(),
+				success : function(res) {
+					if (res.trim() == 'true') {
+						alert('정상적으로 수정되었습니다..');
+						location.href = '/bsp/user/mypage.do';
+					} else {
+						alert('수정실패');
+					}
+				}
+			})
+		}
 	}
+	
 </script>
   
 <body>
@@ -65,7 +76,7 @@ function goSave() {
                 <h1>정보수정</h1>
             </div>          
             <div class="con1">
-                <form action="update.do" method="POST" onsubmit="return goSave();">
+                <form action="update.do" method="POST" id="frm">
                 <input type="hidden" name="m_no" value="${userInfo.m_no }">
                     <div class="con2">
                         <div>
@@ -100,18 +111,18 @@ function goSave() {
                         <div class="adddiv">
 							<span class="up_spanlable_ad"><label>우편번호</label></span> <span
 								class="up_spancon_ad"><input type="text" size="4" value="${userInfo.m_zipcode }"
-								name="m_zipcode" class="postcodify_postcode6_1" /> </span> <span
+								name="m_zipcode" id="m_zipcode" class="postcodify_postcode6_1" /> </span> <span
 								class="addbtn"><button class="btn bgGray button_s"
 									type="button" onclick="openZipSearch();">검색</button></span>
 						</div>
 						<div class="adddiv">
 							<span class="up_spanlable_ad"><label>도로명주소</label></span> <span
-								class="up_spancon"><input type="text" name="m_addr1" value="${userInfo.m_addr1 }"
+								class="up_spancon"><input type="text" name="m_addr1" id="m_addr1" value="${userInfo.m_addr1 }"
 								class="postcodify_address" /></span>
 						</div>
 						<div class="adddiv">
 							<span class="up_spanlable_ad"><label>상세주소</label></span> <span
-								class="up_spancon"><input type="text" name="m_addr2" value="${userInfo.m_addr2 }"
+								class="up_spancon"><input type="text" name="m_addr2" id="m_addr2"value="${userInfo.m_addr2 }"
 								class="postcodify_details" /></span>
 						</div>
                         <div>
@@ -127,7 +138,7 @@ function goSave() {
                         </div>
                     </div>
                     <div style="margin-left: 35%; margin-top: 30px">
-                        <input class="btn up_submitbtn " type="submit" value=" 수정" onclick="" ><br><br>
+                        <input class="btn up_submitbtn " type="button" value=" 수정" onclick="goSave();" ><br><br>
                         <input class="btn up_submitbtn " type="reset" value="취소" >
                     </div>
                 </form>
@@ -137,9 +148,6 @@ function goSave() {
 	</div>
 <jsp:include page="../include/footer.jsp"></jsp:include>
     
-<script type="text/javascript">
-    $("#search_button").postcodifyPopUp();
-</script>
 
 </body>
 </html>

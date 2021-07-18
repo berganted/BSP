@@ -25,10 +25,11 @@ public class OrderController {
 	public String OrderList() {
 		return "order/OrderList";
 	}
+	
 	@RequestMapping("/order/detail.do")
 	public String OrderListDetails() {
 		return "order/OrderListDetails";
 	}
-
+	
 	
 }

@@ -18,7 +18,14 @@ public class OrderVo {
 	private int io_amount; //출고수량 
 	private Timestamp io_date; //출고날짜(배송이후)
 	private String ps_title; //처리상태
+	private String b_title; //상품명
 	
+	public String getB_title() {
+		return b_title;
+	}
+	public void setB_title(String b_title) {
+		this.b_title = b_title;
+	}
 	public int getPb_no() {
 		return pb_no;
 	}

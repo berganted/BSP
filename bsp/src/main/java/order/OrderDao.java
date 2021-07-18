@@ -14,6 +14,9 @@ public class OrderDao {
 	public List<OrderVo> selectAll(OrderVo vo){
 		return sessionTemplate.selectList("order.selectAll",vo);
 	}
+	public List<OrderVo> selectPopup(OrderVo vo){
+		return sessionTemplate.selectList("order.selectPopup",vo);
+	}
 	public int count(OrderVo vo) {
 		return sessionTemplate.selectOne("order.count",vo);
 	}

@@ -22,7 +22,6 @@ public class BookController {
 	BookService service;
      
 	
-	static final String TABLENAME = "board";
 	
 	@RequestMapping("/test/index.do")
 	public String index(Model model, BookVo vo) {

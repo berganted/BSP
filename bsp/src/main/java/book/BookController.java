@@ -20,7 +20,7 @@ public class BookController {
 
 	@Autowired
 	BookService service;
-
+     
 	
 	static final String TABLENAME = "board";
 	

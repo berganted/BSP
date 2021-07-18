@@ -14,7 +14,6 @@ public class UserVo extends CommonVo {
 	private String m_pwd;
 	private String m_email;
 	private String m_email_d;
-
 	private String m_tel;
 	private String m_zipcode;
 	private String m_addr1;
@@ -24,6 +23,28 @@ public class UserVo extends CommonVo {
 	private String m_delflag;
 	private String m_deldate;
 	private int m_point;
+	private int m_del;
+	private String whydel;
+	private String orderby; // 정렬 컬럼
+	private String direct; //오름차순 내림차순
+	
+	public UserVo() {
+		this.orderby ="Q_RegDate";
+		this.direct = "DESC";
+	}
+	
+	public String getOrderby() {
+		return orderby;
+	}
+	public void setOrderby(String orderby) {
+		this.orderby = orderby;
+	}
+	public String getDirect() {
+		return direct;
+	}
+	public void setDirect(String direct) {
+		this.direct = direct;
+	}
 	public int getM_no() {
 		return m_no;
 	}
@@ -114,6 +135,18 @@ public class UserVo extends CommonVo {
 	}
 	public void setM_zipcode(String m_zipcode) {
 		this.m_zipcode = m_zipcode;
+	}
+	public int getM_del() {
+		return m_del;
+	}
+	public void setM_del(int m_del) {
+		this.m_del = m_del;
+	}
+	public String getWhydel() {
+		return whydel;
+	}
+	public void setWhydel(String whydel) {
+		this.whydel = whydel;
 	}
 	
 }

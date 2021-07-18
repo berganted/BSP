@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="book">
+
+	<sql id="bookwhere">
+		<where>
+			<if test="sval != null and sval != ''">
+				<if test="stype == 'all'">
+					id LIKE '%${sval}%' OR name LIKE '%${sval}%'
+				</if>
+				<if test="stype != 'all'">
+					${stype} LIKE '%${sval}%'
+				</if>
+			</if>
+		</where>
+	</sql>
+	
+<!-- 	
+	<select id="selectAll" resultType="comment.CommentVo" parameterType="comment.CommentVo">
+		SELECT *,(SELECT name FROM user WHERE no=comment.user_no ) AS name FROM comment  누가 썼는지 알고싶으면 있어야해 
+		WHERE board_no=#{board_no} AND tablename=#{tablename}
+		ORDER BY regdate DESC
+		LIMIT ${startIdx},${pageRow}
+	</select> -->
+	
+	
+	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book
+		<include refid="bookwhere"/>
+		ORDER BY ${orderby} ${direct}
+		LIMIT ${strIdx},${pageRow} 
+	</select>
+
+	<select id="count" resultType="int" parameterType="book.BookVo">
+		SELECT COUNT(*) FROM book
+	</select>
+	
+	<!-- 
+	 필요한가?	관리자 페이지?  b_imgno , b_ctgno1 , b_ctgno2 는 어떻게? (b_ctgno3)  
+	//카테고리코드 총3개가 필요하지 않을까 대분류(국내or외국), 소분류(시, 에세이, ~), 상세분류(에세이 중 감성에세이/명상치유에세이...)
+	
+	 -->
+ 
+	<insert id="insert" parameterType="book.BookVo">
+		INSERT INTO book (b_title, b_content, b_author,b_publisher, b_isbn, b_stock, b_regdate, b_intodate, b_price, b_views, b_index, b_pages, b_introauthor, b_introbook)
+		VALUES (#{b_title}, #{b_content},  #{b_author}, #{b_publisher}, #{b_isbn}, #{b_stock},NOW(),0, #{b_price},0, #{b_index},#{b_pages},#{b_introauthor},#{b_introbook})  
+	</insert> 
+	
+
+	<select id="detail" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book WHERE b_no = #{b_no}
+	</select>
+	
+	
+	<delete id="delete" parameterType="book.BookVo">
+		DELETE FROM book WHERE b_no=#{b_no}
+	</delete>
+	
+	<update id="update" parameterType="book.BookVo">
+		UPDATE board SET
+			b_title=#{b_title}, b_content=#{b_content}
+		WHERE b_no=#{b_no}
+	</update>
+	
+	
+	
+</mapper>

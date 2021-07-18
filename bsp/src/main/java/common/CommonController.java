@@ -11,8 +11,5 @@ public class CommonController {
 	}
 	
 	
-	@RequestMapping("admin/board/write.do")
-	public String boardwrite() {
-		return "admin/board/write";
-	}
+	
 }

@@ -13,7 +13,8 @@
 
 
    <!-- 컴포넌트 스캔 -->
-   <context:component-scan base-package="common,book,user,board, comment"/>
+   <context:component-scan base-package="common,book,user,board, comment, admin"/>
+
    
    <!-- 어노테이션 활성화 -->
    <mvc:annotation-driven/>

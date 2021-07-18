@@ -18,7 +18,9 @@
 			$.ajax({
 				url:"delete.do",
 				data: {
-					m_no : $("#m_no").val()
+					m_no : $("#m_no").val(),
+					m_del : $('#m_del').val(),
+					whydel : $('#whydel').val()
 				},
 				success : function(res) {
 					if(res.trim() == 'true'){
@@ -54,7 +56,7 @@
 					탈퇴 후에는 회원정보가 삭제되어 본인 여부를 확인할 수 있는 방법이 없어, 게시글을 임의로 삭제해드릴 수 없습니다.
 					</p>
             </div>
-            <form action="">
+            <form action="" id="frm">
             <div class="remove_content">
              		<input type="hidden" id="m_no" name=m_no value="${userInfo.m_no }">
                     <div>
@@ -71,16 +73,15 @@
                     </div>
                     <div style="text-align: center;" >
                         <span class="remove_title_1"><label>탈퇴사유</label></span><br>
-                        <span class="del_whyspan"><select class="del_why">
-                            <option value="why1" >책이 부족하다 </option>
-                            <option value="why2">사이트가 맘에 안든다</option>
-                            <option value="why3">친절하지 못하다</option>
-                            <option value="why4">그냥</option>
-                            <option value="mass">직접입력</option>
+                        <span class="del_whyspan"><select class="del_why" id="m_del" name = "m_del" form="frm">
+                            <option id="1" value="1" >책이 부족하다 </option>
+                            <option id="2" value="2">사이트가 맘에 안든다</option>
+                            <option id="3" value="3">친절하지 못하다</option>
+                            <option id="4" value="4">그냥</option>
+                            <option id="5" value="5">직접입력</option>
                         </select>
-                            <textarea class="hidden"></textarea></span>
+                            <textarea class="hidden" name="whydel" id="whydel"></textarea></span>
                     </div>
-                
                 <div class="remove_btn">
                     <input class="btn" type="button" value="탈퇴" onclick="del();">
                     <input class="btn" type="reset"> 

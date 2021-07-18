@@ -26,4 +26,6 @@ public interface UserService {
 	UserVo searchid(UserVo vo);
 
 	UserVo searchpwd(UserVo vo);
+	
+	int insertwhydel(UserVo vo);
 }

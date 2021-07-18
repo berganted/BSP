@@ -31,17 +31,17 @@
                             </dl>
                         </div>
                         <div class="cont">${vo.q_content } </div>
-                        <dl class="file">
+                        <%-- <dl class="file">
                             <dt>첨부파일 </dt>
                             <dd>
                             <a href="/bsp/common/download.jsp?path=/upload/&org=${vo.q_filename_org}&real=${vo.q_filename_real}" 
                             target="_blank">${vo.q_filename_org }</a></dd>
-                        </dl>
+                        </dl> --%>
                                     
                         <div class="btnSet clear">
                             <div class="fl_l"><a href="FAQboard.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}" class="btn">목록으로</a></div>
-                            <c:if test="${userInfo.m_no == vo.q_no }">
-                            <div class="fl_l"><a href="board_edit.do?no=${vo.q_no}" class="btn">수정</a></div>
+                            <c:if test="${userInfo.m_no == vo.m_no }">
+                            <div class="fl_l"><a href="board_edit.do?q_no=${vo.q_no}" class="btn">수정</a></div>
                             <div class="fl_l"><a href="javascript:isDel();" class="btn">삭제</a></div>
                         	</c:if>
                         </div>
@@ -59,7 +59,7 @@
     			$.ajax({
     				url:'delete.do',
     				data:{
-    					'no':${vo.q_no}
+    					'q_no':${vo.q_no}
     				},
     				method:'post',
     				success:function(res) {

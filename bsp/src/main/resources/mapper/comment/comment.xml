@@ -3,10 +3,10 @@
 <mapper namespace="comment">
 
 	<select id="selectAll" resultType="comment.CommentVo" parameterType="comment.CommentVo">
-		SELECT *, (SELECT name FROM user WHERE no=comment.user_no) AS name FROM comment
-		WHERE board_no=#{board_no} AND tablename=#{tablename}
-		ORDER BY regdate DESC
-		LIMIT ${startIdx},${pageRow}
+		SELECT *, (SELECT m_name FROM user WHERE m_no=comment.user_no) AS name FROM comment
+		WHERE c_no=#{c_no} AND c_tablename=#{c_tablename}
+		ORDER BY c_regdate DESC
+		LIMIT ${strIdx},${pageRow}
 	</select>
 	
 	<select id="count" resultType="int" parameterType="comment.CommentVo">

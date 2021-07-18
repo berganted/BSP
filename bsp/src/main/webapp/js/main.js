@@ -39,8 +39,21 @@ $(function(){
 
     $('.del_why ').change(function(){
     	 if($(this).val() == '1' ){
-    	 	$('.hidden').text("$(this).text()");
+    	 	$('.hidden').text($('#1').text());
     	 }
+    	 if($(this).val() == '2' ){
+    	 	$('.hidden').text($('#2').text());
+    	 }
+    	 if($(this).val() == '3' ){
+    	 	$('.hidden').text($('#3').text());
+    	 }
+    	 if($(this).val() == '4' ){
+    	 	$('.hidden').text($('#4').text());
+    	 }
+    	 if($(this).val() == '5' ){
+    	 	$('.hidden').text("");
+    	 }
+    	
         if($(this).val() == '5' ){
             $('.hidden').show();  
         } else{

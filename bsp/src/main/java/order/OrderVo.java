@@ -2,7 +2,9 @@ package order;
 
 import java.sql.Timestamp;
 
-public class OrderVo {
+import util.CommonVo;
+
+public class OrderVo extends CommonVo {
 	private int pb_no;  //주문번호
 	private int ps_no;	//처리상태코드
 	private int m_no;	//회원번호

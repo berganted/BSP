@@ -5,6 +5,15 @@ import util.CommonVo;
 public class AdminVo extends CommonVo {
 	private String a_id;
 	private String a_pwd;
+	private String a_name;
+	
+	
+	public String getA_name() {
+		return a_name;
+	}
+	public void setA_name(String a_name) {
+		this.a_name = a_name;
+	}
 	public String getA_id() {
 		return a_id;
 	}

@@ -1,32 +1,90 @@
 package util;
 
+import java.sql.Timestamp;
+
 public class CommonVo {
-	private int pageRow;
+	protected int pageRow;
 	private int strIdx;
-	private int reqPage;
+	protected int reqPage;
 	private int totCount;
 	private int totPage;
 	private int endPage;
 	private int strPage;
-	private int pageRange;
+	protected int pageRange;
 	private String stype;
 	private String sval;;
-	private String orderby; // 정렬 컬럼
-	private String direct; //오름차순 내림차순
+	protected String orderby; // 정렬 컬럼
+	protected String direct; //오름차순 내림차순
 	private String filename_org;
 	private String filename_real;
 	private String isDel;
+	
+	
+	private int p_no;
+	private int m_no;
+	private Timestamp p_regdate;
+	private String p_state;
+	private int p_usage;
+	private String p_content;
+	
 	
 	public CommonVo() {
 		this.pageRow = 5;
 		this.reqPage = 1;
 		this.pageRange = 5;
-		this.orderby ="RegDate";
+		this.orderby = "regdate";
 		this.direct = "DESC";
 	}
 	
 	public String getIsDel() {
 		return isDel;
+	}
+	public int getP_no() {
+		return p_no;
+	}
+	
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+	
+	public int getM_no() {
+		return m_no;
+	}
+	
+	public void setM_no(int m_no) {
+		this.m_no = m_no;
+	}
+	
+	public Timestamp getP_regdate() {
+		return p_regdate;
+	}
+	
+	public void setP_regdate(Timestamp p_regdate) {
+		this.p_regdate = p_regdate;
+	}
+	
+	public String getP_state() {
+		return p_state;
+	}
+	
+	public void setP_state(String p_state) {
+		this.p_state = p_state;
+	}
+	
+	public int getP_usage() {
+		return p_usage;
+	}
+	
+	public void setP_usage(int p_usage) {
+		this.p_usage = p_usage;
+	}
+	
+	public String getP_content() {
+		return p_content;
+	}
+	
+	public void setP_content(String p_content) {
+		this.p_content = p_content;
 	}
 
 	public void setIsDel(String isDel) {
@@ -130,5 +188,6 @@ public class CommonVo {
 	public void setStrIdx(int strIdx) {
 		this.strIdx = strIdx;
 	}
+	
 
 }

@@ -1,7 +1,6 @@
 package user;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import util.CommonVo;
 

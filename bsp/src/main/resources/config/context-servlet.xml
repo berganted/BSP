@@ -60,4 +60,15 @@
    		<!-- 최대업로드사이즈(바이트 단위) -->
    		<property name="maxUploadSize" value="167772160"/>
    </bean>
+    <mvc:interceptors>
+   		<mvc:interceptor>
+   				<mvc:mapping path="/user/mypage.do"/>
+   				<mvc:mapping path="/user/infoidcheak.do"/>
+   				<mvc:mapping path="/user/update.do"/>
+   				<mvc:mapping path="/board/update.do"/>
+   				<mvc:mapping path="/user/member_remove.do"/>
+   				
+   				<bean class="intercepter.LoginIntercepter"/>
+   		</mvc:interceptor>
+   </mvc:interceptors>
 </beans>

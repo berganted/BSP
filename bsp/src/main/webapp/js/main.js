@@ -38,8 +38,10 @@ $(function(){
     })
 
     $('.del_why ').change(function(){
-       
-        if($(this).val() == 'mass' ){
+    	 if($(this).val() == '1' ){
+    	 	$('.hidden').text("$(this).text()");
+    	 }
+        if($(this).val() == '5' ){
             $('.hidden').show();  
         } else{
             $('.hidden').hide();  

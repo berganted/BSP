@@ -87,5 +87,13 @@ public class UserServiceimpl implements UserService {
 	public int updatepwd(UserVo vo) {
 		return dao.updatepwd(vo);
 	}
+	@Override
+	public int isDuplicateemail(UserVo vo) {
+		return dao.isDuplicateemail(vo);
+	}
+	@Override
+	public int insertwhydel(UserVo vo) {
+		return dao.insertwhydel(vo);
+	}
 
 }

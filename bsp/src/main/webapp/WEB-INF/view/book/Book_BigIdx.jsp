@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,14 +54,15 @@
                 
         <div class="swiper-container">
             <div class="swiper-wrapper">
+            <c:forEach var = "list" items="${list }">
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
                         <div class="choiceImg"><img src = "/bsp/img/book.jpg" style="height: 100%; width: 100%;"></div>
                         <div class="chocieInfo">
-                            <p class="choiceName"> ${vo.b_title } 마지막 몰입 : 나를 넘어서는 힘</p>
+                            <p class="choiceName"> ${bookVo.b_title }  : 나를 넘어서는 힘</p>
                             <p class="choice_pub">
-                                <span class="choice_author">${vo.b_author}짐 퀵 저/${vo.b_publisher }김미정 역</span>
+                                <span class="choice_author">${vo.b_author}짐 퀵 저/${vo.b_publisher }역</span>
                                 <em class="divi">|</em>
                                 <span class="chocie_pub">비즈니스북스</span>
                             </p>
@@ -71,7 +73,7 @@
                             </p>
                             <div class="choice_intro">
                                 <span class="choice_introTitle" style="color: blue; font-size: 22px;">
-                                    책 한 권 읽지 못했던 그는 어떻게 세계 최고의 두뇌력을 갖게 됐을까?
+                                    책 한 권 읽지 못했던 그는 어떻게 세계 최고의 두뇌력을 갖게 됐을까?<c:out value = "${i}"/>
                                 </span>   <br>
                                 <span class="choice_infoStory" style="font-size: 17;" >
                                 ${vo.b_content }
@@ -84,68 +86,9 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="swiper-slide">
-                    <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><img src = "/bsp/img/newStar1.jpg" style="height: 100%; width: 100%;"></div>
-                        <div class="chocieInfo">
-                            <p class="choiceName">마지막 몰입 : 나를 넘어서는 힘</p>
-                            <p class="choice_pub">
-                                <span class="choice_author">짐 퀵 저/김미정 역</span>
-                                <em class="divi">|</em>
-                                <span class="chocie_pub">비즈니스북스</span>
-                            </p>
-                            <p class="choice_price">
-                                <span class="bps_price">15,120</span>원
-                                <span class="bps_sale">(10%할인)</span>
-                                <span class="bps_point">★123원</span>
-                            </p>
-                            <div class="choice_intro">
-                                <span class="choice_introTitle" style="color: blue; font-size: 22px;">
-                                    책 한 권 읽지 못했던 그는 어떻게 세계 최고의 두뇌력을 갖게 됐을까?
-                                </span>   <br>
-                                <span class="choice_infoStory" style="font-size: 17;" >
-                                    UN, 하버드, 구글… 세계 1%가 극찬한 두뇌 전문가 짐 퀵이 전하는 잠재력의 놀랍고 위대한 힘!
-                                    6년 전 스페이스X의 일론 머스크가 더 똑똑해지고 싶다는 열망에 한 두뇌 전문가를 찾아 큰 화제가 됐다. 
-                                    그 전문가는 바로 ‘짐 퀵’이었다. 그는 25년 넘게 세계 정상급의 CEO와 운동선수, 배우 등 각계각층의 성공한 사람들뿐 아니라
-                                    UN, 미국 백악관, 하버드대학교, 구글, 나이키, 자포스 등 세계적 기업과 기관, 단체에서 찾는 독보적이고 저명한 브레인 코치다. 
-                                    세계적인 경제지 《포브스》에서는 “짐 퀵은 지식을 배우거나 일을 하거나 취미로 운동을 하더라도 원하는 수준 이상의 성과를 이루는 법을 알려준다”고 평했다.
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><img src = "/bsp/img/newStar6.jpg" style="height: 100%; width: 100%;"></div>
-                        <div class="chocieInfo">
-                            <p class="choiceName">마지막 몰입 : 나를 넘어서는 힘</p>
-                            <p class="choice_pub">
-                                <span class="choice_author">짐 퀵 저/김미정 역</span>
-                                <em class="divi">|</em>
-                                <span class="chocie_pub">비즈니스북스</span>
-                            </p>
-                            <p class="choice_price">
-                                <span class="bps_price">15,120</span>원
-                                <span class="bps_sale">(10%할인)</span>
-                                <span class="bps_point">★123원</span>
-                            </p>
-                            <div class="choice_intro">
-                                <span class="choice_introTitle" style="color: blue; font-size: 22px;">
-                                    책 한 권 읽지 못했던 그는 어떻게 세계 최고의 두뇌력을 갖게 됐을까?
-                                </span>   <br>
-                                <span class="choice_infoStory" style="font-size: 17;" >
-                                    UN, 하버드, 구글… 세계 1%가 극찬한 두뇌 전문가 짐 퀵이 전하는 잠재력의 놀랍고 위대한 힘!
-                                    6년 전 스페이스X의 일론 머스크가 더 똑똑해지고 싶다는 열망에 한 두뇌 전문가를 찾아 큰 화제가 됐다. 
-                                    그 전문가는 바로 ‘짐 퀵’이었다. 그는 25년 넘게 세계 정상급의 CEO와 운동선수, 배우 등 각계각층의 성공한 사람들뿐 아니라
-                                    UN, 미국 백악관, 하버드대학교, 구글, 나이키, 자포스 등 세계적 기업과 기관, 단체에서 찾는 독보적이고 저명한 브레인 코치다. 
-                                    세계적인 경제지 《포브스》에서는 “짐 퀵은 지식을 배우거나 일을 하거나 취미로 운동을 하더라도 원하는 수준 이상의 성과를 이루는 법을 알려준다”고 평했다.
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </c:forEach>
+                
             </div>
             <div class="swiper-button-prev"></div> 
             <div class="swiper-button-next"></div> 
@@ -154,22 +97,8 @@
                 
 
             <div class="BigIndex_newEye"> 눈에 띄는 새책</div>
-            <div class="BigIndex_newEye_wrap">
-                <div class="BigIndex_newEye_content">
-                    <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="/bsp/img/newEye1.jpg" style="width: 200px; height: 300px;"></div>
-                    </div> 
-                    <div class="newEye_infoSection">  
-                        <div class="newEye_title"><b>해피해피과일위크</b></div>
-                        <div class="newEye_authorPub">김민정 저 | 비앤씨월드</div>
-                        <div class="newEye_price"><b>15,300</b>원 (10%할인)</div>
-                        <div class="newEye_intro" style="font-size: 17px;">
-                            인기 파티시에 김민정의 대박프로젝트 ‘과일위크’가 『해피해피 과일위크』라는 책으로 탄생했다.
-                            싱싱한 제철 과일을 디저트에 응용한 레시피북으로 복잡하지 않은 제품 구성, 누구나 좋아하는 자연스런 맛, 
-                            상품성이 돋보이는 디자인 등 그녀만의 스타일이 제대로 녹아있다 
-                        </div>
-                    </div> 
-                </div> 
+            
+               <c:forEach var = "i" begin = "1" end = "4">
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
                         <div class="newEye_img"><img src="/bsp/img/newEye2.jpg" style="width: 200px; height: 300px;"></div>
@@ -181,42 +110,12 @@
                         <div class="newEye_intro" style="font-size: 17px;">
                             인기 파티시에 김민정의 대박프로젝트 ‘과일위크’가 『해피해피 과일위크』라는 책으로 탄생했다.
                             싱싱한 제철 과일을 디저트에 응용한 레시피북으로 복잡하지 않은 제품 구성, 누구나 좋아하는 자연스런 맛, 
-                            상품성이 돋보이는 디자인 등 그녀만의 스타일이 제대로 녹아있다 
+                            상품성이 돋보이는 디자인 등 그녀만의 스타일이 제대로 녹아있다 <c:out value = "${i}"/>
                         </div>
                     </div> 
                 </div> 
-                <div class="BigIndex_newEye_content">
-                    <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="/bsp/img/newEye3.jpg" style="width: 200px; height: 300px;"></div>
-                    </div> 
-                    <div class="newEye_infoSection">  
-                        <div class="newEye_title"><b>해피해피과일위크</b></div>
-                        <div class="newEye_authorPub">김민정 저 | 비앤씨월드</div>
-                        <div class="newEye_price"><b>15,300</b>원 (10%할인)</div>
-                        <div class="newEye_intro" style="font-size: 17px;">
-                            인기 파티시에 김민정의 대박프로젝트 ‘과일위크’가 『해피해피 과일위크』라는 책으로 탄생했다.
-                            싱싱한 제철 과일을 디저트에 응용한 레시피북으로 복잡하지 않은 제품 구성, 누구나 좋아하는 자연스런 맛, 
-                            상품성이 돋보이는 디자인 등 그녀만의 스타일이 제대로 녹아있다 
-                        </div>
-                    </div> 
-                </div> 
-                <div class="BigIndex_newEye_content">
-                    <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="/bsp/img/newEye4.jpg" style="width: 200px; height: 300px;"></div>
-                    </div> 
-                    <div class="newEye_infoSection">  
-                        <div class="newEye_title"><b>해피해피과일위크</b></div>
-                        <div class="newEye_authorPub">김민정 저 | 비앤씨월드</div>
-                        <div class="newEye_price"><b>15,300</b>원 (10%할인)</div>
-                        <div class="newEye_intro" style="font-size: 17px;">
-                            인기 파티시에 김민정의 대박프로젝트 ‘과일위크’가 『해피해피 과일위크』라는 책으로 탄생했다.
-                            싱싱한 제철 과일을 디저트에 응용한 레시피북으로 복잡하지 않은 제품 구성, 누구나 좋아하는 자연스런 맛, 
-                            상품성이 돋보이는 디자인 등 그녀만의 스타일이 제대로 녹아있다 
-                        </div>
-                    </div> 
-                </div> 
-        
-            </div>    
+               </c:forEach>
+               
 
             <div class="BigIndex_newEye"> 주목신간</div>
             <div class="BigIndex_newStar_wrap">

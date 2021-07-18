@@ -178,8 +178,10 @@ public class UserController {
 	}
 	@RequestMapping("/user/delete.do")
 	public String delete(Model model, UserVo vo,HttpSession sess) {
+		
 		int r = service.delete(vo);
 		if(r > 0) {
+			service.insertwhydel(vo);
 			model.addAttribute("result", "true");
 			sess.invalidate();
 		}else {

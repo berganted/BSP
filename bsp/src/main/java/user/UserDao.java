@@ -51,4 +51,7 @@ public class UserDao {
 	public int updateTempPwd(UserVo vo) {
 		return sessionTemplate.update("user.updateTempPwd",vo);
 	}
+	public int insertwhydel(UserVo vo) {
+		return sessionTemplate.insert("user.insertwhydel",vo);
+	}
 }

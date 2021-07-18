@@ -91,5 +91,9 @@ public class UserServiceimpl implements UserService {
 	public int isDuplicateemail(UserVo vo) {
 		return dao.isDuplicateemail(vo);
 	}
+	@Override
+	public int insertwhydel(UserVo vo) {
+		return dao.insertwhydel(vo);
+	}
 
 }

@@ -53,6 +53,9 @@
 		<update id="delete" parameterType="user.UserVo">
 			UPDATE user SET m_delflag='y', m_deldate= Now() WHERE m_no=#{m_no}
 		</update>	
+		<insert id="insertwhydel" parameterType="user.UserVo">
+			insert into whydel (m_no,m_del,whydel) VALUES (#{m_no},#{m_del},#{whydel})
+		</insert>
 		
 		<select id="join" parameterType="user.UserVo">
 		  

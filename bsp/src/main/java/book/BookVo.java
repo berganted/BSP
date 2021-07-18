@@ -23,9 +23,43 @@ public class BookVo extends CommonVo {
 	private String b_index;
 	private int b_pages;
 	private String b_introauthor;
-	private String b_intorbook;
+	private String b_introbook;
 	private int r_id;
+	private String orderby; // 정렬 컬럼
+	private String direct; //오름차순 내림차순
 	
+	public BookVo() {
+	
+		this.orderby ="b_regdate";
+		this.direct = "DESC";
+	}
+	
+	
+
+	public String getOrderby() {
+		return orderby;
+	}
+
+
+
+	public void setOrderby(String orderby) {
+		this.orderby = orderby;
+	}
+
+
+
+	public String getDirect() {
+		return direct;
+	}
+
+
+
+	public void setDirect(String direct) {
+		this.direct = direct;
+	}
+
+
+
 	public int getB_no() {
 		return b_no;
 	}
@@ -128,11 +162,11 @@ public class BookVo extends CommonVo {
 	public void setB_introauthor(String b_introauthor) {
 		this.b_introauthor = b_introauthor;
 	}
-	public String getB_intorbook() {
-		return b_intorbook;
+	public String getB_introbook() {
+		return b_introbook;
 	}
-	public void setB_intorbook(String b_intorbook) {
-		this.b_intorbook = b_intorbook;
+	public void setB_introbook(String b_introbook) {
+		this.b_introbook = b_introbook;
 	}
 	public int getR_id() {
 		return r_id;

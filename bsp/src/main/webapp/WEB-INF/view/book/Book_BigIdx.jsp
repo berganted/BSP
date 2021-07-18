@@ -13,6 +13,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
+	<link rel="stylesheet" href="/bsp/css/style.css">
+	<link rel="stylesheet" href="/bsp/css/reset.css">
      <script src="/bsp/js/main.js"></script>
      <script src="/bsp/js/big.js"></script>
      
@@ -26,9 +28,8 @@
  <jsp:include page="../include/header.jsp"></jsp:include>
    <!--  <div id=header></div> -->
     <div class="wrap">
-        <div class="mem_leftmenu_1" id="side">
+        <jsp:include page="../include/sideCategory.jsp"></jsp:include>
             
-        </div>  
         <div class="mem_content">
             
 
@@ -303,7 +304,7 @@
         </aside> 
            
     </div>
-    <div id=footer></div>
+     <jsp:include page="../include/footer.jsp"></jsp:include>
     
 
 </body>

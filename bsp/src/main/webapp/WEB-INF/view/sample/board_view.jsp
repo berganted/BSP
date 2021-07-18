@@ -31,27 +31,91 @@
                             </dl>
                         </div>
                         <div class="cont">${vo.q_content } </div>
-                        <dl class="file">
+                        <%-- <dl class="file">
                             <dt>첨부파일 </dt>
                             <dd>
                             <a href="/bsp/common/download.jsp?path=/upload/&org=${vo.q_filename_org}&real=${vo.q_filename_real}" 
                             target="_blank">${vo.q_filename_org }</a></dd>
-                        </dl>
+                        </dl> --%>
                                     
                         <div class="btnSet clear">
                             <div class="fl_l"><a href="FAQboard.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}" class="btn">목록으로</a></div>
-                            <c:if test="${userInfo.m_no == vo.q_no }">
-                            <div class="fl_l"><a href="board_edit.do?no=${vo.q_no}" class="btn">수정</a></div>
+                            <c:if test="${userInfo.m_no == vo.m_no }">
+                            <div class="fl_l"><a href="board_edit.do?q_no=${vo.q_no}" class="btn">수정</a></div>
                             <div class="fl_l"><a href="javascript:isDel();" class="btn">삭제</a></div>
                         	</c:if>
                         </div>
-                
+                    <table class="board_write">
+	                	<colgroup>
+	                            <col width="*" />
+	                            <col width="80px" />
+	                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <textarea name="c_content" id="content" style="width:100%; height:80px"></textarea>
+                            </td>
+                            <td>
+                            	 <div class="btnSet"  style="text-align:right;">
+                       				 <a class="btn" href="javascript:goSave();">저장 </a>
+                   				 </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <script>
+                    	function goSave() {
+                    		<c:if test="${!empty userInfo}">
+                    		if ($("#content").val().trim()==''){
+                    			alert('내용을 입력해 주세요');
+                    		} else {
+                    			if (confirm('댓글을 등록하시겠습니까?')) {
+                    				$.ajax({
+                            			url:'/bsp/comment/insert.do',
+                            			data:{
+          	                  				content:$("#content").val(),
+          	                  				board_no:${vo.q_no},
+          	                  				user_no:${userInfo.m_no}
+                            			},
+                            			success:function(res) {
+                            				if (res.trim()=='true') {
+                            					alert('댓글이 등록되었습니다.');
+                            					$("#content").val("");
+                            					getComment();
+                            				} else {
+                            					alert('댓글 등록 실패');
+                            				}
+                            			}
+                            		});
+                    			}
+                    		}
+                    		</c:if>
+                    		<c:if test="${empty userInfo}">
+                    			alert('댓글은 로그인 후 등록 가능합니다.');
+                    		</c:if>
+                    	}
+                    	 $(function(){
+                    		 getComment();
+                 	    });
+                    	function getComment(reqPage) {
+                    		$.ajax({
+                    			url:'/bsp/comment/list.do',
+                    			data:{
+                    				board_no:${vo.q_no}, 
+                    				reqPage:reqPage
+                    			}, 
+                    			success:function(res) {
+                    				$("#commentArea").html(res);
+                    			}
+                    		})
+                    	}
+                    </script>
+                    </div>
+                    <div id="commentArea"></div>          	
                     </div>
                 </div>
             </div>
-        </div>
         <%@ include file="/WEB-INF/view/include/footer.jsp" %>
-    </div>
     <script>
     	function isDel() {
     		if (confirm('삭제하시겠습니까?')) {
@@ -59,7 +123,7 @@
     			$.ajax({
     				url:'delete.do',
     				data:{
-    					'no':${vo.q_no}
+    					'q_no':${vo.q_no}
     				},
     				method:'post',
     				success:function(res) {

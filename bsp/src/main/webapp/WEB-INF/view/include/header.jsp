@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="header_logo">
-                <a href="index.html"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
+                <a href="/bsp/index.do"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
             </div>
             <div class="header_login">
             <c:if test="${empty userInfo}">
@@ -97,15 +97,8 @@
                     
                 </ul>
             </li>
-            <li><a class="header_depth1" href="category.html">고객센터</a>
-                <ul class="header_depth2">
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">자주 묻는 질문</a></li>
-                    <li><a href="#">문의게시판</a></li>
-                   
-                </ul>
-            </li>
-            <li><a class="header_depth1" href="category.html">&nbsp;</a></li>
+            <li><a class="header_depth1" href="/bsp/sample/FAQboard.do">고객센터</a></li>
+            <li><a class="header_depth1" href="#">&nbsp;</a></li>
         </ul>
         </div>        
     </div>  

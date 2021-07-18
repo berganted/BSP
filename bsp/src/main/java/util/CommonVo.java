@@ -21,7 +21,7 @@ public class CommonVo {
 		this.pageRow = 5;
 		this.reqPage = 1;
 		this.pageRange = 5;
-		this.orderby ="Q_RegDate";
+		this.orderby ="RegDate";
 		this.direct = "DESC";
 	}
 	

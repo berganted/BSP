@@ -13,8 +13,7 @@
 
 
    <!-- 컴포넌트 스캔 -->
-   <context:component-scan base-package="common,book,user,board, comment, admin"/>
-
+   <context:component-scan base-package="common,book,user,board, comment, admin, returning,order"/>
    
    <!-- 어노테이션 활성화 -->
    <mvc:annotation-driven/>
@@ -35,7 +34,7 @@
    <mvc:view-controller path="/sample/board_write.do"/>   
    <mvc:view-controller path="/sample/board_edit.do"/>   
    <mvc:view-controller path="/sample/FAQboard.do"/>   
-    
+ 
    <!-- DBCP -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>

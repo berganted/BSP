@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="js/yesol.js"></script>
+    <script src="/bsp/js/yesol.js"></script>
     <link rel='stylesheet' href='css/yesol.css'/> <!-- 예솔 css -->
 </head>
 

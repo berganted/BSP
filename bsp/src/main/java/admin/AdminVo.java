@@ -1,6 +1,8 @@
 package admin;
 
-public class AdminVo {
+import util.CommonVo;
+
+public class AdminVo extends CommonVo {
 	private String a_id;
 	private String a_pwd;
 	public String getA_id() {

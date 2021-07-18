@@ -24,15 +24,15 @@ public class BoardController {
 		return "sample/FAQboard";
 	}
 	
-	@RequestMapping("/sample/detail.do")
+	@RequestMapping("/sample/board_view.do")
 	public String detail(Model model, BoardVo vo) {
 		model.addAttribute("vo", service.detail(vo));
-		return "sample/detail";
+		return "sample/board_view";
 	}
 	
-	@RequestMapping("/sample/write.do")
+	@RequestMapping("/sample/board_write.do")
 	public String write(Model model, BoardVo vo) {
-		return "sample/write";
+		return "sample/board_write";
 	}
 	
 	@RequestMapping("/sample/insert.do")
@@ -69,33 +69,27 @@ public class BoardController {
 		return "include/alert";
 	}
 	  
-	@RequestMapping("/sample/edit.do")
+	@RequestMapping("/sample/board_edit.do")
 	public String edit(Model model, BoardVo vo) {
 		model.addAttribute("vo", service.edit(vo));
-		return "sample/edit"; 
+		return "sample/board_edit"; 
 	}
 	
 	@RequestMapping("/sample/update.do")
-	public String update(Model model, BoardVo vo, 
-						@RequestParam MultipartFile file, HttpServletRequest req) {
+	public String update(Model model, BoardVo vo, HttpServletRequest req) { // , @RequestParam MultipartFile file
 		//service.insert(vo, filename, req)
-		if (!file.isEmpty()) { // 첨부파일이 있으면
-			try {
-				String org = file.getOriginalFilename(); // 원본파일명
-				String ext = ""; //확장자
-				
-				ext = org.substring(org.lastIndexOf("."));
-				String real = new Date().getTime()+ext; // 서버에 저장할 파일명
-				// 파일 저장
-				String path = req.getRealPath("/upload/"); // 경로
-				file.transferTo(new File(path+real)); // 경로+파일명 저장
-				// vo에 set
-				vo.setFilename_org(org);
-				vo.setFilename_real(real);
-			} catch (Exception e) {
-				
-			}
-		}
+		/*
+		 * if (!file.isEmpty()) { // 첨부파일이 있으면 try { String org =
+		 * file.getOriginalFilename(); // 원본파일명 String ext = ""; //확장자
+		 * 
+		 * ext = org.substring(org.lastIndexOf(".")); String real = new
+		 * Date().getTime()+ext; // 서버에 저장할 파일명 // 파일 저장 String path =
+		 * req.getRealPath("/upload/"); // 경로 file.transferTo(new File(path+real)); //
+		 * 경로+파일명 저장 // vo에 set vo.setFilename_org(org); vo.setFilename_real(real); }
+		 * catch (Exception e) {
+		 * 
+		 * } }
+		 */
 		int r = service.update(vo);
 		// r > 0 : 정상 -> alert -> 목록으로 이동
 		// r == 0 : 비정상 -> alert -> 이전페이지로 이동
@@ -104,7 +98,7 @@ public class BoardController {
 			model.addAttribute("url", "FAQboard.do");
 		} else {
 			model.addAttribute("msg", "수정실패");
-			model.addAttribute("url", "edit.do?q_no="+vo.getQ_no());
+			model.addAttribute("url", "board_edit.do?q_no="+vo.getQ_no());
 		}
 		return "include/alert";
 	}

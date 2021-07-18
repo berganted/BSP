@@ -74,11 +74,11 @@
                     <div style="text-align: center;" >
                         <span class="remove_title_1"><label>탈퇴사유</label></span><br>
                         <span class="del_whyspan"><select class="del_why" id="m_del" name = "m_del" form="frm">
-                            <option value="1" >책이 부족하다 </option>
-                            <option value="2">사이트가 맘에 안든다</option>
-                            <option value="3">친절하지 못하다</option>
-                            <option value="4">그냥</option>
-                            <option value="5">직접입력</option>
+                            <option id="1" value="1" >책이 부족하다 </option>
+                            <option id="2" value="2">사이트가 맘에 안든다</option>
+                            <option id="3" value="3">친절하지 못하다</option>
+                            <option id="4" value="4">그냥</option>
+                            <option id="5" value="5">직접입력</option>
                         </select>
                             <textarea class="hidden" name="whydel" id="whydel"></textarea></span>
                     </div>

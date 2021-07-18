@@ -507,6 +507,7 @@ li {
 .txt_l > a { text-align: left;}
 
 /* button */
+.fl_l {float:left !important;}
 .fl_l2 {position: relative; float: left; top: -33px;}
 .btnSet {position:relative; margin:20px 0; text-align:center; overflow:hidden;}
 .btnSet .right {position:absolute; top:0; right:0;}

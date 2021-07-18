@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import user.UserVo;
+
 @Service // bean에 등록
 public class AdminServiceImpl implements AdminService {
 
@@ -38,6 +40,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int delete(AdminVo vo) {
 		return dao.delete(vo);
+	}
+
+	@Override
+	public AdminVo login(AdminVo vo) {
+		 return dao.login(vo);
 	}
 
 }

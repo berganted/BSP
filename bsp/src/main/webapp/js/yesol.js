@@ -135,6 +135,8 @@
             self.close();
         }
     }
+
+
 /*replace_form----------------------------------------------------------------------- */
  function setDisplay(){
     if($('input:radio[id=replace_divide]').is(':checked')){

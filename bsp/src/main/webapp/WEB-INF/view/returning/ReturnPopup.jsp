@@ -14,19 +14,19 @@
     <script src="/bsp/js/yesol.js"></script>
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
-	<script type="text/javascript">
-			function getCheckboxValue(event)  {
-				  let result = '';
-				  if(event.target.checked)  {
-				    result = event.target.value;
-				  }else {
-				    result = '';
-				  }
-				  
-				  document.getElementById('result').innerText
-				    = result;
-				}
-	</script>
+<script>
+
+function checkpop() {
+	var arTest = [];
+
+	$("input[name=checkOne]:checked").each(function(){
+	arTest.push($(this).val());
+	});
+	console.log("체크된 값 total : " + arTest);
+	$("#cInput").val(arTest);
+} 
+
+</script>
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>
     <article id="article">

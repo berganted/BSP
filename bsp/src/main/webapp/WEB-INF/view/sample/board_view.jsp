@@ -73,9 +73,9 @@
                     				$.ajax({
                             			url:'/bsp/comment/insert.do',
                             			data:{
-          	                  				content:$("#content").val(),
-          	                  				board_no:${vo.q_no},
-          	                  				user_no:${userInfo.m_no}
+          	                  				c_content:$("#content").val(),
+          	                  				q_no:${vo.q_no},
+          	                  				m_no:${userInfo.m_no}
                             			},
                             			success:function(res) {
                             				if (res.trim()=='true') {
@@ -101,13 +101,31 @@
                     		$.ajax({
                     			url:'/bsp/comment/list.do',
                     			data:{
-                    				board_no:${vo.q_no}, 
+                    				q_no:${vo.q_no}, 
                     				reqPage:reqPage
                     			}, 
                     			success:function(res) {
                     				$("#commentArea").html(res);
                     			}
                     		})
+                    	}
+                    	function commentDel(no) {
+                    		if (confirm('댓글을 삭제하시겠습니까?')) {
+	                    		$.ajax({
+	                    			url:'/bsp/comment/delete.do',
+	                    			data:{
+	                    				c_no:no
+	                    			},
+	                    			success:function(res) {
+	                    				if (res.trim()=='true') {
+		                    				alert('댓글이 삭제되었습니다.');
+		                    				getComment(1);
+	                    				} else {
+	                    					alert('댓글 삭제 오류');
+	                    				}
+	                    			}
+	                    		});
+                    		}
                     	}
                     </script>
                     </div>

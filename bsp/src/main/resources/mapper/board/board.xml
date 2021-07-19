@@ -19,7 +19,10 @@
 	</sql>
 	
 	<select id="selectAll" resultType="board.BoardVo" parameterType="board.BoardVo">
-		SELECT *, (SELECT m_name FROM user WHERE q_board.m_no=user.m_no) AS name FROM q_board
+		SELECT *, 
+			(SELECT m_name FROM user WHERE q_board.m_no=user.m_no) AS name,
+			(SELECT COUNT(*) FROM comment WHERE q_no=q_board.q_no) AS comment_count		
+		FROM q_board
 		<include refid="boardWhere"/>
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}

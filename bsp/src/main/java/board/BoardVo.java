@@ -28,6 +28,14 @@ public class BoardVo extends CommonVo {
 	
 	private String isDel;
 	private String name;
+	private int comment_count;
+	
+	public int getComment_count() {
+		return comment_count;
+	}
+	public void setComment_count(int comment_count) {
+		this.comment_count = comment_count;
+	}
 	public int getQ_no() {
 		return q_no;
 	}

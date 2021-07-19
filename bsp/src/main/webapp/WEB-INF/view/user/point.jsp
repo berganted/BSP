@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,18 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/reset.css">
+    <script src="/bsp//js/main.js"></script>
+    <link rel="stylesheet" href="/bsp/css/base.css">
+    <link rel="stylesheet" href="/bsp/css/reset.css">
    
-        <div id="header"></div> 
+    <jsp:include page="../include/header.jsp"></jsp:include>
 </head>
-
 <body>
     
     <div class="wrap">
-        <div class="mem_leftmenu_1" id="side"> 
-    </div>
+       <jsp:include page="../include/side2.jsp"></jsp:include>
     <div class="mem_content">
         <div class="mypage3_1"><h2>나의 적립금</h2></div>
         <table class="point_table">
@@ -29,55 +28,14 @@
                 <th>지급</th>
                 <th>사용</th>          
             </tr>
-
+		<c:forEach var="list"  items="${list } ">
             <tr>    
-                <td>2021-06-30</td>       
-                <td>상품 구매 적립</td>
-                <td>+200</td>
+                <td>${list.p_regdate}</td>       
+                <td>${list.p_content }</td>
+                <td>${list.p_usage}</td>
                 <td></td>
             </tr>   
-            <tr>    
-                <td>2021-06-20</td>       
-                <td>상품 구매 사용</td>
-                <td></td>
-                <td>-200</td>
-            </tr>  
-            <tr>    
-                <td>2021-06-09</td>       
-                <td>상품 구매 적립</td>
-                <td>+400</td>
-                <td></td>
-            </tr>  
-            <tr>    
-                <td>2021-06-09</td>       
-                <td>리뷰 작성 적립</td>
-                <td>+200</td>
-                <td></td>
-            </tr> 
-            <tr>    
-                <td>2021-06-30</td>       
-                <td>상품 구매 적립</td>
-                <td>+200</td>
-                <td></td>
-            </tr>   
-            <tr>    
-                <td>2021-06-20</td>       
-                <td>상품 구매 사용</td>
-                <td></td>
-                <td>-200</td>
-            </tr>  
-            <tr>    
-                <td>2021-06-09</td>       
-                <td>상품 구매 적립</td>
-                <td>+400</td>
-                <td></td>
-            </tr>  
-            <tr>    
-                <td>2021-06-09</td>       
-                <td>리뷰 작성 적립</td>
-                <td>+200</td>
-                <td></td>
-            </tr> 
+       </c:forEach>
             
     </table>
     <div class="point_sum"> 
@@ -99,7 +57,8 @@
         </div>
     </aside>    
 </div>
-<div id="footer"></div>
+    <jsp:include page="../include/footer.jsp"></jsp:include>
+
 
 </body>
 </html>

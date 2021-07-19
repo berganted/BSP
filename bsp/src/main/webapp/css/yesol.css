@@ -55,10 +55,11 @@ td{
 
 /*cart_form----------------------------------------------------------------------- */
 #cart_tb{
-    width: 90%;
+    width: 98%;
     border-collapse: collapse;
     padding: 20px;
     margin: auto;
+    text-align: center;
 }
 .cart_s td {
  border-left: none;
@@ -111,10 +112,9 @@ td{
 }
 
 #retrn_popup_form {
-    width: 99%;    
-    border: 1px rgb(206, 205, 205) solid;
+    width: 98%;    
     border-collapse: collapse;
-    padding: 20px;
+    padding: auto;
     margin: auto;
     color: black;
 }

@@ -33,6 +33,12 @@ public class OrderServiceimpl implements OrderService {
 	public int delete(OrderVo vo) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	/* 팝업 */
+	@Override
+	public List<OrderVo> selectPopup(OrderVo vo) {
+		return dao.selectPopup(vo);
 	} 
 
 }

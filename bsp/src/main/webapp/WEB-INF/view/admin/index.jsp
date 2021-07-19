@@ -11,11 +11,12 @@ function loginCheck(){
 		$("#id").val().focus();
 		return false;
 	}
-	if ( $("#password").val().length < 1 ) {
+	if ( $("#a_pwd").val().length < 1 ) {
 		alert("비밀번호를 입력해주세요.");
 		$("#password").val().focus();
 		return false;
 	}
+	
 	var f = document.board;
 	if (f.reg.checked) {
 	   document.cookie = "cookie_userid=" + f.id.value + ";path=/;expires=Sat, 31 Dec 2050 23:59:59 GMT;";
@@ -53,14 +54,14 @@ function CookieVal(cookieName) {
 
 </script>
 </head>
-<body onload="userid_chk();">
+<body>
 <div id="login">
 	<div class="title">
 		<h1>SAMPLE <span>관리자모드</span></h1>
 		<p>관리자 로그인 후 이용가능합니다.</p>
 	</div>
 	<div class="login"> 
-	<form name="board" id="board" method="post" action="admin/login.do" onsubmit="return loginCheck();">
+	<form action="admin/login.do" name="board" id="board" method="post" >
 		<fieldset>
 			<legend>관리자모드 로그인</legend>
 			<div class="bgBox">
@@ -70,7 +71,7 @@ function CookieVal(cookieName) {
 							<label for="id"><strong>아이디</strong></label>
 						</dt>
 						<dd>
-							<input type="text" id="id" name="a_id" value="" title="아이디를 입력해주세요." style="ime-mode:inactive"/>
+							<input type="text" id="id" name="a_id" title="아이디를 입력해주세요." style="ime-mode:inactive"/>
 						</dd>
 					</dl>
 					<dl>
@@ -78,12 +79,12 @@ function CookieVal(cookieName) {
 							<label for="password"><strong>비밀번호</strong></label>
 						</dt>
 						<dd>
-							<input type="password" id="password" name="a_pwd" value="" title="비밀번호를 입력해주세요." />
+							<input type="password" id="a_pwd" name="a_pwd" title="비밀번호를 입력해주세요." />
 						</dd>
 					</dl>
 				</div>
 				<!-- //infoBox -->
-				<input type="image" src="<%=request.getContextPath()%>/img/admin/member_login_btn.gif" alt="로그인" class="loginBtn" title="" onclick="loginCheck();" />
+				<input type="submit" src="<%=request.getContextPath()%>/img/admin/member_login_btn.gif" alt="로그인" class="loginBtn" title="" onclick="loginCheck();" />
 			</div>
 			<!-- //bgBox -->
 			<div class="joinList">

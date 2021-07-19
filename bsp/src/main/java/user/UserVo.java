@@ -24,13 +24,7 @@ public class UserVo extends CommonVo {
 	private int m_point;
 	private int m_del;
 	private String whydel;
-	private String orderby; // 정렬 컬럼
-	private String direct; //오름차순 내림차순
 	
-	public UserVo() {
-		this.orderby ="Q_RegDate";
-		this.direct = "DESC";
-	}
 	
 	public String getOrderby() {
 		return orderby;

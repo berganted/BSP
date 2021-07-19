@@ -14,7 +14,19 @@
     <script src="/bsp/js/yesol.js"></script>
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
-
+	<script type="text/javascript">
+			function getCheckboxValue(event)  {
+				  let result = '';
+				  if(event.target.checked)  {
+				    result = event.target.value;
+				  }else {
+				    result = '';
+				  }
+				  
+				  document.getElementById('result').innerText
+				    = result;
+				}
+	</script>
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>
     <article id="article">
@@ -44,7 +56,7 @@
 
             <c:forEach var="list" items="${popupList}">  
             <tr>
-               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' ></td>
+               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' onclick="getCheckboxValue(event)" ></td>
                 <td>${list.pb_no }</td>
                 <td><a href="">${list.b_title}</a></td>
                 <td>${list.pb_resname }</td>
@@ -55,7 +67,8 @@
         </table>
         <p></p>
         <div class="retrn_submit" style="text-align: center;">
-            <input type="text" id=cInput value="나중에 없어질 창"><br>
+        <div id="result"></div>
+            <input type="text" id=cInput value="나중에  창"><br>
             <input class="button_m" type="submit" value="선택" onclick="window.close(), info_submit()" >
             <input class="button_m" type="button" value="취소" onclick="window.close()"  >
        </div>

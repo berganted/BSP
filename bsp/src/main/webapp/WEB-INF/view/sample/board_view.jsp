@@ -73,9 +73,9 @@
                     				$.ajax({
                             			url:'/bsp/comment/insert.do',
                             			data:{
-          	                  				content:$("#content").val(),
-          	                  				board_no:${vo.q_no},
-          	                  				user_no:${userInfo.m_no}
+          	                  				c_content:$("#content").val(),
+          	                  				q_no:${vo.q_no},
+          	                  				m_no:${userInfo.m_no}
                             			},
                             			success:function(res) {
                             				if (res.trim()=='true') {

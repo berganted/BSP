@@ -6,7 +6,7 @@
 		<where>
 			<if test="sval != null and sval != ''">
 				<if test="stype == 'all'">
-					title LIKE '%${sval}%' OR content LIKE '%${sval}%'
+					q_title LIKE '%${sval}%' OR q_content LIKE '%${sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'

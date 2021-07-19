@@ -12,21 +12,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import comment.CommentService;
+import comment.CommentVo;
+
 @Controller
 public class BoardController {
-
+	
 	@Autowired
 	BoardService service;
+	@Autowired
+	CommentService cService; 
+	
+	static final String TABLENAME = "board";
 	
 	@RequestMapping("/sample/FAQboard.do")
-	public String index(Model model, BoardVo vo) {
+	public String index(Model model, BoardVo vo, CommentVo cv) {
 		model.addAttribute("list", service.selectAll(vo));
 		return "sample/FAQboard";
 	}
 	
 	@RequestMapping("/sample/board_view.do")
-	public String detail(Model model, BoardVo vo) {
+	public String detail(Model model, BoardVo vo, CommentVo cv) {
 		model.addAttribute("vo", service.detail(vo));
+//		cv.setQ_no(vo.getQ_no());
+//		cv.setC_tablename(TABLENAME);
 		return "sample/board_view";
 	}
 	
@@ -112,5 +121,24 @@ public class BoardController {
 			model.addAttribute("result", "false");
 		}
 		return "include/result";
+	}
+	
+	@RequestMapping("/comment/insert.do")
+	public String commentInsert(Model model, CommentVo vo) {
+		vo.setC_tablename(TABLENAME);
+		int r = cService.insert(vo);
+		if (r > 0) {
+			model.addAttribute("result", "true");
+		} else {
+			model.addAttribute("result", "false");
+		}
+		return "include/result";
+	}
+	
+	@RequestMapping("/comment/list.do")
+	public String commentList(Model model, CommentVo cv) {
+		cv.setC_tablename(TABLENAME);
+		model.addAttribute("list", cService.selectAll(cv));
+		return "include/comment";
 	}
 }

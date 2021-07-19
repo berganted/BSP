@@ -15,12 +15,14 @@ public class BoardVo extends CommonVo {
 	private int q_readcount;
 	
 	public  BoardVo() {
+
 		this.pageRow = 5;
 		this.reqPage = 1;
 		this.pageRange = 5;
 		this.orderby ="q_regdate";
 		this.direct = "DESC";
 	}
+
 	private String q_Filename_org;	// 사용자가첨부한 원본파일명
 	private String q_Filename_real;	// 서버에 저장된 실제파일명
 	

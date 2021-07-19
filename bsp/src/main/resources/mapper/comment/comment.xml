@@ -3,7 +3,7 @@
 <mapper namespace="comment">
 
 	<select id="selectAll" resultType="comment.CommentVo" parameterType="comment.CommentVo">
-		SELECT *, (SELECT m_name FROM user WHERE m_no=comment.user_no) AS name FROM comment
+		SELECT *, (SELECT m_name FROM user WHERE m_no=comment.m_no) AS name FROM comment
 		WHERE q_no=#{q_no} AND c_tablename=#{c_tablename}
 		ORDER BY c_regdate DESC
 		LIMIT ${strIdx},${pageRow}

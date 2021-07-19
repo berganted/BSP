@@ -19,12 +19,12 @@
                         <c:forEach var="vo" items="${list }">     
                             <tr>
                                 <td class="txt_l">
-                                	${vo.content}
+                                	${vo.c_content}
                                 </td>
                                 <td class="writer">
                                     ${vo.name }
                                 </td>
-                                <td class="date"><fmt:formatDate value="${vo.regdate }" pattern="yyyy-MM-dd"/></td>
+                                <td class="date"><fmt:formatDate value="${vo.c_regdate }" pattern="yyyy-MM-dd"/></td>
                             </tr>
                         </c:forEach>
                         </tbody>

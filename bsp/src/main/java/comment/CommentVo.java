@@ -14,26 +14,15 @@ public class CommentVo extends CommonVo {
 	private String c_tablename;
 	private int m_no;
 	private String name; // vo에 있는 alias
-	private String orderby; // 정렬 컬럼
-	private String direct; //오름차순 내림차순
 	
 	public CommentVo() {
-		this.orderby ="c_regdate";
+		this.pageRow = 5;
+		this.reqPage = 1;
+		this.pageRange = 5;
+		this.orderby ="q_regdate";
 		this.direct = "DESC";
 	}
 	
-	public String getOrderby() {
-		return orderby;
-	}
-	public void setOrderby(String orderby) {
-		this.orderby = orderby;
-	}
-	public String getDirect() {
-		return direct;
-	}
-	public void setDirect(String direct) {
-		this.direct = direct;
-	}
 	public int getC_no() {
 		return c_no;
 	}

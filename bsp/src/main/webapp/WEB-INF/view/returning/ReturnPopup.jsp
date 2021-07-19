@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,17 +10,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/bsp/js/yesol.js"></script>
-    <link rel='stylesheet' href='css/yesol.css'/> <!-- 예솔 css -->
+    <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
 
 <body id="retrn_popup_form">
-    <h1>나의 주문 내역</h1>
+    <h1 style="text-align: center">나의 주문 내역</h1>
     <article id="article">
         <form action="" method="POST" name="return_info_submittb">
         <div style="text-align: right; padding-right: 10px; padding-bottom: 10px;">
             <span>
                 <select name="정렬" style="height: 25px; border: 2px solid #221f1f ;">
-                    <option value="b_title" selected> 상품 명</option>
+                    <option value="b_title" selected>상품명</option>
                     <option value="order_no">주문번호</option>
                     <option value="order_date">주문일</option>
                     <option value="order_price">가격</option>
@@ -30,24 +31,25 @@
         </div>
         <table id="retrn_popup">
             <tr>
-                <td><input type="checkbox" name="select_all"></td>
-                <td>주문일</td>
+                <td><input type="checkbox" value="selectAll" ></td>
                 <td>주문번호</td>
-                <td>수령인</td>
-                <td>주문상품</td>
+                <td>상품명</td>
+                <td>주문자</td>
+                <td>주문날짜</td>
                 <td>조회</td>
                 
             </tr>
 
+            <c:forEach var="list" items="${popupList}">  
             <tr>
-                <td><input type="checkbox" name="select"></td>
-                <td>2021-06-30</td>
-                <td><a href="">001-A</a></td>
-                <td>전나나</td>
-                <td>자바의 정석&nbsp;총 33권</td>
+                <td><input type="checkbox" value="select" ></td>
+                <td>${list.pb_no }</td>
+                <td><a href="">${list.b_title}</a></td>
+                <td>${list.pb_resname }</td>
+                <td>${list.pb_orderdate }</td>
                 <td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a></td>
-              
             </tr>
+                </c:forEach>
         </table>
         <p></p>
         <div class="retrn_submit" style="text-align: center;">

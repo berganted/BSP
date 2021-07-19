@@ -3,7 +3,11 @@ package returning;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import order.OrderService;
+import order.OrderVo;
 
 
 @Controller
@@ -11,6 +15,8 @@ public class ReturningController {
 	
 	@Autowired
 	ReturningService service;
+	@Autowired
+	OrderService Oservice;
 
 	@RequestMapping("/returning/return.do")
 	public String Return() {
@@ -28,6 +34,12 @@ public class ReturningController {
 	@RequestMapping("/returning/detail.do")
 	public String ReturnOrReplaceListDetails() {
 		return "returning/ReturnOrReplaceListDetails";
+	}
+	
+	@RequestMapping("/returning/popup.do")
+	public String ReturnPopup(Model model, OrderVo vo) {
+		model.addAttribute("popupList", Oservice.selectPopup(vo));
+		return "returning/ReturnPopup";
 	}
 
 	

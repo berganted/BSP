@@ -5,8 +5,15 @@
 	
 		
 		<select id="selectAll" resultType="order.OrderVo" parameterType="order.OrderVo">
-			SELECT * FROM product_buy
-		</select>
 	
+ 		</select>
+ 		
+ 		<!-- 팝업 -->
+		<select id="selectPopup" resultType="order.OrderVo" parameterType="order.OrderVo">
+		SELECT * FROM  product_buy AS PB JOIN  product_io AS PI 
+		ON PB.pb_no = PI.pb_no
+		JOIN book 
+		ON PI.b_no = book.b_no
+		</select>
 		
 	</mapper>

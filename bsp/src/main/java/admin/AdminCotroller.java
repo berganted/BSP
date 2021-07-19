@@ -41,13 +41,13 @@ public class AdminCotroller {
 		System.out.println(vo.getA_id());
 		System.out.println(vo.getA_pwd());
 		System.out.println(vo.getA_name());
-		if (service.login(vo)== null) {
+		if (v== null) {
 			model.addAttribute("msg", "아이디와 비밀번호를 확인해 주세요");
 			model.addAttribute("url", "/bsp/admin");
 			return "include/alert";
 		} else {
-			sess.setAttribute("userInfo", service.login(vo));
-			return "redirect:/bsp/admin/board/index.do";
+			sess.setAttribute("userInfo", v);
+			return "redirect:board/index.do";
 		}
 	}
 }

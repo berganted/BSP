@@ -95,7 +95,7 @@ public class UserController {
 		UserVo u = service.login(vo);
 		if(u != null) {
 			 sess.setAttribute("userInfo", u);
-			 
+			 System.out.println(u.getM_name());
 			 return"redirect:/index.do";			 
 		 }else {
 			 	model.addAttribute("msg", "아이디와 비밀번호를 확인해 주세요");

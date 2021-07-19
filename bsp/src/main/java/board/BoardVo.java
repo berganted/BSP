@@ -13,25 +13,15 @@ public class BoardVo extends CommonVo {
 	private String q_content;
 	private Timestamp q_regdate;
 	private int q_readcount;
-	private String orderby; // 정렬 컬럼
-	private String direct; //오름차순 내림차순
 	
 	public BoardVo() {
+		this.pageRow = 5;
+		this.reqPage = 1;
+		this.pageRange = 5;
 		this.orderby ="q_regdate";
 		this.direct = "DESC";
 	}
-	public String getOrderby() {
-		return orderby;
-	}
-	public void setOrderby(String orderby) {
-		this.orderby = orderby;
-	}
-	public String getDirect() {
-		return direct;
-	}
-	public void setDirect(String direct) {
-		this.direct = direct;
-	}
+	
 	private String q_Filename_org;	// 사용자가첨부한 원본파일명
 	private String q_Filename_real;	// 서버에 저장된 실제파일명
 	

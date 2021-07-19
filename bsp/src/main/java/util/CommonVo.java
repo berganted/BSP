@@ -1,18 +1,18 @@
 package util;
 
 public class CommonVo {
-	private int pageRow;
+	protected int pageRow;
 	private int strIdx;
-	private int reqPage;
+	protected int reqPage;
 	private int totCount;
 	private int totPage;
 	private int endPage;
 	private int strPage;
-	private int pageRange;
+	protected int pageRange;
 	private String stype;
 	private String sval;;
-	private String orderby; // 정렬 컬럼
-	private String direct; //오름차순 내림차순
+	protected String orderby; // 정렬 컬럼
+	protected String direct; //오름차순 내림차순
 	private String filename_org;
 	private String filename_real;
 	private String isDel;
@@ -21,7 +21,7 @@ public class CommonVo {
 		this.pageRow = 5;
 		this.reqPage = 1;
 		this.pageRange = 5;
-		this.orderby ="RegDate";
+		this.orderby ="q_regdate";
 		this.direct = "DESC";
 	}
 	

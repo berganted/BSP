@@ -14,6 +14,19 @@
     <script src="/bsp/js/yesol.js"></script>
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
+<script>
+
+function checkpop() {
+	var arTest = [];
+
+	$("input[name=checkOne]:checked").each(function(){
+	arTest.push($(this).val());
+	});
+	console.log("체크된 값 total : " + arTest);
+	$("#cInput").val(arTest);
+} 
+
+</script>
 
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>
@@ -33,7 +46,7 @@
         </div>
         <table id="retrn_popup">
             <tr>
-                 <td><input type="checkbox" value="select" name="checkAll"></td>
+                 <td><input type="checkbox" value="select" name="checkAll" onclick="checkpop();"></td>
                 <td>주문번호</td>
                 <td>상품명</td>
                 <td>주문자</td>
@@ -44,7 +57,7 @@
 
             <c:forEach var="list" items="${popupList}">  
             <tr>
-               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' ></td>
+               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' onclick="checkpop();"></td>
                 <td>${list.pb_no }</td>
                 <td><a href="">${list.b_title}</a></td>
                 <td>${list.pb_resname }</td>
@@ -54,6 +67,7 @@
                 </c:forEach>
         </table>
         <p></p>
+        <div id="result" ></div>
         <div class="retrn_submit" style="text-align: center;">
             <input type="text" id=cInput value="나중에 없어질 창"><br>
             <input class="button_m" type="submit" value="선택" onclick="window.close(), info_submit()" >

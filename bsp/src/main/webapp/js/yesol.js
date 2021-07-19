@@ -92,10 +92,10 @@
 /*return or replace_form----------------------------------------------------------------------- */
          //팝업창 띄우기
          function showPopup(){
-            url = "Return popup.html" 
+            url = "/bsp/returning/popup.do" 
             popup_name = "retrn_popup"
-            specs = "scrollbars=yes,resizable=no, width=500, height=611"
-            window.name = "parentForm"  // →나중에 return.do등으로 변경
+            specs = "scrollbars=yes,resizable=no, width=543px, height=611px"
+            window.name = "return.do"  // →나중에 return.do등으로 변경
 
             window.open(url, popup_name, specs);
         }
@@ -135,6 +135,8 @@
             self.close();
         }
     }
+
+
 /*replace_form----------------------------------------------------------------------- */
  function setDisplay(){
     if($('input:radio[id=replace_divide]').is(':checked')){

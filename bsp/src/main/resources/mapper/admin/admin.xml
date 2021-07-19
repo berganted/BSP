@@ -66,11 +66,11 @@
 		<select id="isDuplicateemail" resultType="int" parameterType="user.UserVo">
 			SELECT count(*) from user WHERE m_email=#{m_email} AND m_email_d=#{m_email_d}
 		</select>
-		<select id="login"  resultType="user.UserVo" parameterType="user.UserVo">
-			SELECT *FROM user WHERE m_id=#{m_id} AND m_pwd=md5(#{m_pwd})AND m_delflag='n'
+		<select id="login"  resultType="admin.AdminVo" parameterType="admin.AdminVo">
+			SELECT *FROM admin WHERE a_id=#{a_id} AND a_pwd=#{a_pwd}
 		</select>
 		<select id="searchId" resultType="user.UserVo" parameterType="user.UserVo">
-			SELECT * FROM user WHERE m_name=#{m_name} AND m_email=#{m_email} AND m_email_d=#{m_email_d}
+			SELECT * FROM admin WHERE m_name=#{m_name} AND m_email=#{m_email} AND m_email_d=#{m_email_d}
 		</select>
 		
 		<select id="searchPwd" resultType="user.UserVo" parameterType="user.UserVo">

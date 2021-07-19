@@ -22,11 +22,37 @@ public class BookController {
 	BookService service;
      
 	
-	static final String TABLENAME = "board";
 	
 	@RequestMapping("/test/index.do")
 	public String index(Model model, BookVo vo) {
 		model.addAttribute("list", service.selectAll(vo));//list란 이름으로 전체 데이터가 dao에 담겨서 모델에 담김(=request에 담김=스프링이 담아줌)
 		return "test/index";
 	}
+	
+	@RequestMapping("/book/index.do")
+	public String book(Model model, BookVo vo) {
+		model.addAttribute("list", service.selectAll(vo));//list란 이름으로 전체 데이터가 dao에 담겨서 모델에 담김(=request에 담김=스프링이 담아줌)
+		return "book/index";
+	}
+	
+	@RequestMapping("/book/Book_BigIdx.do") 
+	public String v(BookVo vo , Model model) {
+		model.addAttribute("list", service.selectAll(vo));
+	return "/book/Book_BigIdx" ;
+
+	}
 }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

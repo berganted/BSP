@@ -6,36 +6,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>반품 신청서</title>
-    <link rel='stylesheet' href='css/yesol.css'/> <!-- 예솔 css -->
-    <link rel="stylesheet" href="css/base.css">
+    <title>교환/추가배송 신청서</title>
+    <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
+    <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
-    <script src="js/yesol.js"></script><!-- 예솔 스크립트 -->
+    <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
+    <script src="/bsp/js/yesol.js"></script><!-- 예솔 스크립트 -->
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script type="text/javascript" src="//cdn.poesis.kr/post/popup.min.js" charset="UTF-8"></script>
 
 </head>
 <body >
+<jsp:include page="../include/header.jsp"></jsp:include>
     <header id="header"></header>
     <div class="wrap">
- 
-     <div class="mem_leftmenu_1" id="side"></div>
- 
+ 	<jsp:include page="../include/side2.jsp"></jsp:include>
      <div class="mem_content" style="text-align: center;">
         <form action="" method="POST">
-            <h1>반품 신청서</h1>
+            <h1>교환/추가배송 신청서</h1>
             <div id="article">
                 <table id="retrn_type" class="retrn_tb" >
-                    <h4>반품 구분</h4>
+                    <h4>교환/추가배송 구분</h4>
                        <div class="retrn_radio">
-                            <input type="radio" name="divide" value="return" checked>반품
+                            <input type="radio" name="divide" value="replace" id="replace_divide" onchange="setDisplay()" checked>교환
+                             <input type="radio" name="divide" value="add" id="add_divide" onchange="setDisplay()">추가배송 <br>
+                
                        </div>
                        <div class="pwrap">
                             <p>
-                            * 반품 : 상품이 마음에 들지 않거나 잘못 구입한 경우
-                              다른 상품으로의 교환은 불가합니다.<br> [반품] 후 새로 주문*결제 해주십시오.<br>
-                            * 기타 문의 : 이 외에는 게시판>>반품/교환>>반품 혹은 교환을 이용해 주십시오.<br>
+                            * 교환 : 상품불량(파본*훼손) / 주문과 다른 상품 수령<br>
+                            * (누락)추가배송 : 주문상품/부록/증정품 등 누락<br>
+                            *  기타 문의 : 이 외에는 고객센터>>반품/교환>>반품 혹은 교환을 이용해 주십시오.<br>
                            </p>
                         </div>
                 </table>
@@ -59,27 +60,29 @@
                         </tr>
                 </table>
                 <div class="pwrap"><p><input type="text" id="pInput" value="팝업창 값 받아오는것"><br>
-                    * 반품 조치가 필요한 상품과 수량을 체크해주십시오.<br>
+                    * 추가배송/회수 등 조치가 필요한 상품과 수량을 체크해주십시오.<br>
                  </p>
-                </div>
+                </div>   
                 <hr>
                     <table id="retrn_reason" class="retrn_tb">
                         <div class="hwrap"><h4>사유선택</h4></div>
-                        <tr>
-                         <div class="retrn_reason_option_tb" >
-                            <input type="radio" name="reason" value="1" onclick="showTextarea(this.value,'etc_view');"> 단순변심 
-                            <input type="radio" name="reason" value="2" onclick="showTextarea(this.value,'etc_view');"> 상품불량 
-                            <input type="radio" name="reason" value="3" onclick="showTextarea(this.value,'etc_view');"> 기타
-                        <div id="etc_view" style="display:none">
-                            <textarea id="reason_etc_view"  name="reason"  rows="5" cols="50">사유를 입력해주세요!</textarea><br>
-                        </div>
-                        <div class="pwrap">
-                        <p>
-                        * 단순변심 : 구입상품이 마음에 들지 않을 경우나 잘못 구입한 경우<br>
-                        * 이 외의 사유인 경우에는 게시판>>반품/교환>>반품 코너로 신고해주십시오.<br>
-                        </p>
-                        </div>
-                        </tr>
+                       <tr>
+                    <div class="replace_reason_option_tb" >
+                        <input type="radio" name="reason" value="4" > 파본
+                        <input type="radio" name="reason" value="5" > 상태불량 
+                        <input type="radio" name="reason" value="6" > 오배송
+                    </div>
+                    <div class="addDeli_reason_option_tb" style="display:none">
+                        <input type="radio" name="reason" value="7" > 상품 누락
+                        <input type="radio" name="reason" value="8" > 부록 누락
+                    </div><br>
+                    <div id="etc_view">
+                        <textarea id="reason_etc_view"  name="reason"  rows="5" cols="50">※ 상품의 상세 내용, 상품명 등을 자세히 적어주세요. (50자 미만)</textarea><br>
+                    </div>
+                </tr>
+                <p>
+                    ※ 이 외의 사유인 경우에는 게시판>>반품/교환>>교환 코너로 신고해주십시오.
+                </p>
                     </table>
                 <hr>
                     <table id="retrn_delivery" class="retrn_tb" >
@@ -141,22 +144,7 @@
                          (분실시 고객 귀책)<br>
                     </p></div>
                 <hr>
-                <div class="hwrap"><h4>환불정보 입력</h4></div>
-                    <table id="retrn_account" class="retrn_tb">
-                        <tr>
-                            <td style="text-align: center;"> 
-                            <input type="radio" name="refund" value="cash">현금
-                            <input type="radio" name="refund" value="card">신용카드 또는 기타결제 승인취소<br>
-                            <div class="pwrap"><p>
-                            * 주문 환불은 결제한 수단과 동일한 수단으로 환불을 원칙으로 합니다.<br>
-                            * 결제한 수단으로 환불이 불가한 일부 상황에서는 예치금 및 환전캐시등의 결제 타입에 상응하는 부가결제 수단으로 환불합니다.<br>
-                            * 취소로 빈번한 환불, 또는 주문대비 환불액이 큰 경우 내부 방침상, 최종구매액 재결제 요청 후 승인취소로 환불됩니다.<br>
-                            * 신용카드 거래의 경우 취소 후 카드사 반영에 3-4일 소요될 수 있습니다.<br>
-                            </p></div>
-                        </tr>
-                    </table>
-                <hr>
-                    <div class="retrn_submit">
+                    <div class="retrn_submit" style="padding: 20px">
                         <input class="button_m" type="submit" value="완료" >
                         <input class="button_m" type="reset" value="취소" >
                 </div>
@@ -172,9 +160,8 @@
              책이름
          </div>
      </aside>        
- 
-     
  </div> 
  <footer  id="footer"></footer>
+  <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

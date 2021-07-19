@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장바구니</title>
-    <link rel='stylesheet' href='css/yesol.css'/> <!-- 예솔 css -->
-    <link rel="stylesheet" href="css/base.css">
+    <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
+    <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
-    <script src="js/yesol.js"></script> <!-- 예솔 스크립트 -->
+    <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
+    <script src="/bsp/js/yesol.js"></script> <!-- 예솔 스크립트 -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
     //**삭제 버튼 클릭시 행 삭제
@@ -29,11 +29,10 @@
 
 </head>
 <body>
+<jsp:include page="../include/header.jsp"></jsp:include>
     <header id="header"> </header>
    <div class="wrap">
-
-    <div class="mem_leftmenu_1" id="side"></div>
-
+	<jsp:include page="../include/side2.jsp"></jsp:include>
     <div class="mem_content">
         <h1>장바구니</h1>
        
@@ -157,9 +156,17 @@
             </div>
         </div>
     </div>
-
-    <aside id="quick"></aside>  
+   <aside class="mypage_ad">
+                <div class="mypage_ad_name"><p>최근본상품</p></div>
+                <div class="img_area">
+                    <img src="img/book.jpg" width="70px" height="100px">
+                </div>
+                <div style="text-align: center;">
+                    책이름
+                </div>
+            </aside> 
 </div> 
 <footer id="footer"></footer>
+<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

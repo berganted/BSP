@@ -38,6 +38,7 @@ public class BookController {
 	@RequestMapping("/book/Book_BigIdx.do") 
 	public String v(BookVo vo , Model model) {
 		model.addAttribute("list", service.selectAll(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
 	return "/book/Book_BigIdx" ;
 
 	}

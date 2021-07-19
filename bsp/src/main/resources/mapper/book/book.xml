@@ -27,9 +27,18 @@
 	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT * FROM book
 		<include refid="bookwhere"/>
-		ORDER BY ${orderby} ${direct}
-		LIMIT ${strIdx},${pageRow} 
+		<!-- ORDER BY ${orderby} ${direct} -->
+		LIMIT 0,3
 	</select>
+	
+	
+	<select id="selectAll2" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book
+		<include refid="bookwhere"/>
+		<!-- ORDER BY ${orderby} ${direct} -->
+		LIMIT 0,4
+	</select>
+	
 
 	<select id="count" resultType="int" parameterType="book.BookVo">
 		SELECT COUNT(*) FROM book

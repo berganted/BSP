@@ -54,13 +54,13 @@
                 
         <div class="swiper-container">
             <div class="swiper-wrapper">
-            <c:forEach var = "list" items="${list }">
+            <c:forEach var = "vo" items="${list }">
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
                         <div class="choiceImg"><img src = "/bsp/img/book.jpg" style="height: 100%; width: 100%;"></div>
                         <div class="chocieInfo">
-                            <p class="choiceName"> ${bookVo.b_title }  : 나를 넘어서는 힘</p>
+                            <p class="choiceName"> ${vo.b_title }  : 나를 넘어서는 힘</p>
                             <p class="choice_pub">
                                 <span class="choice_author">${vo.b_author}짐 퀵 저/${vo.b_publisher }역</span>
                                 <em class="divi">|</em>
@@ -98,19 +98,19 @@
 
             <div class="BigIndex_newEye"> 눈에 띄는 새책</div>
             
-               <c:forEach var = "i" begin = "1" end = "4">
+                <c:forEach var = "vo" items="${list2 }">
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
                         <div class="newEye_img"><img src="/bsp/img/newEye2.jpg" style="width: 200px; height: 300px;"></div>
                     </div> 
                     <div class="newEye_infoSection">  
-                        <div class="newEye_title"><b>해피해피과일위크</b></div>
+                        <div class="newEye_title"><b>${vo.b_title} </b></div>
                         <div class="newEye_authorPub">김민정 저 | 비앤씨월드</div>
                         <div class="newEye_price"><b>15,300</b>원 (10%할인)</div>
                         <div class="newEye_intro" style="font-size: 17px;">
                             인기 파티시에 김민정의 대박프로젝트 ‘과일위크’가 『해피해피 과일위크』라는 책으로 탄생했다.
                             싱싱한 제철 과일을 디저트에 응용한 레시피북으로 복잡하지 않은 제품 구성, 누구나 좋아하는 자연스런 맛, 
-                            상품성이 돋보이는 디자인 등 그녀만의 스타일이 제대로 녹아있다 <c:out value = "${i}"/>
+                            상품성이 돋보이는 디자인 등 그녀만의 스타일이 제대로 녹아있다 
                         </div>
                     </div> 
                 </div> 

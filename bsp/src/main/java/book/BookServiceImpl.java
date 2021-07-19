@@ -58,4 +58,11 @@ public class BookServiceImpl implements BookService {
 	public BookVo deatil(BookVo vo) {
 		return  dao.detail(vo);
 	}
+
+
+
+	@Override
+	public List<BookVo> selectAll2(BookVo vo) {
+		return dao.selectAll2(vo);
+	}
 }

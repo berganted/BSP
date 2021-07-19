@@ -15,6 +15,9 @@ public class BookDao {
 	public List<BookVo> selectAll(BookVo vo) {
 		return sqlSession.selectList("book.selectAll", vo);
 	}
+	public List<BookVo> selectAll2(BookVo vo) {
+		return sqlSession.selectList("book.selectAll2", vo);
+	}
 	
 	public int count(BookVo vo) {
 		return sqlSession.selectOne("book.count", vo);

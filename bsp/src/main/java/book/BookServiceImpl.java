@@ -10,7 +10,6 @@ public class BookServiceImpl implements BookService {
 
 	@Autowired
 	BookDao dao;
-	
 	@Override
 	public List<BookVo> selectAll(BookVo vo) {
 		int totCount = dao.count(vo); // 총갯수
@@ -57,5 +56,23 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public BookVo deatil(BookVo vo) {
 		return  dao.detail(vo);
+	}
+
+	
+	
+	
+	
+	@Override
+	public List<BookVo> selectAll1(BookVo vo) {
+		return dao.selectAll3(vo);
+	}
+
+	@Override
+	public List<BookVo> selectAll2(BookVo vo) {
+		return dao.selectAll2(vo);
+	}
+	@Override
+	public List<BookVo> selectAll3(BookVo vo) {
+		return dao.selectAll3(vo);
 	}
 }

@@ -15,7 +15,15 @@
 		</where>
 	</sql>
 	
-<!-- 	
+		<!--아아아아아아아앙아아아악  -->
+	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book WHERE b_ctgno1 = 1 AND b_ctgno2 = 2
+		<include refid="bookwhere"/>
+		<!-- ORDER BY ${orderby} ${direct} -->
+		
+	</select>
+	
+	<!-- 	
 	<select id="selectAll" resultType="comment.CommentVo" parameterType="comment.CommentVo">
 		SELECT *,(SELECT name FROM user WHERE no=comment.user_no ) AS name FROM comment  누가 썼는지 알고싶으면 있어야해 
 		WHERE board_no=#{board_no} AND tablename=#{tablename}
@@ -24,7 +32,7 @@
 	</select> -->
 	
 	
-	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
+	<select id="selectAll1" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT * FROM book
 		<include refid="bookwhere"/>
 		<!-- ORDER BY ${orderby} ${direct} -->
@@ -33,12 +41,23 @@
 	
 	
 	<select id="selectAll2" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book
+		SELECT * FROM book WHERE b_no BETWEEN 2 AND 7
 		<include refid="bookwhere"/>
 		<!-- ORDER BY ${orderby} ${direct} -->
 		LIMIT 0,4
 	</select>
 	
+	
+	<select id="selectAll3" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book WHERE b_no <![CDATA[>=]]> 2 and b_no <![CDATA[<=]]>7
+		<include refid="bookwhere"/>
+		<!-- ORDER BY ${orderby} ${direct} -->
+	</select>
+	
+
+	
+	
+<!-- 	WHERE b_no BETWEEN 2 AND 7; -->
 
 	<select id="count" resultType="int" parameterType="book.BookVo">
 		SELECT COUNT(*) FROM book
@@ -50,9 +69,15 @@
 	
 	 -->
  
+ 
+ 
+ 
+ 
+ 
+ 
 	<insert id="insert" parameterType="book.BookVo">
-		INSERT INTO book (b_title, b_content, b_author,b_publisher, b_isbn, b_stock, b_regdate, b_intodate, b_price, b_views, b_index, b_pages, b_introauthor, b_introbook)
-		VALUES (#{b_title}, #{b_content},  #{b_author}, #{b_publisher}, #{b_isbn}, #{b_stock},NOW(),0, #{b_price},0, #{b_index},#{b_pages},#{b_introauthor},#{b_introbook})  
+		INSERT INTO book (b_imgno, b_ctgno1, b_ctgno2, b_title, b_content, b_author,b_publisher, b_isbn, b_stock, b_regdate, b_intodate, b_price, b_views, b_index, b_pages, b_introauthor, b_introbook)
+		VALUES (#{b_imgno},#{b_ctgno1},#{b_ctgno2},#{b_title}, #{b_content},  #{b_author}, #{b_publisher}, #{b_isbn}, #{b_stock},NOW(),0, #{b_price},0, #{b_index},#{b_pages},#{b_introauthor},#{b_introbook})  
 	</insert> 
 	
 

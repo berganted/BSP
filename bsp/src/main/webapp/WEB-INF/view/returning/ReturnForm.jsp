@@ -40,25 +40,30 @@
                         </div>
                 </table>
                 <hr>
+                  <div class="pwrap"><p><input type="text" id="pInput" value=""><br>
                 <table id="retrn_product" class="retrn_tb" > <!-- 주소랑 같은 기능 -->
                     <div class="hwrap"><h4>반품예정상품 <input class="button_s" type="button" value="주문번호 찾기" onclick="showPopup()"></h4></div>
                     
                         <tr>
-                            <td>주문일</td>
                             <td>주문번호</td>
-                            <td>수령인</td>
                             <td>주문상품</td>
+                            <td>수령인</td>
+                            <td>주문일</td>
                             <td>조회</td>
                         </tr>
-                        <tr>
-                            <td>2021-06-30</td>
-                            <td><a href="">001-A</a></td>
-                            <td>전나나</td>
-                            <td>자바의 정석&nbsp;총 33권</td>
-                            <td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회" style="height: 20px; font-size:10px"></a></td>
-                        </tr>
-                </table>
-                <div class="pwrap"><p><input type="text" id="pInput" value="팝업창 값 받아오는것"><br>
+                         <c:forEach var="vo" items="${list}">
+                        <c:if test="${!empty vo}">
+          				  <tr>
+                			<td>${vo.pb_no}</td>
+               			    <td><a href="">${vo.b_title}</a></td>
+               			    <td>${vo.pb_resname }</td>
+                			<td>${vo.pb_orderdate }</td>
+                			<td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a></td>
+            			   </tr>
+                		</c:if>
+                		</c:forEach>
+                </table><br>
+              
                     * 반품 조치가 필요한 상품과 수량을 체크해주십시오.<br>
                  </p>
                 </div>

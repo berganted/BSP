@@ -7,7 +7,7 @@ import util.CommonVo;
 public class BookVo extends CommonVo {
 
 	private int b_no;
-	private int b_imgNo;
+	private String b_imgno;
 	private int b_ctgNo1;
 	private int b_ctgNo2;
 	private String b_title;
@@ -24,6 +24,7 @@ public class BookVo extends CommonVo {
 	private int b_pages;
 	private String b_introauthor;
 	private String b_introbook;
+	private int b_point;
 	private int r_id;
 	
 	public BookVo() {
@@ -35,6 +36,18 @@ public class BookVo extends CommonVo {
 	}
 	
 	
+	
+	public int getB_point() {
+		return b_point;
+	}
+
+
+
+	public void setB_point(int b_point) {
+		this.b_point = b_point;
+	}
+
+
 
 	public String getOrderby() {
 		return orderby;
@@ -66,11 +79,11 @@ public class BookVo extends CommonVo {
 	public void setB_no(int b_no) {
 		this.b_no = b_no;
 	}
-	public int getB_imgNo() {
-		return b_imgNo;
+	public String getB_imgno() {
+		return b_imgno;
 	}
-	public void setB_imgNo(int b_imgNo) {
-		this.b_imgNo = b_imgNo;
+	public void setB_imgno(String b_imgno) {
+		this.b_imgno = b_imgno;
 	}
 	public int getB_ctgNo1() {
 		return b_ctgNo1;

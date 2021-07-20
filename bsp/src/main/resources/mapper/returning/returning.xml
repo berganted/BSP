@@ -7,10 +7,18 @@
 		<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT * FROM returning
 		</select>
+		
+		<!-- 팝업에서 받아오는 리스트 -->
+		<select id="selectPopup" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+			SELECT *
+			FROM product_buy PB RIGHT JOIN  product_io PI
+			ON PI.pb_no = PB.pb_no
+			JOIN book B
+			ON PI.b_no = B.b_no AND PI.io_no = #{io_no};
+		</select>
+		
 	
-		<insert id="insert" parameterType="returning.ReturningVo">
-			INSERT INTO returning (returning_no, returning_reason_no, returning_category, b_no, ps_no, rd_no, refund_no, returning_amount ) 
-			VALUES( #{returning_no}, #{returning_reason_no},#{returning_category},#{b_no},#{ps_no},#{ rd_no},#{refund_no},#{returning_amount} )
-		</insert>
+		
+		
 		
 	</mapper>

@@ -22,13 +22,15 @@ function checkpop() {
 			arTest.push($(this).val());
 		});
 		$("#cInput").val(arTest);
-	});
-} 
+	    });
+	} 
+
 </script>
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>
     <article id="article">
         <form action="return.do" method="post" name="return_info_submittb">
+        <input type="hidden"  name="io_no" value="${orderVO.io_no}">
         <div style="text-align: right; padding-right: 10px; padding-bottom: 10px;">
             <span>
                 <select name="정렬" style="height: 25px; border: 2px solid #221f1f ;">

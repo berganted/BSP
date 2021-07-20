@@ -158,7 +158,7 @@
                                 <td class="txt_l">
                                     <a href="board_view.do?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
                                     <c:forEach begin="1" end="${vo.q_nested }">&nbsp;&nbsp;&nbsp;</c:forEach>
-                                    <c:if test="${vo.q_nested > 0 }"><img src="/project/img/admin/answer_icon.gif"></c:if>
+                                    <c:if test="${vo.q_nested > 0 }"><img src="/bsp/img/admin/answer_icon.gif"></c:if>
                                     ${vo.q_title } [${vo.comment_count}]
                                     </a>
                                 </td>

@@ -17,7 +17,10 @@ public class ReturningServiceimpl implements ReturningService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Override
+	public List<ReturningVo> selectPopup(ReturningVo vo) {
+		return dao.selectPopup(vo);
+	} 
 	@Override
 	public int insert(ReturningVo vo) {
 		// TODO Auto-generated method stub
@@ -34,6 +37,7 @@ public class ReturningServiceimpl implements ReturningService {
 	public int delete(ReturningVo vo) {
 		// TODO Auto-generated method stub
 		return 0;
-	} 
+	}
+
 
 }

@@ -28,12 +28,17 @@
                 <th>지급</th>
                 <th>사용</th>          
             </tr>
-		<c:forEach var="list"  items="${list } ">
+            <c:if test="${empty plist }">
+                            <tr>
+                                <td class="first" colspan="5">보유한 포인트가 없습니다.</td>
+                            </tr>
+                        </c:if>                        
+		<c:forEach var="vo" items="${plist}">
             <tr>    
-                <td>${list.p_regdate}</td>       
-                <td>${list.p_content }</td>
-                <td>${list.p_usage}</td>
-                <td></td>
+                <td>${vo.p_regdate }</td>       
+                <td>${vo.p_content }</td>
+                <td>${vo.p_usage}</td>
+                <td>${vo.p_used }</td>
             </tr>   
        </c:forEach>
             
@@ -42,7 +47,7 @@
     <table class="point_total">
         <tr>    
             <td><h2>사용가능한 적립금</h2></td>                  
-            <td ><h2>400점</h2></td>
+            <td ><h2>${userVo.m_point}</h2></td>
         </tr>   
     </table>
     </div>

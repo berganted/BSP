@@ -34,8 +34,7 @@ public class BoardController {
 	@RequestMapping("/sample/board_view.do")
 	public String detail(Model model, BoardVo vo, CommentVo cv) {
 		model.addAttribute("vo", service.detail(vo));
-//		cv.setQ_no(vo.getQ_no());
-//		cv.setC_tablename(TABLENAME);
+		
 		return "sample/board_view";
 	}
 	
@@ -124,15 +123,16 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/comment/insert.do")
-	public String commentInsert(Model model, CommentVo vo) {
-		vo.setC_tablename(TABLENAME);
-		int r = cService.insert(vo);
-		if (r > 0) {
-			model.addAttribute("result", "true");
-		} else {
-			model.addAttribute("result", "false");
-		}
-		return "include/result";
+	public String commentinsert(Model model , CommentVo vo) {
+			vo.setC_tablename(TABLENAME);
+			int r = cService.insert(vo);
+			if(r > 0) {
+				model.addAttribute("result", "true");
+						
+			}else {
+				model.addAttribute("result", "false");
+			}
+			return "include/result";			
 	}
 	
 	@RequestMapping("/comment/list.do")

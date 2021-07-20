@@ -3,7 +3,7 @@
 <mapper namespace="point">
 
 	<select id="selectAll" resultType="point.PointVo" parameterType="point.PointVo">
-		SELECT * FROM point
+		SELECT * FROM point WHERE m_no=#{m_no}
 		ORDER BY p_regdate DESC
 		LIMIT ${strIdx},${pageRow}
 	</select>

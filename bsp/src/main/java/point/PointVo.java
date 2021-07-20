@@ -10,7 +10,16 @@ public class PointVo extends CommonVo {
 	private Timestamp p_regdate;
 	private String p_state;
 	private int p_usage;
+	private int p_used;
 	private String p_content;
+	
+	
+	public int getP_used() {
+		return p_used;
+	}
+	public void setP_used(int p_used) {
+		this.p_used = p_used;
+	}
 	public int getP_no() {
 		return p_no;
 	}

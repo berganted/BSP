@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class BoardDao {
 	
@@ -28,8 +29,19 @@ public class BoardDao {
 		sqlSession.update("board.updateReadcount", vo);
 	}
 	
+	public void q_gno(int vo) {
+		sqlSession.update("board.q_gno", vo);
+	}
+	
 	public int insert(BoardVo vo) {
 		return sqlSession.insert("board.insert", vo);
+	}
+	
+	public int insertReply(BoardVo vo) {
+		return sqlSession.insert("board.insertReply", vo);
+	}
+	public int onoUpdate(BoardVo vo) {
+		return sqlSession.update("board.onoUpdate", vo);
 	}
 	
 	public int update(BoardVo vo) {

@@ -43,6 +43,16 @@ public class BoardController {
 		return "sample/board_write";
 	}
 	
+	@RequestMapping("/sample/board_reply.do")
+	public String board(Model model, BoardVo vo) {
+		BoardVo rv = service.detail(vo);
+		model.addAttribute("q_gno", rv.getQ_gno());
+		model.addAttribute("q_ono", rv.getQ_ono());
+		model.addAttribute("q_nested", rv.getQ_nested());
+		
+		return "sample/board_reply";
+	}
+	
 	@RequestMapping("/sample/insert.do")
 	public String insert(Model model, BoardVo vo, 
 						@RequestParam MultipartFile file, HttpServletRequest req) {
@@ -72,7 +82,34 @@ public class BoardController {
 			model.addAttribute("url", "FAQboard.do");
 		} else {
 			model.addAttribute("msg", "등록실패");
-			model.addAttribute("url", "write.do"); 
+			model.addAttribute("url", "board_write.do"); 
+		}
+		return "include/alert";
+	}
+	
+	@RequestMapping("/sample/insertReply.do")
+	public String insertReply(Model model, BoardVo vo, 
+			@RequestParam MultipartFile file, HttpServletRequest req) {
+		if (!file.isEmpty()) { // 첨부파일이 있으면
+			try {
+				String org = file.getOriginalFilename(); // 원본파일명
+				String ext = ""; //확장자
+				ext = org.substring(org.lastIndexOf("."));
+				String real = new Date().getTime()+ext; // 서버에 저장할 파일명
+				String path = req.getRealPath("/upload/"); // 경로
+				file.transferTo(new File(path+real)); // 경로+파일명 저장
+				vo.setFilename_org(org);
+				vo.setFilename_real(real);
+			} catch (Exception e) {
+			}
+		}
+		int r = service.insertReply(vo);
+		if (r > 0) {
+			model.addAttribute("msg", "정상적으로 등록되었습니다.");
+			model.addAttribute("url", "FAQboard.do");
+		} else {
+			model.addAttribute("msg", "등록실패");
+			model.addAttribute("url", "board_write.do");
 		}
 		return "include/alert";
 	}
@@ -122,27 +159,26 @@ public class BoardController {
 		return "include/result";
 	}
 	
-	@RequestMapping("/comment/insert.do")
-	public String commentinsert(Model model , CommentVo vo) {
-			vo.setC_tablename(TABLENAME);
-			int r = cService.insert(vo);
-			if(r > 0) {
-				model.addAttribute("result", "true");
-						
-			}else {
-				model.addAttribute("result", "false");
-			}
-			return "include/result";			
+	@RequestMapping("/sample/comment/insert.do")
+	public String commentInsert(Model model, CommentVo vo) {
+		vo.setC_tablename(TABLENAME);
+		int r = cService.insert(vo);
+		if (r > 0) {
+			model.addAttribute("result", "true");
+		} else {
+			model.addAttribute("result", "false");
+		}
+		return "include/result";
 	}
 	
-	@RequestMapping("/comment/list.do")
+	@RequestMapping("/sample/comment/list.do")
 	public String commentList(Model model, CommentVo cv) {
 		cv.setC_tablename(TABLENAME);
 		model.addAttribute("list", cService.selectAll(cv));
 		return "include/comment";
 	}
 	
-	@RequestMapping("/comment/delete.do")
+	@RequestMapping("/sample/comment/delete.do")
 	public String commentDelete(Model model, CommentVo vo) {
 		int r = cService.delete(vo);
 		if (r > 0) {

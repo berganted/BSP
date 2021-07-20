@@ -20,13 +20,12 @@
     <script>
     function move() {
     	location.href='board_write.do';   
-    	/* <c:if test="${!empty userInfo}">
+    	<c:if test="${!empty userInfo}">
     	location.href='board_write.do';
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');
-    	</c:if> */
-    	
+    	</c:if> 
     }
     </script>
     	
@@ -40,14 +39,14 @@
                     <li><a class="support_w1">BSP 고객센터 입니다.</a></li>
                     <li><a class="support_w2">무엇을 도와드릴까요?</a></li>
                 </div>
-                <div class="support_searchBar">
+                <!-- <div class="support_searchBar">
                     <form action="#">
                         <input type="text" placeholder="검색어를 입력하세요">
                     </form>
                     <div class="support_searchIcon">
                         <img src="/bsp/img/logo/Search.png">
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="support_FAQ">
                 <div class="support_TopTen">
@@ -153,11 +152,15 @@
                                 <td class="first" colspan="5">등록된 글이 없습니다.</td>
                             </tr>
                         </c:if>                        
-						<c:forEach var="vo" items="${list}">     
+						<c:forEach var="vo" items="${list}" varStatus="status">     
                             <tr>
-                                <td>${vo.q_no }</td>
+                                <td>${(boardVo.totCount-status.index)-((boardVo.reqPage-1)*boardVo.pageRow)}</td>
                                 <td class="txt_l">
-                                    <a href="board_view.do?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
+                                    <a href="board_view.do?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
+                                    <c:forEach begin="1" end="${vo.q_nested }">&nbsp;&nbsp;&nbsp;</c:forEach>
+                                    <c:if test="${vo.q_nested > 0 }"><img src="/project/img/admin/answer_icon.gif"></c:if>
+                                    ${vo.q_title } [${vo.comment_count}]
+                                    </a>
                                 </td>
                                 <td class="FAQboard_writer">
                                     ${vo.name }

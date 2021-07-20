@@ -15,17 +15,49 @@ public class BoardVo extends CommonVo {
 	private int q_readcount;
 	
 	public  BoardVo() {
+
 		this.pageRow = 5;
 		this.reqPage = 1;
 		this.pageRange = 5;
 		this.orderby ="q_regdate";
 		this.direct = "DESC";
 	}
+
 	private String q_Filename_org;	// 사용자가첨부한 원본파일명
 	private String q_Filename_real;	// 서버에 저장된 실제파일명
 	
 	private String isDel;
 	private String name;
+	private int comment_count;
+	
+	private int q_gno;				// 그룹번호
+	private int q_ono;				// 순서
+	private int q_nested;			// 들여쓰기
+	
+	public int getQ_gno() {
+		return q_gno;
+	}
+	public void setQ_gno(int q_gno) {
+		this.q_gno = q_gno;
+	}
+	public int getQ_ono() {
+		return q_ono;
+	}
+	public void setQ_ono(int q_ono) {
+		this.q_ono = q_ono;
+	}
+	public int getQ_nested() {
+		return q_nested;
+	}
+	public void setQ_nested(int q_nested) {
+		this.q_nested = q_nested;
+	}
+	public int getComment_count() {
+		return comment_count;
+	}
+	public void setComment_count(int comment_count) {
+		this.comment_count = comment_count;
+	}
 	public int getQ_no() {
 		return q_no;
 	}

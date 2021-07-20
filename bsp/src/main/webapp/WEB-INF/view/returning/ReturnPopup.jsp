@@ -16,19 +16,15 @@
 </head>
 <script>
 function checkpop() {
-	$('input[type=checkbox]').change(function(){
-	console.log(1)
-	var arTest = [];
-
-    $("input[name=checkOne]:checked").each(function(){
-    arTest.push($(this).val());
-    });
-    console.log("체크된 값 total : " + arTest);
-    $("#cInput").val(arTest);
-	
-	})
-}
-
+	$("input[type=checkbox]").change(function () {
+		var arTest = [];
+		$("input[name=checkOne]:checked").each(function(){
+			arTest.push($(this).val());
+		});
+			console.log("체크된 값 total : " + arTest);
+		$("#cInput").val(arTest);
+	});
+} 
 </script>
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>

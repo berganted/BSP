@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class BoardServiceImpl implements BoardService {
 
@@ -40,8 +41,21 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public int insert(BoardVo vo) {
-		return dao.insert(vo);
+	public int insert(BoardVo vo) { 
+		if (dao.insert(vo) > 0) { // insert 하고나면 키가 gno에 담기고, 1을 리턴
+			dao.q_gno(vo.getQ_no());
+			return 1; // alert
+		} else {
+			return 0; 
+		}
+	}
+	
+	@Override
+	public int insertReply(BoardVo vo) {
+		dao.onoUpdate(vo);
+		vo.setQ_ono(vo.getQ_ono()+1);
+		vo.setQ_nested(vo.getQ_nested()+1);
+		return dao.insertReply(vo);
 	}
 
 	@Override

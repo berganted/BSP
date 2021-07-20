@@ -24,7 +24,8 @@
 			(SELECT COUNT(*) FROM comment WHERE q_no=q_board.q_no) AS comment_count		
 		FROM q_board
 		<include refid="boardWhere"/>
-		ORDER BY ${orderby} ${direct}
+		<!--ORDER BY ${orderby} ${direct}-->
+		ORDER BY q_gno DESC, q_ono ASC
 		LIMIT ${strIdx},${pageRow}
 	</select>
 	
@@ -44,7 +45,23 @@
 	<insert id="insert" parameterType="board.BoardVo">
 		INSERT INTO q_board (q_title, q_content,q_regdate, q_readcount, m_no) <!-- q_filename_org, q_filename_real, -->
 		VALUES (#{q_title}, #{q_content}, NOW(), 0, #{m_no}) <!--  #{q_filename_org}, #{q_filename_real},  -->
+		<selectKey keyProperty="q_no" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID() 
+		</selectKey>
 	</insert>
+	
+	<insert id="insertReply" parameterType="board.BoardVo">
+		INSERT INTO q_board (q_title, q_content, q_regdate, q_readcount, m_no, q_gno, q_ono, q_nested) <!-- q_filename_org, q_filename_real, -->
+		VALUES (#{q_title}, #{q_content}, NOW(), 0, #{m_no}, #{q_gno}, #{q_ono}, #{q_nested}) <!--  #{q_filename_org}, #{q_filename_real},  -->
+	</insert>
+	
+	<update id="q_gno" parameterType="int">
+		UPDATE q_board SET q_gno=#{q_no} WHERE q_no=#{q_no} 
+	</update>	
+	
+	<update id="onoUpdate" parameterType="board.BoardVo">
+		UPDATE q_board SET q_ono=q_ono+1 WHERE q_gno=#{q_gno} AND q_ono>#{q_ono} 
+	</update>
 	
 	<update id="update" parameterType="board.BoardVo">
 		UPDATE q_board SET

@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import board.BoardService;
+import book.BookService;
+import book.BookVo;
 import user.UserService;
 import user.UserVo;
 
@@ -19,6 +22,8 @@ public class AdminCotroller {
 	AdminService service;
 	@Autowired
 	UserService uservice;
+	@Autowired
+	BookService bservice;
 
 	@RequestMapping("/admin")
 	public String index() {
@@ -35,9 +40,16 @@ public class AdminCotroller {
 		
 		return "admin/member/index";
 	}
+	@RequestMapping("admin/product/index.do")
+	public String memberIndex(BookVo vo , Model model) {
+		model.addAttribute("list", bservice.selectAll(vo));
+		
+		return "admin/product/index";
+	}
 
 	@RequestMapping("admin/member/view.do")
-	public String memberview() {
+	public String memberview(UserVo vo, Model model) {
+		model.addAttribute("vo", uservice.detail(vo));
 		return "admin/member/view";
 	}
 	@RequestMapping("admin/board/view.do")
@@ -45,6 +57,10 @@ public class AdminCotroller {
 		return "admin/board/view";
 	}
 
+	@RequestMapping("admin/product/write.do")
+	public String productwrite() {
+		return "admin/product/write";
+	}
 	@RequestMapping("admin/board/write.do")
 	public String boardwrite() {
 		return "admin/board/write";

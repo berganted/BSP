@@ -21,7 +21,6 @@ function checkpop() {
 		$("input[name=checkOne]:checked").each(function(){
 			arTest.push($(this).val());
 		});
-			console.log("체크된 값 total : " + arTest);
 		$("#cInput").val(arTest);
 	});
 } 

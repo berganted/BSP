@@ -25,11 +25,11 @@ public class BookVo extends CommonVo {
 	private String b_introauthor;
 	private String b_introbook;
 	private int r_id;
-	private String orderby; // 정렬 컬럼
-	private String direct; //오름차순 내림차순
 	
 	public BookVo() {
-	
+		this.pageRow = 10;
+		this.reqPage = 1;
+		this.pageRange = 10;
 		this.orderby ="b_regdate";
 		this.direct = "DESC";
 	}

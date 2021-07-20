@@ -9,11 +9,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import user.UserService;
+import user.UserVo;
+
 @Controller
 public class AdminCotroller {
 
 	@Autowired
 	AdminService service;
+	@Autowired
+	UserService uservice;
 
 	@RequestMapping("/admin")
 	public String index() {
@@ -24,7 +29,17 @@ public class AdminCotroller {
 	public String boardIndex() {
 		return "admin/board/index";
 	}
+	@RequestMapping("admin/member/index.do")
+	public String memberIndex(UserVo vo , Model model) {
+		model.addAttribute("list", uservice.selectAll(vo));
+		
+		return "admin/member/index";
+	}
 
+	@RequestMapping("admin/member/view.do")
+	public String memberview() {
+		return "admin/member/view";
+	}
 	@RequestMapping("admin/board/view.do")
 	public String boardview() {
 		return "admin/board/view";

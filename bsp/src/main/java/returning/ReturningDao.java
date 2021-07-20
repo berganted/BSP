@@ -13,6 +13,9 @@ public class ReturningDao {
 	public List<ReturningVo> selectAll(ReturningVo vo){
 		return sessionTemplate.selectList("returnig.selectAll",vo);
 	}
+	public List<ReturningVo> selectPopup(ReturningVo vo){
+		return sessionTemplate.selectList("returnig.selectPopup",vo);
+	}
 	public int count(ReturningVo vo) {
 		return sessionTemplate.selectOne("returnig.count",vo);
 	}

@@ -15,16 +15,19 @@
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
 <script>
-
 function checkpop() {
+	$('input[type=checkbox]').change(function(){
+	console.log(1)
 	var arTest = [];
 
-	$("input[name=checkOne]:checked").each(function(){
-	arTest.push($(this).val());
-	});
-	console.log("체크된 값 total : " + arTest);
-	$("#cInput").val(arTest);
-} 
+    $("input[name=checkOne]:checked").each(function(){
+    arTest.push($(this).val());
+    });
+    console.log("체크된 값 total : " + arTest);
+    $("#cInput").val(arTest);
+	
+	})
+}
 
 </script>
 <body id="retrn_popup_form">
@@ -45,7 +48,7 @@ function checkpop() {
         </div>
         <table id="retrn_popup">
             <tr>
-                 <td><input type="checkbox" value="select" name="checkAll"></td>
+                 <td><input type="checkbox" value="select" name="checkAll" ></td>
                 <td>주문번호</td>
                 <td>상품명</td>
                 <td>주문자</td>
@@ -56,7 +59,7 @@ function checkpop() {
 
             <c:forEach var="list" items="${popupList}">  
             <tr>
-               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' onclick="getCheckboxValue(event)" ></td>
+               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' onclick="checkpop();" ></td>
                 <td>${list.pb_no }</td>
                 <td><a href="">${list.b_title}</a></td>
                 <td>${list.pb_resname }</td>
@@ -68,7 +71,7 @@ function checkpop() {
         <p></p>
         <div class="retrn_submit" style="text-align: center;">
         <div id="result"></div>
-            <input type="text" id=cInput value="나중에  창"><br>
+            <input type="text" id=cInput><br>
             <input class="button_m" type="submit" value="선택" onclick="window.close(), info_submit()" >
             <input class="button_m" type="button" value="취소" onclick="window.close()"  >
        </div>

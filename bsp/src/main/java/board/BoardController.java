@@ -34,8 +34,7 @@ public class BoardController {
 	@RequestMapping("/sample/board_view.do")
 	public String detail(Model model, BoardVo vo, CommentVo cv) {
 		model.addAttribute("vo", service.detail(vo));
-//		cv.setQ_no(vo.getQ_no());
-//		cv.setC_tablename(TABLENAME);
+		
 		return "sample/board_view";
 	}
 	

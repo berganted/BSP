@@ -15,17 +15,16 @@
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
 <script>
-
 function checkpop() {
-	var arTest = [];
-
-	$("input[name=checkOne]:checked").each(function(){
-	arTest.push($(this).val());
+	$("input[type=checkbox]").change(function () {
+		var arTest = [];
+		$("input[name=checkOne]:checked").each(function(){
+			arTest.push($(this).val());
+		});
+			console.log("체크된 값 total : " + arTest);
+		$("#cInput").val(arTest);
 	});
-	console.log("체크된 값 total : " + arTest);
-	$("#cInput").val(arTest);
 } 
-
 </script>
 
 <body id="retrn_popup_form">

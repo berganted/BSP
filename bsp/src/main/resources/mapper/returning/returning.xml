@@ -8,5 +8,9 @@
 			SELECT * FROM returning
 		</select>
 	
+		<insert id="insert" parameterType="returning.ReturningVo">
+			INSERT INTO returning (returning_no, returning_reason_no, returning_category, b_no, ps_no, rd_no, refund_no, returning_amount ) 
+			VALUES( #{returning_no}, #{returning_reason_no},#{returning_category},#{b_no},#{ps_no},#{ rd_no},#{refund_no},#{returning_amount} )
+		</insert>
 		
 	</mapper>

@@ -30,6 +30,28 @@ public class BoardVo extends CommonVo {
 	private String name;
 	private int comment_count;
 	
+	private int q_gno;				// 그룹번호
+	private int q_ono;				// 순서
+	private int q_nested;			// 들여쓰기
+	
+	public int getQ_gno() {
+		return q_gno;
+	}
+	public void setQ_gno(int q_gno) {
+		this.q_gno = q_gno;
+	}
+	public int getQ_ono() {
+		return q_ono;
+	}
+	public void setQ_ono(int q_ono) {
+		this.q_ono = q_ono;
+	}
+	public int getQ_nested() {
+		return q_nested;
+	}
+	public void setQ_nested(int q_nested) {
+		this.q_nested = q_nested;
+	}
 	public int getComment_count() {
 		return comment_count;
 	}

@@ -159,7 +159,7 @@ public class BoardController {
 		return "include/result";
 	}
 	
-	@RequestMapping("/sample/comment/insert.do")
+	@RequestMapping("/comment/insert.do")
 	public String commentInsert(Model model, CommentVo vo) {
 		vo.setC_tablename(TABLENAME);
 		int r = cService.insert(vo);
@@ -171,14 +171,14 @@ public class BoardController {
 		return "include/result";
 	}
 	
-	@RequestMapping("/sample/comment/list.do")
+	@RequestMapping("/comment/list.do")
 	public String commentList(Model model, CommentVo cv) {
 		cv.setC_tablename(TABLENAME);
 		model.addAttribute("list", cService.selectAll(cv));
 		return "include/comment";
 	}
 	
-	@RequestMapping("/sample/comment/delete.do")
+	@RequestMapping("/comment/delete.do")
 	public String commentDelete(Model model, CommentVo vo) {
 		int r = cService.delete(vo);
 		if (r > 0) {

@@ -55,7 +55,7 @@
 		VALUES (#{q_title}, #{q_content}, NOW(), 0, #{m_no}, #{q_gno}, #{q_ono}, #{q_nested}) <!--  #{q_filename_org}, #{q_filename_real},  -->
 	</insert>
 	
-	<update id="gno" parameterType="int">
+	<update id="q_gno" parameterType="int">
 		UPDATE q_board SET q_gno=#{q_no} WHERE q_no=#{q_no} 
 	</update>	
 	

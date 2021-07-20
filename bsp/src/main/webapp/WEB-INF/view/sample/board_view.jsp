@@ -18,7 +18,7 @@
 	<script>
     function reply() {
     	<c:if test="${!empty userInfo}">
-    	location.href='board_reply.do?q_no=${vo.q_no}';
+    	location.href='board.do?q_no=${vo.q_no}';
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');
@@ -48,7 +48,7 @@
                         </dl> --%>
                                     
                         <div class="btnSet clear">
-                            <div class="fl_l"><a href="FAQboard.do?<c:if test="${!empty param.reqPage}">reqPage=${param.reqPage}</c:if>}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}" class="btn">목록으로</a></div>
+                            <div class="fl_l"><a href="FAQboard.do?<c:if test="${!empty param.reqPage}">reqPage=${param.reqPage}</c:if>&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}" class="btn">목록으로</a></div>
                             <div class="fl_l"><a class="btn" href="javascript:reply();">답변 </a></div>
                             <c:if test="${userInfo.m_no == vo.m_no }">
                             <div class="fl_l"><a href="board_edit.do?q_no=${vo.q_no}" class="btn">수정</a></div>

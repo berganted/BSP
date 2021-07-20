@@ -157,7 +157,7 @@
                             <tr>
                                 <td>${vo.q_no }</td>
                                 <td class="txt_l">
-                                    <a href="board_view.do?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title }</a>
+                                    <a href="board_view.do?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${vo.q_title } [${vo.comment_count}]</a>
                                 </td>
                                 <td class="FAQboard_writer">
                                     ${vo.name }

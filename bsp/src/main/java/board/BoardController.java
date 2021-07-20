@@ -141,4 +141,15 @@ public class BoardController {
 		model.addAttribute("list", cService.selectAll(cv));
 		return "include/comment";
 	}
+	
+	@RequestMapping("/comment/delete.do")
+	public String commentDelete(Model model, CommentVo vo) {
+		int r = cService.delete(vo);
+		if (r > 0) {
+			model.addAttribute("result", "true");
+		} else {
+			model.addAttribute("result", "false");
+		}
+		return "include/result";
+	}
 }

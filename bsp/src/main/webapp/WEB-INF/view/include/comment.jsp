@@ -20,6 +20,9 @@
                             <tr>
                                 <td class="txt_l">
                                 	${vo.c_content}
+                                	<c:if test="${userInfo.m_no == vo.m_no}">
+                                    <a href="javascript:commentDel(${vo.c_no});">[X]</a>
+                                    </c:if>
                                 </td>
                                 <td class="writer">
                                     ${vo.name }

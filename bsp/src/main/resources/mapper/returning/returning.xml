@@ -7,10 +7,38 @@
 		<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT * FROM returning
 		</select>
-	
-		<insert id="insert" parameterType="returning.ReturningVo">
-			INSERT INTO returning (returning_no, returning_reason_no, returning_category, b_no, ps_no, rd_no, refund_no, returning_amount ) 
-			VALUES( #{returning_no}, #{returning_reason_no},#{returning_category},#{b_no},#{ps_no},#{ rd_no},#{refund_no},#{returning_amount} )
+		
+		<!-- 팝업에서 받아오는 리스트 -->
+		<select id="selectPopup" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+			SELECT *
+			FROM product_buy PB RIGHT JOIN  product_io PI
+			ON PI.pb_no = PB.pb_no
+			JOIN book B
+			ON PI.b_no = B.b_no AND PI.io_no = #{io_no};
+		</select>
+		
+		<!-- 회송정보 insert (회송번호(rd_no) 생성후 반품테이블 insert) -->
+		<insert id="insertRd" parameterType="returning.ReturningVo">
+		INSERT INTO returning_delivery_info (rd_name, rd_zipcode, rd_addr1, rd_addr2, rd_tel, rd_req, m_no, rd_option)
+		VALUES (#{rd_name}, #{rd_zipcode}, #{rd_addr1},#{rd_addr2}, #{rd_tel}, #{rd_req}, #{m_no}, #{rd_option});
 		</insert>
+		
+		<!-- 반품 전체 insert -->
+		<insert id="insertRt" parameterType="returning.ReturningVo">
+		<selectKey resultType="int" keyProperty="rd_no" order="BEFORE">
+        SELECT MAX(rd_no) FROM returning_delivery_info     
+    	</selectKey> 
+		INSERT INTO returning(returning_reason_no, return_reason_detail, returning_category, 
+								b_no, ps_no, rd_no, refund_no, returning_amount, io_no )
+		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category}, 
+			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{returning_amount},#{io_no} );
+		</insert>
+		
+		<!-- 반품접수시 처리상태 변경( processing_status 테이블 11.반품접수로 상태변경) -->
+		<update id="updatePs" parameterType="int">
+			UPDATE returning SET 
+			ps_no=11 WHERE returning_no=#{returning_no};
+		</update>
+		
 		
 	</mapper>

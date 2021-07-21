@@ -9,38 +9,55 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import order.OrderService;
 import order.OrderVo;
 
-
 @Controller
 public class ReturningController {
-	
+
 	@Autowired
 	ReturningService service;
 	@Autowired
 	OrderService Oservice;
 
 	@RequestMapping("/returning/return.do")
-	public String Return() {
+	public String Return(Model model, ReturningVo vo) {
+		model.addAttribute("list", service.selectPopup(vo));
 		return "returning/ReturnForm";
 	}
-	@RequestMapping("/returning/replace.do")
-	public String Replace() {
-		return "returning/ReplaceForm";
-	}
-	
-	@RequestMapping("/returning/list.do")
-	public String ReturnOrReplaceList() {
-		return "returning/ReturnOrReplaceList";
-	}
-	@RequestMapping("/returning/detail.do")
-	public String ReturnOrReplaceListDetails() {
-		return "returning/ReturnOrReplaceListDetails";
-	}
-	
+
 	@RequestMapping("/returning/popup.do")
 	public String ReturnPopup(Model model, OrderVo vo) {
 		model.addAttribute("popupList", Oservice.selectPopup(vo));
 		return "returning/ReturnPopup";
 	}
-
 	
+	@RequestMapping("/returning/replace.do")
+	public String Replace() {
+		return "returning/ReplaceForm";
+	}
+	
+
+	@RequestMapping("/returning/list.do")
+	public String ReturnOrReplaceList() {
+		return "returning/ReturnOrReplaceList";
+	}
+
+	@RequestMapping("/returning/detail.do")
+	public String ReturnOrReplaceListDetails() {
+		return "returning/ReturnOrReplaceListDetails";
+	}
+
+	/* 반품 insert */
+	@RequestMapping("/returning/insert.do")
+	public String insert(Model model, ReturningVo vo) {
+		int r = service.insertRd(vo);
+		if(r>0) {
+			model.addAttribute("msg","정상적으로 등록되었습니다.");
+			model.addAttribute("url","list.do");
+		}else {
+			model.addAttribute("msg","등록실패.");
+			model.addAttribute("url","return.do");
+		}
+		return "include/alert";
+	}
+
+
 }

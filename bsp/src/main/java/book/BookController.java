@@ -38,6 +38,16 @@ public class BookController {
 	return "/book/Book_KbigIdx" ;
 
 	}
+	
+	@RequestMapping("/sample/index.do") 
+	public String index(BookVo vo , Model model) {
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+	return "/sample/index" ;
+
+	}
 }
 	
 	

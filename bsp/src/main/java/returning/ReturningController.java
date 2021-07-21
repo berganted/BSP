@@ -1,6 +1,5 @@
 package returning;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,10 +23,17 @@ public class ReturningController {
 		return "returning/ReturnForm";
 	}
 
+	@RequestMapping("/returning/popup.do")
+	public String ReturnPopup(Model model, OrderVo vo) {
+		model.addAttribute("popupList", Oservice.selectPopup(vo));
+		return "returning/ReturnPopup";
+	}
+	
 	@RequestMapping("/returning/replace.do")
 	public String Replace() {
 		return "returning/ReplaceForm";
 	}
+	
 
 	@RequestMapping("/returning/list.do")
 	public String ReturnOrReplaceList() {
@@ -39,10 +45,18 @@ public class ReturningController {
 		return "returning/ReturnOrReplaceListDetails";
 	}
 
-	@RequestMapping("/returning/popup.do")
-	public String ReturnPopup(Model model, OrderVo vo) {
-		model.addAttribute("popupList", Oservice.selectPopup(vo));
-		return "returning/ReturnPopup";
+	/* 반품 insert */
+	@RequestMapping("/returning/insert.do")
+	public String insert(Model model, ReturningVo vo) {
+		int r = service.insertRd(vo);
+		if(r>0) {
+			model.addAttribute("msg","정상적으로 등록되었습니다.");
+			model.addAttribute("url","list.do");
+		}else {
+			model.addAttribute("msg","등록실패.");
+			model.addAttribute("url","return.do");
+		}
+		return "include/alert";
 	}
 
 

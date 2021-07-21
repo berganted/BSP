@@ -21,23 +21,23 @@ public class ReturningServiceimpl implements ReturningService {
 	public List<ReturningVo> selectPopup(ReturningVo vo) {
 		return dao.selectPopup(vo);
 	} 
-	@Override
-	public int insert(ReturningVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 	@Override
-	public int update(ReturningVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertRd(ReturningVo vo) {
+		if(dao.insertRd(vo)>0) {
+			dao.insertRt(vo);
+			dao.updatePs(vo.getReturing_no());
+			return 1;
+		}else {
+			return 0;
+		}
 	}
-
 	@Override
 	public int delete(ReturningVo vo) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 
 }

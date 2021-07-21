@@ -19,8 +19,11 @@ public class ReturningDao {
 	public int count(ReturningVo vo) {
 		return sessionTemplate.selectOne("returnig.count",vo);
 	}
-	public ReturningVo detail(ReturningVo vo) {
-		return sessionTemplate.selectOne("returnig.detail",vo);
+	public ReturningVo detail1(ReturningVo vo) {
+		return sessionTemplate.selectOne("returnig.detail1",vo);
+	}
+	public List<ReturningVo> detail2(ReturningVo vo) {
+		return sessionTemplate.selectList("returnig.detail2",vo);
 	}
 	public int insertRt(ReturningVo vo) {
 		return sessionTemplate.insert("returnig.insertRt",vo);

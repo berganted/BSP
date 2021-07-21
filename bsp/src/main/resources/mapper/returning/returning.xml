@@ -3,18 +3,53 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="returnig">
 	
-		
+		<!-- 반품/교화 전체 내역 -->
 		<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
-			SELECT * FROM returning
+			SELECT *
+			FROM product_io PI JOIN returning r
+			ON PI.io_no = r.io_no
+			JOIN returning_delivery_info rd
+			ON rd.rd_no = r.rd_no
+			JOIN book b
+			ON b.b_no = PI.b_no
+			JOIN processing_status ps
+			ON ps.ps_no = r.ps_no
+			GROUP BY PI.pb_no;
 		</select>
 		
-		<!-- 팝업에서 받아오는 리스트 -->
+		<!-- 메인창에 출력할 쿼리 (팝업에서 받아오는 리스트) -->
 		<select id="selectPopup" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
 			FROM product_buy PB RIGHT JOIN  product_io PI
 			ON PI.pb_no = PB.pb_no
 			JOIN book B
 			ON PI.b_no = B.b_no AND PI.io_no = #{io_no};
+		</select>
+		
+		<!-- 반품/교환상세 공통 -->
+		<select id="detail1" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+			SELECT * 
+			FROM product_io PI JOIN returning r
+			ON PI.io_no = r.io_no
+			JOIN returning_delivery_info rd
+			ON rd.rd_no = r.rd_no
+			JOIN book b
+			ON b.b_no = PI.b_no
+			JOIN processing_status ps
+			ON ps.ps_no = r.ps_no AND pb_no = #{pb_no}
+			GROUP BY PI.pb_no;
+		</select>
+		<!-- 반품/교환상세 개별(반품도서 종류) -->
+		<select id="detail2" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+			SELECT * 
+			FROM product_io PI JOIN returning r
+			ON PI.io_no = r.io_no
+			JOIN returning_delivery_info rd
+			ON rd.rd_no = r.rd_no
+			JOIN book b
+			ON b.b_no = PI.b_no
+			JOIN processing_status ps
+			ON ps.ps_no = r.ps_no AND pb_no=#{pb_no}
 		</select>
 		
 		<!-- 회송정보 insert (회송번호(rd_no) 생성후 반품테이블 insert) -->
@@ -29,9 +64,9 @@
         SELECT MAX(rd_no) FROM returning_delivery_info     
     	</selectKey> 
 		INSERT INTO returning(returning_reason_no, return_reason_detail, returning_category, 
-								b_no, ps_no, rd_no, refund_no, returning_amount, io_no )
+								b_no, ps_no, rd_no, refund_no, returning_amount, io_no ,returning_regdate)
 		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category}, 
-			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{returning_amount},#{io_no} );
+			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{returning_amount},#{io_no}, NOW());
 		</insert>
 		
 		<!-- 반품접수시 처리상태 변경( processing_status 테이블 11.반품접수로 상태변경) -->

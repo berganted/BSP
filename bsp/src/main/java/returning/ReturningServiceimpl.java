@@ -14,19 +14,27 @@ public class ReturningServiceimpl implements ReturningService {
 
 	@Override
 	public List<ReturningVo> selectAll(ReturningVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectAll(vo);
 	}
 	@Override
 	public List<ReturningVo> selectPopup(ReturningVo vo) {
 		return dao.selectPopup(vo);
 	} 
+	
+	@Override
+	public ReturningVo detail1(ReturningVo vo) {
+		return dao.detail1(vo);
+	}
+	@Override
+	public List<ReturningVo> detail2(ReturningVo vo) {
+		return dao.detail2(vo);
+	}
 
 	@Override
 	public int insertRd(ReturningVo vo) {
 		if(dao.insertRd(vo)>0) {
 			dao.insertRt(vo);
-			dao.updatePs(vo.getReturing_no());
+			dao.updatePs(vo.getReturning_no());
 			return 1;
 		}else {
 			return 0;
@@ -37,6 +45,7 @@ public class ReturningServiceimpl implements ReturningService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 
 
 

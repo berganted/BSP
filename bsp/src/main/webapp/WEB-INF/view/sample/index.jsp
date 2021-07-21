@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
-
+	<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 3) %></c:set>
 </head>
 <body> 
     <jsp:include page="../include/header.jsp"></jsp:include>
@@ -32,10 +34,10 @@
             </div>
             <div class="swiper-container mySwiper">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" style="background-image: url('img/book05.jpg');">&nbsp;</div> <!-- &nbsp; 공백 -->
-                  <div class="swiper-slide" style="background-image: url('img/book06.jpg');">&nbsp;</div>
-                  <div class="swiper-slide" style="background-image: url('img/book07.jpg');">&nbsp;</div>
-                  <div class="swiper-slide" style="background-image: url('img/book04.jpg');">&nbsp;</div> 
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/book05.jpg');">&nbsp;</div> <!-- &nbsp; 공백 -->
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/book06.jpg');">&nbsp;</div>
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/book07.jpg');">&nbsp;</div>
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/book04.jpg');">&nbsp;</div> 
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -44,21 +46,24 @@
                 <div class="index_randomAds">
                     <div class="index_Ads01">
                         아마존 27주 연속 1위<br> 어쩌구를 잇는 신예 스릴러<br>
-                        <img src="img/book09.jpg" alt="">
+                        <img src="/bsp/img/book09.jpg" alt="">
                     </div>
                     <div class="index_Ads02">
                         <div class="index_miniAd"> 쪼그만 <br>광고<br> 책소개책소개<br>책소개</div>
-                        <div><img src="img/book10.jpg" alt=""></div>                        
+                        <div><img src="/bsp/img/book${ran}.jpg" alt=""></div>                        
                     </div>                    
                 </div>
                 <div class="index_todaysBooks mySwiper">
                     <div class=" swiper-wrapper">
+                    <c:forEach var="vo" items="${list1 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail">
-                                <img src="img/book13.jpg" alt="">
+                                <img src="${vo.b_imgno }" alt="">
                             </div>
                             <div class="index_todayDetails">
-                                <div class="index_tdContext">오늘의 책</div>
+                                <div class="index_tdContext">오늘의 책${ran}</div>
+                                ${vo.b_content }
+                            	<br> <!-- 임의로  -->
                                 <li>공깃밥을 박차고 우주로 날아간 호라이의 대모험! <br>
                                     유쾌한 상상력으로 어린이의 마음을 그리는 작가, <br>
                                     눈물바다』 서현의 달걀프라이 그림책. <br>
@@ -67,34 +72,7 @@
                                 </li>                        
                             </div>
                         </div>
-                        <div class=" index_todaysBooks swiper-slide">
-                            <div class="index_todaysThumnail">
-                                <img src="img/book14.jpg" alt="">
-                            </div>
-                            <div class="index_todayDetails">
-                                <div class="index_tdContext">오늘의 책</div>
-                                <li>공깃밥을 박차고 우주로 날아간 호라이의 대모험! <br>
-                                    유쾌한 상상력으로 어린이의 마음을 그리는 작가, <br>
-                                    눈물바다』 서현의 달걀프라이 그림책. <br>
-                                    달걀프라이에서 시작한 거침없는 상상을 감각적인 그림으로 두 권에 담았다. <br>
-                                    끝없이 이어지는 기발하고 엉뚱하며 유쾌한 이야기를 따라가보자.
-                                </li>                        
-                            </div>
-                        </div>
-                        <div class=" index_todaysBooks swiper-slide">
-                            <div class="index_todaysThumnail">
-                                <img src="img/book15.jpg" alt="">
-                            </div>
-                            <div class="index_todayDetails">
-                                <div class="index_tdContext">오늘의 책</div>
-                                <li>공깃밥을 박차고 우주로 날아간 호라이의 대모험! <br>
-                                    유쾌한 상상력으로 어린이의 마음을 그리는 작가, <br>
-                                    눈물바다』 서현의 달걀프라이 그림책. <br>
-                                    달걀프라이에서 시작한 거침없는 상상을 감각적인 그림으로 두 권에 담았다. <br>
-                                    끝없이 이어지는 기발하고 엉뚱하며 유쾌한 이야기를 따라가보자.
-                                </li>                        
-                            </div>
-                        </div>                      
+                        </c:forEach> 
                     </div>
                     <div class="swiper-button-next" id="index_next"></div><!--강제로만듬-->
                     <div class="swiper-button-prev" id="index_prev"></div>
@@ -134,143 +112,47 @@
                     </div>
                 </div>
                 <div class="index_NowBooks">
+                    <div class="index_NowBooksTitle">BSP NOW ></div>
+                <c:forEach var="vo" items="${list1 }" varStatus="status">
                     <div class="index_NowBooksContents">
-                        <div class="index_NowBooksTitle">BSP NOW ></div>
                         <div class="index_NowBooksImg">
-                            <img src="img/book18.jpg" alt="">
+                            <img src="${vo.b_imgno }" alt="">
                         </div>                        
                         <div class="index_NowBooksDetail">
                             <ul>
-                                <li><a class="index_NowD1">양은솔 작가 신작</a></li>
-                                <li><a class="index_NowD2">책제목</a></li>
-                                <li><a class="index_NowD3">저자 | 출판사</a></li>
-                                <li><a class="index_NowD4">8,900원</a></li>
-                            </ul>
-                        </div>
-                    </div>  
-                    <div class="index_NowBooksContents">
-                        <div class="index_NowBooksImg">
-                            <img src="img/book16.jpg" alt="">
-                        </div>
-                        <div class="index_NowBooksDetail">
-                            <ul>
-                                <li><a class="index_NowD1">양은솔 작가 신작</a></li>
-                                <li><a class="index_NowD2">책제목</a></li>
-                                <li><a class="index_NowD3">저자 | 출판사</a></li>
-                                <li><a class="index_NowD4">8,900원</a></li>
+                                <li><a class="index_NowD1">${vo.b_author} 작가 신작</a></li>
+                                <li><a class="index_NowD2">${vo.b_title }</a></li>
+                                <li><a class="index_NowD3">${vo.b_author} | ${vo.b_publisher }</a></li>
+                                <li><a class="index_NowD4">${vo.b_price } 원</a></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="index_NowBooksContents">
-                        <div class="index_NowBooksImg">
-                            <img src="img/book20.jpg" alt="">
-                        </div>
-                        <div class="index_NowBooksDetail">
-                            <ul>
-                                <li><a class="index_NowD1">양은솔 작가 신작</a></li>
-                                <li><a class="index_NowD2">책제목</a></li>
-                                <li><a class="index_NowD3">저자 | 출판사</a></li>
-                                <li><a class="index_NowD4">8,900원</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="index_NowBooksContents">
-                        <div class="index_NowBooksImg">
-                            <img src="img/book21.jpg" alt="">
-                        </div>
-                        <div class="index_NowBooksDetail">
-                            <ul>
-                                <li><a class="index_NowD1">양은솔 작가 신작</a></li>
-                                <li><a class="index_NowD2">책제목</a></li>
-                                <li><a class="index_NowD3">저자 | 출판사</a></li>
-                                <li><a class="index_NowD4">8,900원</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="index_NowBooksContents">
-                        <div class="index_NowBooksImg">
-                            <img src="img/book16.jpg" alt="">
-                        </div>
-                        <div class="index_NowBooksDetail">
-                            <ul>
-                                <li><a class="index_NowD1">양은솔 작가 신작</a></li>
-                                <li><a class="index_NowD2">책제목</a></li>
-                                <li><a class="index_NowD3">저자 | 출판사</a></li>
-                                <li><a class="index_NowD4">8,900원</a></li>
-                            </ul>
-                        </div>
-                    </div>                  
+                    </c:forEach>  
                 </div>
             </div>            
             <div class="index_recentProduct">
+                <div class="index_NowBooksTitle">화제의 책 ></div>
+            <c:forEach var="vo" items="${list1 }" varStatus="status">
                 <div class="index_NowBooksContents">
-                    <div class="index_NowBooksTitle">화제의 책 ></div>
                     <div class="index_NowBooksImg">
-                        <img src="img/book19.jpg" alt="">
+                        <img src="${vo.b_imgno }" alt="">
                     </div>
                     <div class="index_NowBooksDetail">
                         <ul>                            
-                            <li><a class="index_NowD2">책제목</a></li>
-                            <li><a class="index_NowD3">저자 | 출판사</a></li>
-                            <li><a class="index_NowD4">8,900원</a></li>
+                            <li><a class="index_NowD2">${vo.b_title }</a></li>
+                            <li><a class="index_NowD3">${vo.b_author} | ${vo.b_publisher }</a></li>
+                            <li><a class="index_NowD4">${vo.b_price } 원</a></li>
                         </ul>
                     </div>
                 </div>  
-                <div class="index_NowBooksContents">
-                    <div class="index_NowBooksImg">
-                        <img src="img/book16.jpg" alt="">
-                    </div>
-                    <div class="index_NowBooksDetail">
-                        <ul>                           
-                            <li><a class="index_NowD2">책제목</a></li>
-                            <li><a class="index_NowD3">저자 | 출판사</a></li>
-                            <li><a class="index_NowD4">8,900원</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="index_NowBooksContents">
-                    <div class="index_NowBooksImg">
-                        <img src="img/book19.jpg" alt="">
-                    </div>
-                    <div class="index_NowBooksDetail">
-                        <ul>                            
-                            <li><a class="index_NowD2">책제목</a></li>
-                            <li><a class="index_NowD3">저자 | 출판사</a></li>
-                            <li><a class="index_NowD4">8,900원</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="index_NowBooksContents">
-                    <div class="index_NowBooksImg">
-                        <img src="img/book18.jpg" alt="">
-                    </div>
-                    <div class="index_NowBooksDetail">
-                        <ul>                           
-                            <li><a class="index_NowD2">책제목</a></li>
-                            <li><a class="index_NowD3">저자 | 출판사</a></li>
-                            <li><a class="index_NowD4">8,900원</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="index_NowBooksContents">
-                    <div class="index_NowBooksImg">
-                        <img src="img/book19.jpg" alt="">
-                    </div>
-                    <div class="index_NowBooksDetail">
-                        <ul>                           
-                            <li><a class="index_NowD2">책제목</a></li>
-                            <li><a class="index_NowD3">저자 | 출판사</a></li>
-                            <li><a class="index_NowD4">8,900원</a></li>
-                        </ul>
-                    </div>
-                </div>
+            </c:forEach> 
             </div>
             </div>  
           
             <aside class="mypage_ad">
                 <div class="mypage_ad_name"><p>최근본상품</p></div>
                 <div class="img_area">
-                    <img src="img/book.jpg" width="70px" height="100px">
+                    <img src="/bsp/img/book.jpg" width="70px" height="100px">
                 </div>
                 <div style="text-align: center;">
                     <p>책이름</p>

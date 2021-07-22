@@ -22,20 +22,20 @@ public class ReturningController {
 
 	/* 반품메인창 */
 	@RequestMapping("/returning/return.do")
-	public String Return(Model model, ReturningVo vo) {
+	public String returning(Model model, ReturningVo vo) {
 		model.addAttribute("list", service.selectPopup(vo));
 		return "returning/ReturnForm";
 	}
 
 	/* 반품팝업창 */
 	@RequestMapping("/returning/popup.do")
-	public String ReturnPopup(Model model, OrderVo vo) {
+	public String returningPopup(Model model, OrderVo vo) {
 		model.addAttribute("popupList", Oservice.selectPopup(vo));
 		return "returning/ReturnPopup";
 	}
 	/* 반품팝업 값보내기*/
 	@RequestMapping("/returning/popupSend.do")
-	public String ReturnPopupSend(OrderVo vo, HttpServletRequest req, HttpSession sess ) {
+	public String returningPopupSend(OrderVo vo, HttpServletRequest req, HttpSession sess ) {
 		String[] no = req.getParameterValues("checkOne");
 		for(int i=0; i<no.length; i++) {
 			System.out.println(no[i]);
@@ -45,7 +45,7 @@ public class ReturningController {
 	}
 	
 	@RequestMapping("/returning/replace.do")
-	public String Replace() {
+	public String replace() {
 		return "returning/ReplaceForm";
 	}
 	

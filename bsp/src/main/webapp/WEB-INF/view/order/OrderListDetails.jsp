@@ -120,7 +120,8 @@
              </table>
         </article>
         <div style="text-align: center;">
-        <input class="button_m" type="button" value="주문 내역 목록" onclick="list.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}';">
+       <a href="/bsp/order/list.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}';"> 
+       <input class="button_m" type="button" value="주문 내역 목록" ></a>
         </div>
     </div>
    <aside class="mypage_ad">

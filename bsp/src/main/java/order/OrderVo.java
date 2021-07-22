@@ -9,7 +9,7 @@ public class OrderVo extends CommonVo {
 	private int ps_no;	//처리상태코드
 	private int m_no;	//회원번호
 	private String pb_resname; //주문시 받는 사람
-	private String pb_zipcord; //주문시 받는 주소1
+	private String pb_zipcode; //주문시 받는 주소1
 	private String pb_addr1; //주문시 받는 주소2
 	private String pb_addr2;//주문시 받는 주소3
 	private String pb_restel; //주문시 받는 번호
@@ -20,14 +20,50 @@ public class OrderVo extends CommonVo {
 	private int io_amount; //출고수량 
 	private Timestamp io_date; //출고날짜(배송이후)
 	private String ps_title; //처리상태
+	private String pb_delivery;//주문시 배송옵션
 	private String b_title; //상품명
-	private int[] checkOne;
+	private String b_author; //저자명
+	private int b_price; // 도서 가격
+	private int pb_payno; //주문시 결제방법
 	
-	public int[] getCheckOne() {
-		return checkOne;
+
+	public int getPb_payno() {
+		return pb_payno;
 	}
-	public void setCheckOne(int[] checkOne) {
-		this.checkOne = checkOne;
+
+	public void setPb_payno(int pb_payno) {
+		this.pb_payno = pb_payno;
+	}
+
+	public  OrderVo() {
+
+		this.pageRow = 10;
+		this.reqPage = 1;
+		this.pageRange = 10;
+		this.orderby ="pb_orderdate";
+		this.direct = "DESC";
+	}
+	
+	public String getB_author() {
+		return b_author;
+	}
+	
+	public int getB_price() {
+		return b_price;
+	}
+	
+	public void setB_price(int b_price) {
+		this.b_price = b_price;
+	}
+	
+	public void setB_author(String b_author) {
+		this.b_author = b_author;
+	}
+	public String getPb_delivery() {
+		return pb_delivery;
+	}
+	public void setPb_delivery(String pb_delivery) {
+		this.pb_delivery = pb_delivery;
 	}
 	public String getB_title() {
 		return b_title;
@@ -59,12 +95,14 @@ public class OrderVo extends CommonVo {
 	public void setPb_resname(String pb_resname) {
 		this.pb_resname = pb_resname;
 	}
-	public String getPb_zipcord() {
-		return pb_zipcord;
+	public String getPb_zipcode() {
+		return pb_zipcode;
 	}
-	public void setPb_zipcord(String pb_zipcord) {
-		this.pb_zipcord = pb_zipcord;
+
+	public void setPb_zipcode(String pb_zipcode) {
+		this.pb_zipcode = pb_zipcode;
 	}
+
 	public String getPb_addr1() {
 		return pb_addr1;
 	}

@@ -13,8 +13,32 @@ public class OrderServiceimpl implements OrderService {
 
 	@Override
 	public List<OrderVo> selectAll(OrderVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		int totCount = dao.count(vo); // 총갯수
+		// 총페이지수
+		int totPage = totCount / vo.getPageRow();
+		if (totCount % vo.getPageRow() > 0) totPage++;
+		// 시작페이지
+		int strPage = (vo.getReqPage()-1)/vo.getPageRange()
+						*vo.getPageRange()+1;
+		int endPage = strPage+vo.getPageRange()-1;
+		if (endPage > totPage) endPage = totPage;
+		
+		vo.setStrPage(strPage);
+		vo.setEndPage(endPage);
+		vo.setTotCount(totCount);
+		vo.setTotPage(totPage);
+		System.out.println(vo);
+		return dao.selectAll(vo);
+	}
+	
+	@Override
+	public OrderVo detail1(OrderVo vo) {
+		return dao.detail1(vo);
+	}
+
+	@Override
+	public List<OrderVo> detail2(OrderVo vo) {
+		return dao.detail2(vo);
 	}
 
 	@Override
@@ -39,6 +63,9 @@ public class OrderServiceimpl implements OrderService {
 	@Override
 	public List<OrderVo> selectPopup(OrderVo vo) {
 		return dao.selectPopup(vo);
-	} 
+	}
+
+
+
 
 }

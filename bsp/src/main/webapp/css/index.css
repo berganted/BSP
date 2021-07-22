@@ -893,9 +893,9 @@ li {
 }
 
 .index_NowBooksTitle {
-    position: absolute;
+    position: relative;
     padding-top: 20px;
-    left: -35px;
+    left: -640px;
     font-size: 20px;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
@@ -929,7 +929,7 @@ li {
 .index_NowBooksContents > div img {
     width: 175px;
     height: 240px;
-    margin-top: 60px;
+    margin-top: 20px;
     padding: 0px;
 }
 

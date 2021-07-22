@@ -31,7 +31,11 @@ $(function(){
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>
     <article id="article">
+<<<<<<< HEAD
         <form action="popupsend.do" method="post" name="return_info_submittb">
+=======
+        <form action="popupSend.do" method="post" name="return_info_submittb">
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
         <div style="text-align: right; padding-right: 10px; padding-bottom: 10px;">
             <span>
                 <select name="정렬" style="height: 25px; border: 2px solid #221f1f ;">

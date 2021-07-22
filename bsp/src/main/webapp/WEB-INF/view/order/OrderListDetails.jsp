@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,56 +23,55 @@
         <h1>주문 상세 조회</h1>
         <article id="article">
             <h4>기본/배송정보</h4>
-            <table id="order_list_tb">
+                 <table id="order_list_tb">
                 <tr>
                     <td>주문번호</td>
-                    <td>001-A</td>
+                    <td>${vo.pb_no}</td>
                     <td>배송방법</td>
-                    <td>택배</td>
+                    <td>${vo.pb_delivery}</td>
                 </tr>
                 <tr>
                     <td>주문접수일</td>
-                    <td>2020년 06월 14일 일 12시 40분 </td>
+                    <td>${vo.pb_orderdate} </td>
                     <td>결제일(입금 확인일)</td>
                     <td>2020년 06월 14일 일 12시 40분 </td>
                 </tr>
                 <tr>
-                    <td>상태</td>
-                    <td colspan="3">출고완료/집하(2020-06-14)<br>
+                    <td>처리 상태</td>
+                    <td colspan="3">${vo.ps_title}<br>
                     운송장 : 35998978565, cj대한통운</td>
                 </tr>
                 <tr>
                     <td>주문하신분</td>
-                    <td>전나나</td>
+                    <td>★나중에 가져올 회원이름★</td>
                     <td>받으시는분</td>
-                    <td>전나나</td>
+                    <td>${vo.pb_resname}</td>
                 </tr>
                 <tr>
                     <td>배송주소</td>
                     <td colspan="3">
-                        경기도 고양시 장항동 771-1 KR
+                       ${vo.pb_zipcode}, ${vo.pb_addr1} ${vo.pb_addr2}
                     </td>
                 </tr>
                 <tr>
                     <td>전화번호</td>
                     <td></td>
                     <td>휴대번호</td>
-                    <td>010-1234-5678</td>
+                    <td>${vo.pb_restel}</td>
                 </tr>
                 <tr>
                     <td>배송메세지</td>
                     <td colspan="3">
-                       배송 전 연락 부탁드립니다
+                       ${vo.pb_req}
                     </td>
                 </tr>
                     <tr>
                         <td>거래명세서</td>
                         <td colspan="3">
-                            받지않음
+                           ★★★  ★★★  ★★★
                         </td>
                     </tr>
-                
-            </table>
+                </table>
         </article>
 
         <article id="article">
@@ -83,17 +83,19 @@
                     <td>주문수량</td>
                     <td>가격</td>
                 </tr>
+                <c:forEach var="vo" items="${detail2 }">
                 <tr>
                     <td><input type="image" name="b_image"></td>
-                    <td>자바의 정석 
-                        남궁성지음
+                    <td>${vo.b_title }
+                        ${vo.b_author }
                         <a href=""><input class="button_s" type="button" value="리뷰 쓰기"></a>
                     </td>
-                    <td>1/1</td>
-                    <td>가격: 31000원<br>
+                    <td>1</td>
+                    <td>가격: ${vo.b_price}<br>
                         마일리지:1500원(5%)</td>
                 </tr>
-            </table>
+                </c:forEach>
+                  </table>   
         </article>
 
         <article id="article">
@@ -101,7 +103,7 @@
             <table id="order_list_tb">
                 <tr>
                     <td>총 주문 금액</td>
-                    <td>31,000원(상품가격 31,000원+배송비 0원)</td>
+                    <td>{vo.pb_totalprice}</td>
                 </tr>
                 <tr>
                     <td>적립금 결제</td>
@@ -115,10 +117,10 @@
                     <td>결제방법</td>
                     <td>카드결제(신한)</td>
                 </tr>
-            </table>
+             </table>
         </article>
         <div style="text-align: center;">
-        <input class="button_m" type="button" value="주문 내역 목록" onclick="location.href='Order list.html';">
+        <input class="button_m" type="button" value="주문 내역 목록" onclick="list.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}';">
         </div>
     </div>
    <aside class="mypage_ad">

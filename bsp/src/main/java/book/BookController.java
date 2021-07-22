@@ -34,7 +34,8 @@ public class BookController {
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
 		model.addAttribute("list3", service.selectAll3(vo));
-		
+		vo.setB_ctgno2key(1);
+		model.addAttribute("ctg", service.ctg2name(vo));
 	return "/book/Book_KbigIdx" ;
 
 	}

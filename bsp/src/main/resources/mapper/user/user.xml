@@ -7,7 +7,7 @@
 		<where>
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
-					 	id LIKE '%${sval}%' OR name LIKE '%${sval}%'
+					 	m_id LIKE '%${sval}%' OR m_delflag LIKE '%${sval}%'
 					</if>
 					<if test="stype != 'all'">
 						${stype} LIKE '%${sval}%'

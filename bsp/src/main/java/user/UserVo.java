@@ -25,6 +25,14 @@ public class UserVo extends CommonVo {
 	private int m_del;
 	private String whydel;
 	
+	public UserVo() {
+		this.pageRow = 5;
+		this.reqPage = 1;
+		this.pageRange = 5;
+
+		this.orderby ="m_regdate";
+		this.direct = "DESC";
+	}
 	
 	public String getOrderby() {
 		return orderby;

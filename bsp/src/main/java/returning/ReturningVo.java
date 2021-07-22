@@ -26,6 +26,7 @@ public class ReturningVo extends CommonVo{
 	private Timestamp io_date; //출고날짜(배송이후)
 	private String ps_title; //처리상태
 	private String b_title; //상품명
+	private int[] checkOne;
 	
 	//----------------------------------------
 	private int rd_no; //반품회송번호
@@ -51,6 +52,12 @@ public class ReturningVo extends CommonVo{
 		this.direct = "DESC";
 	}
 	
+	public int[] getCheckOne() {
+		return checkOne;
+	}
+	public void setCheckOne(int[] checkOne) {
+		this.checkOne = checkOne;
+	}
 	
 	public int getB_price() {
 		return b_price;

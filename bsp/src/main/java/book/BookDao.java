@@ -15,7 +15,12 @@ public class BookDao {
 	public List<BookVo> selectAll(BookVo vo) {
 		return sqlSession.selectList("book.selectAll", vo);
 	}
-	
+	public List<BookVo> selectAlladmin(BookVo vo) {
+		return sqlSession.selectList("book.selectAlladmin", vo);
+	}
+	public int bookimg(BookVo vo) {
+		return sqlSession.insert("book.bookimg",vo);
+	}
 	
 	
 	
@@ -49,5 +54,8 @@ public class BookDao {
 	
 	public int delete(BookVo vo) {
 		return sqlSession.delete("book.delete", vo);
+	}
+	public BookVo ctg2name(BookVo vo) {
+		return sqlSession.selectOne("book.selectctg", vo);
 	}
 }

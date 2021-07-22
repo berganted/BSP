@@ -22,6 +22,10 @@ public class ReturningController {
 
 	/* 반품메인창 */
 	@RequestMapping("/returning/return.do")
+	public String Return(Model model, ReturningVo vo) {
+		return "returning/ReturnForm";
+	}
+	@RequestMapping("/returning/returning.do")
 	public String returning(Model model, ReturningVo vo) {
 		model.addAttribute("list", service.selectPopup(vo));
 		return "returning/ReturnForm";
@@ -33,6 +37,8 @@ public class ReturningController {
 		model.addAttribute("popupList", Oservice.selectPopup(vo));
 		return "returning/ReturnPopup";
 	}
+
+
 	/* 반품팝업 값보내기*/
 	@RequestMapping("/returning/popupSend.do")
 	public String returningPopupSend(OrderVo vo, HttpServletRequest req, HttpSession sess ) {
@@ -76,6 +82,7 @@ public class ReturningController {
 		}
 		return "include/alert";
 	}
+
 
 
 }

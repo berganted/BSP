@@ -1,5 +1,6 @@
 package book;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import util.CommonVo;
@@ -7,16 +8,16 @@ import util.CommonVo;
 public class BookVo extends CommonVo {
 
 	private int b_no;
-	private String b_imgno;
-	private int b_ctgNo1;
-	private int b_ctgNo2;
+	private int b_imgno;
+	private int b_ctgno1;
+	private int b_ctgno2;
 	private String b_title;
 	private String b_content;
 	private String b_author;
 	private String b_publisher;
 	private String b_isbn;
 	private String b_stock;
-	private Date b_regdate;
+	private Timestamp b_regdate;
 	private Date b_intodate;
 	private int b_price;
 	private int b_views;
@@ -26,76 +27,86 @@ public class BookVo extends CommonVo {
 	private String b_introbook;
 	private int b_point;
 	private int r_id;
-	private String orderby; // 정렬 컬럼
-	private String direct; //오름차순 내림차순
+	private String b_imgmain;
+	private int b_ctgno2key;
+	private String b_ctgname2;
 	
 	public BookVo() {
-	
+		this.pageRow = 10;
+		this.reqPage = 1;
+		this.pageRange = 10;
 		this.orderby ="b_regdate";
 		this.direct = "DESC";
 	}
 	
-	
-	
+	public int getB_ctgno2key() {
+		return b_ctgno2key;
+	}
+
+	public void setB_ctgno2key(int b_ctgno2key) {
+		this.b_ctgno2key = b_ctgno2key;
+	}
+
+	public String getB_ctgname2() {
+		return b_ctgname2;
+	}
+
+	public void setB_ctgname2(String b_ctgname2) {
+		this.b_ctgname2 = b_ctgname2;
+	}
+
+	public String getB_imgmain() {
+		return b_imgmain;
+	}
+	public void setB_imgmain(String b_imgmain) {
+		this.b_imgmain = b_imgmain;
+	}
 	public int getB_point() {
 		return b_point;
 	}
-
-
-
 	public void setB_point(int b_point) {
 		this.b_point = b_point;
 	}
-
-
-
 	public String getOrderby() {
 		return orderby;
 	}
-
-
-
 	public void setOrderby(String orderby) {
 		this.orderby = orderby;
 	}
-
-
-
 	public String getDirect() {
 		return direct;
 	}
-
-
-
 	public void setDirect(String direct) {
 		this.direct = direct;
 	}
-
-
-
 	public int getB_no() {
 		return b_no;
 	}
 	public void setB_no(int b_no) {
 		this.b_no = b_no;
 	}
-	public String getB_imgno() {
+	
+	public int getB_imgno() {
 		return b_imgno;
 	}
-	public void setB_imgno(String b_imgno) {
+
+	public void setB_imgno(int b_imgno) {
 		this.b_imgno = b_imgno;
 	}
-	public int getB_ctgNo1() {
-		return b_ctgNo1;
+
+
+
+	public int getB_ctgno1() {
+		return b_ctgno1;
 	}
-	public void setB_ctgNo1(int b_ctgNo1) {
-		this.b_ctgNo1 = b_ctgNo1;
+	public void setB_ctgno1(int b_ctgno1) {
+		this.b_ctgno1 = b_ctgno1;
 	}
-	public int getB_ctgNo2() {
-		return b_ctgNo2;
+	public int getB_ctgno2() {
+		return b_ctgno2;
 	}
-	public void setB_ctgNo2(int b_ctgNo2) {
-		this.b_ctgNo2 = b_ctgNo2;
+	public void setB_ctgno2(int b_ctgno2) {
+		this.b_ctgno2 = b_ctgno2;
 	}
 	public String getB_title() {
 		return b_title;
@@ -136,7 +147,7 @@ public class BookVo extends CommonVo {
 	public Date getB_regdate() {
 		return b_regdate;
 	}
-	public void setB_regdate(Date b_regdate) {
+	public void setB_regdate(Timestamp b_regdate) {
 		this.b_regdate = b_regdate;
 	}
 	public Date getB_intodate() {

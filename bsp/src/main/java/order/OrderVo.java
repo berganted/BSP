@@ -21,7 +21,6 @@ public class OrderVo extends CommonVo {
 	private Timestamp io_date; //출고날짜(배송이후)
 	private String ps_title; //처리상태
 	private String pb_delivery;//주문시 배송옵션
-	
 	private String b_title; //상품명
 	private String b_author; //저자명
 	private int b_price; // 도서 가격

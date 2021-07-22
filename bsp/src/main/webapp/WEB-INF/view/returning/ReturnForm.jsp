@@ -27,9 +27,17 @@ function openZipSearchRT() {
 }
 </script>
 </head>
+<script >
+$(function(){
+
+	$('#pInput').change(function(){
+	console.log(sessionStorage.getItem("key1"))
+		console.log(1);
+	})
+})
+</script>
 <body >
 	<jsp:include page="../include/header.jsp"></jsp:include>
-    <header id="header"></header>
     <div class="wrap">
     <jsp:include page="../include/side2.jsp"></jsp:include>
      <div class="mem_content" style="text-align: center;">
@@ -50,7 +58,7 @@ function openZipSearchRT() {
                         </div>
                 </table>
                 <hr>
-                  <div class="pwrap"><p><input type="text" id="pInput" value=""><br>
+                  <div class="pwrap"><p><input type="text" id="pInput" name="io_no" value=""><br>
                 <table id="retrn_product" class="retrn_tb" > <!-- 주소랑 같은 기능 -->
                     <div class="hwrap"><h4>반품예정상품 <input class="button_s" type="button" value="주문번호 찾기" onclick="showPopup()"></h4></div>
                     
@@ -192,7 +200,6 @@ function openZipSearchRT() {
          </div>
      </aside>        
  </div> 
- <footer  id="footer"></footer>
  <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

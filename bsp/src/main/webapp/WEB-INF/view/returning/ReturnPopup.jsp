@@ -15,22 +15,27 @@
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
 <script>
-function checkpop() {
+$(function(){
 	$("input[type=checkbox]").change(function () {
-		var arTest = [];
+		var arTest = new Array();
 		$("input[name=checkOne]:checked").each(function(){
+			console.log(($(this).val()));
 			arTest.push($(this).val());
+			
 		});
-			console.log("체크된 값 total : " + arTest);
-		$("#cInput").val(arTest);
-	    });
-	} 
+		console.log(arTest);
+		})
+})
 
 </script>
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>
     <article id="article">
+<<<<<<< HEAD
+        <form action="popupsend.do" method="post" name="return_info_submittb">
+=======
         <form action="popupSend.do" method="post" name="return_info_submittb">
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
         <div style="text-align: right; padding-right: 10px; padding-bottom: 10px;">
             <span>
                 <select name="정렬" style="height: 25px; border: 2px solid #221f1f ;">
@@ -56,7 +61,7 @@ function checkpop() {
 
             <c:forEach var="list" items="${popupList}">  
             <tr>
-               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' onclick="checkpop();" ></td>
+               <td><input type="checkbox" value="${list.io_no}"  name="checkOne" id='checkOne' ></td>
                 <td>${list.pb_no }</td>
                 <td><a href="">${list.b_title}</a></td>
                 <td>${list.pb_resname }</td>
@@ -69,9 +74,10 @@ function checkpop() {
         <div class="retrn_submit" style="text-align: center;">
         <div id="result"></div>
             <input type="text" id=cInput><br>
-            <input class="button_m" type="submit" value="선택" onclick="window.close(), info_submit()" >
-            <input class="button_m" type="button" value="취소" onclick="window.close()"  >
+            <input class="button_m" type="submit" value="선택" >
+            <input class="button_m" type="button" value="취소" >
        </div>
+       <div id="t"></div>
     </form>
     </article>
 </body>

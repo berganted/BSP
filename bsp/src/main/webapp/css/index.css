@@ -742,7 +742,7 @@ li {
     border-bottom: 1px solid rgb(206, 205, 205);
 }
 
-.index_miniAd > div> img {
+.index_Ads02 > div> img {
     height: 90px;
     width: 60px;
 }
@@ -754,13 +754,19 @@ li {
     padding-top: 40px;    
 }
 
-.index_Ads02 > .index_miniAd {
-    padding-right: 50px;
-    font-size: 13px;
-    font-weight: bold;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif  
+.index_Ads01 > .index_ad {
+	position : relative;
+	padding-right: 10px;
+	text-align: right;
+	color: #999;
 }
 
+.index_Ads02 > .index_ad {
+	position : relative;
+	padding: 10px 10px 0px 0px;
+	text-align: right;
+	color: #999;
+}
 
 .index_todaysBooks {
     z-index: 1;    
@@ -768,6 +774,7 @@ li {
     width: 60%;
     padding: 20px;
     overflow: hidden;
+    background-color: #e5e5e5;
     /* 요거고침요 */
 }
 .index_todaysBooks1{
@@ -787,7 +794,7 @@ li {
 }
 
 .index_todayDetails {
-    padding-top: 80px;
+    padding-top: 60px;
     height: 360px;
     width: 65%;
 }
@@ -801,9 +808,18 @@ li {
 
 .index_todayDetails {
     text-align: left;
+    font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     line-height: 35px;
+}
+
+.index_todayDetails > li {
+	text-align: left;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    line-height: 35px;
+    color: #999;
 }
 
 .index_todaysBooks img {
@@ -864,7 +880,7 @@ li {
 /*----수정------------------------------------------------------------------*/
 .index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul {
     clear:both;
-    border-top: 1px solid #999;
+    border-top: 1px solid #d7d7d7;
 } 
 .index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul > li {
     line-height: 42px;
@@ -872,6 +888,10 @@ li {
     margin-right: 20px;
     text-align: left;
     margin-left: 30px;
+}
+
+.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul > li:hover {
+    cursor: pointer;
 }
 
 .index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul > li > span {

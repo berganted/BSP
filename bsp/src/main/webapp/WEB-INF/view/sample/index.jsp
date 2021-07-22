@@ -15,10 +15,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
-	<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 3) %></c:set>
 </head>
 <body> 
     <jsp:include page="../include/header.jsp"></jsp:include>
+    <!-- <form method="post" name="frm" id="frm" action="ad.do"
+									enctype="multipart/form-data"> -->
     <div class="wrap">
         
         <!-- visual 부분 -->
@@ -46,16 +47,14 @@
                 <div class="index_randomAds">
                 <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
-                        ${vo.b_content }
-                        <img src="${vo.b_imgno }" alt="">
+                    	<div class="index_ad">AD</div>
+                        <img src="/bsp/img/${vo.b_imgmain }" alt="">
                     </div>
                  </c:forEach>  
-                  <c:forEach var="vo" items="${list5 }" varStatus="status">  
+                  <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
-                        <div class="index_miniAd"> 
-                        	${vo.b_content }
-                        <div><img src="${vo.b_imgno }" alt=""></div>                        
-                    	</div>  
+                    	<div class="index_ad">AD</div>
+                        <div><img src="/bsp/img/${vo.b_imgmain }" alt=""></div>                        
                    	</div>  
                   </c:forEach>                   
                 </div>
@@ -64,11 +63,12 @@
                     <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail">
-                                <img src="${vo.b_imgno }" alt="">
+                                <img src="/bsp/img/${vo.b_imgmain }" alt="">
                             </div>
                             <div class="index_todayDetails">
                                 <div class="index_tdContext">오늘의 책</div>
                                 ${vo.b_content }
+                                <li>${vo.b_title } | ${vo.b_author }</li>
                             </div>
                         </div>
                         </c:forEach> 
@@ -83,16 +83,11 @@
                                <div class="index_board_title on">베스트셀러</div>
                                <div class="index_board_title">인기검색어</div>
                                <div class="index_board_content" id="index_board_notice">
+                               <c:forEach var="vo" items="${list4 }" varStatus="status">
                                   <ul>
-                                      <li>1 책제목/저자.</li>
-                                      <li>2 책제목/저자.</li>
-                                      <li>3 책제목/저자.</li>
-                                      <li>4 책제목/저자.</li>
-                                      <li>5 책제목/저자.</li>
-                                      <li>6 책제목/저자.</li>   
-                                      <li>7 책제목/저자.</li>   
-                                      <li>8 책제목/저자.</li>                                                                                                  
+                                      <li>${vo.b_title } | ${vo.b_author }</li>
                                   </ul>
+                               </c:forEach>
                                </div>
                                <div class="index_board_content" id="index_board_data">
                                  <ul>
@@ -115,7 +110,7 @@
                 <c:forEach var="vo" items="${list1 }" varStatus="status">
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
-                            <img src="${vo.b_imgno }" alt="">
+                            <img src="/bsp/img/${vo.b_imgmain }" alt="">
                         </div>                        
                         <div class="index_NowBooksDetail">
                             <ul>
@@ -134,7 +129,7 @@
             <c:forEach var="vo" items="${list1 }" varStatus="status">
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
-                        <img src="${vo.b_imgno }" alt="">
+                        <img src="/bsp/img/${vo.b_imgmain }" alt="">
                     </div>
                     <div class="index_NowBooksDetail">
                         <ul>                            
@@ -147,7 +142,7 @@
             </c:forEach> 
             </div>
             </div>  
-          
+          	
             <aside class="mypage_ad">
                 <div class="mypage_ad_name"><p>최근본상품</p></div>
                 <div class="img_area">
@@ -157,8 +152,8 @@
                     <p>책이름</p>
                 </div>
             </aside>                  
-        </div>   
-    </div>
+        </div> 
+       <!-- </form> -->  
     <jsp:include page="../include/footer.jsp"></jsp:include>    
 </body>
 </html>

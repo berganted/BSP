@@ -39,7 +39,7 @@
 	
 	
 	<select id="selectAll1" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book
+		SELECT * ,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain FROM book
 		<include refid="bookwhere"/>
 		<!-- ORDER BY ${orderby} ${direct} -->
 		LIMIT 0,3
@@ -62,12 +62,26 @@
 	
 <!-- index.do 오늘의 책 -->
 	<select id="selectAll4" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book WHERE b_no BETWEEN 1 AND 4
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book WHERE b_no BETWEEN 1 AND 5
 		<include refid="bookwhere"/>
 	</select>
 <!-- index.do 광고 -->	
 	<select id="selectAll5" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book WHERE b_no BETWEEN 9 AND 11 ORDER BY rand() LIMIT 1
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain 
+		FROM book WHERE b_no BETWEEN 9 AND 10 ORDER BY rand() LIMIT 1
+		<include refid="bookwhere"/>
+	</select>
+	
+	<!-- <select id="selectAll6" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,(SELECT ad_img FROM ad WHERE book.b_imgno = ad.ad_img) as ad_img 
+		FROM book WHERE b_no BETWEEN 10 AND 11 ORDER BY rand() LIMIT 1
+		<include refid="bookwhere"/>
+	</select> 도윤 test -->
+	
+	<select id="selectAll6" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain 
+		FROM book WHERE b_no BETWEEN 10 AND 11 ORDER BY rand() LIMIT 1
 		<include refid="bookwhere"/>
 	</select>
 	

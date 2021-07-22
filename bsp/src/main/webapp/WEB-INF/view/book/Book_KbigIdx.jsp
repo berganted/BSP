@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,8 +14,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
-	<link rel="stylesheet" href="/bsp/css/style.css">
-	<link rel="stylesheet" href="/bsp/css/reset.css">
+   <link rel="stylesheet" href="/bsp/css/style.css">
+   <link rel="stylesheet" href="/bsp/css/reset.css">
      <script src="/bsp/js/main.js"></script>
      <script src="/bsp/js/big.js"></script>
      
@@ -97,12 +97,12 @@
                 
 
             <div class="BigIndex_newEye"> 눈에 띄는 새책</div>
-           		 <div class="BigIndex_newEye_wrap">
+                  <div class="BigIndex_newEye_wrap">
                 <c:forEach var = "vo" items="${list2 }">
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="/bsp/img/newEye1.jpg" style="width: 200px; height: 300px;"></div>
+                        <div class="newEye_img"><img src="${vo.b_imgno }" style="width: 200px; height: 300px;"></div>
                     </div> 
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
@@ -113,12 +113,12 @@
                             ${vo.b_content }
                             <br> <!-- 임의로  -->
                             아침 먹고 땡 집을 나서려는데 새로 산 구두가 맘에 쏙 들어 날아갈 듯 가벼운 발걸음으로 또각 또각 또각 걷다가
-							아침 먹고 땡 집을 나서려는데 아 오늘따라 허리가 하나도 안 아파 가슴을 쫙 펴니 십년은 젊어진 줄
-							눈을 부라리며 걷다가 똥 밟았네 똥
-                          	
+                     아침 먹고 땡 집을 나서려는데 아 오늘따라 허리가 하나도 안 아파 가슴을 쫙 펴니 십년은 젊어진 줄
+                     눈을 부라리며 걷다가 똥 밟았네 똥
+                             
                         </div>
                     </div> 
-                	</div> 
+                   </div> 
                   
                </c:forEach>
                </div> 
@@ -128,7 +128,7 @@
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <img src="/bsp/img/newStar4.jpg" alt="마지막 몰입", title="마지막 몰입">
+                    <img src="${vo.b_imgno }" alt="마지막 몰입", title="마지막 몰입">
                     <div class="newStar_info">
                         <ul> <br>
                             <li><a class="newStar_title">${vo.b_title }</a></li>
@@ -139,7 +139,7 @@
                     </div>            
                  </div>
                  
-    	   </c:forEach>
+          </c:forEach>
        
 
 

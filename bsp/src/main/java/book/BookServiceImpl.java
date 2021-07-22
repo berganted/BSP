@@ -93,6 +93,25 @@ public class BookServiceImpl implements BookService {
 
 
 	@Override
+	public BookVo selectCtgno2(BookVo vo) {
+		return dao.selectCtgno2(vo);
+	}
+
+
+
+	@Override
+	public List<BookVo> selectctgnamed(BookVo vo) {
+		return dao.selectctgnamed(vo);
+	}
+
+
+
+	@Override
+	public List<BookVo> selectAllBasic(BookVo vo) {
+		return dao.selectAllBasic(vo);
+	}
+	
+	@Override
 	public List<BookVo> selectAlladmin(BookVo vo) {
 		int totCount = dao.count(vo); // 총갯수
 		// 총페이지수
@@ -120,9 +139,46 @@ public class BookServiceImpl implements BookService {
 	}
 
 
+	@Override
+	public List<BookVo> adselect(BookVo vo) {
+		int totCount = dao.count(vo); // 총갯수
+		// 총페이지수
+		int totPage = totCount / vo.getPageRow();
+		if (totCount % vo.getPageRow() > 0) totPage++;
+		// 시작페이지
+		int strPage = (vo.getReqPage()-1)/vo.getPageRange()
+						*vo.getPageRange()+1;
+		int endPage = strPage+vo.getPageRange()-1;
+		if (endPage > totPage) endPage = totPage;
+		
+		vo.setStrPage(strPage);
+		vo.setEndPage(endPage);
+		vo.setTotCount(totCount);
+		vo.setTotPage(totPage);
+		System.out.println(vo);
+		return dao.adselect(vo);
+	}
+
+
 
 	@Override
-	public BookVo ctg2name(BookVo vo) {
-		return dao.ctg2name(vo);
+	public int bookimgad(BookVo vo) {
+		return dao.bookimgad(vo);
 	}
+
+
+
+	@Override
+	public BookVo detailAD(BookVo vo) {
+		return dao.detailAD(vo);
+	}
+	@Override
+	public int adupdate(BookVo vo) {
+		return dao.adupdate(vo);
+	}
+
+
+
+
+
 }

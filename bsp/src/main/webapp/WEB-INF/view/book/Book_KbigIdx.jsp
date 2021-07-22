@@ -35,16 +35,15 @@
         <div class="mem_content">
             
 
-            <div class="BigIndex_newEye">${ctg.b_ctgname2 }</div>
+
+            <div class="BigIndex_newEye">  ${vo.b_ctgname2 } </div>
+
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
-                    <div class="cate2"><a href="Book_smallIdx.html">임신/출산</a></div> 
-                    <div class="cate2"><a href="#">육아</a></div> 
-                    <div class="cate2"><a href="#">자녀교육</a></div> 
-                    <div class="cate2"><a href="#">요리</a></div> 
-                    <div class="cate2"><a href="#">집/살림</a></div> 
-                    <div class="cate2"><a href="#">결혼/가족</a></div> 
-                   
+                <c:forEach var = "vo" items="${selectctgnamed }">
+                    <div class="cate2"><a href="${vo.b_ctgdlink }?b_ctgno2key=${vo.b_ctgno2key}">${vo.b_ctgdetail } </a></div> 
+
+                </c:forEach>   
                 <!-- </div> -->
             </div>
 
@@ -96,8 +95,13 @@
                
                 
 
+<<<<<<< HEAD
             <div class="BigIndex_newEye"> 눈에 띄는 새책</div>
                   <div class="BigIndex_newEye_wrap">
+=======
+            <div class="BigIndex_newEye">베스트셀러</div>
+           		 <div class="BigIndex_newEye_wrap">
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
                 <c:forEach var = "vo" items="${list2 }">
                 
                 <div class="BigIndex_newEye_content">
@@ -123,7 +127,7 @@
                </c:forEach>
                </div> 
 
-            <div class="BigIndex_newEye"> 주목신간</div>
+            <div class="BigIndex_newEye">눈에 띄는 새책 </div>
             <div class="BigIndex_newStar_wrap">
           
              <c:forEach var = "vo" items="${list3 }">

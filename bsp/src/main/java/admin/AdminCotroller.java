@@ -52,6 +52,11 @@ public class AdminCotroller {
 		
 		return "admin/product/index";
 	}
+	@RequestMapping("admin/productAD/index.do")
+	public String productADidx(BookVo vo , Model model) {
+		model.addAttribute("list", bservice.adselect(vo));
+		return "admin/productAD/index";
+	}
 	@RequestMapping("admin/product/insert.do")
 	public String productInsert(BookVo vo , Model model,@RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req) {
 		if(!filename.isEmpty()) {
@@ -73,6 +78,26 @@ public class AdminCotroller {
 		
 		return "redirect:index.do";
 	}
+	@RequestMapping("admin/productAD/insert.do")
+	public String adinsert(BookVo vo , Model model,@RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req) {
+		if(!filename.isEmpty()) {
+			try {
+				String org = filename.getOriginalFilename();//원본 파일명
+				String ext ="";
+				ext = org.substring(org.lastIndexOf("."));
+				String real = new Date().getTime()+ext;//서버에 저장할 파일명
+				String path = req.getRealPath("/ad/");
+				System.out.println(path);
+				filename.transferTo(new File(path+real));
+				vo.setAd_img(real);
+				bservice.bookimgad(vo);
+			}catch (Exception e) {}
+		}
+		bservice.update(vo);
+		
+		return "redirect:index.do";
+	}
+	
 	@RequestMapping("admin/product/update.do")
 	public String update(Model model , BookVo vo, @RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req , HttpServletResponse res) {
 			if(!filename.isEmpty()) {
@@ -99,6 +124,34 @@ public class AdminCotroller {
 			}
 			return "include/alert";			
 	}
+	@RequestMapping("admin/productAD/update.do")
+	public String productADupdate(Model model , BookVo vo, @RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req , HttpServletResponse res) {
+		String real="";
+			if(!filename.isEmpty()) {
+				try {
+				String org = filename.getOriginalFilename();//원본 파일명
+				String ext ="";
+				ext = org.substring(org.lastIndexOf("."));
+				 real = new Date().getTime()+ext;//서버에 저장할 파일명
+				String path = req.getRealPath("/ad/");
+				System.out.println(path);
+				filename.transferTo(new File(path+real));
+				vo.setAd_img(real);
+				}catch (Exception e) {}
+			}
+			bservice.adupdate(vo);
+			int r = bservice.update(vo);
+			if(r > 0) {
+				model.addAttribute("msg", "정상적으로 수정 되었습니다.");
+				model.addAttribute("url", "index.do");
+						
+			}else {
+				model.addAttribute("msg", "수정실패.");
+				model.addAttribute("url", "veiw.do?no="+vo.getAd_no());
+			}
+			return "include/alert";			
+	}
+
 
 	@RequestMapping("admin/member/view.do")
 	public String memberview(UserVo vo, Model model) {
@@ -114,10 +167,19 @@ public class AdminCotroller {
 	public String boardview() {
 		return "admin/board/view";
 	}
+	@RequestMapping("admin/productAD/view.do")
+	public String productADview(BookVo vo, Model model) {
+		model.addAttribute("vo", bservice.detailAD(vo));
+		return "admin/productAD/view";
+	}
 
 	@RequestMapping("admin/product/write.do")
 	public String productwrite() {
 		return "admin/product/write";
+	}
+	@RequestMapping("admin/productAD/write.do")
+	public String productADwrite() {
+		return "admin/productAD/write";
 	}
 	@RequestMapping("admin/board/write.do")
 	public String boardwrite() {

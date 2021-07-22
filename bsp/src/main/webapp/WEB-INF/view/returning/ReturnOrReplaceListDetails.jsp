@@ -32,7 +32,6 @@
                    <td>회송방법</td>
                    <td>환불방법</td>
                    <td>처리상태</td>
-                   <td>조회</td>
                </tr>
                <tr>
                  	<td>${vo.returning_regdate }</td>
@@ -43,8 +42,6 @@
 					<td>${vo.rd_option }</td>
 					<td>${vo.refund_no }</td>
 					<td>${vo.ps_title }</td>
-					<td><a href="detail.do?returning_no=${vo.returning_no} }"><input
-								class="button_s" type="button" value="상세조회"></a></td>
                </tr>
            </table>
 
@@ -114,7 +111,8 @@
            </table>
        </article>
        <div style="text-align: center;">
-       <input class="button_m" type="button" value="반품 내역 목록" >
+      <a href="list.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"> 
+      <input class="button_m" type="button" value="반품 내역 목록"  ></a>
        </div>
     </div>
 

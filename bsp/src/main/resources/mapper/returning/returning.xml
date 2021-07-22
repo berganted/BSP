@@ -2,9 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="returnig">
+		<sql id="returnigWhere">
+		<where>
+			<if test="sval != null and sval != ''">
+				<if test="stype == 'all'">
+					ps_title LIKE '%${sval}%' OR b_title LIKE '%${sval}%'
+				</if>
+				<if test="stype != 'all'">
+					${stype} LIKE '%${sval}%'
+				</if>
+			</if>
+		<!-- 	<if test="m_no != 0">
+				AND m_no=#{m_no}
+			</if> -->
+		</where>
+	</sql>
+	
 	
 		<!-- 반품/교화 전체 내역 -->
-		<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+			<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
 			FROM product_io PI JOIN returning r
 			ON PI.io_no = r.io_no
@@ -14,8 +30,25 @@
 			ON b.b_no = PI.b_no
 			JOIN processing_status ps
 			ON ps.ps_no = r.ps_no
-			GROUP BY PI.pb_no;
-		</select>
+			<include refid="returnigWhere"/>
+			GROUP BY PI.pb_no
+			ORDER BY ${orderby} ${direct}
+			LIMIT ${strIdx},${pageRow}
+			</select>
+			<!-- 페이징처리 -->
+			<select id="count" resultType="int" parameterType="returning.ReturningVo">
+			SELECT COUNT(*) 
+			FROM product_io PI JOIN returning r
+			ON PI.io_no = r.io_no
+			JOIN returning_delivery_info rd
+			ON rd.rd_no = r.rd_no
+			JOIN book b
+			ON b.b_no = PI.b_no
+			JOIN processing_status ps
+			ON ps.ps_no = r.ps_no
+			<include refid="returnigWhere"/>
+			</select>
+		
 		
 		<!-- 메인창에 출력할 쿼리 (팝업에서 받아오는 리스트) -->
 		<select id="selectPopup" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">

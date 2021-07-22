@@ -39,9 +39,18 @@ public class ReturningVo extends CommonVo{
 	private String rd_option; 	//회송시 택배 옵션: 지정/임의발송
 	private int refund_no;
 	private int returning_amount;
-	private Timestamp returning_regdate;
+	private Timestamp returning_regdate;  //반품주문일
 	private int pb_payno; //주문시 결제방법
 	private int b_price;
+	
+	public  ReturningVo() {
+
+		this.pageRow = 10;
+		this.reqPage = 1;
+		this.pageRange = 10;
+		this.orderby ="returning_regdate";
+		this.direct = "DESC";
+	}
 	
 	public int[] getCheckOne() {
 		return checkOne;

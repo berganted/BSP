@@ -6,18 +6,12 @@
             <div class="index_sideCategory">
                 <div class="index_quickCate">빠른분야찾기</div>
                 <div class="index_quickCateDetail">
-                    <li><a href="#">소설/시</a></li>
-                    <li><a href="#">에세이</a></li>
-                    <li><a href="#">인문</a></li>
-                    <li><a href="#">역사</a></li> 
-                    <li><a href="#">예술</a></li> 
-                    <li><a href="#">종교</a></li> 
-                    <li><a href="#">사회</a></li> 
-                    <li><a href="#">과학</a></li> 
-                    <li><a href="#">경제 경영</a></li> 
-                    <li><a href="#">자기계발</a></li> 
-                    <li><a href="#">라이트노벨</a></li> 
-                    <li><a href="#">여행 잡지</a></li> 
+                    <li><a href="Book_KbigIdx.do">소설</a></li>
+                    <li><a href="Book_KbigIdx1.do">경제경영</a></li>
+                    <li><a href="Book_KbigIdx2.do">자연과학</a></li>
+                    <li><a href="#">ㅇㅇ</a></li> 
+                    <li><a href="#">ㅇㅇ</a></li> 
+        
                 </div>
             </div>            
         </div>                   

@@ -79,6 +79,25 @@ public class BookServiceImpl implements BookService {
 
 
 	@Override
+	public BookVo selectCtgno2(BookVo vo) {
+		return dao.selectCtgno2(vo);
+	}
+
+
+
+	@Override
+	public List<BookVo> selectctgnamed(BookVo vo) {
+		return dao.selectctgnamed(vo);
+	}
+
+
+
+	@Override
+	public List<BookVo> selectAllBasic(BookVo vo) {
+		return dao.selectAllBasic(vo);
+	}
+	
+	@Override
 	public List<BookVo> selectAlladmin(BookVo vo) {
 		int totCount = dao.count(vo); // 총갯수
 		// 총페이지수
@@ -104,14 +123,6 @@ public class BookServiceImpl implements BookService {
 	public int bookimg(BookVo vo) {
 		return dao.bookimg(vo);
 	}
-
-
-
-	@Override
-	public BookVo ctg2name(BookVo vo) {
-		return dao.ctg2name(vo);
-	}
-
 
 
 	@Override
@@ -151,4 +162,9 @@ public class BookServiceImpl implements BookService {
 	public int adupdate(BookVo vo) {
 		return dao.adupdate(vo);
 	}
+
+
+
+
+
 }

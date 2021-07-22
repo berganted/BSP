@@ -28,10 +28,44 @@ public class BookVo extends CommonVo {
 	private int b_point;
 	private int r_id;
 	private String b_imgmain;
+	
 	private int b_ctgno2key;
 	private String b_ctgname2;
 	private int ad_no;
 	private String ad_img;
+	private String b_ctgdetail;
+	private String b_ctgdlink;
+	
+	
+	
+	
+	public String getB_ctgdlink() {
+		return b_ctgdlink;
+	}
+
+
+
+	public void setB_ctgdlink(String b_ctgdlink) {
+		this.b_ctgdlink = b_ctgdlink;
+	}
+
+
+
+	public String getB_ctgdetail() {
+		return b_ctgdetail;
+	}
+
+
+
+	public void setB_ctgdetail(String b_ctgdetail) {
+		this.b_ctgdetail = b_ctgdetail;
+	}
+
+
+
+	
+
+
 	public BookVo() {
 		this.pageRow = 10;
 		this.reqPage = 1;
@@ -116,15 +150,27 @@ public class BookVo extends CommonVo {
 	public int getB_ctgno1() {
 		return b_ctgno1;
 	}
+
+
+
 	public void setB_ctgno1(int b_ctgno1) {
 		this.b_ctgno1 = b_ctgno1;
 	}
+
+
+
 	public int getB_ctgno2() {
 		return b_ctgno2;
 	}
+
+
+
 	public void setB_ctgno2(int b_ctgno2) {
 		this.b_ctgno2 = b_ctgno2;
 	}
+
+
+
 	public String getB_title() {
 		return b_title;
 	}

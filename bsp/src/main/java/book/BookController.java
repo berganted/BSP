@@ -39,11 +39,12 @@ public class BookController {
 
 	}
 	
+	// index.do 오늘의 책
 	@RequestMapping("/sample/index.do") 
 	public String index(BookVo vo , Model model) {
 		model.addAttribute("list1", service.selectAll1(vo));
-		model.addAttribute("list2", service.selectAll2(vo));
-		model.addAttribute("list3", service.selectAll3(vo));
+		model.addAttribute("list4", service.selectAll4(vo));
+		model.addAttribute("list5", service.selectAll5(vo));
 		
 	return "/sample/index" ;
 

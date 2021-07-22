@@ -10,6 +10,8 @@ public interface BookService {
 	List<BookVo> selectAll1(BookVo vo);
 	List<BookVo> selectAll2(BookVo vo);
 	List<BookVo> selectAll3(BookVo vo);
+	List<BookVo> selectAll4(BookVo vo);
+	List<BookVo> selectAll5(BookVo vo);
 	BookVo deatil(BookVo vo);
 	int insert(BookVo vo);
 	BookVo edit(BookVo vo);

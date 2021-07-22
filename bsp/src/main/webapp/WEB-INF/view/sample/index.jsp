@@ -44,32 +44,31 @@
             </div>
             <div class="index_container">
                 <div class="index_randomAds">
+                <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
-                        아마존 27주 연속 1위<br> 어쩌구를 잇는 신예 스릴러<br>
-                        <img src="/bsp/img/book09.jpg" alt="">
+                        ${vo.b_content }
+                        <img src="${vo.b_imgno }" alt="">
                     </div>
+                 </c:forEach>  
+                  <c:forEach var="vo" items="${list5 }" varStatus="status">  
                     <div class="index_Ads02">
-                        <div class="index_miniAd"> 쪼그만 <br>광고<br> 책소개책소개<br>책소개</div>
-                        <div><img src="/bsp/img/book${ran}.jpg" alt=""></div>                        
-                    </div>                    
+                        <div class="index_miniAd"> 
+                        	${vo.b_content }
+                        <div><img src="${vo.b_imgno }" alt=""></div>                        
+                    	</div>  
+                   	</div>  
+                  </c:forEach>                   
                 </div>
                 <div class="index_todaysBooks mySwiper">
                     <div class=" swiper-wrapper">
-                    <c:forEach var="vo" items="${list1 }" varStatus="status">
+                    <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail">
                                 <img src="${vo.b_imgno }" alt="">
                             </div>
                             <div class="index_todayDetails">
-                                <div class="index_tdContext">오늘의 책${ran}</div>
+                                <div class="index_tdContext">오늘의 책</div>
                                 ${vo.b_content }
-                            	<br> <!-- 임의로  -->
-                                <li>공깃밥을 박차고 우주로 날아간 호라이의 대모험! <br>
-                                    유쾌한 상상력으로 어린이의 마음을 그리는 작가, <br>
-                                    눈물바다』 서현의 달걀프라이 그림책. <br>
-                                    달걀프라이에서 시작한 거침없는 상상을 감각적인 그림으로 두 권에 담았다. <br>
-                                    끝없이 이어지는 기발하고 엉뚱하며 유쾌한 이야기를 따라가보자.
-                                </li>                        
                             </div>
                         </div>
                         </c:forEach> 

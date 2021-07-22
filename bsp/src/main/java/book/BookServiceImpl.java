@@ -75,4 +75,15 @@ public class BookServiceImpl implements BookService {
 	public List<BookVo> selectAll3(BookVo vo) {
 		return dao.selectAll3(vo);
 	}
+	
+	// index.do 오늘의 책	
+	@Override
+	public List<BookVo> selectAll4(BookVo vo) {
+		return dao.selectAll4(vo);
+	}
+	// index.do 광고
+	@Override
+	public List<BookVo> selectAll5(BookVo vo) {
+		return dao.selectAll5(vo);
+	}
 }

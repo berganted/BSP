@@ -30,6 +30,14 @@ public class BookDao {
 		return sqlSession.selectList("book.selectAll3", vo);
 	}
 	
+	// index.do 오늘의책
+	public List<BookVo> selectAll4(BookVo vo) {
+		return sqlSession.selectList("book.selectAll4", vo);
+	}
+	// index.do 광고
+	public List<BookVo> selectAll5(BookVo vo) {
+		return sqlSession.selectList("book.selectAll5", vo);
+	}
 	
 	public int count(BookVo vo) {
 		return sqlSession.selectOne("book.count", vo);
@@ -50,4 +58,10 @@ public class BookDao {
 	public int delete(BookVo vo) {
 		return sqlSession.delete("book.delete", vo);
 	}
+
+
+
+
+
+	
 }

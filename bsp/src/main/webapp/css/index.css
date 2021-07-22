@@ -742,7 +742,7 @@ li {
     border-bottom: 1px solid rgb(206, 205, 205);
 }
 
-.index_Ads02 > div > img {
+.index_miniAd > div> img {
     height: 90px;
     width: 60px;
 }
@@ -766,7 +766,7 @@ li {
     z-index: 1;    
     height: 400px;
     width: 60%;
-    padding: 10px;
+    padding: 20px;
     overflow: hidden;
     /* 요거고침요 */
 }
@@ -781,14 +781,14 @@ li {
 }
 
 .index_todaysThumnail {
-    padding-top: 60px;
-    height: 400px;
+    padding-top: 40px;
+    height: 360px;
     width: 35%;
 }
 
 .index_todayDetails {
     padding-top: 80px;
-    height: 400px;
+    height: 360px;
     width: 65%;
 }
 
@@ -799,12 +799,11 @@ li {
     padding-bottom: 10px;
 }
 
-.index_todayDetails > li {
+.index_todayDetails {
     text-align: left;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 15px;
     line-height: 35px;
-
 }
 
 .index_todaysBooks img {

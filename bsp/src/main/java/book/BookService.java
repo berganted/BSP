@@ -8,6 +8,7 @@ public interface BookService {
 	
 	
 	List<BookVo> selectAllBasic(BookVo vo);
+	List<BookVo> selectAlladmin(BookVo vo);
 	List<BookVo> selectAll1(BookVo vo);
 	List<BookVo> selectAll2(BookVo vo);
 	List<BookVo> selectAll3(BookVo vo);
@@ -18,4 +19,5 @@ public interface BookService {
 	int update(BookVo vo);
 	int delete(BookVo vo);
 	BookVo selectCtgno2(BookVo vo);
+	int bookimg(BookVo vo);
 }

@@ -4,9 +4,9 @@
 
 	<sql id="bookwhere">
 		<where>
-			<if test="sval != null and sval != ''">
-				<if test="stype == 'all'">
-					id LIKE '%${sval}%' OR name LIKE '%${sval}%'
+				<if test="sval != null and sval !=''">
+					<if test="stype == 'all'">
+					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
@@ -21,8 +21,25 @@
 		SELECT * FROM book WHERE b_ctgno1 = 1
 		<include refid="bookwhere"/>
 		<!-- ORDER BY ${orderby} ${direct} -->
+		 ORDER BY ${orderby} ${direct}	
 	</select>
 		
+	<select id="selectAlladmin" resultType="book.BookVo" parameterType="book.BookVo"><!-- 건들지마샘 -->
+		SELECT * FROM book
+		<include refid="bookwhere"/>
+		 ORDER BY b_regdate ${direct}	
+		 LIMIT ${strIdx},${pageRow} 
+	</select>
+	
+	<!-- 	
+	<select id="selectAll" resultType="comment.CommentVo" parameterType="comment.CommentVo">
+		SELECT *,(SELECT name FROM user WHERE no=comment.user_no ) AS name FROM comment  누가 썼는지 알고싶으면 있어야해 
+		WHERE board_no=#{board_no} AND tablename=#{tablename}
+		ORDER BY regdate DESC
+		LIMIT ${startIdx},${pageRow}
+	</select> -->
+	
+	
 	<select id="selectAll1" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT * FROM book
 		<include refid="bookwhere"/>
@@ -35,7 +52,7 @@
 		SELECT * FROM book WHERE b_no BETWEEN 2 AND 7
 		<include refid="bookwhere"/>
 		<!-- ORDER BY ${orderby} ${direct} -->
-		LIMIT 0,4
+			LIMIT 0,4
 	</select>
 	
 	
@@ -72,6 +89,7 @@
 
 	<select id="count" resultType="int" parameterType="book.BookVo">
 		SELECT COUNT(*) FROM book
+		<include refid="bookwhere"/>
 	</select>
 	
 	<!-- 
@@ -80,14 +98,24 @@
 	
 	 -->
  
+
+ 
+ 	<insert id="bookimg" parameterType="book.BookVo">
+		INSERT INTO img (b_imgmain) VALUES(#{b_imgmain})
+		<selectKey keyProperty="b_imgno" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+ 
 	<insert id="insert" parameterType="book.BookVo">
-		INSERT INTO book (b_imgno, b_ctgno1, b_ctgno2, b_title, b_content, b_author,b_publisher, b_isbn, b_stock, b_regdate, b_intodate, b_price, b_views, b_index, b_pages, b_introauthor, b_introbook)
-		VALUES (#{b_imgno},#{b_ctgno1},#{b_ctgno2},#{b_title}, #{b_content},  #{b_author}, #{b_publisher}, #{b_isbn}, #{b_stock},NOW(),0, #{b_price},0, #{b_index},#{b_pages},#{b_introauthor},#{b_introbook})  
+	INSERT INTO book (b_imgno,b_ctgno1,b_ctgno2,b_title,b_content,b_author,b_publisher,b_isbn,b_stock,b_price,b_index,b_pages,b_introauthor,b_introbook,b_point,b_regdate)
+	VALUES (#{b_imgno},#{b_ctgno1},#{b_ctgno2},#{b_title},#{b_content},#{b_author},#{b_publisher},#{b_isbn},#{b_stock},#{b_price},#{b_index}
+	,#{b_pages},#{b_introauthor},#{b_introbook},#{b_point},NOW())
 	</insert> 
 	
 
 	<select id="detail" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book WHERE b_no = #{b_no}
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain FROM book WHERE b_no = #{b_no}
 	</select>
 	
 	
@@ -96,11 +124,14 @@
 	</delete>
 	
 	<update id="update" parameterType="book.BookVo">
-		UPDATE board SET
-			b_title=#{b_title}, b_content=#{b_content}
+		UPDATE book SET
+		<if test="b_imgno != 0">
+			b_imgno=#{b_imgno},
+			</if>
+			b_ctgno1=#{b_ctgno1},b_ctgno2=#{b_ctgno2},b_title=#{b_title},b_content=#{b_content},b_author=#{b_author},b_publisher=#{b_publisher}
+			,b_isbn=#{b_isbn},b_stock=#{b_stock},b_price=#{b_price},b_index=#{b_index},b_pages=#{b_pages},b_introauthor=#{b_introauthor},b_introbook=#{b_introbook}
+			,b_point=#{b_point},b_intodate=#{b_intodate}
 		WHERE b_no=#{b_no}
 	</update>
-	
-	
 	
 </mapper>

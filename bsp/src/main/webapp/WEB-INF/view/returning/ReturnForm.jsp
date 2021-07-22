@@ -15,21 +15,39 @@
     <script src="/bsp/js/yesol.js"></script><!-- 예솔 스크립트 -->
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script type="text/javascript" src="//cdn.poesis.kr/post/popup.min.js" charset="UTF-8"></script>
-
+<script>
+function openZipSearchRT() {
+    new daum.Postcode({
+       oncomplete: function (data) {
+          $('[name=rd_zipcode]').val(data.zonecode); // 우편번호 (5자리)
+           $('[name=rd_addr1]').val(data.address);
+           $('[name=rd_addr2]').val(data.buildingName);
+           }
+       }).open();
+}
+</script>
 </head>
+<script >
+$(function(){
+
+	$('#pInput').change(function(){
+	console.log(sessionStorage.getItem("key1"))
+		console.log(1);
+	})
+})
+</script>
 <body >
 	<jsp:include page="../include/header.jsp"></jsp:include>
-    <header id="header"></header>
     <div class="wrap">
     <jsp:include page="../include/side2.jsp"></jsp:include>
      <div class="mem_content" style="text-align: center;">
      <h1>반품 신청서</h1>
-        <form action="" method="POST">
+        <form action="insert.do" method="POST">
             <div id="article">
                 <table id="retrn_type" class="retrn_tb" >
                     <h4>반품 구분</h4>
                        <div class="retrn_radio">
-                            <input type="radio" name="divide" value="return" checked>반품
+                            <input type="radio" name="returning_category" id="returning_category"  value="return" checked>반품
                        </div>
                        <div class="pwrap">
                             <p>
@@ -40,7 +58,7 @@
                         </div>
                 </table>
                 <hr>
-                  <div class="pwrap"><p><input type="text" id="pInput" value=""><br>
+                  <div class="pwrap"><p><input type="text" id="pInput" name="io_no" value=""><br>
                 <table id="retrn_product" class="retrn_tb" > <!-- 주소랑 같은 기능 -->
                     <div class="hwrap"><h4>반품예정상품 <input class="button_s" type="button" value="주문번호 찾기" onclick="showPopup()"></h4></div>
                     
@@ -62,8 +80,16 @@
             			   </tr>
                 		</c:if>
                 		</c:forEach>
+                		 <tr>
+                		 		<!-- rd_no, returning_amount -->
+                			<td><input type="text" name="pb_no" value="${1}"></td> <%-- ${vo.pb_no} --%>
+               			    <td><input type="text" name="b_no" value="${2}"></td><%-- ${vo.b_no} --%>
+               			    <td><input type="text" name="ps_no" value="${3}"></td><%-- ${vo.ps_no} --%>
+                			<td><input type="text" name="pb_no" value="${4}"></td><%-- ${vo.ps_no} --%>
+                			<td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a></td>
+            			   </tr>
                 </table><br>
-              
+              						
                     * 반품 조치가 필요한 상품과 수량을 체크해주십시오.<br>
                  </p>
                 </div>
@@ -72,11 +98,11 @@
                         <div class="hwrap"><h4>사유선택</h4></div>
                         <tr>
                          <div class="retrn_reason_option_tb" >
-                            <input type="radio" name="reason" value="1" onclick="showTextarea(this.value,'etc_view');"> 단순변심 
-                            <input type="radio" name="reason" value="2" onclick="showTextarea(this.value,'etc_view');"> 상품불량 
-                            <input type="radio" name="reason" value="3" onclick="showTextarea(this.value,'etc_view');"> 기타
+                            <input type="radio" name="returning_reason_no" id="returning_reason_no" value="1" onclick="showTextarea(this.value,'etc_view');"> 단순변심 
+                            <input type="radio" name="returning_reason_no" id="returning_reason_no" value="2" onclick="showTextarea(this.value,'etc_view');"> 상품불량 
+                            <input type="radio" name="returning_reason_no" id="returning_reason_no" value="3" onclick="showTextarea(this.value,'etc_view');"> 기타
                         <div id="etc_view" style="display:none">
-                            <textarea id="reason_etc_view"  name="reason"  rows="5" cols="50">사유를 입력해주세요!</textarea><br>
+                            <textarea id="reason_etc_view"  name="return_reason_detail"  rows="5" cols="50">사유를 입력해주세요!</textarea><br>
                         </div>
                         <div class="pwrap">
                         <p>
@@ -90,8 +116,8 @@
                     <table id="retrn_delivery" class="retrn_tb" >
                         <div class="hwrap"><h4>회송방법 선택</h4></div>
                     <tr>
-                        <input type="radio" name="returning" value="cj">지정택배사<br>
-                        <input type="radio" name="returning" value="discretion ">고객임의발송<br>
+                        <input type="radio" name="rd_option" id="rd_option" value="cj">지정택배사<br>
+                        <input type="radio" name="rd_option" id="rd_option" value="discretion ">고객임의발송<br>
                         <div class="pwrap"><p>
                         * 알라딘지정택배사 : 반송비는 2,000원이며, 상품도착 후 환불시 차감됩니다.<br>
                         (반품신청 접수->2-3일내 방문 회수->3-4일내 환불 예상)<br>
@@ -107,37 +133,33 @@
             
                             <tr>
                                 <td id="retrn_info_tag">이름</td>
-                                <td id="retrn_info_val"><input type="text" name="retrn_name" style="width:173px;" ></td>
+                                <td id="retrn_info_val"><input type="text" name="rd_name" style="width:173px;" ></td>
                             </tr>
                     
                             <tr class="adddiv" >
                                 <td id="retrn_info_tag">우편번호</label></td>
-                                <td id="retrn_info_val";>
-                                    <input type="text"  name="add_1" maxlength="5" style="width:173px; " > 
-                                    <button class="button_s" type="button" onclick="openZipSearch()">검색</button>
+                                <td id="retrn_info_val">
+                                    <input type="text"  name="rd_zipcode" maxlength="5" style="width:173px; " > 
+                                    <button class="button_s" type="button" onclick="openZipSearchRT()">검색</button>
                                     </td>
                                 
                             </tr>
                                 <tr class="adddiv">                           
                                     <td id="retrn_info_tag"><label>도로명주소</label></td>
-                                    <td id="retrn_info_val"><input type="text" name="add_2" style="width:250px; " /></td>
+                                    <td id="retrn_info_val"><input type="text" name="rd_addr1" style="width:250px; " /></td>
                             </tr>
                             <tr class="adddiv">
                                     <td id="retrn_info_tag"><label>상세주소</label></td>
-                                    <td id="retrn_info_val"><input type="text" name="add_3" style="width:250px; "/></td>
+                                    <td id="retrn_info_val"><input type="text" name="rd_addr2" style="width:250px; "/></td>
                             </tr>
                             <tr>
                                     <td id="retrn_info_tag">* 휴대폰번호</td>
-                                    <td id="retrn_info_val"><input type="number" value="79791450" name="tel" ></td>
-                            </tr>
-                            <tr>
-                                    <td id="retrn_info_tag">비상연락처</td>
-                                    <td id="retrn_info_val"><input type="number" value="79791450" name="subtel" ></td>
+                                    <td id="retrn_info_val"><input type="number" value="79791450" name="rd_tel" ></td>
                             </tr>
                             
                             <tr>
                                     <td id="retrn_info_tag">회송당부메세지<br> [선택]</td>
-                                    <td id="retrn_info_val_msg"><textarea cols="50" rows="10" name="message"> </textarea> <td>
+                                    <td id="retrn_info_val_msg"><textarea cols="50" rows="10" name="rd_req"> </textarea> <td>
                             </tr>                         
                     </table>
                     <div class="pwrap"><p>
@@ -150,8 +172,8 @@
                     <table id="retrn_account" class="retrn_tb">
                         <tr>
                             <td style="text-align: center;"> 
-                            <input type="radio" name="refund" value="cash">현금
-                            <input type="radio" name="refund" value="card">신용카드 또는 기타결제 승인취소<br>
+                            <input type="radio" name="refund_no" value="1">현금
+                            <input type="radio" name="refund_no" value="2">신용카드 또는 기타결제 승인취소<br>
                             <div class="pwrap"><p>
                             * 주문 환불은 결제한 수단과 동일한 수단으로 환불을 원칙으로 합니다.<br>
                             * 결제한 수단으로 환불이 불가한 일부 상황에서는 예치금 및 환전캐시등의 결제 타입에 상응하는 부가결제 수단으로 환불합니다.<br>
@@ -178,7 +200,6 @@
          </div>
      </aside>        
  </div> 
- <footer  id="footer"></footer>
  <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

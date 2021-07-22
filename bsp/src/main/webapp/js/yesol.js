@@ -3,9 +3,9 @@
     function openZipSearch() {
          new daum.Postcode({
             oncomplete: function (data) {
-               $('[name=M_Zipcord]').val(data.zonecode); // 우편번호 (5자리)
-                $('[name=M_Addr1]').val(data.address);
-                $('[name=M_Addr2]').val(data.buildingName);
+               $('[name=m_zipcode]').val(data.zonecode); // 우편번호 (5자리)
+                $('[name=m_addr1]').val(data.address);
+                $('[name=m_addr2]').val(data.buildingName);
                 }
             }).open();
     }

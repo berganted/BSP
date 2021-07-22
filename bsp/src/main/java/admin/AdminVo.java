@@ -7,6 +7,13 @@ public class AdminVo extends CommonVo {
 	private String a_pwd;
 	private String a_name;
 	
+	public AdminVo() {
+		this.pageRow = 10;
+		this.reqPage = 1;
+		this.pageRange = 10;
+		this.orderby ="b_regdate";
+		this.direct = "DESC";
+	}
 	
 	public String getA_name() {
 		return a_name;
@@ -26,5 +33,6 @@ public class AdminVo extends CommonVo {
 	public void setA_pwd(String a_pwd) {
 		this.a_pwd = a_pwd;
 	}
+	
 
 }

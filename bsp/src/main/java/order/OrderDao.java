@@ -20,8 +20,11 @@ public class OrderDao {
 	public int count(OrderVo vo) {
 		return sessionTemplate.selectOne("order.count",vo);
 	}
-	public OrderVo detail(OrderVo vo) {
-		return sessionTemplate.selectOne("order.detail",vo);
+	public OrderVo detail1(OrderVo vo) {
+		return sessionTemplate.selectOne("order.detail1",vo);
+	}
+	public List<OrderVo> detail2(OrderVo vo) {
+		return sessionTemplate.selectList("order.detail2",vo);
 	}
 	public int insert(OrderVo vo) {
 		return sessionTemplate.insert("order.insert",vo);

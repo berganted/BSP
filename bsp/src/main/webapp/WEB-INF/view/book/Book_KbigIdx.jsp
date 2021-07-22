@@ -35,7 +35,9 @@
         <div class="mem_content">
             
 
+
             <div class="BigIndex_newEye">  ${vo.b_ctgname2 } </div>
+
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
                 <c:forEach var = "vo" items="${selectctgnamed }">

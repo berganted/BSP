@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,56 +21,63 @@
     <div class="mem_content">
         <h1>전체 주문 내역</h1>
         <article id="article">
-                <div style="text-align: right; padding-right: 10px; padding-bottom: 10px;">
-                    <span>
-                        <select name="list" style="height: 30px; border: 2px solid #221f1f;" >
-                            <option value="b_title" selected> 상품 명</option>
-                            <option value="order_no">주문번호</option>
-                            <option value="order_date">주문일</option>
-                            <option value="order_price">가격</option>
-                        </select>
-                        <input type="text" name="검색" style="height: 30px; border: 2px solid #221f1f;">
-                        <input class="button_m" type="submit" value="검색">
-                    </span>
-                </div>
-            <table id="order_tb">
+       <!-- 페이지처리 -->
+                        <div class="bbsSearch" style="margin-left: 782px" >
+                        <form method="get" name="searchForm" id="searchForm" action="">
+                            <span class="srchSelect">
+                                <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
+                                    <option value="all">전체</option>
+                                    <option value="ps_title" <c:if test="${param.stype=='ps_title'}">selected</c:if>>처리상태</option>
+                                    <option value="b_title" <c:if test="${param.stype=='b_title'}">selected</c:if>>상품명</option>
+                                </select>
+                            </span>
+                            <span class="searchWord"  >
+                                <input type="text" id="sval" name="sval" value="${param.sval }"  title="검색어 입력">
+                                <input type="button" id="" value="검색" title="검색" onclick="$('#searchForm').submit();">
+                            </span>
+                        </form>                        
+                    </div>                     
+             <table id="order_tb">
                 <tr>
                     <td>주문일</td> 
                     <td>주문번호</td> 
                     <td>수령인</td>
                     <td>주문상품</td>
                     <td>조회</td>
-                    <td colspan="3">배송</td>
+                    <td>배송상태</td>
                 </tr>
-
+                	<c:if test="${empty orderList}">
+								<tr>
+									<td class="first" colspan="6">주문한 내역이 없습니다.</td>
+								</tr>
+					</c:if>
+					<c:forEach var="list" items="${orderList}">  
                 <tr>
-                    <td>2021-06-30</td>
-                    <td><a href="Order list(details).html">001-A</a></td>
-                    <td>전나나</td>
-                    <td>자바의 정석&nbsp;총 33권</td>
-                    <td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a></td>
-                    <td><input class="button_s" type="button" value="배송추적"></td>
+                    <td>${list.pb_orderdate }</td>
+                    <td><a href="/bsp/order/detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
+                    	${list.pb_no}</a></td>
+                    <td>${list.pb_resname}</td>
+                    <td>&nbsp;총 33권</td>
+                    <td><a href="/bsp/order/detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
+                    	<input class="button_s" type="button" value="상세조회"></a></td>
+                    <td>${list.ps_title}</td>
                 </tr>
-    
-       
-                <tr>
-                    <td>2021-06-30</td>
-                    <td><a href="">001-A</a></td>
-                    <td>박도윤</td>
-                    <td>만수야 사랑해&nbsp;총 1권</td>
-                    <td><input class="button_s" type="button" value="상세조회"></td>
-                    <td><input class="button_s" type="button" value="배송추적"></td>
-                </tr>
-            
-                 <tr>
-                    <td>2021-06-30</td>
-                    <td><a href="">001-A</a></td>
-                    <td>양은솔</td>
-                    <td>양옹야오애옹&nbsp;총 5권</td>
-                    <td><input class="button_s" type="button" value="상세조회"></td>
-                    <td><input class="button_s" type="button" value="배송추적"></td>
-                 </tr>
+    				</c:forEach>
         </table>
+         <div class="pagenate clear">
+                        <ul class='paging'> 
+                        <c:if test="${orderVo.strPage > orderVo.pageRange}">
+                        	<li><a href="list.do?reqPage=${orderVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
+                        </c:if>
+                        <c:forEach var="rp" begin="${orderVo.strPage}" end="${orderVo.endPage }">
+                            <li><a href='list.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==orderVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                        </c:forEach>
+                        <c:if test="${orderVo.totPage > orderVo.endPage}">
+                        	<li><a href="list.do?reqPage=${orderVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
+                        </c:if>
+                        </ul> 
+                    </div>
+                    
         </article>
     </div>
    <aside class="mypage_ad">

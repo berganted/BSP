@@ -64,7 +64,7 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public List<BookVo> selectAll1(BookVo vo) {
-		return dao.selectAll3(vo);
+		return dao.selectAll1(vo);
 	}
 
 	@Override
@@ -74,5 +74,26 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<BookVo> selectAll3(BookVo vo) {
 		return dao.selectAll3(vo);
+	}
+
+
+
+	@Override
+	public BookVo selectCtgno2(BookVo vo) {
+		return dao.selectCtgno2(vo);
+	}
+
+
+
+	@Override
+	public List<BookVo> selectctgnamed(BookVo vo) {
+		return dao.selectctgnamed(vo);
+	}
+
+
+
+	@Override
+	public List<BookVo> selectAllBasic(BookVo vo) {
+		return dao.selectAllBasic(vo);
 	}
 }

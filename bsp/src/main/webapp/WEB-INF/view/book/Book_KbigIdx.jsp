@@ -35,16 +35,13 @@
         <div class="mem_content">
             
 
-            <div class="BigIndex_newEye">가정살림</div>
+            <div class="BigIndex_newEye">  ${vo.b_ctgname2 } </div>
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
-                    <div class="cate2"><a href="Book_smallIdx.html">임신/출산</a></div> 
-                    <div class="cate2"><a href="#">육아</a></div> 
-                    <div class="cate2"><a href="#">자녀교육</a></div> 
-                    <div class="cate2"><a href="#">요리</a></div> 
-                    <div class="cate2"><a href="#">집/살림</a></div> 
-                    <div class="cate2"><a href="#">결혼/가족</a></div> 
-                   
+                <c:forEach var = "vo" items="${selectctgnamed }">
+                    <div class="cate2"><a href="${vo.b_ctgdlink }?b_ctgno2key=${vo.b_ctgno2key}">${vo.b_ctgdetail } </a></div> 
+
+                </c:forEach>   
                 <!-- </div> -->
             </div>
 
@@ -96,13 +93,13 @@
                
                 
 
-            <div class="BigIndex_newEye"> 눈에 띄는 새책</div>
+            <div class="BigIndex_newEye">베스트셀러</div>
            		 <div class="BigIndex_newEye_wrap">
                 <c:forEach var = "vo" items="${list2 }">
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="/bsp/img/newEye1.jpg" style="width: 200px; height: 300px;"></div>
+                        <div class="newEye_img"><img src="${vo.b_imgno }" style="width: 200px; height: 300px;"></div>
                     </div> 
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
@@ -123,12 +120,12 @@
                </c:forEach>
                </div> 
 
-            <div class="BigIndex_newEye"> 주목신간</div>
+            <div class="BigIndex_newEye">눈에 띄는 새책 </div>
             <div class="BigIndex_newStar_wrap">
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <img src="/bsp/img/newStar4.jpg" alt="마지막 몰입", title="마지막 몰입">
+                    <img src="${vo.b_imgno }" alt="마지막 몰입", title="마지막 몰입">
                     <div class="newStar_info">
                         <ul> <br>
                             <li><a class="newStar_title">${vo.b_title }</a></li>

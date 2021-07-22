@@ -16,6 +16,10 @@ public class BookDao {
 		return sqlSession.selectList("book.selectAll", vo);
 	}
 	
+	public List<BookVo> selectAllBasic(BookVo vo) {
+		return sqlSession.selectList("book.selectAllBasic", vo);
+	}
+	
 	
 	
 	
@@ -28,6 +32,10 @@ public class BookDao {
 	}
 	public List<BookVo> selectAll3(BookVo vo) {
 		return sqlSession.selectList("book.selectAll3", vo);
+	}
+	
+	public List<BookVo> selectctgnamed(BookVo vo) {
+		return sqlSession.selectList("book.selectctgnamed", vo);
 	}
 	
 	
@@ -49,5 +57,9 @@ public class BookDao {
 	
 	public int delete(BookVo vo) {
 		return sqlSession.delete("book.delete", vo);
+	}
+	
+	public BookVo selectCtgno2(BookVo vo) {
+		return sqlSession.selectOne("book.selectCtgno2", vo);
 	}
 }

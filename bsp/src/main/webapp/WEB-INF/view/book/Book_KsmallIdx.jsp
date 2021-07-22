@@ -50,17 +50,15 @@
     <script>
     
 
-/*     $(function() {
-
-        $("#divnum").change(function() {
-
-            var v = $("#divnum").val();
-
-           alert("1 : "+v);
-
-        });
-
-    }); */
+    function OnChange()
+    {    
+      var gubun = document.getElementById("KaKaoF").options[document.getElementById("KaKaoF").selectedIndex].value;
+      var img = "";
+      if ( gubun != "X" ){
+        img += "<img src='/sample/test/"+gubun+".jpg' style='width: 100px; height: 80px;'>";    
+        document.getElementById("img_out").innerHTML = img;
+      }
+    }
 
     </script>
     
@@ -81,13 +79,13 @@
         </div>  
 
         <div class="mem_content">
-            <h2 class="main_top">임신 / 출산</h2>
-            <div class="smallCtg_area"> 
+            <h2 class="main_top"> ${bookVo.b_ctgdetail }</h2>   
+           <!--  <div class="smallCtg_area"> 
                 <div class="cate2"><a href="#">임신</a></div> 
                 <div class="cate2"><a href="#">태교</a></div> 
                
 
-            </div>
+            </div> -->
             <div class="indexWrap">
                 <div class="indexPlace">
                     <span class="original"><a href="#">기본순</a></span>
@@ -142,7 +140,7 @@
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
                         <span class="s_bookTitle" style="font-size: 20px;">
-                            <b>임신 출산 육아  대백과</b>
+                            <b>${vo.b_title }</b>
                         </span>
                         <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_regdate}" pattern="yyyy-MM-dd" /></span> </span>
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }원</span>
@@ -167,7 +165,7 @@
                            
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="5">
+                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
                                       

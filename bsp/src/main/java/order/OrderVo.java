@@ -21,7 +21,14 @@ public class OrderVo extends CommonVo {
 	private Timestamp io_date; //출고날짜(배송이후)
 	private String ps_title; //처리상태
 	private String b_title; //상품명
+	private int[] checkOne;
 	
+	public int[] getCheckOne() {
+		return checkOne;
+	}
+	public void setCheckOne(int[] checkOne) {
+		this.checkOne = checkOne;
+	}
 	public String getB_title() {
 		return b_title;
 	}

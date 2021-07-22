@@ -24,6 +24,29 @@
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="blist">
+						<form method="get" name="searchForm" id="searchForm" action=""> 
+									 
+									<div class="search">
+									<span class="srchSelect">	
+                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                    <option value="DESC"<c:if test="${param.direct=='DESC'}"> selected</c:if>>내림차순</option>
+                                    <option value="ASC" <c:if test="${param.direct=='ASC'}"> selected</c:if>>오름차순</option>
+                                </select>
+                            </span>
+										<select name="stype" title="검색을 선택해주세요">
+											<option value="all">전체</option>
+											<option value="b_title"
+												<c:if test="${param.stype=='b_title'}"> selected</c:if>>제목</option>
+											<option value="b_publisher"
+												<c:if test="${param.stype=='b_publisher'}"> selected</c:if>>출판사</option>
+											<option value="b_stock"
+												<c:if test="${param.stype=='b_stock'}"> selected</c:if>>재고</option>
+										</select> <input type="text" name="sval" value=""
+											title="검색할 내용을 입력해주세요" /> <input type="image"
+											src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
+											class="sbtn" alt="검색" onclick="$('#searchForm').submit();"/>
+									</div>
+								</form>
 							<span><strong>총 ${bookVo.totCount }개</strong>  |  ${bookVo.reqPage }/${bookVo.totPage }</span>
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
@@ -72,42 +95,23 @@
 							</div>
 							<!--//btn-->
 							<!-- 페이징 처리 -->
-							<div class="page">
-                        <ul class='paging'>
-                        	<c:if test="${bookVo.strPage > bookVo.pageRange}"><li><a href="index.do?reqPage=${bookVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li></c:if>
-                       	<c:forEach var="rp" begin="${bookVo.strPage }" end="${bookVo.endPage }">
-                            <li><a href='index.do?reqPage=${rp }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp}</a></li>
-                        </c:forEach>
-                          	<c:if test="${bookVo.totPage > bookVo.endPage}"><li><a href="index.do?reqPage=${bookVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li></c:if>      
-                        </ul> 
-                    </div>
+							<div class='page'>
+									<c:if test="${bookVo.strPage > bookVo.pageRange}">
+										<li><a href="index.do?reqPage=${bookVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"></a>
+									</c:if>
+									<c:forEach var="rp" begin="${bookVo.strPage }"
+										end="${bookVo.endPage }">
+										<c:if test="${rp==bookVo.reqPage }"><strong>${rp }</strong></c:if>
+										<c:if test="${rp!=bookVo.reqPage }">
+                                  	<a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' class='current'>${rp }</a></c:if>
+
+									</c:forEach>
+									<c:if test="${bookVo.totPage > bookVo.endPage}">
+										<a
+											href="index.do?reqPage=${bookVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
+								</div>
 							<!-- //페이징 처리 -->
-							<div class="search">
-                        <form method="get" name="searchForm" id="searchForm" action=""> 
-                        <span class="srchSelect">	
-                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="b_regdate"<c:if test="${param.orderby=='b_regdate'}"> selected</c:if>>가입일</option>
-                                    <option value="b_delflag" <c:if test="${param.orderby=='b_delflag'}"> selected</c:if>>탈퇴여부</option>
-                                </select>
-                            </span>             
-                            <span class="srchSelect">	
-                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="DESC"<c:if test="${param.direct=='DESC'}"> selected</c:if>>내림차순</option>
-                                    <option value="ASC" <c:if test="${param.direct=='ASC'}"> selected</c:if>>오름차순</option>
-                                </select>
-                            </span>
-                            <span class="srchSelect">	
-                                <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
-                                    <option value="all">전체</option>
-                                    <option value="b_id" <c:if test="${param.stype=='b_id'}"> selected</c:if>>아이디</option>
-                                    <option value="b_delflag"<c:if test="${param.stype=='b_delflag'}"> selected</c:if>>탈퇴여부</option>
-                                </select>
-                            </span>
-                            <span class="searchWord">
-                                <input type="text" id="sval" name="sval" value="${param.sval}"  title="검색어 입력">
-                                <input type="button" id="" value="검색" title="검색" onclick="$('#searchForm').submit();">
-                            </span>
-                        </form>
+							
                     </div>
 							
 							<!-- //search --> 

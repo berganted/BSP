@@ -1,5 +1,6 @@
 package returning;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,10 @@ public class ReturningController {
 
 	@RequestMapping("/returning/return.do")
 	public String Return(Model model, ReturningVo vo) {
+		return "returning/ReturnForm";
+	}
+	@RequestMapping("/returning/returning.do")
+	public String returning(Model model, ReturningVo vo) {
 		model.addAttribute("list", service.selectPopup(vo));
 		return "returning/ReturnForm";
 	}
@@ -44,6 +49,12 @@ public class ReturningController {
 		model.addAttribute("popupList", Oservice.selectPopup(vo));
 		return "returning/ReturnPopup";
 	}
-
-
+	@RequestMapping("/returning/popupsend.do")
+	public String ReturnPopupsend( OrderVo vo, HttpServletRequest req,HttpSession sess) {
+		String[] a = req.getParameterValues("checkOne");
+		for(int i = 0; i<a.length; i++) {
+			System.out.println(a[i]);
+		}
+		return "returning/test";
+	}
 }

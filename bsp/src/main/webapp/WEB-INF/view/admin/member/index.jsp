@@ -72,15 +72,21 @@
 							</div>
 							<!--//btn-->
 							<!-- 페이징 처리 -->
-							<div class="page">
-                        <ul class='paging'>
-                        	<c:if test="${userVo.strPage > userVo.pageRange}"><li><a href="index.do?reqPage=${userVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li></c:if>
-                       	<c:forEach var="rp" begin="${userVo.strPage }" end="${userVo.endPage }">
-                            <li><a href='index.do?reqPage=${rp }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==userVo.reqPage }">class='current'</c:if>>${rp}</a></li>
-                        </c:forEach>
-                          	<c:if test="${userVo.totPage > userVo.endPage}"><li><a href="index.do?reqPage=${userVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li></c:if>      
-                        </ul> 
-                    </div>
+							<div class='page'>
+									<c:if test="${userVo.strPage > userVo.pageRange}">
+										<li><a href="index.do?reqPage=${userVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"></a>
+									</c:if>
+									<c:forEach var="rp" begin="${userVo.strPage }"
+										end="${userVo.endPage }">
+										<c:if test="${rp==userVo.reqPage }"><strong>${rp }</strong></c:if>
+										<c:if test="${rp!=userVo.reqPage }">
+                                  	<a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' class='current'>${rp }</a></c:if>
+
+									</c:forEach>
+									<c:if test="${userVo.totPage > userVo.endPage}">
+										<a
+											href="index.do?reqPage=${userVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
+								</div>
 							<!-- //페이징 처리 -->
 							<div class="search">
                         <form method="get" name="searchForm" id="searchForm" action=""> 

@@ -35,7 +35,7 @@
         <div class="mem_content">
             
 
-            <div class="BigIndex_newEye">가정살림</div>
+            <div class="BigIndex_newEye">${ctg.b_ctgname2 }</div>
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
                     <div class="cate2"><a href="Book_smallIdx.html">임신/출산</a></div> 

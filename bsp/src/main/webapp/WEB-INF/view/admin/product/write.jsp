@@ -5,6 +5,11 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
 <script>
 	$(function() {
+		$("#price").change(function(){
+			var p = $(this).val();
+			var po = p * 0.05
+			$("#b_point").val(po);
+		})
 
 		$("#filename_tmp").on('change', function() {
 			readURL(this);
@@ -50,7 +55,7 @@
 						<!-- 내용 : s -->
 						<div id="bbs">
 							<div id="bread">
-								<form method="post" name="frm" id="frm" action=""
+								<form method="post" name="frm" id="frm" action="insert.do"
 									enctype="multipart/form-data">
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"
 										summary="관리자 관리 기본내용입니다.">
@@ -70,49 +75,49 @@
 													id="filename_tmp" name="filename_tmp" class="w00"
 													title="첨부파일을 업로드 해주세요." /></td>
 												<th scope="row"><label for="">도서번호</label></th>
-												<td colspan=""><input type="text" id="title"
-													name="b_no" class="w100" title="제목을 입력해주세요" /></td>
+												<td colspan=""><input type="text" id="title" readonly="readonly"
+													name="" class="w100"    /></td>
 												<th scope="row"><label for="">책제목</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_title" class="w100" title="제목을 입력해주세요" /></td>
+													name="b_title" class="w100"    /></td>
 												<th scope="row"><label for="">입고일</label></th>
-												<td colspan=""><input type="text" id="title"
-													name="b_intodate" class="w100" title="제목을 입력해주세요" /></td>
+												<td colspan=""><input type="date" id="title"
+													name="" class="w100"    /></td>
 											</tr>
 											<tr>
 												<th scope="row"><label for="">저자</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_author" class="w100" title="제목을 입력해주세요" /></td>
+													name="b_author" class="w100"    /></td>
 												<th scope="row"><label for="">출판사</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_publisher" class="w100" title="제목을 입력해주세요" /></td>
+													name="b_publisher" class="w100"    /></td>
 												<th scope="row"><label for="">페이지수</label></th>
-												<td colspan=""><input type="text" id="title"
-													name="b_pages" class="w100" title="제목을 입력해주세요" /></td>
+												<td colspan=""><input type="number" id=""
+													name="b_pages" class="w100" /></td>
 
 											</tr>
 											<tr>
 												<th scope="row"><label for="">ISBN코드</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_isbn" class="w100" title="제목을 입력해주세요" /></td>
+													name="b_isbn" class="w100"    /></td>
 												<th scope="row"><label for="">재고</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_stock" class="w100" title="제목을 입력해주세요" /></td>
+													name="b_stock" class="w100"    /></td>
 												<th scope="row"><label for="">등록일</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_regdate" class="w100" title="제목을 입력해주세요" /></td>
+													name="" class="w100"    /></td>
 											</tr>
 
 											<tr>
 												<th scope="row"><label for="">가격</label></th>
-												<td colspan=""><input type="text" id="title"
-													name="b_price" class="w100" title="제목을 입력해주세요" /></td>
+												<td colspan=""><input type="text" id="price"
+													name="b_price" class="w100"    /></td>
 												<th scope="row"><label for="">조회수</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_views" class="w100" title="제목을 입력해주세요" /></td>
+													name="" class="w100" value="0"   /></td>
 												<th scope="row"><label for="">적립금</label></th>
-												<td colspan=""><input type="text" id="title"
-													name="b_point" class="w100" title="제목을 입력해주세요" /></td>
+												<td colspan=""><input type="text" id="b_point"
+													name="b_point" class="w100"    /></td>
 
 
 											</tr>
@@ -131,20 +136,20 @@
 														<option value="2">시</option>
 												</select></td>
 												<th></th>
-												<td><input type="text" id="b_ctgno1" name="b_ctgno1"></td>
+												<td><input type="text" id="b_ctgno1" name="b_ctgno1" value="1"></td>
 												<th></th>
-												<td><input type="text" id="b_ctgno2" name="b_ctgno2"></td>
+												<td><input type="text" id="b_ctgno2" name="b_ctgno2" value="1"></td>
 											</tr>
 											<tr>
 												<th scope="row" rowspan="4"><label for="">도서내용</label></th>
 												<td rowspan="4"><textarea rows="" cols=""
-														style="width: 100%; height: 250px"></textarea></td>
+														style="width: 100%; height: 250px" name="b_content"></textarea></td>
 												<th scope="row"><label for="">작가 소개</label></th>
 												<td rowspan="4"><textarea rows="" cols=""
-														style="width: 100%; height: 250px"></textarea></td>
+														style="width: 100%; height: 250px" name="b_introauthor"></textarea></td>
 												<th scope="row"><label for="">책 소개</label></th>
 												<td rowspan="4"><textarea rows="" cols=""
-														style="width: 100%; height: 250px"></textarea></td>
+														style="width: 100%; height: 250px" name="b_introbook"></textarea></td>
 												<th></th>
 												<td></td>
 
@@ -159,7 +164,7 @@
 										<a class="btns" href="index.do"><strong>목록</strong></a>
 									</div>
 									<div class="btnRight">
-										<a class="btns" style="cursor: pointer;"><strong>저장</strong></a>
+										<a class="btns" style="cursor: pointer;"onclick="document.getElementById('frm').submit()"><strong>저장</strong></a>
 									</div>
 								</div>
 								<!--//btn-->

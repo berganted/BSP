@@ -25,7 +25,7 @@
 	<select id="selectAlladmin" resultType="book.BookVo" parameterType="book.BookVo"><!-- 건들지마샘 -->
 		SELECT * FROM book
 		<include refid="bookwhere"/>
-		 ORDER BY b_regdate ${direct}	
+		 ORDER BY ${orderby} ${direct}	
 		 LIMIT ${strIdx},${pageRow} 
 	</select>
 	
@@ -102,18 +102,39 @@
 	</delete>
 	
 	<update id="update" parameterType="book.BookVo">
-		UPDATE book SET
+		UPDATE book 
+		<trim prefix="SET" prefixOverrides=",">
 		<if test="b_imgno != 0">
 			b_imgno=#{b_imgno},
 			</if>
+			<if test="b_ctgno1 !=0">
 			b_ctgno1=#{b_ctgno1},b_ctgno2=#{b_ctgno2},b_title=#{b_title},b_content=#{b_content},b_author=#{b_author},b_publisher=#{b_publisher}
 			,b_isbn=#{b_isbn},b_stock=#{b_stock},b_price=#{b_price},b_index=#{b_index},b_pages=#{b_pages},b_introauthor=#{b_introauthor},b_introbook=#{b_introbook}
 			,b_point=#{b_point},b_intodate=#{b_intodate}
+			</if>
+			<if test="ad_no !=0">
+			,ad_no=#{ad_no}
+			</if>
+			</trim>
 		WHERE b_no=#{b_no}
 	</update>
  	<select id="selectctg" parameterType="book.BookVo" resultType="book.BookVo">
  		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
 	</select>
-	
+	<select id="adselect" parameterType="book.BookVo" resultType="book.BookVo">
+		SELECT * FROM ad join book on ad.ad_no=book.ad_no 
+	</select>
+	<insert id="bookimgad" parameterType="book.BookVo">
+		INSERT INTO ad (ad_img,b_no) VALUES(#{ad_img},#{b_no})
+		<selectKey keyProperty="ad_no" resultType="int" order="AFTER">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+	<update id="adupdate" parameterType="book.BookVo">
+		UPDATE ad SET  <if test="ad_img != null">ad_img=#{ad_img},</if> b_no=#{b_no} WHERE ad_no=#{ad_no}
+	</update>
+	<select id="detailAD" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM AD WHERE ad_no=#{ad_no}
+	</select>
 	
 </mapper>

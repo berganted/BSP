@@ -21,6 +21,9 @@ public class BookDao {
 	public int bookimg(BookVo vo) {
 		return sqlSession.insert("book.bookimg",vo);
 	}
+	public int bookimgad(BookVo vo) {
+		return sqlSession.insert("book.bookimgad",vo);
+	}
 	
 	
 	
@@ -51,11 +54,20 @@ public class BookDao {
 	public int update(BookVo vo) {
 		return sqlSession.update("book.update", vo);
 	}
+	public int adupdate(BookVo vo) {
+		return sqlSession.update("book.adupdate", vo);
+	}
 	
 	public int delete(BookVo vo) {
 		return sqlSession.delete("book.delete", vo);
 	}
 	public BookVo ctg2name(BookVo vo) {
 		return sqlSession.selectOne("book.selectctg", vo);
+	}
+	public List<BookVo> adselect(BookVo vo){
+		return sqlSession.selectList("book.adselect",vo);
+	}
+	public BookVo detailAD(BookVo vo) {
+		return sqlSession.selectOne("book.detailAD", vo);
 	}
 }

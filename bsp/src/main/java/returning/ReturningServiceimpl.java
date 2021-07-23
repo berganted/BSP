@@ -32,8 +32,12 @@ public class ReturningServiceimpl implements ReturningService {
 		return dao.selectAll(vo);
 	}
 	@Override
-	public List<ReturningVo> selectPopup(ReturningVo vo) {
-		return dao.selectPopup(vo);
+	public List<ReturningVo> selectPopupRt(ReturningVo vo) {
+		return dao.selectPopupRt(vo);
+	} 
+	@Override
+	public List<ReturningVo> selectPopupRp(ReturningVo vo) {
+		return dao.selectPopupRp(vo);
 	} 
 	
 	@Override

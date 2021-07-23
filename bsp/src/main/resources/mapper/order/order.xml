@@ -21,12 +21,10 @@
 	
 		<!-- 전체주문내역 (주문번호 기준)-->
 		<select id="selectAll" resultType="order.OrderVo" parameterType="order.OrderVo">
-		SELECT * ,  PI.pb_no FROM  product_buy AS PB JOIN  product_io AS PI 
-		ON PB.pb_no = PI.pb_no
-		JOIN book 
-		ON PI.b_no = book.b_no
-		JOIN processing_status PS
-		ON PI.ps_no = PS.ps_no
+		SELECT * ,  PI.pb_no FROM  product_buy AS PB 
+		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
+		JOIN book ON PI.b_no = book.b_no
+		JOIN processing_status PS ON PI.ps_no = PS.ps_no
 		<include refid="orderWhere"/>
 		GROUP BY PI.pb_no
 		ORDER BY ${orderby} ${direct}
@@ -35,42 +33,35 @@
  		
  		<!-- 팝업창에서 출력할 코드  -->
 		<select id="selectPopup" resultType="order.OrderVo" parameterType="order.OrderVo">
-		SELECT *, PI.pb_no FROM  product_buy AS PB JOIN  product_io AS PI 
-		ON PB.pb_no = PI.pb_no
-		JOIN book 
-		ON PI.b_no = book.b_no
+		SELECT *, PI.pb_no FROM  product_buy AS PB 
+		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
+		JOIN book ON PI.b_no = book.b_no
 		</select>
 		
 		<!-- 페이징처리 -->
 		<select id="count" resultType="int" parameterType="order.OrderVo">
-		SELECT COUNT(*) , PI.pb_no FROM  product_buy AS PB JOIN  product_io AS PI 
-		ON PB.pb_no = PI.pb_no
-		JOIN book 
-		ON PI.b_no = book.b_no
-		JOIN processing_status PS
-		ON PI.ps_no = PS.ps_no
+		SELECT COUNT(*) , PI.pb_no FROM  product_buy AS PB 
+		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
+		JOIN book ON PI.b_no = book.b_no
+		JOIN processing_status PS ON PI.ps_no = PS.ps_no
 		<include refid="orderWhere"/>
 		</select>
 		
 		<!-- 주문상세 공통 -->
 		<select id="detail1" resultType="order.OrderVo" parameterType="order.OrderVo">
-		SELECT * ,  PI.pb_no FROM  product_buy AS PB JOIN  product_io AS PI 
-		ON PB.pb_no = PI.pb_no
-		JOIN book 
-		ON PI.b_no = book.b_no
-		JOIN processing_status PS
-		ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
+		SELECT * ,  PI.pb_no FROM  product_buy AS PB 
+		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
+		JOIN book ON PI.b_no = book.b_no
+		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
 		GROUP BY PI.pb_no
 		</select>
 		
 		<!-- 주문상세 개별(도서종류) -->
 		<select id="detail2" resultType="order.OrderVo" parameterType="order.OrderVo">
-		SELECT * ,  PI.pb_no FROM  product_buy AS PB JOIN  product_io AS PI 
-		ON PB.pb_no = PI.pb_no
-		JOIN book 
-		ON PI.b_no = book.b_no
-		JOIN processing_status PS
-		ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
+		SELECT * ,  PI.pb_no FROM  product_buy AS PB 
+		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
+		JOIN book ON PI.b_no = book.b_no
+		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
 		</select>
 		
 		<!-- ADMIN 에서 쓸 코드 -->

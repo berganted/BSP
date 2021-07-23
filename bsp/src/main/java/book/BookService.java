@@ -18,6 +18,7 @@ public interface BookService {
 	BookVo edit(BookVo vo);
 	int update(BookVo vo);
 	int delete(BookVo vo);
+	int deletead(BookVo vo);
 	BookVo selectCtgno2(BookVo vo);
 	int bookimg(BookVo vo);
 	int bookimgad(BookVo vo);

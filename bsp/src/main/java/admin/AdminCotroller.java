@@ -76,7 +76,7 @@ public class AdminCotroller {
 		}
 		bservice.insert(vo);
 		
-		return "redirect:index.do";
+		return "redirect:index.do?orderby=b_regdate";
 	}
 	@RequestMapping("admin/productAD/insert.do")
 	public String adinsert(BookVo vo , Model model,@RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req) {
@@ -95,7 +95,7 @@ public class AdminCotroller {
 		}
 		bservice.update(vo);
 		
-		return "redirect:index.do";
+		return "redirect:index.do?orderby=b_regdate";
 	}
 	
 	@RequestMapping("admin/product/update.do")
@@ -116,7 +116,7 @@ public class AdminCotroller {
 			int r = bservice.update(vo);
 			if(r > 0) {
 				model.addAttribute("msg", "정상적으로 수정 되었습니다.");
-				model.addAttribute("url", "index.do");
+				model.addAttribute("url", "index.do?orderby=b_regdate");
 						
 			}else {
 				model.addAttribute("msg", "수정실패.");
@@ -143,7 +143,7 @@ public class AdminCotroller {
 			int r = bservice.update(vo);
 			if(r > 0) {
 				model.addAttribute("msg", "정상적으로 수정 되었습니다.");
-				model.addAttribute("url", "index.do");
+				model.addAttribute("url", "index.do?orderby=b_regdate");
 						
 			}else {
 				model.addAttribute("msg", "수정실패.");
@@ -200,5 +200,20 @@ public class AdminCotroller {
 			sess.setAttribute("userInfo", v);
 			return "redirect:board/index.do";
 		}
+	}
+	
+	@RequestMapping("admin/productAD/grouDelete.do")
+	public String deleteg(Model model, HttpServletRequest req) {
+		String[] no = req.getParameterValues("ad_no");
+		int count = 0;
+		for(int i = 0; i<no.length; i++) {
+			System.out.println(no[i]);
+			BookVo vo= new BookVo();
+			vo.setAd_no(Integer.parseInt(no[i]));
+			count+=bservice.deletead(vo);
+		}
+		model.addAttribute("msg", "총" +count+"건이 삭제되었습니다.");
+		model.addAttribute("url", "index.do?orderby=b_regdate");
+		return "include/alert";		
 	}
 }

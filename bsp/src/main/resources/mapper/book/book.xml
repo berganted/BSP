@@ -6,7 +6,7 @@
 		<where>
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
-					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%'
+					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
@@ -91,6 +91,10 @@
 		SELECT COUNT(*) FROM book
 		<include refid="bookwhere"/>
 	</select>
+	<select id="countad" resultType="int" parameterType="book.BookVo">
+		SELECT COUNT(*) FROM ad
+		<include refid="bookwhere"/>
+	</select>
 	
 	<!-- 
 	 필요한가?	관리자 페이지?  b_imgno , b_ctgno1 , b_ctgno2 는 어떻게? (b_ctgno3)  
@@ -122,6 +126,9 @@
 	<delete id="delete" parameterType="book.BookVo">
 		DELETE FROM book WHERE b_no=#{b_no}
 	</delete>
+	<delete id="deletead" parameterType="book.BookVo">
+		DELETE FROM ad WHERE ad_no=#{ad_no}
+	</delete>
 	
 	<update id="update" parameterType="book.BookVo">
 		UPDATE book 
@@ -144,7 +151,7 @@
  		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
 	</select>
 	<select id="adselect" parameterType="book.BookVo" resultType="book.BookVo">
-		SELECT * FROM ad join book on ad.ad_no=book.ad_no 
+		SELECT * FROM ad left join book on ad.b_no=book.b_no 
 	</select>
 	<insert id="bookimgad" parameterType="book.BookVo">
 		INSERT INTO ad (ad_img,b_no) VALUES(#{ad_img},#{b_no})
@@ -158,5 +165,11 @@
 	<select id="detailAD" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM AD WHERE ad_no=#{ad_no}
 	</select>
+	<delete id="deleteGroup" parameterType="book.BookVo">
+			DELETE FROM ad WHERE ad_no IN 
+			<foreach collection="nos" index="index" item="ad_no" open="(" close=")" separator=",">
+			#{ad_no}
+			</foreach>
+		</delete>
 	
 </mapper>

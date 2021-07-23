@@ -28,13 +28,13 @@
 									 
 									<div class="search">
 									<span class="srchSelect">	
-                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="DESC"<c:if test="${param.direct=='DESC'}"> selected</c:if>>내림차순</option>
-                                    <option value="ASC" <c:if test="${param.direct=='ASC'}"> selected</c:if>>오름차순</option>
-                                </select>
                                 <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
                                     <option value="b_regdate"<c:if test="${param.orderby=='b_regdate'}"> selected</c:if>>날짜순</option>
                                     <option value="b_stock" <c:if test="${param.orderby=='b_stock'}"> selected</c:if>>재고</option>
+                                </select>
+                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                    <option value="DESC"<c:if test="${param.direct=='DESC'}"> selected</c:if>>내림차순</option>
+                                    <option value="ASC" <c:if test="${param.direct=='ASC'}"> selected</c:if>>오름차순</option>
                                 </select>
                             </span>
 										<select name="stype" title="검색을 선택해주세요">
@@ -43,6 +43,8 @@
 												<c:if test="${param.stype=='b_title'}"> selected</c:if>>제목</option>
 											<option value="b_publisher"
 												<c:if test="${param.stype=='b_publisher'}"> selected</c:if>>출판사</option>
+											<option value="b_author"
+												<c:if test="${param.stype=='b_author'}"> selected</c:if>>작가</option>
 										</select> <input type="text" name="sval" value=""
 											title="검색할 내용을 입력해주세요" /> <input type="image"
 											src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
@@ -69,7 +71,7 @@
 										<th scope="col">등록일</th> 
 										<th scope="col">작가</th> 
 										<th scope="col">출판사</th> 
-										<th scope="col" class="last"><a href='index.do?reqPage=${bookVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby==b_stock}&direct=${param.direct}' class='current'>재고</a></th>
+										<th scope="col" class="last">재고</th>
 									</tr>
 								</thead>
 								<tbody>

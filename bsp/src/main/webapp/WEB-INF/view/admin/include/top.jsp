@@ -69,13 +69,23 @@ $(window).load(function(){
 		
 		<div id="menu">
   			<ul class="menu">
-  				<li><a href="<%=request.getContextPath()%>/admin/member/index.do" class="parent"><span>회원관리</span></a></li>
-				<li><a href="<%=request.getContextPath()%>/admin/product/index.do" class="parent"><span>상품관리</span></a>
-					<ul>
-						<li><a href="<%=request.getContextPath()%>/admin/product/index.do"><span>상품관리</span></a></li>
-						<li><a href="<%=request.getContextPath()%>/admin/productAD/index.do"><span>상품광고</span></a></li>
-					</ul>
-					</li>
+  				<li><a href="<%=request.getContextPath()%>/admin/member/index.do?orderby=m_regdate" class="parent"><span>회원관리</span></a></li>
+				<li><a href="<%=request.getContextPath()%>/admin/product/index.do?orderby=b_regdate" class="parent"><span>상품관리</span></a>
+					<div class="standard_left">
+						<ul>
+							<li><a href="<%=request.getContextPath()%>/admin/product/index.do?orderby=b_regdate"><span>상품관리</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/admin/productAD/index.do"><span>상품광고</span></a></li>
+						</ul>
+					</div>
+				</li>
+				<li><a href="<%=request.getContextPath()%>/admin/order/index.do?orderby=b_regdate" class="parent"><span>주문관리</span></a>
+					<div class="standard_left">
+						<ul>
+							<li><a href="<%=request.getContextPath()%>/admin/order/index.do?orderby=b_regdate"><span>주문관리</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/admin/productAD/index.do"><span>반품관리</span></a></li>
+						</ul>
+					</div>
+				</li>
 				<li><a href="<%=request.getContextPath()%>/admin/board/index.do" class="parent"><span>게시판</span></a>
 					<div class="standard_left">
 					<ul>

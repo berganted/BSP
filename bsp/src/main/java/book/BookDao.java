@@ -50,6 +50,9 @@ public class BookDao {
 	public int count(BookVo vo) {
 		return sqlSession.selectOne("book.count", vo);
 	}
+	public int countad(BookVo vo) {
+		return sqlSession.selectOne("book.countad", vo);
+	}
 	
 	public BookVo detail(BookVo vo) {
 		return sqlSession.selectOne("book.detail", vo);
@@ -68,6 +71,9 @@ public class BookDao {
 	
 	public int delete(BookVo vo) {
 		return sqlSession.delete("book.delete", vo);
+	}
+	public int deletead(BookVo vo) {
+		return sqlSession.delete("book.deletead", vo);
 	}
 	
 	public BookVo selectCtgno2(BookVo vo) {

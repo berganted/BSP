@@ -52,6 +52,10 @@ public class BookServiceImpl implements BookService {
 	public int delete(BookVo vo) {
 		return dao.delete(vo);
 	}
+	@Override
+	public int deletead(BookVo vo) {
+		return dao.deletead(vo);
+	}
 
 	@Override
 	public BookVo deatil(BookVo vo) {
@@ -127,7 +131,7 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public List<BookVo> adselect(BookVo vo) {
-		int totCount = dao.count(vo); // 총갯수
+		int totCount = dao.countad(vo);
 		// 총페이지수
 		int totPage = totCount / vo.getPageRow();
 		if (totCount % vo.getPageRow() > 0) totPage++;

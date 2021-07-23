@@ -77,8 +77,11 @@
 												<th scope="row"><label for="">도서번호</label></th>
 												<td colspan=""><input type="text" id="title" 
 													name="b_no" class="w100" value="${vo.b_no }"   /></td>
+												<th scope="row"><label for="">책이름</label></th>
+												<td colspan=""><input type="text" id="title" 
+													name="b_title" class="w100" value="${param.b_title }"   /></td>
 												<th scope="row"><label for="">광고번호</label></th>
-												<td colspan=""><input type="text" id="title"
+												<td colspan=""><input type="text" id="title" readonly="readonly"
 													name="ad_no" class="w100" value="${vo.ad_no }"   /></td>
 												
 

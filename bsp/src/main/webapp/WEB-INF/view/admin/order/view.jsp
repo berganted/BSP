@@ -62,6 +62,7 @@
 										</td>
 									</tr>
 									<tr>
+									
 									<span><strong>총 ${orderVo.totCount }개</strong>  |  ${orderVo.reqPage }/${orderVo.totPage }</span>
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
@@ -135,7 +136,6 @@
 										</td>
 										<th scope="row"><label for="">성별</label></th>
 										<td colspan="3">
-										
 									</tr>
 								</tbody>
 							</table>

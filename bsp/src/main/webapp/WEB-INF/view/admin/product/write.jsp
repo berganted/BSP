@@ -48,7 +48,7 @@
 			<div id="container">
 				<div id="content">
 					<div class="con_tit">
-						<h2>공지사항 - [쓰기]</h2>
+						<h2>상품 - [등록]</h2>
 					</div>
 					<!-- //con_tit -->
 					<div class="con">

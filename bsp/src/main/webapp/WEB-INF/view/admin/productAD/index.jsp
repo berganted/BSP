@@ -55,33 +55,27 @@
 								<colgroup>
 									<col class="w3" />
 									<col class="w4" />
-									<col class="4" />
-									<col class="w10" />
 									<col class="w5" />
-									<col class="w6" />
-									<col class="w6" />
+									<col class="w10" />
+									<col class="w4" />
 								</colgroup>
 								<thead>
 									<tr>
 										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">책이름</th> 
-										<th scope="col">등록일</th> 
-										<th scope="col">작가</th> 
-										<th scope="col">출판사</th> 
-										<th scope="col" class="last"><a href='index.do?reqPage=${bookVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby==b_stock}&direct=${param.direct}' class='current'>재고</a></th>
+										<th scope="col">책번호</th> 
+										<th scope="col">사진명</th> 
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="list" items="${list }">
 									<tr>
 										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+										<td>${list.ad_no }</td>
+										<td class="title"><a href="view.do?ad_no=${list.ad_no }&reqPage=${bookVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${list.b_title }</a>
 										<td>${list.b_no }</td>
-										<td class="title"><a href="view.do?b_no=${list.b_no }&reqPage=${bookVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${list.b_title }</a>
-										<td>${list.b_regdate}</td>
-										<td>${list.b_author }</td>
-										<td>${list.b_publisher }</td>
-										<td class="last">${list.b_stock }</td>
+										<td>${list.ad_img }</td>
 									</tr>
 									</c:forEach>
 								</tbody>

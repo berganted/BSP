@@ -15,10 +15,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
-	<c:set var="ran"><%= java.lang.Math.round(java.lang.Math.random() * 3) %></c:set>
 </head>
 <body> 
     <jsp:include page="../include/header.jsp"></jsp:include>
+    <!-- <form method="post" name="frm" id="frm" action="ad.do"
+									enctype="multipart/form-data"> -->
     <div class="wrap">
         
         <!-- visual 부분 -->
@@ -44,32 +45,30 @@
             </div>
             <div class="index_container">
                 <div class="index_randomAds">
+                <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
-                        아마존 27주 연속 1위<br> 어쩌구를 잇는 신예 스릴러<br>
-                        <img src="/bsp/img/book09.jpg" alt="">
+                    	<div class="index_ad">AD</div>
+                        <img src="/bsp/img/${vo.b_imgmain }" alt="">
                     </div>
+                 </c:forEach>  
+                  <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
-                        <div class="index_miniAd"> 쪼그만 <br>광고<br> 책소개책소개<br>책소개</div>
-                        <div><img src="/bsp/img/book${ran}.jpg" alt=""></div>                        
-                    </div>                    
+                    	<div class="index_ad">AD</div>
+                        <div><img src="/bsp/img/${vo.b_imgmain }" alt=""></div>                        
+                   	</div>  
+                  </c:forEach>                   
                 </div>
                 <div class="index_todaysBooks mySwiper">
                     <div class=" swiper-wrapper">
-                    <c:forEach var="vo" items="${list1 }" varStatus="status">
+                    <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail">
-                                <img src="${vo.b_imgno }" alt="">
+                                <img src="/bsp/img/${vo.b_imgmain }" alt="">
                             </div>
                             <div class="index_todayDetails">
-                                <div class="index_tdContext">오늘의 책${ran}</div>
+                                <div class="index_tdContext">오늘의 책</div>
                                 ${vo.b_content }
-                            	<br> <!-- 임의로  -->
-                                <li>공깃밥을 박차고 우주로 날아간 호라이의 대모험! <br>
-                                    유쾌한 상상력으로 어린이의 마음을 그리는 작가, <br>
-                                    눈물바다』 서현의 달걀프라이 그림책. <br>
-                                    달걀프라이에서 시작한 거침없는 상상을 감각적인 그림으로 두 권에 담았다. <br>
-                                    끝없이 이어지는 기발하고 엉뚱하며 유쾌한 이야기를 따라가보자.
-                                </li>                        
+                                <li>${vo.b_title } | ${vo.b_author }</li>
                             </div>
                         </div>
                         </c:forEach> 
@@ -84,16 +83,11 @@
                                <div class="index_board_title on">베스트셀러</div>
                                <div class="index_board_title">인기검색어</div>
                                <div class="index_board_content" id="index_board_notice">
+                               <c:forEach var="vo" items="${list4 }" varStatus="status">
                                   <ul>
-                                      <li>1 책제목/저자.</li>
-                                      <li>2 책제목/저자.</li>
-                                      <li>3 책제목/저자.</li>
-                                      <li>4 책제목/저자.</li>
-                                      <li>5 책제목/저자.</li>
-                                      <li>6 책제목/저자.</li>   
-                                      <li>7 책제목/저자.</li>   
-                                      <li>8 책제목/저자.</li>                                                                                                  
+                                      <li>${vo.b_title } | ${vo.b_author }</li>
                                   </ul>
+                               </c:forEach>
                                </div>
                                <div class="index_board_content" id="index_board_data">
                                  <ul>
@@ -116,7 +110,7 @@
                 <c:forEach var="vo" items="${list1 }" varStatus="status">
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
-                            <img src="${vo.b_imgno }" alt="">
+                            <img src="/bsp/img/${vo.b_imgmain }" alt="">
                         </div>                        
                         <div class="index_NowBooksDetail">
                             <ul>
@@ -135,7 +129,7 @@
             <c:forEach var="vo" items="${list1 }" varStatus="status">
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
-                        <img src="${vo.b_imgno }" alt="">
+                        <img src="/bsp/img/${vo.b_imgmain }" alt="">
                     </div>
                     <div class="index_NowBooksDetail">
                         <ul>                            
@@ -148,7 +142,7 @@
             </c:forEach> 
             </div>
             </div>  
-          
+          	
             <aside class="mypage_ad">
                 <div class="mypage_ad_name"><p>최근본상품</p></div>
                 <div class="img_area">
@@ -158,8 +152,8 @@
                     <p>책이름</p>
                 </div>
             </aside>                  
-        </div>   
-    </div>
+        </div> 
+       <!-- </form> -->  
     <jsp:include page="../include/footer.jsp"></jsp:include>    
 </body>
 </html>

@@ -24,6 +24,33 @@
 					<!-- 내용 : s -->
 					<div id="bbs">
 						<div id="blist">
+						<div class="search">
+                        <form method="get" name="searchForm" id="searchForm" action=""> 
+                        <span class="srchSelect">	
+                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                    <option value="m_regdate"<c:if test="${param.orderby=='m_regdate'}"> selected</c:if>>가입일</option>
+                                    <option value="m_delflag" <c:if test="${param.orderby=='m_delflag'}"> selected</c:if>>탈퇴여부</option>
+                                </select>
+                            </span>             
+                            <span class="srchSelect">	
+                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
+                                    <option value="DESC"<c:if test="${param.direct=='DESC'}"> selected</c:if>>내림차순</option>
+                                    <option value="ASC" <c:if test="${param.direct=='ASC'}"> selected</c:if>>오름차순</option>
+                                </select>
+                            </span>
+                            <span class="srchSelect">	
+                                <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
+                                    <option value="all">전체</option>
+                                    <option value="m_id" <c:if test="${param.stype=='m_id'}"> selected</c:if>>아이디</option>
+                                    <option value="m_delflag"<c:if test="${param.stype=='m_delflag'}"> selected</c:if>>탈퇴여부</option>
+                                </select>
+                            </span>
+                            <span class="searchWord">
+                                <input type="text" id="sval" name="sval" value="${param.sval}"  title="검색어 입력">
+                                <input type="image"src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
+											class="sbtn" alt="검색" onclick="$('#searchForm').submit();"/>
+                        </form>
+                    </div>
 							<span><strong>총 ${userVo.totCount }개</strong>  |  ${userVo.reqPage }/${userVo.totPage }</span>
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
@@ -62,14 +89,7 @@
 								</tbody>
 							</table>
 							</form>
-							<div class="btn">
-								<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
-								</div>
-								<div class="btnRight">
-									<a class="wbtn" href="write.do"><strong>등록</strong> </a>
-								</div>
-							</div>
+							
 							<!--//btn-->
 							<!-- 페이징 처리 -->
 							<div class='page'>
@@ -88,33 +108,7 @@
 											href="index.do?reqPage=${userVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
 								</div>
 							<!-- //페이징 처리 -->
-							<div class="search">
-                        <form method="get" name="searchForm" id="searchForm" action=""> 
-                        <span class="srchSelect">	
-                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="m_regdate"<c:if test="${param.orderby=='m_regdate'}"> selected</c:if>>가입일</option>
-                                    <option value="m_delflag" <c:if test="${param.orderby=='m_delflag'}"> selected</c:if>>탈퇴여부</option>
-                                </select>
-                            </span>             
-                            <span class="srchSelect">	
-                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="DESC"<c:if test="${param.direct=='DESC'}"> selected</c:if>>내림차순</option>
-                                    <option value="ASC" <c:if test="${param.direct=='ASC'}"> selected</c:if>>오름차순</option>
-                                </select>
-                            </span>
-                            <span class="srchSelect">	
-                                <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
-                                    <option value="all">전체</option>
-                                    <option value="m_id" <c:if test="${param.stype=='m_id'}"> selected</c:if>>아이디</option>
-                                    <option value="m_delflag"<c:if test="${param.stype=='m_delflag'}"> selected</c:if>>탈퇴여부</option>
-                                </select>
-                            </span>
-                            <span class="searchWord">
-                                <input type="text" id="sval" name="sval" value="${param.sval}"  title="검색어 입력">
-                                <input type="button" id="" value="검색" title="검색" onclick="$('#searchForm').submit();">
-                            </span>
-                        </form>
-                    </div>
+							
 							
 							<!-- //search --> 
 						</div>

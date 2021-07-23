@@ -13,8 +13,8 @@ public class ReturningDao {
 	public List<ReturningVo> selectAll(ReturningVo vo){
 		return sessionTemplate.selectList("returnig.selectAll",vo);
 	}
-	public List<ReturningVo> selectPopupRt(ReturningVo vo){
-		return sessionTemplate.selectList("returnig.selectPopupRt",vo);
+	public ReturningVo  selectPopupRt(ReturningVo vo){
+		return sessionTemplate.selectOne("returnig.selectPopupRt",vo);
 	}
 	public List<ReturningVo> selectPopupRp(ReturningVo vo){
 		return sessionTemplate.selectList("returnig.selectPopupRp",vo);

@@ -5,6 +5,50 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 </head>
+<script type="text/javascript">
+function groupDel() {
+	var cnt = 0;
+for(var i=0; i<$('input[name=ad_no]').length;i++){
+	if($('input[name=ad_no]').eq(i).prop('checked')){
+		cnt++;
+		break;
+	}
+}
+if( cnt == 0 ){
+	alert('하나 이상 체크해 주세요');
+}else{
+	if(confirm('삭제하시겠습니까?')){
+		$('#frm').submit();
+	}
+}
+}
+function selectAll(selectAll)  {
+  const checkboxes 
+     = document.getElementsByName('ad_no');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked
+  })
+}
+function checkSelectAll()  {
+  // 전체 체크박스
+  const checkboxes 
+    = document.querySelectorAll('input[name="nos"]');
+  // 선택된 체크박스
+  const checked 
+    = document.querySelectorAll('input[name="nos"]:checked');
+  // select all 체크박스
+  const selectAll 
+    = document.querySelector('input[name="allChk"]');
+  
+  if(checkboxes.length === checked.length)  {
+    selectAll.checked = true;
+  }else {
+    selectAll.checked = false;
+  }
+
+}
+</script>
 <body> 
 <div id="wrap">
 	<!-- canvas -->
@@ -50,7 +94,7 @@
 									</div>
 								</form>
 							<span><strong>총 ${bookVo.totCount }개</strong>  |  ${bookVo.reqPage }/${bookVo.totPage }</span>
-							<form name="frm" id="frm" action="process.do" method="post">
+							<form name="frm" id="frm" action="grouDelete.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 									<col class="w3" />
@@ -61,7 +105,7 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="selectAll(this)"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">책이름</th> 
 										<th scope="col">책번호</th> 
@@ -71,9 +115,9 @@
 								<tbody>
 									<c:forEach var="list" items="${list }">
 									<tr>
-										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>${list.ad_no }</td>
-										<td class="title"><a href="view.do?ad_no=${list.ad_no }&reqPage=${bookVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${list.b_title }</a>
+										<td class="first"><input type="checkbox" name="ad_no" id="ad_no" value="${list.ad_no }"/></td>
+										<td><a href="view.do?b_title=${list.b_title  }&ad_no=${list.ad_no }&reqPage=${bookVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${list.ad_no }</a></td>
+										<td class="title">${list.b_title }
 										<td>${list.b_no }</td>
 										<td>${list.ad_img }</td>
 									</tr>
@@ -83,7 +127,7 @@
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="groupDel();"><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" href="write.do"><strong>등록</strong> </a>

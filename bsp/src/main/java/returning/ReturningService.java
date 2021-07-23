@@ -6,7 +6,7 @@ import java.util.List;
 public interface ReturningService {
 	List<ReturningVo> selectAll(ReturningVo vo);
 	
-	List<ReturningVo> selectPopupRt(ReturningVo vo);
+	ReturningVo selectPopupRt(ReturningVo vo);
 	List<ReturningVo> selectPopupRp(ReturningVo vo);
 	
 	ReturningVo detail1(ReturningVo vo);

@@ -63,5 +63,65 @@
 		JOIN book ON PI.b_no = book.b_no
 		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
 		</select>
+		
+		<!-- ADMIN 에서 쓸 코드 -->
+		<!-- 관리자 주문번호 리스트 -->
+		<select id="selectAdmin" resultType="order.OrderVo" parameterType="order.OrderVo">
+		SELECT *,
+		(SELECT SUM(io_amount) from product_io WHERE pb_no=product_buy.pb_no) as amount_sum,
+		(SELECT count(*) from product_io where pb_no=product_buy.pb_no)as count  
+		from product_buy 
+		join product_io 
+		on product_buy.pb_no = product_io.pb_no
+		join book
+		on product_io.b_no = book.b_no
+		JOIN processing_status PS
+		on product_io.ps_no=ps.ps_no
+		JOIN user u
+		on product_buy.m_no=u.m_no
+		GROUP BY product_buy.pb_no
+		<include refid="orderWhere"/>
+		ORDER BY ${orderby} ${direct}
+		LIMIT ${strIdx},${pageRow}
+ 		</select>
+ 		<!-- 관리자 입출고번호 리스트 -->
+ 		<select id="selectAdmindelist" resultType="order.OrderVo" parameterType="order.OrderVo">
+		SELECT *
+		from product_buy 
+		join product_io 
+		on product_buy.pb_no = product_io.pb_no
+		join book
+		on product_io.b_no = book.b_no
+		JOIN processing_status PS
+		on product_io.ps_no=ps.ps_no
+		JOIN user u
+		on product_buy.m_no=u.m_no
+        WHERE product_buy.pb_no=#{pb_no}
+		<include refid="orderWhere"/>
+		ORDER BY ${orderby} ${direct}
+		LIMIT ${strIdx},${pageRow}
+ 		</select>
+ 		<!-- 관리자 주문 상세 -->
+ 		<select id="selectoneAdmin" resultType="order.OrderVo" parameterType="order.OrderVo">
+		SELECT *,
+		(SELECT SUM(io_amount) from product_io WHERE pb_no=product_buy.pb_no) as amount_sum,
+		(SELECT count(*) from product_io where pb_no=product_buy.pb_no)as count  
+		from product_buy 
+		join product_io 
+		on product_buy.pb_no = product_io.pb_no
+		join book
+		on product_io.b_no = book.b_no
+		JOIN processing_status PS
+		on product_io.ps_no=ps.ps_no
+		JOIN user u
+		on product_buy.m_no=u.m_no
+		WHERE product_buy.pb_no=#{pb_no}
+		GROUP BY product_buy.pb_no
+ 		</select>
+ 		<select id="countAdmin" resultType="int" parameterType="order.OrderVo">
+		SELECT count(*) FROM product_buy 
+		
+		<include refid="orderWhere"/>
+		</select>
 
 	</mapper>

@@ -1,5 +1,6 @@
 package returning;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,15 +46,19 @@ public class ReturningController {
 
 	/* 반품신청 값보내기 */
 	@RequestMapping("/returning/returnSend.do")
-	public String returnSend(ReturningVo vo, HttpServletRequest req, HttpSession sess) {
+	public String returnSend(ReturningVo vo, HttpServletRequest req, HttpSession sess , Model model) {
 		String[] no = req.getParameterValues("checkOne");
+		List<ReturningVo>list  = new ArrayList<ReturningVo>(); 
 		System.out.println("test1");
 		for (int i = 0; i < no.length; i++) {
 			System.out.println("test2 : "+no[i]);
 			vo.setIo_no(Integer.parseInt(no[i]));
-			List<ReturningVo> rv= service.selectPopupRt(vo);
-			sess.setAttribute("returnList", rv);
+			ReturningVo rv= service.selectPopupRt(vo);
+			list.add(rv);
 		}
+		System.out.println(list.get(0).getB_title());
+		System.out.println(list.get(1).getB_title());
+		sess.setAttribute("returnList", list);
 		System.out.println("test3 : "+Arrays.toString(no));
 		return "redirect:/returning/return.do";
 	}

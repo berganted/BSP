@@ -17,7 +17,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2> 회원 - [목록]</h2>
+					<h2> 주문 - [목록]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -51,7 +51,7 @@
 											class="sbtn" alt="검색" onclick="$('#searchForm').submit();"/></span>
                         </form>
                     </div>
-							<span><strong>총 ${userVo.totCount }개</strong>  |  ${userVo.reqPage }/${userVo.totPage }</span>
+							<span><strong>총 ${orderVo.totCount }개</strong>  |  ${orderVo.reqPage }/${orderVo.totPage }</span>
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
@@ -66,24 +66,27 @@
 								<thead>
 									<tr>
 										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
-										<th scope="col">번호</th>
-										<th scope="col">아이디</th> 
-										<th scope="col">가입일</th> 
-										<th scope="col">이름</th> 
-										<th scope="col">이메일</th> 
-										<th scope="col" class="last">탈퇴여부</th>
+										<th scope="col">주문번호</th>
+										<th scope="col">구매상품</th> 
+										<th scope="col">구매자</th> 
+										<th scope="col">가격</th> 
+										<th scope="col">처리상태</th> 
+										<th scope="col" class="last">주문수량</th>
+										<th scope="col">구매일</th> 
 									</tr>
 								</thead>
 								<tbody>
 									<c:forEach var="list" items="${list }">
 									<tr>
 										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-										<td>${list.m_no }</td>
-										<td class="title"><a href="view.do?m_no=${list.m_no }&reqPage=${userVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${list.m_id }</a>
-										<td>${list.m_regdate}</td>
-										<td>${list.m_name }</td>
-										<td>${list.m_email }@${list.m_email_d }</td>
-										<td class="last">${list.m_delflag }</td>
+										<td>${list.pb_no }</td>
+										<td class="title"><a href="view.do?pb_no=${list.pb_no }&reqPage=${orderVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
+											${list.b_title }<c:if test="${list.count>1 }">외 ${list.count - 1}권</c:if></a>
+										<td>${list.m_id }</td>
+										<td>${list.pb_totalprice}</td>
+										<td>${list.ps_title }</td>
+										<td>${list.amount_sum }</td>
+										<td class="last">${list.pb_orderdate }</td>
 									</tr>
 									</c:forEach>
 								</tbody>
@@ -93,19 +96,19 @@
 							<!--//btn-->
 							<!-- 페이징 처리 -->
 							<div class='page'>
-									<c:if test="${userVo.strPage > userVo.pageRange}">
-										<li><a href="index.do?reqPage=${userVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"></a>
+									<c:if test="${orderVo.strPage > orderVo.pageRange}">
+										<li><a href="index.do?reqPage=${orderVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"></a>
 									</c:if>
-									<c:forEach var="rp" begin="${userVo.strPage }"
-										end="${userVo.endPage }">
-										<c:if test="${rp==userVo.reqPage }"><strong>${rp }</strong></c:if>
-										<c:if test="${rp!=userVo.reqPage }">
+									<c:forEach var="rp" begin="${orderVo.strPage }"
+										end="${orderVo.endPage }">
+										<c:if test="${rp==orderVo.reqPage }"> <strong>${rp }</strong></c:if>
+										<c:if test="${rp!=orderVo.reqPage }">
                                   	<a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' class='current'>${rp }</a></c:if>
 
 									</c:forEach>
-									<c:if test="${userVo.totPage > userVo.endPage}">
+									<c:if test="${orderVo.totPage > orderVo.endPage}">
 										<a
-											href="index.do?reqPage=${userVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
+											href="index.do?reqPage=${orderVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
 								</div>
 							<!-- //페이징 처리 -->
 							

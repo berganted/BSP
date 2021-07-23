@@ -65,6 +65,53 @@ public class OrderServiceimpl implements OrderService {
 		return dao.selectPopup(vo);
 	}
 
+	
+	//----------------ADMIN--------------------------
+	@Override
+	public List<OrderVo> selectAdmin(OrderVo vo) {
+		int totCount = dao.countAdmin(vo); // 총갯수
+		// 총페이지수
+		int totPage = totCount / vo.getPageRow();
+		if (totCount % vo.getPageRow() > 0) totPage++;
+		// 시작페이지
+		int strPage = (vo.getReqPage()-1)/vo.getPageRange()
+						*vo.getPageRange()+1;
+		int endPage = strPage+vo.getPageRange()-1;
+		if (endPage > totPage) endPage = totPage;
+		
+		vo.setStrPage(strPage);
+		vo.setEndPage(endPage);
+		vo.setTotCount(totCount);
+		vo.setTotPage(totPage);
+		System.out.println(vo);
+		return dao.selectAdmin(vo);
+	}
+
+	@Override
+	public List<OrderVo> selectAdmindelist(OrderVo vo) {
+		int totCount = dao.countAdmin(vo); // 총갯수
+		// 총페이지수
+		int totPage = totCount / vo.getPageRow();
+		if (totCount % vo.getPageRow() > 0) totPage++;
+		// 시작페이지
+		int strPage = (vo.getReqPage()-1)/vo.getPageRange()
+						*vo.getPageRange()+1;
+		int endPage = strPage+vo.getPageRange()-1;
+		if (endPage > totPage) endPage = totPage;
+		
+		vo.setStrPage(strPage);
+		vo.setEndPage(endPage);
+		vo.setTotCount(totCount);
+		vo.setTotPage(totPage);
+		System.out.println(vo);
+		return dao.selectAdmindelist(vo);
+	}
+
+	@Override
+	public OrderVo selectoneAdmin(OrderVo vo) {
+		return dao.selectoneAdmin(vo);
+	}
+
 
 
 

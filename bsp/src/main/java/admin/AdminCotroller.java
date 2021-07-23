@@ -18,6 +18,8 @@ import board.BoardService;
 import board.BoardVo;
 import book.BookService;
 import book.BookVo;
+import order.OrderService;
+import order.OrderVo;
 import user.UserService;
 import user.UserVo;
 
@@ -30,33 +32,47 @@ public class AdminCotroller {
 	UserService uservice;
 	@Autowired
 	BookService bservice;
-
+	@Autowired
+	OrderService oservice;
+//로그인페이지
 	@RequestMapping("/admin")
 	public String index() {
 		return "admin/index";
 	}
-
+//게시판리스트
 	@RequestMapping("admin/board/index.do")
 	public String boardIndex() {
 		return "admin/board/index";
 	}
+//회원 리스트
 	@RequestMapping("admin/member/index.do")
 	public String memberIndex(UserVo vo , Model model) {
 		model.addAttribute("list", uservice.selectAll(vo));
 		
 		return "admin/member/index";
 	}
+//상품 리스트
 	@RequestMapping("admin/product/index.do")
 	public String productIndex(BookVo vo , Model model) {
 		model.addAttribute("list", bservice.selectAlladmin(vo));
 		
 		return "admin/product/index";
 	}
+//주문 리스트
+	@RequestMapping("admin/order/index.do")
+	public String orderIndex(OrderVo vo , Model model) {
+		model.addAttribute("list", oservice.selectAdmin(vo));
+		
+		return "admin/order/index";
+	}
+// 광고 리스트
 	@RequestMapping("admin/productAD/index.do")
 	public String productADidx(BookVo vo , Model model) {
 		model.addAttribute("list", bservice.adselect(vo));
 		return "admin/productAD/index";
 	}
+	
+// 상품 등록
 	@RequestMapping("admin/product/insert.do")
 	public String productInsert(BookVo vo , Model model,@RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req) {
 		if(!filename.isEmpty()) {
@@ -76,6 +92,7 @@ public class AdminCotroller {
 		
 		return "redirect:index.do?orderby=b_regdate";
 	}
+//광고 등록
 	@RequestMapping("admin/productAD/insert.do")
 	public String adinsert(BookVo vo , Model model,@RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req) {
 		if(!filename.isEmpty()) {
@@ -95,7 +112,7 @@ public class AdminCotroller {
 		
 		return "redirect:index.do?orderby=b_regdate";
 	}
-	
+// 상품 수정
 	@RequestMapping("admin/product/update.do")
 	public String update(Model model , BookVo vo, @RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req , HttpServletResponse res) {
 			if(!filename.isEmpty()) {
@@ -122,6 +139,7 @@ public class AdminCotroller {
 			}
 			return "include/alert";			
 	}
+//광고 수정
 	@RequestMapping("admin/productAD/update.do")
 	public String productADupdate(Model model , BookVo vo, @RequestParam("filename_tmp") MultipartFile filename, HttpServletRequest req , HttpServletResponse res) {
 		String real="";
@@ -150,40 +168,53 @@ public class AdminCotroller {
 			return "include/alert";			
 	}
 
-
+//회원 상세
 	@RequestMapping("admin/member/view.do")
 	public String memberview(UserVo vo, Model model) {
 		model.addAttribute("vo", uservice.detail(vo));
 		return "admin/member/view";
 	}
+//상품 상세&수정폼
 	@RequestMapping("admin/product/view.do")
 	public String memberview(BookVo vo, Model model) {
 		model.addAttribute("vo", bservice.deatil(vo));
 		return "admin/product/view";
 	}
+//게시판 상세&수정폼
 	@RequestMapping("admin/board/view.do")
 	public String boardview() {
 		return "admin/board/view";
 	}
+//광고 상세&수정폼
 	@RequestMapping("admin/productAD/view.do")
 	public String productADview(BookVo vo, Model model) {
 		model.addAttribute("vo", bservice.detailAD(vo));
 		return "admin/productAD/view";
 	}
-
+//주문 상세&수정폼
+	@RequestMapping("admin/order/view.do")
+	public String orderview(OrderVo vo, Model model) {
+		model.addAttribute("vo", oservice.selectoneAdmin(vo));
+		model.addAttribute("list", oservice.selectAdmindelist(vo));
+		return "admin/order/view";
+	}
+	
+//상품 등록폼
 	@RequestMapping("admin/product/write.do")
 	public String productwrite() {
 		return "admin/product/write";
 	}
+//광고 등록폼
 	@RequestMapping("admin/productAD/write.do")
 	public String productADwrite() {
 		return "admin/productAD/write";
 	}
+//게시판 등록폼
 	@RequestMapping("admin/board/write.do")
 	public String boardwrite() {
 		return "admin/board/write";
 	}
-
+//관리자 로그인
 	@RequestMapping("/admin/login.do")
 	public String login(AdminVo vo, HttpSession sess, HttpServletResponse res, HttpServletRequest req, Model model) {
 		AdminVo v = service.login(vo);
@@ -199,7 +230,7 @@ public class AdminCotroller {
 			return "redirect:board/index.do";
 		}
 	}
-	
+//광고 그룹 삭제
 	@RequestMapping("admin/productAD/grouDelete.do")
 	public String deleteg(Model model, HttpServletRequest req) {
 		String[] no = req.getParameterValues("ad_no");
@@ -214,4 +245,5 @@ public class AdminCotroller {
 		model.addAttribute("url", "index.do?orderby=b_regdate");
 		return "include/alert";		
 	}
+	
 }

@@ -1,5 +1,8 @@
 package returning;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -21,18 +24,21 @@ public class ReturningController {
 
 	/* 반품메인창 */
 	@RequestMapping("/returning/return.do")
-	public String Return(Model model, ReturningVo vo) {
+	public String returning(Model model, ReturningVo vo, HttpSession sess) {
+		//model.addAttribute("list", service.selectPopup(vo));
 		return "returning/ReturnForm";
 	}
 
-	@RequestMapping("/returning/returning.do")
-	public String returning(Model model, ReturningVo vo) {
-		model.addAttribute("list", service.selectPopup(vo));
-		return "returning/ReturnForm";
+	/* 교환메인창 */
+	@RequestMapping("/returning/replace.do")
+	public String replace(Model model, ReturningVo vo) {
+		//model.addAttribute("list", service.selectPopupRt(vo));
+		return "returning/ReplaceForm";
 	}
 
 	/*
 	 * 반품팝업창
+	 * 
 	 * @RequestMapping("/returning/popup.do") public String returningPopup(Model
 	 * model, OrderVo vo) { model.addAttribute("popupList",
 	 * Oservice.selectPopup(vo)); return "returning/ReturnPopup"; }
@@ -40,28 +46,30 @@ public class ReturningController {
 
 	/* 반품신청 값보내기 */
 	@RequestMapping("/returning/returnSend.do")
-	public String returnSend(OrderVo vo, HttpServletRequest req, HttpSession sess) {
+	public String returnSend(ReturningVo vo, HttpServletRequest req, HttpSession sess) {
 		String[] no = req.getParameterValues("checkOne");
+		System.out.println("test1");
 		for (int i = 0; i < no.length; i++) {
-			System.out.println(no[i]);
-
+			System.out.println("test2 : "+no[i]);
+			vo.setIo_no(Integer.parseInt(no[i]));
+			List<ReturningVo> rv= service.selectPopupRt(vo);
+			sess.setAttribute("returnList", rv);
 		}
-		return "returning/ReturnSend";
+		System.out.println("test3 : "+Arrays.toString(no));
+		return "redirect:/returning/return.do";
 	}
+
 	/* 교환신청 값보내기 */
 	@RequestMapping("/returning/replaceSend.do")
-	public String returningPopupSend(OrderVo vo, HttpServletRequest req, HttpSession sess) {
+	public String returningPopupSend(ReturningVo vo, HttpServletRequest req, HttpSession sess) {
 		String[] no = req.getParameterValues("checkOne");
 		for (int i = 0; i < no.length; i++) {
-			System.out.println(no[i]);
+			vo.setIo_no(Integer.parseInt(no[i]));
+			List<ReturningVo> rv= service.selectPopupRp(vo);
+			sess.setAttribute("returnList", rv);
 			
 		}
-		return "returning/ReplaceSend";
-	}
-
-	@RequestMapping("/returning/replace.do")
-	public String replace() {
-		return "returning/ReplaceForm";
+		return "redirect:/returning/replace.do";
 	}
 
 	@RequestMapping("/returning/list.do")

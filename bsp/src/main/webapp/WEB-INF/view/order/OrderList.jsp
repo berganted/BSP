@@ -22,7 +22,7 @@
         <h1>전체 주문 내역</h1>
         <article id="article">
        <!-- 페이지처리 -->
-                        <div class="bbsSearch" style="margin-left: 782px" >
+                        <div class="bbsSearch" style="margin-left: 756px" >
                         <form method="get" name="searchForm" id="searchForm" action="">
                             <span class="srchSelect">
                                 <select id="stype" name="stype" class="dSelect" title="검색분류 선택">

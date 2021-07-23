@@ -68,8 +68,6 @@ public class AdminCotroller {
 			String path = req.getRealPath("/img/");
 			System.out.println(path);
 			filename.transferTo(new File(path+real));
-			vo.setFilename_org(org);
-			vo.setFilename_real(real);
 			vo.setB_imgmain(real);
 			bservice.bookimg(vo);
 			}catch (Exception e) {}

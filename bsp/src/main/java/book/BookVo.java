@@ -28,6 +28,7 @@ public class BookVo extends CommonVo {
 	private int b_point;
 	private int r_id;
 	private String b_imgmain;
+//	private String ad_img; 도윤 test
 	
 	private int b_ctgno2key;
 	private String b_ctgname2;
@@ -257,6 +258,10 @@ public class BookVo extends CommonVo {
 	}
 	
 	
-	
+	/*
+	 * public String getAd_img() { return ad_img; }
+	 * 
+	 * public void setAd_img(String ad_img) { this.ad_img = ad_img; }
+	 */
 	
 }	

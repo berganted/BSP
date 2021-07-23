@@ -1,6 +1,5 @@
 package returning;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -25,40 +24,49 @@ public class ReturningController {
 	public String Return(Model model, ReturningVo vo) {
 		return "returning/ReturnForm";
 	}
+
 	@RequestMapping("/returning/returning.do")
 	public String returning(Model model, ReturningVo vo) {
 		model.addAttribute("list", service.selectPopup(vo));
 		return "returning/ReturnForm";
 	}
 
-	/* 반품팝업창 */
-	@RequestMapping("/returning/popup.do")
-	public String returningPopup(Model model, OrderVo vo) {
-		model.addAttribute("popupList", Oservice.selectPopup(vo));
-		return "returning/ReturnPopup";
-	}
+	/*
+	 * 반품팝업창
+	 * @RequestMapping("/returning/popup.do") public String returningPopup(Model
+	 * model, OrderVo vo) { model.addAttribute("popupList",
+	 * Oservice.selectPopup(vo)); return "returning/ReturnPopup"; }
+	 */
 
-
-	/* 반품팝업 값보내기*/
-	@RequestMapping("/returning/popupSend.do")
-	public String returningPopupSend(OrderVo vo, HttpServletRequest req, HttpSession sess ) {
+	/* 반품신청 값보내기 */
+	@RequestMapping("/returning/returnSend.do")
+	public String returnSend(OrderVo vo, HttpServletRequest req, HttpSession sess) {
 		String[] no = req.getParameterValues("checkOne");
-		for(int i=0; i<no.length; i++) {
+		for (int i = 0; i < no.length; i++) {
+			System.out.println(no[i]);
+
+		}
+		return "returning/ReturnSend";
+	}
+	/* 교환신청 값보내기 */
+	@RequestMapping("/returning/replaceSend.do")
+	public String returningPopupSend(OrderVo vo, HttpServletRequest req, HttpSession sess) {
+		String[] no = req.getParameterValues("checkOne");
+		for (int i = 0; i < no.length; i++) {
 			System.out.println(no[i]);
 			
 		}
-		return "returning/ReturnPopupSend";
+		return "returning/ReplaceSend";
 	}
-	
+
 	@RequestMapping("/returning/replace.do")
 	public String replace() {
 		return "returning/ReplaceForm";
 	}
-	
 
 	@RequestMapping("/returning/list.do")
 	public String ReturnOrReplaceList(Model model, ReturningVo vo) {
-		model.addAttribute("list", service.selectAll(vo) );
+		model.addAttribute("list", service.selectAll(vo));
 		return "returning/ReturnOrReplaceList";
 	}
 
@@ -73,16 +81,14 @@ public class ReturningController {
 	@RequestMapping("/returning/insert.do")
 	public String insert(Model model, ReturningVo vo) {
 		int r = service.insertRd(vo);
-		if(r>0) {
-			model.addAttribute("msg","정상적으로 등록되었습니다.");
-			model.addAttribute("url","list.do");
-		}else {
-			model.addAttribute("msg","등록실패.");
-			model.addAttribute("url","return.do");
+		if (r > 0) {
+			model.addAttribute("msg", "정상적으로 등록되었습니다.");
+			model.addAttribute("url", "list.do");
+		} else {
+			model.addAttribute("msg", "등록실패.");
+			model.addAttribute("url", "return.do");
 		}
 		return "include/alert";
 	}
-
-
 
 }

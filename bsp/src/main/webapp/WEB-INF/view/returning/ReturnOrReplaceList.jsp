@@ -59,7 +59,7 @@
 						<td>${list.returning_regdate }</td>
 						<td>${list.returning_category }</td>
 						<td>${list.pb_orderdate }</td>
-						<td><a href="detail.do?pb_no=${list.pb_no}">${list.pb_no }</a></td>
+						<td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${returningVo.reqPage}&stype=${returningVo.stype}&sval=${returningVo.sval}&orderby=${returningVo.orderby}&direct=${returningVo.direct}">${list.pb_no }</a></td>
 						<td>${list.b_title }</td>
 						<td>${list.rd_option }</td>
 						<td>${list.refund_no }</td>

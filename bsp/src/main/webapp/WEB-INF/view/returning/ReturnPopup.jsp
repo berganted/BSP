@@ -15,27 +15,13 @@
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
 </head>
 <script>
-$(function(){
-	$("input[type=checkbox]").change(function () {
-		var arTest = new Array();
-		$("input[name=checkOne]:checked").each(function(){
-			console.log(($(this).val()));
-			arTest.push($(this).val());
-			
-		});
-		console.log(arTest);
-		})
-})
+
 
 </script>
 <body id="retrn_popup_form">
     <h1 style="text-align: center">나의 주문 내역</h1>
     <article id="article">
-<<<<<<< HEAD
-        <form action="popupsend.do" method="post" name="return_info_submittb">
-=======
         <form action="popupSend.do" method="post" name="return_info_submittb">
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
         <div style="text-align: right; padding-right: 10px; padding-bottom: 10px;">
             <span>
                 <select name="정렬" style="height: 25px; border: 2px solid #221f1f ;">

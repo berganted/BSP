@@ -51,18 +51,20 @@ public class ReturningServiceimpl implements ReturningService {
 
 	@Override
 	public int insertRd(ReturningVo vo) {
-		if(dao.insertRd(vo)>0) {
-			dao.insertRt(vo);
-			dao.updatePs(vo.getReturning_no());
-			return 1;
-		}else {
-			return 0;
-		}
+		return dao.insertRd(vo);
 	}
 	@Override
 	public int delete(ReturningVo vo) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	@Override
+	public int insertRt(ReturningVo vo) {
+		return dao.insertRt(vo);
+	}
+	@Override
+	public void updatePs(int no) {
+		dao.updatePs(no);
 	}
 
 

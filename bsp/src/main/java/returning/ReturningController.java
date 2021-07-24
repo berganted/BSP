@@ -92,8 +92,14 @@ public class ReturningController {
 
 	/* 반품 insert */
 	@RequestMapping("/returning/insert.do")
-	public String insert(Model model, ReturningVo vo) {
+	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
+		String[] no = req.getParameterValues("b_no"); 
 		int r = service.insertRd(vo);
+		for (int i = 0; i <no.length; i++) { 
+			vo.setB_no(Integer.parseInt(no[i]));
+			service.insertRt(vo);
+			service.updatePs(vo.getReturning_no());
+			} 
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
 			model.addAttribute("url", "list.do");

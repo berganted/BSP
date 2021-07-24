@@ -16,6 +16,8 @@ public interface ReturningService {
 	List<ReturningVo> detail2(ReturningVo vo);
 
 	int insertRd(ReturningVo vo);
+	int insertRt(ReturningVo vo);
+	void updatePs(int no);
 
 	int delete(ReturningVo vo);
 

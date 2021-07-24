@@ -96,17 +96,20 @@
 		<insert id="insertRd" parameterType="returning.ReturningVo">
 		INSERT INTO returning_delivery_info (rd_name, rd_zipcode, rd_addr1, rd_addr2, rd_tel, rd_req, m_no, rd_option)
 		VALUES (#{rd_name}, #{rd_zipcode}, #{rd_addr1},#{rd_addr2}, #{rd_tel}, #{rd_req}, #{m_no}, #{rd_option});
+		<selectKey resultType="int" keyProperty="rd_no" order="AFTER">
+        SELECT LAST_INSERT_ID()    
+    	</selectKey>
 		</insert>
 		
 		<!-- 반품 전체 insert -->
 		<insert id="insertRt" parameterType="returning.ReturningVo">
-		<selectKey resultType="int" keyProperty="rd_no" order="BEFORE">
-        SELECT MAX(rd_no) FROM returning_delivery_info     
-    	</selectKey> 
 		INSERT INTO returning(returning_reason_no, return_reason_detail, returning_category, 
 								b_no, ps_no, rd_no, refund_no, returning_amount, io_no ,returning_regdate)
-		SELECT #{returning_reason_no},#{return_reason_detail},#{returning_category}, 
-			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{io_amount},#{io_no}, NOW();
+		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category}, 
+			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{io_amount},#{io_no}, NOW());
+			<selectKey resultType="int" keyProperty="returning_no" order="AFTER">
+        SELECT LAST_INSERT_ID()    
+    	</selectKey>
 		</insert>
 		
 		<update id="updatePs" parameterType="int">

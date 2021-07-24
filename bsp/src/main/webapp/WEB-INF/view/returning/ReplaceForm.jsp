@@ -62,15 +62,22 @@ function openZipSearchRT() {
                             <td>수령인</td>
                             <td>주문일</td>
                             <td>조회</td>
+                            
                         </tr>
                          <c:forEach var="vo" items="${returnList}">
           				  <tr>
-                			<td>${vo.pb_no}</td>
-                			<td>${vo.io_no }</td>
-               			    <td>${vo.b_title}</td>
-               			    <td>${vo.pb_resname }</td>
-                			<td>${vo.pb_orderdate }</td>
-                			<td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a></td>
+                			<td><input type="text" name="pb_no" value="${vo.pb_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
+                			<td><input type="text" name="io_no" value="${vo.io_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
+               			    <td><input type="text" name="b_title" value="${vo.b_title}" style="border:0 solid black; text-align: center; font: 16px"></td>
+               			    <td><input type="text" name="pb_resname" value="${vo.pb_resname }" style="border:0 solid black; text-align: center; font: 16px"></td>
+                			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px"></td>
+                			<td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a>
+                			 	<input type="hidden" name="b_no" value="${vo.b_no}" >
+            			 		<input type="hidden" name="io_amount" value="${vo.io_amount}" >
+            			 		<input type="hidden" name="ps_no" value="${vo.ps_no}" >
+            			 		<input type="hidden" name="m_no" value="${vo.m_no}" >
+                			</td>
+            			 	
             			 </tr>
                 		</c:forEach>
                 </table><br>

@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import order.OrderService;
-import order.OrderVo;
 
 @Controller
 public class ReturningController {
@@ -65,17 +64,18 @@ public class ReturningController {
 	}
 
 	/* 교환신청 값보내기 */
-	@RequestMapping("/returning/replaceSend.do")
-	public String returningPopupSend(ReturningVo vo, HttpServletRequest req, HttpSession sess) {
-		String[] no = req.getParameterValues("checkOne");
-		for (int i = 0; i < no.length; i++) {
-			vo.setIo_no(Integer.parseInt(no[i]));
-			List<ReturningVo> rv= service.selectPopupRp(vo);
-			sess.setAttribute("returnList", rv);
-			
+	@RequestMapping("/returning/replaceSend.do") 
+	public String returningPopupSend( ReturningVo vo , HttpServletRequest req, HttpSession sess ) { 
+		String[] no = req.getParameterValues("checkOne"); 
+		List<ReturningVo>list  = new ArrayList<ReturningVo>(); 
+		for (int i = 0; i <no.length; i++) { 
+			vo.setIo_no(Integer.parseInt(no[i])); 
+			ReturningVo rv= service.selectPopupRp(vo);
+			list.add(rv);
+			} 
+				sess.setAttribute("returnList", list);
+				return "redirect:/returning/replace.do"; 
 		}
-		return "redirect:/returning/replace.do";
-	}
 
 	@RequestMapping("/returning/list.do")
 	public String ReturnOrReplaceList(Model model, ReturningVo vo) {

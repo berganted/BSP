@@ -34,6 +34,8 @@ public class AdminCotroller {
 	BookService bservice;
 	@Autowired
 	OrderService oservice;
+	@Autowired
+	BoardService boservice;
 //로그인페이지
 	@RequestMapping("/admin")
 	public String index() {
@@ -41,7 +43,8 @@ public class AdminCotroller {
 	}
 //게시판리스트
 	@RequestMapping("admin/board/index.do")
-	public String boardIndex() {
+	public String boardIndex(BoardVo vo, Model model) {
+		model.addAttribute("list", boservice.selectAll(vo));
 		return "admin/board/index";
 	}
 //회원 리스트
@@ -182,7 +185,8 @@ public class AdminCotroller {
 	}
 //게시판 상세&수정폼
 	@RequestMapping("admin/board/view.do")
-	public String boardview() {
+	public String boardview(Model model, BoardVo vo) {
+		model.addAttribute("vo", boservice.detail(vo));
 		return "admin/board/view";
 	}
 //광고 상세&수정폼

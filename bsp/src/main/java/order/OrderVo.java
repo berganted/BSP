@@ -29,6 +29,10 @@ public class OrderVo extends CommonVo {
 	private String m_id;
 	private int count;//주문번호안에 출고번호갯수
 	private int amount_sum;
+	private String m_name;
+	private String m_email;
+	private String m_email_d;
+	
 	
 	public  OrderVo() {
 		
@@ -40,6 +44,36 @@ public class OrderVo extends CommonVo {
 	}
 	
 	
+	public String getM_name() {
+		return m_name;
+	}
+
+
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+
+
+	public String getM_email() {
+		return m_email;
+	}
+
+
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
+
+
+	public String getM_email_d() {
+		return m_email_d;
+	}
+
+
+	public void setM_email_d(String m_email_d) {
+		this.m_email_d = m_email_d;
+	}
+
+
 	public int getAmount_sum() {
 		return amount_sum;
 	}

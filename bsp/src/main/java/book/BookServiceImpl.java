@@ -115,6 +115,9 @@ public class BookServiceImpl implements BookService {
 		return dao.selectAllBasic(vo);
 	}
 	
+	
+	// 관리자 //
+	// 관리자 상품 리스트
 	@Override
 	public List<BookVo> selectAlladmin(BookVo vo) {
 		int totCount = dao.count(vo); // 총갯수
@@ -136,13 +139,13 @@ public class BookServiceImpl implements BookService {
 	}
 
 
-
+	// 책 이미지 등록
 	@Override
 	public int bookimg(BookVo vo) {
 		return dao.bookimg(vo);
 	}
 
-
+	// 책 광고 리스트
 	@Override
 	public List<BookVo> adselect(BookVo vo) {
 		int totCount = dao.countad(vo);
@@ -164,18 +167,19 @@ public class BookServiceImpl implements BookService {
 	}
 
 
-
+	// 광고 이미지 등록
 	@Override
 	public int bookimgad(BookVo vo) {
 		return dao.bookimgad(vo);
 	}
 
 
-
+	// 광고 상세
 	@Override
 	public BookVo detailAD(BookVo vo) {
 		return dao.detailAD(vo);
 	}
+	//책 상세
 	@Override
 	public int adupdate(BookVo vo) {
 		return dao.adupdate(vo);

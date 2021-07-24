@@ -35,14 +35,22 @@
 								<tbody>
 									<tr>
 										<th scope="row"><label for="">제목</label></th>
-										<td colspan="10">
-											제목입니다.
+										<td colspan="">
+											${vo.q_title }
+										</td>
+										<th scope="row"><label for="">작성자</label></th>
+										<td colspan="">
+											${vo.name }
+										</td>
+										<th scope="row"><label for="">등록일</label></th>
+										<td colspan="">
+											${vo.q_regdate }
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><label for="">내용</label></th>
 										<td colspan="10">
-											내용입니다.
+											${vo.q_content }
 										</td>
 									</tr>
 									<tr>
@@ -67,6 +75,7 @@
 							<!--//btn-->
 						</div>
 						<!-- //bread -->
+						
 					</div>
 					<!-- //bbs --> 
 					<!-- 내용 : e -->

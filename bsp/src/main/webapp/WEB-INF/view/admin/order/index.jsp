@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 </head>
 <body> 
@@ -28,7 +29,7 @@
                         <form method="get" name="searchForm" id="searchForm" action=""> 
                         <span class="srchSelect">	
                                 <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="m_regdate"<c:if test="${param.orderby=='m_regdate'}"> selected</c:if>>가입일</option>
+                                    <option value="pb_orderdate"<c:if test="${param.orderby=='pb_orderdate'}"> selected</c:if>>주문일자</option>
                                     <option value="m_delflag" <c:if test="${param.orderby=='m_delflag'}"> selected</c:if>>탈퇴여부</option>
                                 </select>
                             </span>             
@@ -83,7 +84,7 @@
 										<td class="title"><a href="view.do?pb_no=${list.pb_no }&reqPage=${orderVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
 											${list.b_title }<c:if test="${list.count>1 }">외 ${list.count - 1}권</c:if></a>
 										<td>${list.m_id }</td>
-										<td>${list.pb_totalprice}</td>
+										<td><fmt:formatNumber value="${list.pb_totalprice}" groupingUsed="true" /></td>
 										<td>${list.ps_title }</td>
 										<td>${list.amount_sum }</td>
 										<td class="last">${list.pb_orderdate }</td>

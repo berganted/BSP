@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -43,27 +44,29 @@
 										</td>
 										<th scope="row"><label for="">이메일</label></th>
 										<td>
-											
+											${ vo.m_email}@${vo.m_email_d }
 										</td>
 										
 									</tr>
 									<tr>
 										<th scope="row"><label for="">이름</label></th>
 										<td colspan="">
-											
+											${vo.pb_resname }
 										</td>
 										<th scope="row"><label for="">전화번호</label></th>
 										<td colspan="">
-											
+											${vo.pb_restel }
 										</td>
 										<th scope="row"><label for="">주소</label></th>
 										<td colspan="">
-											
+											${vo.pb_zipcode }<br>
+											${vo.pb_addr1 }
 										</td>
 									</tr>
 									<tr>
-									
-									<span><strong>총 ${orderVo.totCount }개</strong>  |  ${orderVo.reqPage }/${orderVo.totPage }</span>
+							</table>
+							
+							<span><strong>총 ${orderVo.totCount }개</strong>  |  ${orderVo.reqPage }/${orderVo.totPage }</span>
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
@@ -79,10 +82,10 @@
 										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
 										<th scope="col">출고번호</th>
 										<th scope="col">구매상품</th> 
-										<th scope="col">구매자</th> 
-										<th scope="col">가격</th> 
-										<th scope="col">처리상태</th> 
 										<th scope="col" class="last">주문수량</th>
+										<th scope="col">개별가격</th> 
+										<th scope="col">총 가격</th> 
+										<th scope="col">처리상태</th> 
 										<th scope="col">구매일</th> 
 									</tr>
 									<c:forEach var="list" items="${list }">
@@ -91,19 +94,19 @@
 										<td>${list.io_no }</td>
 										<td class="title"><a href="view.do?pb_no=${list.pb_no }&reqPage=${orderVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
 											${list.b_title }<c:if test="${list.count>1 }">외 ${list.count - 1}권</c:if></a>
-										<td>${list.m_id }</td>
-										<td>${list.pb_totalprice}</td>
+										<td>${list.io_amount }</td>
+										<td><fmt:formatNumber value="${list.b_price }" groupingUsed="true" /></td>
+										<td><fmt:formatNumber value="${list.b_price * list.io_amount}" groupingUsed="true" /></td>
 										<td>${list.ps_title }</td>
-										<td>${list.amount_sum }</td>
 										<td class="last">${list.pb_orderdate }</td>
 									</tr>
 									</c:forEach>
-							</table>
+									</table>
 							</form>
 							
 							<!--//btn-->
 							<!-- 페이징 처리 -->
-							<td><div class='page'>
+							<div class='page'>
 									<c:if test="${orderVo.strPage > orderVo.pageRange}">
 										<li><a href="index.do?reqPage=${orderVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"></a>
 									</c:if>
@@ -117,28 +120,9 @@
 									<c:if test="${orderVo.totPage > orderVo.endPage}">
 										<a
 											href="index.do?reqPage=${orderVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
-								</div></td>
-									</tr>
-									<tr>
-										<th scope="row"><label for="">가입일</label></th>
-										<td colspan="">
-										</td>
-										<th scope="row"><label for="">탈퇴일</label></th>
-										<td colspan="">
-										</td>
-										<th scope="row"><label for="">탈퇴여부</label></th>
-										<td colspan="">
-										</td>
-									</tr>
-									<tr>
-										<th scope="row"><label for="">보유포인트</label></th>
-										<td colspan="3">
-										</td>
-										<th scope="row"><label for="">성별</label></th>
-										<td colspan="3">
-									</tr>
-								</tbody>
-							</table>
+								</div>
+									
+									
 							<div class="btn">
 								<div class="btnLeft">
 									<a class="btns" href="index.do"><strong>목록</strong></a>

@@ -13,11 +13,14 @@ public class ReturningDao {
 	public List<ReturningVo> selectAll(ReturningVo vo){
 		return sessionTemplate.selectList("returnig.selectAll",vo);
 	}
+
+	/* 주문 → 반품신청서 */
 	public ReturningVo  selectPopupRt(ReturningVo vo){
 		return sessionTemplate.selectOne("returnig.selectPopupRt",vo);
 	}
-	public List<ReturningVo> selectPopupRp(ReturningVo vo){
-		return sessionTemplate.selectList("returnig.selectPopupRp",vo);
+	/* 교환 → 반품신청서 */
+	public ReturningVo selectPopupRp(ReturningVo vo){
+		return sessionTemplate.selectOne("returnig.selectPopupRp",vo);
 	}
 	public int count(ReturningVo vo) {
 		return sessionTemplate.selectOne("returnig.count",vo);

@@ -75,6 +75,7 @@ function openZipSearchRT() {
                 			 	<input type="hidden" name="b_no" value="${vo.b_no}" >
             			 		<input type="hidden" name="io_amount" value="${vo.io_amount}" >
             			 		<input type="hidden" name="ps_no" value="${vo.ps_no}" >
+            			 		<input type="hidden" name="m_no" value="${vo.m_no}" >
                 			</td>
             			 	
             			 </tr>

@@ -64,16 +64,16 @@ public class ReturningController {
 	}
 
 	/* 교환신청 값보내기 */
-	
 	@RequestMapping("/returning/replaceSend.do") 
-	public String returningPopupSend( ReturningVo vo , HttpServletRequest req, HttpSession sess) { 
+	public String returningPopupSend( ReturningVo vo , HttpServletRequest req, HttpSession sess ) { 
 		String[] no = req.getParameterValues("checkOne"); 
+		List<ReturningVo>list  = new ArrayList<ReturningVo>(); 
 		for (int i = 0; i <no.length; i++) { 
 			vo.setIo_no(Integer.parseInt(no[i])); 
-			List<ReturningVo> rv= service.selectPopupRp(vo); 
-			sess.setAttribute("returnList", rv);
-
+			ReturningVo rv= service.selectPopupRp(vo);
+			list.add(rv);
 			} 
+				sess.setAttribute("returnList", list);
 				return "redirect:/returning/replace.do"; 
 		}
 

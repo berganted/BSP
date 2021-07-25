@@ -19,7 +19,7 @@
 	</sql>
 	
 	
-		<!-- 반품/교화 전체 내역 -->
+		<!-- 반품/교환 전체 내역 -->
 			<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
 			FROM product_io PI JOIN returning r
@@ -27,11 +27,11 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no		<!-- book과 조인시 환불(returning)테이블과 출고(product_io)테이블의 조건은 다름 -->
 			JOIN processing_status ps
 			ON ps.ps_no = r.ps_no
 			<include refid="returnigWhere"/>
-			GROUP BY PI.pb_no
+			GROUP BY returning_no
 			ORDER BY ${orderby} ${direct}
 			LIMIT ${strIdx},${pageRow}
 			</select>
@@ -44,7 +44,7 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no	
 			JOIN processing_status ps
 			ON ps.ps_no = r.ps_no
 			<include refid="returnigWhere"/>
@@ -86,10 +86,10 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no 	<!-- book과 조인시 환불(returning)테이블과 출고(product_io)테이블의 조건은 다름 -->
 			JOIN processing_status ps
-			ON ps.ps_no = r.ps_no AND pb_no = #{pb_no}
-			GROUP BY PI.pb_no;
+			ON ps.ps_no = r.ps_no AND returning_no = #{returning_no}
+			GROUP BY returning_no;
 		</select>
 		<!-- 반품/교환상세 개별(반품도서 종류) -->
 		<select id="detail2" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
@@ -99,9 +99,9 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no		<!-- book과 조인시 환불(returning)테이블과 출고(product_io)테이블의 조건은 다름 -->
 			JOIN processing_status ps
-			ON ps.ps_no = r.ps_no AND pb_no=#{pb_no}
+			ON ps.ps_no = r.ps_no AND returning_no=#{returning_no}
 		</select>
 		
 

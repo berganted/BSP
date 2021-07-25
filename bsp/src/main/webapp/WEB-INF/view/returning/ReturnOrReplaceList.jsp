@@ -45,7 +45,6 @@
 						<td>반품번호</td>
 						<td>반품접수일</td>
 						<td>구분</td>
-						<td>주문접수일</td>
 						<td>원주문번호</td>
 						<td>상품명/수량</td>
 						<td>회송방법</td>
@@ -53,14 +52,13 @@
 						<td>처리상태</td>
 						<td>조회</td>
 					</tr>
-					<c:forEach var="list" items="${list }">
+					<c:forEach var="list" items="${RList}">
 					<tr>
-						<td>${list.returning_no }</td>
+						<td><a href="detail.do?returning_no=${list.returning_no}&reqPage=${returningVo.reqPage}&stype=${returningVo.stype}&sval=${returningVo.sval}&orderby=${returningVo.orderby}&direct=${returningVo.direct}">${list.returning_no }</a></td>
 						<td>${list.returning_regdate }</td>
 						<td>${list.returning_category }</td>
-						<td>${list.pb_orderdate }</td>
-						<td><a href="detail.do?returning_no=${list.returning_no}&reqPage=${returningVo.reqPage}&stype=${returningVo.stype}&sval=${returningVo.sval}&orderby=${returningVo.orderby}&direct=${returningVo.direct}">${list.pb_no }</a></td>
-						<td>${list.b_title }</td>
+						<td>${list.pb_no }</td>
+						<td>${list.b_title } / ${list.returning_amount}</td>
 						<td>${list.rd_option }</td>
 						<td>${list.refund_no }</td>
 						<td>${list.ps_title }</td>

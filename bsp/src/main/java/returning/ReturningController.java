@@ -77,13 +77,14 @@ public class ReturningController {
 
 	@RequestMapping("/returning/list.do")
 	public String ReturnOrReplaceList(Model model, ReturningVo vo) {
-		model.addAttribute("list", service.selectAll(vo));
+		model.addAttribute("RList", service.selectAll(vo));
 		return "returning/ReturnOrReplaceList";
 	}
 
 	@RequestMapping("/returning/detail.do")
 	public String ReturnOrReplaceListDetails(Model model, ReturningVo vo) {
 		model.addAttribute("vo", service.detail1(vo));
+		vo.setB_no(vo.getB_no());
 		model.addAttribute("detail2", service.detail2(vo));
 		return "returning/ReturnOrReplaceListDetails";
 	}
@@ -93,13 +94,16 @@ public class ReturningController {
 
 	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
 		String[] no = req.getParameterValues("b_no"); 
+		String[] ano = req.getParameterValues("io_amount") ;
 		int r = service.insertRd(vo);
 		for (int i = 0; i < no.length; i++) {
 			vo.setB_no(Integer.parseInt(no[i]));
+			vo.setReturning_amount(Integer.parseInt(ano[i]));
 			service.insertRt(vo);
 			service.updatePs(vo.getReturning_no());
 			System.out.println(no[i]);
 		}
+		System.out.println("수량 : "+Arrays.toString(ano));
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
 			model.addAttribute("url", "list.do");

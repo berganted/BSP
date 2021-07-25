@@ -104,7 +104,7 @@ function rtnCheck(){
                         ${vo.b_author }
                         <a href=""><input class="button_s" type="button" value="리뷰 쓰기"></a>
                     </td>
-                    <td>1</td>
+                 	<td>${vo.io_amount}</td>
                     <td>
                     	가격: ${vo.b_price}<br>
                         마일리지:1500원(5%)

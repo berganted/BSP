@@ -26,7 +26,7 @@
                <tr>
                    <td>반품접수일</td>
                    <td>구분</td>
-                   <td>주문접수일</td>
+                   <td>반품번호</td>
                    <td>원주문번호</td>
                    <td>상품명/수량</td>
                    <td>회송방법</td>
@@ -36,9 +36,9 @@
                <tr>
                  	<td>${vo.returning_regdate }</td>
 					<td>${vo.returning_category }</td>
-					<td>${vo.pb_orderdate }</td>
+					<td>${vo.returning_no }</td>
 					<td><a href="">${vo.pb_no }</a></td>
-					<td>${vo.b_title }</td>
+					<td>${vo.b_title } / ${vo.returning_amount}</td>
 					<td>${vo.rd_option }</td>
 					<td>${vo.refund_no }</td>
 					<td>${vo.ps_title }</td>
@@ -53,14 +53,14 @@
                 <td>반품 완료 수량</td>
                 <td>신청 수량</td>
             </tr>
-            <c:forEach var="vo" items="${detail2}">
+           <c:forEach var="vo" items="${detail2}">
             <tr>
                 <td>${vo.b_title }</td>
                 <td>${vo.b_price }</td>
                 <td>${vo.returning_amount}</td>
                 <td>${vo.returning_amount}</td>
             </tr>
-            </c:forEach>
+         </c:forEach>
            </table>
 
            <h4>환불정보</h4>

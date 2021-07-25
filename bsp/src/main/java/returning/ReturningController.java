@@ -90,8 +90,9 @@ public class ReturningController {
 
 	/* 반품 insert */
 	@RequestMapping("/returning/insert.do")
-	public String insert(Model model, ReturningVo vo,HttpServletRequest req) {
-		String[] no = req.getParameterValues("b_no");
+
+	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
+		String[] no = req.getParameterValues("b_no"); 
 		int r = service.insertRd(vo);
 		for (int i = 0; i < no.length; i++) {
 			vo.setB_no(Integer.parseInt(no[i]));

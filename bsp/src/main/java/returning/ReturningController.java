@@ -90,20 +90,22 @@ public class ReturningController {
 	}
 
 	/* 반품 insert */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/returning/insert.do")
 
-	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
-		String[] no = req.getParameterValues("b_no"); 
-		String[] ano = req.getParameterValues("io_amount") ;
+	public String insert(Model model, ReturningVo vo, HttpServletRequest req,HttpSession sess) {
+		List<ReturningVo> v = (List<ReturningVo>) sess.getAttribute("returnList");
 		int r = service.insertRd(vo);
-		for (int i = 0; i < no.length; i++) {
-			vo.setB_no(Integer.parseInt(no[i]));
-			vo.setReturning_amount(Integer.parseInt(ano[i]));
+		for (int i = 0; i < v.size(); i++) {
+			System.out.println(v.get(i).getB_no());
+			vo.setB_no(v.get(i).getB_no());
+			System.out.println(v.get(i).getIo_amount());
+			vo.setIo_amount(v.get(i).getIo_amount());
+			System.out.println(v.get(i).getIo_no());
+			vo.setIo_no(v.get(i).getIo_no());
 			service.insertRt(vo);
 			service.updatePs(vo.getReturning_no());
-			System.out.println(no[i]);
 		}
-		System.out.println("수량 : "+Arrays.toString(ano));
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
 			model.addAttribute("url", "list.do");

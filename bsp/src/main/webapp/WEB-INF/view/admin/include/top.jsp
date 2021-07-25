@@ -57,7 +57,8 @@ $(window).load(function(){
 <div id="header">
 	<div class="header_inner">
 		<h1>SAMPLE</h1>
-		<p class="login_name"></p>
+		
+		<p class="login_name">${adminInfo.a_id}</p>
 		<!-- util : s -->
 		<div class="util">
 			<ul>

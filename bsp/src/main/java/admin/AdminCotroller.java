@@ -230,9 +230,17 @@ public class AdminCotroller {
 			model.addAttribute("url", "/bsp/admin");
 			return "include/alert";
 		} else {
-			sess.setAttribute("userInfo", v);
+			sess.setAttribute("adminInfo", v);
 			return "redirect:board/index.do";
 		}
+	}
+//관리자 로그아웃
+	@RequestMapping("/admin/logout.do")
+	public String logout(HttpSession sess, Model model) {
+		sess.invalidate();
+		model.addAttribute("msg", "로그아웃");
+		model.addAttribute("url", "/bsp/admin");
+		return "include/alert";
 	}
 //광고 그룹 삭제
 	@RequestMapping("admin/productAD/grouDelete.do")

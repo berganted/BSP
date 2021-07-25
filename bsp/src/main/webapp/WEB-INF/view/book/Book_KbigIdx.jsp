@@ -95,13 +95,10 @@
                
                 
 
-<<<<<<< HEAD
             <div class="BigIndex_newEye"> 눈에 띄는 새책</div>
                   <div class="BigIndex_newEye_wrap">
-=======
             <div class="BigIndex_newEye">베스트셀러</div>
            		 <div class="BigIndex_newEye_wrap">
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
                 <c:forEach var = "vo" items="${list2 }">
                 
                 <div class="BigIndex_newEye_content">
@@ -132,9 +129,9 @@
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <img src="${vo.b_imgno }" alt="마지막 몰입", title="마지막 몰입">
+                    <div style="width: 200px; height: 250px;"><img src="bsp/img/${vo.b_imgmain }" alt="마지막 몰입", title="마지막 몰입" style="width: 200px; height: 250px;"></div>
                     <div class="newStar_info">
-                        <ul> <br>
+                        <ul> 
                             <li><a class="newStar_title">${vo.b_title }</a></li>
                             <li><a class="newStar_author">${vo.b_author }</a></li>
                             <li><a class="newStar_pub">${vo.b_publisher }</a></li>
@@ -150,6 +147,7 @@
             </div>
             
 
+        </div>
         </div>
     <jsp:include page="../include/quick.jsp"></jsp:include>
            

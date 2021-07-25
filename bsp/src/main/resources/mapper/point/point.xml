@@ -3,23 +3,16 @@
 <mapper namespace="point">
 
 	<select id="selectAll" resultType="point.PointVo" parameterType="point.PointVo">
-		SELECT * FROM point WHERE m_no=#{m_no}
+		SELECT *,(SELECT m_point FROM user WHERE m_no=point.m_no) FROM point WHERE m_no=#{m_no}
 		ORDER BY p_regdate DESC
 		LIMIT ${strIdx},${pageRow}
 	</select>
 	
 	<select id="count" resultType="int" parameterType="point.PointVo">
-		SELECT COUNT(*) FROM comment
-		WHERE q_no=#{q_no} AND c_tablename=#{c_tablename}
+		SELECT COUNT(*) FROM point
+		
 	</select>
 	
-	<insert id="insert" parameterType="point.PointVo">
-		INSERT INTO comment (c_content, c_regdate, q_no, m_no, c_tablename)
-		VALUES (#{c_content}, NOW(), #{q_no}, #{m_no}, #{c_tablename})
-	</insert>
 	
-	<delete id="delete" parameterType="point.PointVo">
-		DELETE FROM comment WHERE c_no=#{c_no}
-	</delete>
 	
 </mapper>

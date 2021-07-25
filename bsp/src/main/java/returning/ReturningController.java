@@ -56,8 +56,6 @@ public class ReturningController {
 			ReturningVo rv= service.selectPopupRt(vo);
 			list.add(rv);
 		}
-		System.out.println(list.get(0).getB_title());
-		System.out.println(list.get(1).getB_title());
 		sess.setAttribute("returnList", list);
 		System.out.println("test3 : "+Arrays.toString(no));
 		return "redirect:/returning/return.do";
@@ -92,8 +90,15 @@ public class ReturningController {
 
 	/* 반품 insert */
 	@RequestMapping("/returning/insert.do")
-	public String insert(Model model, ReturningVo vo) {
+	public String insert(Model model, ReturningVo vo,HttpServletRequest req) {
+		String[] no = req.getParameterValues("b_no");
 		int r = service.insertRd(vo);
+		for (int i = 0; i < no.length; i++) {
+			vo.setB_no(Integer.parseInt(no[i]));
+			service.insertRt(vo);
+			service.updatePs(vo.getReturning_no());
+			System.out.println(no[i]);
+		}
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
 			model.addAttribute("url", "list.do");

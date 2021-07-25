@@ -67,7 +67,7 @@ function openZipSearchRT() {
                          <c:forEach var="vo" items="${returnList}">
           				  <tr>
                 			<td><input type="text" name="pb_no" value="${vo.pb_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td><input type="text" name="io_no" value="${vo.io_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
+                			<td ><input type="text" name="io_no" value="${vo.io_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
                			    <td><input type="text" name="b_title" value="${vo.b_title}" style="border:0 solid black; text-align: center; font: 16px"></td>
                			    <td><input type="text" name="pb_resname" value="${vo.pb_resname }" style="border:0 solid black; text-align: center; font: 16px"></td>
                 			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px"></td>

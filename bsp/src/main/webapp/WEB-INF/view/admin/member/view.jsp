@@ -41,7 +41,7 @@
 										</td>
 										<th scope="row"><label for="">아이디</label></th>
 										<td>
-											${vo.m_no}
+											${vo.m_id}
 										</td>
 										<th scope="row"><label for="">이메일</label></th>
 										<td>

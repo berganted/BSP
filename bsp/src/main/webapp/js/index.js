@@ -1,12 +1,3 @@
-// $(function(){
-//     $(".header_mainMenu > li").mouseover(function(){
-//         $(this).find('.header_depth2').stop().slideDown(300);
-//     }) .mouseleave(function(){
-//          $(this).find('.header_depth2').stop().slideUp(300);
-//     });
-	 	
-// });
-
 $(function(){ 
     $("#header").load("header.html");  
     $("#footer").load("footer.html"); 
@@ -84,8 +75,6 @@ $(".support_member").click(function(){
    
 });
 
-//  support_t2 클래스 내임 따로 주기 
-// 클래스명 얼추 정리하기 
 
 $(".support_t2").hide();
 $(".support_t").click(function(){
@@ -136,5 +125,19 @@ function setEditor(holder){
 	
 	return oEditors;
 } 
+
+$(document).ready(function(){
+    $("select[name=bestCate]").change(function(){
+        $(this).find("option:selected").each(function(){
+            var optionValue = $(this).attr("value");
+            if(optionValue){
+                $(".bestCate_option").not("#" + optionValue).hide();
+                $("#" + optionValue).show();
+            } else{
+                $(".bestCate_option").hide();
+            }
+        });
+    }).change();
+});
 
 

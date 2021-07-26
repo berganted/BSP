@@ -733,9 +733,9 @@ li {
 
 .index_Ads01 > img {
     height: 180px;
-    width: 120px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 255px;
+    padding-top: 5px;
+    padding-bottom: 20px;
 }
 
 .index_Ads01 {
@@ -743,15 +743,15 @@ li {
 }
 
 .index_Ads02 > div> img {
-    height: 90px;
-    width: 60px;
+    height: 135px;
+    width: 255px;
 }
 
 .index_Ads02 > div {
     position: relative;
     float: right;
     padding: 20px;
-    padding-top: 40px;    
+    padding-top: 5px;
 }
 
 .index_Ads01 > .index_ad {
@@ -768,13 +768,31 @@ li {
 	color: #999;
 }
 
+/* 베스트셀러 */
+.index_bestCate {
+	border-top: 1px solid #d7d7d7;
+	clear: left;
+	padding: 10px;
+}
+
+#bestCate {
+	 width:250px;
+	 line-height: 10px;
+     padding:2px;
+     padding-left: 10px;
+     border:1px solid #999;
+     font-family:'Nanumgothic';
+     border-radius:3px;
+}
+
+
 .index_todaysBooks {
     z-index: 1;    
     height: 400px;
     width: 60%;
     padding: 20px;
     overflow: hidden;
-    background-color: #e5e5e5;
+    background-color: #f1f1f1;
     /* 요거고침요 */
 }
 .index_todaysBooks1{
@@ -795,6 +813,7 @@ li {
 
 .index_todayDetails {
     padding-top: 60px;
+    padding-right: 10px;
     height: 360px;
     width: 65%;
 }
@@ -875,14 +894,15 @@ li {
 .index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_title.on { /*class가 board_title & board_title on*/
     background-color: black;
     color: white;
+   
 }
 
 /*----수정------------------------------------------------------------------*/
-.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul {
+.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > div > ul {
     clear:both;
     border-top: 1px solid #d7d7d7;
 } 
-.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul > li {
+.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > div > ul > li {
     line-height: 42px;
     border-bottom: 1px solid rgb(235, 233, 233);
     margin-right: 20px;
@@ -894,7 +914,15 @@ li {
     cursor: pointer;
 }
 
-.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul > li > span {
+.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content > ul > li {
+    line-height: 42px;
+    border-bottom: 1px solid rgb(235, 233, 233);
+    margin-right: 20px;
+    text-align: left;
+    margin-left: 30px;
+}
+
+.index_rank > .index_info > .index_ranContent > .index_board_area > .index_board_content div > ul > li > span {
     float: right;
     margin-right: 10px;
     font-size: 10px;

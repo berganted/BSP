@@ -68,6 +68,12 @@
 		FROM book WHERE b_no BETWEEN 1 AND 5
 		<include refid="bookwhere"/>
 	</select>
+	<!-- test -->
+	<select id="selectbest" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book WHERE b_ctgno1=${b_ctgno1}
+		<include refid="bookwhere"/>
+	</select>
 <!-- index.do 광고 -->	
 	<select id="selectAll5" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,
@@ -88,7 +94,7 @@
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
 			SELECT *,
 			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 = 
+			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 5
 			<include refid="bookwhere"/>
 	</select>
 

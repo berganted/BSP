@@ -84,28 +84,30 @@
                                <div class="index_board_title" style="margin-right: 60px;">인기검색어</div>
                                <div class="index_board_content" id="index_board_notice">
 	                              <div class="index_bestCate">
-	                               	  <select id="bestCate" name="bestCate" size="1">
-	                               	  		<option value="DomesticBooks">국내도서</option>
-	                               	  		<option value="ForeignsBooks">외국도서</option>
+	                              	 <form method="get" name="searchForm" id="searchForm" action="" onchange="$('#searchForm').submit();">
+	                               	  <select id="b_ctgno1" name="b_ctgno1" size="1">
+	                               	  		<option value="1"<c:if test="${param.b_ctgno1==1}"> selected</c:if>>국내도서</option>
+	                               	  		<option value="2"<c:if test="${param.b_ctgno1==2}"> selected</c:if>>외국도서</option>
 	                               	  		<option value="Ebooks">ebook</option>
 	                               	  </select>
+	                               	  </form>
 	                              </div>
 	                           <div id="DomesticBooks" class="bestCate_option">  
-                               <c:forEach var="vo" items="${list4 }" varStatus="status">
+                               <c:forEach var="vo" items="${best }" varStatus="status">
                                   <ul>
                                       <li>${vo.b_title } | ${vo.b_author }</li>
                                   </ul>
                                </c:forEach>
                                </div> 
 	                           <div id="ForeignsBooks" class="bestCate_option">  
-                               <c:forEach var="vo" items="${list4 }" varStatus="status">
+                               <c:forEach var="vo" items="${list7 }" varStatus="status">
                                   <ul>
                                       <li>${vo.b_title } | ${vo.b_author }</li>
                                   </ul>
                                </c:forEach>
                                </div> 
 	                           <div id="Ebooks" class="bestCate_option">  
-                               <c:forEach var="vo" items="${list4 }" varStatus="status">
+                               <c:forEach var="vo" items="${list7 }" varStatus="status">
                                   <ul>
                                       <li>${vo.b_title } | ${vo.b_author }</li>
                                   </ul>

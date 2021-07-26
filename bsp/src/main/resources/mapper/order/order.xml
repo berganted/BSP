@@ -26,7 +26,7 @@
 		JOIN book ON PI.b_no = book.b_no
 		JOIN processing_status PS ON PI.ps_no = PS.ps_no
 		<include refid="orderWhere"/>
-		GROUP BY PI.pb_no
+		GROUP BY PB .pb_no
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}
  		</select>
@@ -40,10 +40,7 @@
 		
 		<!-- 페이징처리 -->
 		<select id="count" resultType="int" parameterType="order.OrderVo">
-		SELECT COUNT(*) , PI.pb_no FROM  product_buy AS PB 
-		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
-		JOIN book ON PI.b_no = book.b_no
-		JOIN processing_status PS ON PI.ps_no = PS.ps_no
+		SELECT COUNT(*) FROM  product_buy 
 		<include refid="orderWhere"/>
 		</select>
 		

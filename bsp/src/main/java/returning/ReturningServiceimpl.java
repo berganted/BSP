@@ -66,6 +66,10 @@ public class ReturningServiceimpl implements ReturningService {
 	public void updatePs(int no) {
 		dao.updatePs(no);
 	}
+	@Override
+	public void updatePi(int no) {
+		dao.updatePi(no);
+	}
 
 
 

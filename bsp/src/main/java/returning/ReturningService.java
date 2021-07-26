@@ -18,6 +18,7 @@ public interface ReturningService {
 	int insertRd(ReturningVo vo);
 	int insertRt(ReturningVo vo);
 	void updatePs(int no);
+	void updatePi(int no);
 	int delete(ReturningVo vo);
 	
 	

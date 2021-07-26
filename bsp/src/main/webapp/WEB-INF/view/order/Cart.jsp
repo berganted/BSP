@@ -52,6 +52,16 @@
             </div>
             
             <table id="cart_tb" class="cart_con" style="border: 1px solid rgb(206, 205, 205);">
+            <colgroup>
+									<col width="50px" />
+									<col width="100px" />
+									<col width="250px" />
+									<col width="150px" />
+									<col width="110px" />
+									<col width="300px" />
+									<col width="150px" />
+									
+								</colgroup>
                 <tr>
                     <td><input type="checkbox" value="select" id="all_select" onclick="selctAll();" name="checkAll"></td>
                     <td colspan="2">상품</td> 
@@ -68,7 +78,7 @@
 			<c:forEach var="list" items="${cartList}">  
 	            <tr data-tr_value="1">
 	                <td><input type="checkbox" value="select"  name="checkOne"></td>
-	                <td	style="text-align:center;"><div ><img src="/bsp/img/${list.b_imgmain}" style="height: 200px; width: 200px;"></div></td> 
+	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100% "></td> 
 	                <td><a href=""> ${list.b_title }<br> *내일수령가능</a></td> 
 	                <td>${list.b_price }<br>
 	                    ${list.b_point }(5%)

@@ -54,17 +54,17 @@
 					<c:forEach var="list" items="${orderList}">  
                 <tr>
                     <td>${list.pb_orderdate }</td>
-                    <td><a href="/bsp/order/detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
+                    <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	${list.pb_no}</a></td>
                     <td>${list.pb_resname}</td>
                     <td>&nbsp;총 33권</td>
-                    <td><a href="/bsp/order/detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
+                    <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	<input class="button_s" type="button" value="상세조회"></a></td>
                     <td>${list.ps_title}</td>
                 </tr>
     				</c:forEach>
         </table>
-         <div class="pagenate clear">
+				<div class="pagenate clear">
                         <ul class='paging'> 
                         <c:if test="${orderVo.strPage > orderVo.pageRange}">
                         	<li><a href="list.do?reqPage=${orderVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
@@ -77,20 +77,19 @@
                         </c:if>
                         </ul> 
                     </div>
-                    
         </article>
     </div>
-   <aside class="mypage_ad">
-                <div class="mypage_ad_name"><p>최근본상품</p></div>
-                <div class="img_area">
-                    <img src="img/book.jpg" width="70px" height="100px">
-                </div>
-                <div style="text-align: center;">
-                    책이름
-                </div>
-            </aside> 
+  <aside class="mypage_ad">
+			<div class="mypage_ad_name">
+				<p>최근본상품</p>
+			</div>
+			<div class="img_area">
+				<img src="img/book.jpg" width="70px" height="100px">
+			</div>
+			<div style="text-align: center;">책이름</div>
+		</aside>
 </div> 
-<div id="footer"></div>
+<footer id="footer"></footer>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

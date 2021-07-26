@@ -52,6 +52,11 @@
 						<td>처리상태</td>
 						<td>조회</td>
 					</tr>
+				<c:if test="${empty RList}">
+						<tr>
+							<td class="first" colspan="9">반품/교환 내역이 없습니다.</td>
+						</tr>
+				</c:if>
 					<c:forEach var="list" items="${RList}">
 					<tr>
 						<td><a href="detail.do?returning_no=${list.returning_no}&reqPage=${returningVo.reqPage}&stype=${returningVo.stype}&sval=${returningVo.sval}&orderby=${returningVo.orderby}&direct=${returningVo.direct}">${list.returning_no }</a></td>
@@ -93,7 +98,6 @@
 			<div style="text-align: center;">책이름</div>
 		</aside>
 
-		</aside>
 	</div>
 	<footer id="footer"></footer>
 	<jsp:include page="../include/footer.jsp"></jsp:include>

@@ -119,15 +119,22 @@
 		INSERT INTO returning(returning_reason_no, return_reason_detail, returning_category, 
 								b_no, ps_no, rd_no, refund_no, returning_amount, io_no ,returning_regdate)
 		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category}, 
-			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{io_amount},#{io_no}, NOW());
-			<selectKey resultType="int" keyProperty="returning_no" order="AFTER">
+			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{returning_amount},#{io_no}, NOW());
+		<selectKey resultType="int" keyProperty="returning_no" order="AFTER">
         SELECT LAST_INSERT_ID()    
     	</selectKey>
 		</insert>
 		
 		<update id="updatePs" parameterType="int">
 		UPDATE returning SET 
-		ps_no= 11 WHERE returning_no=#{returning_no};
+		ps_no= 11
+		WHERE returning_no=#{returning_no} 
+		</update>
+		
+		<update id="updatePi" parameterType="int">
+		UPDATE product_io SET 
+		ps_no= 11
+		WHERE io_no=#{io_no} 
 		</update>
 
 		

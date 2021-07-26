@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="cart">
+	<sql id="cartWhere">
+		<where>
+			<if test="sval != null and sval != ''">
+				<if test="stype == 'all'">
+					ps_title LIKE '%${sval}%' OR b_title LIKE '%${sval}%'
+				</if>
+				<if test="stype != 'all'">
+					${stype} LIKE '%${sval}%'
+				</if>
+			</if>
+		<!-- 	<if test="m_no != 0">
+				AND m_no=#{m_no}
+			</if> -->
+		</where>
+	</sql>
+	
+	
+		<!-- 전체주문내역 (주문번호 기준)-->
+		<select id="selectAll" resultType="order.OrderVo" parameterType="order.OrderVo">
+	
+ 		</select>
+ 		
+ 		
+	</mapper>

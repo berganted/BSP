@@ -136,6 +136,15 @@
 		ps_no= 11
 		WHERE io_no=#{io_no} 
 		</update>
+		
+		<!-- admin -->
+		<select id="selectop" resultType="returning.ReturningVo">SELECT * FROM bsp.processing_status; </select>
+
+		<update id="updatepsno" parameterType="returning.ReturningVo">UPDATE returning set ps_no=#{ps_no} WHERE returning_no=#{returning_no}; </update>
+
+		<update id="updateiopsno">UPDATE product_io set ps_no=#{ps_no} WHERE io_no=#{io_no} </update>
+
+		<update id="updatereturnaddr">UPDATE product_io set ps_no=#{ps_no} WHERE io_no=#{io_no} </update>
 
 		
 	</mapper>

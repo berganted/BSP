@@ -70,9 +70,17 @@
         </div>  
 
         <div class="mem_content">
+<<<<<<< HEAD
             <h2 class="main_top"> ${param.b_ctgdetail }</h2>   
+=======
+            <h2 class="main_top">임신 / 출산</h2>
+            <div class="smallCtg_area"> 
+                <div class="cate2"><a href="${변수처리 }.do">임신</a></div> 
+            <h2 class="main_top"> ${bookVo.b_ctgdetail }</h2>   
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
            <!--  <div class="smallCtg_area"> 
                 <div class="cate2"><a href="#">임신</a></div> 
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
                 <div class="cate2"><a href="#">태교</a></div> 
                
 

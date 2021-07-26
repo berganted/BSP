@@ -28,9 +28,12 @@ public class BookVo extends CommonVo {
 	private int b_point;
 	private int r_id;
 	private String b_imgmain;
+//	private String ad_img; 도윤 test
 	
 	private int b_ctgno2key;
 	private String b_ctgname2;
+	private int ad_no;
+	private String ad_img;
 	private String b_ctgdetail;
 
 	
@@ -46,12 +49,6 @@ public class BookVo extends CommonVo {
 	public void setB_ctgdetail(String b_ctgdetail) {
 		this.b_ctgdetail = b_ctgdetail;
 	}
-
-
-
-	
-
-
 	public BookVo() {
 		this.pageRow = 10;
 		this.reqPage = 1;
@@ -60,6 +57,22 @@ public class BookVo extends CommonVo {
 		this.direct = "DESC";
 	}
 	
+	public int getAd_no() {
+		return ad_no;
+	}
+
+	public void setAd_no(int ad_no) {
+		this.ad_no = ad_no;
+	}
+
+	public String getAd_img() {
+		return ad_img;
+	}
+
+	public void setAd_img(String ad_img) {
+		this.ad_img = ad_img;
+	}
+
 	public int getB_ctgno2key() {
 		return b_ctgno2key;
 	}
@@ -233,6 +246,10 @@ public class BookVo extends CommonVo {
 	}
 	
 	
-	
+	/*
+	 * public String getAd_img() { return ad_img; }
+	 * 
+	 * public void setAd_img(String ad_img) { this.ad_img = ad_img; }
+	 */
 	
 }	

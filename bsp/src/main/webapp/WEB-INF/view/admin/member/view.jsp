@@ -17,7 +17,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>공지사항 - [읽기]</h2>
+					<h2>회원 - [상세/수정]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -41,7 +41,7 @@
 										</td>
 										<th scope="row"><label for="">아이디</label></th>
 										<td>
-											${vo.m_no}
+											${vo.m_id}
 										</td>
 										<th scope="row"><label for="">이메일</label></th>
 										<td>

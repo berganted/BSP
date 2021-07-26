@@ -38,7 +38,7 @@
 		}else{
 			$.ajax({
 				url: '<%=request.getContextPath()%>/user/isDuplicateld.do' ,
-				data: {m_id:$('#id').val() } ,
+				data: {id:$('#id').val() } ,
 				success :  function(res){
 						if(res.trim()== 'true' ){
 							alert('중복된 아이디 입니다. 다른 아이디를 입력해 주세요');

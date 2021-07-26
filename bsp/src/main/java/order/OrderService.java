@@ -16,6 +16,9 @@ public interface OrderService {
 	int update(OrderVo vo);
 
 	int delete(OrderVo vo);
-
+//ADMIN
+	List<OrderVo> selectAdmin(OrderVo vo);
+	List<OrderVo> selectAdmindelist(OrderVo vo);
+	OrderVo selectoneAdmin(OrderVo vo);
 
 }

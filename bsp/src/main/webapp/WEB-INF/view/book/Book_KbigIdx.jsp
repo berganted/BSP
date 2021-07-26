@@ -30,7 +30,7 @@
    <!--  <div id=header></div> -->
     <div class="wrap">
 
-        <jsp:include page="../include/sideBigIdx.jsp"></jsp:include>
+        <jsp:include page="../include/sideKbig.jsp"></jsp:include>
             
         <div class="mem_content">
             
@@ -41,7 +41,7 @@
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
                 <c:forEach var = "vo" items="${selectctgnamed }">
-                    <div class="cate2"><a href="${vo.b_ctgdlink }?b_ctgno2key=${vo.b_ctgno2key}">${vo.b_ctgdetail } </a></div> 
+                    <div class="cate2"><a href="Book_KsmallIdx.do?b_ctgno2key=${vo.b_ctgno2key}&b_ctgdetail=${vo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}">${vo.b_ctgdetail } </a></div> 
 
                 </c:forEach>   
                 <!-- </div> -->
@@ -58,7 +58,7 @@
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><img src = "${vo.b_imgno }" style="height: 100%; width: 100%;"></div>
+                        <div class="choiceImg"><img src = "/bsp/img/${vo.b_imgmain }" style="height: 100%; width: 100%;"></div>
                         <div class="chocieInfo">
                             <p class="choiceName"> ${vo.b_title }  : 나를 넘어서는 힘</p>
                             <p class="choice_pub">
@@ -68,7 +68,7 @@
                             </p>
                             <p class="choice_price">
                                 <span class="bps_price">${vo.b_price }</span>원
-                                <span class="bps_point">★123원</span>
+                                <span class="bps_point">★${vo.b_point }</span>
                             </p>
                             <div class="choice_intro">
                                 <span class="choice_introTitle" style="color: blue; font-size: 22px;">
@@ -101,7 +101,7 @@
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="${vo.b_imgno }" style="width: 200px; height: 300px;"></div>
+                        <div class="newEye_img"><img src="/bsp/img/${vo.b_imgmain }" style="width: 200px; height: 300px;"></div>
                     </div> 
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
@@ -126,10 +126,11 @@
             <div class="BigIndex_newStar_wrap">
           
              <c:forEach var = "vo" items="${list3 }">
-                <div class="BigIndex_newStar_contents">
-                    <img src="${vo.b_imgno }" alt="마지막 몰입", title="마지막 몰입">
+                <div class="BigIndex_newStar_contents" >
+                
+                   <div><img id="ss" src="/bsp/img/${vo.b_imgmain }"  style="width: 250px; height: 320px;" alt="마지막 몰입" title="마지막 몰입"></div>
                     <div class="newStar_info">
-                        <ul> <br>
+                        <ul> 
                             <li><a class="newStar_title">${vo.b_title }</a></li>
                             <li><a class="newStar_author">${vo.b_author }</a></li>
                             <li><a class="newStar_pub">${vo.b_publisher }</a></li>

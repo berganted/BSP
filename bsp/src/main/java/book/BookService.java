@@ -2,6 +2,8 @@ package book;
 
 import java.util.List;
 
+import board.BoardVo;
+
 
 public interface BookService {
 	List<BookVo> selectAll(BookVo vo);

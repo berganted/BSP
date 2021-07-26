@@ -32,20 +32,8 @@ public class BookVo extends CommonVo {
 	private int b_ctgno2key;
 	private String b_ctgname2;
 	private String b_ctgdetail;
-	private String b_ctgdlink;
-	
-	
-	
-	
-	public String getB_ctgdlink() {
-		return b_ctgdlink;
-	}
 
-
-
-	public void setB_ctgdlink(String b_ctgdlink) {
-		this.b_ctgdlink = b_ctgdlink;
-	}
+	
 
 
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="book">
 
-	<sql id="bookwhere">
+ <sql id="bookwhere">
 		<where>
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
@@ -13,14 +13,13 @@
 				</if>
 			</if>
 		</where>
-	</sql>
+</sql>
 	
 
 	
-	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book WHERE b_ctgno1 = 1
+ 	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book
 		<include refid="bookwhere"/>
-		<!-- ORDER BY ${orderby} ${direct} -->
 		 ORDER BY ${orderby} ${direct}	
 	</select>
 		
@@ -31,60 +30,87 @@
 		 LIMIT ${strIdx},${pageRow} 
 	</select>
 	
-	<!-- 	
-	<select id="selectAll" resultType="comment.CommentVo" parameterType="comment.CommentVo">
-		SELECT *,(SELECT name FROM user WHERE no=comment.user_no ) AS name FROM comment  누가 썼는지 알고싶으면 있어야해 
-		WHERE board_no=#{board_no} AND tablename=#{tablename}
-		ORDER BY regdate DESC
-		LIMIT ${startIdx},${pageRow}
-	</select> -->
-	
-	
-	<select id="selectAll1" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book
+
+	<!-- 베스트셀러  아직 ㄴㄴ-->
+	 <select id="BEST_K" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book WHERE b_ctgno1=1 OREDER BY b_stock DESC;
 		<include refid="bookwhere"/>
-		<!-- ORDER BY ${orderby} ${direct} -->
+		 ORDER BY ${orderby} ${direct}	
+	</select>
+	
+	<!-- 책 상세페이지 -->
+	<select id="bookDetail" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book WHERE b_ctgno1=1 OREDER BY b_stock DESC;
+		<include refid="bookwhere"/>
+		 ORDER BY ${orderby} ${direct}	
+	</select>
+	
+	
+	
+	<!--대중분류페이지 3개 리스트-->
+	<!-- BSP의 선택 -> 기준필요!! -->
+	<select id="selectAll1" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * ,
+		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book  JOIN categorysmall ON book.b_ctgno2key=categorysmall.b_ctgno2key 
+		WHERE book.b_ctgno1=#{b_ctgno1} AND categorysmall.b_ctgno2=#{b_ctgno2}
+		<include refid="bookwhere"/>
+		ORDER BY ${orderby} ${direct}
 		LIMIT 0,3
 	</select>
 	
-	
+	<!--  베스트셀러 -> 기준필요!!  -->
 	<select id="selectAll2" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book WHERE b_no BETWEEN 2 AND 7
+		SELECT *,
+		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book  JOIN categorysmall ON book.b_ctgno2key=categorysmall.b_ctgno2key 
+		WHERE book.b_ctgno1=#{b_ctgno1} AND categorysmall.b_ctgno2=#{b_ctgno2}
+		ORDER BY book.b_intodate DESC
+		
 		<include refid="bookwhere"/>
-		<!-- ORDER BY ${orderby} ${direct} -->
 			LIMIT 0,4
 	</select>
 	
-	
+	<!-- 눈에 띄는 책-> 기준필요!! 입고일순.-->
 	<select id="selectAll3" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book WHERE b_no <![CDATA[>=]]> 2 and b_no <![CDATA[<=]]>7
-		<include refid="bookwhere"/>
-		<!-- ORDER BY ${orderby} ${direct} -->
+		SELECT * ,
+		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book  JOIN categorysmall ON book.b_ctgno2key=categorysmall.b_ctgno2key 
+		WHERE book.b_ctgno1=#{b_ctgno1} AND categorysmall.b_ctgno2=#{b_ctgno2} <!-- AND b_no <![CDATA[>=]]> 3 and b_no <![CDATA[<=]]>8 -->
+		ORDER BY book.b_intodate DESC 
+		LIMIT 0,6
 	</select>
 	
 
-		
+	<!-- 상세분류 클릭- 리스트 -->	
 	<select id="selectAllBasic" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,
-			(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail
-		FROM book
+		SELECT *
+			,(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail
+			,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book WHERE b_ctgno2key=#{b_ctgno2key} AND b_ctgno1=#{b_ctgno1}
 		<include refid="bookwhere"/>
 		ORDER BY ${orderby} ${direct}			
 		LIMIT ${strIdx},${pageRow} 
 	</select>
 		
 	
-	<select id="selectctgnamed" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM categorysmall WHERE b_ctgno2=#{b_ctgno2}
-	</select>
 	
-	
+	<!--도서 중분류 값 ex소설 selectOne-->
+	<!-- <select id="selectCtgno2" parameterType="book.BookVo" resultType="book.BookVo">
+		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key} AND b_ctgno1=#{b_ctgno1}
+	</select> -->
 	
 	<select id="selectCtgno2" parameterType="book.BookVo" resultType="book.BookVo">
-		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
+		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key} 
 	</select>
 	
 	
+	<!-- 도서 상세분류 값 ex판타지소설 selectAll-->
+	<select id="selectctgnamed" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM categorysmall WHERE b_ctgno2=#{b_ctgno2} 
+	</select>
+	
+
 
 
 	<select id="count" resultType="int" parameterType="book.BookVo">
@@ -92,13 +118,15 @@
 		<include refid="bookwhere"/>
 	</select>
 	
-	<!-- 
-	 필요한가?	관리자 페이지?  b_imgno , b_ctgno1 , b_ctgno2 는 어떻게? (b_ctgno3)  
-	//카테고리코드 총3개가 필요하지 않을까 대분류(국내or외국), 소분류(시, 에세이, ~), 상세분류(에세이 중 감성에세이/명상치유에세이...)
-	
-	 -->
- 
-
+	<!-- smallindex 페이징처리 Count -->
+	<select id="smallCount" resultType="int" parameterType="book.BookVo">
+		SELECT COUNT(*) 
+			,(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail
+			,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book WHERE b_ctgno2key=#{b_ctgno2key} AND b_ctgno1=#{b_ctgno1}
+		<include refid="bookwhere"/>
+		
+	</select>
  
  	<insert id="bookimg" parameterType="book.BookVo">
 		INSERT INTO img (b_imgmain) VALUES(#{b_imgmain})

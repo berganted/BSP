@@ -14,12 +14,24 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
+    
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>Document</title>
  
 
     <style>
+ 
+    
+   .paging > li {
+   	list-style-type: none; float: left; padding-left:5px; padding-top: 10px; text-align: center;
+   }
+    .paging {
+    margin-left: 450px;	
+     }
+    
+
+
     #all{
         width: 100px; 
         height: 30px; 
@@ -47,39 +59,18 @@
      
     </style>
     
-    <script>
-    
 
-    function OnChange()
-    {    
-      var gubun = document.getElementById("KaKaoF").options[document.getElementById("KaKaoF").selectedIndex].value;
-      var img = "";
-      if ( gubun != "X" ){
-        img += "<img src='/sample/test/"+gubun+".jpg' style='width: 100px; height: 80px;'>";    
-        document.getElementById("img_out").innerHTML = img;
-      }
-    }
-
-    </script>
-    
-    
-    
-    
-    
-    
-    
-    
 
 </head>
 <body>
  <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
-       <jsp:include page="../include/sideBigIdx.jsp"></jsp:include>
+       <jsp:include page="../include/sideKbig.jsp"></jsp:include>
             
         </div>  
 
         <div class="mem_content">
-            <h2 class="main_top"> ${bookVo.b_ctgdetail }</h2>   
+            <h2 class="main_top"> ${param.b_ctgdetail }</h2>   
            <!--  <div class="smallCtg_area"> 
                 <div class="cate2"><a href="#">임신</a></div> 
                 <div class="cate2"><a href="#">태교</a></div> 
@@ -88,46 +79,42 @@
             </div> -->
             <div class="indexWrap">
                 <div class="indexPlace">
-                    <span class="original"><a href="#">기본순</a></span>
-                    <span class="sell"><a href="#">판매량순</a></span>
-                    <span class="new"><a href="#">신상품순</a></span>
-                    <span class="lowPrice"><a href="#">최저가순</a></span>
-                    <span class="highPrice"><a href="#">최고가순</a></span>
+                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC">기본순</a></span>
+                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&stype=${bookVo.stype}&sval=${bookVo.sval}&orderby=${bookVo.orderby}&direct=${bookVo.direct}">판매량순</a></span>
+                    <span class="new"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc">신상품순</a></span>
+                    <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC">최저가순</a></span>
+                    <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC">최고가순</a></span>
                     
                    
                     
                      <div class="divPlace">
-                        <select name="divnum" id="divnum" onchange="alert(this.options[this.selectedIndex].value)">
+                        <select name="divnum" id="divnum" >
                             <option value ="1" selected>5개씩 보기</option>
                             <option value ="2" >10개씩 보기</option>
-                            <option value ="3" >15개씩 보기</option>
-                        </select>
+                            <option value ="3" >15개씩 보기</option> 
+                        </select> 
+                           <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택
                     </div> 
                     
                     <br>
                     <br>
                     <hr>
-                                       
-                    <div class="clickNum">
-                        <a href="#" class="click_first"><<</a>
-                        <a href="#" class="click_prev"><</a>
-                        <strong class="num">1</strong>
-                        <a href="#" class="num">2</a>
-                        <a href="#" class="num">3</a>
-                        <a href="#" class="num">4</a>
-                        <a href="#" class="num">5</a>
-                        <a href="#" class="num">6</a>
-                        <a href="#" class="num">7</a>
-                        <a href="#" class="num">8</a>
-                        <a href="#" class="num">9</a>
-                        <a href="#" class="num">10</a>
-                        <a href="/24/Category/Display/001001001003?PageNumber=11" class="click_next"> > </a>
-                        <a href="/24/Category/Display/001001001003?PageNumber=48" class="click_end">>></a>   
-                        <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택
-                             
+                 <!-- 페이지처리  -->                      
+                    <div class="pagenate clear">
+                        <ul class='paging'> 
+                        <c:if test="${bookVo.strPage > bookVo.pageRange}">
+                         <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
+                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${bookVo.direct}"> < </a></li>
+                        </c:if>
+                        <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
+                            <li><a href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                        </c:forEach>
+                        <c:if test="${bookVo.totPage > bookVo.endPage}">
+                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${bookVo.direct}"> > </a></li>
+                        </c:if>
+                        </ul> 
                     </div>
-                    
-
+               
                 </div>
          
             </div>
@@ -135,7 +122,7 @@
             <c:forEach var = "vo" items="${list }">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><img src = "${vo.b_imgno }" style="height: 250px; width: 180px;"></div>
+                    <div class="s_bookImg"><img src = "/bsp/img/${vo.b_imgmain }" style="height: 250px; width: 180px;"></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">

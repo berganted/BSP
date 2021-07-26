@@ -6,11 +6,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import board.BoardVo;
+
 @Repository
 public class BookDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
+	
 	
 	public List<BookVo> selectAll(BookVo vo) {
 		return sqlSession.selectList("book.selectAll", vo);
@@ -39,6 +42,12 @@ public class BookDao {
 		return sqlSession.selectList("book.selectAll3", vo);
 	}
 	
+	
+	public BookVo selectCtgno2(BookVo vo) {
+		return sqlSession.selectOne("book.selectCtgno2", vo);
+	}
+	
+	
 	public List<BookVo> selectctgnamed(BookVo vo) {
 		return sqlSession.selectList("book.selectctgnamed", vo);
 	}
@@ -46,6 +55,9 @@ public class BookDao {
 	
 	public int count(BookVo vo) {
 		return sqlSession.selectOne("book.count", vo);
+	}
+	public int smallCount(BookVo vo) {
+		return sqlSession.selectOne("book.smallCount", vo);
 	}
 	
 	public BookVo detail(BookVo vo) {
@@ -64,8 +76,6 @@ public class BookDao {
 		return sqlSession.delete("book.delete", vo);
 	}
 	
-	public BookVo selectCtgno2(BookVo vo) {
-		return sqlSession.selectOne("book.selectCtgno2", vo);
-	}
+
 
 }

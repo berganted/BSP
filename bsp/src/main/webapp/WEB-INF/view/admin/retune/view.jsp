@@ -70,7 +70,7 @@
 									</table>
 
 											<input type="hidden" name="returning_no" value="${vo.returning_no }"/>
-											<input type="hidden" name="io_ni" value="${vo.io_no }"/>
+											<input type="hidden" name="io_no" value="${vo.io_no }"/>
 									<h4>상품정보</h4>
 									<table id="return_list_detil_tb">
 										<tr>

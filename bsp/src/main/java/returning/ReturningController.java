@@ -80,12 +80,14 @@ public class ReturningController {
 	}
 
 	/* 반품 insert */
+	@SuppressWarnings("unchecked")
 	@RequestMapping("/returning/insert.do")
 
 	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
 		String[] no = req.getParameterValues("b_no"); 
 		String[] ano = req.getParameterValues("io_amount") ;
 		String[] ino = req.getParameterValues("io_no") ;
+	
 		int r = service.insertRd(vo);
 		for (int i = 0; i < no.length; i++) {
 			vo.setB_no(Integer.parseInt(no[i]));
@@ -96,7 +98,6 @@ public class ReturningController {
 			service.updatePi(vo.getIo_no());
 			System.out.println(no[i]);
 		}
-		System.out.println("수량 : "+Arrays.toString(ano));
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
 			model.addAttribute("url", "list.do");

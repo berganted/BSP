@@ -12,19 +12,19 @@ public class CartDao {
 	SqlSessionTemplate sessionTemplate;
 
 	public List<CartVo> selectAll(CartVo vo){
-		return sessionTemplate.selectList("order.selectAll",vo);
+		return sessionTemplate.selectList("cart.selectAll",vo);
 	}
 	public int count(CartVo vo) {
-		return sessionTemplate.selectOne("order.count",vo);
+		return sessionTemplate.selectOne("cart.count",vo);
 	}
 	public int insert(CartVo vo) {
-		return sessionTemplate.insert("order.insert",vo);
+		return sessionTemplate.insert("cart.insert",vo);
 	}
 	public int update(CartVo vo) {
-		return sessionTemplate.update("order.update",vo);
+		return sessionTemplate.update("cart.update",vo);
 	}
 	public int delete(CartVo vo) {
-		return sessionTemplate.delete("order.delete", vo);
+		return sessionTemplate.delete("cart.delete", vo);
 
 	}
 }

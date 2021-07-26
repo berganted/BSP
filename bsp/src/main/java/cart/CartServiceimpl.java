@@ -13,10 +13,9 @@ public class CartServiceimpl implements CartService {
 
 	@Override
 	public List<CartVo> selectAll(CartVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.selectAll(vo);
 	}
-
+	
 	@Override
 	public int insert(CartVo vo) {
 		// TODO Auto-generated method stub

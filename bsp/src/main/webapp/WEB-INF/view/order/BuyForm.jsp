@@ -41,8 +41,8 @@
          <h1>주/문/과/정</h1>
             <form action="Buy success.html" method="POST">
                 <div id="article">
+                 <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
-                     <h4>주문 상품 정보</h4>
                         <tr>
                             <td>이미지</td>
                             <td>상품명</td>
@@ -155,8 +155,8 @@
                 </div>
                 <hr>
                 <div id="article"> 
+                  <h4>적립금 사용</h4>
                     <table  id="buy_now" style="text-align: center;">
-                        <h4>적립금 사용</h4>
                            <tr>
                                <td>적립금</td>
                                <td>보유액: 20,000원 ▷ 
@@ -164,9 +164,8 @@
                                    <input class="button_s" type="button" name="전액" value="전액"> 
                                </td>
                            </tr>
-                         
                        </table>
-            
+                       
                        <h4>결제 내역 확인</h4>
                        <table id="buy_tb" style="text-align: center;">
                         <tr >

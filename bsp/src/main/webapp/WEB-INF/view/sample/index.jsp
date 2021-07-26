@@ -88,8 +88,8 @@
 	                               	  <select id="b_ctgno1" name="b_ctgno1" size="1">
 	                               	  		<option value="1"<c:if test="${param.b_ctgno1==1}"> selected</c:if>>국내도서</option>
 	                               	  		<option value="2"<c:if test="${param.b_ctgno1==2}"> selected</c:if>>외국도서</option>
-	                               	  		<option value="Ebooks">ebook</option>
-	                               	  </select>
+
+	                                 </select>
 	                               	  </form>
 	                              </div>
 	                           <div id="DomesticBooks" class="bestCate_option">  
@@ -99,20 +99,8 @@
                                   </ul>
                                </c:forEach>
                                </div> 
-	                           <div id="ForeignsBooks" class="bestCate_option">  
-                               <c:forEach var="vo" items="${list7 }" varStatus="status">
-                                  <ul>
-                                      <li>${vo.b_title } | ${vo.b_author }</li>
-                                  </ul>
-                               </c:forEach>
-                               </div> 
-	                           <div id="Ebooks" class="bestCate_option">  
-                               <c:forEach var="vo" items="${list7 }" varStatus="status">
-                                  <ul>
-                                      <li>${vo.b_title } | ${vo.b_author }</li>
-                                  </ul>
-                               </c:forEach>
-                               </div> 
+	                         
+	                            
                                </div>
                                <div class="index_board_content" id="index_board_data">
                                	<div class="index_searchRank">

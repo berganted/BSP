@@ -12,9 +12,23 @@ public class CartVo {
 	private int b_stock;
 	private int b_price;
 	private int b_point;
+	private int b_imgno;
+	private String b_imgmain;
 	
 	
 	
+	public int getB_imgno() {
+		return b_imgno;
+	}
+	public void setB_imgno(int b_imgno) {
+		this.b_imgno = b_imgno;
+	}
+	public String getB_imgmain() {
+		return b_imgmain;
+	}
+	public void setB_imgmain(String b_imgmain) {
+		this.b_imgmain = b_imgmain;
+	}
 	public int getCart_no() {
 		return cart_no;
 	}

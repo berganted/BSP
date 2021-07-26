@@ -19,9 +19,12 @@
 	</sql>
 	
 	
-		<!-- 전체주문내역 (주문번호 기준)-->
-		<select id="selectAll" resultType="order.OrderVo" parameterType="order.OrderVo">
-	
+		<!-- 장바구니 내역 -->
+		<select id="selectAll" resultType="cart.CartVo" parameterType="cart.CartVo">
+			SELECT * , (SELECT b_imgmain FROM img WHERE b.b_imgno = img.b_imgno) AS b_imgmain
+			FROM book b 
+			JOIN cart c
+			ON b.b_no = c.b_no
  		</select>
  		
  		

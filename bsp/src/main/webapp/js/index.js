@@ -126,18 +126,5 @@ function setEditor(holder){
 	return oEditors;
 } 
 
-$(document).ready(function(){
-    $("select[name=bestCate]").change(function(){
-        $(this).find("option:selected").each(function(){
-            var optionValue = $(this).attr("value");
-            if(optionValue){
-                $(".bestCate_option").not("#" + optionValue).hide();
-                $("#" + optionValue).show();
-            } else{
-                $(".bestCate_option").hide();
-            }
-        });
-    }).change();
-});
 
 

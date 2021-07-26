@@ -60,12 +60,6 @@ public class BookVo extends CommonVo {
 	public void setB_ctgdetail(String b_ctgdetail) {
 		this.b_ctgdetail = b_ctgdetail;
 	}
-
-
-
-	
-
-
 	public BookVo() {
 		this.pageRow = 10;
 		this.reqPage = 1;

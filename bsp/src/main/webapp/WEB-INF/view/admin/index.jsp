@@ -61,7 +61,7 @@ function CookieVal(cookieName) {
 		<p>관리자 로그인 후 이용가능합니다.</p>
 	</div>
 	<div class="login"> 
-	<form action="admin/login.do" name="board" id="board" method="post" >
+	<form action="/bsp/admin/login.do" name="board" id="board" method="post" >
 		<fieldset>
 			<legend>관리자모드 로그인</legend>
 			<div class="bgBox">
@@ -84,7 +84,7 @@ function CookieVal(cookieName) {
 					</dl>
 				</div>
 				<!-- //infoBox -->
-				<input type="submit" src="<%=request.getContextPath()%>/img/admin/member_login_btn.gif" alt="로그인" class="loginBtn" title="" onclick="loginCheck();" />
+				<input type="image" src="<%=request.getContextPath()%>/img/admin/member_login_btn.gif" alt="로그인" class="loginBtn" title="" onclick="loginCheck();" />
 			</div>
 			<!-- //bgBox -->
 			<div class="joinList">

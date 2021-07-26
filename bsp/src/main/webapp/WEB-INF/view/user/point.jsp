@@ -47,7 +47,7 @@
     <table class="point_total">
         <tr>    
             <td><h2>사용가능한 적립금</h2></td>                  
-            <td ><h2>${userVo.m_point}</h2></td>
+            <td ><h2>${vo.m_point}</h2></td>
         </tr>   
     </table>
     </div>

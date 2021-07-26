@@ -19,7 +19,7 @@
 	</sql>
 	
 	
-		<!-- 반품/교화 전체 내역 -->
+		<!-- 반품/교환 전체 내역 -->
 			<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
 			FROM product_io PI JOIN returning r
@@ -27,14 +27,15 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no		<!-- book과 조인시 환불(returning)테이블과 출고(product_io)테이블의 조건은 다름 -->
 			JOIN processing_status ps
 			ON ps.ps_no = r.ps_no
 			<include refid="returnigWhere"/>
-			GROUP BY PI.pb_no
+			GROUP BY returning_no
 			ORDER BY ${orderby} ${direct}
 			LIMIT ${strIdx},${pageRow}
 			</select>
+			
 			<!-- 페이징처리 -->
 			<select id="count" resultType="int" parameterType="returning.ReturningVo">
 			SELECT COUNT(*) 
@@ -43,7 +44,7 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no	
 			JOIN processing_status ps
 			ON ps.ps_no = r.ps_no
 			<include refid="returnigWhere"/>
@@ -51,14 +52,32 @@
 		
 		
 		<!-- 메인창에 출력할 쿼리 (팝업에서 받아오는 리스트) -->
-		<select id="selectPopup" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+	<!-- 	<select id="selectPopup" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
 			FROM product_buy PB RIGHT JOIN  product_io PI
 			ON PI.pb_no = PB.pb_no
 			JOIN book B
-			ON PI.b_no = B.b_no AND PI.io_no = #{io_no};
-		</select>
-		
+			ON PI.b_no = B.b_no AND PI.io_no IN
+			<foreach collection="io_nos" index="index" item="no" open="(" close=")" separator=",">
+			#{io_no}
+			</foreach>
+		</select>  -->
+		<!-- 반품신청서로 값넘김 -->
+		<select id="selectPopupRt" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+			SELECT *
+			FROM product_buy PB RIGHT JOIN  product_io PI
+			ON PI.pb_no = PB.pb_no
+			JOIN book B
+			ON PI.b_no = B.b_no AND PI.io_no = #{io_no}
+			</select>
+			<!-- 교환반품으로 값넘김 -->
+		<select id="selectPopupRp" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
+			SELECT *
+			FROM product_buy PB RIGHT JOIN  product_io PI
+			ON PI.pb_no = PB.pb_no
+			JOIN book B
+			ON PI.b_no = B.b_no AND PI.io_no = #{io_no}
+			</select>
 		<!-- 반품/교환상세 공통 -->
 		<select id="detail1" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT * 
@@ -67,10 +86,10 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no 	<!-- book과 조인시 환불(returning)테이블과 출고(product_io)테이블의 조건은 다름 -->
 			JOIN processing_status ps
-			ON ps.ps_no = r.ps_no AND pb_no = #{pb_no}
-			GROUP BY PI.pb_no;
+			ON ps.ps_no = r.ps_no AND returning_no = #{returning_no}
+			GROUP BY returning_no;
 		</select>
 		<!-- 반품/교환상세 개별(반품도서 종류) -->
 		<select id="detail2" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
@@ -80,33 +99,52 @@
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
 			JOIN book b
-			ON b.b_no = PI.b_no
+			ON b.b_no = r.b_no		<!-- book과 조인시 환불(returning)테이블과 출고(product_io)테이블의 조건은 다름 -->
 			JOIN processing_status ps
-			ON ps.ps_no = r.ps_no AND pb_no=#{pb_no}
+			ON ps.ps_no = r.ps_no AND returning_no=#{returning_no}
 		</select>
 		
+
 		<!-- 회송정보 insert (회송번호(rd_no) 생성후 반품테이블 insert) -->
 		<insert id="insertRd" parameterType="returning.ReturningVo">
 		INSERT INTO returning_delivery_info (rd_name, rd_zipcode, rd_addr1, rd_addr2, rd_tel, rd_req, m_no, rd_option)
 		VALUES (#{rd_name}, #{rd_zipcode}, #{rd_addr1},#{rd_addr2}, #{rd_tel}, #{rd_req}, #{m_no}, #{rd_option});
+		<selectKey resultType="int" keyProperty="rd_no" order="AFTER">
+        SELECT LAST_INSERT_ID()    
+    	</selectKey>
 		</insert>
 		
 		<!-- 반품 전체 insert -->
 		<insert id="insertRt" parameterType="returning.ReturningVo">
-		<selectKey resultType="int" keyProperty="rd_no" order="BEFORE">
-        SELECT MAX(rd_no) FROM returning_delivery_info     
-    	</selectKey> 
 		INSERT INTO returning(returning_reason_no, return_reason_detail, returning_category, 
 								b_no, ps_no, rd_no, refund_no, returning_amount, io_no ,returning_regdate)
 		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category}, 
 			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{returning_amount},#{io_no}, NOW());
+		<selectKey resultType="int" keyProperty="returning_no" order="AFTER">
+        SELECT LAST_INSERT_ID()    
+    	</selectKey>
 		</insert>
 		
-		<!-- 반품접수시 처리상태 변경( processing_status 테이블 11.반품접수로 상태변경) -->
 		<update id="updatePs" parameterType="int">
-			UPDATE returning SET 
-			ps_no=11 WHERE returning_no=#{returning_no};
+		UPDATE returning SET 
+		ps_no= 11
+		WHERE returning_no=#{returning_no} 
 		</update>
 		
+		<update id="updatePi" parameterType="int">
+		UPDATE product_io SET 
+		ps_no= 11
+		WHERE io_no=#{io_no} 
+		</update>
+		
+		<!-- admin -->
+		<select id="selectop" resultType="returning.ReturningVo">SELECT * FROM bsp.processing_status; </select>
+
+		<update id="updatepsno" parameterType="returning.ReturningVo">UPDATE returning set ps_no=#{ps_no} WHERE returning_no=#{returning_no}; </update>
+
+		<update id="updateiopsno">UPDATE product_io set ps_no=#{ps_no} WHERE io_no=#{io_no} </update>
+
+		<update id="updatereturnaddr">UPDATE product_io set ps_no=#{ps_no} WHERE io_no=#{io_no} </update>
+
 		
 	</mapper>

@@ -53,6 +53,10 @@ public class BookDao {
 	public List<BookVo> selectAll6(BookVo vo) {
 		return sqlSession.selectList("book.selectAll6", vo);
 	}
+	// index.do 베스트샐러
+	public List<BookVo> selectAll7(BookVo vo) {
+		return sqlSession.selectList("book.selectAll7", vo);
+	}
 	
 	public List<BookVo> selectctgnamed(BookVo vo) {
 		return sqlSession.selectList("book.selectctgnamed", vo);
@@ -60,6 +64,9 @@ public class BookDao {
 	
 	public int count(BookVo vo) {
 		return sqlSession.selectOne("book.count", vo);
+	}
+	public int countad(BookVo vo) {
+		return sqlSession.selectOne("book.countad", vo);
 	}
 	
 	public BookVo detail(BookVo vo) {
@@ -79,6 +86,9 @@ public class BookDao {
 	
 	public int delete(BookVo vo) {
 		return sqlSession.delete("book.delete", vo);
+	}
+	public int deletead(BookVo vo) {
+		return sqlSession.delete("book.deletead", vo);
 	}
 	
 	public BookVo selectCtgno2(BookVo vo) {

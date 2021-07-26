@@ -6,7 +6,7 @@
 		<where>
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
-					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%'
+					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
@@ -85,6 +85,14 @@
 		<include refid="bookwhere"/>
 	</select>
 		
+<!-- index.do 베스트샐러 -->
+	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
+			SELECT *,
+			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+			FROM book WHERE b_ctgno1 = 
+			<include refid="bookwhere"/>
+	</select>
+
 	<select id="selectAllBasic" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,
 			(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail
@@ -104,9 +112,14 @@
 	
 	
 
-
+<!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">
 		SELECT COUNT(*) FROM book
+		<include refid="bookwhere"/>
+	</select>
+<!-- 등록된 광고 총 갯수 -->
+	<select id="countad" resultType="int" parameterType="book.BookVo">
+		SELECT COUNT(*) FROM ad
 		<include refid="bookwhere"/>
 	</select>
 	
@@ -116,31 +129,34 @@
 	
 	 -->
  
-
- 
+<!-- 책 삭제 -->
+	<delete id="delete" parameterType="book.BookVo">
+		DELETE FROM book WHERE b_no=#{b_no}
+	</delete>
+ <!-- 이미지 등록 -->
  	<insert id="bookimg" parameterType="book.BookVo">
 		INSERT INTO img (b_imgmain) VALUES(#{b_imgmain})
 		<selectKey keyProperty="b_imgno" resultType="int" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
- 
+ <!-- 책 등록 -->
 	<insert id="insert" parameterType="book.BookVo">
 	INSERT INTO book (b_imgno,b_ctgno1,b_ctgno2,b_title,b_content,b_author,b_publisher,b_isbn,b_stock,b_price,b_index,b_pages,b_introauthor,b_introbook,b_point,b_regdate)
 	VALUES (#{b_imgno},#{b_ctgno1},#{b_ctgno2},#{b_title},#{b_content},#{b_author},#{b_publisher},#{b_isbn},#{b_stock},#{b_price},#{b_index}
 	,#{b_pages},#{b_introauthor},#{b_introbook},#{b_point},NOW())
 	</insert> 
 	
-
+<!-- 책 상세 -->
 	<select id="detail" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain FROM book WHERE b_no = #{b_no}
 	</select>
 	
-	
-	<delete id="delete" parameterType="book.BookVo">
-		DELETE FROM book WHERE b_no=#{b_no}
+<!-- 광고 삭제 -->
+	<delete id="deletead" parameterType="book.BookVo">
+		DELETE FROM ad WHERE ad_no=#{ad_no}
 	</delete>
-	
+<!-- 책 수정 -->
 	<update id="update" parameterType="book.BookVo">
 		UPDATE book 
 		<trim prefix="SET" prefixOverrides=",">
@@ -158,23 +174,28 @@
 			</trim>
 		WHERE b_no=#{b_no}
 	</update>
+<!-- 소분류 카테고리 -->
  	<select id="selectctg" parameterType="book.BookVo" resultType="book.BookVo">
  		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
 	</select>
+<!-- 광고 상세 -->
 	<select id="adselect" parameterType="book.BookVo" resultType="book.BookVo">
-		SELECT * FROM ad join book on ad.ad_no=book.ad_no 
+		SELECT * FROM ad left join book on ad.b_no=book.b_no 
 	</select>
+<!-- 광고 이미지 등록 -->
 	<insert id="bookimgad" parameterType="book.BookVo">
 		INSERT INTO ad (ad_img,b_no) VALUES(#{ad_img},#{b_no})
 		<selectKey keyProperty="ad_no" resultType="int" order="AFTER">
 			SELECT LAST_INSERT_ID()
 		</selectKey>
 	</insert>
+<!-- 광고수정 -->
 	<update id="adupdate" parameterType="book.BookVo">
 		UPDATE ad SET  <if test="ad_img != null">ad_img=#{ad_img},</if> b_no=#{b_no} WHERE ad_no=#{ad_no}
 	</update>
+<!-- 광고 상세 -->
 	<select id="detailAD" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM AD WHERE ad_no=#{ad_no}
 	</select>
-	
+
 </mapper>

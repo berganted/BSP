@@ -13,8 +13,14 @@ public class ReturningDao {
 	public List<ReturningVo> selectAll(ReturningVo vo){
 		return sessionTemplate.selectList("returnig.selectAll",vo);
 	}
-	public List<ReturningVo> selectPopup(ReturningVo vo){
-		return sessionTemplate.selectList("returnig.selectPopup",vo);
+
+	/* 주문 → 반품신청서 */
+	public ReturningVo  selectPopupRt(ReturningVo vo){
+		return sessionTemplate.selectOne("returnig.selectPopupRt",vo);
+	}
+	/* 교환 → 반품신청서 */
+	public ReturningVo selectPopupRp(ReturningVo vo){
+		return sessionTemplate.selectOne("returnig.selectPopupRp",vo);
 	}
 	public int count(ReturningVo vo) {
 		return sessionTemplate.selectOne("returnig.count",vo);
@@ -34,8 +40,20 @@ public class ReturningDao {
 	public void updatePs(int no) {
 		 sessionTemplate.update("returnig.updatePs",no);
 	}
+	public void updatePi(int no) {
+		sessionTemplate.update("returnig.updatePi",no);
+	}
 	public int delete(ReturningVo vo) {
 		return sessionTemplate.delete("returnig.delete", vo);
 
+	}
+	public List<ReturningVo> selectop(ReturningVo vo) {
+		return sessionTemplate.selectList("returnig.selectop",vo);
+	}
+	public int updatepsno(ReturningVo vo) {
+		return sessionTemplate.update("returnig.updatepsno",vo);
+	}
+	public void updateiopsno(ReturningVo vo) {
+		sessionTemplate.update("returnig.updateiopsno",vo);
 	}
 }

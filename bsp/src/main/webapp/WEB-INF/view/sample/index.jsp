@@ -81,7 +81,7 @@
                         <div class="index_ranContent">
                             <div class="index_board_area">
                                <div class="index_board_title on">베스트셀러</div>
-                               <div class="index_board_title">인기검색어</div>
+                               <div class="index_board_title" style="margin-right: 60px;">인기검색어</div>
                                <div class="index_board_content" id="index_board_notice">
 	                              <div class="index_bestCate">
 	                               	  <select id="bestCate" name="bestCate" size="1">
@@ -90,13 +90,30 @@
 	                               	  		<option value="Ebooks">ebook</option>
 	                               	  </select>
 	                              </div>
+	                           <div id="DomesticBooks" class="bestCate_option">  
                                <c:forEach var="vo" items="${list4 }" varStatus="status">
                                   <ul>
                                       <li>${vo.b_title } | ${vo.b_author }</li>
                                   </ul>
                                </c:forEach>
+                               </div> 
+	                           <div id="ForeignsBooks" class="bestCate_option">  
+                               <c:forEach var="vo" items="${list4 }" varStatus="status">
+                                  <ul>
+                                      <li>${vo.b_title } | ${vo.b_author }</li>
+                                  </ul>
+                               </c:forEach>
+                               </div> 
+	                           <div id="Ebooks" class="bestCate_option">  
+                               <c:forEach var="vo" items="${list4 }" varStatus="status">
+                                  <ul>
+                                      <li>${vo.b_title } | ${vo.b_author }</li>
+                                  </ul>
+                               </c:forEach>
+                               </div> 
                                </div>
                                <div class="index_board_content" id="index_board_data">
+                               	<div class="index_searchRank">
                                  <ul>
                                      <li>1 인기검색어. <span>-</span></li>
                                      <li>2 인기검색어. <span>▲1</span></li>
@@ -107,6 +124,7 @@
                                      <li>7 인기검색어. <span>new</span></li>
                                      <li>8 인기검색어. <span>-</span></li>                                                            
                                  </ul>
+                                 </div>
                               </div>
                             </div>
                         </div>                        

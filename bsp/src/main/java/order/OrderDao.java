@@ -36,4 +36,16 @@ public class OrderDao {
 		return sessionTemplate.delete("order.delete", vo);
 
 	}
+	public List<OrderVo> selectAdmin(OrderVo vo){
+		return sessionTemplate.selectList("order.selectAdmin",vo);
+	}
+	public List<OrderVo> selectAdmindelist(OrderVo vo){
+		return sessionTemplate.selectList("order.selectAdmindelist",vo);
+	}
+	public OrderVo selectoneAdmin(OrderVo vo) {
+		return sessionTemplate.selectOne("order.selectoneAdmin",vo);
+	}
+	public int countAdmin(OrderVo vo) {
+		return sessionTemplate.selectOne("order.countAdmin",vo);
+	}
 }

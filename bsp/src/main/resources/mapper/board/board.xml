@@ -35,7 +35,7 @@
 	</select>
 	 
 	<select id="detail" resultType="board.BoardVo" parameterType="board.BoardVo">
-		SELECT * FROM q_board WHERE q_no = #{q_no}
+		SELECT *,(SELECT m_name FROM user WHERE q_board.m_no=user.m_no) AS name FROM q_board WHERE q_no = #{q_no}
 	</select>
 	
 	<update id="updateReadcount" parameterType="board.BoardVo">

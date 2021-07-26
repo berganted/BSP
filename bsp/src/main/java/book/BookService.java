@@ -15,12 +15,14 @@ public interface BookService {
 	List<BookVo> selectAll4(BookVo vo);
 	List<BookVo> selectAll5(BookVo vo);
 	List<BookVo> selectAll6(BookVo vo);
+	List<BookVo> selectAll7(BookVo vo);
 	List<BookVo> selectctgnamed(BookVo vo);
 	BookVo deatil(BookVo vo);
 	int insert(BookVo vo);
 	BookVo edit(BookVo vo);
 	int update(BookVo vo);
 	int delete(BookVo vo);
+	int deletead(BookVo vo);
 	BookVo selectCtgno2(BookVo vo);
 	int bookimg(BookVo vo);
 	int bookimgad(BookVo vo);

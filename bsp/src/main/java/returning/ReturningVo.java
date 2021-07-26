@@ -38,13 +38,15 @@ public class ReturningVo extends CommonVo{
 	private String rd_req; 		// 회송시 요청사항
 	private String rd_option; 	//회송시 택배 옵션: 지정/임의발송
 	private int refund_no;
-	private int returning_amount;
+	private int returning_amount; //반품수량 (일단은 주문 수량과 같은 예정)
 	private Timestamp returning_regdate;  //반품주문일
 	private int pb_payno; //주문시 결제방법
 	private int b_price;
 	
+	private int[] io_nos; //반품신청서 넘어갈때 사용할 배열
+	
 	public  ReturningVo() {
-
+		
 		this.pageRow = 10;
 		this.reqPage = 1;
 		this.pageRange = 10;
@@ -52,6 +54,14 @@ public class ReturningVo extends CommonVo{
 		this.direct = "DESC";
 	}
 	
+	public int[] getIo_nos() {
+		return io_nos;
+	}
+
+	public void setIo_nos(int[] io_nos) {
+		this.io_nos = io_nos;
+	}
+
 	public int[] getCheckOne() {
 		return checkOne;
 	}

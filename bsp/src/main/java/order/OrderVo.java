@@ -25,7 +25,80 @@ public class OrderVo extends CommonVo {
 	private String b_author; //저자명
 	private int b_price; // 도서 가격
 	private int pb_payno; //주문시 결제방법
+	//어드민에서 사용
+	private String m_id;
+	private int count;//주문번호안에 출고번호갯수
+	private int amount_sum;
+	private String m_name;
+	private String m_email;
+	private String m_email_d;
 	
+	
+	public  OrderVo() {
+		
+		this.pageRow = 10;
+		this.reqPage = 1;
+		this.pageRange = 10;
+		this.orderby ="pb_orderdate";
+		this.direct = "DESC";
+	}
+	
+	
+	public String getM_name() {
+		return m_name;
+	}
+
+
+	public void setM_name(String m_name) {
+		this.m_name = m_name;
+	}
+
+
+	public String getM_email() {
+		return m_email;
+	}
+
+
+	public void setM_email(String m_email) {
+		this.m_email = m_email;
+	}
+
+
+	public String getM_email_d() {
+		return m_email_d;
+	}
+
+
+	public void setM_email_d(String m_email_d) {
+		this.m_email_d = m_email_d;
+	}
+
+
+	public int getAmount_sum() {
+		return amount_sum;
+	}
+
+
+	public void setAmount_sum(int amount_sum) {
+		this.amount_sum = amount_sum;
+	}
+
+
+	public String getM_id() {
+		return m_id;
+	}
+
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
 
 	public int getPb_payno() {
 		return pb_payno;
@@ -35,15 +108,6 @@ public class OrderVo extends CommonVo {
 		this.pb_payno = pb_payno;
 	}
 
-	public  OrderVo() {
-
-		this.pageRow = 10;
-		this.reqPage = 1;
-		this.pageRange = 10;
-		this.orderby ="pb_orderdate";
-		this.direct = "DESC";
-	}
-	
 	public String getB_author() {
 		return b_author;
 	}

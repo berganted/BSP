@@ -75,54 +75,7 @@
                 <td><input class="button_s" type="button" name="del" value="삭제" onclick="deleteRow(this);"><br>
                    
             </tr>
-            <tr data-tr_value="2">
-                <td><input type="checkbox" value="select"  name="checkOne"></td>
-                <td><input type="image" name="bookimage"></td> 
-                <td><a href=""> 완전한 행복<br> #북파우치 증정</a></td> 
-                <td>정가:15,800원<br>
-                    마일리지:790원(5%)
-                </td>
-                <td class="bseq_ea">14</td>  <!--  출력할 필요는 없음 -->
-                <td id="ant">
-                    <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                    <input type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
-                    <button  class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button>
-                 </td>
-                <td><input class="button_s" type="button" name="del" value="삭제" onclick="deleteRow(this);"><br>
-                    
-            </tr>
-            <tr data-tr_value="3">
-                <td><input type="checkbox" value="select"  name="checkOne"></td>
-                <td><input type="image" name="bookimage"></td> 
-                <td><a href=""> 소크라테스 익스프레스<br> *접시 증정</a></td> 
-                <td>정가:18,000원<br>
-                    마일리지:900원(5%)
-                </td>
-                <td class="bseq_ea">3</td>  <!--  출력할 필요는 없음 -->
-                <td id="ant">
-                    <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                    <input type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
-                    <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button>
-                 </td>
-                <td><input class="button_s" type="button" name="del" value="삭제" onclick="deleteRow(this);"><br>
-                    
-            </tr>
-            <tr data-tr_value="4">
-                <td><input type="checkbox" value="select"  name="checkOne"></td>
-                <td><input type="image" name="bookimage"></td> 
-                <td><a href=""> 부의 시나리오<br> *마우스패드 증정</a></td> 
-                <td>정가:18,000원<br>
-                    마일리지:900원(5%)
-                </td>
-                <td class="bseq_ea">27</td>  <!--  출력할 필요는 없음 -->
-                <td id="ant">
-                    <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                    <input type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
-                    <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button>
-                 </td>
-                <td><input class="button_s" type="button" name="del" value="삭제" onclick="deleteRow(this);"><br>
-                    
-            </tr>
+           
         </table>
        
         <table id="cart_tb" class="cart_s">

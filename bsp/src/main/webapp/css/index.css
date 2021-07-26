@@ -733,9 +733,9 @@ li {
 
 .index_Ads01 > img {
     height: 180px;
-    width: 120px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    width: 255px;
+    padding-top: 5px;
+    padding-bottom: 20px;
 }
 
 .index_Ads01 {
@@ -743,15 +743,15 @@ li {
 }
 
 .index_Ads02 > div> img {
-    height: 90px;
-    width: 60px;
+    height: 135px;
+    width: 255px;
 }
 
 .index_Ads02 > div {
     position: relative;
     float: right;
     padding: 20px;
-    padding-top: 40px;    
+    padding-top: 5px;
 }
 
 .index_Ads01 > .index_ad {
@@ -768,13 +768,31 @@ li {
 	color: #999;
 }
 
+/* 베스트셀러 */
+.index_bestCate {
+	border-top: 1px solid #d7d7d7;
+	clear: left;
+	padding: 10px;
+}
+
+#bestCate {
+	 width:250px;
+	 line-height: 10px;
+     padding:2px;
+     padding-left: 10px;
+     border:1px solid #999;
+     font-family:'Nanumgothic';
+     border-radius:3px;
+}
+
+
 .index_todaysBooks {
     z-index: 1;    
     height: 400px;
     width: 60%;
     padding: 20px;
     overflow: hidden;
-    background-color: #e5e5e5;
+    background-color: #e3e3e3;
     /* 요거고침요 */
 }
 .index_todaysBooks1{

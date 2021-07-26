@@ -111,20 +111,6 @@ public class BookController {
 	return "/sample/index" ;
 
 	}
-	
-	/*
-	 * @RequestMapping("/sample/ad.do") public String productInsert(BookVo vo ,
-	 * Model model,@RequestParam("filename_tmp") MultipartFile filename,
-	 * HttpServletRequest req) { if(!filename.isEmpty()) { try { String org =
-	 * filename.getOriginalFilename();//원본 파일명 String ext =""; ext =
-	 * org.substring(org.lastIndexOf(".")); String real = new
-	 * Date().getTime()+ext;//서버에 저장할 파일명 String path = req.getRealPath("/img/");
-	 * System.out.println(path); filename.transferTo(new File(path+real));
-	 * vo.setFilename_org(org); vo.setFilename_real(real); vo.setAd_img(real);
-	 * service.bookimg(vo); }catch (Exception e) {} } service.insert(vo);
-	 * 
-	 * return "redirect:index.do"; } 도윤 test
-	 */
 }
 	
 	

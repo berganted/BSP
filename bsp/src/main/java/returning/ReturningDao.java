@@ -47,4 +47,13 @@ public class ReturningDao {
 		return sessionTemplate.delete("returnig.delete", vo);
 
 	}
+	public List<ReturningVo> selectop(ReturningVo vo) {
+		return sessionTemplate.selectList("returnig.selectop",vo);
+	}
+	public int updatepsno(ReturningVo vo) {
+		return sessionTemplate.update("returnig.updatepsno",vo);
+	}
+	public void updateiopsno(ReturningVo vo) {
+		sessionTemplate.update("returnig.updateiopsno",vo);
+	}
 }

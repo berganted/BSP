@@ -21,6 +21,9 @@ public interface ReturningService {
 	void updatePi(int no);
 	int delete(ReturningVo vo);
 	
+	List<ReturningVo> selectop(ReturningVo vo);
+	int updatepsno(ReturningVo vo);
+	
 	
 
 

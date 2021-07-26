@@ -6,19 +6,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import cart.CartService;
+import cart.CartVo;
+
 
 @Controller
 public class OrderController {
 	
 	@Autowired
 	OrderService service;
+	@Autowired
+	CartService Cservice;
 
 	@RequestMapping("/order/buy.do")
 	public String buy() {
 		return "order/BuyForm";
 	}
 	@RequestMapping("/order/cart.do")
-	public String cart() {
+	public String cart(Model model, CartVo vo) {
+		model.addAttribute("cartList",Cservice.selectAll(vo));
 		return "order/Cart";
 	}
 	

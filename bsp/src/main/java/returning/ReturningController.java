@@ -80,9 +80,7 @@ public class ReturningController {
 	}
 
 	/* 반품 insert */
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/returning/insert.do")
-
 	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
 		String[] no = req.getParameterValues("b_no"); 
 		String[] ano = req.getParameterValues("io_amount") ;

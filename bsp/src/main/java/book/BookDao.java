@@ -19,6 +19,9 @@ public class BookDao {
 	public List<BookVo> selectAllBasic(BookVo vo) {
 		return sqlSession.selectList("book.selectAllBasic", vo);
 	}
+	public List<BookVo> ctg(BookVo vo) {
+		return sqlSession.selectList("book.ctg", vo);
+	}
 	
 	public List<BookVo> selectAlladmin(BookVo vo) {
 		return sqlSession.selectList("book.selectAlladmin", vo);

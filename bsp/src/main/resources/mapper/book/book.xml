@@ -148,9 +148,9 @@
 	</insert>
  <!-- 책 등록 -->
 	<insert id="insert" parameterType="book.BookVo">
-	INSERT INTO book (b_imgno,b_ctgno1,b_ctgno2,b_title,b_content,b_author,b_publisher,b_isbn,b_stock,b_price,b_index,b_pages,b_introauthor,b_introbook,b_point,b_regdate)
-	VALUES (#{b_imgno},#{b_ctgno1},#{b_ctgno2},#{b_title},#{b_content},#{b_author},#{b_publisher},#{b_isbn},#{b_stock},#{b_price},#{b_index}
-	,#{b_pages},#{b_introauthor},#{b_introbook},#{b_point},NOW())
+	INSERT INTO book (b_imgno,b_ctgno1,b_ctgno2key,b_title,b_content,b_author,b_publisher,b_isbn,b_stock,b_price,b_index,b_pages,b_introauthor,b_introbook,b_point,b_regdate,b_intodate)
+	VALUES (#{b_imgno},#{b_ctgno1},#{b_ctgno2key},#{b_title},#{b_content},#{b_author},#{b_publisher},#{b_isbn},#{b_stock},#{b_price},#{b_index}
+	,#{b_pages},#{b_introauthor},#{b_introbook},#{b_point},NOW(),#{b_intodate})
 	</insert> 
 	
 <!-- 책 상세 -->
@@ -170,7 +170,7 @@
 			b_imgno=#{b_imgno},
 			</if>
 			<if test="b_ctgno1 !=0">
-			b_ctgno1=#{b_ctgno1},b_ctgno2=#{b_ctgno2},b_title=#{b_title},b_content=#{b_content},b_author=#{b_author},b_publisher=#{b_publisher}
+			b_ctgno1=#{b_ctgno1},b_ctgno2key=#{b_ctgno2key},b_title=#{b_title},b_content=#{b_content},b_author=#{b_author},b_publisher=#{b_publisher}
 			,b_isbn=#{b_isbn},b_stock=#{b_stock},b_price=#{b_price},b_index=#{b_index},b_pages=#{b_pages},b_introauthor=#{b_introauthor},b_introbook=#{b_introbook}
 			,b_point=#{b_point},b_intodate=#{b_intodate}
 			</if>
@@ -203,5 +203,8 @@
 	<select id="detailAD" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM AD WHERE ad_no=#{ad_no}
 	</select>
-
+<!-- 카테고리 -->
+	<select id="ctg" resultType="book.BookVo">
+		SELECT * FROM categorysmall	
+	</select>
 </mapper>

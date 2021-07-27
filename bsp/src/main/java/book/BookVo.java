@@ -3,6 +3,8 @@ package book;
 import java.sql.Timestamp;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import util.CommonVo;
 
 public class BookVo extends CommonVo {
@@ -18,6 +20,7 @@ public class BookVo extends CommonVo {
 	private String b_isbn;
 	private String b_stock;
 	private Timestamp b_regdate;
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date b_intodate;
 	private int b_price;
 	private int b_views;

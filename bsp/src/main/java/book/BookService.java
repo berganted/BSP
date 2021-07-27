@@ -29,5 +29,6 @@ public interface BookService {
 	List<BookVo> adselect(BookVo vo);
 	BookVo detailAD(BookVo vo);
 	int adupdate(BookVo vo);
+	List<BookVo> ctg(BookVo vo);
 
 }

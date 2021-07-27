@@ -52,7 +52,7 @@
 									<tr>
 										<th scope="row"><label for="">이름</label></th>
 										<td colspan="">
-											${vo.m_name}
+											${vo.m_name}	
 										</td>
 										<th scope="row"><label for="">전화번호</label></th>
 										<td colspan="">

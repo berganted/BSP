@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -80,9 +81,9 @@
 												<th scope="row"><label for="">책제목</label></th>
 												<td colspan=""><input type="text" id="title"
 													name="b_title" class="w100"    /></td>
-												<th scope="row"><label for="">입고일</label></th>
+												<th scope="row"><label for="">출간일</label></th>
 												<td colspan=""><input type="date" id="title"
-													name="" class="w100"    /></td>
+													name="b_intodate" class="w100"    /></td>
 											</tr>
 											<tr>
 												<th scope="row"><label for="">저자</label></th>
@@ -132,8 +133,10 @@
 												<th scope="row"><label for="">카테고리2</label></th>
 												<td colspan=""><select name="b_ctgno2" id="ctg2"
 													style="width: 90%">
-														<option value="1">소설</option>
-														<option value="2">시</option>
+													<c:forEach var="ctg" items="${ctg }">
+													<option value="${ctg.b_ctgno2key }">${ctg.b_ctgdetail }</option>
+													</c:forEach>
+														
 												</select></td>
 												<th></th>
 												<td><input type="text" id="b_ctgno1" name="b_ctgno1" value="1"></td>

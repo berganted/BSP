@@ -192,6 +192,13 @@ public class BookServiceImpl implements BookService {
 
 
 
+	@Override
+	public List<BookVo> ctg(BookVo vo) {
+		return dao.ctg(vo);
+	}
+
+
+
 
 
 }

@@ -127,11 +127,6 @@
 		FROM book WHERE b_ctgno1=${b_ctgno1}
 		<include refid="bookwhere"/>
 	</select>
-	<select id="selectAll6" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain 
-		FROM book WHERE b_no BETWEEN 10 AND 11 ORDER BY rand() LIMIT 1
-		<include refid="bookwhere"/>
-	</select>
 <!-- index.do 광고 -->	
 	<select id="selectAll5" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,
@@ -157,24 +152,6 @@
 			<include refid="bookwhere"/>
 	</select>
 
-	<select id="selectAllBasic" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,
-			(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail
-		FROM book
-		<include refid="bookwhere"/>
-		ORDER BY ${orderby} ${direct}			
-		LIMIT ${strIdx},${pageRow} 
-	</select>
-	
-	<select id="selectctgnamed" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM categorysmall WHERE b_ctgno2=#{b_ctgno2}
-	</select>
-	
-	<select id="selectCtgno2" parameterType="book.BookVo" resultType="book.BookVo">
-		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
-	</select>
-	
-	
 
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">

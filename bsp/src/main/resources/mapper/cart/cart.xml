@@ -27,5 +27,8 @@
 			ON b.b_no = c.b_no
  		</select>
  		
+ 		<insert id="insert" parameterType="cart.CartVo">
+ 			INSERT INTO cart (m_no, b_no, cart_cnt, cart_price) VALUES (#{m_no},#{b_no} ,#{io_amount}, #{b_price});
+ 		</insert>
  		
 	</mapper>

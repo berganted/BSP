@@ -18,8 +18,7 @@ public class CartServiceimpl implements CartService {
 	
 	@Override
 	public int insert(CartVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(vo);
 	}
 
 	@Override

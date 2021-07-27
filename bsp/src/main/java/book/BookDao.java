@@ -12,6 +12,7 @@ public class BookDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
+	
 	public List<BookVo> selectAll(BookVo vo) {
 		return sqlSession.selectList("book.selectAll", vo);
 	}
@@ -45,6 +46,11 @@ public class BookDao {
 		return sqlSession.selectList("book.selectAll3", vo);
 	}
 	
+	
+	public BookVo selectCtgno2(BookVo vo) {
+		return sqlSession.selectOne("book.selectCtgno2", vo);
+	}
+	
 	// index.do 오늘의책
 	public List<BookVo> selectAll4(BookVo vo) {
 		return sqlSession.selectList("book.selectAll4", vo);
@@ -68,6 +74,11 @@ public class BookDao {
 	public int count(BookVo vo) {
 		return sqlSession.selectOne("book.count", vo);
 	}
+	
+	public int smallCount(BookVo vo) {
+		return sqlSession.selectOne("book.smallCount", vo);
+	}
+	
 	public int countad(BookVo vo) {
 		return sqlSession.selectOne("book.countad", vo);
 	}
@@ -94,9 +105,6 @@ public class BookDao {
 		return sqlSession.delete("book.deletead", vo);
 	}
 	
-	public BookVo selectCtgno2(BookVo vo) {
-		return sqlSession.selectOne("book.selectCtgno2", vo);
-	}
 	public List<BookVo> adselect(BookVo vo){
 		return sqlSession.selectList("book.adselect",vo);
 	}

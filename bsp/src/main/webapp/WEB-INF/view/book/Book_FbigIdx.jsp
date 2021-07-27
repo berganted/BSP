@@ -30,7 +30,7 @@
    <!--  <div id=header></div> -->
     <div class="wrap">
 
-        <jsp:include page="../include/sideBigIdx.jsp"></jsp:include>
+        <jsp:include page="../include/sideFbig.jsp"></jsp:include>
             
         <div class="mem_content">
             
@@ -69,7 +69,7 @@
                             </p>
                             <p class="choice_price">
                                 <span class="bps_price">${vo.b_price }</span>원
-                                <span class="bps_point">★123원</span>
+                                <span class="bps_point">★${vo.b_point }</span>
                             </p>
                             <div class="choice_intro">
                                 <span class="choice_introTitle" style="color: blue; font-size: 22px;">

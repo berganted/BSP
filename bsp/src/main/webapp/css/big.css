@@ -236,9 +236,17 @@ a {
 
 
 .newStar_info {
+
    font-size: 15px;
-   display: inline-block;
+   display: block;
+   text-align: center;
+   
 }
+/* .newStar_info > ul >li {
+	
+		
+} */
+
 
 .BigIndex_newEye {
    font-size: 25px;

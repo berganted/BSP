@@ -170,7 +170,6 @@ public class BookController {
 		model.addAttribute("list4", service.selectAll4(vo));
 		model.addAttribute("list5", service.selectAll5(vo));
 		model.addAttribute("list6", service.selectAll6(vo));
-		vo.setB_ctgno1(1);
 		model.addAttribute("best", service.selectAll7(vo));
 		
 	return "/sample/index" ;

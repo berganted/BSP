@@ -68,7 +68,11 @@
                     </div>
                 </div>
                 <div class="detail_bookInfo">
+                    <form action="">
                     <div class="bookInfo_section">
+                    	<input type="hidden" name="b_no" value="${vo.b_no }">
+                    	<input type="hidden" name="m_no" value="${vo.m_no }">
+                    	<input type="hidden" name="b_price" value="${vo.b_price }">
                         <span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br>
                         <span class="detail_bookAuthor">${vo.b_author }</span> &nbsp;|
                         <span class="detail_bookPub">${vo.b_publisher }</span> &nbsp;|
@@ -90,14 +94,15 @@
                                 <span style="font-size: 18px;"> *배송비 : 무료</span>
     
                         </div>
-                    </div>       
+                    </div>
+                    </form>       
                 </div>
                 <div class="detail_bookPay">
                     <div class="detail_payWrap3">
                         <span class="ing" style="font-size: 15px;"> &emsp;&emsp;  판매중</span> <br> 
                       <div class="number" >
                         <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                        <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                        <input type="number" id="numberUpDown" name="io_amount"  style="width: 50px; text-align: center;" value="1">
                           <button class="button_s" type="button" id="increaseQuantity">+</button>
                       </div> 
                     </div>
@@ -109,7 +114,6 @@
                     </div>
                 </div>   
             </div>
-
 
             <div class="detail_section">
                <div class="bookintro"> 책소개 </div>

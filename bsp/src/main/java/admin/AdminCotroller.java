@@ -61,6 +61,7 @@ public class AdminCotroller {
 //상품 리스트
 	@RequestMapping("admin/product/index.do")
 	public String productIndex(BookVo vo , Model model) {
+		vo.setDirect("asc");
 		model.addAttribute("list", bservice.selectAlladmin(vo));
 		
 		return "admin/product/index";
@@ -205,6 +206,7 @@ public class AdminCotroller {
 //상품 상세&수정폼
 	@RequestMapping("admin/product/view.do")
 	public String memberview(BookVo vo, Model model) {
+		model.addAttribute("ctg", bservice.ctg(vo));
 		model.addAttribute("vo", bservice.deatil(vo));
 		return "admin/product/view";
 	}
@@ -239,7 +241,8 @@ public class AdminCotroller {
 	
 //상품 등록폼
 	@RequestMapping("admin/product/write.do")
-	public String productwrite() {
+	public String productwrite(BookVo vo , Model model) {
+		model.addAttribute("ctg", bservice.ctg(vo));
 		return "admin/product/write";
 	}
 //광고 등록폼

@@ -185,10 +185,6 @@
 		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
 	</select>
 	
-	
-=======
-
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
 
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">
@@ -200,11 +196,6 @@
 		SELECT COUNT(*) FROM ad
 		<include refid="bookwhere"/>
 	</select>
-	
-
-
- 
- 
 <!-- 책 삭제 -->
 	<delete id="delete" parameterType="book.BookVo">
 		DELETE FROM book WHERE b_no=#{b_no}
@@ -277,4 +268,4 @@
 	<select id="ctg" resultType="book.BookVo">
 		SELECT * FROM categorysmall	
 	</select>
-</mapper>
+	</mapper>

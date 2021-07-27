@@ -95,7 +95,7 @@
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
 			SELECT *,
 			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 5
+			FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5
 			<include refid="bookwhere"/>
 	</select>
 

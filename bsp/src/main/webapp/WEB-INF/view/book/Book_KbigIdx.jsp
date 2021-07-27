@@ -21,7 +21,11 @@
      
     
 
-
+<style>
+.imgimg {
+text-align: center;
+}
+</style>
 
 </head>
 
@@ -30,7 +34,7 @@
    <!--  <div id=header></div> -->
     <div class="wrap">
 
-        <jsp:include page="../include/sideBigIdx.jsp"></jsp:include>
+        <jsp:include page="../include/sideKbig.jsp"></jsp:include>
             
         <div class="mem_content">
             
@@ -41,7 +45,7 @@
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
                 <c:forEach var = "vo" items="${selectctgnamed }">
-                    <div class="cate2"><a href="${vo.b_ctgdlink }?b_ctgno2key=${vo.b_ctgno2key}">${vo.b_ctgdetail } </a></div> 
+                    <div class="cate2"><a href="Book_KsmallIdx.do?b_ctgno2key=${vo.b_ctgno2key}&b_ctgdetail=${vo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow=${bookVo.pageRow}">${vo.b_ctgdetail } </a></div> 
 
                 </c:forEach>   
                 <!-- </div> -->
@@ -58,7 +62,7 @@
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><img src = "${vo.b_imgno }" style="height: 100%; width: 100%;"></div>
+                        <div class="choiceImg"><img src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></div>
                         <div class="chocieInfo">
                             <p class="choiceName"> ${vo.b_title }  : 나를 넘어서는 힘</p>
                             <p class="choice_pub">
@@ -68,7 +72,7 @@
                             </p>
                             <p class="choice_price">
                                 <span class="bps_price">${vo.b_price }</span>원
-                                <span class="bps_point">★123원</span>
+                                <span class="bps_point">★${vo.b_point }</span>
                             </p>
                             <div class="choice_intro">
                                 <span class="choice_introTitle" style="color: blue; font-size: 22px;">
@@ -95,15 +99,13 @@
                
                 
 
-            <div class="BigIndex_newEye"> 눈에 띄는 새책</div>
-                  <div class="BigIndex_newEye_wrap">
             <div class="BigIndex_newEye">베스트셀러</div>
-           		 <div class="BigIndex_newEye_wrap">
+           <div class="BigIndex_newEye_wrap">
                 <c:forEach var = "vo" items="${list2 }">
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="${vo.b_imgno }" style="width: 200px; height: 300px;"></div>
+                        <div class="newEye_img"><img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 300px;"></div>
                     </div> 
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
@@ -129,7 +131,7 @@
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <div style="width: 200px; height: 250px;"><img src="bsp/img/${vo.b_imgmain }" alt="마지막 몰입", title="마지막 몰입" style="width: 200px; height: 250px;"></div>
+                    <div class = "imgimg" style="width: 300px; height: 250px;"> <img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 250px;"></div>
                     <div class="newStar_info">
                         <ul> 
                             <li><a class="newStar_title">${vo.b_title }</a></li>
@@ -142,13 +144,12 @@
                  
           </c:forEach>
        
-
-
-            </div>
-            
+       
+       
+       
 
         </div>
-        </div>
+        
     <jsp:include page="../include/quick.jsp"></jsp:include>
            
     </div>

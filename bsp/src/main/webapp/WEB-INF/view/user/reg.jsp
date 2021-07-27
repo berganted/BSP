@@ -110,7 +110,14 @@
 				}
 			});
 		}
-		
+		if(!$('input:radio[id=agree1]').is(':checked')){
+			alert('동의해주세요')
+			return false;
+		}
+		if(!$('input:radio[id=agree2]').is(':checked')){
+			alert('동의해라')
+			return false;
+		}
 
 		if (!/^[a-zA-z0-9]{4,12}$/.test($('#pwd').val())) {
 			alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
@@ -193,13 +200,13 @@
 			</div>
 			<div style="text-align: center;">
 				<div class="reg_info">약관 내용 블라블라블라</div>
-				<input type="radio" name="agree">동의 <input type="radio"
-					name="agree" checked>비동의
+				<input type="radio" id="agree1" name="agree" value="1">동의 
+				<input type="radio" name="agree" value="2" checked>비동의
 			</div>
 			<div style="text-align: center;">
 				<div class="reg_info">약관 내용 블라블라블라</div>
-				<input type="radio" name="agree2">동의 <input type="radio"
-					name="agree2" checked>비동의
+				<input type="radio" id="agree2" name="agree2" value="1">동의 
+				<input type="radio" name="agree2" value="2" checked>비동의
 			</div>
 			<div>
 				<form id="frm" action="insert.do" method="POST">

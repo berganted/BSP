@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -85,9 +86,9 @@
 												<th scope="row"><label for="">책제목</label></th>
 												<td colspan=""><input type="text" id="title"
 													name="b_title" class="w100" value="${vo.b_title }" /></td>
-												<th scope="row"><label for="">입고일</label></th>
-												<td colspan=""><input type="date" id="" name=""
-													class="w100" value="" /></td>
+												<th scope="row"><label for="">출간일</label></th>
+												<td colspan=""><input type="date" id="" name="b_intodate"
+													class="w100" value='<fmt:formatDate value="${vo.b_intodate }" pattern="yyyy-MM-dd" />' /></td>
 											</tr>
 											<tr>
 												<th scope="row"><label for="">저자</label></th>
@@ -142,22 +143,17 @@
 												</select></td>
 
 												<th scope="row"><label for="">카테고리2</label></th>
-												<td colspan=""><select name="ctg2" id="ctg2"
+												<td colspan=""><select name="b_ctgno2key" id="ctg2"
 													style="width: 90%">
-														<c:if test="${vo.b_ctgno2 == 1 }">
-															<option value="1" selected="selected">소설</option>
-															<option value="2">시</option>
-														</c:if>
-														<c:if test="${vo.b_ctgno2 == 2 }">
-															<option value="1">소설</option>
-															<option value="2" selected="selected">시</option>
-														</c:if>
+														<c:forEach var="ctg" items="${ctg }">
+													<option value="${ctg.b_ctgno2key }"<c:if test="${ctg.b_ctgno2key == vo.b_ctgno2key }">selected="selected"</c:if>>${ctg.b_ctgdetail }</option>
+													</c:forEach>
 												</select></td>
 												<th></th>
 												<td><input type="text" id="b_ctgno1" name="b_ctgno1"
 													value="${vo.b_ctgno1 }"></td>
 												<th></th>
-												<td><input type="text" id="b_ctgno2" name="b_ctgno2"
+												<td><input type="text" id="b_ctgno2key" name="b_ctgno2"
 													value="${vo.b_ctgno2 }"></td>
 											</tr>
 											<tr>

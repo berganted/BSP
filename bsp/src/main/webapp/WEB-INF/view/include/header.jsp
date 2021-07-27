@@ -20,14 +20,14 @@
             <c:if test="${empty userInfo}">
                 <a href="/bsp/user/login.do">로그인</a>
                 <a href="/bsp/user/reg.do">회원가입</a>
-                <a href="join.html">장바구니</a>                                       
+                <a href="/bsp/order/cart.do">장바구니</a>                                       
                 <a href="/bsp/user/mypage.do">마이페이지</a>
             </c:if>
             <c:if test="${!empty userInfo}">
 				<a>${ userInfo.m_name}</a>
 				<a onclick="location.href='/bsp/user/logout.do'">로그아웃</a> 
-				<a href="join.html">장바구니</a>                                       
-                <a href="/bsp//user/mypage.do">마이페이지</a>
+				<a href="/bsp/order/cart.do">장바구니</a>                                       
+                <a href="/bsp/user/mypage.do">마이페이지</a>
 			</c:if>
             </div>
         </div>
@@ -44,22 +44,18 @@
                     
                 </ul>
             </li>
-            <li><a class="header_depth1" href="category.html">국내도서</a>
+            <li><a class="header_depth1" href="Book_KbigIdx.do">국내도서</a>
                 <ul class="header_depth2">
-                    <li><a href="#">소설/시</a></li>
-                    <li><a href="#">에세이</a></li>
-                    <li><a href="#">인문</a></li>
-                    <li><a href="#">역사</a></li>
-                    <li><a href="#">예술</a></li>
-                    <li><a href="#">종교</a></li>
-                    <li><a href="#">사회</a></li>
-                    <li><a href="#">과학</a></li>
-                    <li><a href="#">경제 경영</a></li>
-                    <li><a href="#">자기계발</a></li>
-                    <li><a href="#">만화</a></li>
-                    <li><a href="#">라이트노벨</a></li>
-                    <li><a href="#">여행</a></li>
-                    <li><a href="#">잡지</a></li>
+                    <li><a href="Book_KbigIdx.do">가정살림</a></li>
+                    <li><a href="Book_KbigIdx1.do">경제 경영</a></li>
+                    <li><a href="Book_KbigIdx2.do">소설</a></li>
+                    <li><a href="Book_KbigIdx3.do">에세이</a></li> 
+                    <li><a href="Book_KbigIdx4.do">여행</a></li> 
+                    <li><a href="Book_KbigIdx5.do">인문</a></li> 
+                    <li><a href="Book_KbigIdx6.do">자기계발</a></li> 
+                    <li><a href="Book_KbigIdx7.do">IT모바일</a></li> 
+   
+            
                 </ul>
             </li>    
             <li><a class="header_depth1" href="category.html">해외도서</a>

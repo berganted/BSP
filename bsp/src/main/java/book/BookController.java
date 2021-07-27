@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import comment.CommentVo;
+
 @Controller
 public class BookController {
 
@@ -173,5 +175,11 @@ public class BookController {
 		model.addAttribute("best", service.selectAll7(vo));
 		
 	return "/sample/index" ;
+	}
+	// index_search 검색 페이지 
+	@RequestMapping("/sample/index_search.do")
+	public String search(Model model, BookVo vo, CommentVo cv) {
+		model.addAttribute("list4", service.selectAll4(vo));
+		return "sample/index_search";
 	}
 }

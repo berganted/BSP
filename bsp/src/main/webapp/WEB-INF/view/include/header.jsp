@@ -6,15 +6,15 @@
     <div class="index_wrap">
         <div class="header_top">
             <div class="header_search">
-                <form action="#">
-                    <input type="search" placeholder="검색어를 입력하세요">
+                <form method="get" name="searchForm2" id="searchForm2" action="index_search.do">
+                    <input type="text" id="sval" name="sval" value="${param.sval }" placeholder="검색어를 입력하세요">
                 </form>
                 <div class="header_searchIcon">
-                    <img src="/bsp/img/logo/Search.png">
+                	<img src="/bsp/img/logo/Search.png" onclick="$('#searchForm2').submit();">
                 </div>
             </div>
             <div class="header_logo">
-                <a href="/bsp/sample/index.do"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
+                <a href="/bsp/sample/index.do?b_ctgno1=1"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
             </div>
             <div class="header_login">
             <c:if test="${empty userInfo}">
@@ -44,22 +44,18 @@
                     
                 </ul>
             </li>
-            <li><a class="header_depth1" href="category.html">국내도서</a>
+            <li><a class="header_depth1" href="Book_KbigIdx.do">국내도서</a>
                 <ul class="header_depth2">
-                    <li><a href="#">소설/시</a></li>
-                    <li><a href="#">에세이</a></li>
-                    <li><a href="#">인문</a></li>
-                    <li><a href="#">역사</a></li>
-                    <li><a href="#">예술</a></li>
-                    <li><a href="#">종교</a></li>
-                    <li><a href="#">사회</a></li>
-                    <li><a href="#">과학</a></li>
-                    <li><a href="#">경제 경영</a></li>
-                    <li><a href="#">자기계발</a></li>
-                    <li><a href="#">만화</a></li>
-                    <li><a href="#">라이트노벨</a></li>
-                    <li><a href="#">여행</a></li>
-                    <li><a href="#">잡지</a></li>
+                    <li><a href="Book_KbigIdx.do">가정살림</a></li>
+                    <li><a href="Book_KbigIdx1.do">경제 경영</a></li>
+                    <li><a href="Book_KbigIdx2.do">소설</a></li>
+                    <li><a href="Book_KbigIdx3.do">에세이</a></li> 
+                    <li><a href="Book_KbigIdx4.do">여행</a></li> 
+                    <li><a href="Book_KbigIdx5.do">인문</a></li> 
+                    <li><a href="Book_KbigIdx6.do">자기계발</a></li> 
+                    <li><a href="Book_KbigIdx7.do">IT모바일</a></li> 
+   
+            
                 </ul>
             </li>    
             <li><a class="header_depth1" href="category.html">해외도서</a>

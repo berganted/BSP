@@ -99,14 +99,12 @@ public class BookServiceImpl implements BookService {
 	public List<BookVo> selectAll7(BookVo vo) {
 		return dao.selectAll7(vo);
 	}
-
+	
 
 	@Override
 	public BookVo selectCtgno2(BookVo vo) {
 		return dao.selectCtgno2(vo);
 	}
-
-
 
 	@Override
 	public List<BookVo> selectctgnamed(BookVo vo) {

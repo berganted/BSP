@@ -14,9 +14,16 @@ public class CartVo {
 	private int b_point;
 	private int b_imgno;
 	private String b_imgmain;
+	private int io_amount;
 	
 	
 	
+	public int getIo_amount() {
+		return io_amount;
+	}
+	public void setIo_amount(int io_amount) {
+		this.io_amount = io_amount;
+	}
 	public int getB_imgno() {
 		return b_imgno;
 	}

@@ -88,11 +88,10 @@
 	                               	  <select id="b_ctgno1" name="b_ctgno1" size="1">
 	                               	  		<option value="1"<c:if test="${param.b_ctgno1==1}"> selected</c:if>>국내도서</option>
 	                               	  		<option value="2"<c:if test="${param.b_ctgno1==2}"> selected</c:if>>외국도서</option>
-
 	                                 </select>
 	                               	  </form>
 	                              </div>
-	                           <div id="DomesticBooks" class="bestCate_option">  
+	                           <div class="bestCate_option">  
                                <c:forEach var="vo" items="${best }" varStatus="status">
                                   <ul>
                                       <li>${vo.b_title } | ${vo.b_author }</li>

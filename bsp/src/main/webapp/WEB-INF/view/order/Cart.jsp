@@ -16,16 +16,30 @@
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
     //**삭제 버튼 클릭시 행 삭제
-    function deleteRow(ths){
-    var ths = $(ths);
-    var trCnt = $(".cart_con tr").length;
- 
-    if(trCnt>0){        //구매폼과 달리 전체 삭제 가능!
-    ths.parents("tr").remove();
-    }else{
-        return false;
-        }
+    
+    
+    function groupDel() {
+    	var cnt = 0;
+    for(var i=0; i<$('input[name=checkOne]').length;i++){
+    	if($('input[name=checkOne]').eq(i).prop('checked')){
+    		cnt++;
+    		break;
+    	}
     }
+    if( cnt == 0 ){
+    	alert('하나 이상 체크해 주세요');
+    }else{
+    	if(confirm('삭제하시겠습니까?')){
+    		$('#frm').submit();
+    	}
+    }
+    }
+    
+    function del() {
+    	$('#frm').submit();
+	}
+		
+	
     </script>
 
 </head>
@@ -41,7 +55,7 @@
              <div id="cart_option" style="text-align: right; padding: 0px 20px 5px;">
                 <span id="cart">
                     <input class="button_m" type="button" name="buy_select" value="선택주문">
-                    <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="Delete()">
+                    <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="groupDel();">
                     <select name="정렬" style="height: 30px; border: 2px solid #221f1f ;">
                         <option value="recent" selected>최근 담은 순</option>
                         <option value="h_prc">고가 순</option>
@@ -51,6 +65,7 @@
                     </span>
             </div>
             
+			<form name="frm" id="frm" action="/bsp/cart/delete.do" method="post">
             <table id="cart_tb" class="cart_con" style="border: 1px solid rgb(206, 205, 205);">
             <colgroup>
 									<col width="50px" />
@@ -69,7 +84,7 @@
                     <td>재고</td> 
                     <td>수량</td>
                     <td>삭제</td>
-            </tr>
+            </tr>	
             	<c:if test="${empty cartList}">
 								<tr>
 									<td class="first" colspan="6">장바구니가 비어 있습니다.</td>
@@ -77,7 +92,7 @@
 					</c:if>
 			<c:forEach var="list" items="${cartList}">  
 	            <tr data-tr_value="1">
-	                <td><input type="checkbox" value="select"  name="checkOne"></td>
+	                <td><input type="checkbox" value="${list.cart_no}"  name="checkOne"></td>
 	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100% "></td> 
 	                <td><a href=""> ${list.b_title }<br> *내일수령가능</a></td> 
 	                <td>${list.b_price }<br>
@@ -86,13 +101,14 @@
 	                <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
 	                <td id="ant">
 	                 <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-	                 <input type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+	                 <input type="text" name="pop_out" value="${list.cart_cnt}" readonly="readonly" style="width: 50px; text-align: center;">
 	                 <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
 	                 </td>
-	                <td><input class="button_s" type="button" name="del" value="삭제" onclick="deleteRow(this);"><br>
+	                <td><input class="button_s" type="button" name="del" value="삭제" onclick="del();"><br>
 	            </tr>
            	</c:forEach>
         </table>
+           	</form>
        
         <table id="cart_tb" class="cart_s">
             <tr>
@@ -119,7 +135,7 @@
            <hr>
             <div id="cart_select" style="text-align: right; padding: 10px 25px;">
                 <span>
-                    <input class="button_m" class="button" type="button" name="buy_select" value="선택한 상품 주문하기">
+                    <input class="button_m" class="button" type="button" name="buy_select" value="선택한 상품 주문하기" >
                     <input class="button_m" class="button" type="button" name="buy_all" value="전체 상품 주문하기">
                 </span>
             </div>

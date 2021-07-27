@@ -5,6 +5,14 @@
  <sql id="bookwhere">
 		<where>
 				<if test="sval != null and sval !=''">
+					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+			</if>
+		</where>
+</sql>
+	
+<!--  	<sql id="bookwhere">
+		<where>
+				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
 					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 				</if>
@@ -13,8 +21,12 @@
 				</if>
 			</if>
 		</where>
-</sql>
+	</sql>  -->
 	
+		<select id="countsearch" resultType="int" parameterType="book.BookVo">
+		SELECT COUNT(*) FROM book WHERE b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+		<include refid="bookwhere"/>
+		</select>
 
 	
  	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
@@ -149,11 +161,10 @@
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
 			SELECT *,
 			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5
+			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 6
+			<!-- FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5 -->
 			<include refid="bookwhere"/>
 	</select>
-	
-
 
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">
@@ -165,11 +176,6 @@
 		SELECT COUNT(*) FROM ad
 		<include refid="bookwhere"/>
 	</select>
-	
-
-
- 
- 
 <!-- 책 삭제 -->
 	<delete id="delete" parameterType="book.BookVo">
 		DELETE FROM book WHERE b_no=#{b_no}
@@ -242,4 +248,4 @@
 	<select id="ctg" resultType="book.BookVo">
 		SELECT * FROM categorysmall	
 	</select>
-</mapper>
+	</mapper>

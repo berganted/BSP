@@ -31,4 +31,8 @@
  			INSERT INTO cart (m_no, b_no, cart_cnt, cart_price) VALUES (#{m_no},#{b_no} ,#{io_amount}, #{b_price});
  		</insert>
  		
+ 		<delete id="delete" parameterType="book.BookVo">
+			DELETE FROM cart WHERE cart_no=#{cart_no}
+		</delete>
+ 		
 	</mapper>

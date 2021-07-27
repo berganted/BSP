@@ -107,11 +107,16 @@ public class BookController {
 		model.addAttribute("list4", service.selectAll4(vo));
 		model.addAttribute("list5", service.selectAll5(vo));
 		model.addAttribute("list6", service.selectAll6(vo));
-		vo.setB_ctgno1(1);
 		model.addAttribute("best", service.selectAll7(vo));
 		
 	return "/sample/index" ;
 
+	}
+	// index_search 검색 페이지 
+	@RequestMapping("/sample/index_search.do")
+	public String search(Model model, BookVo vo, CommentVo cv) {
+		model.addAttribute("list4", service.selectAll4(vo));
+		return "sample/index_search";
 	}
 }
 	

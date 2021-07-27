@@ -39,14 +39,6 @@
                     <li><a class="support_w1">BSP 고객센터 입니다.</a></li>
                     <li><a class="support_w2">무엇을 도와드릴까요?</a></li>
                 </div>
-                <!-- <div class="support_searchBar">
-                    <form action="#">
-                        <input type="text" placeholder="검색어를 입력하세요">
-                    </form>
-                    <div class="support_searchIcon">
-                        <img src="/bsp/img/logo/Search.png">
-                    </div>
-                </div> -->
             </div>
             <div class="support_FAQ">
                 <div class="support_TopTen">
@@ -212,7 +204,7 @@
                                 <input type="button" id="" value="검색" title="검색" onclick="$('#searchForm').submit();">
                             </span>
                         </form>                        
-                    </div>                 
+                    	</div>                 
                     </div>
                 </div>
             </div>

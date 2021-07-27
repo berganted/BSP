@@ -6,15 +6,15 @@
     <div class="index_wrap">
         <div class="header_top">
             <div class="header_search">
-                <form action="#">
-                    <input type="search" placeholder="검색어를 입력하세요">
+                <form method="get" name="searchForm2" id="searchForm2" action="index_search.do">
+                    <input type="text" id="sval" name="sval" value="${param.sval }" placeholder="검색어를 입력하세요">
                 </form>
                 <div class="header_searchIcon">
-                    <img src="/bsp/img/logo/Search.png">
+                	<img src="/bsp/img/logo/Search.png" onclick="$('#searchForm2').submit();">
                 </div>
             </div>
             <div class="header_logo">
-                <a href="/bsp/sample/index.do"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
+                <a href="/bsp/sample/index.do?b_ctgno1=1"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
             </div>
             <div class="header_login">
             <c:if test="${empty userInfo}">

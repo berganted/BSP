@@ -6,7 +6,7 @@
 		<where>
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
-					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
@@ -14,6 +14,19 @@
 			</if>
 		</where>
 	</sql>
+	
+<!-- 	<sql id="bookwhere">
+		<where>
+				<if test="sval != null and sval !=''">
+					<if test="stype == 'all'">
+					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+				</if>
+				<if test="stype != 'all'">
+					${stype} LIKE '%${sval}%'
+				</if>
+			</if>
+		</where>
+	</sql> -->
 	
 
 	
@@ -95,10 +108,11 @@
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
 			SELECT *,
 			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 5
+			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 6
 			<include refid="bookwhere"/>
 	</select>
-
+	
+	
 	<select id="selectAllBasic" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,
 			(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail

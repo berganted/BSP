@@ -11,12 +11,23 @@ public class BookController {
 	@Autowired
 	BookService service;
 
+	
+	
+//-------------책상세	
+	
+	@RequestMapping("book/Book_detail.do")
+	public String memberview(BookVo vo, Model model) {
+		model.addAttribute("vo", service.deatil(vo));
+		return "book/Book_detail";
+	}
+	
+	
+	
  //-----------------국내도서 상세분류 클릭시 나오는 list-----------------(selectall 강사님 질문ㄱ)
 	@RequestMapping("/book/Book_KsmallIdx.do")
 	public String ksmall(Model model, BookVo vo) {
 		
 		model.addAttribute("list", service.selectAllBasic(vo));// list란 이름으로 전체 데이터가 dao에 담겨서 모델에 담김(=request에 담김=스프링이
-		vo.setDirect("ASC");													// 담아줌)
 		return "book/Book_KsmallIdx";
 	}
 	

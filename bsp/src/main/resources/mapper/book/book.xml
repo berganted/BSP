@@ -54,7 +54,7 @@
 		FROM book WHERE b_ctgno2key=#{b_ctgno2key} AND b_ctgno1=#{b_ctgno1}
 		<include refid="bookwhere"/>
 		ORDER BY ${orderby} ${direct}			
-		LIMIT ${strIdx},${pageRow} 
+		LIMIT ${strIdx},${pageRow}  <!--  pageRow. 5개씩보기 셀렉트 네임.-->
 	</select>
 		
 	<!-- 책 상세페이지 -->
@@ -64,14 +64,9 @@
 		 ORDER BY ${orderby} ${direct}	
 	</select>
 	
-	<!--대중분류페이지 3개 리스트 selectAll1~3-->
-	<select id="selectAll1" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * ,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain FROM book
-		<include refid="bookwhere"/>
-		 ORDER BY ${orderby} ${direct}	
-	</select>
+
 	
-	<!-- BSP의 선택 -> 기준필요!! -->
+	<!--대중분류페이지 3개 리스트 selectAll1~3-->
 	<select id="selectAll1" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT * ,
 		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain

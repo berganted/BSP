@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,11 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/big.css">
-    <script src="js/main.js"></script>
-    <script src="js/big.js"></script>
+    <link rel="stylesheet" href="/bsp/css/base.css">
+    <link rel="stylesheet" href="/bsp/css/reset.css">
+    <link rel="stylesheet" href="/bsp/css/big.css">
+    <script src="/bsp/js/main.js"></script>
+    <script src="/bsp/js/big.js"></script>
+    <script src="/bsp/js/star.js"></script>
+    
     
     
     <title>Document</title>
@@ -28,6 +31,7 @@
         .star-input{
             margin: auto;
         }
+        
     .star-input>.input,
     .star-input>.input>label:hover,
     .star-input>.input>input:focus+label,
@@ -64,10 +68,10 @@
                 </div>
                 <div class="detail_bookInfo">
                     <div class="bookInfo_section">
-                        <span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">마지막 몰입 : 나를 넘어서는 힘</span> <br>
-                        <span class="detail_bookAuthor">짐 퀵 저/김미정 역 </span> &nbsp;|
-                        <span class="detail_bookPub">비즈니스북스</span> &nbsp;|
-                        <span class="detail_bookDate">2021년 02월 23일</span><br>
+                        <span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br>
+                        <span class="detail_bookAuthor">${vo.b_author }</span> &nbsp;|
+                        <span class="detail_bookPub">${vo.b_publisher }</span> &nbsp;|
+                        <span class="detail_bookDate"><fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br>
                         <span class="detail_grade">★★★★★9.6</span> &nbsp;
                         <span class="detail_review"><a href="#">회원리뷰(86건)</a></span> &nbsp;|
                         <span class="detail_sales">판매지수 174,628</span>
@@ -75,9 +79,6 @@
                     </div>
                     <div class="bookInfo_bottom">
                         <div class="info_Price">
-                                <span class="bornPrice" style="font-size: 18px;">정가</span> &nbsp;&nbsp;
-                                <span class="bornPrice1">16,800원</span> <br>
-                                
                                 <span class="sellPrice" style="font-size: 18px; font-weight: 600;">판매가</span> &nbsp;&nbsp;
                                 <span class="sellPrice1" style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;">15,120원(10%할인)</span> <br>
                                 
@@ -113,6 +114,8 @@
                <div class="bookintro"> 책소개 </div>
                <div>
                    <p class="bookintro1"  >
+                   
+                   ${vo.b_introbook }
                    동물들 대신 쓴 독특한 콘셉트의 에세이 『정말 별게 다 고민입니다』는 걱정 많은 ‘나’를 위한 동물들의 일대일 조언을
                      담고 있다. 인간의 관점에서 벗어나 동물의 관점에서 문제를 바라보니 해법은 의외로 단순했다. 
                      10대부터 50대 이상 남녀노소의 다양한 걱정거리를 조사하고 가장 인기 있는 47가지 고민을 꼽으니 다음과 같다. 
@@ -232,23 +235,8 @@
                 <input type="file" value="사진">
                 <input type="button" value="등록">
             </div>
-
         </div> 
-
-
-
-
              </div>
-
-
-
-
-
-
-
-
-
-
         </div> 
         <aside class="mypage_ad">
             <div class="mypage_ad_name"><p>최근본상품</p></div>

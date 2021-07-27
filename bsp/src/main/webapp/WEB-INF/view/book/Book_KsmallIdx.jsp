@@ -24,10 +24,14 @@
  
     
    .paging > li {
-   	list-style-type: none; float: left; padding-left:5px; padding-top: 10px; text-align: center;
+   	list-style : none; float: left; padding-left:20px; padding-top: 15px; display: inline-block;
+   	
    }
     .paging {
-    margin-left: 450px;	
+   margin-left: 370px;
+    text-align: center;
+    float: left;
+    
      }
     
 
@@ -58,7 +62,11 @@
     }
      
     </style>
-    
+    <script>
+    function sendPageRow() {
+    	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
+    }
+    </script>
 
 
 </head>
@@ -70,39 +78,29 @@
         </div>  
 
         <div class="mem_content">
-<<<<<<< HEAD
             <h2 class="main_top"> ${param.b_ctgdetail }</h2>   
-=======
-            <h2 class="main_top">임신 / 출산</h2>
-            <div class="smallCtg_area"> 
-                <div class="cate2"><a href="${변수처리 }.do">임신</a></div> 
-            <h2 class="main_top"> ${bookVo.b_ctgdetail }</h2>   
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
-           <!--  <div class="smallCtg_area"> 
-                <div class="cate2"><a href="#">임신</a></div> 
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
-                <div class="cate2"><a href="#">태교</a></div> 
-               
-
-            </div> -->
+ 
             <div class="indexWrap">
                 <div class="indexPlace">
                     <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC">기본순</a></span>
-                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&stype=${bookVo.stype}&sval=${bookVo.sval}&orderby=${bookVo.orderby}&direct=${bookVo.direct}">판매량순</a></span>
+                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc">판매량순</a></span>
                     <span class="new"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc">신상품순</a></span>
                     <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC">최저가순</a></span>
-                    <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC">최고가순</a></span>
+                    <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC	">최고가순</a></span>
                     
-                   
                     
+                   <!-- 강사님한테 물어보기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                     <!-- <form method="get" name="searchForm" id="searchForm" action=""> --> 
                      <div class="divPlace">
-                        <select name="divnum" id="divnum" >
-                            <option value ="1" selected>5개씩 보기</option>
-                            <option value ="2" >10개씩 보기</option>
-                            <option value ="3" >15개씩 보기</option> 
+                        <select name="pageRow" id="divnum" onchange="sendPageRow();">
+                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
+                            <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
+                            <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
+                            <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
                         </select> 
                            <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택
-                    </div> 
+                    </div>
+                    <!-- </form>  -->
                     
                     <br>
                     <br>
@@ -112,13 +110,13 @@
                         <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                          <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
-                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${bookVo.direct}"> < </a></li>
+                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> < </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
-                            <li><a href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                            <li><a href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${bookVo.direct}"> > </a></li>
+                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> > </a></li>
                         </c:if>
                         </ul> 
                     </div>
@@ -130,14 +128,14 @@
             <c:forEach var = "vo" items="${list }">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><img src = "/bsp/img/${vo.b_imgmain }" style="height: 250px; width: 180px;"></div>
+                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" style="height: 250px; width: 180px;"></a></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
                         <span class="s_bookTitle" style="font-size: 20px;">
-                            <b>${vo.b_title }</b>
+                            <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><b>${vo.b_title }</b></a>
                         </span>
-                        <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_regdate}" pattern="yyyy-MM-dd" /></span> </span>
+                        <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월" /></span> </span>
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }원</span>
                         <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
                         																																										

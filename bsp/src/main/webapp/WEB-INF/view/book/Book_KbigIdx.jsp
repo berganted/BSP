@@ -21,7 +21,11 @@
      
     
 
-
+<style>
+.imgimg {
+text-align: center;
+}
+</style>
 
 </head>
 
@@ -58,7 +62,7 @@
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><img src = "/bsp/img/${vo.b_imgmain }" style="height: 100%; width: 100%;"></div>
+                        <div class="choiceImg"><img src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></div>
                         <div class="chocieInfo">
                             <p class="choiceName"> ${vo.b_title }  : 나를 넘어서는 힘</p>
                             <p class="choice_pub">
@@ -101,7 +105,7 @@
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="/bsp/img/${vo.b_imgmain }" style="width: 200px; height: 300px;"></div>
+                        <div class="newEye_img"><img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 300px;"></div>
                     </div> 
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
@@ -127,7 +131,7 @@
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <div style="width: 200px; height: 250px;"><img src="bsp/img/${vo.b_imgmain }" alt="마지막 몰입", title="마지막 몰입" style="width: 200px; height: 250px;"></div>
+                    <div class = "imgimg" style="width: 300px; height: 250px;"> <img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 250px;"></div>
                     <div class="newStar_info">
                         <ul> 
                             <li><a class="newStar_title">${vo.b_title }</a></li>
@@ -139,6 +143,9 @@
                  </div>
                  
           </c:forEach>
+       
+       
+       
        
 
         </div>

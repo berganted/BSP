@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/bsp/css/big.css">
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
+    <script src="js/jquery-1.11.3.min.js"></script>
     <script src="/bsp/js/star.js"></script>
     
     
@@ -28,14 +29,14 @@
     font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
     }
  
-        .star-input{
+  .star-input{
             margin: auto;
         }
         
     .star-input>.input,
     .star-input>.input>label:hover,
     .star-input>.input>input:focus+label,
-    .star-input>.input>input:checked+label{display: inline-block;vertical-align:middle;background:url('img/grade_img.png')no-repeat;}
+    .star-input>.input>input:checked+label{display: inline-block;vertical-align:middle;background:url('/bsp/img/grade_img.png')no-repeat;}
     .star-input{display:inline-block; white-space:nowrap;width:225px;height:40px;padding:25px;line-height:30px;}
     .star-input>.input{display:inline-block;width:150px;background-size:150px;height:28px;white-space:nowrap;overflow:hidden;position: relative;}
     .star-input>.input>input{position:absolute;width:1px;height:1px;opacity:0;}
@@ -62,7 +63,7 @@
             <div class="detail_wrap">
                 <div class="img_section">
                     <div class="detail_bookImg">
-                        <img src="img/newEye3.jpg" style="width: 250px; height: 310px;">
+                        <img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 250px; height: 310px;">
                     
                     </div>
                 </div>
@@ -80,7 +81,7 @@
                     <div class="bookInfo_bottom">
                         <div class="info_Price">
                                 <span class="sellPrice" style="font-size: 18px; font-weight: 600;">판매가</span> &nbsp;&nbsp;
-                                <span class="sellPrice1" style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;">15,120원(10%할인)</span> <br>
+                                <span class="sellPrice1" style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;">${vo.b_price }원</span> <br>
                                 
                                 <span class="deliverInfo" style="font-size: 18px;">
                                      배송지 : 경기도 고양시~ 
@@ -116,6 +117,7 @@
                    <p class="bookintro1"  >
                    
                    ${vo.b_introbook }
+                   <br>
                    동물들 대신 쓴 독특한 콘셉트의 에세이 『정말 별게 다 고민입니다』는 걱정 많은 ‘나’를 위한 동물들의 일대일 조언을
                      담고 있다. 인간의 관점에서 벗어나 동물의 관점에서 문제를 바라보니 해법은 의외로 단순했다. 
                      10대부터 50대 이상 남녀노소의 다양한 걱정거리를 조사하고 가장 인기 있는 47가지 고민을 꼽으니 다음과 같다. 
@@ -143,6 +145,7 @@
             <div class="detail_section">
                <div class="bookAuthor" style="font-size:25px;"> 저자 </div>
                    <p class="bookintro1"style="font-size:17px;"  >
+                   ${vo.b_introauthor } <br>
                     저자 : 고바야시 유리코 <br>
                     1980년 일본 효고 현 출생. 와세다대학 졸업. 
                     방송 제작사에서 야생동물 다큐멘터리를 만들다가 출판사 에디터가 되었다. 
@@ -173,6 +176,7 @@
                 <div class="bookIndex" style="font-size:25px;"> 목차 </div>
                     <div>
                         <p class="bookintro1"style="font-size:17px;"  > 
+                        ${vo.b_index } <br>
                             
                             1. 「먹고 기도하고 사랑하라」와 치유의 와인<br>
                             2. 「미드나잇 인 파리」, 헤밍웨이와 달리가 마시던 와인<br>
@@ -227,15 +231,44 @@
                     <output for="star-input"><b>0</b>점</output>						
             </span>
             </div>
-            <script src="js/jquery-1.11.3.min.js"></script>
-            <script src="js/star.js"></script>
+       
             <div style="text-align: center;">
                 <br>
                  <input type="text" placeholder="리뷰를 입력하세요!" style="width:600px;height:200px;font-size:17px;" >
-                <input type="file" value="사진">
-                <input type="button" value="등록">
+              
+                <input type="button" value="등록" style="margin-left: 50px; width:50px;" >
             </div>
-        </div> 
+
+
+<!-- 돈터치  -->
+<br>
+					<!-- 리뷰랑 비슷하게 ㄱㄱ  -->
+					<table class="board_write">
+						<colgroup>
+							<col width="*" />
+							<col width="80px" />
+						</colgroup>
+						<tbody>
+
+							<tr>
+								<td><textarea name="content" id="content"
+										style="width: 100%; height: 80px;"></textarea></td>
+								<td>
+									<div class="btnSet" style="text-align: right;">
+										<a class="btn" href="javascript:goSave();">저장 </a>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+
+
+
+
+
+
+				</div> 
              </div>
         </div> 
         <aside class="mypage_ad">

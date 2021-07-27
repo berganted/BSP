@@ -30,5 +30,6 @@ public interface BookService {
 	BookVo detailAD(BookVo vo);
 	int adupdate(BookVo vo);
 	List<BookVo> ctg(BookVo vo);
+	int popular(BookVo vo);
 
 }

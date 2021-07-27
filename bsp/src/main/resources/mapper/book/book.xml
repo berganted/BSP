@@ -165,7 +165,11 @@
 			<!-- FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5 -->
 			<include refid="bookwhere"/>
 	</select>
-
+<!--  popular Search 인기검색어 -->
+	<insert id="popular" parameterType="book.BookVo">
+		INSERT INTO popular (p_word, p_date) VALUES (#{sval}, NOW())
+	</insert>
+	
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">
 		SELECT COUNT(*) FROM book

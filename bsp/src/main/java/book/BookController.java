@@ -12,7 +12,7 @@ public class BookController {
 
 	@Autowired
 	BookService service;
-
+	
 	
 	
 //-------------책상세	
@@ -179,8 +179,10 @@ public class BookController {
 	// index_search 검색 페이지 
 	@RequestMapping("/sample/index_search.do")
 	public String search(Model model, BookVo vo, CommentVo cv) {
-		model.addAttribute("list0", service.selectAll(vo));
 		System.out.println(vo.getSval());
+		service.popular(vo);
+		model.addAttribute("list0", service.selectAll(vo));
 		return "sample/index_search";
 	}
+
 }

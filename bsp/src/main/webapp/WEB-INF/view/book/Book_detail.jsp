@@ -116,7 +116,7 @@
             </div>
 
             <div class="detail_section">
-               <div class="bookintro"> 책소개 </div>
+               <div class="bookintro"> <b>책소개</b> </div>
                <div>
                    <p class="bookintro1"  >
                    
@@ -147,7 +147,7 @@
                 </div>
             </div>
             <div class="detail_section">
-               <div class="bookAuthor" style="font-size:25px;"> 저자 </div>
+               <div class="bookAuthor" style="font-size:25px;"> <b>저자</b> </div>
                    <p class="bookintro1"style="font-size:17px;"  >
                    ${vo.b_introauthor } <br>
                     저자 : 고바야시 유리코 <br>
@@ -177,7 +177,7 @@
             </div>
 
             <div class="detail_section">
-                <div class="bookIndex" style="font-size:25px;"> 목차 </div>
+                <div class="bookIndex" style="font-size:25px;"> <b>목차</b> </div>
                     <div>
                         <p class="bookintro1"style="font-size:17px;"  > 
                         ${vo.b_index } <br>
@@ -209,9 +209,9 @@
              </div>
 
             <div class="detail_section">
-                <div class="bookIndex" style="font-size:25px;"> 리뷰 </div>
-                <div class="bookIndex2" style="font-size: 17px; margin-top: -20px; margin-left: 10px; margin-bottom: 30px;">
-                    매주 10건의 우수리뷰를 선정하여 YES상품권 3만원을 드립니다</div>
+                <div class="bookIndex" style="font-size:25px; margin-top: 50px" > <b>리뷰</b> </div>
+                <div class="bookIndex2" style="font-size: 18px; margin-top: -20px; margin-left: 10px; margin-bottom: 30px;">
+                    매주 10건의 우수리뷰를 선정하여 BSP상품권 3만원을 드립니다</div>
                  <br>
 
                   <div class="book_detailReview" style="width: auto; height:400px ;"> 
@@ -236,14 +236,14 @@
             </span>
             </div>
        
-            <div style="text-align: center;">
+           <!--  <div style="text-align: center;">
                 <br>
-                 <input type="text" placeholder="리뷰를 입력하세요!" style="width:600px;height:200px;font-size:17px;" >
+            <input type="text" placeholder="리뷰를 입력하세요!" style="width:600px;height:200px;font-size:17px;" >
               
                 <input type="button" value="등록" style="margin-left: 50px; width:50px;" >
             </div>
 
-
+ -->
 <!-- 돈터치  -->
 <br>
 					<!-- 리뷰랑 비슷하게 ㄱㄱ  -->

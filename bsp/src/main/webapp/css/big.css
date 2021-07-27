@@ -24,27 +24,21 @@
    
 }
 
-/* .btn1 {
-   background-color: rgb(77, 77, 235);
-   margin-top: 10px;
-    color: white;
-    width:70pt;height:30pt;
-    text-align: center;
-    margin-left: 35px;
-  
-
-}
-
-.btn2 {
-   margin-top: 10px;
-   background-color: rgb(46, 46, 175); 
+/* /* 선택상품 카트에 넣기  */
+.btn3 {
+   background-color: black;
    color: white; 
+   padding: 5px 10px;
+  
+  margin-top:-10px;
    width:70pt;height:30pt;
    text-align: center;
    margin-left: 35px;
- 
+   border : 1px solid black;
+   outline:0;
    
-} */
+}
+ */
 
 /* ------------Book_BigIdx --------------*/
 
@@ -117,7 +111,7 @@ a {
 }
 .smallCtg_area{
    margin: 0 auto;
-   border: 3px solid rgb(124, 124, 226) ;
+   border: 3px solid black;
    width: 1100px;
    height: 70px;
    margin-bottom: 20px;
@@ -139,7 +133,7 @@ a {
 }
 .smallCtg_area > .cate2 > a{
 
-   color: rgb(9, 119, 245);
+   color:  #6266ea;
    text-decoration: none;
 
 }
@@ -350,7 +344,7 @@ a {
 
 .smallCtg_area{
    margin: 0 auto;
-   border: 3px solid rgb(124, 124, 226) ;
+   border: 2px solid black;
    width: 1100px;
    height: 70px;
    margin-bottom: 30px;
@@ -372,7 +366,7 @@ a {
 }
 .smallCtg_area > .cate2 > a{
 
-   color: rgb(9, 119, 245);
+   color: #6266ea;
    text-decoration: none;
 
 }

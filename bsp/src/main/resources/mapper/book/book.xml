@@ -5,17 +5,12 @@
  <sql id="bookwhere">
 		<where>
 				<if test="sval != null and sval !=''">
-					<if test="stype == 'all'">
 					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
-				</if>
-				<if test="stype != 'all'">
-					${stype} LIKE '%${sval}%'
-				</if>
 			</if>
 		</where>
 </sql>
 	
-<!-- 	<sql id="bookwhere">
+<!--  	<sql id="bookwhere">
 		<where>
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
@@ -26,8 +21,12 @@
 				</if>
 			</if>
 		</where>
-	</sql> -->
+	</sql>  -->
 	
+		<select id="countsearch" resultType="int" parameterType="book.BookVo">
+		SELECT COUNT(*) FROM book WHERE b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+		<include refid="bookwhere"/>
+		</select>
 
 	
  	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
@@ -166,25 +165,6 @@
 			<!-- FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5 -->
 			<include refid="bookwhere"/>
 	</select>
-	
-	
-	<select id="selectAllBasic" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,
-			(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail
-		FROM book
-		<include refid="bookwhere"/>
-		ORDER BY ${orderby} ${direct}			
-		LIMIT ${strIdx},${pageRow} 
-	</select>
-	
-	<select id="selectctgnamed" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM categorysmall WHERE b_ctgno2=#{b_ctgno2}
-	</select>
-	
-	<select id="selectCtgno2" parameterType="book.BookVo" resultType="book.BookVo">
-		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
-	</select>
-	
 
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">

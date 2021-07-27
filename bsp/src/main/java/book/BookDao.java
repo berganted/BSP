@@ -111,5 +111,4 @@ public class BookDao {
 	public BookVo detailAD(BookVo vo) {
 		return sqlSession.selectOne("book.detailAD", vo);
 	}
-
 }

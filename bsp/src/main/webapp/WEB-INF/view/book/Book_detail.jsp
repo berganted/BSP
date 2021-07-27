@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +53,18 @@
     .star-input>.input>label[for="p5"]{width:150px;z-index:1;}
     .star-input>output{display:inline-block;width:60px; font-size:18px;text-align:right; vertical-align:middle;}
     </style>
-  
+  <script type="text/javascript">
+  $(function(){
+	  
+	  
+  })
+  function gosave() {
+	  if(${m_no == null})
+		  alert('a')
+	  }
+	  $('#frm').submit();
+	  }
+  </script>
 </head>
 <body>
   <jsp:include page="../include/header.jsp"></jsp:include>
@@ -66,11 +78,12 @@
                     
                     </div>
                 </div>
+                    <form id='frm' action="/bsp/cart/insert.do">
                 <div class="detail_bookInfo">
-                    <form action="">
                     <div class="bookInfo_section">
+                    	
                     	<input type="hidden" name="b_no" value="${vo.b_no }">
-                    	<input type="hidden" name="m_no" value="${vo.m_no }">
+                    	<input type="hidden" name="m_no" value="${userInfo.m_no }">
                     	<input type="hidden" name="b_price" value="${vo.b_price }">
                         <span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br>
                         <span class="detail_bookAuthor">${vo.b_author }</span> &nbsp;|
@@ -94,24 +107,24 @@
     
                         </div>
                     </div>
-                    </form>       
                 </div>
                 <div class="detail_bookPay">
                     <div class="detail_payWrap3">
                         <span class="ing" style="font-size: 15px;"> &emsp;&emsp;  판매중</span> <br> 
                       <div class="number" >
                         <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                        <input type="number" id="numberUpDown" name="io_amount"  style="width: 50px; text-align: center;" value="1">
+                        <input type="number" id="numberUpDown" name="io_amount"style="width: 50px; text-align: center;" value="1">
                           <button class="button_s" type="button" id="increaseQuantity">+</button>
                       </div> 
                     </div>
                     <div class="detail_payWrap1">
-                       <input type="button" class="btn1" value="카트에 넣기" style="margin-left: 20px;">
+                       <input type="button" class="btn1" value="카트에 넣기" style="margin-left: 20px; " onclick="gosave();">
                     </div>
                     <div class="detail_payWrap2">
                         <input type="button"  class="btn2" value="바로구매" style="margin-left: 20px;" >
                     </div>
                 </div>   
+                    </form>       
             </div>
 
             <div class="detail_section">

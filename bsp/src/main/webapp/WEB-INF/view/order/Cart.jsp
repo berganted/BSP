@@ -86,7 +86,7 @@
 	                <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
 	                <td id="ant">
 	                 <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-	                 <input type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+	                 <input type="text" name="pop_out" value="${list.cart_cnt}" readonly="readonly" style="width: 50px; text-align: center;">
 	                 <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
 	                 </td>
 	                <td><input class="button_s" type="button" name="del" value="삭제" onclick="deleteRow(this);"><br>

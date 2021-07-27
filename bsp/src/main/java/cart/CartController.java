@@ -15,14 +15,17 @@ public class CartController {
 
 	@RequestMapping("/cart/insert.do")
 	public String insert(CartVo vo , Model model) {
+		vo.setB_price(vo.getIo_amount()*vo.getB_price());
 		int r = service.insert(vo);
 		if(r > 0) {
 			model.addAttribute("msg", "장바구니에 추가 되었습니다.");
+			model.addAttribute("url", "History.back()");
 					
 		}else {
 			model.addAttribute("msg", "추가 실패.");
 		}
 		return "include/alert";		
 	}
+	
 	
 }

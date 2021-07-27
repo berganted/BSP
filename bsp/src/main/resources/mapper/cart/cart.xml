@@ -24,7 +24,7 @@
 			SELECT * , (SELECT b_imgmain FROM img WHERE b.b_imgno = img.b_imgno) AS b_imgmain
 			FROM book b 
 			JOIN cart c
-			ON b.b_no = c.b_no
+			ON b.b_no = c.b_no WHERE m_no = #{m_no}
  		</select>
  		
  		<insert id="insert" parameterType="cart.CartVo">

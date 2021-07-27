@@ -1,6 +1,8 @@
 package order;
 
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import cart.CartService;
 import cart.CartVo;
+import user.UserVo;
 
 
 @Controller
@@ -23,7 +26,9 @@ public class OrderController {
 		return "order/BuyForm";
 	}
 	@RequestMapping("/order/cart.do")
-	public String cart(Model model, CartVo vo) {
+	public String cart(Model model, CartVo vo,HttpSession sess) {
+		UserVo uv = (UserVo) sess.getAttribute("userInfo");
+		vo.setM_no(uv.getM_no());
 		model.addAttribute("cartList",Cservice.selectAll(vo));
 		return "order/Cart";
 	}

@@ -94,6 +94,11 @@ public class BookServiceImpl implements BookService {
 	public List<BookVo> selectAll6(BookVo vo) {
 		return dao.selectAll6(vo);
 	}
+	// index.do 베스트샐러
+	@Override
+	public List<BookVo> selectAll7(BookVo vo) {
+		return dao.selectAll7(vo);
+	}
 
 
 	@Override

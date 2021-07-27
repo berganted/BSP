@@ -6,8 +6,6 @@ import util.CommonVo;
 
 public class OrderVo extends CommonVo {
 	private int pb_no;  //주문번호
-	private int ps_no;	//처리상태코드
-	private int m_no;	//회원번호
 	private String pb_resname; //주문시 받는 사람
 	private String pb_zipcode; //주문시 받는 주소1
 	private String pb_addr1; //주문시 받는 주소2
@@ -16,15 +14,23 @@ public class OrderVo extends CommonVo {
 	private String pb_req;	// 주문시 요청사항
 	private int pb_totalprice; //총 가격
 	private Timestamp pb_orderdate; //주문 날짜
+	private String pb_delivery;//주문시 배송옵션
+	private int pb_payno; //주문시 결제방법
+	
 	private int io_no; //출고번호
 	private int io_amount; //출고수량 
 	private Timestamp io_date; //출고날짜(배송이후)
+	
+	private int ps_no;	//처리상태코드
 	private String ps_title; //처리상태
-	private String pb_delivery;//주문시 배송옵션
+	
 	private String b_title; //상품명
 	private String b_author; //저자명
 	private int b_price; // 도서 가격
-	private int pb_payno; //주문시 결제방법
+	
+	private int m_no;	//회원번호
+	
+	
 	//어드민에서 사용
 	private String m_id;
 	private int count;//주문번호안에 출고번호갯수

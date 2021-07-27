@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="cart">
+	<sql id="cartWhere">
+		<where>
+			<if test="sval != null and sval != ''">
+				<if test="stype == 'all'">
+					ps_title LIKE '%${sval}%' OR b_title LIKE '%${sval}%'
+				</if>
+				<if test="stype != 'all'">
+					${stype} LIKE '%${sval}%'
+				</if>
+			</if>
+		<!-- 	<if test="m_no != 0">
+				AND m_no=#{m_no}
+			</if> -->
+		</where>
+	</sql>
+	
+	
+		<!-- 장바구니 내역 -->
+		<select id="selectAll" resultType="cart.CartVo" parameterType="cart.CartVo">
+			SELECT * , (SELECT b_imgmain FROM img WHERE b.b_imgno = img.b_imgno) AS b_imgmain
+			FROM book b 
+			JOIN cart c
+			ON b.b_no = c.b_no
+ 		</select>
+ 		
+ 		
+	</mapper>

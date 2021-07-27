@@ -48,13 +48,13 @@
                 <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
                     	<div class="index_ad">AD</div>
-                        <img src="/bsp/img/${vo.b_imgmain }" alt="">
+                        <img src="/bsp/ad/${vo.ad_img }" alt="">
                     </div>
                  </c:forEach>  
                   <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
                     	<div class="index_ad">AD</div>
-                        <div><img src="/bsp/img/${vo.b_imgmain }" alt=""></div>                        
+                        <div><img src="/bsp/ad/${vo.ad_img }" alt=""></div>                        
                    	</div>  
                   </c:forEach>                   
                 </div>
@@ -81,15 +81,29 @@
                         <div class="index_ranContent">
                             <div class="index_board_area">
                                <div class="index_board_title on">베스트셀러</div>
-                               <div class="index_board_title">인기검색어</div>
+                               <div class="index_board_title" style="margin-right: 60px;">인기검색어</div>
                                <div class="index_board_content" id="index_board_notice">
-                               <c:forEach var="vo" items="${list4 }" varStatus="status">
+	                              <div class="index_bestCate">
+	                              	 <form method="get" name="searchForm" id="searchForm" action="" onchange="$('#searchForm').submit();">
+	                               	  <select id="b_ctgno1" name="b_ctgno1" size="1">
+	                               	  		<option value="1"<c:if test="${param.b_ctgno1==1}"> selected</c:if>>국내도서</option>
+	                               	  		<option value="2"<c:if test="${param.b_ctgno1==2}"> selected</c:if>>외국도서</option>
+
+	                                 </select>
+	                               	  </form>
+	                              </div>
+	                           <div id="DomesticBooks" class="bestCate_option">  
+                               <c:forEach var="vo" items="${best }" varStatus="status">
                                   <ul>
                                       <li>${vo.b_title } | ${vo.b_author }</li>
                                   </ul>
                                </c:forEach>
+                               </div> 
+	                         
+	                            
                                </div>
                                <div class="index_board_content" id="index_board_data">
+                               	<div class="index_searchRank">
                                  <ul>
                                      <li>1 인기검색어. <span>-</span></li>
                                      <li>2 인기검색어. <span>▲1</span></li>
@@ -100,6 +114,7 @@
                                      <li>7 인기검색어. <span>new</span></li>
                                      <li>8 인기검색어. <span>-</span></li>                                                            
                                  </ul>
+                                 </div>
                               </div>
                             </div>
                         </div>                        
@@ -107,7 +122,7 @@
                 </div>
                 <div class="index_NowBooks">
                     <div class="index_NowBooksTitle">BSP NOW ></div>
-                <c:forEach var="vo" items="${list1 }" varStatus="status">
+                <c:forEach var="vo" items="${list4 }" varStatus="status">
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
                             <img src="/bsp/img/${vo.b_imgmain }" alt="">
@@ -126,7 +141,7 @@
             </div>            
             <div class="index_recentProduct">
                 <div class="index_NowBooksTitle">화제의 책 ></div>
-            <c:forEach var="vo" items="${list1 }" varStatus="status">
+            <c:forEach var="vo" items="${list4 }" varStatus="status">
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
                         <img src="/bsp/img/${vo.b_imgmain }" alt="">

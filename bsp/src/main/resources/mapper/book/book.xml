@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="book">
+ <mapper namespace="book">
 
  <sql id="bookwhere">
 		<where>
@@ -121,10 +121,10 @@
 		FROM book WHERE b_no BETWEEN 1 AND 5
 		<include refid="bookwhere"/>
 	</select>
-<!-- index.do 광고 -->	
-	<select id="selectAll5" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain 
-		FROM book WHERE b_no BETWEEN 9 AND 10 ORDER BY rand() LIMIT 1
+	<!-- test -->
+	<select id="selectbest" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book WHERE b_ctgno1=${b_ctgno1}
 		<include refid="bookwhere"/>
 	</select>
 	<select id="selectAll6" resultType="book.BookVo" parameterType="book.BookVo">
@@ -132,6 +132,50 @@
 		FROM book WHERE b_no BETWEEN 10 AND 11 ORDER BY rand() LIMIT 1
 		<include refid="bookwhere"/>
 	</select>
+<!-- index.do 광고 -->	
+	<select id="selectAll5" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,
+		(SELECT b_no FROM book WHERE ad_no = ad.ad_no) as b_no,
+		(SELECT b_title FROM book WHERE ad_no=ad.ad_no) as b_title
+		FROM ad where ad_no between 4 and 6 ORDER BY rand() LIMIT 1
+		<include refid="bookwhere"/>
+	</select>
+	
+	<select id="selectAll6" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,
+		(SELECT b_no FROM book WHERE ad_no = ad.ad_no) as b_no,
+		(SELECT b_title FROM book WHERE ad_no=ad.ad_no) as b_title
+		FROM ad where ad_no between 1 and 3 ORDER BY rand() LIMIT 1 
+		<include refid="bookwhere"/>
+	</select>
+		
+<!-- index.do 베스트샐러 -->
+	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
+			SELECT *,
+			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 5
+			<include refid="bookwhere"/>
+	</select>
+
+	<select id="selectAllBasic" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *,
+			(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key=book.b_ctgno2key) AS b_ctgdetail
+		FROM book
+		<include refid="bookwhere"/>
+		ORDER BY ${orderby} ${direct}			
+		LIMIT ${strIdx},${pageRow} 
+	</select>
+	
+	<select id="selectctgnamed" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM categorysmall WHERE b_ctgno2=#{b_ctgno2}
+	</select>
+	
+	<select id="selectCtgno2" parameterType="book.BookVo" resultType="book.BookVo">
+		SELECT * FROM categorysmall WHERE b_ctgno2key=#{b_ctgno2key}
+	</select>
+	
+	
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
 
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">
@@ -216,5 +260,4 @@
 	<select id="detailAD" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM AD WHERE ad_no=#{ad_no}
 	</select>
-
 </mapper>

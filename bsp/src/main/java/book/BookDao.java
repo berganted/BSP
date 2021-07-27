@@ -59,6 +59,10 @@ public class BookDao {
 	public List<BookVo> selectAll6(BookVo vo) {
 		return sqlSession.selectList("book.selectAll6", vo);
 	}
+	// index.do 베스트샐러
+	public List<BookVo> selectAll7(BookVo vo) {
+		return sqlSession.selectList("book.selectAll7", vo);
+	}
 	
 	public List<BookVo> selectctgnamed(BookVo vo) {
 		return sqlSession.selectList("book.selectctgnamed", vo);

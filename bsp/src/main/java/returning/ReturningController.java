@@ -25,24 +25,14 @@ public class ReturningController {
 	/* 반품메인창 */
 	@RequestMapping("/returning/return.do")
 	public String returning(Model model, ReturningVo vo, HttpSession sess) {
-		//model.addAttribute("list", service.selectPopup(vo));
 		return "returning/ReturnForm";
 	}
 
 	/* 교환메인창 */
 	@RequestMapping("/returning/replace.do")
 	public String replace(Model model, ReturningVo vo) {
-		//model.addAttribute("list", service.selectPopupRt(vo));
 		return "returning/ReplaceForm";
 	}
-
-	/*
-	 * 반품팝업창
-	 * 
-	 * @RequestMapping("/returning/popup.do") public String returningPopup(Model
-	 * model, OrderVo vo) { model.addAttribute("popupList",
-	 * Oservice.selectPopup(vo)); return "returning/ReturnPopup"; }
-	 */
 
 	/* 반품신청 값보내기 */
 	@RequestMapping("/returning/returnSend.do")
@@ -90,21 +80,21 @@ public class ReturningController {
 	}
 
 	/* 반품 insert */
-	@SuppressWarnings("unchecked")
 	@RequestMapping("/returning/insert.do")
-
-	public String insert(Model model, ReturningVo vo, HttpServletRequest req,HttpSession sess) {
-		List<ReturningVo> v = (List<ReturningVo>) sess.getAttribute("returnList");
+	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
+		String[] no = req.getParameterValues("b_no"); 
+		String[] ano = req.getParameterValues("io_amount") ;
+		String[] ino = req.getParameterValues("io_no") ;
+	
 		int r = service.insertRd(vo);
-		for (int i = 0; i < v.size(); i++) {
-			System.out.println(v.get(i).getB_no());
-			vo.setB_no(v.get(i).getB_no());
-			System.out.println(v.get(i).getIo_amount());
-			vo.setIo_amount(v.get(i).getIo_amount());
-			System.out.println(v.get(i).getIo_no());
-			vo.setIo_no(v.get(i).getIo_no());
+		for (int i = 0; i < no.length; i++) {
+			vo.setB_no(Integer.parseInt(no[i]));
+			vo.setReturning_amount(Integer.parseInt(ano[i]));
+			vo.setIo_no(Integer.parseInt(ino[i]));
 			service.insertRt(vo);
 			service.updatePs(vo.getReturning_no());
+			service.updatePi(vo.getIo_no());
+			System.out.println(no[i]);
 		}
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");

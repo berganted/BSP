@@ -20,6 +20,8 @@ import book.BookService;
 import book.BookVo;
 import order.OrderService;
 import order.OrderVo;
+import returning.ReturningService;
+import returning.ReturningVo;
 import user.UserService;
 import user.UserVo;
 
@@ -36,6 +38,8 @@ public class AdminCotroller {
 	OrderService oservice;
 	@Autowired
 	BoardService boservice;
+	@Autowired
+	ReturningService rservice;
 //로그인페이지
 	@RequestMapping("/admin")
 	public String index() {
@@ -67,6 +71,13 @@ public class AdminCotroller {
 		model.addAttribute("list", oservice.selectAdmin(vo));
 		
 		return "admin/order/index";
+	}
+//반품 리스트
+	@RequestMapping("admin/retune/index.do")
+	public String retuneIndex(ReturningVo vo , Model model) {
+		model.addAttribute("list", rservice.selectAll(vo));
+		
+		return "admin/retune/index";
 	}
 // 광고 리스트
 	@RequestMapping("admin/productAD/index.do")
@@ -170,6 +181,20 @@ public class AdminCotroller {
 			}
 			return "include/alert";			
 	}
+// 반품 수정
+	@RequestMapping("admin/retune/update.do")
+	public String returnupdate(ReturningVo vo , Model model) {
+		int r = rservice.updatepsno(vo);
+		if(r > 0) {
+			model.addAttribute("msg", "정상적으로 수정 되었습니다.");
+			model.addAttribute("url", "index.do?orderby=b_regdate");
+					
+		}else {
+			model.addAttribute("msg", "수정실패.");
+			model.addAttribute("url", "veiw.do?no="+vo.getReturning_no());
+		}
+		return "include/alert";	
+	}
 
 //회원 상세
 	@RequestMapping("admin/member/view.do")
@@ -201,6 +226,15 @@ public class AdminCotroller {
 		model.addAttribute("vo", oservice.selectoneAdmin(vo));
 		model.addAttribute("list", oservice.selectAdmindelist(vo));
 		return "admin/order/view";
+	}
+// 반품 상세&수정폼
+	@RequestMapping("admin/retune/view.do")
+	public String ReturnOrReplaceListDetails(Model model, ReturningVo vo) {
+		model.addAttribute("vo", rservice.detail1(vo));
+		vo.setB_no(vo.getB_no());
+		model.addAttribute("detail2", rservice.detail2(vo));
+		model.addAttribute("op", rservice.selectop(vo));
+		return "admin/retune/view";
 	}
 	
 //상품 등록폼

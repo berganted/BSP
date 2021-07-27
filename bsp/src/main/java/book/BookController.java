@@ -170,21 +170,9 @@ public class BookController {
 		model.addAttribute("list4", service.selectAll4(vo));
 		model.addAttribute("list5", service.selectAll5(vo));
 		model.addAttribute("list6", service.selectAll6(vo));
+		vo.setB_ctgno1(1);
+		model.addAttribute("best", service.selectAll7(vo));
 		
 	return "/sample/index" ;
 	}
-	
-	/*
-	 * @RequestMapping("/sample/ad.do") public String productInsert(BookVo vo ,
-	 * Model model,@RequestParam("filename_tmp") MultipartFile filename,
-	 * HttpServletRequest req) { if(!filename.isEmpty()) { try { String org =
-	 * filename.getOriginalFilename();//원본 파일명 String ext =""; ext =
-	 * org.substring(org.lastIndexOf(".")); String real = new
-	 * Date().getTime()+ext;//서버에 저장할 파일명 String path = req.getRealPath("/img/");
-	 * System.out.println(path); filename.transferTo(new File(path+real));
-	 * vo.setFilename_org(org); vo.setFilename_real(real); vo.setAd_img(real);
-	 * service.bookimg(vo); }catch (Exception e) {} } service.insert(vo);
-	 * 
-	 * return "redirect:index.do"; } 도윤 test
-	 */
 }

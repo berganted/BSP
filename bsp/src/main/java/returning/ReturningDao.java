@@ -40,8 +40,20 @@ public class ReturningDao {
 	public void updatePs(int no) {
 		 sessionTemplate.update("returnig.updatePs",no);
 	}
+	public void updatePi(int no) {
+		sessionTemplate.update("returnig.updatePi",no);
+	}
 	public int delete(ReturningVo vo) {
 		return sessionTemplate.delete("returnig.delete", vo);
 
+	}
+	public List<ReturningVo> selectop(ReturningVo vo) {
+		return sessionTemplate.selectList("returnig.selectop",vo);
+	}
+	public int updatepsno(ReturningVo vo) {
+		return sessionTemplate.update("returnig.updatepsno",vo);
+	}
+	public void updateiopsno(ReturningVo vo) {
+		sessionTemplate.update("returnig.updateiopsno",vo);
 	}
 }

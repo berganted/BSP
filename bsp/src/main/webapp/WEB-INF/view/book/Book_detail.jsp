@@ -60,8 +60,9 @@
 	  
   })
   function gosave() {
-	  if(${m_no == null})
-		  alert('a')
+	  if($('#m_no').val()==0){
+		  alert('로그인하세요')
+		  return false
 	  }
 	  $('#frm').submit();
 	  }
@@ -79,12 +80,12 @@
                     
                     </div>
                 </div>
-                    <form id='frm' action="/bsp/cart/insert.do">
+                    <form id='frm' action="/bsp/cart/insert.do" method="post">
                 <div class="detail_bookInfo">
                     <div class="bookInfo_section">
                     	
                     	<input type="hidden" name="b_no" value="${vo.b_no }">
-                    	<input type="hidden" name="m_no" value="${userInfo.m_no }">
+                    	<input type="hidden"  id="m_no"name="m_no" value="${userInfo.m_no }">
                     	<input type="hidden" name="b_price" value="${vo.b_price }">
                         <span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br>
                         <span class="detail_bookAuthor">${vo.b_author }</span> &nbsp;|

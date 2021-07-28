@@ -260,25 +260,122 @@
  -->
 <!-- 돈터치  -->
 <br>
-					<!-- 리뷰랑 비슷하게 ㄱㄱ  -->
-					<table class="board_write">
-						<colgroup>
-							<col width="*" />
-							<col width="80px" />
-						</colgroup>
-						<tbody>
-
-							<tr>
-								<td><textarea name="content" id="content"
-										style="width: 100%; height: 80px;"></textarea></td>
-								<td>
-									<div class="btnSet" style="text-align: right;">
-										<a class="btn" href="javascript:goSave();">저장 </a>
-									</div>
-								</td>
-							</tr>
-						</tbody>
-					</table>
+<!-- 리뷰시작  -->
+						<table class="board_write">
+	                	<colgroup>
+	                            <col width="*" />
+	                            <col width="80px" />
+	                        </colgroup>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <textarea name="r_content" id="content" style="width:100%; height:80px"></textarea>
+                            </td>
+                            <td>
+                            	 <div class="btnSet"  style="text-align:right;">
+                       				 <a class="btn" href="javascript:goSave();">저장 </a>
+                   				 </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <script>
+                    	function goSave() {
+                    		<c:if test="${!empty userInfo}">
+                    		if ($("#content").val().trim()==''){
+                    			alert('내용을 입력해 주세요');
+                    		} else {
+                    			if (confirm('댓글을 등록하시겠습니까?')) {
+                    				$.ajax({
+                            			url:'/bsp/review/insert.do',
+                            			data:{
+          	                  				r_content:$("#content").val(),
+          	                  				r_no:${vo.r_no},
+          	                  				m_no:${userInfo.m_no}
+                            			},
+                            			success:function(res) {
+                            				if (res.trim()=='true') {
+                            					alert('댓글이 등록되었습니다.');
+                            					$("#content").val("");
+                            					getComment();
+                            				} else {
+                            					alert('댓글 등록 실패');
+                            				}
+                            			}
+                            		});
+                    			}
+                    		}
+                    		</c:if>
+                    		<c:if test="${empty userInfo}">
+                    			alert('댓글은 로그인 후 등록 가능합니다.');
+                    		</c:if>
+                    	}
+                    	 $(function(){
+                    		 getComment();
+                 	    });
+                    	function getComment(reqPage) {
+                    		$.ajax({
+                    			url:'/bsp/review/list.do',
+                    			data:{
+                    				r_no:${vo.r_no}, 
+                    				reqPage:reqPage
+                    			}, 
+                    			success:function(res) {
+                    				$("#reviewArea").html(res);
+                    			}
+                    		})
+                    	}
+                    	function commentDel(no) {
+                    		if (confirm('댓글을 삭제하시겠습니까?')) {
+	                    		$.ajax({
+	                    			url:'/bsp/review/delete.do',
+	                    			data:{
+	                    				r_no:no
+	                    			},
+	                    			success:function(res) {
+	                    				if (res.trim()=='true') {
+		                    				alert('댓글이 삭제되었습니다.');
+		                    				getComment(1);
+	                    				} else {
+	                    					alert('댓글 삭제 오류');
+	                    				}
+	                    			}
+	                    		});
+                    		}
+                    	}
+                    </script>
+                    </div>
+                    <div id="reviewArea"></div>          	
+                    </div>
+                </div>
+            </div>
+        <%@ include file="/WEB-INF/view/include/footer.jsp" %>
+    <script>
+    	function isDel() {
+    		if (confirm('삭제하시겠습니까?')) {
+    			// 삭제처리
+    			$.ajax({
+    				url:'delete.do',
+    				data:{
+    					'r_no':${vo.r_no}
+    				},
+    				method:'post',
+    				success:function(res) {
+    					console.log(res);
+    					if (res.trim() == 'true') {
+    						alert('정상적으로 삭제되었습니다.');
+    						location.href='FAQboard.do';
+    					} else {
+    						alert('삭제 실패');
+    					}
+    				},
+    				error : function(res) {
+    					console.log(res);
+    				}
+    			});
+    		}
+    	}
+    </script>
 
 
 
@@ -299,5 +396,4 @@
             </div>
         </aside> 
     </div>
-    <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>

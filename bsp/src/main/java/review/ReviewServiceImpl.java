@@ -35,8 +35,9 @@ public class ReviewServiceImpl implements ReviewService {
 		return dao.insert(vo);
 	}
 
-	/*
-	 * @Override public int delete(ReviewVo vo) { return dao.delete(vo); }
-	 */
+	@Override
+	public int delete(ReviewVo vo) {
+		return dao.delete(vo);
+	}
 
 }

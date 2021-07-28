@@ -19,9 +19,9 @@
 		VALUES (#{r_content}, NOW(), #{m_no}, #{b_no}, #{r_tablename})
 	</insert>
 	
-	<!-- 
+	
 	<delete id="delete" parameterType="review.ReviewVo">
 		DELETE FROM review WHERE r_no=#{r_no}
 	</delete>
-	 -->
+	 
 </mapper>

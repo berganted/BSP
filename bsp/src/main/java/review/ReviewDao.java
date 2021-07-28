@@ -22,9 +22,7 @@ public class ReviewDao {
 	public int insert(ReviewVo vo) {
 		return sqlSession.insert("review.insert", vo);
 	}
-	
-	/*
-	 * public int delete(ReviewVo vo) { return sqlSession.delete("review.delete",
-	 * vo); }
-	 */
+	public int delete(ReviewVo vo) {
+		return sqlSession.delete("review.delete", vo);
+	}
 }

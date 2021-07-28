@@ -60,12 +60,19 @@
 	  
   })
   function gosave() {
+	  $('#frm').attr('action','/bsp/cart/insert.do')
 	  if($('#m_no').val()==0){
 		  alert('로그인하세요')
 		  return false
 	  }
 	  $('#frm').submit();
 	  }
+  function goorder() {
+	  $('#frm').attr('action','/bsp/order/buy.do')
+	  $('#frm').submit();
+	  
+	
+}
   </script>
 </head>
 <body>
@@ -80,13 +87,16 @@
                     
                     </div>
                 </div>
-                    <form id='frm' action="/bsp/cart/insert.do" method="post">
+                    <form id='frm' action="/bsp/cart/insert.do" method="get">
                 <div class="detail_bookInfo">
                     <div class="bookInfo_section">
                     	
                     	<input type="hidden" name="b_no" value="${vo.b_no }">
                     	<input type="hidden"  id="m_no"name="m_no" value="${userInfo.m_no }">
                     	<input type="hidden" name="b_price" value="${vo.b_price }">
+                    	<input type="hidden" name="b_title" value="${vo.b_title }">
+                    	<input type="hidden"  id="b_author"name="b_author" value="${vo.b_author }">
+                    	<input type="hidden" name="b_publisher" value="${vo.b_publisher }">
                         <span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br>
                         <span class="detail_bookAuthor">${vo.b_author }</span> &nbsp;|
                         <span class="detail_bookPub">${vo.b_publisher }</span> &nbsp;|
@@ -123,7 +133,7 @@
                        <input type="button" class="btn1" value="카트에 넣기" style="margin-left: 20px; " onclick="gosave();">
                     </div>
                     <div class="detail_payWrap2">
-                        <input type="button"  class="btn2" value="바로구매" style="margin-left: 20px;" >
+                        <input type="button"  class="btn2" value="바로구매" style="margin-left: 20px;" onclick="goorder()" >
                     </div>
                 </div>   
                     </form>       
@@ -246,7 +256,7 @@
                         <input type="radio" name="star-input" value="5" id="p5">
                         <label for="p5">5</label>
                     </span>
-                    <output for="star-input"><b>0</b>점</output>						
+                    <output for="star-input"><b>1</b>점</output>						
             </span>
             </div>
        

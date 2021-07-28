@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import book.BookService;
+import book.BookVo;
 import cart.CartService;
 import cart.CartVo;
 import user.UserVo;
@@ -20,9 +22,13 @@ public class OrderController {
 	OrderService service;
 	@Autowired
 	CartService Cservice;
+	@Autowired
+	BookService bservice;
 
 	@RequestMapping("/order/buy.do")
-	public String buy() {
+	public String buy(BookVo vo,Model model) {
+		vo.getB_title();
+		model.addAttribute("vo", bservice.deatil(vo));
 		return "order/BuyForm";
 	}
 	@RequestMapping("/order/cart.do")

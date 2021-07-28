@@ -76,18 +76,7 @@
             oneCheckFunc( $(this) );
              });
         });
-        $("[name=buy_del]").click(function(){   //선택된 체크박스 삭제
-            if($("input:checkbox[name=checkOne]").is(":checked") == true ){
-             $("[name=checkAll]").prop("checked", false );
-                     var com = confirm("삭제 하시겠습니까?")
-                    if(com == true){
-                         $(" input[type='checkbox']:checked").parent().parent().remove();
-                    }
-            }else{  
-                alert('1개 이상을 선택해주세요')
-                return false; 
-            }
-        });
+     
     });
 /*return or replace_form----------------------------------------------------------------------- */
          //팝업창 띄우기

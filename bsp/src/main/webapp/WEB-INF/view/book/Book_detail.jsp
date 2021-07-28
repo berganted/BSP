@@ -291,6 +291,7 @@ star-input>.input.focus {
 				</p>
 			</div>
 
+
 			<div class="detail_section">
 				<div class="bookIndex" style="font-size: 25px;">
 					<b>목차</b>
@@ -343,6 +344,29 @@ star-input>.input.focus {
 					</div>
 
 					<!--  <div style="text-align: center;">
+                  <div class="book_detailReview" style="width: auto; height:400px ;"> 
+                 <div style="text-align: center;">
+                    <h1>리뷰/평점</h1>
+                </div>
+                <div style="text-align: center;">
+                <span class="star-input" >
+                    <span class="input">
+                        <input type="radio" name="star-input" value="1" id="p1">
+                        <label for="p1">1</label>
+                        <input type="radio" name="star-input" value="2" id="p2">
+                        <label for="p2">2</label>
+                        <input type="radio" name="star-input" value="3" id="p3">
+                        <label for="p3">3</label>
+                        <input type="radio" name="star-input" value="4" id="p4">
+                        <label for="p4">4</label>
+                        <input type="radio" name="star-input" value="5" id="p5">
+                        <label for="p5">5</label>
+                    </span>
+                    <output for="star-input"><b>1</b>점</output>						
+            </span>
+            </div>
+       
+            <div style="text-align: center;">
                 <br>
             <input type="text" placeholder="리뷰를 입력하세요!" style="width:600px;height:200px;font-size:17px;" >
               

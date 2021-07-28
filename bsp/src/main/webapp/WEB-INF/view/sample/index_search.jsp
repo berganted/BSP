@@ -16,6 +16,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
+    <script src="/bsp/js/yesol.js"></script>
 </head>
 <style>
 	.wrap > .search_list {
@@ -33,6 +34,29 @@
 		padding-top: 50px;
 		padding-bottom: 50px;
 	}
+	.button_s{
+	    font-size:12px; 
+	    text-decoration:none !important; 
+	    white-space:nowrap; 
+	    display:inline-block; 
+	    vertical-align:baseline; 
+	    position:relative; 
+	    cursor:pointer; 
+	    padding:2px 10px; 
+	    min-width:20px; 
+	    border:2px solid #221f1f; 
+	    color:#fff !important; 
+	    margin:0 2px; 
+	    text-align:center; 
+	    font-weight:bold; 
+	    border-radius:5px; 
+	    background-color:#221f1f;
+	}
+
+	td > #ant{
+        margin-left: 45px;
+    }
+    
 </style>
 <body> 
         <%@ include file="/WEB-INF/view/include/header.jsp" %>
@@ -63,13 +87,14 @@
 					               <div class="s_payWrap">
 					                   <div class="s_pay">
 					                       <div class="s_pay1">
-					                           <input type="checkbox" name="bestcheck" >
 					                           &nbsp;
-				                               <div class="number">
-				                                   <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-				                                   <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-				                                   <button class="button_s" type="button" id="increaseQuantity">+</button>
-				                                </div> 
+				                            <table>
+			                                <td id="ant">
+								                 <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
+								                 <input type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+								                 <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
+							                 </td>
+							                 </table> 
 					                       </div>
 					                       <div class="s_pay2">
 					                           <input type="button" class="btn1" value="카트에 넣기" >

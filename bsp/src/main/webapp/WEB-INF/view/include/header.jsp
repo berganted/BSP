@@ -6,7 +6,7 @@
 	<div class="index_wrap">
 		<div class="header_top">
 			<div class="header_search">
-				<form action="#">
+				<form action="/bsp/sample/index_search.do">
 					<input type="search" placeholder="검색어를 입력하세요">
 				</form>
 				<div class="header_searchIcon">

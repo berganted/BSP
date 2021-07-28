@@ -172,11 +172,11 @@
                                 <span>상품 주문 총액</span>
                                 <span>${vo.b_price }원</span><br>
                                 <span>결제 총액</span>
-                                <span>0원</span><br>
+                                <span id="total">${vo.b_price}</span>원<br>
                             </td>
                             <td>
                                 <span>적립금</span>
-                                <span>3000원</span><br>
+                                <span>${vo.b_point }</span><br>
                                 <span>배송료</span>
                                 <span>0원</span><br>
                             </td>

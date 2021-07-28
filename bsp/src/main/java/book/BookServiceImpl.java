@@ -99,7 +99,11 @@ public class BookServiceImpl implements BookService {
 	public List<BookVo> selectAll7(BookVo vo) {
 		return dao.selectAll7(vo);
 	}
-	
+	// popular 인기검색어
+	@Override
+	public int popular(BookVo vo) {
+		return dao.popular(vo);
+	}
 
 	@Override
 	public BookVo selectCtgno2(BookVo vo) {
@@ -206,6 +210,8 @@ public class BookServiceImpl implements BookService {
 	public List<BookVo> ctg(BookVo vo) {
 		return dao.ctg(vo);
 	}
+
+
 
 
 }

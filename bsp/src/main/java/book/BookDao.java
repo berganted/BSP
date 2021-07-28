@@ -66,7 +66,10 @@ public class BookDao {
 	public List<BookVo> selectAll7(BookVo vo) {
 		return sqlSession.selectList("book.selectAll7", vo);
 	}
-	
+	// popular 인기검색어 
+	public int popular(BookVo vo) {
+		return sqlSession.insert("book.popular", vo);
+	}
 	public List<BookVo> selectctgnamed(BookVo vo) {
 		return sqlSession.selectList("book.selectctgnamed", vo);
 	}
@@ -111,5 +114,4 @@ public class BookDao {
 	public BookVo detailAD(BookVo vo) {
 		return sqlSession.selectOne("book.detailAD", vo);
 	}
-
 }

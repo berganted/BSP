@@ -5,17 +5,12 @@
  <sql id="bookwhere">
 		<where>
 				<if test="sval != null and sval !=''">
-					<if test="stype == 'all'">
 					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
-				</if>
-				<if test="stype != 'all'">
-					${stype} LIKE '%${sval}%'
-				</if>
 			</if>
 		</where>
 </sql>
 	
-<!-- 	<sql id="bookwhere">
+<!--  	<sql id="bookwhere">
 		<where>
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
@@ -26,8 +21,12 @@
 				</if>
 			</if>
 		</where>
-	</sql> -->
+	</sql>  -->
 	
+		<select id="countsearch" resultType="int" parameterType="book.BookVo">
+		SELECT COUNT(*) FROM book WHERE b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+		<include refid="bookwhere"/>
+		</select>
 
 	
  	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
@@ -166,8 +165,11 @@
 			<!-- FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5 -->
 			<include refid="bookwhere"/>
 	</select>
+<!--  popular Search 인기검색어 -->
+	<insert id="popular" parameterType="book.BookVo">
+		INSERT INTO popular (p_word, p_date) VALUES (#{sval}, NOW())
+	</insert>
 	
-
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">
 		SELECT COUNT(*) FROM book

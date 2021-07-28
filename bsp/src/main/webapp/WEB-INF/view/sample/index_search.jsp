@@ -34,9 +34,9 @@
         <div class="wrap">
             <div class="FAQboard_sub">
                 <div class="FAQboard_size">
-                    <h3 class="sub_title">통합검색 : "수학" 검색결과</h3>
+                    <h3 class="sub_title">통합검색 : "${param.sval }" 검색결과</h3>
 		                <div class="index_searchList">
-		                    <c:forEach var="vo" items="${list4 }" varStatus="status">
+		                    <c:forEach var="vo" items="${list0 }" varStatus="status">
 		                                <img src="/bsp/img/${vo.b_imgmain }" alt="">
 		                            <div class="index_todayDetails">
 		                                ${vo.b_content }

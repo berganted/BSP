@@ -30,7 +30,9 @@
 
 	
  	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book
+		SELECT *
+		,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book
 		<include refid="bookwhere"/>
 		 ORDER BY ${orderby} ${direct}	
 	</select>

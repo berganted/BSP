@@ -98,20 +98,13 @@
                                   </ul>
                                </c:forEach>
                                </div> 
-	                         
-	                            
                                </div>
                                <div class="index_board_content" id="index_board_data">
                                	<div class="index_searchRank">
                                  <ul>
-                                     <li>1 인기검색어. <span>-</span></li>
-                                     <li>2 인기검색어. <span>▲1</span></li>
-                                     <li>3 인기검색어. <span>new</span></li>
-                                     <li>4 인기검색어. <span>▼3</span></li>
-                                     <li>5 인기검색어. <span>-</span></li>
-                                     <li>6 인기검색어. <span>▲2</span></li>
-                                     <li>7 인기검색어. <span>new</span></li>
-                                     <li>8 인기검색어. <span>-</span></li>                                                            
+                                 	<c:forEach var="vo" items="${popular }" varStatus="status">
+                                     	<li> ${vo.p_word } <span>▲${vo.cnt }</span></li>
+                                    </c:forEach>                                                            
                                  </ul>
                                  </div>
                               </div>

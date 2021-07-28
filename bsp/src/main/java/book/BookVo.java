@@ -40,7 +40,19 @@ public class BookVo extends CommonVo {
 	private String p_word;
 	private int p_no;
 	private Timestamp p_date;
-	
+	private int cnt;
+
+
+
+	public int getCnt() {
+		return cnt;
+	}
+
+
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 
 
 

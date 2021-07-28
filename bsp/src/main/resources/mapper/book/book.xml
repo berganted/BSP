@@ -173,8 +173,11 @@
 	</insert>
 	
 	<select id="popular_search" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *, COUNT(p_word) as cnt FROM popular GROUP BY p_word order by cnt DESC LIMIT 8 
-		<include refid="bookwhere"/>
+		SELECT *, 
+			COUNT(p_word)-(select count(*) from popular where p_no = p.p_no and date(p_date) = date(date_add(now(), interval -1 day))) as cnt
+		FROM popular as p
+		where date(p_date) = date(now())
+		GROUP BY p_word order by cnt DESC
 	</select>
 	
 <!-- 등록된 책 총 갯수 -->

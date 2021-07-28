@@ -105,7 +105,7 @@
                                	<div class="index_searchRank">
                                  <ul>
                                  	<c:forEach var="vo" items="${popular }" varStatus="status">
-                                     	<li> ${p_no }. ${p_word } <span>▲1</span></li>
+                                     	<li> ${vo.p_word } <span>▲${vo.cnt }</span></li>
                                     </c:forEach>                                                            
                                  </ul>
                                  </div>

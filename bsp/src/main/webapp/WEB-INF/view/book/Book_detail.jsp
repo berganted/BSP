@@ -246,7 +246,7 @@
                         <input type="radio" name="star-input" value="5" id="p5">
                         <label for="p5">5</label>
                     </span>
-                    <output for="star-input"><b>0</b>점</output>						
+                    <output for="star-input"><b>1</b>점</output>						
             </span>
             </div>
        

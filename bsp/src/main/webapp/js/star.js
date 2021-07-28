@@ -2,7 +2,7 @@
 /*출처 : http://codepen.io/naradesign/pen/zxPbOw*/
 var starRating = function(){
 var $star = $(".star-input"),
-    $result = $star.find("output>b");
+   	$result = $star.find("output>b");
 	
   	$(document)
 	.on("focusin", ".star-input>.input", 
@@ -35,4 +35,3 @@ var $star = $(".star-input"),
   	});
 };
 
-starRating();

@@ -142,16 +142,12 @@
                             <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><b>${vo.b_title }</b></a>
                         </span>
                         <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월" /></span> </span>
-                        <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }원</span>
-                        <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
+                        <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
+                        <span class="s_grade" style="font-size: 16px;">회원리뷰(8건) ★★★★★ 9.3</span>
                         																																										
-                        <span class="s_story">
+                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
                         ${vo.b_content } <br>
-                            『임신 출산 육아 대백과』 2020년 개정판은 가이드 구성에 충실, 
-                            초보엄마들이 궁금해할만한 내용을 사진으로 꼼꼼하게 보여준다. 임신 중 요가, 산후조리, 
-                            육아의 기초(신생아 목욕시키기, 옷 입히기 등)의 과정을 사진으로 보여주어 슬라이드를 넘기듯
-                             한눈에 육아의 기초를 알 수 있다. 
-                            임신, 출산, 육아의 각 단계를 ...
+         
                         </span>
                     </div>
                 </div>
@@ -171,10 +167,10 @@
                         
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" >
+                            <input type="button" class="btn1" value="카트에 넣기" onClick="location.href='http://www.daum.net'" >
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매">
+                            <input type="button"  class="btn2" value="바로구매" onClick="location.href='http://www.daum.net'">
                         </div>
                     </div>
                 </div>

@@ -187,7 +187,7 @@ a {
    /* border: 2px solid green; */
    width: 720px;
    height: 210px;
-   margin-top: 10px;
+   /* margin-top: 10px; */
 }
 .choice_intro > * {
    margin-top: 100px;
@@ -263,6 +263,7 @@ a {
    float: left;
    width: 520px;
    height: 320px;
+   margin-bottom: 20px;
 }
 
 .newEye_imgSection{
@@ -275,11 +276,11 @@ a {
    float: left;
    width: 300px;
    height: 300px;  
-   padding-top: 10px;
+  
    margin-left: 0 10px;
    padding-left: 10px;
 
-   font-size: 18px;
+   font-size: 17px;
 }
 .newEye_infoSection > div {
    margin-bottom: 7px;
@@ -451,7 +452,7 @@ a {
 }
 .s_infoSection > span{
   display: block;
-  margin:  7px 0 ;
+  margin-top: 3px ;
 }
 .s_pay {
   margin-top: 70px;

@@ -134,7 +134,7 @@
             <div id="cart_select" style="text-align: right; padding: 10px 25px;">
                 <span>
                     <input class="button_m" class="button" type="button" name="buy_select" value="선택한 상품 주문하기" >
-                    <input class="button_m" class="button" type="button" name="buy_all" value="전체 상품 주문하기">
+                    <input class="button_m" class="button" type="button" name="buy_all" value="전체 상품 주문하기" onclick="location.href='/bsp/order/cartbuy.do'">
                 </span>
             </div>
         </div>

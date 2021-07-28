@@ -97,7 +97,7 @@
 		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
 		FROM book  JOIN categorysmall ON book.b_ctgno2key=categorysmall.b_ctgno2key 
 		WHERE book.b_ctgno1=#{b_ctgno1} AND categorysmall.b_ctgno2=#{b_ctgno2}
-		ORDER BY book.b_stock DESC
+		ORDER BY book.b_intodate DESC
 		
 		<include refid="bookwhere"/>
 			LIMIT 0,4
@@ -163,8 +163,7 @@
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
 			SELECT *,
 			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 = <if test="b_ctgno1 !=0"> ${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if> LIMIT 6
-			<!-- FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5 -->
+			FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 6 
 			<include refid="bookwhere"/>
 	</select>
 <!--  popular Search 인기검색어 -->

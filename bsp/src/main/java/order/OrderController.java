@@ -31,11 +31,18 @@ public class OrderController {
 		model.addAttribute("vo", bservice.deatil(vo));
 		return "order/BuyForm";
 	}
+	@RequestMapping("/order/cartbuy.do")
+	public String cartbuy(BookVo vo,Model model) {
+		vo.getB_title();
+		model.addAttribute("vo", bservice.deatil(vo));
+		return "order/BuyForm2";
+	}
 	@RequestMapping("/order/cart.do")
 	public String cart(Model model, CartVo vo,HttpSession sess) {
 		UserVo uv = (UserVo) sess.getAttribute("userInfo");
 		vo.setM_no(uv.getM_no());
 		model.addAttribute("cartList",Cservice.selectAll(vo));
+		sess.setAttribute("cartorder", Cservice.selectAll(vo));
 		return "order/Cart";
 	}
 	

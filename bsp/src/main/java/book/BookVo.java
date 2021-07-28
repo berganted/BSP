@@ -29,7 +29,7 @@ public class BookVo extends CommonVo {
 	private String b_introauthor;
 	private String b_introbook;
 	private int b_point;
-	private int r_id;
+	private int r_no;
 	private String b_imgmain;
 	
 	private int b_ctgno2key;
@@ -290,12 +290,19 @@ public class BookVo extends CommonVo {
 	public void setB_introbook(String b_introbook) {
 		this.b_introbook = b_introbook;
 	}
-	public int getR_id() {
-		return r_id;
+
+
+
+	public int getR_no() {
+		return r_no;
 	}
-	public void setR_id(int r_id) {
-		this.r_id = r_id;
+
+
+
+	public void setR_no(int r_no) {
+		this.r_no = r_no;
 	}
+
 	
 	
 	/*

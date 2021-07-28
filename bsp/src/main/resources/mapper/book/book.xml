@@ -30,7 +30,9 @@
 
 	
  	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book
+		SELECT *
+		,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book
 		<include refid="bookwhere"/>
 		 ORDER BY ${orderby} ${direct}	
 	</select>
@@ -169,6 +171,11 @@
 	<insert id="popular" parameterType="book.BookVo">
 		INSERT INTO popular (p_word, p_date) VALUES (#{sval}, NOW())
 	</insert>
+	
+	<select id="popular_search" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *, COUNT(p_word) as cnt FROM popular GROUP BY p_word order by cnt DESC LIMIT 8 
+		<include refid="bookwhere"/>
+	</select>
 	
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">

@@ -37,8 +37,46 @@ public class BookVo extends CommonVo {
 	private int ad_no;
 	private String ad_img;
 	private String b_ctgdetail;
-
+	private String p_word;
+	private int p_no;
+	private Timestamp p_date;
 	
+
+
+
+	public int getP_no() {
+		return p_no;
+	}
+
+
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
+
+
+	public Timestamp getP_date() {
+		return p_date;
+	}
+
+
+
+	public void setP_date(Timestamp p_date) {
+		this.p_date = p_date;
+	}
+
+
+
+	public String getP_word() {
+		return p_word;
+	}
+
+
+
+	public void setP_word(String p_word) {
+		this.p_word = p_word;
+	}
 
 
 

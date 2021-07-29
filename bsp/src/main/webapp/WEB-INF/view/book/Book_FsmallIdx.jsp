@@ -14,7 +14,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
-    
+    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>외국도서</title>

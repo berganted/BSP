@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="/bsp/css/base.css">
 <link rel="stylesheet" href="/bsp/css/reset.css">
 <link rel="stylesheet" href="/bsp/css/big.css">
+<link rel="stylesheet" href="/bsp/css/index.css">
 <script src="/bsp/js/main.js"></script>
 <script src="/bsp/js/big.js"></script>
 <script src="js/jquery-1.11.3.min.js"></script>

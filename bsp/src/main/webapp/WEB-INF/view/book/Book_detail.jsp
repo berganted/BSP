@@ -185,10 +185,15 @@ star-input>.input.focus {
 	  }
 	  $('#frm').submit();
 	  }
+  
   function goorder() {
 	  $('#frm').attr('action','/bsp/order/buy.do')
+	   if($('#m_no').val()==0){
+		  alert('로그인이 필요합니다.')
+		  location.href="/bsp/user/login.do"
+		  return false
+	   }
 	  $('#frm').submit();
-	  
 	
 }
   </script>

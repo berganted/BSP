@@ -46,6 +46,8 @@
     function pointall() {
 		console.log($('#po').val());
 		$('#savedmoney').val($('#po').val());
+		var a = $('#total').text()-$('#savedmoney').val();
+		$('#total').text(a)
     }
     </script>
    
@@ -71,7 +73,7 @@
                             <td id="del">삭제</td>
                         </tr>
                         <tr>
-                            <td><input type="image" name="bookimage"></td>
+                            <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
                             <td>${param.b_title }</td>
                             <td id="price">${vo.b_price }원/${vo.b_point }원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
@@ -94,7 +96,7 @@
                                <input type="radio" name="delivery" value="conv">편의점 방문 픽업 <br>
                             </td>
                         </tr>
-                    </table>
+                    </table>  
                     <h4>배송 정보 입력 (*필수 입력 항목)</h4>
                     <table id="buy_tb">
                      <tr>

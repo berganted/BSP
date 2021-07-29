@@ -30,7 +30,9 @@
 
 	
  	<select id="selectAll" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT * FROM book
+		SELECT *
+		,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book
 		<include refid="bookwhere"/>
 		 ORDER BY ${orderby} ${direct}	
 	</select>
@@ -87,7 +89,7 @@
 		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
 		FROM book  JOIN categorysmall ON book.b_ctgno2key=categorysmall.b_ctgno2key 
 		WHERE book.b_ctgno1=#{b_ctgno1} AND categorysmall.b_ctgno2=#{b_ctgno2}
-		ORDER BY book.b_stock DESC
+		ORDER BY book.b_intodate DESC
 		
 		<include refid="bookwhere"/>
 			LIMIT 0,4
@@ -153,14 +155,21 @@
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
 			SELECT *,
 			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 6
-			<!-- FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5 -->
+			FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 6 
 			<include refid="bookwhere"/>
 	</select>
 <!--  popular Search 인기검색어 -->
 	<insert id="popular" parameterType="book.BookVo">
 		INSERT INTO popular (p_word, p_date) VALUES (#{sval}, NOW())
 	</insert>
+	
+	<select id="popular_search" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT *, 
+			COUNT(p_word)-(select count(*) from popular where p_no = p.p_no and date(p_date) = date(date_add(now(), interval -1 day))) as cnt
+		FROM popular as p
+		where date(p_date) = date(now())
+		GROUP BY p_word order by cnt DESC LIMIT 8
+	</select>
 	
 <!-- 등록된 책 총 갯수 -->
 	<select id="count" resultType="int" parameterType="book.BookVo">

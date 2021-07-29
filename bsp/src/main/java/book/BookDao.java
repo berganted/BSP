@@ -70,6 +70,10 @@ public class BookDao {
 	public int popular(BookVo vo) {
 		return sqlSession.insert("book.popular", vo);
 	}
+	public List<BookVo> popular_search(BookVo vo) {
+		return sqlSession.selectList("book.popular_search", vo);
+	}
+	
 	public List<BookVo> selectctgnamed(BookVo vo) {
 		return sqlSession.selectList("book.selectctgnamed", vo);
 	}

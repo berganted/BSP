@@ -18,6 +18,7 @@ public interface BookService {
 	List<BookVo> selectAll7(BookVo vo);
 	List<BookVo> selectctgnamed(BookVo vo);
 	List<BookVo> popular_search(BookVo vo);
+	List<BookVo> newBook(BookVo vo);
 	BookVo deatil(BookVo vo);
 	int insert(BookVo vo);
 	BookVo edit(BookVo vo);

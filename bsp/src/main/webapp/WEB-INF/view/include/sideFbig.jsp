@@ -6,14 +6,14 @@
             <div class="index_sideCategory">
                 <div class="index_quickCate">외국도서</div>
                 <div class="index_quickCateDetail">
-                    <li><a href="Book_KbigIdx.do">ELT사전</a></li>
-                    <li><a href="Book_KbigIdx1.do">경제 경영</a></li>
-                    <li><a href="Book_KbigIdx2.do">라이프스타일</a></li>
-                    <li><a href="Book_KbigIdx3.do">소설</a></li> 
-                    <li><a href="Book_KbigIdx4.do">인문/사회</a></li> 
-                    <li><a href="Book_KbigIdx4.do">해외잡지</a></li> 
-                    <li><a href="Book_KbigIdx4.do">컴퓨터</a></li> 
-                  
+                    <li><a href="/bsp/book/Book_FbigIdx.do">가정살림</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx1.do">경제 경영</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx2.do">소설</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx3.do">에세이</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx4.do">여행</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx5.do">인문</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx6.do">자기계발</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx7.do">IT모바일</a></li> 
         
                 </div>
             </div>            

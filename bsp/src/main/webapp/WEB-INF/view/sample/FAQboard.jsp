@@ -51,7 +51,7 @@
                             <li><a class="support_member">회원</a></li>
                         </ul>
                     </div>                    
-                    <a class="support_title">자주 묻는 질문</a>           
+                    <a class="support_title">자주 묻는 질문 TOP 5</a>           
                     <div class="support_totalDetail">
                         <li><a class="support_t">[본인인증] 본인 인증 방법에는 어떤 것들이 있나요? ▼</a></li>
                         <div class="support_t2"><br>회원가입 방법, 본인 인증 수단, 회원가입 방법에 따른 본인 인증 기능 가능 수단을 안내해 드리겠습니다.
@@ -112,7 +112,8 @@
                             <br>※ 위 경로로 ID 및 비밀번호를 찾을 수 없는 경우에는 고객센터(0000-0000)로 문의하시기 바랍니다.<br>&nbsp;
                         </div>
                     </div>
-                </div>                
+                </div>
+                <div class="FAQmore"><a href="/bsp/sample/FAQboard2.do">더보기></a></div>                
             </div>
             <div class="FAQboard_sub">
                 <div class="FAQboard_size">

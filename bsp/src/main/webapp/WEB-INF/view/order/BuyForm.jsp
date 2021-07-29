@@ -96,7 +96,7 @@
                                <input type="radio" name="delivery" value="conv">편의점 방문 픽업 <br>
                             </td>
                         </tr>
-                    </table>
+                    </table>  
                     <h4>배송 정보 입력 (*필수 입력 항목)</h4>
                     <table id="buy_tb">
                      <tr>

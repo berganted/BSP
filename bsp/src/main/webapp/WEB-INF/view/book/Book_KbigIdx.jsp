@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>국내도서</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
@@ -61,7 +61,7 @@ text-align: center;
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><img src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></div>
+                        <div class="choiceImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></a></div>
                         <div class="chocieInfo">
                             <p class="choiceName"> ${vo.b_title } </p>
                             <p class="choice_pub">
@@ -91,14 +91,14 @@ text-align: center;
         </div>    
                
                 
-
+			<!-- 2  -->
             <div class="BigIndex_newEye">베스트셀러</div>
            <div class="BigIndex_newEye_wrap">
                 <c:forEach var = "vo" items="${list2 }">
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 300px;"></div>
+                        <div class="newEye_img"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 300px;"></a></div>
                     </div> 
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
@@ -116,13 +116,13 @@ text-align: center;
                   
                </c:forEach>
                </div> 
-
+			<!--3  -->
             <div class="BigIndex_newEye">눈에 띄는 새책 </div>
             <div class="BigIndex_newStar_wrap">
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <div class = "imgimg" style="width: 300px; height: 250px;"> <img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 250px;"></div>
+                    <div class = "imgimg" style="width: 300px; height: 250px;"> <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 250px;"></a></div>
                     <div class="newStar_info">
                         <ul> 
                             <li><a class="newStar_title">${vo.b_title }</a></li>
@@ -145,7 +145,7 @@ text-align: center;
            
     </div>
      <jsp:include page="../include/footer.jsp"></jsp:include>
-    
+    </div>
 
 </body>
 </html>

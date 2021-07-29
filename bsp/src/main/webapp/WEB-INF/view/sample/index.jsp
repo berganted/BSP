@@ -104,8 +104,8 @@
                                  <ul>
                                  	<c:forEach var="vo" items="${popular }" varStatus="status">
                                      	<li> ${vo.p_word } <span><c:if test="${vo.cnt >0}">▲${vo.cnt }</c:if>
-                                     							<c:if test="${vo.cnt==0}">-${vo.cnt }</c:if>
-                                     							<c:if test="${vo.cnt <0}"> ▼${vo.cnt }</c:if></span></li>
+                                                                 <c:if test="${vo.cnt==0}">-${vo.cnt }</c:if>
+                                                                 <c:if test="${vo.cnt <0}"> ▼${vo.cnt }</c:if></span></li>
                                     </c:forEach>                                                            
                                  </ul>
                                  </div>

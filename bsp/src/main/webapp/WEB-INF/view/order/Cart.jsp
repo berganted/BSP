@@ -17,15 +17,12 @@
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
     $(function(){
-    	var tp= 0 ;
-    	var b = $('input[id=b_pri]');
-    	console.log(b.val())
-    
-    	for(var i=0; i<$('input[id=b_pri]').length;i++ ){
-    	console.log(parseInt($('input[id=b_pri]').val()))
-    	tp +=parseInt($('input[id=b_pri]').val())
-    	}
-    	console.log(tp)
+    	var rows=document.getElementById("cart_tb").getElementsByTagName("td");
+    	 let sum = 0;
+    	  for(let i = 0; i < rows.length; i++)  {
+    	    sum += parseInt(rows[i].cells[4].innerHTML);
+    	    console.log(sum)
+    	  }
     })
     function groupDel() {
     	 $('#frm').attr('action','/bsp/cart/delete.do')
@@ -105,12 +102,12 @@
 									
 								</colgroup>
                 <tr>
-                    <td><input type="checkbox" value="select" id="all_select"  name="checkAll"></td>
-                    <td colspan="2">상품</td> 
-                    <td>가격</td>
-                    <td>재고</td> 
-                    <td>수량</td>
-                    <td>삭제</td>
+                    <th><input type="checkbox" value="select" id="all_select"  name="checkAll"></th>
+                    <th colspan="2">상품</th> 
+                    <th>가격</th>
+                    <th>재고</th> 
+                    <th>수량</th>
+                    <th>삭제</th>
             </tr>	
             	<c:if test="${empty cartList}">
 								<tr>

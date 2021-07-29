@@ -14,7 +14,7 @@
 		<!-- E N D :: headerArea--> 
 		
 		<!-- S T A R T :: containerArea-->
-		<div id="container">
+		<div id="container"> 
 			<div id="content">
 				<div class="con_tit">
 					<h2>공지사항 - [목록]</h2>

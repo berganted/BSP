@@ -29,7 +29,7 @@ public class BookVo extends CommonVo {
 	private String b_introauthor;
 	private String b_introbook;
 	private int b_point;
-	private int r_id;
+	private int r_no;
 	private String b_imgmain;
 	
 	private int b_ctgno2key;
@@ -37,8 +37,58 @@ public class BookVo extends CommonVo {
 	private int ad_no;
 	private String ad_img;
 	private String b_ctgdetail;
+	private String p_word;
+	private int p_no;
+	private Timestamp p_date;
+	private int cnt;
 
-	
+
+
+	public int getCnt() {
+		return cnt;
+	}
+
+
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+
+
+	public int getP_no() {
+		return p_no;
+	}
+
+
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
+
+
+	public Timestamp getP_date() {
+		return p_date;
+	}
+
+
+
+	public void setP_date(Timestamp p_date) {
+		this.p_date = p_date;
+	}
+
+
+
+	public String getP_word() {
+		return p_word;
+	}
+
+
+
+	public void setP_word(String p_word) {
+		this.p_word = p_word;
+	}
 
 
 
@@ -240,12 +290,19 @@ public class BookVo extends CommonVo {
 	public void setB_introbook(String b_introbook) {
 		this.b_introbook = b_introbook;
 	}
-	public int getR_id() {
-		return r_id;
+
+
+
+	public int getR_no() {
+		return r_no;
 	}
-	public void setR_id(int r_id) {
-		this.r_id = r_id;
+
+
+
+	public void setR_no(int r_no) {
+		this.r_no = r_no;
 	}
+
 	
 	
 	/*

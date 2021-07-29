@@ -10,14 +10,12 @@
     <title>장바구니</title>
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
     <link rel="stylesheet" href="/bsp/css/base.css">
+    <link rel="stylesheet" href="/bsp/css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script> <!-- 예솔 스크립트 -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
-    //**삭제 버튼 클릭시 행 삭제
-    
-    
     function groupDel() {
     	var cnt = 0;
     for(var i=0; i<$('input[name=checkOne]').length;i++){
@@ -31,15 +29,15 @@
     }else{
     	if(confirm('삭제하시겠습니까?')){
     		$('#frm').submit();
+    		}
     	}
     }
-    }
     
-    function del() {
-    	$('#frm').submit();
+    function delone() {
+    	if(confirm('삭제하시겠습니까?')){
+    		$('#frm').submit();
+    	}
 	}
-		
-	
     </script>
 
 </head>
@@ -78,7 +76,7 @@
 									
 								</colgroup>
                 <tr>
-                    <td><input type="checkbox" value="select" id="all_select" onclick="selctAll();" name="checkAll"></td>
+                    <td><input type="checkbox" value="select" id="all_select"  name="checkAll"></td>
                     <td colspan="2">상품</td> 
                     <td>가격</td>
                     <td>재고</td> 
@@ -93,8 +91,8 @@
 			<c:forEach var="list" items="${cartList}">  
 	            <tr data-tr_value="1">
 	                <td><input type="checkbox" value="${list.cart_no}"  name="checkOne"></td>
-	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100% "></td> 
-	                <td><a href=""> ${list.b_title }<br> *내일수령가능</a></td> 
+	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100%; cursor: pointer; " onclick="location.href='/bsp/book/Book_detail.do?b_no=${list.b_no }'"></td> 
+	                <td><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }"> ${list.b_title }<br> *내일수령가능</a></td> 
 	                <td>${list.b_price }<br>
 	                    ${list.b_point }(5%)
 	                </td>
@@ -104,7 +102,7 @@
 	                 <input type="text" name="pop_out" value="${list.cart_cnt}" readonly="readonly" style="width: 50px; text-align: center;">
 	                 <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
 	                 </td>
-	                <td><input class="button_s" type="button" name="del" value="삭제" onclick="del();"><br>
+	                <td><input class="button_s" type="button" name="del" value="삭제" onclick="delone();"><input type="hidden"value="${list.cart_no}" name="cart_no"></td>
 	            </tr>
            	</c:forEach>
         </table>
@@ -136,7 +134,7 @@
             <div id="cart_select" style="text-align: right; padding: 10px 25px;">
                 <span>
                     <input class="button_m" class="button" type="button" name="buy_select" value="선택한 상품 주문하기" >
-                    <input class="button_m" class="button" type="button" name="buy_all" value="전체 상품 주문하기">
+                    <input class="button_m" class="button" type="button" name="buy_all" value="전체 상품 주문하기" onclick="location.href='/bsp/order/cartbuy.do'">
                 </span>
             </div>
         </div>

@@ -104,6 +104,10 @@ public class BookServiceImpl implements BookService {
 	public int popular(BookVo vo) {
 		return dao.popular(vo);
 	}
+	@Override
+	public List<BookVo> popular_search(BookVo vo) {
+		return dao.popular_search(vo);
+	}
 
 	@Override
 	public BookVo selectCtgno2(BookVo vo) {

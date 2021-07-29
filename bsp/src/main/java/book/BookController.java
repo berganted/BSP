@@ -173,11 +173,11 @@ public class BookController {
 		model.addAttribute("list5", service.selectAll5(vo));
 		model.addAttribute("list6", service.selectAll6(vo));
 		model.addAttribute("best", service.selectAll7(vo));
-		
+		model.addAttribute("popular", service.popular_search(vo));
 	return "/sample/index" ;
 	}
 	// index_search 검색 페이지 
-	@RequestMapping("/sample/index_search.do")
+	@RequestMapping("/bsp/sample/index_search.do")
 	public String search(Model model, BookVo vo, CommentVo cv) {
 		System.out.println(vo.getSval());
 		service.popular(vo);

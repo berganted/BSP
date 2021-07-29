@@ -82,11 +82,11 @@
  
             <div class="indexWrap">
                 <div class="indexPlace">
-                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC">기본순</a></span>
-                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc">판매량순</a></span>
-                    <span class="new"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc">신상품순</a></span>
-                    <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC">최저가순</a></span>
-                    <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC	">최고가순</a></span>
+                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
+                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
+                    <span class="new"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">신상품순</a></span>
+                    <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC&pageRow=${param.pageRow}">최저가순</a></span>
+                    <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC&pageRow=${param.pageRow}	">최고가순</a></span>
                     
                     
                    <!-- 강사님한테 물어보기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
@@ -98,7 +98,9 @@
                             <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
                             <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
                         </select> 
-                           <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택
+                 <!--           <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택 -->
+                           
+                            
                     </div>
                     <!-- </form>  -->
                     
@@ -121,6 +123,10 @@
                         </ul> 
                     </div>
                
+<!--                  <div class="s_pay3">
+                            <input type="button"  class="btn3" value="카트에 넣기">
+                  </div> -->
+               
                 </div>
          
             </div>
@@ -136,23 +142,19 @@
                             <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><b>${vo.b_title }</b></a>
                         </span>
                         <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월" /></span> </span>
-                        <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }원</span>
-                        <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
+                        <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
+                        <span class="s_grade" style="font-size: 16px;">회원리뷰(8건) ★★★★★ 9.3</span>
                         																																										
-                        <span class="s_story">
+                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
                         ${vo.b_content } <br>
-                            『임신 출산 육아 대백과』 2020년 개정판은 가이드 구성에 충실, 
-                            초보엄마들이 궁금해할만한 내용을 사진으로 꼼꼼하게 보여준다. 임신 중 요가, 산후조리, 
-                            육아의 기초(신생아 목욕시키기, 옷 입히기 등)의 과정을 사진으로 보여주어 슬라이드를 넘기듯
-                             한눈에 육아의 기초를 알 수 있다. 
-                            임신, 출산, 육아의 각 단계를 ...
+         
                         </span>
                     </div>
                 </div>
                 <div class="s_payWrap">
                     <div class="s_pay">
                         <div class="s_pay1">
-                            <input type="checkbox" name="bestcheck" >
+                           <!--  <input type="checkbox" name="bestcheck" > -->
                             &nbsp;
                           
                            
@@ -165,10 +167,10 @@
                         
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" >
+                            <input type="button" class="btn1" value="카트에 넣기" onClick="location.href='http://www.daum.net'" >
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매">
+                            <input type="button"  class="btn2" value="바로구매" onClick="location.href='http://www.daum.net'">
                         </div>
                     </div>
                 </div>

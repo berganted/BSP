@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="header_logo">
-                <a href="/bsp/sample/index.do?b_ctgno1=1"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
+                <a href="/bsp/sample/index.do"><img src="/bsp/img/logo/indexLogo.png" alt=""></a>
             </div>
             <div class="header_login">
             <c:if test="${empty userInfo}">

@@ -32,6 +32,11 @@ public class CartServiceimpl implements CartService {
 		return dao.delete(vo);
 	}
 
+	@Override
+	public CartVo selectone(CartVo vo) {
+		return dao.selectone(vo);
+	}
+
 
 
 }

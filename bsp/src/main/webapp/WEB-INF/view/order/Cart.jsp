@@ -16,14 +16,23 @@
     <script src="/bsp/js/yesol.js"></script> <!-- 예솔 스크립트 -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
+    $(function(){
+    	var rows=document.getElementById("cart_tb").getElementsByTagName("td");
+    	 let sum = 0;
+    	  for(let i = 0; i < rows.length; i++)  {
+    	    sum += parseInt(rows[i].cells[4].innerHTML);
+    	    console.log(sum)
+    	  }
+    })
     function groupDel() {
+    	 $('#frm').attr('action','/bsp/cart/delete.do')
     	var cnt = 0;
-    for(var i=0; i<$('input[name=checkOne]').length;i++){
-    	if($('input[name=checkOne]').eq(i).prop('checked')){
-    		cnt++;
-    		break;
-    	}
-    }
+        for(var i=0; i<$('input[name=checkOne]').length;i++){
+        	if($('input[name=checkOne]').eq(i).prop('checked')){
+        		cnt++;
+        		break;
+        	}
+        }
     if( cnt == 0 ){
     	alert('하나 이상 체크해 주세요');
     }else{
@@ -38,6 +47,23 @@
     		$('#frm').submit();
     	}
 	}
+    
+    function groupOder() {
+    	 $('#frm').attr('action','/bsp/order/cartbuy.do')
+    	var cnt = 0;
+        for(var i=0; i<$('input[name=checkOne]').length;i++){
+        	if($('input[name=checkOne]').eq(i).prop('checked')){
+        		cnt++;
+        		break;
+        	}
+        }
+        if( cnt == 0 ){
+        	alert('하나 이상 체크해 주세요');
+        }else{
+        		$('#frm').submit();
+        	}
+	}
+    
     </script>
 
 </head>
@@ -52,7 +78,7 @@
             <div id="article">
              <div id="cart_option" style="text-align: right; padding: 0px 20px 5px;">
                 <span id="cart">
-                    <input class="button_m" type="button" name="buy_select" value="선택주문">
+                    <input class="button_m" type="button" name="buy_select" value="선택주문" onclick="groupOder();">
                     <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="groupDel();">
                     <select name="정렬" style="height: 30px; border: 2px solid #221f1f ;">
                         <option value="recent" selected>최근 담은 순</option>
@@ -76,12 +102,12 @@
 									
 								</colgroup>
                 <tr>
-                    <td><input type="checkbox" value="select" id="all_select"  name="checkAll"></td>
-                    <td colspan="2">상품</td> 
-                    <td>가격</td>
-                    <td>재고</td> 
-                    <td>수량</td>
-                    <td>삭제</td>
+                    <th><input type="checkbox" value="select" id="all_select"  name="checkAll"></th>
+                    <th colspan="2">상품</th> 
+                    <th>가격</th>
+                    <th>재고</th> 
+                    <th>수량</th>
+                    <th>삭제</th>
             </tr>	
             	<c:if test="${empty cartList}">
 								<tr>
@@ -93,8 +119,8 @@
 	                <td><input type="checkbox" value="${list.cart_no}"  name="checkOne"></td>
 	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100%; cursor: pointer; " onclick="location.href='/bsp/book/Book_detail.do?b_no=${list.b_no }'"></td> 
 	                <td><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }"> ${list.b_title }<br> *내일수령가능</a></td> 
-	                <td>${list.b_price }<br>
-	                    ${list.b_point }(5%)
+	                <td><input type="text" id="b_pri" value="${list.b_price }" readonly="readonly"><br>
+	                    <span>${list.b_point }</span>(5%)
 	                </td>
 	                <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
 	                <td id="ant">

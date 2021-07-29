@@ -17,6 +17,15 @@
     <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
+    $( document ).ready(function() {
+    	var cou=0;
+    	for(var i = 0; i<$('#pr').length;i++){
+    	console.log($('#pr').length)
+    		cou += $('#pr').text()
+    	}
+    	console.log(cou)
+    	$('#total').text(cou)
+    })
     $(function(){
     	$('#savedmoney').change(function(){
     		console.log(1)
@@ -72,11 +81,11 @@
                             <td id="bseq_ea">수량</td>
                             <td id="del">삭제</td>
                         </tr>
-                        <c:forEach var="list" items="${cartorder }">
+                        <c:forEach var="list" items="${list }">
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${list.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
                             <td>${list.b_title }</td>
-                            <td id="price">${list.b_price }원/${vo.b_point }원</td>
+                            <td id="price"><span id="pr">${list.b_price }</span>원/${vo.b_point }원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
@@ -169,7 +178,7 @@
                         <tr >
                             <td colspan="2">
                                 <span>주문 상품 금액 정보</span>
-                                <span id="total">${vo.b_price}</span>원
+                                <span id="total"></span>원
                         </tr>
                         <tr>
                             <td>

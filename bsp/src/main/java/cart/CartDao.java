@@ -25,6 +25,8 @@ public class CartDao {
 	}
 	public int delete(CartVo vo) {
 		return sessionTemplate.delete("cart.delete", vo);
-
+	}
+	public CartVo selectone(CartVo vo) {
+		return sessionTemplate.selectOne("cart.selectone",vo);
 	}
 }

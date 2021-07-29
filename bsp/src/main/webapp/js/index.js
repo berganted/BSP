@@ -125,5 +125,19 @@ function setEditor(holder){
 	return oEditors;
 } 
 
+/*---- index_search 부분 ----------*/
+    //**구매 수량 조절버튼
+    function fnCalCount2(type, ths){
+        var $input = $(ths).parents("td").find("input[name='pop_out']"); //부모부분인 td의 자식 name pop_out [수량입력값]
+        var tCount = Number($input.val()); //입력값 숫자타입으로 변환
+
+        if(type=='p'){
+            if(tCount < 99) $input.val(Number(tCount)+1);
+            if(tCount == 99) alert("수량은 99개를 초과할 수 없습니다");            
+        }else if(tCount > 0) {
+        	$input.val(Number(tCount)-1);  
+        }
+        
+}
 
 

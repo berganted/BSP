@@ -33,6 +33,14 @@ public class BookController {
 		return "book/Book_KsmallIdx";
 	}
 	
+	 //-----------------외국도서 상세분류 클릭시 나오는 list-----------------	
+	@RequestMapping("/book/Book_FsmallIdx.do")
+	public String fsmall(Model model, BookVo vo) {
+		
+		model.addAttribute("list", service.selectAllBasic(vo));// list란 이름으로 전체 데이터가 dao에 담겨서 모델에 담김(=request에 담김=스프링이
+		return "book/Book_KsmallIdx";
+	}
+	
 
 	//--------------------------국내도서 장르부분 (대분류중분류)---------------------------------------------------------------
 
@@ -160,7 +168,135 @@ public class BookController {
 		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
 		return "/book/Book_KbigIdx";
 	}
-
+	
+	//--------------------------외국도서 장르부분 (대분류중분류)---------------------------------------------------------------
+	
+	@RequestMapping("/book/Book_FbigIdx.do") // 가정살림
+	public String fbig(BookVo vo, Model model) {
+		//vo에 셋을 먼저 해줌
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2); //외국도서
+		vo.setB_ctgno2key(1); // 중분류 이름값이 나온다 (ex가정살림)
+		vo.setB_ctgno2(1); //상세분류 이름값(가정살림 안에 상세분류)
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		model.addAttribute("vo", service.selectCtgno2(vo)); // 중분류값
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo)); //상세분류값
+		
+		return "/book/Book_FbigIdx";
+		
+	}
+	
+	@RequestMapping("/book/Book_FbigIdx1.do") // 경제경영
+	public String fbig1(BookVo vo, Model model) {
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2);
+		vo.setB_ctgno2key(5); 
+		vo.setB_ctgno2(2);
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+		
+		model.addAttribute("vo", service.selectCtgno2(vo));
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
+		
+		return "/book/Book_FbigIdx";
+		
+		//1. vo에 셋을 하면 됨 --> vo셋을 젤 위로
+		//2. 넘어올 때 주소에 파라미터를 주는 방법
+		
+	}
+	
+	@RequestMapping("/book/Book_FbigIdx2.do") // 소설
+	public String fbig2(BookVo vo, Model model) {
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2);
+		vo.setB_ctgno2key(8); 
+		vo.setB_ctgno2(3);
+		
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+		
+		model.addAttribute("vo", service.selectCtgno2(vo));
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
+		return "/book/Book_FbigIdx";
+	}
+	@RequestMapping("/book/Book_FbigIdx3.do") // 에세이
+	public String fbig3(BookVo vo, Model model) {
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2);
+		vo.setB_ctgno2key(12); 
+		vo.setB_ctgno2(4);
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+		model.addAttribute("vo", service.selectCtgno2(vo));
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
+		return "/book/Book_FbigIdx";
+	}
+	@RequestMapping("/book/Book_FbigIdx4.do") // 여행
+	public String fbig4(BookVo vo, Model model) {
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2);
+		vo.setB_ctgno2key(16); 
+		vo.setB_ctgno2(5);
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+		model.addAttribute("vo", service.selectCtgno2(vo));
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
+		return "/book/Book_FbigIdx";
+	}
+	@RequestMapping("/book/Book_FbigIdx5.do") // 인문
+	public String fbig5(BookVo vo, Model model) {
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2);
+		vo.setB_ctgno2key(19); 
+		vo.setB_ctgno2(6);
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+		model.addAttribute("vo", service.selectCtgno2(vo));
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
+		return "/book/Book_FbigIdx";
+	}
+	@RequestMapping("/book/Book_FbigIdx6.do") // 자기계발
+	public String fbig6(BookVo vo, Model model) {
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2);
+		vo.setB_ctgno2key(23); // 자연과학
+		vo.setB_ctgno2(7);
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+		model.addAttribute("vo", service.selectCtgno2(vo));
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
+		return "/book/Book_FbigIdx";
+	}
+	@RequestMapping("/book/Book_FbigIdx7.do") // IT모바일
+	public String fbig7(BookVo vo, Model model) {
+		vo.setDirect("ASC");
+		vo.setB_ctgno1(2);
+		vo.setB_ctgno2key(27); // 자연과학
+		vo.setB_ctgno2(8);
+		model.addAttribute("list1", service.selectAll1(vo));
+		model.addAttribute("list2", service.selectAll2(vo));
+		model.addAttribute("list3", service.selectAll3(vo));
+		
+		model.addAttribute("vo", service.selectCtgno2(vo));
+		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
+		return "/book/Book_FbigIdx";
+	}
+	
+//-----------------------------------------------------------------------------------------------------------------------
 
 
 	@RequestMapping("/sample/index.do")

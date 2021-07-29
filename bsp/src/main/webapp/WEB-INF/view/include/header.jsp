@@ -56,16 +56,16 @@
 
 
 					</ul></li>
-				<li><a class="header_depth1" href="category.html">외국도서</a>
+				<li><a class="header_depth1" href="/bsp/book/Book_FbigIdx.do">외국도서</a>
 					<ul class="header_depth2">
-						<li><a href="/bsp/book/Book_KbigIdx.do">가정살림</a></li>
-						<li><a href="/bsp/book/Book_KbigIdx1.do">경제 경영</a></li>
-						<li><a href="/bsp/book/Book_KbigIdx2.do">소설</a></li>
-						<li><a href="/bsp/book/Book_KbigIdx3.do">에세이</a></li>
-						<li><a href="/bsp/book/Book_KbigIdx4.do">여행</a></li>
-						<li><a href="/bsp/book/Book_KbigIdx5.do">인문</a></li>
-						<li><a href="/bsp/book/Book_KbigIdx6.do">자기계발</a></li>
-						<li><a href="/bsp/book/Book_KbigIdx7.do">IT모바일</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx.do">가정살림</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx1.do">경제 경영</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx2.do">소설</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx3.do">에세이</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx4.do">여행</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx5.do">인문</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx6.do">자기계발</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx7.do">IT모바일</a></li> 
 					</ul></li>
 				<li><a class="header_depth1" href="category.html">베스트</a>
 					<ul class="header_depth2">

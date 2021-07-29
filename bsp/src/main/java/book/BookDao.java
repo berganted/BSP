@@ -118,4 +118,9 @@ public class BookDao {
 	public BookVo detailAD(BookVo vo) {
 		return sqlSession.selectOne("book.detailAD", vo);
 	}
+	
+	//신상품
+	public List<BookVo> newBook(BookVo vo) {
+		return sqlSession.selectList("book.newBook", vo);
+	}
 }

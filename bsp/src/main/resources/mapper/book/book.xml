@@ -49,6 +49,9 @@
 	 <select id="BEST_K" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT * FROM book WHERE b_ctgno1=1 OREDER BY b_stock DESC;
 	</select>
+	 <select id="newBook" resultType="book.BookVo" parameterType="book.BookVo">
+		SELECT * FROM book WHERE b_ctgno1=1 OREDER BY b_intodate DESC;
+	</select>
 
 	
 	<!-- smallindex 페이징처리 Count -->

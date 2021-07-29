@@ -217,5 +217,12 @@ public class BookServiceImpl implements BookService {
 
 
 
+	@Override
+	public List<BookVo> newBook(BookVo vo) {
+		return dao.newBook(vo);
+	}
+
+
+
 
 }

@@ -22,6 +22,22 @@
 
 <title>Document</title>
 <style>
+
+/* 페이징처리 */
+.pagenate {width:100%; clear:both;}
+.pagenate {text-align:center; margin:20px auto 0;}
+.pagenate li {display:inline-block;}
+.pagenate li:first-child { margin-left:0px; }
+.pagenate li a{display:inline-block; text-decoration:none; padding:0; width:30px; height:30px; line-height:30px; border:1px solid #c7c8cc; box-sizing:border-box; margin-left:-1px; vertical-align:middle;}
+.pagenate li a:hover{background:#f6f6f6; font-weight:bold; text-decoration:none !important;}
+.pagenate li a.board { text-indent:-9999em; margin-left:4px; }
+.pagenate li a.board.first {background:#f3f3f3 url('/img/ico_first.png') no-repeat center center;}
+.pagenate li a.board.prev {margin-right:30px; background:#efefef url('/img/ico_prev.png') no-repeat center center;}
+.pagenate li a.board.next {margin-left:30px; background:#efefef url('/img/ico_next.png') no-repeat center center;}
+.pagenate li a.board.last {background:#f3f3f3 url('/img/ico_last.png') no-repeat center center;}
+.pagenate li a.current {color:#fff; background-color:#221f1f; font-weight:bold;  border:1px solid #221f1f;}
+
+
 .button_m {
 	font-size: 14px;
 	text-decoration: none !important;
@@ -196,11 +212,12 @@ star-input>.input.focus {
 					</div>
 				</div>
 				<form id='frm' action="/bsp/cart/insert.do" method="get">
+				
 					<div class="detail_bookInfo">
 						<div class="bookInfo_section">
 
-							<input type="hidden" name="b_no" value="${vo.b_no }"> <input
-								type="hidden" id="m_no" name="m_no" value="${userInfo.m_no }">
+							<input type="hidden" name="b_no" value="${vo.b_no }"> 
+							<input	type="hidden" id="m_no" name="m_no" value="${userInfo.m_no }">
 							<input type="hidden" name="b_price" value="${vo.b_price }">
 							<input type="hidden" name="b_title" value="${vo.b_title }">
 							<input type="hidden" id="b_author" name="b_author"
@@ -224,7 +241,7 @@ star-input>.input.focus {
 								&nbsp;&nbsp; <span class="sellPrice1"
 									style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;">${vo.b_price }원</span>
 								<br> <span class="deliverInfo" style="font-size: 18px;">
-									배송지 : 경기도 고양시~ </span><br> <span style="font-size: 18px;">
+									
 									*배송비 : 무료</span>
 
 							</div>
@@ -328,7 +345,7 @@ star-input>.input.focus {
 					매주 10건의 우수리뷰를 선정하여 BSP상품권 3만원을 드립니다</div>
 				<br>
 
-				<div class="book_detailReview" style="width: auto; height: 400px;">
+				<div class="book_detailReview" style="width: auto; height: 250px;">
 					<div style="text-align: center;">
 						<h1>리뷰/평점</h1>
 					</div>
@@ -343,42 +360,12 @@ star-input>.input.focus {
 								type="radio" name="star-input" value="5" id="p5"> <label
 								for="p5">5</label>
 						</span> <output for="star-input">
-								<b>0</b>점
+								<b id="r_grade">0</b>점
 							</output>
 						</span>
 					</div>
 
-					<!--  <div style="text-align: center;">
-                  <div class="book_detailReview" style="width: auto; height:400px ;"> 
-                 <div style="text-align: center;">
-                    <h1>리뷰/평점</h1>
-                </div>
-                <div style="text-align: center;">
-                <span class="star-input" >
-                    <span class="input">
-                        <input type="radio" name="star-input" value="1" id="p1">
-                        <label for="p1">1</label>
-                        <input type="radio" name="star-input" value="2" id="p2">
-                        <label for="p2">2</label>
-                        <input type="radio" name="star-input" value="3" id="p3">
-                        <label for="p3">3</label>
-                        <input type="radio" name="star-input" value="4" id="p4">
-                        <label for="p4">4</label>
-                        <input type="radio" name="star-input" value="5" id="p5">
-                        <label for="p5">5</label>
-                    </span>
-                    <output for="star-input"><b>1</b>점</output>						
-            </span>
-            </div>
-       
-            <div style="text-align: center;">
-                <br>
-            <input type="text" placeholder="리뷰를 입력하세요!" style="width:600px;height:200px;font-size:17px;" >
-              
-                <input type="button" value="등록" style="margin-left: 50px; width:50px;" >
-            </div>
 
- -->
 					<!-- 돈터치  -->
 					<br>
 					<!-- 리뷰시작  -->
@@ -389,37 +376,40 @@ star-input>.input.focus {
 						</colgroup>
 						<tbody>
 							<tr>
-								<td><textarea name="r_content" id="content"
+								<td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
 										style="width: 100%; height: 80px"></textarea></td>
 								<td>
 									<div class="btnSet" style="text-align: right;">
-										<a class="btn" href="javascript:goSave();">저장 </a>
+										<a class="btn" href="javascript:goReview();">저장 </a>
 									</div>
 								</td>
 							</tr>
 						</tbody>
 					</table>
+					
 					<script>
-                    	function goSave() {
+                    	function goReview() {
                     		<c:if test="${!empty userInfo}">
                     		if ($("#content").val().trim()==''){
                     			alert('내용을 입력해 주세요');
                     		} else {
-                    			if (confirm('댓글을 등록하시겠습니까?')) {
+                    			if (confirm('리뷰를 등록하시겠습니까?')) {
                     				$.ajax({
                             			url:'/bsp/review/insert.do',
                             			data:{
           	                  				r_content:$("#content").val(),
           	                  				r_no:${vo.r_no},
-          	                  				m_no:${userInfo.m_no}
+          	                  				m_no:${userInfo.m_no},
+          	                  				b_no:${vo.b_no},
+          	                  				r_grade:$("#r_grade").text()
                             			},
                             			success:function(res) {
                             				if (res.trim()=='true') {
-                            					alert('댓글이 등록되었습니다.');
+                            					alert('리뷰가 등록되었습니다.');
                             					$("#content").val("");
                             					getComment();
                             				} else {
-                            					alert('댓글 등록 실패');
+                            					alert('리뷰 등록 실패');
                             				}
                             			}
                             		});
@@ -427,17 +417,18 @@ star-input>.input.focus {
                     		}
                     		</c:if>
                     		<c:if test="${empty userInfo}">
-                    			alert('댓글은 로그인 후 등록 가능합니다.');
+                    			alert('리뷰는 로그인 후 등록 가능합니다.');
                     		</c:if>
                     	}
                     	 $(function(){
-                    		 getComment();
+                    		 starRating();
+                    		 getComment(1);
                  	    });
                     	function getComment(reqPage) {
                     		$.ajax({
                     			url:'/bsp/review/list.do',
                     			data:{
-                    				r_no:${vo.r_no}, 
+                    				b_no:${vo.b_no}, 
                     				reqPage:reqPage
                     			}, 
                     			success:function(res) {
@@ -468,52 +459,22 @@ star-input>.input.focus {
 				<div id="reviewArea"></div>
 			</div>
 		</div>
-	</div>
-	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
-	<script>
-    	function isDel() {
-    		if (confirm('삭제하시겠습니까?')) {
-    			// 삭제처리
-    			$.ajax({
-    				url:'delete.do',
-    				data:{
-    					'r_no':${vo.r_no}
-    				},
-    				method:'post',
-    				success:function(res) {
-    					console.log(res);
-    					if (res.trim() == 'true') {
-    						alert('정상적으로 삭제되었습니다.');
-    						location.href='FAQboard.do';
-    					} else {
-    						alert('삭제 실패');
-    					}
-    				},
-    				error : function(res) {
-    					console.log(res);
-    				}
-    			});
-    		}
-    	}
-    </script>
-
-
-
-
-
-
-
-	</div>
-	</div>
-	</div>
-	<aside class="mypage_ad">
+			<aside class="mypage_ad">
 		<div class="mypage_ad_name">
 			<p>최근본상품</p>
 		</div>
 		<div class="img_area">
-			<img src="img/book.jpg" width="70px" height="100px">
+			<img src="/bsp/img/${vo.b_imgmain }" width="70px" height="100px">
 		</div>
 		<div style="text-align: center;">책이름</div>
 	</aside>
+	</div>
+	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
+
+	</div>
+	</div>
+	
+	</div>
+
 	</div>
 </body>

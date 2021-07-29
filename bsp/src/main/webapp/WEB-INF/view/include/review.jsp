@@ -9,11 +9,12 @@
                             <col width="*" />
                             <col width="100px" />
                             <col width="100px" />
+                            <col width="100px" />
                         </colgroup>
                         <tbody>
 						<c:if test="${empty list }">
                             <tr>
-                                <td class="first" colspan="5">등록된 댓글이 없습니다.</td>
+                                <td class="first" colspan="5">등록된 리뷰가 없습니다.</td>
                             </tr>
                         </c:if>
                         <c:forEach var="vo" items="${list }">     
@@ -21,11 +22,14 @@
                                 <td class="txt_l">
                                 	${vo.r_content}
                                 	<c:if test="${userInfo.m_no == vo.m_no}">
-                                    <a href="javascript:commentDel(${vo.c_no});">[X]</a>
+                                    <a href="javascript:commentDel(${vo.r_no});">[X]</a>
                                     </c:if>
                                 </td>
                                 <td class="writer">
-                                    ${vo.m_name }
+                                    ${vo.name }  
+                                </td>
+                                <td class="writer">
+                                    ${vo.r_grade }  점
                                 </td>
                                 <td class="date"><fmt:formatDate value="${vo.r_regdate }" pattern="yyyy-MM-dd"/></td>
                             </tr>

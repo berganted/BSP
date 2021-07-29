@@ -1,5 +1,7 @@
 package review;
 
+import java.sql.Timestamp;
+
 import util.CommonVo;
 
 public class ReviewVo extends CommonVo {
@@ -8,8 +10,8 @@ public class ReviewVo extends CommonVo {
 	private int m_no;
 	private int b_no;
 	private String r_content;
-	private String r_grade;
-	private float r_regdate;
+	private int r_grade;
+	private Timestamp r_regdate;
 	private String name; // vo에 있는 alias
 	
 	public ReviewVo() {
@@ -53,19 +55,19 @@ public class ReviewVo extends CommonVo {
 		this.r_content = r_content;
 	}
 
-	public String getR_grade() {
+	public int getR_grade() {
 		return r_grade;
 	}
 
-	public void setR_grade(String r_grade) {
+	public void setR_grade(int r_grade) {
 		this.r_grade = r_grade;
 	}
 
-	public float getR_regdate() {
+	public Timestamp getR_regdate() {
 		return r_regdate;
 	}
 
-	public void setR_regdate(float r_regdate) {
+	public void setR_regdate(Timestamp r_regdate) {
 		this.r_regdate = r_regdate;
 	}
 

@@ -528,7 +528,7 @@ a {
    /*border: 1px solid blue;*/
    width: 1100px;
    height: 400px;
-   margin: auto;
+   margin : 50px auto;
    
    
 }
@@ -543,7 +543,7 @@ a {
 
 .detail_bookInfo{
    width: 600px;
-   height: 400px;
+   height: 300px;
    padding: 15px;
   /* background-color: burlywood;*/
    float: left;
@@ -580,8 +580,9 @@ a {
    display: inline-block;
 }
 
-.detail_bookPay{
-   margin-top: 70px;
+.number{
+	margin-left: 5px;
+	width: 150px;
 }
 .detail_bookPay > div {
    margin: 20px;

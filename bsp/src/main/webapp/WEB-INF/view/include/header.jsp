@@ -44,7 +44,7 @@
 						<li><a href="#">웹소설/코믹</a></li>
 
 					</ul></li>
-				<li><a class="header_depth1" href="Book_KbigIdx.do">국내도서</a>
+				<li><a class="header_depth1" href="/bsp/book/Book_KbigIdx.do">국내도서</a>
 					<ul class="header_depth2">
 						<li><a href="/bsp/book/Book_KbigIdx.do">가정살림</a></li>
 						<li><a href="/bsp/book/Book_KbigIdx1.do">경제 경영</a></li>

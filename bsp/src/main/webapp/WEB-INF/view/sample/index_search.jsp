@@ -13,10 +13,7 @@
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
     <link rel="stylesheet" href="/bsp/css/index.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
-<<<<<<< HEAD
-=======
     <link rel="stylesheet" href="/bsp/css/yesol.css">
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
@@ -38,8 +35,7 @@
 		padding-top: 50px;
 		padding-bottom: 50px;
 	}
-<<<<<<< HEAD
-=======
+	
 	.button_s{
 	    font-size:12px; 
 	    text-decoration:none !important; 
@@ -58,12 +54,10 @@
 	    border-radius:5px; 
 	    background-color:#221f1f;
 	}
-
-	td > #ant{
-        margin-left: 45px;
-    }
-    
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
+	
+	.pagenate {
+		padding-bottom: 30px;
+	}
 </style>
 <body> 
         <%@ include file="/WEB-INF/view/include/header.jsp" %>
@@ -94,24 +88,14 @@
 					               <div class="s_payWrap">
 					                   <div class="s_pay">
 					                       <div class="s_pay1">
-<<<<<<< HEAD
-					                           <input type="checkbox" name="bestcheck" >
 					                           &nbsp;
-				                               <div class="number">
-				                                   <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-				                                   <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-				                                   <button class="button_s" type="button" id="increaseQuantity">+</button>
-				                                </div> 
-=======
-					                           &nbsp;
-				                            <table>
-			                                <td id="ant">
-								                 <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
+					                        <table>
+			                                <td id="ant" style="border : none; padding-right: 45px;">
+								                 <button class="button_s" type="button" onclick="fnCalCount2('m', this);">-</button>
 								                 <input type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
-								                 <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
+								                 <button class="button_s" type ="button" onclick="fnCalCount2('p',this);">+</button> 
 							                 </td>
-							                 </table> 
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
+							                 </table>
 					                       </div>
 					                       <div class="s_pay2">
 					                           <input type="button" class="btn1" value="카트에 넣기" >
@@ -123,6 +107,19 @@
 					               </div>
 					            </div>
             				</c:forEach> 
+            				<div class="pagenate clear">
+		                        <ul class='paging'> 
+		                        <c:if test="${bookVo.strPage > bookVo.pageRange}">
+		                        	<li><a href="index_search.do?reqPage=${bookVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
+		                        </c:if>
+		                        <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
+		                            <li><a href='index_search.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+		                        </c:forEach>
+		                        <c:if test="${bookVo.totPage > bookVo.endPage}">
+		                        	<li><a href="index_search.do?reqPage=${bookVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
+		                        </c:if>
+		                        </ul> 
+                    		</div>
 		               </div>	
 	              </div>
                 </div>

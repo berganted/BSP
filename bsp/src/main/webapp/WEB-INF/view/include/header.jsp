@@ -41,7 +41,6 @@
                     <li><a href="#">국내도서</a></li>
                     <li><a href="#">외국도서</a></li>
                     <li><a href="#">웹소설/코믹</a></li>
-                    
                 </ul>
             </li>
             <li><a class="header_depth1" href="Book_KbigIdx.do">국내도서</a>
@@ -54,8 +53,6 @@
                     <li><a href="/bsp/book/Book_KbigIdx5.do">인문</a></li> 
                     <li><a href="/bsp/book/Book_KbigIdx6.do">자기계발</a></li> 
                     <li><a href="/bsp/book/Book_KbigIdx7.do">IT모바일</a></li> 
-   
-            
                 </ul>
             </li>    
             <li><a class="header_depth1" href="category.html">해외도서</a>
@@ -83,17 +80,20 @@
                     <li><a href="#">정가제 Free</a></li>
                     <li><a href="#">웹소설/코믹</a></li>
                     <li><a href="#">&nbsp;</a></li>
-                    
                 </ul>
             </li>
             <li><a class="header_depth1" href="category.html">신상품</a>
                 <ul class="header_depth2">
                     <li><a href="#">국내도서 신간</a></li>
                     <li><a href="#">외국도서 신간</a></li>
-                    
                 </ul>
             </li>
-            <li><a class="header_depth1" href="/bsp/sample/FAQboard.do">고객센터</a></li>
+            <li><a class="header_depth1" href="/bsp/sample/FAQboard.do">고객센터</a>
+            	<ul class="header_depth2">
+                    <li><a href="/bsp/sample/FAQboard2.do">FAQ게시판</a></li>
+                    <li><a href="/bsp/sample/FAQboard.do">문의게시판</a></li>
+                </ul>
+            </li>
             <li><a class="header_depth1" href="#">&nbsp;</a></li>
         </ul>
         </div>        

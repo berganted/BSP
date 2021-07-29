@@ -1,8 +1,5 @@
 $(function(){ 
-    $("#header").load("header.html");  
-    $("#footer").load("footer.html"); 
-    $("#side").load("sideCategory.html");   
-    $("#quick").load("quick.html");   
+   
     
     $(".header_mainMenu > ul > li >ul").hide
         

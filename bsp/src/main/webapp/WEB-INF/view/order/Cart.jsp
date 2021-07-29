@@ -17,12 +17,11 @@
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
     $(function(){
-    	var rows=document.getElementById("cart_tb").getElementsByTagName("td");
-    	 let sum = 0;
-    	  for(let i = 0; i < rows.length; i++)  {
-    	    sum += parseInt(rows[i].cells[4].innerHTML);
-    	    console.log(sum)
-    	  }
+    	console.log($('input[name=b_price]').length);
+    	for(var i=0; i<$('input[name=b_price]').length;i++){
+    		console.log($('input[name=b_price]').val())
+    	}
+    	
     })
     function groupDel() {
     	 $('#frm').attr('action','/bsp/cart/delete.do')
@@ -119,7 +118,7 @@
 	                <td><input type="checkbox" value="${list.cart_no}"  name="checkOne"></td>
 	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100%; cursor: pointer; " onclick="location.href='/bsp/book/Book_detail.do?b_no=${list.b_no }'"></td> 
 	                <td><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }"> ${list.b_title }<br> *내일수령가능</a></td> 
-	                <td><input type="text" id="b_pri" value="${list.b_price }" readonly="readonly"><br>
+	                <td><input type="text" name="b_price" value="${list.b_price }" readonly="readonly"><br>
 	                    <span>${list.b_point }</span>(5%)
 	                </td>
 	                <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->

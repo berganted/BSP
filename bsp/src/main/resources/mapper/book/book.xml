@@ -163,8 +163,7 @@
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
 			SELECT *,
 			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 = ${b_ctgno1} LIMIT 6
-			<!-- FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 5 -->
+			FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 6 
 			<include refid="bookwhere"/>
 	</select>
 <!--  popular Search 인기검색어 -->
@@ -177,7 +176,7 @@
 			COUNT(p_word)-(select count(*) from popular where p_no = p.p_no and date(p_date) = date(date_add(now(), interval -1 day))) as cnt
 		FROM popular as p
 		where date(p_date) = date(now())
-		GROUP BY p_word order by cnt DESC
+		GROUP BY p_word order by cnt DESC LIMIT 8
 	</select>
 	
 <!-- 등록된 책 총 갯수 -->

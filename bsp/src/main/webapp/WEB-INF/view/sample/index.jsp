@@ -98,14 +98,18 @@
                                   </ul>
                                </c:forEach>
                                </div> 
-	                         
-	                            
                                </div>
                                <div class="index_board_content" id="index_board_data">
                                	<div class="index_searchRank">
                                  <ul>
                                  	<c:forEach var="vo" items="${popular }" varStatus="status">
+<<<<<<< HEAD
                                      	<li> ${vo.p_word } <span>▲${vo.cnt }</span></li>
+=======
+                                     	<li> ${vo.p_word } <span><c:if test="${vo.cnt >0}">▲${vo.cnt }</c:if>
+                                                                 <c:if test="${vo.cnt==0}">-${vo.cnt }</c:if>
+                                                                 <c:if test="${vo.cnt <0}"> ▼${vo.cnt }</c:if></span></li>
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
                                     </c:forEach>                                                            
                                  </ul>
                                  </div>

@@ -30,27 +30,28 @@ public class CartController {
 		return "include/alert2";		
 	}
 	@RequestMapping("/cart/delete.do")
-	public String delete( Model model, HttpServletRequest req) {
+	public String delete(CartVo cv, Model model, HttpServletRequest req) {
 		String[] no = req.getParameterValues("checkOne");
 		int count = 0;
-		for(int i = 0; i<no.length; i++) {
-			System.out.println(no[i]);
-			CartVo vo= new CartVo();
-			vo.setCart_no(Integer.parseInt(no[i]));
-			count+=service.delete(vo);
+		if(no != null) {
+			for(int i = 0; i<no.length; i++) {
+				System.out.println(no[i]);
+				CartVo vo= new CartVo();
+				vo.setCart_no(Integer.parseInt(no[i]));
+				count+=service.delete(vo);
+			}
+		}else {
+			service.delete(cv);
+			model.addAttribute("msg", " 삭제되었습니다.");
+			model.addAttribute("url", "/bsp/order/cart.do");
+			return "include/alert";		
 		}
-		model.addAttribute("msg", " 삭제되었습니다.");
+		model.addAttribute("msg", "총"+count+ "개가 삭제되었습니다.");
 		model.addAttribute("url", "/bsp/order/cart.do");
 		return "include/alert";		
 		
 	}
-	@RequestMapping("/cart/deleteone.do")
-	public String deleteone(CartVo vo, Model model) {
-		service.delete(vo);
-		model.addAttribute("msg", " 삭제되었습니다.");
-		model.addAttribute("url", "/bsp/order/cart.do");
-		return "include/alert";		
-	}
+	
 	
 	
 }

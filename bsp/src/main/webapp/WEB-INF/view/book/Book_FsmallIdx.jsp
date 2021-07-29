@@ -70,7 +70,8 @@
 </head>
 <body>
 
- <jsp:include page="../include/header.jsp"></jsp:include>
+
+ <%@ include file="/WEB-INF/view/include/header.jsp" %>
     <div class="wrap">
         <jsp:include page="../include/sideFbig.jsp"></jsp:include>
             
@@ -188,7 +189,7 @@
             </div>
         </aside> 
     </div>
-     <jsp:include page="../include/footer.jsp"></jsp:include>
+     <%@ include file="/WEB-INF/view/include/footer.jsp" %> 
 
 </body>
 </html>

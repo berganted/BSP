@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="/bsp/css/base.css">
 <link rel="stylesheet" href="/bsp/css/style.css">
 <link rel="stylesheet" href="/bsp/css/reset.css">
+<link rel="stylesheet" href="/bsp/css/index.css">
 <script type="text/javascript">
 $(function(){
 	

@@ -25,6 +25,7 @@
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');
+    	location.href='FAQboard.do';
     	</c:if> 
     }
     </script>
@@ -113,12 +114,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="FAQmore"><a href="/bsp/sample/FAQboard2.do">더보기></a></div>                
             </div>
+            <div class="FAQmore"><a href="/bsp/sample/FAQboard2.do">더보기></a></div>                
             <div class="FAQboard_sub">
                 <div class="FAQboard_size">
                     <h3 class="sub_title">문의게시판</h3>
-        
                     <div class="bbs">
                         <table class="FAQboard_list">
                         <p><span><strong>총 ${boardVo.totCount }개</strong>  |  ${boardVo.reqPage}/${boardVo.totPage }페이지</span></p>

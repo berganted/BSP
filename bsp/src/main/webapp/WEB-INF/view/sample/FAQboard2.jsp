@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQboard</title>    
+    <title>FAQboard2</title>    
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>    
     <link rel="stylesheet" href="/bsp/css/index.css">
@@ -25,6 +25,7 @@
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');
+    	location.href='FAQboard2.do';
     	</c:if> 
     }
     </script>
@@ -42,28 +43,10 @@
             </div>
             <div class="FAQboard_sub">
                 <div class="FAQboard_size">
-                    <h3 class="sub_title">문의게시판</h3>
-        
+                    <h3 class="sub_title" style="text-align: left; padding-left: 7px; border-bottom: 1px solid #e3e3e3; padding-bottom: 10px;">
+                    FAQ</h3>
                     <div class="bbs">
                         <table class="FAQboard_list">
-                        <p><span><strong>총 ${boardVo.totCount }개</strong>  |  ${boardVo.reqPage}/${boardVo.totPage }페이지</span></p>
-                            <caption>게시판 목록</caption>
-                            <colgroup>
-                                <col width="80px" />
-	                            <col width="*" />
-	                            <col width="100px" />
-	                            <col width="200px" />
-	                            <col width="80px" />
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th>번호</th>
-                                    <th>제목</th>
-                                    <th>작성자</th>
-                                    <th>작성일</th>
-                                    <th>조회수</th>
-                                </tr>
-                            </thead>
                             <tbody>      
                                 <c:if test="${empty list }">
                             <tr>
@@ -74,17 +57,9 @@
                             <tr>
                                 <td>${(boardVo.totCount-status.index)-((boardVo.reqPage-1)*boardVo.pageRow)}</td>
                                 <td class="txt_l">
-                                    <a href="board_view.do?q_no=${vo.q_no }&reqPage=${boardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
                                     <c:forEach begin="1" end="${vo.q_nested }">&nbsp;&nbsp;&nbsp;</c:forEach>
-                                    <c:if test="${vo.q_nested > 0 }"><img src="/bsp/img/admin/answer_icon.gif"></c:if>
                                     ${vo.q_title } [${vo.comment_count}]
-                                    </a>
                                 </td>
-                                <td class="FAQboard_writer">
-                                    ${vo.name }
-                                </td>
-                                <td class="date">${vo.q_regdate }</td>
-                                <td>${vo.q_readcount }</td>
                             </tr>
                         </c:forEach>	
                                                 
@@ -96,29 +71,21 @@
                     <div class="pagenate clear">
                         <ul class='paging'> 
                         <c:if test="${boardVo.strPage > boardVo.pageRange}">
-                        	<li><a href="FAQboard.do?reqPage=${boardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
+                        	<li><a href="FAQboard2.do?reqPage=${boardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${boardVo.strPage}" end="${boardVo.endPage }">
-                            <li><a href='FAQboard.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==boardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                            <li><a href='FAQboard2.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==boardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${boardVo.totPage > boardVo.endPage}">
-                        	<li><a href="FAQboard.do?reqPage=${boardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
+                        	<li><a href="FAQboard2.do?reqPage=${boardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
                         </c:if>
                         </ul> 
                     </div>
                     
                         <!-- 페이지처리 -->
-                        <div class="bbsSearch">
+                        <div class="bbsSearch" style="padding-left: 130px;">
                         <form method="get" name="searchForm" id="searchForm" action="">
                             <span class="srchSelect">
-                                <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="q_regdate" <c:if test="${param.orderby=='q_regdate'}">selected</c:if>>작성일</option>
-                                    <option value="q_readcount" <c:if test="${param.orderby=='q_readcount'}">selected</c:if>>조회수</option>
-                                </select>
-                                <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
-                                    <option value="DESC" <c:if test="${param.direct=='DESC'}">selected</c:if>>내림차순</option>
-                                    <option value="ASC" <c:if test="${param.direct=='ASC'}">selected</c:if>>오름차순</option>
-                                </select>
                                 <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
                                     <option value="all">전체</option>
                                     <option value="q_title" <c:if test="${param.stype=='q_title'}">selected</c:if>>제목</option>

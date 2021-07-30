@@ -25,6 +25,7 @@
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');
+    	location.href='';
     	</c:if> 
     }
     </script>

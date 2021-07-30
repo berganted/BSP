@@ -17,16 +17,42 @@
     <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
-    $( document ).ready(function() {
-    	var cou=0;
-    	for(var i = 0; i<$('#pr').length;i++){
-    	console.log($('#pr').length)
-    		cou += $('#pr').text()
-    	}
-    	console.log(cou)
-    	$('#total').text(cou)
-    })
     $(function(){
+    	calc();
+    })
+    function calc() {
+    	var sum=0;
+    	$('.b_price').each(function(){
+    		var idx = $(this).index('.b_price');
+    		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
+    	});
+    	$(".totalPrice").text(sum);
+    	$("#totalPrice1").text(sum);
+    }
+  
+    function fnCalCount(type, ths){
+        var $input = $(ths).parents("td").find("input[name='pop_out']"); //부모부분인 td의 자식 name pop_out [수량입력값]
+        var tCount = Number($input.val()); //입력값 숫자타입으로 변환
+    	calc();
+        var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html()); 
+                        //입력된 수량보다 +/-가 초과되지 않도록
+
+        if(type=='p'){
+            if(tCount < tEqCount){
+            	$input.val(Number(tCount)+1);
+            	calc();//재고보다 작을경우 +1
+            }
+        }else{
+             if(tCount >0){
+            	 $input.val(Number(tCount)-1);    //0보다 클 경우 -1
+            	 calc();
+				}
+            }
+        }
+    
+   
+    $(function(){
+    	
     	$('#savedmoney').change(function(){
     		console.log(1)
     		console.log($('#savedmoney').val())
@@ -85,11 +111,11 @@
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${list.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
                             <td>${list.b_title }</td>
-                            <td id="price"><span id="pr">${list.b_price }</span>원/${vo.b_point }원</td>
+                            <td id="price"><span class="b_price">${list.b_price }</span>원/${vo.b_point }원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                             <input   type="text" name="pop_out" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
+                             <input   type="text" class="pop_out"name="pop_out" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
                              <button class="button_s"type ="button" onclick="fnCalCount('p',this);">+</button>  
                              </td>
                             <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
@@ -178,14 +204,14 @@
                         <tr >
                             <td colspan="2">
                                 <span>주문 상품 금액 정보</span>
-                                <span id="total"></span>원
+                                <span class="totalPrice"></span>원
                         </tr>
                         <tr>
                             <td>
                                 <span>상품 주문 총액</span>
-                                <span>${vo.b_price }원</span><br>
+                                <span class="totalPrice"></span>원<br>
                                 <span>결제 총액</span>
-                                <span id="total">${vo.b_price}</span>원<br>
+                                <span id="total"></span>원<br>
                             </td>
                             <td>
                                 <span>적립금</span>
@@ -197,7 +223,7 @@
                         <tr >
                             <td colspan="2">
                                 <span>남은 결제 금액</span>
-                                <span> 46,620원</span>
+                                <span class="totalPrice"></span>
                             </td>
                         </tr>
                         

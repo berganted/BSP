@@ -16,13 +16,41 @@
     <script src="/bsp/js/yesol.js"></script> <!-- 예솔 스크립트 -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
+    function calc() {
+    	var sum=0;
+    	var cnt=0
+    	$('.b_price').each(function(){
+    		var idx = $(this).index('.b_price');
+    		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
+    	});
+    	$("#totalPrice").text(sum);
+    }
+  
+    function fnCalCount(type, ths){
+        var $input = $(ths).parents("td").find("input[name='pop_out']"); //부모부분인 td의 자식 name pop_out [수량입력값]
+        var tCount = Number($input.val()); //입력값 숫자타입으로 변환
+    	calc();
+        var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html()); 
+                        //입력된 수량보다 +/-가 초과되지 않도록
+
+        if(type=='p'){
+            if(tCount < tEqCount){
+            	$input.val(Number(tCount)+1);
+            	calc();//재고보다 작을경우 +1
+            }
+        }else{
+             if(tCount >0){
+            	 $input.val(Number(tCount)-1);    //0보다 클 경우 -1
+            	 calc();
+				}
+            }
+        }
     $(function(){
-    	console.log($('input[name=b_price]').length);
-    	for(var i=0; i<$('input[name=b_price]').length;i++){
-    		console.log($('input[name=b_price]').val())
-    	}
-    	
+    	calc();
     })
+    	
+    	
+    	
     function groupDel() {
     	 $('#frm').attr('action','/bsp/cart/delete.do')
     	var cnt = 0;
@@ -118,13 +146,13 @@
 	                <td><input type="checkbox" value="${list.cart_no}"  name="checkOne"></td>
 	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100%; cursor: pointer; " onclick="location.href='/bsp/book/Book_detail.do?b_no=${list.b_no }'"></td> 
 	                <td><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }"> ${list.b_title }<br> *내일수령가능</a></td> 
-	                <td><input type="text" name="b_price" value="${list.b_price }" readonly="readonly"><br>
+	                <td><span class="b_price">${list.b_price }</span><br>
 	                    <span>${list.b_point }</span>(5%)
 	                </td>
 	                <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
 	                <td id="ant">
 	                 <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-	                 <input type="text" name="pop_out" value="${list.cart_cnt}" readonly="readonly" style="width: 50px; text-align: center;">
+	                 <input type="text" class="pop_out" name="pop_out" value="${list.cart_cnt}" readonly="readonly" style="width: 50px; text-align: center;">
 	                 <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
 	                 </td>
 	                <td><input class="button_s" type="button" name="del" value="삭제" onclick="delone();"><input type="hidden"value="${list.cart_no}" name="cart_no"></td>
@@ -136,7 +164,7 @@
         <table id="cart_tb" class="cart_s">
             <tr>
                 <td>총 상품 가격&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>46,620원&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><span id="totalPrice">46,620</span>원&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>멤버십 마일리지&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>0원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             </tr>

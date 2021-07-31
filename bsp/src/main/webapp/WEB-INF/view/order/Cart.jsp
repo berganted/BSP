@@ -68,10 +68,10 @@
 			<c:forEach var="list" items="${cartList}">  
 	            <tr data-tr_value="1">
 	                <td><input type="checkbox" value="select"  name="checkOne"></td>
-	                <td	style="text-align:center;"><div ><img src="/bsp/img/${list.b_imgmain}" style="height: 200px; width: 200px;"></div></td> 
+	                <td	style="text-align:center;"><div ><img src="/bsp/img/${list.b_imgmain}" style="height: 71px; width: 58px;"></div></td> 
 	                <td><a href=""> ${list.b_title }<br> *내일수령가능</a></td> 
-	                <td>${list.b_price }<br>
-	                    ${list.b_point }(5%)
+	                <td>정가: ${list.b_price }원<br>
+	                    마일리지: ${list.b_point }원(5%)
 	                </td>
 	                <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
 	                <td id="ant">

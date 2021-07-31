@@ -12,7 +12,7 @@ public class CommonVo {
 	private int strPage;
 	protected int pageRange;
 	private String stype;
-	private String sval;;
+	private String sval;
 	protected String orderby; // 정렬 컬럼
 	protected String direct; //오름차순 내림차순
 	private String filename_org;

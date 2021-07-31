@@ -19,14 +19,17 @@ public class PointDao {
 	public PointVo detail(PointVo vo) {
 		return sessionTemplate.selectOne("point.detail",vo);
 	}
-	public int insert(PointVo vo) {
-		return sessionTemplate.insert("point.insert",vo);
+	public int insertUse(PointVo vo) {
+		return sessionTemplate.insert("point.insertUse",vo);
+	}
+	public int insertA(PointVo vo) {
+		return sessionTemplate.insert("point.insertA",vo);
 	}
 	public int update(PointVo vo) {
 		return sessionTemplate.update("point.update",vo);
 	}
-	public int delete(PointVo vo) {
-		return sessionTemplate.delete("point.delete", vo);
-
+	public int updateUse(PointVo vo) {
+		return sessionTemplate.update("point.updateUse",vo);
 	}
+	
 }

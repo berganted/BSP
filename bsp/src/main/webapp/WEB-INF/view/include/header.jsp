@@ -6,11 +6,11 @@
     <div class="index_wrap">
         <div class="header_top">
             <div class="header_search">
-                <form action="#">
-                    <input type="search" placeholder="검색어를 입력하세요">
+                <form method="get" name="searchForm2" id="searchForm2" action="index_search.do">
+                    <input type="text" id="sval" name="sval" value="${param.sval }" placeholder="검색어를 입력하세요">
                 </form>
                 <div class="header_searchIcon">
-                    <img src="/bsp/img/logo/Search.png">
+                	<img src="/bsp/img/logo/Search.png" onclick="$('#searchForm2').submit();">
                 </div>
             </div>
             <div class="header_logo">
@@ -20,14 +20,14 @@
             <c:if test="${empty userInfo}">
                 <a href="/bsp/user/login.do">로그인</a>
                 <a href="/bsp/user/reg.do">회원가입</a>
-                <a href="join.html">장바구니</a>                                       
+                <a href="/bsp/order/cart.do">장바구니</a>                                       
                 <a href="/bsp/user/mypage.do">마이페이지</a>
             </c:if>
             <c:if test="${!empty userInfo}">
 				<a>${ userInfo.m_name}</a>
 				<a onclick="location.href='/bsp/user/logout.do'">로그아웃</a> 
-				<a href="join.html">장바구니</a>                                       
-                <a href="/bsp//user/mypage.do">마이페이지</a>
+				<a href="/bsp/order/cart.do">장바구니</a>                                       
+                <a href="/bsp/user/mypage.do">마이페이지</a>
 			</c:if>
             </div>
         </div>
@@ -41,43 +41,30 @@
                     <li><a href="#">국내도서</a></li>
                     <li><a href="#">외국도서</a></li>
                     <li><a href="#">웹소설/코믹</a></li>
-                    
                 </ul>
             </li>
-            <li><a class="header_depth1" href="category.html">국내도서</a>
+            <li><a class="header_depth1" href="/bsp/book/Book_KbigIdx.do">국내도서</a>
                 <ul class="header_depth2">
-                    <li><a href="#">소설/시</a></li>
-                    <li><a href="#">에세이</a></li>
-                    <li><a href="#">인문</a></li>
-                    <li><a href="#">역사</a></li>
-                    <li><a href="#">예술</a></li>
-                    <li><a href="#">종교</a></li>
-                    <li><a href="#">사회</a></li>
-                    <li><a href="#">과학</a></li>
-                    <li><a href="#">경제 경영</a></li>
-                    <li><a href="#">자기계발</a></li>
-                    <li><a href="#">만화</a></li>
-                    <li><a href="#">라이트노벨</a></li>
-                    <li><a href="#">여행</a></li>
-                    <li><a href="#">잡지</a></li>
+                    <li><a href="/bsp/book/Book_KbigIdx.do">가정살림</a></li>
+                    <li><a href="/bsp/book/Book_KbigIdx1.do">경제 경영</a></li>
+                    <li><a href="/bsp/book/Book_KbigIdx2.do">소설</a></li>
+                    <li><a href="/bsp/book/Book_KbigIdx3.do">에세이</a></li> 
+                    <li><a href="/bsp/book/Book_KbigIdx4.do">여행</a></li> 
+                    <li><a href="/bsp/book/Book_KbigIdx5.do">인문</a></li> 
+                    <li><a href="/bsp/book/Book_KbigIdx6.do">자기계발</a></li> 
+                    <li><a href="/bsp/book/Book_KbigIdx7.do">IT모바일</a></li> 
                 </ul>
             </li>    
-            <li><a class="header_depth1" href="category.html">해외도서</a>
+            <li><a class="header_depth1" href="/bsp/book/Book_FbigIdx.do">외국도서</a>
                 <ul class="header_depth2">
-                    <li><a href="#">ELT 사전</a></li>
-                    <li><a href="#">문학 소설</a></li>
-                    <li><a href="#">경제 경영</a></li>
-                    <li><a href="#">인문 사회</a></li>
-                    <li><a href="#">예술 대중문화</a></li>
-                    <li><a href="#">취미 라이프스타일</a></li>
-                    <li><a href="#">컴퓨터</a></li>
-                    <li><a href="#">자연과학</a></li>
-                    <li><a href="#">대학교재 전문서</a></li>
-                    <li><a href="#">해외잡지</a></li>
-                    <li><a href="#">유아어린이청소년</a></li>
-                    <li><a href="#">캐릭터북</a></li>
-                    <li><a href="#">초등코스북</a></li>
-                    <li><a href="#">학습서</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx.do">가정살림</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx1.do">경제 경영</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx2.do">소설</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx3.do">에세이</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx4.do">여행</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx5.do">인문</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx6.do">자기계발</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx7.do">IT모바일</a></li> 
                 </ul>
             </li>              
             <li><a class="header_depth1" href="category.html">베스트</a>
@@ -87,19 +74,23 @@
                     <li><a href="#">정가제 Free</a></li>
                     <li><a href="#">웹소설/코믹</a></li>
                     <li><a href="#">&nbsp;</a></li>
-                    
                 </ul>
             </li>
             <li><a class="header_depth1" href="category.html">신상품</a>
                 <ul class="header_depth2">
                     <li><a href="#">국내도서 신간</a></li>
                     <li><a href="#">외국도서 신간</a></li>
-                    
                 </ul>
             </li>
-            <li><a class="header_depth1" href="/bsp/sample/FAQboard.do">고객센터</a></li>
+            <li><a class="header_depth1" href="/bsp/sample/FAQboard.do">고객센터</a>
+            	<ul class="header_depth2">
+                    <li><a href="/bsp/sample/FAQboard2.do">FAQ게시판</a></li>
+                    <li><a href="/bsp/sample/FAQboard.do">문의게시판</a></li>
+                </ul>
+            </li>
             <li><a class="header_depth1" href="#">&nbsp;</a></li>
         </ul>
         </div>        
     </div>  
 </div>  
+

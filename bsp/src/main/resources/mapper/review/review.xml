@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+
+	<select id="selectAll" resultType="review.ReviewVo" parameterType="review.ReviewVo">
+		SELECT *, (SELECT m_name FROM user WHERE m_no=review.m_no) AS name FROM review
+		WHERE b_no=#{b_no} 
+		ORDER BY r_regdate DESC
+		LIMIT ${strIdx},${pageRow}
+	</select>
+	
+	<select id="count" resultType="int" parameterType="review.ReviewVo">
+		SELECT COUNT(*) FROM review
+		WHERE b_no=#{b_no} 
+	</select>
+	
+	<insert id="insert" parameterType="review.ReviewVo">
+		INSERT INTO review (r_content, r_regdate, m_no, b_no, r_grade)
+		VALUES (#{r_content}, NOW(), #{m_no}, #{b_no}, #{r_grade})
+	</insert>
+	
+	
+	<delete id="delete" parameterType="review.ReviewVo">
+		DELETE FROM review WHERE r_no=#{r_no}
+	</delete>
+	 
+</mapper>

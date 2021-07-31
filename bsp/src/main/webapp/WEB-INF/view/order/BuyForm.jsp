@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,18 +17,68 @@
     <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
-    //삭제 버튼 클릭시 행 삭제
-    function deleteRow(ths){
-        var ths = $(ths);
-        var trCnt = $(".buy_info tr").length;
- 
-        if(trCnt>2){
-        ths.parents("tr").remove();
-        }else{
-            alert('1개이상 선택해주세요!');
-            return false;
-        }
+    $(function(){
+    	calc();
+    	$('#savedmoney').change(function(){
+    		console.log( $('#po').val() )
+    		console.log($('#savedmoney').val())
+    		if($('#savedmoney').val() > $('#po').val() ){
+    			alert('보유포인트를 초과할수 없습니다.')
+    			$('#savedmoney').val('0')
+    			return false
+    		}else if($('#savedmoney').val() < 100){
+    			alert('100포인트 이상부터 사용할수있습니다.')
+    			$('#savedmoney').val('0')
+    			return false
+    		}
+    		calc();
+    		var a = $('#total').text()-$('#savedmoney').val();
+    		$('#total').text(a)
+    		$('#total1').val(a)
+    	})
+    })
+    function calc() {
+    	var sum=0;
+    	var psum=0;
+    	$('.b_price').each(function(){
+    		var idx = $(this).index('.b_price');
+    		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
+    		psum += Number($(".point").eq(idx).text());
+    		console.log(psum)
+    	});
+    	$(".totalPrice").text(sum);
+    	$("#total").text(sum);
+    	$("#total1").val(sum);
+    	$("#totPoint").val(psum);
     }
+  
+    function fnCalCount(type, ths){
+        var $input = $(ths).parents("td").find(".pop_out"); //부모부분인 td의 자식 name pop_out [수량입력값]
+        var tCount = Number($input.val()); //입력값 숫자타입으로 변환
+    	calc();
+        var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html()); 
+                        //입력된 수량보다 +/-가 초과되지 않도록
+
+        if(type=='p'){
+            if(tCount < tEqCount){
+            	$input.val(Number(tCount)+1);
+            	calc();//재고보다 작을경우 +1
+            }
+        }else{
+             if(tCount >0){
+            	 $input.val(Number(tCount)-1);    //0보다 클 경우 -1
+            	 calc();
+				}
+            }
+        }
+    function pointall() {
+		$('#savedmoney').val($('#po').val());
+		calc();
+		var a = $('#total').text()-$('#savedmoney').val();
+		$('#total').text(a)
+		$('#total1').val(a)
+    }
+   
     </script>
    
 </head>
@@ -39,7 +90,7 @@
 		<jsp:include page="../include/side2.jsp"></jsp:include>
         <div class="mem_content">
          <h1>주/문/과/정</h1>
-            <form action="Buy success.html" method="POST">
+            <form action="insert.do" method="POST">
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
@@ -52,53 +103,30 @@
                             <td id="del">삭제</td>
                         </tr>
                         <tr>
-                            <td><input type="image" name="bookimage"></td>
-                            <td>미드나잇 라이브러리</td>
-                            <td id="price">14,220원/790원</td>
+                            <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
+                            <td>${param.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
+                            <td id="price">${vo.b_price }원/${vo.b_point }원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                             <input   type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
+                             <input   type="text" class="pop_out"name="io_amount" value="${param.io_amount }" readonly="readonly" style="width: 50px; text-align: center;">
                              <button class="button_s"type ="button" onclick="fnCalCount('p',this);">+</button>  
                              </td>
                             <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
                         </tr>
-                        <tr>
-                            <td><input type="image" name="bookimage"></td>
-                            <td>집으로 돌아가는 길</td>
-                            <td id="price">15,300원/8500원</td>
-                            <td class="bseq_ea">5</td>  <!--  출력할 필요는 없음 -->
-                            <td id="ant">
-                             <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                             <input  type="text" name="pop_out" value="1" readonly="readonly" style="width: 50px; text-align: center;">
-                             <button  class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button> 
-                             </td>
-                            <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
-                        </tr>
-                        <tr>
-                            <td><input type="image" name="bookimage"></td>
-                            <td>북쪽으로 가는길 - 노르웨이의 빛을 담다</td>
-                            <td id="price">17,100원/950원</td>
-                            <td class="bseq_ea">13</td>  <!--  출력할 필요는 없음 -->
-                            <td id="ant">
-                             <button class="button_s" type="button" onclick="fnCalCount('m', this);">-</button> 
-                             <input type="text" name="pop_out" value="1"readonly="readonly" style="width: 50px; text-align: center;">
-                             <button class="button_s" type ="button" onclick="fnCalCount('p',this);">+</button>
-                             </td>
-                            <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
-                        </tr>
+                        
                     </table>
                     <h4>배송 방법 선택</h4>
                     <table id="buy_tb" >
                         <tr>
                             <td>배송방법</td>
                             <td >
-                               <input type="radio" name="delivery" value="cj">택배 <br>
-                               <input type="radio" name="delivery" value="post">우체국 택배 <br>
-                               <input type="radio" name="delivery" value="conv">편의점 방문 픽업 <br>
+                               <input type="radio" name="pb_delivery" value="cj">택배 <br>
+                               <input type="radio" name="pb_delivery" value="post">우체국 택배 <br>
+                               <input type="radio" name="pb_delivery" value="conv">편의점 방문 픽업 <br>
                             </td>
                         </tr>
-                    </table>
+                    </table>  
                     <h4>배송 정보 입력 (*필수 입력 항목)</h4>
                     <table id="buy_tb">
                      <tr>
@@ -113,31 +141,29 @@
                      <tr>
                         <td>* 주문인</td>
                         <td>
-                            <input type="text" name="name" value="전나나 " checked><br>
+                            <input type="text" name="name" value="${userInfo.m_name } " checked><br>
                             휴대폰 번호: 010-**34-5648
                         </td>
                      </tr>
                      <tr>
                         <td>* 받으시는 분</td>
                         <td>
-                            <input type="text" name="name" value="전나나 " checked ><br>
+                            <input type="text" name="pb_resname" value="전나나 " checked ><br>
                         </td>
                      </tr>
                      <tr>
                         <td>* 주소</td>
                         <td>
-                             <input type="text"  name="add_1" maxlength="5" style="width:173px; " > 
+                             <input type="text"  name="pb_zipcode" maxlength="5" style="width:173px; " value="${userInfo.m_zipcode }" > 
                              <button class="button_s" type="button" onclick="openZipSearch()">검색</button>&nbsp;우편번호<br>
-                             <input type="text" name="add_2" style="width:250px; " />기본주소<br>
-                             <input type="text" name="add_3" style="width:250px; "/>상세주소
+                             <input type="text" name="pb_addr1" style="width:250px; " value="${userInfo.m_addr1 }"/>기본주소<br>
+                             <input type="text" name="pb_addr2	" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
                         </td>
                      </tr>
                      <tr>
                         <td>* 휴대전화번호</td>
                         <td>
-                            <input type="text" name="phone numbers1" style="width: 100px;" > -
-                            <input type="text" name="phone numbers2" style="width: 100px;" > -
-                            <input type="text" name="phone numbers3" style="width: 100px;"> 
+                            <input type="text" name="pb_restel numbers3" style="width: 310px;" value="${userInfo.m_tel }"> 
                            
                         </td>
                      </tr>
@@ -159,9 +185,9 @@
                     <table  id="buy_now" style="text-align: center;">
                            <tr>
                                <td>적립금</td>
-                               <td>보유액: 20,000원 ▷ 
-                                   <input type="text" name="savedmoney" >
-                                   <input class="button_s" type="button" name="전액" value="전액"> 
+                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${userInfo.m_point }">  원 ▷
+                                   <input type="text" id="savedmoney"name="savedmoney" >
+                                   <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 
                                </td>
                            </tr>
                        </table>
@@ -171,18 +197,18 @@
                         <tr >
                             <td colspan="2">
                                 <span>주문 상품 금액 정보</span>
-                                <span>총 3권(장), 46,620원</span>
+                                <span id="total">${vo.b_price}</span>원
                         </tr>
                         <tr>
                             <td>
                                 <span>상품 주문 총액</span>
-                                <span>46,620원</span><br>
+                                <span>${vo.b_price }원</span><br>
                                 <span>결제 총액</span>
-                                <span>0원</span><br>
+                                <span id="total">${vo.b_price}</span>원<br>
                             </td>
                             <td>
                                 <span>적립금</span>
-                                <span>3000원</span><br>
+                                <span>${vo.b_point }</span><br>
                                 <span>배송료</span>
                                 <span>0원</span><br>
                             </td>
@@ -206,17 +232,7 @@
                             </td>
                            </tr>
                        </table>
-                       <h4>소득 공제 신청</h4>
-                       <table id="buy_tb" style="text-align: center;">
-                           <tr>
-                               <td>  
-                                <input type="radio" name="tax" value="Y"> 소득공제 신청
-                                <input type="radio" name="tax" value="N">소득공제 신청안함 <br>
-                                주문 접수 후 소득공제 신청 여부는 변경할 수 없으니 지금 신청해주세요.<br>
-                                현금성 포인트 사용액 중 소득공제 대상은 현금영수증 발급 과정에서 자동으로 국세청에 반영됩니다.
-                            </td>
-                           </tr>
-                       </table>
+                       
                             <div class="buy_submit">
                                 <input class="button_m" type="submit" value="결제" >
                                 <input class="button_m" type="reset" value="취소" >

@@ -92,8 +92,8 @@
 									<tr>
 										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
 										<td>${list.io_no }</td>
-										<td class="title"><a href="view.do?pb_no=${list.pb_no }&reqPage=${orderVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
-											${list.b_title }<c:if test="${list.count>1 }">외 ${list.count - 1}권</c:if></a>
+										<td class="title">
+											${list.b_title }<c:if test="${list.count>1 }">외 ${list.count - 1}권</c:if>
 										<td>${list.io_amount }</td>
 										<td><fmt:formatNumber value="${list.b_price }" groupingUsed="true" /></td>
 										<td><fmt:formatNumber value="${list.b_price * list.io_amount}" groupingUsed="true" /></td>

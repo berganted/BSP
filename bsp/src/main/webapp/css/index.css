@@ -161,8 +161,8 @@ li {
     z-index: 9994;
     height: 30px;
     width: 30px;
+	cursor:pointer;
 }
-
 
 .header_search > form{
     width: 600px;
@@ -358,6 +358,17 @@ li {
     height: auto;
     margin-top: 50px;
     /* border-bottom: 1px solid rgb(211, 205, 205); */
+}
+
+.FAQmore {
+	margin-top: 20px;
+	margin-left: 32px;	
+}
+
+.FAQmore > a:hover {
+	cursor: pointer;
+	color: #6266ea;
+	text-decoration: underline;
 }
 
 .support_change > ul {
@@ -1037,7 +1048,4 @@ li {
     width: 1300px;
     margin: 20px auto;
     float: left;
-    
-    
-
 }

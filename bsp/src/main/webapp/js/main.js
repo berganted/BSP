@@ -1,17 +1,12 @@
 $(function(){ 
-    $("#header").load("header.html");  
-    $("#footer").load("footer.html"); 
-    $("#side").load("sideCategory.html");   
-    $("#quick").load("quick.html");
+
 
     $('.radio_pwd').click(function(){
-        console.log(1);
         $('.find_id').css('display','none') ;  
         $('.find_pwd').css('display','block')   ;
         
     })
     $('.radio_id').click(function(){
-        console.log(1);
         $('.find_pwd').css('display','none') ;  
         $('.find_id').css('display','block')   ;
         
@@ -19,9 +14,7 @@ $(function(){
       
     console.log($('.mem_content').position().left)
     var q_left = $('.mem_content').position().left+1335;
-    
     var q_top = $('.mem_content').position().top;
-    console.log($('.mem_content').position().q_left)
    
     $(".mypage_ad").css({
         'top':q_top,
@@ -94,5 +87,8 @@ $(function(){
             alert(response.d);
         }
     });
+    
+
    
 }
+   

@@ -7,9 +7,11 @@ public interface PointService {
 
 	int insert(PointVo vo);
 
-	int update(PointVo vo);
-
 	int delete(PointVo vo);
+	int insertUse(PointVo vo);
+	int insertA(PointVo vo);
+	int update(PointVo vo);
+	int updateUse(PointVo vo);
 
 
 }

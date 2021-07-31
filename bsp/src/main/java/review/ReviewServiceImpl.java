@@ -1,18 +1,18 @@
-package point;
+package review;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Service // bean에 등록
+public class ReviewServiceImpl implements ReviewService {
 
-@Service
-public class PointServiceimpl implements PointService {
 	@Autowired
-	PointDao dao ;
-
+	ReviewDao dao; // 페이지 메소드를 사용 할 수 있게됨
+	
 	@Override
-	public List<PointVo> selectAll(PointVo vo) {
+	public List<ReviewVo> selectAll(ReviewVo vo) {
 		int totCount = dao.count(vo); // 총갯수
 		// 총페이지수
 		int totPage = totCount / vo.getPageRow();
@@ -29,39 +29,15 @@ public class PointServiceimpl implements PointService {
 		vo.setTotPage(totPage);
 		return dao.selectAll(vo);
 	}
-	
-	@Override
-	public int update(PointVo vo) {
-		return dao.update(vo);
-	}
 
-	
 	@Override
-	public int insertUse(PointVo vo) {
-		return dao.insertUse(vo);
+	public int insert(ReviewVo vo) {
+		return dao.insert(vo);
 	}
 
 	@Override
-	public int insertA(PointVo vo) {
-		return dao.insertA(vo);
+	public int delete(ReviewVo vo) {
+		return dao.delete(vo);
 	}
 
-	@Override
-	public int insert(PointVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(PointVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int updateUse(PointVo vo) {
-		return dao.updateUse(vo);
-	}
-
-	
 }

@@ -43,8 +43,7 @@ public class OrderServiceimpl implements OrderService {
 
 	@Override
 	public int insert(OrderVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.insert(vo);
 	}
 
 	@Override
@@ -110,6 +109,11 @@ public class OrderServiceimpl implements OrderService {
 	@Override
 	public OrderVo selectoneAdmin(OrderVo vo) {
 		return dao.selectoneAdmin(vo);
+	}
+
+	@Override
+	public int insertIo(OrderVo vo) {
+		return dao.insertIo(vo);
 	}
 
 

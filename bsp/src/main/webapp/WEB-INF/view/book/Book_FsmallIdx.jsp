@@ -14,10 +14,10 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
-    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> --> <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
+    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
-    <title>국내도서</title>
+    <title>외국도서</title>
  
 
     <style>
@@ -62,51 +62,17 @@
     </style>
     <script>
     function sendPageRow() {
-    	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
+    	location.href='Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
-    
-    function gosave() {
-  	  $('#frm').attr('action','/bsp/cart/insert.do')
-  	  if($('#m_no').val()==0){
-  		  alert('로그인하세요')
-  		  return false
-  	  }
-  	  $('#frm').submit();
-  	  }
-    
-    function goorder() {
-    	
-  	   if($('#m_no').val()==0){
-  		  alert('로그인이 필요합니다.')
-  		  location.href="/bsp/user/login.do"
-  		  return false
-  	   }
-  	   console.log( $(this).find(".b_no").val() )
-  	 	//location.href='/bsp/order/buy.do?b_no='$(this).find('#b_no').val()
-  	
-  }
-    
-    $(function() {
-		$('.btn2').click(function(){
-			console.log(1)
-			if($('#m_no').val()==0){
-	  		  alert('로그인이 필요합니다.')
-	  		  location.href="/bsp/user/login.do"
-	  		  return false
-			}
-			console.log($(this).next().val())
-			location.href='/bsp/order/buy.do?b_no='+$(this).next().val();
-			
-		})
-	})
     </script>
 
 
 </head>
 <body>
+
  <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
-       <jsp:include page="../include/sideKbig.jsp"></jsp:include>
+        <jsp:include page="../include/sideFbig.jsp"></jsp:include>
             
         </div>  
 
@@ -115,11 +81,11 @@
  
             <div class="indexWrap">
                 <div class="indexPlace">
-                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
-                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
-                    <span class="new"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">신상품순</a></span>
-                    <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC&pageRow=${param.pageRow}">최저가순</a></span>
-                    <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC&pageRow=${param.pageRow}	">최고가순</a></span>
+                    <span class="original"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
+                    <span class="sell"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
+                    <span class="new"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">신상품순</a></span>
+                    <span class="lowPrice"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC&pageRow=${param.pageRow}">최저가순</a></span>
+                    <span class="highPrice"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC&pageRow=${param.pageRow}	">최고가순</a></span>
                     
                     
                    <!-- 강사님한테 물어보기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
@@ -145,26 +111,20 @@
                         <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                          <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
-                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> < </a></li>
+                        <li><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> < </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
-                            <li><a href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                            <li><a href='Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> > </a></li>
+                        	<li><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> > </a></li>
                         </c:if>
                         </ul> 
                     </div>
-               
-<!--                  <div class="s_pay3">
-                            <input type="button"  class="btn3" value="카트에 넣기">
-                  </div> -->
-               
                 </div>
          
             </div>
             <!-- 1 -->
-          <form id='frm' action="/bsp/cart/insert.do" method="get">
             <c:forEach var = "vo" items="${list }">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
@@ -201,17 +161,15 @@
                         
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
+                            <input type="button" class="btn1" value="카트에 넣기" onClick="location.href='http://www.daum.net'" >
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="b_no" value="${vo.b_no }"> 
+                            <input type="button"  class="btn2" value="바로구매" onClick="location.href='http://www.daum.net'">
                         </div>
                     </div>
                 </div>
              </div>
              </c:forEach>
-             </form>
             
 
 

@@ -19,19 +19,41 @@
     <script> 
     $(function(){
     	calc();
+    	$('#savedmoney').change(function(){
+    		console.log( $('#po').val() )
+    		console.log($('#savedmoney').val())
+    		if($('#savedmoney').val() > $('#po').val() ){
+    			alert('보유포인트를 초과할수 없습니다.')
+    			$('#savedmoney').val('0')
+    			return false
+    		}else if($('#savedmoney').val() < 100){
+    			alert('100포인트 이상부터 사용할수있습니다.')
+    			$('#savedmoney').val('0')
+    			return false
+    		}
+    		calc();
+    		var a = $('#total').text()-$('#savedmoney').val();
+    		$('#total').text(a)
+    		$('#total1').val(a)
+    	})
     })
     function calc() {
     	var sum=0;
+    	var psum=0;
     	$('.b_price').each(function(){
     		var idx = $(this).index('.b_price');
     		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
+    		psum += Number($(".point").eq(idx).text());
+    		console.log(psum)
     	});
     	$(".totalPrice").text(sum);
-    	$("#totalPrice1").text(sum);
+    	$("#total").text(sum);
+    	$("#total1").val(sum);
+    	$("#totPoint").val(psum);
     }
   
     function fnCalCount(type, ths){
-        var $input = $(ths).parents("td").find("input[name='pop_out']"); //부모부분인 td의 자식 name pop_out [수량입력값]
+        var $input = $(ths).parents("td").find(".pop_out"); //부모부분인 td의 자식 name pop_out [수량입력값]
         var tCount = Number($input.val()); //입력값 숫자타입으로 변환
     	calc();
         var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html()); 
@@ -53,18 +75,7 @@
    
     $(function(){
     	
-    	$('#savedmoney').change(function(){
-    		console.log(1)
-    		console.log($('#savedmoney').val())
-    		if($('#savedmoney').val() > $('#po').val()){
-    			alert('보유포인트를 초과할수 없습니다.')
-    			$('#savedmoney').val('')
-    			return false
-    		}
-    		var a = $('#total').text()-$('#savedmoney').val();
-    		$('#total').text(a)
-    		
-    	})
+    
     })
     //삭제 버튼 클릭시 행 삭제
     function deleteRow(ths){
@@ -79,10 +90,11 @@
         }
     }
     function pointall() {
-		console.log($('#po').val());
 		$('#savedmoney').val($('#po').val());
+		calc();
 		var a = $('#total').text()-$('#savedmoney').val();
 		$('#total').text(a)
+		$('#total1').val(a)
     }
     </script>
    
@@ -95,7 +107,8 @@
 		<jsp:include page="../include/side2.jsp"></jsp:include>
         <div class="mem_content">
          <h1>주/문/과/정</h1>
-            <form action="" method="POST">
+            <form action="insert.do" method="POST" id=frm>
+            <input type="hidden" name="m_no" value="${userInfo.m_no }">
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
@@ -110,12 +123,14 @@
                         <c:forEach var="list" items="${list }">
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${list.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
-                            <td>${list.b_title }</td>
-                            <td id="price"><span class="b_price">${list.b_price }</span>원/${vo.b_point }원</td>
+
+                            <td>${list.b_title } <input type="hidden" name="b_no" value="${list.b_no }"/>
+                            					 <input type="hidden" name=cart_no value="${list.cart_no }"/></td>
+                            <td id="price"><span class="b_price">${list.b_price }</span>원/<span class=point>${list.b_point }</span>원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                             <input   type="text" class="pop_out"name="pop_out" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
+                             <input   type="text" class="pop_out"name="io_amount" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
                              <button class="button_s"type ="button" onclick="fnCalCount('p',this);">+</button>  
                              </td>
                             <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
@@ -128,9 +143,9 @@
                         <tr>
                             <td>배송방법</td>
                             <td >
-                               <input type="radio" name="delivery" value="cj">택배 <br>
-                               <input type="radio" name="delivery" value="post">우체국 택배 <br>
-                               <input type="radio" name="delivery" value="conv">편의점 방문 픽업 <br>
+                               <input type="radio" name="pb_delivery" value="cj">택배 <br>
+                               <input type="radio" name="pb_delivery" value="post">우체국 택배 <br>
+                               <input type="radio" name="pb_delivery" value="conv">편의점 방문 픽업 <br>
                             </td>
                         </tr>
                     </table>
@@ -155,7 +170,7 @@
                      <tr>
                         <td>* 받으시는 분</td>
                         <td>
-                            <input type="text" name="bp_resname" value="전나나 " checked ><br>
+                            <input type="text" name="pb_resname" value="전나나 " checked ><br>
                         </td>
                      </tr>
                      <tr>
@@ -192,7 +207,7 @@
                     <table  id="buy_now" style="text-align: center;">
                            <tr>
                                <td>적립금</td>
-                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${userInfo.m_point }">  원 ▷
+                               <td>보유액:<input type="text" readonly="readonly" id="po" name="p_used" value="${userInfo.m_point }">  원 ▷
                                    <input type="text" id="savedmoney"name="savedmoney" >
                                    <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 
                                </td>
@@ -215,15 +230,15 @@
                             </td>
                             <td>
                                 <span>적립금</span>
-                                <span>${vo.b_point }</span><br>
+                                 <input type="text" id=totPoint name="p_usage" readonly="readonly" value=""/><br>
                                 <span>배송료</span>
-                                <span>0원</span><br>
+                                <span >0원</span><br>
                             </td>
                         </tr>
                         <tr >
                             <td colspan="2">
                                 <span>남은 결제 금액</span>
-                                <span class="totalPrice"></span>
+                                <input type="text"  id="total1" name="pb_totalprice" value="" readonly="readonly">
                             </td>
                         </tr>
                         

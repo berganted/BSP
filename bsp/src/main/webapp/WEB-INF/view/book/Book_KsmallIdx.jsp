@@ -64,6 +64,41 @@
     function sendPageRow() {
     	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
+    
+    function gosave() {
+  	  $('#frm').attr('action','/bsp/cart/insert.do')
+  	  if($('#m_no').val()==0){
+  		  alert('로그인하세요')
+  		  return false
+  	  }
+  	  $('#frm').submit();
+  	  }
+    
+    function goorder() {
+    	
+  	   if($('#m_no').val()==0){
+  		  alert('로그인이 필요합니다.')
+  		  location.href="/bsp/user/login.do"
+  		  return false
+  	   }
+  	   console.log( $(this).find(".b_no").val() )
+  	 	//location.href='/bsp/order/buy.do?b_no='$(this).find('#b_no').val()
+  	
+  }
+    
+    $(function() {
+		$('.btn2').click(function(){
+			console.log(1)
+			if($('#m_no').val()==0){
+	  		  alert('로그인이 필요합니다.')
+	  		  location.href="/bsp/user/login.do"
+	  		  return false
+			}
+			console.log($(this).next().val())
+			location.href='/bsp/order/buy.do?b_no='+$(this).next().val();
+			
+		})
+	})
     </script>
 
 
@@ -129,6 +164,7 @@
          
             </div>
             <!-- 1 -->
+          <form id='frm' action="/bsp/cart/insert.do" method="get">
             <c:forEach var = "vo" items="${list }">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
@@ -165,15 +201,17 @@
                         
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="location.href='http://www.daum.net'" >
+                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" onClick="location.href='http://www.daum.net'">
+                            <input type="button"  class="btn2" value="바로구매" >
+                            <input type="hidden" class="b_no" name="b_no" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>
              </div>
              </c:forEach>
+             </form>
             
 
 

@@ -12,6 +12,20 @@
 		SELECT COUNT(*) FROM point
 		
 	</select>
+	<insert id="insertUse" parameterType="point.PointVo">
+		INSERT INTO point (m_no,p_state,p_content,p_used,p_regdate) VALUES(#{m_no},#{p_state},#{p_content},#{p_used},NOW())
+	</insert>
+	<insert id="insertA " parameterType="point.PointVo">
+		INSERT INTO point (m_no,p_state,p_content,p_usage,p_regdate) VALUES(#{m_no},#{p_state},#{p_content},#{p_usage},NOW())
+	</insert>
+	<update id="update" parameterType="point.PointVo">
+		UPDATE user set m_point = m_point+#{p_usage}
+		WHERE m_no=#{m_no}
+	</update>
+	<update id="updateUse"  parameterType="point.PointVo">
+		UPDATE user set m_point = m_point-#{p_used}
+		WHERE m_no=#{m_no}
+	</update>
 	
 	
 	

@@ -48,4 +48,7 @@ public class OrderDao {
 	public int countAdmin(OrderVo vo) {
 		return sessionTemplate.selectOne("order.countAdmin",vo);
 	}
+	public int insertIo(OrderVo vo) {
+		return sessionTemplate.insert("order.insertIo",vo);
+	}
 }

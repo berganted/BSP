@@ -18,37 +18,67 @@
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
     $(function(){
+    	calc();
     	$('#savedmoney').change(function(){
-    		console.log(1)
+    		console.log( $('#po').val() )
     		console.log($('#savedmoney').val())
-    		if($('#savedmoney').val() > $('#po').val()){
+    		if($('#savedmoney').val() > $('#po').val() ){
     			alert('보유포인트를 초과할수 없습니다.')
-    			$('#savedmoney').val('')
+    			$('#savedmoney').val('0')
+    			return false
+    		}else if($('#savedmoney').val() < 100){
+    			alert('100포인트 이상부터 사용할수있습니다.')
+    			$('#savedmoney').val('0')
     			return false
     		}
+    		calc();
     		var a = $('#total').text()-$('#savedmoney').val();
     		$('#total').text(a)
-    		
+    		$('#total1').val(a)
     	})
     })
-    //삭제 버튼 클릭시 행 삭제
-    function deleteRow(ths){
-        var ths = $(ths);
-        var trCnt = $(".buy_info tr").length;
- 
-        if(trCnt>2){
-        ths.parents("tr").remove();
-        }else{
-            alert('1개이상 선택해주세요!');
-            return false;
-        }
+    function calc() {
+    	var sum=0;
+    	var psum=0;
+    	$('.b_price').each(function(){
+    		var idx = $(this).index('.b_price');
+    		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
+    		psum += Number($(".point").eq(idx).text());
+    		console.log(psum)
+    	});
+    	$(".totalPrice").text(sum);
+    	$("#total").text(sum);
+    	$("#total1").val(sum);
+    	$("#totPoint").val(psum);
     }
+  
+    function fnCalCount(type, ths){
+        var $input = $(ths).parents("td").find(".pop_out"); //부모부분인 td의 자식 name pop_out [수량입력값]
+        var tCount = Number($input.val()); //입력값 숫자타입으로 변환
+    	calc();
+        var tEqCount = Number($(ths).parents("tr").find("td.bseq_ea").html()); 
+                        //입력된 수량보다 +/-가 초과되지 않도록
+
+        if(type=='p'){
+            if(tCount < tEqCount){
+            	$input.val(Number(tCount)+1);
+            	calc();//재고보다 작을경우 +1
+            }
+        }else{
+             if(tCount >0){
+            	 $input.val(Number(tCount)-1);    //0보다 클 경우 -1
+            	 calc();
+				}
+            }
+        }
     function pointall() {
-		console.log($('#po').val());
 		$('#savedmoney').val($('#po').val());
+		calc();
 		var a = $('#total').text()-$('#savedmoney').val();
 		$('#total').text(a)
+		$('#total1').val(a)
     }
+   
     </script>
    
 </head>
@@ -60,7 +90,7 @@
 		<jsp:include page="../include/side2.jsp"></jsp:include>
         <div class="mem_content">
          <h1>주/문/과/정</h1>
-            <form action="" method="POST">
+            <form action="insert.do" method="POST">
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
@@ -74,12 +104,12 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
-                            <td>${param.b_title }</td>
+                            <td>${param.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
                             <td id="price">${vo.b_price }원/${vo.b_point }원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
-                             <input   type="text" name="pop_out" value="${param.io_amount }" readonly="readonly" style="width: 50px; text-align: center;">
+                             <input   type="text" class="pop_out"name="io_amount" value="${param.io_amount }" readonly="readonly" style="width: 50px; text-align: center;">
                              <button class="button_s"type ="button" onclick="fnCalCount('p',this);">+</button>  
                              </td>
                             <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
@@ -91,9 +121,9 @@
                         <tr>
                             <td>배송방법</td>
                             <td >
-                               <input type="radio" name="delivery" value="cj">택배 <br>
-                               <input type="radio" name="delivery" value="post">우체국 택배 <br>
-                               <input type="radio" name="delivery" value="conv">편의점 방문 픽업 <br>
+                               <input type="radio" name="pb_delivery" value="cj">택배 <br>
+                               <input type="radio" name="pb_delivery" value="post">우체국 택배 <br>
+                               <input type="radio" name="pb_delivery" value="conv">편의점 방문 픽업 <br>
                             </td>
                         </tr>
                     </table>  
@@ -118,7 +148,7 @@
                      <tr>
                         <td>* 받으시는 분</td>
                         <td>
-                            <input type="text" name="bp_resname" value="전나나 " checked ><br>
+                            <input type="text" name="pb_resname" value="전나나 " checked ><br>
                         </td>
                      </tr>
                      <tr>

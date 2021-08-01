@@ -6,14 +6,14 @@
 		<where>
 			<if test="sval != null and sval != ''">
 				<if test="stype == 'all'">
-					q_title LIKE '%${sval}%' OR q_content LIKE '%${sval}%'
+					faq_title LIKE '%${sval}%' OR faq_content LIKE '%${sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
 				</if>
-			</if>
-			<if test="m_no != 0">
-				AND m_no=#{m_no}
+				<if test="m_no != 0">
+					AND a_id=#{a_id}
+				</if>
 			</if>
 		</where>
 	</sql>
@@ -30,8 +30,8 @@
 	</select>
 	 
 	<insert id="insert" parameterType="faq_board.FAQBoardVo">
-		INSERT INTO faq_board (faq_no, faq_title, faq_content, a_id) 
-		VALUES (#{faq_no}, #{faq_title}, #{faq_content}, #{a_id}) 
+		INSERT INTO faq_board (faq_no, faq_cate, faq_title, faq_content, a_id) 
+		VALUES (#{faq_no},#{faq_cate}, #{faq_title}, #{faq_content}, #{a_id}) 
 	</insert>
 	
 	<update id="update" parameterType="faq_board.FAQBoardVo">

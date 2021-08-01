@@ -1,8 +1,5 @@
 package faq_board;
 
-import java.io.File;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;

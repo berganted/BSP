@@ -137,4 +137,10 @@ function setEditor(holder){
         
 }
 
+$(function(){ 
+	$(".faq_content").hide();
+	$(".faq_title").click(function(){
+	    $(this).parent().find('.faq_content').slideToggle(10)
+	});
+});
 

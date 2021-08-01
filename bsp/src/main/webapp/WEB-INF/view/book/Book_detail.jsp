@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,9 +19,13 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="/bsp/js/star.js"></script>
 
+<<<<<<< HEAD
+<title>Document</title>
+=======
 
 
 <title>도서상세페이지</title>
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
 <style>
 
 /* 페이징처리 */

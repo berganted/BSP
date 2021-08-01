@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/bsp/css/index.css">
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
-    <title>국내도서신간</title>
+    <title>외국베스트셀러</title>
 
     <style>
     
@@ -96,7 +96,7 @@
 
     <script>
     function sendPageRow() {
-    	location.href='Book_Knew.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=DESC&pageRow='+$("#divnum").val();
+    	location.href='Book_FbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=DESC&pageRow='+$("#divnum").val();
     }
     </script>
 </head>
@@ -108,20 +108,20 @@
        
 
         <div class="mem_content">
-            <h1 class="bestmain_top">국내도서 신간</h1>
+            <h1 class="bestmain_top">외국도서 종합 베스트셀러</h1>
             
                 <div class="best_indexWrap">
                     <!-- <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;"> -->
                     <div class="pagenate1 clear" style=" margin: 0,auto !important;">
                       <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
-                        <li><a href="Book_Knew.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}"> < </a></li>
+                        <li><a href="Book_FbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}"> < </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
-                            <li><a href='Book_Knew.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                            <li><a href='Book_FbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_Knew.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}"> > </a></li>
+                        	<li><a href="Book_FbestSeller.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}"> > </a></li>
                         </c:if>
                        </ul> 
                         <select name="pageRow" id="divnum" onchange="sendPageRow();">

@@ -77,10 +77,10 @@
                     <li><a href="#">&nbsp;</a></li>
                 </ul>
             </li>
-            <li><a class="header_depth1" href="category.html">신상품</a>
+            <li><a class="header_depth1" href="/bsp/book/Book_Knew.do">신상품</a>
                 <ul class="header_depth2">
-                    <li><a href="#">국내도서 신간</a></li>
-                    <li><a href="#">외국도서 신간</a></li>
+                    <li><a href="/bsp/book/Book_Knew.do">국내도서 신간</a></li>
+                    <li><a href="/bsp/book/Book_Fnew.do">외국도서 신간</a></li>
                 </ul>
             </li>
             <li><a class="header_depth1" href="/bsp/sample/FAQboard.do">고객센터</a>

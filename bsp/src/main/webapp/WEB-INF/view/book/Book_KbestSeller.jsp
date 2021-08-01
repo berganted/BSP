@@ -103,7 +103,7 @@
 <body>
      <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
-         <jsp:include page="../include/sideKbig.jsp"></jsp:include>
+         <jsp:include page="../include/sideCategory.jsp"></jsp:include>
             
        
 

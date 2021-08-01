@@ -33,6 +33,20 @@ public class BookController {
 		model.addAttribute("list", service.solbestBook(vo));
 		return "book/Book_FbestSeller";
 	}	
+//------------신간도서(국내)	
+	@RequestMapping("/book/Book_Knew.do")
+	public String solnewBookK(Model model, BookVo vo) {
+		vo.setB_ctgno1(1);
+		model.addAttribute("list", service.solnewBook(vo));
+		return "book/Book_Knew";
+	}	
+//------------신간도서(외국)	
+	@RequestMapping("/book/Book_Fnew.do")
+	public String solnewBookF(Model model, BookVo vo) {
+		vo.setB_ctgno1(2);
+		model.addAttribute("list", service.solnewBook(vo));
+		return "book/Book_Fnew";
+	}	
 
 	
 	

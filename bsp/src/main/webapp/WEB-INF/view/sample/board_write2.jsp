@@ -41,13 +41,13 @@
                         <tr>
                             <th>제목</th> 
                             <td>
-                                <input type="text" name="q_title" id="title" class="wid100" value=""/>
+                                <input type="text" name="faq_title" id="title" class="wid100" value=""/>
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="q_content" id="content" style="width:100%"></textarea>
+                                <textarea name="faq_content" id="content" style="width:100%"></textarea>
                             </td>
                         </tr>
                         </tbody>

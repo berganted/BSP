@@ -47,18 +47,6 @@ public class PointServiceimpl implements PointService {
 	}
 
 	@Override
-	public int insert(PointVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(PointVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
 	public int updateUse(PointVo vo) {
 		return dao.updateUse(vo);
 	}

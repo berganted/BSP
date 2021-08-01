@@ -96,7 +96,7 @@ public class UserController {
 		if(u != null) {
 			 sess.setAttribute("userInfo", u);
 			 System.out.println(u.getM_name());
-			 return"redirect:/index.do";			 
+			 return "include/alert2";			 
 		 }else {
 			 	model.addAttribute("msg", "아이디와 비밀번호를 확인해 주세요");
 				model.addAttribute("url", "login.do");

@@ -10,9 +10,8 @@
 </head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="/bsp/js/main.js"></script>
-<link rel="stylesheet" href="/bsp/css/style.css">
-<link rel="stylesheet" href="/bsp/css/reset.css">
 <link rel="stylesheet" href="/bsp/css/base.css">
+<link rel="stylesheet" href="/bsp/css/index.css">
 <script type="text/javascript">
 function loginCheck() {
 	if($('#m_id').val().trim() == '' ){

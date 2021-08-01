@@ -15,7 +15,7 @@
 <script src="/bsp/js/yesol.js"></script>
 <script src="/bsp/js/main2.js"></script>
 <link rel="stylesheet" href="/bsp/css/base.css">
-<link rel="stylesheet" href="/bsp/css/reset.css">
+<link rel="stylesheet" href="/bsp/css/index.css">
 
 
 </head>

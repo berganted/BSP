@@ -25,7 +25,7 @@ public class LoginIntercepter implements HandlerInterceptor {
 			PrintWriter out = res.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인후 사용가능');");
-			out.println("location.href='/bsp/index.do';");
+			out.println("location.href='/bsp/user/login.do';");
 			out.println("</script>");
 			return false;
 		}else {

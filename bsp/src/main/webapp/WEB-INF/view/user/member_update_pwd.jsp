@@ -11,7 +11,7 @@
     <script src="/bsp//js/main.js"></script>
 </head>
 <link rel="stylesheet" href="/bsp/css/base.css">
-<link rel="stylesheet" href="/bsp/css/reset.css">
+<link rel="stylesheet" href="/bsp/css/index.css">
 
 
 <body>

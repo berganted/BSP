@@ -12,9 +12,8 @@
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/yesol.js"></script>
-    <link rel="stylesheet" href="/bsp/css/style.css">
     <link rel="stylesheet" href="/bsp/css/base.css">
-    <link rel="stylesheet" href="/bsp/css/reset.css">
+    <link rel="stylesheet" href="/bsp/css/index.css">
 </head>
 <script type="text/javascript">
 function goSave() {

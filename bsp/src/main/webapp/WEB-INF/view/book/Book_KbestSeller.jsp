@@ -103,27 +103,8 @@
         <div class="mem_content">
             <h1 class="bestmain_top">국내도서 종합 베스트셀러</h1>
             
-                       <div class="best_indexWrap">
-                    
-                    
-                   <!-- 강사님한테 물어보기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                     <!-- <form method="get" name="searchForm" id="searchForm" action=""> --> 
-                     <div class="divPlace">
-                        <select name="pageRow" id="divnum" onchange="sendPageRow();">
-                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
-                            <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
-                            <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
-                            <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
-                        </select> 
-                           
-                            
-                    </div>
-                    <!-- </form>  -->
-                    
-                    <br>
-                    <br>
-                 <!-- 페이지처리  -->                      
-                    <div class="pagenate clear" style="text-align: center;">
+                <div class="best_indexWrap">
+                    <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;">
                       <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                         <li><a href="Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> < </a></li>
@@ -135,7 +116,26 @@
                         	<li><a href="Book_KbestSeller.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> > </a></li>
                         </c:if>
                        </ul> 
+                     <div class="divPlace1">
+                        <select name="pageRow" id="divnum" onchange="sendPageRow();">
+                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
+                            <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
+                            <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
+                            <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
+                        </select> 
+                           
+                            
                     </div>
+                    </div>
+                    
+                    
+                   <!-- 강사님한테 물어보기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                     <!-- <form method="get" name="searchForm" id="searchForm" action=""> --> 
+                    <!-- </form>  -->
+                    
+                    <br>
+                    <br>
+                 <!-- 페이지처리  -->                      
                
 <!--                  <div class="s_pay3">
                             <input type="button"  class="btn3" value="카트에 넣기">
@@ -196,44 +196,6 @@
             
             </div> 
             </c:forEach>
-                <div class="best_indexWrap">
-                  <div class="indexPlacebest">
-                    
-                    
-
-                   
-                    
-                           
-                            
-                   
-                    <br>
-                    <br>
-                 <!-- 페이지처리  -->                      
-                    <div class="pagenate clear" style="text-align: center;">
-                      <ul class='pagingbest' style="margin-right: 100px; margin-top: -85px;"> 
-                        <c:if test="${bookVo.strPage > bookVo.pageRange}">
-                        <li><a href="Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> < </a></li>
-                        </c:if>
-                        <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
-                            <li><a href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
-                        </c:forEach>
-                        <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_KbestSeller.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> > </a></li>
-                        </c:if>
-                          <div class="divPlace">
-                           <select name="pageRow" id="divnum" onchange="sendPageRow();" style="float : right;">
-                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
-                            <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
-                            <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
-                            <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
-                        </select> 
-                         </div>
-                       </ul> 
-                      
-                    </div>
-                </div>
-         
-            </div>
         </div>  
         <aside class="mypage_ad">
             <div class="mypage_ad_name"><p>최근본상품</p></div>

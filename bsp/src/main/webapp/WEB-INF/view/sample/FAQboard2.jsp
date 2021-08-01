@@ -19,9 +19,9 @@
     
     <script>
     function move() {
-    	location.href='board_write.do';   
+    	location.href='board_write2.do';   
     	<c:if test="${!empty userInfo}">
-    	location.href='board_write.do';
+    	location.href='board_write2.do';
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');
@@ -58,7 +58,7 @@
                                 <td>${(boardVo.totCount-status.index)-((boardVo.reqPage-1)*boardVo.pageRow)}</td>
                                 <td class="txt_l">
                                     <c:forEach begin="1" end="${vo.q_nested }">&nbsp;&nbsp;&nbsp;</c:forEach>
-                                    ${vo.q_title } [${vo.comment_count}]
+                                    ${vo.q_title } 
                                 </td>
                             </tr>
                         </c:forEach>	

@@ -43,12 +43,15 @@
                             <th>제목</th> 
                             <td>
                                 <input type="text" name="faq_title" id="title" class="wid100" value=""/>
+<<<<<<< HEAD
 								<select name="faq_cate" id="faq_cate" >
 								    <option value="주문">주문</option>
 								    <option value="배송">배송</option>
 								    <option value="취소/교환/반품" selected="selected">취소/교환/반품</option>
 								    <option value="회원">회원</option>
 								</select>                            
+=======
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
                             </td>
                         </tr>
                         <tr>

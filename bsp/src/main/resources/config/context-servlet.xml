@@ -13,7 +13,7 @@
 
 
    <!-- 컴포넌트 스캔 -->
-   <context:component-scan base-package="common, book, user, board, comment, admin, returning, order, point, cart, review, faq_board"/>
+   <context:component-scan base-package="common, book, user, board, comment, admin, returning, order, point, cart, review,faq_board"/>
    
    <!-- 어노테이션 활성화 -->
    <mvc:annotation-driven/>
@@ -70,7 +70,8 @@
    				<mvc:mapping path="/user/update.do"/>
    				<mvc:mapping path="/board/update.do"/>
    				<mvc:mapping path="/user/member_remove.do"/>
-   				
+   				<mvc:mapping path="/order/cart.do"/>
+   				<mvc:mapping path="/order/list.do"/>
    				<bean class="intercepter.LoginIntercepter"/>
    		</mvc:interceptor>
    </mvc:interceptors>

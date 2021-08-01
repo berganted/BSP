@@ -41,6 +41,58 @@ public class BookVo extends CommonVo {
 	private int p_no;
 	private Timestamp p_date;
 	private int cnt;
+	private int io_amount;
+	private float avg;
+	private int rcnt;
+	private int tot;
+
+
+
+	public int getTot() {
+		return tot;
+	}
+
+
+
+	public void setTot(int tot) {
+		this.tot = tot;
+	}
+
+
+
+	public int getRcnt() {
+		return rcnt;
+	}
+
+
+
+	public void setRcnt(int rcnt) {
+		this.rcnt = rcnt;
+	}
+
+
+
+	public float getAvg() {
+		return avg;
+	}
+
+
+
+	public void setAvg(float avg) {
+		this.avg = avg;
+	}
+
+
+
+	public int getIo_amount() {
+		return io_amount;
+	}
+
+
+
+	public void setIo_amount(int io_amount) {
+		this.io_amount = io_amount;
+	}
 
 
 

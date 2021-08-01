@@ -37,6 +37,8 @@ public class OrderController {
 
 	@RequestMapping("/order/buy.do")
 	public String buy(BookVo vo,Model model,HttpServletRequest req) {
+		 vo.setB_no(Integer.parseInt(req.getParameter("b_no")));
+		 vo.setIo_amount(Integer.parseInt(req.getParameter("io_amount")));
 			model.addAttribute("vo", bservice.deatil(vo));
 			return "order/BuyForm";
 	}
@@ -64,8 +66,10 @@ public class OrderController {
 	}
 	
 	@RequestMapping("/order/list.do")
-	public String orderList(Model model, OrderVo vo) {
-		model.addAttribute("orderList",service.selectAll(vo));
+	public String orderList(Model model, OrderVo vo,HttpSession sess) {
+		UserVo uv = (UserVo)sess.getAttribute("userInfo");
+		vo.setM_no(uv.getM_no());
+		model.addAttribute("orderList",service.selectAdmin(vo));
 		return "order/OrderList";
 	}
 	
@@ -80,13 +84,13 @@ public class OrderController {
 		String[] no = req.getParameterValues("b_no"); 
 		String[] ano = req.getParameterValues("io_amount") ;
 		String[] cno = req.getParameterValues("cart_no") ;
-	
 		int r = service.insert(vo);
 		for (int i = 0; i < no.length; i++) {
 			vo.setB_no(Integer.parseInt(no[i]));
 			vo.setIo_amount(Integer.parseInt(ano[i]));
 			pv.setP_state("사용");
 			pv.setP_content("구매에 사용");
+			pv.setM_no(vo.getM_no());
 			service.insertIo(vo);
 		}
 		if (r > 0) {
@@ -101,12 +105,10 @@ public class OrderController {
 				int p=pservice.insertUse(pv);
 				pservice.updateUse(pv);
 			}
-//				pv.setP_state("적립");
-//				pv.setP_content("구매후 적립");
-//				System.out.println(pv.getP_state());
-//				System.out.println(pv.getP_usage());
-//				pservice.insertA(pv);
-//				pservice.update(pv);
+				pv.setP_state("적립");
+				pv.setP_content("구매후 적립");
+				pservice.insertA(pv);
+				pservice.update(pv);
 				
 							
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");

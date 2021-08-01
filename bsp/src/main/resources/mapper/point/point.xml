@@ -15,7 +15,7 @@
 	<insert id="insertUse" parameterType="point.PointVo">
 		INSERT INTO point (m_no,p_state,p_content,p_used,p_regdate) VALUES(#{m_no},#{p_state},#{p_content},#{p_used},NOW())
 	</insert>
-	<insert id="insertA " parameterType="point.PointVo">
+	<insert id="insertA" parameterType="point.PointVo">
 		INSERT INTO point (m_no,p_state,p_content,p_usage,p_regdate) VALUES(#{m_no},#{p_state},#{p_content},#{p_usage},NOW())
 	</insert>
 	<update id="update" parameterType="point.PointVo">

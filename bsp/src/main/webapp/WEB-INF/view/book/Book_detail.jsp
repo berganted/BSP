@@ -19,7 +19,13 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="/bsp/js/star.js"></script>
 
+<<<<<<< HEAD
 <title>Document</title>
+=======
+
+
+<title>도서상세페이지</title>
+>>>>>>> branch 'master' of https://github.com/berganted/bsp.git
 <style>
 
 /* 페이징처리 */
@@ -226,9 +232,9 @@ star-input>.input.focus {
 							&nbsp;| <span class="detail_bookPub">${vo.b_publisher }</span>
 							&nbsp;| <span class="detail_bookDate"><fmt:formatDate
 									value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span
-								class="detail_grade">★★★★★9.6</span> &nbsp; <span
-								class="detail_review"><a href="#">회원리뷰(86건)</a></span> &nbsp;| <span
-								class="detail_sales">판매지수 174,628</span>
+								class="detail_grade"><fmt:formatNumber  value="${vo.avg }"  pattern="0.0"/>/5</span> &nbsp; <span
+								class="detail_review"><a href="#">회원리뷰(${vo.rcnt }건)</a></span> &nbsp;| <span
+								class="detail_sales">판매지수 ${vo.tot} </span>
 							<hr>
 						</div>
 						<div class="bookInfo_bottom">
@@ -373,8 +379,12 @@ star-input>.input.focus {
 						</colgroup>
 						<tbody>
 							<tr>
-								<td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
-										style="width: 100%; height: 80px"></textarea></td>
+								<c:if test="${userInfo.m_no!=null }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
+										style="width: 100%; height: 80px"></textarea></td></c:if>
+										
+								<c:if test="${userInfo.m_no==null }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
+										style="width: 100%; height: 80px"></textarea></td></c:if>
+										
 								<td>
 									<div class="btnSet" style="text-align: right;">
 										<a class="btn" href="javascript:goReview();">저장 </a>
@@ -456,22 +466,10 @@ star-input>.input.focus {
 				<div id="reviewArea"></div>
 			</div>
 		</div>
-			<aside class="mypage_ad">
-		<div class="mypage_ad_name">
-			<p>최근본상품</p>
-		</div>
-		<div class="img_area">
-			<img src="/bsp/img/${vo.b_imgmain }" width="70px" height="100px">
-		</div>
-		<div style="text-align: center;">책이름</div>
-	</aside>
+	<%@ include file="/WEB-INF/view/include/quick.jsp"%>
 	</div>
 	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
 
-	</div>
-	</div>
 	
-	</div>
 
-	</div>
 </body>

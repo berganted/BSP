@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->
@@ -35,8 +36,73 @@
     		var a = $('#total').text()-$('#savedmoney').val();
     		$('#total').text(a)
     		$('#total1').val(a)
-    	})
-    })
+    	});
+    	
+    	 $("#check_module").click(function () {
+ 	    	var IMP = window.IMP; // 생략가능
+ 	    	IMP.init('imp82310032');
+ 	    	// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+ 	    	// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+ 	    	IMP.request_pay({
+ 	    	pg: 'html5_inicis', // version 1.1.0부터 지원.
+ 	    	/*
+ 	    	'kakao':카카오페이,
+ 	    	html5_inicis':이니시스(웹표준결제)
+ 	    	'nice':나이스페이
+ 	    	'jtnet':제이티넷
+ 	    	'uplus':LG유플러스
+ 	    	'danal':다날
+ 	    	'payco':페이코
+ 	    	'syrup':시럽페이
+ 	    	'paypal':페이팔
+ 	    	*/
+ 	    	pay_method: 'card',
+ 	    	/*
+ 	    	'samsung':삼성페이,
+ 	    	'card':신용카드,
+ 	    	'trans':실시간계좌이체,
+ 	    	'vbank':가상계좌,
+ 	    	'phone':휴대폰소액결제
+ 	    	*/
+ 	    	merchant_uid: 'merchant_' + new Date().getTime(),
+ 	    	/*
+ 	    	merchant_uid에 경우
+ 	    	https://docs.iamport.kr/implementation/payment
+ 	    	위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+ 	    	참고하세요.
+ 	    	나중에 포스팅 해볼게요.
+ 	    	*/
+ 	    	name: '주문명:결제테스트',
+ 	    	//결제창에서 보여질 이름
+ 	    	amount: 1000,
+ 	    	//가격
+ 	    	buyer_email: 'iamport@siot.do',
+ 	    	buyer_name: '구매자이름',
+ 	    	buyer_tel: '010-1234-5678',
+ 	    	buyer_addr: '서울특별시 강남구 삼성동',
+ 	    	buyer_postcode: '123-456',
+ 	    	m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+ 	    	/*
+ 	    	모바일 결제시,
+ 	    	결제가 끝나고 랜딩되는 URL을 지정
+ 	    	(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+ 	    	*/
+ 	    	}, function (rsp) {
+ 	    	console.log(rsp);
+ 	    	if (rsp.success) {
+ 	    	var msg = '결제가 완료되었습니다.';
+ 	    	msg += '고유ID : ' + rsp.imp_uid;
+ 	    	msg += '상점 거래ID : ' + rsp.merchant_uid;
+ 	    	msg += '결제 금액 : ' + rsp.paid_amount;
+ 	    	msg += '카드 승인번호 : ' + rsp.apply_num;
+ 	    	} else {
+ 	    	var msg = '결제에 실패하였습니다.';
+ 	    	msg += '에러내용 : ' + rsp.error_msg;
+ 	    	}
+ 	    	alert(msg);
+ 	    	});
+ 	   	});
+    });
     function calc() {
     	var sum=0;
     	var psum=0;
@@ -78,7 +144,8 @@
 		$('#total').text(a)
 		$('#total1').val(a)
     }
-   
+    
+
     </script>
    
 </head>
@@ -91,6 +158,7 @@
         <div class="mem_content">
          <h1>주/문/과/정</h1>
             <form action="insert.do" method="POST">
+            	<input type="hidden" name="m_no"value="${userInfo.m_no }"> 
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
@@ -104,8 +172,8 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
-                            <td>${param.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
-                            <td id="price">${vo.b_price }원/${vo.b_point }원</td>
+                            <td>${vo.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
+                            <td id="price"><span class="b_price">${vo.b_price }</span>원/<span class=point>${vo.b_point }</span>원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
@@ -157,13 +225,13 @@
                              <input type="text"  name="pb_zipcode" maxlength="5" style="width:173px; " value="${userInfo.m_zipcode }" > 
                              <button class="button_s" type="button" onclick="openZipSearch()">검색</button>&nbsp;우편번호<br>
                              <input type="text" name="pb_addr1" style="width:250px; " value="${userInfo.m_addr1 }"/>기본주소<br>
-                             <input type="text" name="pb_addr2	" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
+                             <input type="text" name="pb_addr2" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
                         </td>
                      </tr>
                      <tr>
                         <td>* 휴대전화번호</td>
                         <td>
-                            <input type="text" name="pb_restel numbers3" style="width: 310px;" value="${userInfo.m_tel }"> 
+                            <input type="text" name="pb_restel" style="width: 310px;" value="${userInfo.m_tel }"> 
                            
                         </td>
                      </tr>
@@ -197,18 +265,18 @@
                         <tr >
                             <td colspan="2">
                                 <span>주문 상품 금액 정보</span>
-                                <span id="total">${vo.b_price}</span>원
+                                <span class="totalPrice"></span>원
                         </tr>
                         <tr>
                             <td>
                                 <span>상품 주문 총액</span>
-                                <span>${vo.b_price }원</span><br>
+                                 <span class="totalPrice"></span><br>
                                 <span>결제 총액</span>
-                                <span id="total">${vo.b_price}</span>원<br>
+                                <span id="total"></span>원<br>
                             </td>
                             <td>
                                 <span>적립금</span>
-                                <span>${vo.b_point }</span><br>
+                               <input type="text" id=totPoint name="p_usage" readonly="readonly" value=""/><br>
                                 <span>배송료</span>
                                 <span>0원</span><br>
                             </td>
@@ -216,7 +284,7 @@
                         <tr >
                             <td colspan="2">
                                 <span>남은 결제 금액</span>
-                                <span> 46,620원</span>
+                                <input type="text"  id="total1" name="pb_totalprice" value="" readonly="readonly">
                             </td>
                         </tr>
                         
@@ -236,7 +304,10 @@
                             <div class="buy_submit">
                                 <input class="button_m" type="submit" value="결제" >
                                 <input class="button_m" type="reset" value="취소" >
+                                <button id="check_module" type="button">아임 서포트 결제 모듈 테스트 해보기</button>
                             </div>
+                            <p>
+							
                 </div>    
             </form>
         </div>

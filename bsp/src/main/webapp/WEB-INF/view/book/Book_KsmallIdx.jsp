@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   
@@ -14,53 +13,20 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
-    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> --> <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
+    <link rel="stylesheet" href="/bsp/css/index.css">
+    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
+    <link rel="stylesheet" href="/bsp/css/edge.css">
+ 
+    
+    <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>국내도서</title>
  
 
-    <style>
- 
-    
-   .paging > li {
-   	list-style : none; float: left; padding-left:20px; padding-top: 15px; display: inline-block;
-   	
-   }
-    .paging {
-   margin-left: 370px;
-    text-align: center;
-    float: left;
-    
-     }
-    
-
-
-    #all{
-        width: 100px; 
-        height: 30px; 
-        float : right; 
-        margin-right: 150px;
-        margin-top: -9px;
-    
-    }
-    #divnum{
-        width:100px;
-        height:40px; 
-        font-size: 13px;
-        margin-top: 7px;
-    }
-
- 
-    .button_s{
-    font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
-    }
-    .number{
-        margin-left: 45px;
-    }
-     
-    </style>
     <script>
+   
+    
     function sendPageRow() {
     	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
@@ -74,29 +40,20 @@
   	  $('#frm').submit();
   	  }
     
-    function goorder() {
-    	
-  	   if($('#m_no').val()==0){
-  		  alert('로그인이 필요합니다.')
-  		  location.href="/bsp/user/login.do"
-  		  return false
-  	   }
-  	   console.log( $(this).find(".b_no").val() )
-  	 	//location.href='/bsp/order/buy.do?b_no='$(this).find('#b_no').val()
-  	
-  }
-    
+       
     $(function() {
 		$('.btn2').click(function(){
-			console.log(1)
+			$('#frm').attr('action','/bsp/order/buy.do')
+			console.log($(this).parent().parent().find("#numberUpDown").val())
+
 			if($('#m_no').val()==0){
 	  		  alert('로그인이 필요합니다.')
 	  		  location.href="/bsp/user/login.do"
 	  		  return false
 			}
-			console.log($(this).next().val())
-			location.href='/bsp/order/buy.do?b_no='+$(this).next().val();
-			
+			$(this).next().attr("name","b_no");
+			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
+			$('#frm').submit();
 		})
 	})
     </script>
@@ -108,15 +65,15 @@
     <div class="wrap">
        <jsp:include page="../include/sideKbig.jsp"></jsp:include>
             
-        </div>  
+         
 
         <div class="mem_content">
             <h2 class="main_top"> ${param.b_ctgdetail }</h2>   
  
             <div class="indexWrap">
                 <div class="indexPlace">
-                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
-                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
+                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_regdate&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
+                    <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
                     <span class="new"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">신상품순</a></span>
                     <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC&pageRow=${param.pageRow}">최저가순</a></span>
                     <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC&pageRow=${param.pageRow}	">최고가순</a></span>
@@ -141,7 +98,7 @@
                     <br>
                     <hr>
                  <!-- 페이지처리  -->                      
-                    <div class="pagenate clear">
+                    <div class="pagenate1 clear" style="text-align: center;">
                         <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                          <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
@@ -155,13 +112,7 @@
                         </c:if>
                         </ul> 
                     </div>
-               
-<!--                  <div class="s_pay3">
-                            <input type="button"  class="btn3" value="카트에 넣기">
-                  </div> -->
-               
                 </div>
-         
             </div>
             <!-- 1 -->
           <form id='frm' action="/bsp/cart/insert.do" method="get">
@@ -188,24 +139,18 @@
                 <div class="s_payWrap">
                     <div class="s_pay">
                         <div class="s_pay1">
-                           <!--  <input type="checkbox" name="bestcheck" > -->
-                            &nbsp;
-                          
-                           
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
-                                      
-                        
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
                         </div>
                         <div class="s_pay3">
                             <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="b_no" value="${vo.b_no }"> 
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>
@@ -219,17 +164,12 @@
 
           
         
-            </div>   
-         <aside class="mypage_ad">
-            <div class="mypage_ad_name"><p>최근본상품</p></div>
-            <div class="img_area">
-                <img src="/bsp/img/newEye1.jpg" width="70px" height="100px">
-            </div>
-            <div style="text-align: center;">
-                책이름
-            </div>
-        </aside> 
+             
+     <jsp:include page="../include/quick.jsp"></jsp:include>
+         
     </div>
+    </div> 
+   
      <jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>

@@ -111,13 +111,13 @@
                         <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                          <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
-                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> < </a></li>
+                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}">  </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
                             <li><a href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> > </a></li>
+                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}">  </a></li>
                         </c:if>
                         </ul> 
                     </div>

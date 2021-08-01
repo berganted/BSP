@@ -69,6 +69,7 @@ public class AdminCotroller {
 //주문 리스트
 	@RequestMapping("admin/order/index.do")
 	public String orderIndex(OrderVo vo , Model model) {
+		vo.setPageRange(10);
 		model.addAttribute("list", oservice.selectAdmin(vo));
 		
 		return "admin/order/index";

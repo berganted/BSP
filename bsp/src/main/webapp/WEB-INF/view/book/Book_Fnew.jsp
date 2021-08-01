@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="/bsp/css/index.css">
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
-    <title>국내베스트셀러</title>
+    <title>외국도서신간</title>
 
     <style>
     
@@ -95,17 +95,8 @@
     </style>
 
     <script>
-    $(function(){
-    	$(".abc").each(function(){
-    		var idx = $(this).index('.abc');
-    		console.log($(this).val().length)
-    		if($(this).val().length>30){
-    			$('.blah').eq(idx).attr('src',$(this).val())
-    		}
-    		})
-    })
     function sendPageRow() {
-    	location.href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=DESC&pageRow='+$("#divnum").val();
+    	location.href='Book_Fnew.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=DESC&pageRow='+$("#divnum").val();
     }
     </script>
 </head>
@@ -117,20 +108,20 @@
        
 
         <div class="mem_content">
-            <h1 class="bestmain_top">국내도서 종합 베스트셀러</h1>
+            <h1 class="bestmain_top">외국도서 신간</h1>
             
                 <div class="best_indexWrap">
                     <!-- <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;"> -->
                     <div class="pagenate1 clear" style=" margin: 0,auto !important;">
                       <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
-                        <li><a href="Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}"> < </a></li>
+                        <li><a href="Book_Fnew.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}"> < </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
-                            <li><a href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                            <li><a href='Book_Fnew.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_KbestSeller.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}"> > </a></li>
+                        	<li><a href="Book_Fnew.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}"> > </a></li>
                         </c:if>
                        </ul> 
                         <select name="pageRow" id="divnum" onchange="sendPageRow();">
@@ -150,8 +141,7 @@
             <div class="best_wrap">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
-                    <img class="blah" src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
+                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">

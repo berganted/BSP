@@ -141,6 +141,7 @@ public class BookServiceImpl implements BookService {
 		return dao.selectAllBasic(vo);
 	}
 
+	//베스트셀러
 	@Override
 	public List<BookVo> solbestBook(BookVo vo) {
 		int totCount = dao.solbestCount(vo); // 총갯수
@@ -161,6 +162,30 @@ public class BookServiceImpl implements BookService {
 		
 		return dao.solbestBook(vo);
 	}
+	
+	//신간도서
+
+	@Override
+	public List<BookVo> solnewBook(BookVo vo) {
+		int totCount = dao.solnewCount(vo); // 총갯수
+		// 총페이지수
+		int totPage = totCount / vo.getPageRow();
+		if (totCount % vo.getPageRow() > 0) totPage++;
+		// 시작페이지
+		int strPage = (vo.getReqPage()-1)/vo.getPageRange()
+						*vo.getPageRange()+1;
+		int endPage = strPage+vo.getPageRange()-1;
+		if (endPage > totPage) endPage = totPage;
+		
+		vo.setStrPage(strPage);
+		vo.setEndPage(endPage);
+		vo.setTotCount(totCount);
+		vo.setTotPage(totPage);
+		System.out.println(vo);
+		
+		return dao.solnewBook(vo);
+	}
+
 
 	
 	
@@ -250,10 +275,6 @@ public class BookServiceImpl implements BookService {
 	public List<BookVo> isOrder(BookVo vo) {
 		return dao.isOrder(vo);
 	}
-
-
-
-
 
 
 }

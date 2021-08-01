@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,11 +12,15 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
+    <link rel="stylesheet" href="/bsp/css/index.css">
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
-    <title>국내도서-베스트셀러</title>
+    <title>국내도서신간</title>
 
     <style>
+    
+    
+    
     #all{
         width: 100px; 
         height: 30px; 
@@ -28,19 +34,17 @@
         height:40px; 
         font-size: 13px;
         margin-top: 7px;
+    position : absolute;
+    top:auto;
+    left:1160px;
+        
     }
 
-    .button_m{
-    font-size:14px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:4px 20px; min-width:64px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
-    }
-    .button_s{
-    font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
-    }
  
-    .best_indexWrap{    
+  .best_indexWrap{    
    border: 1px solid gray;
    width: 1000px;
-   height: 120px;
+   height: 70px;
    margin: auto;
    margin-top: 20px;
    
@@ -49,13 +53,19 @@
 
    
 }
+.indexPlace{
+   margin: 20px 10px;
+   width: 98%;
+   text-align: center;
+   text-decoration: none;
+  
+}
 
 .best_wrap {
     width: 1150px;
     height: auto;
-    /* border: 3px solid red; */
     margin-left: 100px;
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 20px 20px 0px 20px;
 
 }
@@ -71,425 +81,114 @@
 
 .bestmain_top{
     margin-left: 100px;
-   margin-bottom: 30px;
+   margin-top: 20px;
 }
-
-.hrwrap{
-    width: 1150px;
-    height: auto;
-    /* border: 3px solid red; */
-    margin-left: 100px;
-    margin-top: 10px;
-    /* padding: 20px 20px 0px 20px; */
+    .button_s{
+    font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
+    }
+    .pagingbest > li {
+    list-style: none;
+    padding-left: 18px;
+    padding-top: 15px;
+    display: inline-block;
 }
-
-
-
-
-
     </style>
+
     <script>
-
-
-// 전체선택해제
-    const $container = document.querySelector('.container');
-    const $inputs = [...$container.children];
-    const $agreeBtn = document.querySelector('.all');
-
-    $all.onclick = () => {
-      if ($inputs.filter(input => input.checked).length === $inputs.length) {
-        $inputs.forEach(input => { input.checked = false; });
-      } else {
-        $inputs.forEach(input => {
-          input.checked = true;
-        });
-      }
-    };
-    
-
-
-
-
-    //베스트체크 전체선택
-    function selectAll(selectAll)  {
-  const checkboxes 
-       = document.getElementsByName('bestcheck');
-  
-  checkboxes.forEach((checkbox) => {
-    checkbox.checked = selectAll.checked;
-  })
-}
+    function sendPageRow() {
+    	location.href='Book_Knew.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=DESC&pageRow='+$("#divnum").val();
+    }
     </script>
-
 </head>
 <body>
-   <jsp:include page="../include/header.jsp"></jsp:include>
+     <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
-        <div class="mem_leftmenu_1" id="side">
+         <jsp:include page="../include/sideCategory.jsp"></jsp:include>
             
-        </div>  
-
-        <div class="mem_content">
-            <h1 class="bestmain_top">국내도서 종합신간</h1>
-            <div class="hrwrap" ><hr> </div>
-               
-            <div class="newworld">
-                            <div class="BigIndex_newStar_wrap">
-                <div class="BigIndex_newStar_contents">
-                    <img src="img/newStar1.jpg" alt="마지막 몰입", title="마지막 몰입">
-                    <div class="newStar_info">
-                        <ul>
-                            <li><a class="newStar_title">책 제목</a></li>
-                            <li><a class="newStar_author">저자</a></li>
-                            <li><a class="newStar_pub">출판사</a></li>
-                            <li><a class="newStar_Price">판매가격(할인률)</a></li>
-                        </ul>
-                    </div>            
-                 </div>
-                <div class="BigIndex_newStar_contents">
-                    <img src="img/newStar2.jpg" alt="마지막 몰입", title="마지막 몰입">
-                    <div class="newStar_info">
-                        <ul>
-                            <li><a class="newStar_title">마지막 몰입 : 나를 넘어서는 힘</a></li>
-                            <li><a class="newStar_author">짐 퀵 저/김미정 역</a></li>
-                            <li><a class="newStar_pub">비즈니스북스</a></li>
-                            <li><a class="newStar_Price">15,120원(10%할인)</a></li>
-                        </ul>
-                    </div>            
-                 </div>
-                <div class="BigIndex_newStar_contents">
-                    <img src="img/newStar3.jpg" alt="마지막 몰입", title="마지막 몰입">
-                    <div class="newStar_info">
-                        <ul>
-                            <li><a class="newStar_title">마지막 몰입 : 나를 넘어서는 힘</a></li>
-                            <li><a class="newStar_author">짐 퀵 저/김미정 역</a></li>
-                            <li><a class="newStar_pub">비즈니스북스</a></li>
-                            <li><a class="newStar_Price">15,120원(10%할인)</a></li>
-                        </ul>
-                    </div>            
-                 </div>
-                <div class="BigIndex_newStar_contents">
-                    <img src="img/newStar4.jpg" alt="마지막 몰입", title="마지막 몰입">
-                    <div class="newStar_info">
-                        <ul>
-                            <li><a class="newStar_title">마지막 몰입 : 나를 넘어서는 힘</a></li>
-                            <li><a class="newStar_author">짐 퀵 저/김미정 역</a></li>
-                            <li><a class="newStar_pub">비즈니스북스</a></li>
-                            <li><a class="newStar_Price">15,120원(10%할인)</a></li>
-                        </ul>
-                    </div>            
-                 </div>
-                <div class="BigIndex_newStar_contents">
-                    <img src="img/newStar5.jpg" alt="마지막 몰입", title="마지막 몰입">
-                    <div class="newStar_info">
-                        <ul>
-                            <li><a class="newStar_title">마지막 몰입 : 나를 넘어서는 힘</a></li>
-                            <li><a class="newStar_author">짐 퀵 저/김미정 역</a></li>
-                            <li><a class="newStar_pub">비즈니스북스</a></li>
-                            <li><a class="newStar_Price">15,120원(10%할인)</a></li>
-                        </ul>
-                    </div>            
-                 </div>
-                <div class="BigIndex_newStar_contents">
-                    <img src="img/newStar6.jpg" alt="마지막 몰입", title="마지막 몰입">
-                    <div class="newStar_info">
-                        <ul>
-                            <li><a class="newStar_title">마지막 몰입 : 나를 넘어서는 힘</a></li>
-                            <li><a class="newStar_author">짐 퀵 저/김미정 역</a></li>
-                            <li><a class="newStar_pub">비즈니스북스</a></li>
-                            <li><a class="newStar_Price">15,120원(10%할인)</a></li>
-                        </ul>
-                    </div>            
-                 </div>
        
 
-
-            </div>
-            </div>
-            <div class="best_indexWrap">
-                <div class="indexPlace">
-                    <span class="original"><a href="#">기본순</a></span>
-                    <span class="sell"><a href="#">판매량순</a></span>
-                    <span class="new"><a href="#">신상품순</a></span>
-                    <span class="lowPrice"><a href="#">최저가순</a></span>
-                    <span class="highPrice"><a href="#">최고가순</a></span>
-                    
-                   
-                    
-                     <div class="divPlace">
-                        <select name="divnum" id="divnum" >
-                            <option value ="1" >5개씩 보기</option>
-                            <option value ="2" selected>10개씩 보기</option>
-                            <option value ="3" >15개씩 보기</option>
-                        </select>
-                    </div> 
-                    
-                    <br>
-                    <br>
-                    <hr>
-                                       
-                    <div class="best_clickNum">
-                        <a href="#" class="click_first"><<</a>
-                        <a href="#" class="click_prev"><</a>
-                        <strong class="num">1</strong>
-                        <a href="#" class="num">2</a>
-                        <a href="#" class="num">3</a>
-                        <a href="#" class="num">4</a>
-                        <a href="#" class="num">5</a>
-                        <a href="#" class="num">6</a>
-                        <a href="#" class="num">7</a>
-                        <a href="#" class="num">8</a>
-                        <a href="#" class="num">9</a>
-                        <a href="#" class="num">10</a>
-                        <a href="/24/Category/Display/001001001003?PageNumber=11" class="click_next"> > </a>
-                        <a href="/24/Category/Display/001001001003?PageNumber=48" class="click_end">>></a>   
-                     
-                       
-                        <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택
+        <div class="mem_content">
+            <h1 class="bestmain_top">국내도서 신간</h1>
+            
+                <div class="best_indexWrap">
+                    <!-- <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;"> -->
+                    <div class="pagenate1 clear" style=" margin: 0,auto !important;">
+                      <ul class='paging'> 
+                        <c:if test="${bookVo.strPage > bookVo.pageRange}">
+                        <li><a href="Book_Knew.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}"> < </a></li>
+                        </c:if>
+                        <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
+                            <li><a href='Book_Knew.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                        </c:forEach>
+                        <c:if test="${bookVo.totPage > bookVo.endPage}">
+                        	<li><a href="Book_Knew.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=b_intodate&direct=DESC&pageRow=${bookVo.pageRow}"> > </a></li>
+                        </c:if>
+                       </ul> 
+                        <select name="pageRow" id="divnum" onchange="sendPageRow();">
+                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
+                            <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
+                            <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
+                            <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
+                        </select> 
                     </div>
-              
-                    
-
+                    <br>
+                    <br>
                 </div>
          
-            </div>
+
             <!-- 1 -->
+            <c:forEach var = "vo" items="${list }">
             <div class="best_wrap">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="best_rank" style="font-size: 19px;">1.</div>
-                    <div class="s_bookImg"><img src = "img/book2.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
+                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
                         <span class="s_bookTitle" style="font-size: 20px;">
-                            <b>임신 출산 육아  대백과</b>
+                            <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><b>${vo.b_title }</b></a>
                         </span>
-                        <span class="s_bookAuthor" style="font-size: 17px;">편집부 저 <span class="s_bookPub"> | 삼성출판사</span><span class="s_bookDate"> | 2020년 7월</span> </span>
-                        <span class="s_price"><b>17,550</b>원 (10%할인)  &nbsp; 적립금 : 970원</span>
-                        <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
-                        
-                        <span class="s_story">
-                            『임신 출산 육아 대백과』 2020년 개정판은 가이드 구성에 충실, 
-                            초보엄마들이 궁금해할만한 내용을 사진으로 꼼꼼하게 보여준다. 임신 중 요가, 산후조리, 
-                            육아의 기초(신생아 목욕시키기, 옷 입히기 등)의 과정을 사진으로 보여주어 슬라이드를 넘기듯
-                             한눈에 육아의 기초를 알 수 있다. 
-                            임신, 출산, 육아의 각 단계를 ...
-                        </span>
-                    </div>
-                </div>
-                <div class="s_payWrap">
-                    <div class="s_pay">
-                        <div class="s_pay1">
-                            <input type="checkbox" name="bestcheck" >
-                            &nbsp;
-                            <div class="number" style="margin-left: 40px;">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
-                        </div>
-                        <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" >
-                        </div>
-                        <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매">
-                        </div>
-                    </div>
-                </div>
-             </div>
-             <hr>
-             <!-- 2 -->
-            <div class="SmallIndex_book">
-                <div class="s_imgSection">
-                    <div class="best_rank" style="font-size: 19px;">2.</div>
-                    <div class="s_bookImg"><img src = "img/newStar4.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
-                </div>
-                <div class="s_infoSectionWrap">
-                    <div class="s_infoSection">
-                        <span class="s_bookTitle" style="font-size: 20px;">
-                            <b>임신 출산 육아  대백과</b>
-                        </span>
-                        <span class="s_bookAuthor" style="font-size: 17px;">편집부 저 <span class="s_bookPub"> | 삼성출판사</span><span class="s_bookDate"> | 2020년 7월</span> </span>
-                        <span class="s_price"><b>17,550</b>원 (10%할인)  &nbsp; 적립금 : 970원</span>
-                        <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
-                        
-                        <span class="s_story">
-                            『임신 출산 육아 대백과』 2020년 개정판은 가이드 구성에 충실, 
-                            초보엄마들이 궁금해할만한 내용을 사진으로 꼼꼼하게 보여준다. 임신 중 요가, 산후조리, 
-                            육아의 기초(신생아 목욕시키기, 옷 입히기 등)의 과정을 사진으로 보여주어 슬라이드를 넘기듯
-                             한눈에 육아의 기초를 알 수 있다. 
-                            임신, 출산, 육아의 각 단계를 ...
-                        </span>
-                    </div>
-                </div>
-                <div class="s_payWrap">
-                    <div class="s_pay">
-                        <div class="s_pay1">
-                            <input type="checkbox" name="bestcheck" >
-                            &nbsp;
-                            <div class="number" style="margin-left: 50px;">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
-                        </div>
-                        <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" >
-                        </div>
-                        <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매">
-                        </div>
-                    </div>
-                </div>
-             </div>
-             <hr>
-             <!-- 3 -->
-            <div class="SmallIndex_book">
-                <div class="s_imgSection">
-                    <div class="best_rank" style="font-size: 19px;">3.</div>
-                    <div class="s_bookImg"><img src = "img/newStar6.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
-                </div>
-                <div class="s_infoSectionWrap">
-                    <div class="s_infoSection">
-                        <span class="s_bookTitle" style="font-size: 20px;">
-                            <b>임신 출산 육아  대백과</b>
-                        </span>
-                        <span class="s_bookAuthor" style="font-size: 17px;">편집부 저 <span class="s_bookPub"> | 삼성출판사</span><span class="s_bookDate"> | 2020년 7월</span> </span>
-                        <span class="s_price"><b>17,550</b>원 (10%할인)  &nbsp; 적립금 : 970원</span>
-                        <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
-                        
-                        <span class="s_story">
-                            『임신 출산 육아 대백과』 2020년 개정판은 가이드 구성에 충실, 
-                            초보엄마들이 궁금해할만한 내용을 사진으로 꼼꼼하게 보여준다. 임신 중 요가, 산후조리, 
-                            육아의 기초(신생아 목욕시키기, 옷 입히기 등)의 과정을 사진으로 보여주어 슬라이드를 넘기듯
-                             한눈에 육아의 기초를 알 수 있다. 
-                            임신, 출산, 육아의 각 단계를 ...
-                        </span>
-                    </div>
-                </div>
-                <div class="s_payWrap">
-                    <div class="s_pay">
-                        <div class="s_pay1">
-                            <input type="checkbox" name="bestcheck" >
-                            &nbsp;
-                            <div class="number" style="margin-left: 50px;">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
-                        </div>
-                        <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" >
-                        </div>
-                        <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매">
-                        </div>
-                    </div>
-                </div>
-             </div>
-             <hr>
-             <!-- 4 -->
-            <div class="SmallIndex_book">
-                <div class="s_imgSection">
-                    <div class="best_rank" style="font-size: 19px;">4.</div>
-                    <div class="s_bookImg"><img src = "img/book.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
-                </div>
-                <div class="s_infoSectionWrap">
-                    <div class="s_infoSection">
-                        <span class="s_bookTitle" style="font-size: 20px;">
-                            <b>임신 출산 육아  대백과</b>
-                        </span>
-                        <span class="s_bookAuthor" style="font-size: 17px;">편집부 저 <span class="s_bookPub"> | 삼성출판사</span><span class="s_bookDate"> | 2020년 7월</span> </span>
-                        <span class="s_price"><b>17,550</b>원 (10%할인)  &nbsp; 적립금 : 970원</span>
-                        <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
-                        
-                        <span class="s_story">
-                            『임신 출산 육아 대백과』 2020년 개정판은 가이드 구성에 충실, 
-                            초보엄마들이 궁금해할만한 내용을 사진으로 꼼꼼하게 보여준다. 임신 중 요가, 산후조리, 
-                            육아의 기초(신생아 목욕시키기, 옷 입히기 등)의 과정을 사진으로 보여주어 슬라이드를 넘기듯
-                             한눈에 육아의 기초를 알 수 있다. 
-                            임신, 출산, 육아의 각 단계를 ...
-                        </span>
-                    </div>
-                </div>
-                <div class="s_payWrap">
-                    <div class="s_pay">
-                        <div class="s_pay1">
-                            <input type="checkbox" name="bestcheck" >
-                            &nbsp;
-                            <div class="number">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
-                        </div>
-                        <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" >
-                        </div>
-                        <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매">
-                        </div>
-                    </div>
-                </div>
-             </div>
-             <hr>
-             <!-- 5 -->
-            <div class="SmallIndex_book">
-                <div class="s_imgSection">
-                    <div class="best_rank" style="font-size: 19px;">5.</div>
-                    <div class="s_bookImg"><img src = "img/newStar4.jpg" style="height: 250px; width: 180px; margin:-20px"></div>
-                </div>
-                <div class="s_infoSectionWrap">
-                    <div class="s_infoSection">
-                        <span class="s_bookTitle" style="font-size: 20px;">
-                            <b>임신 출산 육아  대백과</b>
-                        </span>
-                        <span class="s_bookAuthor" style="font-size: 17px;">편집부 저 <span class="s_bookPub"> | 삼성출판사</span><span class="s_bookDate"> | 2020년 7월</span> </span>
-                        <span class="s_price"><b>17,550</b>원 (10%할인)  &nbsp; 적립금 : 970원</span>
-                        <span class="s_grade">회원리뷰(8건) ★★★★★ 9.3</span>
-                        
-                        <span class="s_story">
-                            『임신 출산 육아 대백과』 2020년 개정판은 가이드 구성에 충실, 
-                            초보엄마들이 궁금해할만한 내용을 사진으로 꼼꼼하게 보여준다. 임신 중 요가, 산후조리, 
-                            육아의 기초(신생아 목욕시키기, 옷 입히기 등)의 과정을 사진으로 보여주어 슬라이드를 넘기듯
-                             한눈에 육아의 기초를 알 수 있다. 
-                            임신, 출산, 육아의 각 단계를 ...
-                        </span>
-                    </div>
-                </div>
-                <div class="s_payWrap">
-                    <div class="s_pay">
-                        <div class="s_pay1">
-                            <input type="checkbox" name="bestcheck" >
-                            &nbsp;
-                           
-                           
-                            <div class="number">
-                                <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
-                                  <button class="button_s" type="button" id="increaseQuantity">+</button>
-                              </div> 
-                        
-                        </div>
-                        <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" >
-                        </div>
-                        <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매">
-                        </div>
-                    </div>
-                </div>
-             </div>
-           
+                        <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월" /></span> </span>
+                        <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
+                        <span class="s_grade" style="font-size: 16px;">회원리뷰(${vo.rcnt }건) ${vo.avg }/5</span>
+                        																																										
+                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
+                        ${vo.b_content } <br>
          
-
-
-          
-        
+                        </span>
+                    </div>
+                </div>
+                <div class="s_payWrap">
+                    <div class="s_pay">
+                        <div class="s_pay1">
+                           <!--  <input type="checkbox" name="bestcheck" > -->
+                            &nbsp;
+                          
+                           
+                                <div class="number">
+                                    <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
+                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                                      <button class="button_s" type="button" id="increaseQuantity">+</button>
+                                  </div> 
+                                      
+                        
+                        </div>
+                        <div class="s_pay2">
+                            <input type="button" class="btn1" value="카트에 넣기" onClick="location.href='http://www.daum.net'" >
+                        </div>
+                        <div class="s_pay3">
+                            <input type="button"  class="btn2" value="바로구매" onClick="location.href='http://www.daum.net'">
+                        </div>
+                    </div>
+                </div>
+             </div>
+             <br>
+             <br>
+             <hr>
+            
             </div> 
+            </c:forEach>
         </div>  
-    
         <aside class="mypage_ad">
             <div class="mypage_ad_name"><p>최근본상품</p></div>
             <div class="img_area">
@@ -499,8 +198,10 @@
                 책이름
             </div>
         </aside> 
+         
     </div>
-  <jsp:include page="../include/footer.jsp"></jsp:include>
+     
+     <jsp:include page="../include/footer.jsp"></jsp:include>	
 
 </body>
 </html>

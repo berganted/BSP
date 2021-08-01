@@ -15,52 +15,16 @@
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
     <link rel="stylesheet" href="/bsp/css/index.css">
-    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> --> <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
+    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
+    <link rel="stylesheet" href="/bsp/css/edge.css">
+ 
+    
+    <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>국내도서</title>
  
 
-    <style>
- 
-    
-   .paging > li {
-   	list-style : none; float: left; display: inline-block;
-   	
-   }
-    .paging {
-   margin-left: 370px;
-    text-align: center;
-    float: left;
-    
-     }
-    
-
-
-    #all{
-        width: 100px; 
-        height: 30px; 
-        float : right; 
-        margin-right: 150px;
-        margin-top: -9px;
-    
-    }
-    #divnum{
-        width:100px;
-        height:40px; 
-        font-size: 13px;
-        margin-top: 7px;
-    }
-
- 
-    .button_s{
-    font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
-    }
-    .number{
-        margin-left: 45px;
-    }
-     
-    </style>
     <script>
    
     
@@ -102,6 +66,7 @@
     <div class="wrap">
        <jsp:include page="../include/sideKbig.jsp"></jsp:include>
             
+         
 
         <div class="mem_content">
             <h2 class="main_top"> ${param.b_ctgdetail }</h2>   
@@ -134,7 +99,7 @@
                     <br>
                     <hr>
                  <!-- 페이지처리  -->                      
-                    <div class="pagenate clear">
+                    <div class="pagenate clear" style="text-align: center;">
                         <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                          <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
@@ -148,13 +113,7 @@
                         </c:if>
                         </ul> 
                     </div>
-               
-<!--                  <div class="s_pay3">
-                            <input type="button"  class="btn3" value="카트에 넣기">
-                  </div> -->
-               
                 </div>
-         
             </div>
             <!-- 1 -->
           <form id='frm' action="/bsp/cart/insert.do" method="get">
@@ -206,7 +165,7 @@
 
           
         
-            </div>   
+             
          <aside class="mypage_ad">
             <div class="mypage_ad_name"><p>최근본상품</p></div>
             <div class="img_area">
@@ -217,6 +176,8 @@
             </div>
         </aside> 
     </div>
+    </div> 
+   
      <jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>

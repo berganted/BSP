@@ -21,7 +21,7 @@
 
 
 
-<title>Document</title>
+<title>도서상세페이지</title>
 <style>
 
 /* 페이징처리 */
@@ -375,8 +375,12 @@ star-input>.input.focus {
 						</colgroup>
 						<tbody>
 							<tr>
-								<td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
-										style="width: 100%; height: 80px"></textarea></td>
+								<c:if test="${userInfo.m_no!=null }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
+										style="width: 100%; height: 80px"></textarea></td></c:if>
+										
+								<c:if test="${userInfo.m_no==null }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
+										style="width: 100%; height: 80px"></textarea></td></c:if>
+										
 								<td>
 									<div class="btnSet" style="text-align: right;">
 										<a class="btn" href="javascript:goReview();">저장 </a>

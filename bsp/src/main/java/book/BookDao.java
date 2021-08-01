@@ -17,6 +17,10 @@ public class BookDao {
 		return sqlSession.selectList("book.selectAll", vo);
 	}
 	
+	public List<BookVo> solbestBook(BookVo vo) {
+		return sqlSession.selectList("book.solbestBook", vo);
+	}
+	
 	public List<BookVo> selectAllBasic(BookVo vo) {
 		return sqlSession.selectList("book.selectAllBasic", vo);
 	}
@@ -35,6 +39,10 @@ public class BookDao {
 	}
 	
 	
+	
+	public List<BookVo> isOrder(BookVo vo) {
+		return sqlSession.selectList("book.isOrder", vo);
+	}
 	
 	public List<BookVo> selectAll1(BookVo vo) {
 		return sqlSession.selectList("book.selectAll1", vo);
@@ -84,6 +92,9 @@ public class BookDao {
 	
 	public int smallCount(BookVo vo) {
 		return sqlSession.selectOne("book.smallCount", vo);
+	}
+	public int solbestCount(BookVo vo) {
+		return sqlSession.selectOne("book.solbestCount", vo);
 	}
 	
 	public int countad(BookVo vo) {

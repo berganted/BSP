@@ -14,6 +14,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
+    <link rel="stylesheet" href="/bsp/css/index.css">
     <!-- <link rel="stylesheet" href="/bsp/css/index.css"> --> <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
@@ -24,7 +25,7 @@
  
     
    .paging > li {
-   	list-style : none; float: left; padding-left:20px; padding-top: 15px; display: inline-block;
+   	list-style : none; float: left; display: inline-block;
    	
    }
     .paging {
@@ -61,6 +62,8 @@
      
     </style>
     <script>
+   
+    
     function sendPageRow() {
     	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
@@ -74,29 +77,20 @@
   	  $('#frm').submit();
   	  }
     
-    function goorder() {
-    	
-  	   if($('#m_no').val()==0){
-  		  alert('로그인이 필요합니다.')
-  		  location.href="/bsp/user/login.do"
-  		  return false
-  	   }
-  	   console.log( $(this).find(".b_no").val() )
-  	 	//location.href='/bsp/order/buy.do?b_no='$(this).find('#b_no').val()
-  	
-  }
-    
+       
     $(function() {
 		$('.btn2').click(function(){
-			console.log(1)
+			$('#frm').attr('action','/bsp/order/buy.do')
+			console.log($(this).parent().parent().find("#numberUpDown").val())
+
 			if($('#m_no').val()==0){
 	  		  alert('로그인이 필요합니다.')
 	  		  location.href="/bsp/user/login.do"
 	  		  return false
 			}
-			console.log($(this).next().val())
-			location.href='/bsp/order/buy.do?b_no='+$(this).next().val();
-			
+			$(this).next().attr("name","b_no");
+			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
+			$('#frm').submit();
 		})
 	})
     </script>
@@ -108,7 +102,6 @@
     <div class="wrap">
        <jsp:include page="../include/sideKbig.jsp"></jsp:include>
             
-        </div>  
 
         <div class="mem_content">
             <h2 class="main_top"> ${param.b_ctgdetail }</h2>   
@@ -188,24 +181,18 @@
                 <div class="s_payWrap">
                     <div class="s_pay">
                         <div class="s_pay1">
-                           <!--  <input type="checkbox" name="bestcheck" > -->
-                            &nbsp;
-                          
-                           
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
-                                      
-                        
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
                         </div>
                         <div class="s_pay3">
                             <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="b_no" value="${vo.b_no }"> 
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>

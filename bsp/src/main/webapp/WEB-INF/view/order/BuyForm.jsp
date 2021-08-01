@@ -91,6 +91,7 @@
         <div class="mem_content">
          <h1>주/문/과/정</h1>
             <form action="insert.do" method="POST">
+            	<input type="hidden" name="m_no"value="${userInfo.m_no }"> 
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
@@ -104,8 +105,8 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
-                            <td>${param.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
-                            <td id="price">${vo.b_price }원/${vo.b_point }원</td>
+                            <td>${vo.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
+                            <td id="price"><span class="b_price">${vo.b_price }</span>원/<span class=point>${vo.b_point }</span>원</td>
                             <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
@@ -157,13 +158,13 @@
                              <input type="text"  name="pb_zipcode" maxlength="5" style="width:173px; " value="${userInfo.m_zipcode }" > 
                              <button class="button_s" type="button" onclick="openZipSearch()">검색</button>&nbsp;우편번호<br>
                              <input type="text" name="pb_addr1" style="width:250px; " value="${userInfo.m_addr1 }"/>기본주소<br>
-                             <input type="text" name="pb_addr2	" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
+                             <input type="text" name="pb_addr2" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
                         </td>
                      </tr>
                      <tr>
                         <td>* 휴대전화번호</td>
                         <td>
-                            <input type="text" name="pb_restel numbers3" style="width: 310px;" value="${userInfo.m_tel }"> 
+                            <input type="text" name="pb_restel" style="width: 310px;" value="${userInfo.m_tel }"> 
                            
                         </td>
                      </tr>
@@ -197,18 +198,18 @@
                         <tr >
                             <td colspan="2">
                                 <span>주문 상품 금액 정보</span>
-                                <span id="total">${vo.b_price}</span>원
+                                <span class="totalPrice"></span>원
                         </tr>
                         <tr>
                             <td>
                                 <span>상품 주문 총액</span>
-                                <span>${vo.b_price }원</span><br>
+                                 <span class="totalPrice"></span><br>
                                 <span>결제 총액</span>
-                                <span id="total">${vo.b_price}</span>원<br>
+                                <span id="total"></span>원<br>
                             </td>
                             <td>
                                 <span>적립금</span>
-                                <span>${vo.b_point }</span><br>
+                               <input type="text" id=totPoint name="p_usage" readonly="readonly" value=""/><br>
                                 <span>배송료</span>
                                 <span>0원</span><br>
                             </td>
@@ -216,7 +217,7 @@
                         <tr >
                             <td colspan="2">
                                 <span>남은 결제 금액</span>
-                                <span> 46,620원</span>
+                                <input type="text"  id="total1" name="pb_totalprice" value="" readonly="readonly">
                             </td>
                         </tr>
                         

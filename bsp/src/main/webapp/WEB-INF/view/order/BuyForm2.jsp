@@ -179,13 +179,13 @@
                              <input type="text"  name="pb_zipcode" maxlength="5" style="width:173px; " value="${userInfo.m_zipcode }" > 
                              <button class="button_s" type="button" onclick="openZipSearch()">검색</button>&nbsp;우편번호<br>
                              <input type="text" name="pb_addr1" style="width:250px; " value="${userInfo.m_addr1 }"/>기본주소<br>
-                             <input type="text" name="pb_addr2	" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
+                             <input type="text" name="pb_addr2" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
                         </td>
                      </tr>
                      <tr>
                         <td>* 휴대전화번호</td>
                         <td>
-                            <input type="text" name="pb_restel numbers3" style="width: 310px;" value="${userInfo.m_tel }"> 
+                            <input type="text" name="pb_restel" style="width: 310px;" value="${userInfo.m_tel }"> 
                            
                         </td>
                      </tr>

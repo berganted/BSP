@@ -462,22 +462,10 @@ star-input>.input.focus {
 				<div id="reviewArea"></div>
 			</div>
 		</div>
-			<aside class="mypage_ad">
-		<div class="mypage_ad_name">
-			<p>최근본상품</p>
-		</div>
-		<div class="img_area">
-			<img src="/bsp/img/${vo.b_imgmain }" width="70px" height="100px">
-		</div>
-		<div style="text-align: center;">책이름</div>
-	</aside>
+	<%@ include file="/WEB-INF/view/include/quick.jsp"%>
 	</div>
 	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
 
-	</div>
-	</div>
 	
-	</div>
 
-	</div>
 </body>

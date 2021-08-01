@@ -18,6 +18,9 @@
     <title>국내베스트셀러</title>
 
     <style>
+    
+    
+    
     #all{
         width: 100px; 
         height: 30px; 
@@ -31,6 +34,10 @@
         height:40px; 
         font-size: 13px;
         margin-top: 7px;
+    position : absolute;
+    top:auto;
+    left:1160px;
+        
     }
 
  
@@ -89,7 +96,7 @@
 
     <script>
     function sendPageRow() {
-    	location.href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
+    	location.href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=DESC&pageRow='+$("#divnum").val();
     }
     </script>
 </head>
@@ -104,43 +111,28 @@
             <h1 class="bestmain_top">국내도서 종합 베스트셀러</h1>
             
                 <div class="best_indexWrap">
-                    <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;">
+                    <!-- <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;"> -->
+                    <div class="pagenate1 clear" style=" margin: 0,auto !important;">
                       <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
-                        <li><a href="Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> < </a></li>
+                        <li><a href="Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}"> < </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
-                            <li><a href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                            <li><a href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_KbestSeller.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> > </a></li>
+                        	<li><a href="Book_KbestSeller.do?&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}"> > </a></li>
                         </c:if>
                        </ul> 
-                     <div class="divPlace1">
                         <select name="pageRow" id="divnum" onchange="sendPageRow();">
                             <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
                             <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
                             <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
                             <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
                         </select> 
-                           
-                            
                     </div>
-                    </div>
-                    
-                    
-                   <!-- 강사님한테 물어보기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                     <!-- <form method="get" name="searchForm" id="searchForm" action=""> --> 
-                    <!-- </form>  -->
-                    
                     <br>
                     <br>
-                 <!-- 페이지처리  -->                      
-               
-<!--                  <div class="s_pay3">
-                            <input type="button"  class="btn3" value="카트에 넣기">
-                  </div> -->
-               
                 </div>
          
 
@@ -158,7 +150,7 @@
                         </span>
                         <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월" /></span> </span>
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
-                        <span class="s_grade" style="font-size: 16px;">회원리뷰(8건) ★★★★★ 9.3</span>
+                        <span class="s_grade" style="font-size: 16px;">회원리뷰(${vo.rcnt }건) ${vo.avg }/5</span>
                         																																										
                         <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
                         ${vo.b_content } <br>

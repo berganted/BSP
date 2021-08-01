@@ -203,7 +203,11 @@
 	
 <!-- 책 상세 -->
 	<select id="detail" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain FROM book WHERE b_no = #{b_no}
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain,
+		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
+		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
+		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
+		 FROM book WHERE b_no = #{b_no}
 	</select>
 	
 <!-- 광고 삭제 -->

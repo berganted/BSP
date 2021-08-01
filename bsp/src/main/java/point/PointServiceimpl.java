@@ -29,23 +29,26 @@ public class PointServiceimpl implements PointService {
 		vo.setTotPage(totPage);
 		return dao.selectAll(vo);
 	}
-
-	@Override
-	public int insert(PointVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
+	
 	@Override
 	public int update(PointVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		return dao.update(vo);
+	}
+
+	
+	@Override
+	public int insertUse(PointVo vo) {
+		return dao.insertUse(vo);
 	}
 
 	@Override
-	public int delete(PointVo vo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int insertA(PointVo vo) {
+		return dao.insertA(vo);
+	}
+
+	@Override
+	public int updateUse(PointVo vo) {
+		return dao.updateUse(vo);
 	}
 
 	

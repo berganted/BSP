@@ -57,7 +57,7 @@
                     <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	${list.pb_no}</a></td>
                     <td>${list.pb_resname}</td>
-                    <td>&nbsp;총 33권</td>
+                    <td>&nbsp;총 ${list.count }권</td>
                     <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	<input class="button_s" type="button" value="상세조회"></a></td>
                     <td>${list.ps_title}</td>

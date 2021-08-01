@@ -21,12 +21,41 @@
 	
 		<!-- 전체주문내역 (주문번호 기준)-->
 		<select id="selectAll" resultType="order.OrderVo" parameterType="order.OrderVo">
-		SELECT * ,  PI.pb_no FROM  product_buy AS PB 
-		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
-		JOIN book ON PI.b_no = book.b_no
-		JOIN processing_status PS ON PI.ps_no = PS.ps_no
+		SELECT *,
+		(SELECT SUM(io_amount) from product_io WHERE pb_no=product_buy.pb_no) as amount_sum,
+		(SELECT count(*) from product_io where pb_no=product_buy.pb_no)as count  
+		FROM product_buy 
+		JOIN product_io 
+		ON product_buy.pb_no = product_io.pb_no
+		JOIN book
+		ON product_io.b_no = book.b_no
+		JOIN processing_status PS
+		ON product_io.ps_no=ps.ps_no
+		JOIN user u
+		ON product_buy.m_no=u.m_no
+		WHERE product_buy.m_no=#{m_no}
 		<include refid="orderWhere"/>
-		GROUP BY PB .pb_no
+		GROUP BY product_buy.pb_no
+		ORDER BY ${orderby} ${direct}
+		LIMIT ${strIdx},${pageRow}
+ 		</select>
+ 		<!--전체주문내역 tot  -->
+ 		<select id="selectAllCnt" resultType="order.OrderVo" parameterType="order.OrderVo">
+ 		SELECT count(*),
+		(SELECT SUM(io_amount) from product_io WHERE pb_no=product_buy.pb_no) as amount_sum,
+		(SELECT count(*) from product_io where pb_no=product_buy.pb_no)as count  
+		FROM product_buy 
+		JOIN product_io 
+		ON product_buy.pb_no = product_io.pb_no
+		JOIN book
+		ON product_io.b_no = book.b_no
+		JOIN processing_status PS
+		ON product_io.ps_no=ps.ps_no
+		JOIN user u
+		ON product_buy.m_no=u.m_no
+		WHERE product_buy.m_no=#{m_no}
+		<include refid="orderWhere"/>
+		GROUP BY product_buy.pb_no
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}
  		</select>
@@ -67,17 +96,17 @@
 		SELECT *,
 		(SELECT SUM(io_amount) from product_io WHERE pb_no=product_buy.pb_no) as amount_sum,
 		(SELECT count(*) from product_io where pb_no=product_buy.pb_no)as count  
-		from product_buy 
-		join product_io 
-		on product_buy.pb_no = product_io.pb_no
-		join book
-		on product_io.b_no = book.b_no
+		FROM product_buy 
+		JOIN product_io 
+		ON product_buy.pb_no = product_io.pb_no
+		JOIN book
+		ON product_io.b_no = book.b_no
 		JOIN processing_status PS
-		on product_io.ps_no=ps.ps_no
+		ON product_io.ps_no=ps.ps_no
 		JOIN user u
-		on product_buy.m_no=u.m_no
-		GROUP BY product_buy.pb_no
+		ON product_buy.m_no=u.m_no
 		<include refid="orderWhere"/>
+		GROUP BY product_buy.pb_no
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}
  		</select>
@@ -120,5 +149,17 @@
 		
 		<include refid="orderWhere"/>
 		</select>
-
+		<!-- 주문 등록 -->
+		<insert id="insert" parameterType="order.OrderVo" >
+		INSERT INTO product_buy (pb_resname,pb_zipcode,pb_restel,pb_req,pb_totalprice,pb_orderdate,m_no,ps_no,pb_addr1,pb_addr2,pb_delivery) 
+		VALUES(#{pb_resname},#{pb_zipcode},#{pb_restel},#{pb_req},#{pb_totalprice},NOW(),#{m_no},18,#{pb_addr1},#{pb_addr2},#{pb_delivery})
+		<selectKey keyProperty="pb_no" resultType="int" order="AFTER">
+		  SELECT LAST_INSERT_ID()  
+		</selectKey>
+		</insert>
+		
+		<!-- 주문상세 io 등록 -->
+		<insert id="insertIo">
+		INSERT INTO product_io (pb_no,io_amount,io_date,b_no,ps_no) VALUES(#{pb_no},#{io_amount},NOW(),#{b_no},18)
+		</insert>
 	</mapper>

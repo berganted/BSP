@@ -221,12 +221,10 @@ star-input>.input.focus {
 							<input	type="hidden" id="m_no" name="m_no" value="${userInfo.m_no }">
 							<input type="hidden" name="b_price" value="${vo.b_price }">
 							<input type="hidden" name="b_title" value="${vo.b_title }">
-							<input type="hidden" id="b_author" name="b_author"
-								value="${vo.b_author }"> <input type="hidden"
-								name="b_publisher" value="${vo.b_publisher }"> <span
-								class="detail_bookTilte"
-								style="font-weight: 600; font-size: 25px;">${vo.b_title}
-							</span> <br> <span class="detail_bookAuthor">${vo.b_author }</span>
+							<input type="hidden" id="b_author" name="b_author"value="${vo.b_author }"> 
+							<input type="hidden"name="b_publisher" value="${vo.b_publisher }"> 
+							<span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br> 
+							<span class="detail_bookAuthor">${vo.b_author }</span>
 							&nbsp;| <span class="detail_bookPub">${vo.b_publisher }</span>
 							&nbsp;| <span class="detail_bookDate"><fmt:formatDate
 									value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span

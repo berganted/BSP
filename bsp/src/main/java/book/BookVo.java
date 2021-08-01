@@ -41,21 +41,18 @@ public class BookVo extends CommonVo {
 	private int p_no;
 	private Timestamp p_date;
 	private int cnt;
-	private int m_no;
+	private int io_amount;
 
 
-	
-	
-	
 
-	public int getM_no() {
-		return m_no;
+	public int getIo_amount() {
+		return io_amount;
 	}
 
 
 
-	public void setM_no(int m_no) {
-		this.m_no = m_no;
+	public void setIo_amount(int io_amount) {
+		this.io_amount = io_amount;
 	}
 
 

@@ -24,6 +24,7 @@ public class OrderVo extends CommonVo {
 	private int ps_no;	//처리상태코드
 	private String ps_title; //처리상태
 	
+	private int b_no; // 도서번호
 	private String b_title; //상품명
 	private String b_author; //저자명
 	private int b_price; // 도서 가격
@@ -50,6 +51,16 @@ public class OrderVo extends CommonVo {
 	}
 	
 	
+	public int getB_no() {
+		return b_no;
+	}
+
+
+	public void setB_no(int b_no) {
+		this.b_no = b_no;
+	}
+
+
 	public String getM_name() {
 		return m_name;
 	}

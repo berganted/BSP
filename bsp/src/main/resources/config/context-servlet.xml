@@ -32,6 +32,7 @@
    <mvc:view-controller path="/sample/login.do"/>
    <mvc:view-controller path="/sample/board_view.do"/>
    <mvc:view-controller path="/sample/board_write.do"/>   
+   <mvc:view-controller path="/sample/board_write2.do"/>   
    <mvc:view-controller path="/sample/board_edit.do"/>   
    <mvc:view-controller path="/sample/board_reply.do"/>   
    <mvc:view-controller path="/sample/index_search.do"/>   
@@ -41,7 +42,7 @@
    <!-- DBCP -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-    	<property name="url" value="jdbc:mysql://localhost:3307/bsp"/><!-- add -->
+    	<property name="url" value="jdbc:mysql://localhost:3306/bsp"/><!-- add -->
     	<property name="username" value="root"/>
     	<property name="password" value="root1234"/>
    </bean>

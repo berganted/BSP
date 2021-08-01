@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="faq_board">
+
+	<sql id="faq_boardWhere">
+		<where>
+			<if test="sval != null and sval != ''">
+				<if test="stype == 'all'">
+					q_title LIKE '%${sval}%' OR q_content LIKE '%${sval}%'
+				</if>
+				<if test="stype != 'all'">
+					${stype} LIKE '%${sval}%'
+				</if>
+			</if>
+			<if test="m_no != 0">
+				AND m_no=#{m_no}
+			</if>
+		</where>
+	</sql>
+	
+	<select id="selectAll" resultType="faq_board.FAQBoardVo" parameterType="faq_board.FAQBoardVo">
+		SELECT * FROM faq_board
+		<include refid="faq_boardWhere"/>
+		LIMIT ${strIdx},${pageRow}
+	</select>
+	
+	<select id="count" resultType="int" parameterType="faq_board.FAQBoardVo">
+		SELECT COUNT(*) FROM faq_board
+		<include refid="faq_boardWhere"/>
+	</select>
+	 
+	<insert id="insert" parameterType="faq_board.FAQBoardVo">
+		INSERT INTO faq_board (faq_no, faq_title, faq_content, a_id) 
+		VALUES (#{faq_no}, #{faq_title}, #{faq_content}, #{a_id}) 
+	</insert>
+	
+	<update id="update" parameterType="faq_board.FAQBoardVo">
+		UPDATE faq_board SET
+			faq_title=#{faq_title}, faq_content=#{faq_content}
+		WHERE faq_no=#{faq_no}
+	</update>
+	
+	<delete id="delete" parameterType="faq_board.FAQBoardVo">
+		DELETE FROM faq_board WHERE faq_no=#{faq_no}
+	</delete>
+	
+</mapper>

@@ -40,13 +40,6 @@
                             </dl>
                         </div>
                         <div class="cont">${vo.q_content } </div>
-                        <%-- <dl class="file">
-                            <dt>첨부파일 </dt>
-                            <dd>
-                            <a href="/bsp/common/download.jsp?path=/upload/&org=${vo.q_filename_org}&real=${vo.q_filename_real}" 
-                            target="_blank">${vo.q_filename_org }</a></dd>
-                        </dl> --%>
-                                    
                         <div class="btnSet clear">
                             <div class="fl_l"><a href="FAQboard.do?<c:if test="${!empty param.reqPage}">reqPage=${param.reqPage}</c:if>&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}" class="btn">목록으로</a></div>
                             <div class="fl_l"><a class="btn" href="javascript:reply();">답변 </a></div>

@@ -7,7 +7,9 @@ public interface BookService {
 	List<BookVo> selectAll(BookVo vo);
 	
 	
+	List<BookVo> isOrder(BookVo vo);
 	List<BookVo> selectAllBasic(BookVo vo);
+	List<BookVo> solbestBook(BookVo vo);
 	List<BookVo> selectAlladmin(BookVo vo);
 	List<BookVo> selectAll1(BookVo vo);
 	List<BookVo> selectAll2(BookVo vo);

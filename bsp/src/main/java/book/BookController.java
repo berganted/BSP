@@ -1,11 +1,14 @@
 package book;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import comment.CommentVo;
+import user.UserVo;
 
 @Controller
 public class BookController {
@@ -13,19 +16,32 @@ public class BookController {
 	@Autowired
 	BookService service;
 	
+//------------베스트셀러(국내)	
+	@RequestMapping("/book/Book_KbestSeller.do")
+	public String solbestBook(Model model, BookVo vo) {
+		vo.setB_ctgno1(1);
+		
+		
+		model.addAttribute("list", service.solbestBook(vo));
+		return "book/Book_KbestSeller";
+	}
 	
 	
 //-------------책상세	
 	
 	@RequestMapping("book/Book_detail.do")
-	public String memberview(BookVo vo, Model model) {
+	public String bookDetail(BookVo vo, UserVo uv, Model model,HttpSession sess) {
 		model.addAttribute("vo", service.deatil(vo));
+		if(sess.getAttribute("userInfo")!=null) {
+			UserVo u = (UserVo) sess.getAttribute("userInfo");
+			vo.setM_no(u.getM_no());
+			model.addAttribute("isOrder", service.isOrder(vo));
+		}
 		return "book/Book_detail";
 	}
 	
 	
-	
- //-----------------국내도서 상세분류 클릭시 나오는 list-----------------(selectall 강사님 질문ㄱ)
+ //-----------------국내도서 상세분류 클릭시 나오는 list-----------------
 	@RequestMapping("/book/Book_KsmallIdx.do")
 	public String ksmall(Model model, BookVo vo) {
 		
@@ -37,8 +53,8 @@ public class BookController {
 	@RequestMapping("/book/Book_FsmallIdx.do")
 	public String fsmall(Model model, BookVo vo) {
 		
-		model.addAttribute("list", service.selectAllBasic(vo));// list란 이름으로 전체 데이터가 dao에 담겨서 모델에 담김(=request에 담김=스프링이
-		return "book/Book_KsmallIdx";
+		model.addAttribute("list", service.selectAllBasic(vo));
+		return "book/Book_FsmallIdx";
 	}
 	
 

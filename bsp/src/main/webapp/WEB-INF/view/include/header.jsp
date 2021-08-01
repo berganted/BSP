@@ -67,9 +67,9 @@
                     <li><a href="/bsp/book/Book_FbigIdx7.do">IT모바일</a></li> 
                 </ul>
             </li>              
-            <li><a class="header_depth1" href="category.html">베스트</a>
+            <li><a class="header_depth1" href="/bsp/book/Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=b_stock&direct=DESC&pageRow=${bookVo.pageRow}">베스트</a>
                 <ul class="header_depth2">
-                    <li><a href="#">국내도서</a></li>
+                    <li><a href="/bsp/book/Book_KbestSeller.do">국내도서</a></li>
                     <li><a href="#">외국도서</a></li>
                     <li><a href="#">정가제 Free</a></li>
                     <li><a href="#">웹소설/코믹</a></li>

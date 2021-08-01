@@ -18,29 +18,37 @@
 		</where>
 	</sql>
 	
-	<select id="selectAll" resultType="faq_board.FAQBoardVo" parameterType="faq_board.FAQBoardVo">
+	<select id="selectAll" resultType="faq_board.FboardVo" parameterType="faq_board.FboardVo">
 		SELECT * FROM faq_board
 		<include refid="faq_boardWhere"/>
 		LIMIT ${strIdx},${pageRow}
 	</select>
 	
-	<select id="count" resultType="int" parameterType="faq_board.FAQBoardVo">
+	<select id="count" resultType="int" parameterType="faq_board.FboardVo">
 		SELECT COUNT(*) FROM faq_board
 		<include refid="faq_boardWhere"/>
 	</select>
+	
+	<select id="detail" resultType="faq_board.FboardVo" parameterType="faq_board.FboardVo">
+		SELECT * FROM faq_board WHERE faq_no = #{faq_no}
+	</select>
+	
+	<update id="updateReadcount" parameterType="faq_board.FboardVo">
+		UPDATE faq_board SET faq_readcount=faq_readcount+1 WHERE faq_no = #{faq_no}
+	</update>  
 	 
-	<insert id="insert" parameterType="faq_board.FAQBoardVo">
-		INSERT INTO faq_board (faq_no, faq_cate, faq_title, faq_content, a_id) 
-		VALUES (#{faq_no},#{faq_cate}, #{faq_title}, #{faq_content}, #{a_id}) 
+	<insert id="insert" parameterType="faq_board.FboardVo">
+		INSERT INTO faq_board (faq_no, faq_cate, faq_title, faq_content, a_id, faq_regdate, faq_readcount) 
+		VALUES (#{faq_no},#{faq_cate}, #{faq_title}, #{faq_content}, #{a_id}, NOW(), #{faq_readcount}) 
 	</insert>
 	
-	<update id="update" parameterType="faq_board.FAQBoardVo">
+	<update id="update" parameterType="faq_board.FboardVo">
 		UPDATE faq_board SET
 			faq_title=#{faq_title}, faq_content=#{faq_content}
 		WHERE faq_no=#{faq_no}
 	</update>
 	
-	<delete id="delete" parameterType="faq_board.FAQBoardVo">
+	<delete id="delete" parameterType="faq_board.FboardVo">
 		DELETE FROM faq_board WHERE faq_no=#{faq_no}
 	</delete>
 	

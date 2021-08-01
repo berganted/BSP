@@ -37,19 +37,19 @@
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="update2.do" enctype="multipart/form-data" >
-                <input type="hidden" name="m_no" value="${userInfo.m_no }"> 
+                <input type="hidden" name="a_id" value="a"> 
                     <table class="board_write">
                         <tbody>
                         <tr>
                             <th>제목</th>
                             <td>
-                                <input type="text" name="q_title" id="title" class="wid100" value="${vo.q_title }"/>
+                                <input type="text" name="faq_title" id="title" class="wid100" value="${vo.faq_title }"/>
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="q_content" id="content" style="width:100%">${vo.q_content }</textarea>
+                                <textarea name="faq_content" id="content" style="width:100%">${vo.faq_content }</textarea>
                             </td>
                         </tr>
                         </tbody>
@@ -57,7 +57,7 @@
                     <div class="btnSet"  style="text-align:right;">
                         <a class="FAQboard_btn" href="javascript:goSave();">저장 </a>
                     </div>
-                    <input type="hidden" name="q_no" value="${vo.q_no}">
+                    <input type="hidden" name="faq_no" value="${vo.faq_no}">
                     </form>
                 </div>
             </div>

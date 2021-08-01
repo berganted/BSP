@@ -1,11 +1,14 @@
 package book;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import comment.CommentVo;
+import user.UserVo;
 
 @Controller
 public class BookController {
@@ -18,7 +21,7 @@ public class BookController {
 //-------------책상세	
 	
 	@RequestMapping("book/Book_detail.do")
-	public String memberview(BookVo vo, Model model) {
+	public String memberview(BookVo vo, Model model, HttpSession sess) {
 		model.addAttribute("vo", service.deatil(vo));
 		return "book/Book_detail";
 	}

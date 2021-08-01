@@ -114,7 +114,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="FAQmore"><a href="/bsp/sample/FAQboard2.do">더보기></a></div>                
+                <div class="FAQmore"><a href="/bsp/sample/FAQboard2.do">더보기></a></div>               
             </div>
             <div class="FAQboard_sub">
                 <div class="FAQboard_size">

@@ -32,22 +32,29 @@
     <%@ include file="/WEB-INF/view/include/header.jsp" %>
     <div class="FAQboard_sub">
             <div class="FAQboard_size">
-                <h3 class="sub_title">문의글 작성</h3>
+                <h3 class="sub_title">FAQ 작성</h3>
     
                 <div class="bbs">
                 <form method="post" name="frm" id="frm" action="insert2.do" enctype="multipart/form-data" >
+                <input type="hidden" name="a_id" value="a">
                     <table class="board_write">
                         <tbody>
                         <tr>
                             <th>제목</th> 
                             <td>
-                                <input type="text" name="q_title" id="title" class="wid100" value=""/>
+                                <input type="text" name="faq_title" id="title" class="wid100" value=""/>
+								<select name="faq_cate" id="faq_cate" >
+								    <option value="주문">주문</option>
+								    <option value="배송">배송</option>
+								    <option value="취소/교환/반품" selected="selected">취소/교환/반품</option>
+								    <option value="회원">회원</option>
+								</select>                            
                             </td>
                         </tr>
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="q_content" id="content" style="width:100%"></textarea>
+                                <textarea name="faq_content" id="content" style="width:100%"></textarea>
                             </td>
                         </tr>
                         </tbody>

@@ -36,7 +36,7 @@
                 <h3 class="sub_title">문의글 작성</h3>
     
                 <div class="bbs">
-                <form method="post" name="frm" id="frm" action="update.do" enctype="multipart/form-data" >
+                <form method="post" name="frm" id="frm" action="update2.do" enctype="multipart/form-data" >
                 <input type="hidden" name="m_no" value="${userInfo.m_no }"> 
                     <table class="board_write">
                         <tbody>

@@ -1,8 +1,5 @@
 package faq_board;
 
-import java.io.File;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +45,7 @@ public class FAQBoardController {
 //		return "sample/board_edit"; 
 //	}
 	
-	@RequestMapping("/sample/update.do")
+	@RequestMapping("/sample/update2.do")
 	public String update(Model model, FAQBoardVo vo, HttpServletRequest req) { 
 		int r = service.update(vo);
 		if (r > 0) {
@@ -61,7 +58,7 @@ public class FAQBoardController {
 		return "include/alert";
 	}
 	
-	@RequestMapping("/sample/delete.do")
+	@RequestMapping("/sample/delete2.do")
 	public String delete(Model model, FAQBoardVo vo, HttpServletRequest req) {
 		int r = service.delete(vo);
 		if (r > 0) {

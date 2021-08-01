@@ -20,11 +20,19 @@ public class BookController {
 	@RequestMapping("/book/Book_KbestSeller.do")
 	public String solbestBook(Model model, BookVo vo) {
 		vo.setB_ctgno1(1);
-		
-		
 		model.addAttribute("list", service.solbestBook(vo));
 		return "book/Book_KbestSeller";
 	}
+	
+	
+//------------베스트셀러(외국)	
+	@RequestMapping("/book/Book_FbestSeller.do")
+	public String solbestBookF(Model model, BookVo vo) {
+		vo.setB_ctgno1(2);
+		model.addAttribute("list", service.solbestBook(vo));
+		return "book/Book_FbestSeller";
+	}	
+
 	
 	
 //-------------책상세	

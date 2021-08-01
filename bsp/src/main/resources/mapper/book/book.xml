@@ -57,20 +57,29 @@
 	 	SELECT * ,
 		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
 		FROM book WHERE b_ctgno1 =  #{b_ctgno1} 
-		ORDER BY ${orderby} ${direct}	
+		ORDER BY b_stock DESC
 		LIMIT ${strIdx},${pageRow}
 	</select>
 	<!-- 신간도서 -->
 	 <select id="solnewBook" resultType="book.BookVo" parameterType="book.BookVo">
 	 	SELECT * ,
 		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-		FROM book WHERE b_ctgno1 = #{b_ctgno1} OREDER BY b_intodate DESC
+		FROM book WHERE b_ctgno1 = #{b_ctgno1} 
+		OREDER BY b_intodate DESC
+		LIMIT ${strIdx},${pageRow}
 	</select>
 	<!--베스트셀러 페이징처리 **판매량순 필요**  -->
 	<select id="solbestCount" resultType="int" parameterType="book.BookVo">
 		 SELECT COUNT(*)
 		,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
 		FROM book WHERE b_ctgno1 =  #{b_ctgno1} ORDER BY b_stock DESC
+		<include refid="bookwhere"/>
+	</select>
+	<!--신간도서 페이징처리  -->
+	<select id="solnewCount" resultType="int" parameterType="book.BookVo">
+		 SELECT COUNT(*)
+		,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM book WHERE b_ctgno1 =  #{b_ctgno1} ORDER BY b_intodeate DESC
 		<include refid="bookwhere"/>
 	</select>
 	<!-- smallindex 페이징처리 Count -->

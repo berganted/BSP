@@ -1,12 +1,18 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp"%>
 <script>
 	$(function() {
+		var abc=$("#abc").val()
+		console.log(abc.length)
+		if($("#abc").val().length>30){
+			$('#blah').attr('src',abc)
+		}
 
 		$("#price").change(function() {
 			var p = $(this).val();
@@ -61,6 +67,7 @@
 							<div id="bread">
 								<form method="post" name="frm" id="frm" action="update.do"
 									enctype="multipart/form-data">
+										<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
 									<table width="100%" border="0" cellspacing="0" cellpadding="0"
 										summary="관리자 관리 기본내용입니다.">
 										<colgroup>
@@ -74,8 +81,9 @@
 										<tbody>
 											<tr>
 												<th scope="row" rowspan="4"><label for="">책 이미지</label></th>
-												<td rowspan="4"><img id="blah"
-													src="/bsp/img/${vo.b_imgmain }" alt="your image"
+												<td rowspan="4">
+												<img id="blah" src="/bsp/img/${vo.b_imgmain }
+													" alt="your image"
 													style="width: 200px; height: 250px" /> <input type="file"
 													id="filename_tmp" name="filename_tmp" class="w00"
 													title="첨부파일을 업로드 해주세요." /></td>
@@ -138,6 +146,10 @@
 														<c:if test="${vo.b_ctgno1 == 2 }">
 															<option value="1">국내도서</option>
 															<option value="2" selected="selected">외국도서</option>
+														</c:if>
+														<c:if test="${vo.b_ctgno1 == 0 }">
+														<option value="1">국내도서</option>
+														<option value="2" >외국도서</option>
 														</c:if>
 
 												</select></td>

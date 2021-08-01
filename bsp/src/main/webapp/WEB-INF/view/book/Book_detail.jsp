@@ -174,10 +174,15 @@ star-input>.input.focus {
 }
 </style>
 <script type="text/javascript">
-  $(function(){
-	  
-	  
-  })
+
+$(function(){
+	var abc=$("#abc").val()
+	console.log(abc.length)
+	if($("#abc").val().length>30){
+		$('#blah').attr('src',abc)
+	}
+})
+
   function gosave() {
 	  $('#frm').attr('action','/bsp/cart/insert.do')
 	  if($('#m_no').val()==0){
@@ -195,7 +200,6 @@ star-input>.input.focus {
 		  return false
 	   }
 	  $('#frm').submit();
-	
 }
   </script>
 </head>
@@ -208,8 +212,8 @@ star-input>.input.focus {
 				<div class="img_section">
 					<div class="detail_bookImg">
 						<img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"
-							, title="${vo.b_title }" style="width: 250px; height: 310px;">
-
+							id="blah" title="${vo.b_title }" style="width: 250px; height: 310px;">
+					<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
 					</div>
 				</div>
 				<form id='frm' action="/bsp/cart/insert.do" method="get">

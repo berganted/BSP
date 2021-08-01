@@ -152,15 +152,7 @@
             </div>
             </div>  
           	
-            <aside class="mypage_ad">
-                <div class="mypage_ad_name"><p>최근본상품</p></div>
-                <div class="img_area">
-                    <img src="/bsp/img/book.jpg" width="70px" height="100px">
-                </div>
-                <div style="text-align: center;">
-                    <p>책이름</p>
-                </div>
-            </aside>                  
+            <jsp:include page="../include/quick.jsp"></jsp:include>            
         </div> 
        <!-- </form> -->  
     <jsp:include page="../include/footer.jsp"></jsp:include>    

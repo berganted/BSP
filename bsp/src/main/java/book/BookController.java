@@ -1,5 +1,6 @@
 package book;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,9 @@ public class BookController {
 	
 	@RequestMapping("book/Book_detail.do")
 	public String bookDetail(BookVo vo, UserVo uv, Model model,HttpSession sess) {
+		
 		model.addAttribute("vo", service.deatil(vo));
+		sess.setAttribute("quick", service.deatil(vo));
 		if(sess.getAttribute("userInfo")!=null) {
 			UserVo u = (UserVo) sess.getAttribute("userInfo");
 			vo.setM_no(u.getM_no());

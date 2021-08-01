@@ -99,7 +99,7 @@
                     <br>
                     <hr>
                  <!-- 페이지처리  -->                      
-                    <div class="pagenate clear" style="text-align: center;">
+                    <div class="pagenate1 clear" style="text-align: center;">
                         <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                          <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
@@ -166,15 +166,8 @@
           
         
              
-         <aside class="mypage_ad">
-            <div class="mypage_ad_name"><p>최근본상품</p></div>
-            <div class="img_area">
-                <img src="/bsp/img/newEye1.jpg" width="70px" height="100px">
-            </div>
-            <div style="text-align: center;">
-                책이름
-            </div>
-        </aside> 
+     <jsp:include page="../include/quick.jsp"></jsp:include>
+         
     </div>
     </div> 
    

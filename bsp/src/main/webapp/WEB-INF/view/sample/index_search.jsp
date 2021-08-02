@@ -17,9 +17,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
-    <script src="/bsp/js/yesol.js"></script>
+    <!-- <script src="/bsp/js/yesol.js"></script> -->
 </head>
 <style>
+
 	.wrap > .search_list {
 		width: 1500px;
 		height: 1000px;
@@ -55,8 +56,11 @@
 	    background-color:#221f1f;
 	}
 	
-	.pagenate {
+	.paging {
 		padding-bottom: 30px;
+	}
+	.paging > li {
+	    right: -530px;
 	}
 </style>
 <body> 

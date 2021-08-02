@@ -51,10 +51,10 @@
                 <div class="FAQboard_size">
                 <div class="support_change2">
                         <ul>
-                            <li><a class="support_order">주문</a></li>
-                            <li><a class="support_shipping">배송</a></li>
-                            <li><a class="support_cancel">취소/교환/반품</a></li>
-                            <li><a class="support_member">회원</a></li>
+                            <li><a class="support_order2">주문</a></li>
+                            <li><a class="support_shipping2">배송</a></li>
+                            <li><a class="support_cancel2">취소/교환/반품</a></li>
+                            <li><a class="support_member2">회원</a></li>
                         </ul>
                     </div>
                     <h3 class="sub_title" style="text-align: left; padding-left: 7px; border-bottom: 1px solid #e3e3e3; padding-bottom: 10px;">
@@ -68,13 +68,13 @@
 		                            </tr>
                         		</c:if>                        
 									<c:forEach var="vo" items="${list}" varStatus="status">
-									<tr class="faq_title" style="cursor: pointer">     
-			                       		<td>[${vo.faq_cate}] ${vo.faq_title }</td>
-			                       	</tr>
-			                       	<tr class="faq_content">
-			                            <td>${vo.faq_content }</td>
-			                        </tr>
-			                     </c:forEach>	
+										<tr class="faq_title" style="cursor: pointer">
+				                       		<td>[${vo.faq_cate}] ${vo.faq_title }</td>
+				                       	</tr>
+				                       	<tr class="faq_content">
+				                            <td>${vo.faq_content }</td>
+				                        </tr>
+			                     	</c:forEach>	
                         	</tbody>
                     </table>
                     <div class="btnSet"  style="text-align:right;">
@@ -102,6 +102,7 @@
                                     <option value="all">전체</option>
                                     <option value="faq_title" <c:if test="${param.stype=='faq_title'}">selected</c:if>>제목</option>
                                     <option value="faq_content" <c:if test="${param.stype=='faq_content'}">selected</c:if>>내용</option>
+                                    <option value="faq_cate" <c:if test="${param.stype=='faq_cate'}">selected</c:if>>분류</option>
                                 </select>
                             </span>
                             <span class="searchWord">

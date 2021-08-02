@@ -139,8 +139,12 @@ function setEditor(holder){
 
 $(function(){ 
 	$(".faq_content").hide();
-	$(".faq_title").click(function(){
-	    $(this).parent().find('.faq_content').slideToggle(10)
+	$(".faq_title").on("click", function(){
+		var idx = $(".faq_title").index(this);
+		$(".faq_content").stop().fadeOut("fast");
+		$(".faq_content").eq(idx).stop().fadeIn("fast");
+		return false;		
 	});
 });
+
 

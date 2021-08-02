@@ -407,11 +407,11 @@ li {
 
 }
 
-.support_change2 > ul > li > a:hover {
+/* .support_change2 > ul > li > a:hover {
     cursor: pointer;
     font-size: 13px;
     color: #4232c2;
-}
+} */
 
 .support_title {    
     border-bottom: 1px solid rgb(211, 205, 205);

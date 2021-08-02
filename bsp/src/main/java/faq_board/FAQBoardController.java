@@ -24,17 +24,17 @@ public class FAQBoardController {
 		return "sample/FAQboard2";
 	}
 	
-	@RequestMapping("/sample/FAQindexAdmin.do")
+	@RequestMapping("/admin/FAQindexAdmin.do")
 	public String index2(Model model, FboardVo vo) {
 		model.addAttribute("list", service.selectAll(vo));
-		return "sample/FAQindexAdmin";
+		return "admin/FAQindexAdmin";
 	}
 	
-	@RequestMapping("/sample/FAQviewAdmin.do")
+	@RequestMapping("/admin/FAQviewAdmin.do")
 	public String detail(Model model, FboardVo vo, CommentVo cv) {
 		model.addAttribute("vo", service.detail(vo));
 		
-		return "sample/FAQviewAdmin";
+		return "admin/FAQviewAdmin";
 	}
 	
 //	@RequestMapping("/sample/board_write2.do")
@@ -42,9 +42,9 @@ public class FAQBoardController {
 //		return "sample/board_write2";
 //	}
 	
-	@RequestMapping("/sample/FAQwriteAdmin.do")
+	@RequestMapping("/admin/FAQwriteAdmin.do")
 	public String write(Model model, FboardVo vo) {
-		return "sample/FAQwriteAdmin";
+		return "admin/FAQwriteAdmin";
 	}
 	
 	@RequestMapping("/sample/insert2.do")

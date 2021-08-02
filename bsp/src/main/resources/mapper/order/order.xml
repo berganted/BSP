@@ -162,4 +162,7 @@
 		<insert id="insertIo">
 		INSERT INTO product_io (pb_no,io_amount,io_date,b_no,ps_no) VALUES(#{pb_no},#{io_amount},NOW(),#{b_no},18)
 		</insert>
+		<select id="lastaddr" parameterType="order.OrderVo" resultType="order.OrderVo">
+			SELECT * FROM bsp.product_buy WHERE m_no=#{m_no} ORDER BY pb_orderdate desc limit 1;		
+		</select>
 	</mapper>

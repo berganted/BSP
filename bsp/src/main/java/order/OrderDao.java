@@ -51,4 +51,7 @@ public class OrderDao {
 	public int insertIo(OrderVo vo) {
 		return sessionTemplate.insert("order.insertIo",vo);
 	}
+	public OrderVo lastaddr(OrderVo vo) {
+		return sessionTemplate.selectOne("order.lastaddr",vo);
+	}
 }

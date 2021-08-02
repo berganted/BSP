@@ -35,6 +35,7 @@
 	    padding: 8px 10px;
 	    border-bottom: 1px solid #d9d9d9;
 		}
+		
     </style>	
 </head>
 <body> 
@@ -61,6 +62,7 @@
                     FAQ</h3>
                     <div class="bbs">
                         <table class="FAQboard2_list">
+                          <p><span><strong>총 ${fboardVo.totCount }개</strong>  |  ${fboardVo.reqPage}/${fboardVo.totPage }페이지</span></p>
                             <tbody>      
                                 <c:if test="${empty list }">
 		                            <tr>
@@ -78,7 +80,6 @@
                         	</tbody>
                     </table>
                     <div class="btnSet"  style="text-align:right;">
-                        <a class="FAQboard_btn" href="javascript:move();">글작성 </a>
                     </div>
                     <div class="pagenate clear">
                         <ul class='paging'> 

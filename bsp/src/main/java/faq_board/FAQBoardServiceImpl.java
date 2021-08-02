@@ -39,6 +39,11 @@ public class FAQBoardServiceImpl implements FAQBoardService {
 		return dao.insert(vo);
 	}
 	
+//	@Override
+//	public FAQBoardVo edit(FAQBoardVo vo) {
+//		return dao.detail(vo);
+//	}
+	
 	@Override
 	public int update(FboardVo vo) {
 		return dao.update(vo);
@@ -51,12 +56,13 @@ public class FAQBoardServiceImpl implements FAQBoardService {
 
 	@Override
 	public FboardVo detail(FboardVo vo) {
-		dao.updateReadcount(vo);
-		return dao.detail(vo);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public FboardVo edit(FboardVo vo) {
-		return dao.detail(vo);
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

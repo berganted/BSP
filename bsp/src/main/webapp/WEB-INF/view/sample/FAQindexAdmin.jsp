@@ -49,10 +49,10 @@
 								<c:forEach var="vo" items="${list }">
 									<tr>
 								<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
-								<td>${(fboardVo.totCount-status.index)-((fboardVo.reqPage-1)*fboardVo.pageRow)}</td>
+								<td>${vo.faq_no }</td>
                                 <td class="txt_l" style="text-align: left;">
                                     <a href="FAQindexAdmin.do?faq_no=${vo.faq_no }&reqPage=${fboardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
-                                    </a>	
+                                    ${vo.faq_title}</a>	
                                 </td>
                                 <td class="FAQboard_writer">
                                     ${vo.a_id }

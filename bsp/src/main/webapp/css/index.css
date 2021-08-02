@@ -679,6 +679,8 @@ li {
 
 /*index.html 영역 ---------------------------------------------------*/
 
+
+	
 /* [visual] ------------------------------------------------------------------ */
 .index_visual {
     height: 550px;
@@ -732,9 +734,11 @@ li {
     margin-left: 5px;
     margin-right: 5px;
     top: 30px;
+    
 }
 
 .swiper-slide {
+	height: 480px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;   

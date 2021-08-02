@@ -14,8 +14,7 @@
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
     <link rel="stylesheet" href="/bsp/css/index.css">
-    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
-    <link rel="stylesheet" href="/bsp/css/edge.css">
+    <!-- <link rel="stylesheet" href="/bsp/css/edge.css"> -->
  
     
     <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
@@ -23,7 +22,16 @@
     <script src="/bsp/js/big.js"></script>
     <title>국내도서</title>
  
-
+<style>
+    .paging {
+  	 margin-left: 370px;
+    text-align: center;
+    float: left;
+    margin-top: -10px;
+    
+     }
+    
+</style>
     <script>
    
     
@@ -31,21 +39,6 @@
     	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
     
-    function gosave() {
-  	  $('#frm').attr('action','/bsp/cart/insert.do')
-  	  if($('#m_no').val()==0){
-  		  alert('로그인하세요')
-  		  return false
-  	  }
-  	  $('#frm').submit();
-  	  }
-    
-       
-    $(function() {
-		$('.btn2').click(function(){
-			$('#frm').attr('action','/bsp/order/buy.do')
-			console.log($(this).parent().parent().find("#numberUpDown").val())
-
 			if($('#m_no').val()==0){
 	  		  alert('로그인이 필요합니다.')
 	  		  location.href="/bsp/user/login.do"
@@ -64,7 +57,6 @@
 		})
 	})
 	
-	 
     </script>
 
 
@@ -87,9 +79,6 @@
                     <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC&pageRow=${param.pageRow}">최저가순</a></span>
                     <span class="highPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC&pageRow=${param.pageRow}	">최고가순</a></span>
                     
-                    
-                   <!-- 강사님한테 물어보기!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                     <!-- <form method="get" name="searchForm" id="searchForm" action=""> --> 
                      <div class="divPlace">
                         <select name="pageRow" id="divnum" onchange="sendPageRow();">
                             <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
@@ -98,11 +87,7 @@
                             <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
                         </select> 
                  <!--           <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택 -->
-                           
-                            
                     </div>
-                    <!-- </form>  -->
-                    
                     <br>
                     <br>
                     <hr>
@@ -129,7 +114,7 @@
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
                     <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
-                    <img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 200px; width: 150px;"></a></div>
+                    <img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
                 </div>
                 <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                 <div class="s_infoSectionWrap">
@@ -168,19 +153,9 @@
              </div>
              </c:forEach>
              </form>
-            
-
-
-
-
-          
-        
-             
      <jsp:include page="../include/quick.jsp"></jsp:include>
-         
     </div>
     </div> 
-   
      <jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>

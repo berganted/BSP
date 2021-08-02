@@ -278,9 +278,4 @@ public class BookServiceImpl implements BookService {
 		return dao.isOrder(vo);
 	}
 
-
-
-	
-
-
 }

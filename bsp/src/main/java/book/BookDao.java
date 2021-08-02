@@ -41,9 +41,7 @@ public class BookDao {
 	public int bookimgad(BookVo vo) {
 		return sqlSession.insert("book.bookimgad",vo);
 	}
-	
-	
-	
+
 	public BookVo isOrder(BookVo vo) {
 		return sqlSession.selectOne("book.isOrder", vo);
 	}

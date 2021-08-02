@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -19,7 +19,6 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="/bsp/js/star.js"></script>
 
-<title>Document</title>
 
 
 <title>도서상세페이지</title>
@@ -175,15 +174,14 @@ star-input>.input.focus {
 }
 </style>
 <script type="text/javascript">
-
-$(function(){
-	var abc=$("#abc").val()
-	console.log(abc.length)
-	if($("#abc").val().length>30){
-		$('#blah').attr('src',abc)
-	}
-})
-
+  $(function(){
+	  var abc=$(".abc").val()
+		console.log(abc.length)
+		if($(".abc").val().length>30){
+			$('.blah').attr('src',abc)
+		}
+	  
+  })
   function gosave() {
 	  $('#frm').attr('action','/bsp/cart/insert.do')
 	  if($('#m_no').val()==0){
@@ -201,6 +199,7 @@ $(function(){
 		  return false
 	   }
 	  $('#frm').submit();
+	
 }
   </script>
 </head>
@@ -212,16 +211,16 @@ $(function(){
 			<div class="detail_wrap">
 				<div class="img_section">
 					<div class="detail_bookImg">
-						<img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"
-							id="blah" title="${vo.b_title }" style="width: 250px; height: 310px;">
-					<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
+						<img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"
+								title="${vo.b_title }" style="width: 250px; height: 310px;">
+
 					</div>
 				</div>
 				<form id='frm' action="/bsp/cart/insert.do" method="get">
 				
 					<div class="detail_bookInfo">
 						<div class="bookInfo_section">
-
+							<input type="hidden" class=abc id="abc" value="${vo.b_imgmain }"/>
 							<input type="hidden" name="b_no" value="${vo.b_no }"> 
 							<input	type="hidden" id="m_no" name="m_no" value="${userInfo.m_no }">
 							<input type="hidden" name="b_price" value="${vo.b_price }">
@@ -255,7 +254,7 @@ $(function(){
 						<div class="detail_payWrap3">
 							<span class="ing" style="font-size: 15px;"> &emsp;&emsp;
 								판매중</span> <br>
-							<div class="number">
+							<div class="number" style="margin-left: 1px;">
 								<button class="button_s" type="button" id="decreaseQuantity">-</button>
 								<input type="number" id="numberUpDown" name="io_amount"
 									style="width: 50px; text-align: center;" value="1">
@@ -273,6 +272,9 @@ $(function(){
 					</div>
 				</form>
 			</div>
+			
+			
+			
 
 			<div class="detail_section">
 				<div class="bookintro">
@@ -280,7 +282,7 @@ $(function(){
 				</div>
 				<div>
 					<p class="bookintro1">
-
+						
 						${vo.b_introbook } <br> 동물들 대신 쓴 독특한 콘셉트의 에세이 『정말 별게 다
 						고민입니다』는 걱정 많은 ‘나’를 위한 동물들의 일대일 조언을 담고 있다. 인간의 관점에서 벗어나 동물의 관점에서
 						문제를 바라보니 해법은 의외로 단순했다. 10대부터 50대 이상 남녀노소의 다양한 걱정거리를 조사하고 가장 인기 있는
@@ -354,18 +356,15 @@ $(function(){
 						<h1>리뷰/평점</h1>
 					</div>
 					<div style="text-align: center;">
-						<span class="star-input"> <span class="input"> <input
-								type="radio" name="star-input" value="1" id="p1"> <label
-								for="p1">1</label> <input type="radio" name="star-input"
-								value="2" id="p2"> <label for="p2">2</label> <input
-								type="radio" name="star-input" value="3" id="p3"> <label
-								for="p3">3</label> <input type="radio" name="star-input"
-								value="4" id="p4"> <label for="p4">4</label> <input
-								type="radio" name="star-input" value="5" id="p5"> <label
-								for="p5">5</label>
-						</span> <output for="star-input">
-								<b id="r_grade">0</b>점
-							</output>
+						<span class="star-input"> 
+						<span class="input"> 
+							<input type="radio" name="star-input" value="1" id="p1"> <label for="p1">1</label> 
+							<input type="radio" name="star-input" value="2" id="p2"> <label for="p2">2</label> 
+							<input type="radio" name="star-input" value="3" id="p3"> <label for="p3">3</label> 
+							<input type="radio" name="star-input" value="4" id="p4"> <label for="p4">4</label> 
+							<input type="radio" name="star-input" value="5" id="p5"> <label for="p5">5</label>
+						</span> 
+						<output for="star-input"><b id="r_grade">0</b>점</output>
 						</span>
 					</div>
 
@@ -380,10 +379,10 @@ $(function(){
 						</colgroup>
 						<tbody>
 							<tr>
-								<c:if test="${userInfo.m_no!=null }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
+								<c:if test="${isOrder.isorder>0 }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 										
-								<c:if test="${userInfo.m_no==null }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
+								<c:if test="${isOrder.isorder==0 }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 										
 								<td>

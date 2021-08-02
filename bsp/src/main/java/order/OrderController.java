@@ -36,14 +36,15 @@ public class OrderController {
 	PointService pservice;
 
 	@RequestMapping("/order/buy.do")
-	public String buy(BookVo vo,Model model,HttpServletRequest req) {
+	public String buy(BookVo vo,OrderVo ov,Model model,HttpServletRequest req) {
 		 vo.setB_no(Integer.parseInt(req.getParameter("b_no")));
 		 vo.setIo_amount(Integer.parseInt(req.getParameter("io_amount")));
 			model.addAttribute("vo", bservice.deatil(vo));
+			model.addAttribute("ad",service.lastaddr(ov));
 			return "order/BuyForm";
 	}
 	@RequestMapping("/order/cartbuy.do")
-	public String cartbuy(CartVo vo,Model model,HttpServletRequest req) {
+	public String cartbuy(CartVo vo,OrderVo ov,Model model,HttpServletRequest req) {
 		String[] no = req.getParameterValues("checkOne");
 		List<CartVo> list  = new ArrayList<CartVo>(); 
 		for (int i = 0; i < no.length; i++) {
@@ -52,7 +53,7 @@ public class OrderController {
 			list.add(rv);
 		}
 		model.addAttribute("list", list);
-		System.out.println("test3 : "+Arrays.toString(no));
+		model.addAttribute("ad",service.lastaddr(ov));
 		return "order/BuyForm2";
 	}
 	

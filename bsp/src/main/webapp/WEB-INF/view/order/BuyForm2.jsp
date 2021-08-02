@@ -18,6 +18,29 @@
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
     $(function(){
+    	$('input[name=dvryOpt]').change(function(){
+    		console.log($(this).val())
+        	if($(this).val()==1){
+        		$('#pb_zipcode').val($('#uz').val());
+        		$('#pb_addr1').val($('#ua').val());
+        		$('#pb_addr2').val($('#ua2').val());
+        		$('#pb_resname').val($('#urn').val());  
+        		$('#pb_restel').val($('#utel').val());
+        	}else if($(this).val()==2){
+        		$('#pb_zipcode').val($('#lz').val());
+        		$('#pb_addr1').val($('#la').val());
+        		$('#pb_addr2').val($('#la2').val());
+        		$('#pb_resname').val($('#lrn').val());  
+        		$('#pb_restel').val($('#ltel').val());
+        	}
+        	else if($(this).val()==4){
+        		$('#pb_zipcode').val('');
+        		$('#pb_addr1').val('');
+        		$('#pb_addr2').val('');
+        		$('#pb_resname').val('');
+        		$('#pb_restel').val('');
+        		}
+        	})
     	calc();
     	$('#savedmoney').change(function(){
     		console.log( $('#po').val() )
@@ -156,7 +179,6 @@
                          <td>
                              <input type="radio" name="dvryOpt" value="1" checked>주문고객 정보와 동일
                              <input type="radio" name="dvryOpt" value="2">최근 배송지 주소
-                             <input type="radio" name="dvryOpt" value="3">배송주소록에서 선택
                              <input type="radio" name="dvryOpt" value="4">새주소 입력
                          </td>
                      </tr>
@@ -170,22 +192,32 @@
                      <tr>
                         <td>* 받으시는 분</td>
                         <td>
-                            <input type="text" name="pb_resname" value="전나나 " checked ><br>
+                             <input type="text" id="pb_resname" name="pb_resname" value="전나나 " checked ><br>
                         </td>
                      </tr>
                      <tr>
                         <td>* 주소</td>
                         <td>
-                             <input type="text"  name="pb_zipcode" maxlength="5" style="width:173px; " value="${userInfo.m_zipcode }" > 
+                               <input type="text" id="pb_zipcode" name="pb_zipcode" maxlength="5" style="width:173px; " value="${userInfo.m_zipcode }" > 
                              <button class="button_s" type="button" onclick="openZipSearch()">검색</button>&nbsp;우편번호<br>
-                             <input type="text" name="pb_addr1" style="width:250px; " value="${userInfo.m_addr1 }"/>기본주소<br>
-                             <input type="text" name="pb_addr2" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
+                             <input type="text" id="pb_addr1"name="pb_addr1" style="width:250px; " value="${userInfo.m_addr1 }"/>기본주소<br>
+                             <input type="text" id="pb_addr2" name="pb_addr2" style="width:250px; "value="${userInfo.m_addr2 }"/>상세주소
+                              <input type="hidden" id="uz" value="${userInfo.m_zipcode }" > 
+                             <input type="hidden" id="ua" value="${userInfo.m_addr1 }"/>
+                             <input type="hidden" id="ua2" value="${userInfo.m_addr2 }"/>
+                             <input type="hidden" id="urn" value="${userInfo.m_name }"/>
+                             <input type="hidden" id="utel" value="${userInfo.m_tel }"/>
+                             <input type="hidden" id="lz" value="${ad.pb_zipcode }" > 
+                             <input type="hidden" id="la" value="${ad.pb_addr1 }"/>
+                             <input type="hidden" id="la2" value="${ad.pb_addr2 }"/>
+                             <input type="hidden" id="lrn" value="${ad.pb_resname }"/>
+                             <input type="hidden" id="ltel" value="${ad.pb_restel }"/>
                         </td>
                      </tr>
                      <tr>
                         <td>* 휴대전화번호</td>
                         <td>
-                            <input type="text" name="pb_restel" style="width: 310px;" value="${userInfo.m_tel }"> 
+                            <input type="text" id="pb_restel" name="pb_restel" style="width: 310px;" value="${userInfo.m_tel }"> 
                            
                         </td>
                      </tr>

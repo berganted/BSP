@@ -16,18 +16,20 @@ public class FAQBoardController {
 	static final String TABLENAME = "faq_board";
 	
 	@RequestMapping("/sample/FAQboard2.do")
-	public String index(Model model, FAQBoardVo vo) {
+	public String index(Model model, FboardVo vo) {
+		 service.selectAll(vo);
 		model.addAttribute("list", service.selectAll(vo));
+		System.out.println(vo.getTotCount());
 		return "sample/FAQboard2";
 	}
 	
 	@RequestMapping("/sample/board_write2.do")
-	public String write(Model model, FAQBoardVo vo) {
+	public String write(Model model, FboardVo vo) {
 		return "sample/board_write2";
 	}
 	
 	@RequestMapping("/sample/insert2.do")
-	public String insert(Model model, FAQBoardVo vo, HttpServletRequest req) {
+	public String insert(Model model, FboardVo vo, HttpServletRequest req) {
 		int r = service.insert(vo);
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
@@ -46,7 +48,7 @@ public class FAQBoardController {
 //	}
 	
 	@RequestMapping("/sample/update2.do")
-	public String update(Model model, FAQBoardVo vo, HttpServletRequest req) { 
+	public String update(Model model, FboardVo vo, HttpServletRequest req) { 
 		int r = service.update(vo);
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 수정되었습니다.");
@@ -59,7 +61,7 @@ public class FAQBoardController {
 	}
 	
 	@RequestMapping("/sample/delete2.do")
-	public String delete(Model model, FAQBoardVo vo, HttpServletRequest req) {
+	public String delete(Model model, FboardVo vo, HttpServletRequest req) {
 		int r = service.delete(vo);
 		if (r > 0) {
 			model.addAttribute("result", "true");

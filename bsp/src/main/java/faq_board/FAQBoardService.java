@@ -5,9 +5,9 @@ import java.util.List;
 
 
 public interface FAQBoardService {
-	List<FAQBoardVo> selectAll(FAQBoardVo vo);
-	int insert(FAQBoardVo vo);
+	List<FboardVo> selectAll(FboardVo vo);
+	int insert(FboardVo vo);
 //	FAQBoardVo edit(FAQBoardVo vo);
-	int update(FAQBoardVo vo);
-	int delete(FAQBoardVo vo);
+	int update(FboardVo vo);
+	int delete(FboardVo vo);
 }

@@ -19,13 +19,10 @@
 <script src="js/jquery-1.11.3.min.js"></script>
 <script src="/bsp/js/star.js"></script>
 
-<<<<<<< HEAD
 <title>Document</title>
-=======
 
 
 <title>도서상세페이지</title>
->>>>>>> branch 'master' of https://github.com/berganted/bsp.git
 <style>
 
 /* 페이징처리 */

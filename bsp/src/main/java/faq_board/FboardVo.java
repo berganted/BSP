@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 import util.CommonVo;
 
-public class FAQBoardVo extends CommonVo {
+public class FboardVo extends CommonVo {
 	
 	private int faq_no;
 	private String faq_cate;
@@ -13,7 +13,7 @@ public class FAQBoardVo extends CommonVo {
 	
 	private String a_id;
 	
-	public  FAQBoardVo() {
+	public  FboardVo() {
 		
 		this.pageRow = 5;
 		this.reqPage = 1;

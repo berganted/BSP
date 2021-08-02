@@ -13,23 +13,23 @@ public class FAQBoardDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 	
-	public List<FAQBoardVo> selectAll(FAQBoardVo vo) {
+	public List<FboardVo> selectAll(FboardVo vo) {
 		return sqlSession.selectList("faq_board.selectAll", vo);
 	}
 	
-	public int count(FAQBoardVo vo) {
+	public int count(FboardVo vo) {
 		return sqlSession.selectOne("faq_board.count", vo);
 	}
 	
-	public int insert(FAQBoardVo vo) {
+	public int insert(FboardVo vo) {
 		return sqlSession.insert("faq_board.insert", vo);
 	}
 	
-	public int update(FAQBoardVo vo) {
+	public int update(FboardVo vo) {
 		return sqlSession.update("faq_board.update", vo);
 	}
 	
-	public int delete(FAQBoardVo vo) {
+	public int delete(FboardVo vo) {
 		return sqlSession.delete("faq_board.delete", vo);
 	}
 }

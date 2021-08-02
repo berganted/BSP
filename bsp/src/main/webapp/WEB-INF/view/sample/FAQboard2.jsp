@@ -61,6 +61,7 @@
                     FAQ</h3>
                     <div class="bbs">
                         <table class="FAQboard2_list">
+                          <p><span><strong>총 ${fboardVo.totCount }개</strong>  |  ${fboardVo.reqPage}/${fboardVo.totPage }페이지</span></p>
                             <tbody>      
                                 <c:if test="${empty list }">
 		                            <tr>
@@ -82,14 +83,14 @@
                     </div>
                     <div class="pagenate clear">
                         <ul class='paging'> 
-                        <c:if test="${FAQboardVo.strPage > FAQboardVo.pageRange}">
-                        	<li><a href="FAQboard2.do?reqPage=${FAQboardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
+                        <c:if test="${fboardVo.strPage > fboardVo.pageRange}">
+                        	<li><a href="FAQboard2.do?reqPage=${fboardVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
                         </c:if>
-                        <c:forEach var="rp" begin="${FAQboardVo.strPage}" end="${FAQboardVo.endPage }">
-                            <li><a href='FAQboard2.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==FAQboardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
+                        <c:forEach var="rp" begin="${fboardVo.strPage}" end="${fboardVo.endPage }">
+                            <li><a href='FAQboard2.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==fboardVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
-                        <c:if test="${FAQboardVo.totPage > FAQboardVo.endPage}">
-                        	<li><a href="FAQboard2.do?reqPage=${FAQboardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
+                        <c:if test="${fboardVo.totPage > fboardVo.endPage}">
+                        	<li><a href="FAQboard2.do?reqPage=${fboardVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
                         </c:if>
                         </ul> 
                     </div>

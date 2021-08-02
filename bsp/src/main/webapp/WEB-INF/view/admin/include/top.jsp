@@ -12,7 +12,7 @@ function OpenWinCount(URL,width,height) {
 	window.open(URL,'remote',str);
 }
 
-$(window).load(function(){
+$(function(){
 	// 1depth 메뉴들
 	var parent = $(".parent");
 	

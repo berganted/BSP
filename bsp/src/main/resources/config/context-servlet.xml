@@ -34,10 +34,14 @@
    <mvc:view-controller path="/sample/board_write.do"/>   
    <mvc:view-controller path="/sample/board_write2.do"/>   
    <mvc:view-controller path="/sample/board_edit.do"/>   
+   <mvc:view-controller path="/sample/board_edit2.do"/>   
    <mvc:view-controller path="/sample/board_reply.do"/>   
    <mvc:view-controller path="/sample/index_search.do"/>   
    <mvc:view-controller path="/sample/FAQboard.do"/>   
    <mvc:view-controller path="/sample/FAQboard2.do"/>   
+   <mvc:view-controller path="/sample/FAQindexAdmin.do"/>   
+   <mvc:view-controller path="/sample/FAQviewAdmin.do"/>   
+   <mvc:view-controller path="/sample/FAQwriteAdmin.do"/>   
  
    <!-- DBCP -->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">

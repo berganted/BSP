@@ -21,6 +21,13 @@
 <title>도서상세페이지</title>
 
 <script type="text/javascript">
+$(function(){
+	var abc=$("#abc").val()
+	console.log(abc.length)
+	if($("#abc").val().length>30){
+		$('#blah').attr('src',abc)
+	}
+})
 
   function gosave() {
 	  $('#frm').attr('action','/bsp/cart/insert.do')
@@ -42,31 +49,31 @@
 	
 }
   
-  function goReview() {
+	function goReview() {
 		<c:if test="${!empty userInfo}">
 		if ($("#content").val().trim()==''){
 			alert('내용을 입력해 주세요');
 		} else {
 			if (confirm('리뷰를 등록하시겠습니까?')) {
 				$.ajax({
-      			url:'/bsp/review/insert.do',
-      			data:{
-          				r_content:$("#content").val(),
-          				r_no:${vo.r_no},
-          				m_no:${userInfo.m_no},
-          				b_no:${vo.b_no},
-          				r_grade:$("#r_grade").text()
-      			},
-      			success:function(res) {
-      				if (res.trim()=='true') {
-      					alert('리뷰가 등록되었습니다.');
-      					$("#content").val("");
-      					getComment();
-      				} else {
-      					alert('리뷰 등록 실패');
-      				}
-      			}
-      		});
+        			url:'/bsp/review/insert.do',
+        			data:{
+            				r_content:$("#content").val(),
+            				r_no:${vo.r_no},
+            				m_no:${userInfo.m_no},
+            				b_no:${vo.b_no},
+            				r_grade:$("#r_grade").text()
+        			},
+        			success:function(res) {
+        				if (res.trim()=='true') {
+        					alert('리뷰가 등록되었습니다.');
+        					$("#content").val("");
+        					getComment();
+        				} else {
+        					alert('리뷰 등록 실패');
+        				}
+        			}
+        		});
 			}
 		}
 		</c:if>
@@ -77,7 +84,7 @@
 	 $(function(){
 		 starRating();
 		 getComment(1);
-   });
+	    });
 	function getComment(reqPage) {
 		$.ajax({
 			url:'/bsp/review/list.do',
@@ -92,24 +99,23 @@
 	}
 	function commentDel(no) {
 		if (confirm('댓글을 삭제하시겠습니까?')) {
-  		$.ajax({
-  			url:'/bsp/review/delete.do',
-  			data:{
-  				r_no:no
-  			},
-  			success:function(res) {
-  				if (res.trim()=='true') {
-      				alert('댓글이 삭제되었습니다.');
-      				getComment(1);
-  				} else {
-  					alert('댓글 삭제 오류');
-  				}
-  			}
-  		});
+    		$.ajax({
+    			url:'/bsp/review/delete.do',
+    			data:{
+    				r_no:no
+    			},
+    			success:function(res) {
+    				if (res.trim()=='true') {
+        				alert('댓글이 삭제되었습니다.');
+        				getComment(1);
+    				} else {
+    					alert('댓글 삭제 오류');
+    				}
+    			}
+    		});
 		}
 	}
   </script>
-
 </head>
 <body>
 	<jsp:include page="../include/header.jsp"></jsp:include>
@@ -119,9 +125,9 @@
 			<div class="detail_wrap">
 				<div class="img_section">
 					<div class="detail_bookImg">
-						<img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"
+						<img src="/bsp/img/${vo.b_imgmain }" id="blah" alt="${vo.b_title }"
 							, title="${vo.b_title }" style="width: 250px; height: 310px;">
-
+						<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
 					</div>
 				</div>
 				<form id='frm' action="/bsp/cart/insert.do" method="get">
@@ -270,6 +276,10 @@
 							</tr>
 						</tbody>
 					</table>
+					
+					<script>
+
+                    </script>
 				</div>
 				<div id="reviewArea"></div>
 			</div>

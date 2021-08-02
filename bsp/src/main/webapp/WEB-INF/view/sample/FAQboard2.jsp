@@ -19,9 +19,9 @@
     
     <script>
     function move() {
-    	location.href='board_write2.do';   
+    	location.href='FAQwriteAdmin.do';   
     	<c:if test="${!empty userInfo}">
-    	location.href='board_write2.do';
+    	location.href='FAQwriteAdmin.do';
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');

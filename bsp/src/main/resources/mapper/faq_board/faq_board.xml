@@ -28,10 +28,18 @@
 		SELECT COUNT(*) FROM faq_board
 		<include refid="faq_boardWhere"/>
 	</select>
+	
+	<select id="detail" resultType="faq_board.FboardVo" parameterType="faq_board.FboardVo">
+		SELECT * FROM faq_board WHERE faq_no = #{faq_no}
+	</select>
+	
+	<update id="updateReadcount" parameterType="faq_board.FboardVo">
+		UPDATE faq_board SET faq_readcount=faq_readcount+1 WHERE faq_no = #{faq_no}
+	</update>  
 	 
 	<insert id="insert" parameterType="faq_board.FboardVo">
-		INSERT INTO faq_board (faq_no, faq_cate, faq_title, faq_content, a_id) 
-		VALUES (#{faq_no},#{faq_cate}, #{faq_title}, #{faq_content}, #{a_id}) 
+		INSERT INTO faq_board (faq_no, faq_cate, faq_title, faq_content, a_id, faq_regdate, faq_readcount) 
+		VALUES (#{faq_no},#{faq_cate}, #{faq_title}, #{faq_content}, #{a_id}, NOW(), #{faq_readcount}) 
 	</insert>
 	
 	<update id="update" parameterType="faq_board.FboardVo">

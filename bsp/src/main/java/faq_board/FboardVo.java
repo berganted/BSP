@@ -10,6 +10,8 @@ public class FboardVo extends CommonVo {
 	private String faq_cate;
 	private String faq_title;
 	private String faq_content;
+	private Timestamp faq_regdate;
+	private int faq_readcount;
 	
 	private String a_id;
 	
@@ -18,8 +20,24 @@ public class FboardVo extends CommonVo {
 		this.pageRow = 5;
 		this.reqPage = 1;
 		this.pageRange = 5;
-		this.orderby ="q_regdate";
+		this.orderby ="faq_regdate";
 		this.direct = "DESC";
+	}
+	
+	public Timestamp getFaq_regdate() {
+		return faq_regdate;
+	}
+	
+	public void setFaq_regdate(Timestamp faq_regdate) {
+		this.faq_regdate = faq_regdate;
+	}
+	
+	public int getFaq_readcount() {
+		return faq_readcount;
+	}
+	
+	public void setFaq_readcount(int faq_readcount) {
+		this.faq_readcount = faq_readcount;
 	}
 	
 	public int getFaq_no() {

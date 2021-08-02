@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import board.BoardVo;
+
 
 @Repository
 public class FAQBoardDao {
@@ -19,6 +21,14 @@ public class FAQBoardDao {
 	
 	public int count(FboardVo vo) {
 		return sqlSession.selectOne("faq_board.count", vo);
+	}
+	
+	public FboardVo detail(FboardVo vo) {
+		return sqlSession.selectOne("faq_board.detail", vo);
+	}
+	
+	public void updateReadcount(FboardVo vo) {
+		sqlSession.update("faq_board.updateReadcount", vo);
 	}
 	
 	public int insert(FboardVo vo) {

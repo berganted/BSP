@@ -4,10 +4,12 @@ import java.util.List;
 
 
 
+
 public interface FAQBoardService {
 	List<FboardVo> selectAll(FboardVo vo);
+	FboardVo detail(FboardVo vo);
 	int insert(FboardVo vo);
-//	FAQBoardVo edit(FAQBoardVo vo);
+	FboardVo edit(FboardVo vo);
 	int update(FboardVo vo);
 	int delete(FboardVo vo);
 }

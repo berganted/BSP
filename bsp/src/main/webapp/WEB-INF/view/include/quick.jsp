@@ -5,7 +5,6 @@
 <script>
 
 </script>
-<link rel="stylesheet" href="css/quick.css">
 <aside class="mypage_ad">
     <div class="mypage_ad_name"><p>최근본상품</p></div>
     <c:if test="${quick == null }"> 최근본상품이 없습니다.</c:if>

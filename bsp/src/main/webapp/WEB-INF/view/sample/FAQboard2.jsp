@@ -79,7 +79,6 @@
                         	</tbody>
                     </table>
                     <div class="btnSet"  style="text-align:right;">
-                        <a class="FAQboard_btn" href="javascript:move();">글작성 </a>
                     </div>
                     <div class="pagenate clear">
                         <ul class='paging'> 

@@ -67,7 +67,7 @@
         }
     }
     
-    $(function(){       
+    $(function (){       
         $("[name=checkAll]").click(function(){ //전체 박스 누르면 체크박스들 상태 변경
             allCheckFunc( this );
         });

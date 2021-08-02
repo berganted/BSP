@@ -60,14 +60,11 @@ public class BookController {
 		if(sess.getAttribute("userInfo")!=null) {
 			UserVo u = (UserVo) sess.getAttribute("userInfo");
 			vo.setM_no(u.getM_no());
-			model.addAttribute("isOrder", service.isOrder(vo));
-			System.out.println(vo.getIsorder());
-		}
-		
+		model.addAttribute("isOrder", service.isOrder(vo));
+		System.out.println(vo.getIsorder());
+	}
 		return "book/Book_detail";
 	}
-	
-	
  //-----------------국내도서 상세분류 클릭시 나오는 list-----------------
 	@RequestMapping("/book/Book_KsmallIdx.do")
 	public String ksmall(Model model, BookVo vo) {

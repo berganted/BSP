@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import order.OrderVo;
+
 @Service
 public class BookServiceImpl implements BookService {
 
@@ -275,7 +277,5 @@ public class BookServiceImpl implements BookService {
 	public BookVo isOrder(BookVo vo) {
 		return dao.isOrder(vo);
 	}
-
-
 
 }

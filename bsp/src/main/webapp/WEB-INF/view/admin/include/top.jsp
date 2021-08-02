@@ -90,12 +90,11 @@ $(function(){
 				<li><a href="<%=request.getContextPath()%>/admin/board/index.do" class="parent"><span>게시판</span></a>
 					<div class="standard_left">
 					<ul>
-						<li><a href="<%=request.getContextPath()%>/admin/board/index.do"><span>공지사항</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/admin/board/index.do"><span>FAQ</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/board/index.do"><span>Q&A</span></a></li>
 					</ul>
 					</div>
 				</li>
-				<li><a href="<%=request.getContextPath()%>/admin/admin/index.do" class="parent"><span>관리자관리</span></a></li>
 			</ul>
 		</div>
 		<!--//gnb-->

@@ -116,6 +116,11 @@ public class OrderServiceimpl implements OrderService {
 		return dao.insertIo(vo);
 	}
 
+	@Override
+	public OrderVo lastaddr(OrderVo vo) {
+		return dao.lastaddr(vo);
+	}
+
 
 
 

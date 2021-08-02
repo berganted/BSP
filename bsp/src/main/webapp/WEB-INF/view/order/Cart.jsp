@@ -18,12 +18,22 @@
     <script>
     function calc() {
     	var sum=0;
-    	var cnt=0
+    	var cnt=$('.b_price').length;
+    	var tsum=0;
+    	var psum=0;
     	$('.b_price').each(function(){
     		var idx = $(this).index('.b_price');
+    		tsum += Number($(".pop_out").eq(idx).val())
     		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
+    		psum +=Number($(".point").eq(idx).text());
+
     	});
+    	$("#tsum").text(tsum);
+    	$("#psum").text(psum);
+    	$("#cnt").text(cnt);
     	$("#totalPrice").text(sum);
+    	$("#totalPrice1").text(sum);
+    	
     }
   
     function fnCalCount(type, ths){
@@ -90,9 +100,16 @@
         		$('#frm').submit();
         	}
 	}
+    function allOrder() {
+    	$('[name=checkOne]').prop('checked',true);
+    	groupOder();
+	}
+    
     
     </script>
-
+<style type="text/css">
+th{height: 30px}
+</style>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -107,12 +124,7 @@
                 <span id="cart">
                     <input class="button_m" type="button" name="buy_select" value="선택주문" onclick="groupOder();">
                     <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="groupDel();">
-                    <select name="정렬" style="height: 30px; border: 2px solid #221f1f ;">
-                        <option value="recent" selected>최근 담은 순</option>
-                        <option value="h_prc">고가 순</option>
-                        <option value="l_prc">저가 순</option>
-                        <option value="publish">출간일 순</option>
-                    </select>
+                    
                     </span>
             </div>
             
@@ -147,7 +159,7 @@
 	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100%; cursor: pointer; " onclick="location.href='/bsp/book/Book_detail.do?b_no=${list.b_no }'"></td> 
 	                <td><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }"> ${list.b_title }<br> *내일수령가능</a></td> 
 	                <td><span class="b_price">${list.b_price }</span><br>
-	                    <span>${list.b_point }</span>(5%)
+	                    <span class="point">${list.b_point }</span>(5%)
 	                </td>
 	                <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
 	                <td id="ant">
@@ -164,43 +176,36 @@
         <table id="cart_tb" class="cart_s">
             <tr>
                 <td>총 상품 가격&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><span id="totalPrice">46,620</span>원&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><span id="totalPrice"></span>원&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>멤버십 마일리지&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>0원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td>${userInfo.m_point }원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             </tr>
             <br>
             <tr>
                 <td>배송비&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>0원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>총 주문 상품수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>3종 3권&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><span id="cnt"></span>종 <span id="tsum"></span>권&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             </tr>
             <hr>
             <tr>
                 <td>총 결제 예상 금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>46,620원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><span id="totalPrice1"></span>원&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                 <td>총 적립 예상 마일리지&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td>2,590점&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><span id="psum"></span>점&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             </tr>
         </table>
            <hr>
             <div id="cart_select" style="text-align: right; padding: 10px 25px;">
                 <span>
-                    <input class="button_m" class="button" type="button" name="buy_select" value="선택한 상품 주문하기" >
-                    <input class="button_m" class="button" type="button" name="buy_all" value="전체 상품 주문하기" onclick="location.href='/bsp/order/cartbuy.do'">
+                    <input class="button_m" class="button" type="button" name="buy_select" value="선택한 상품 주문하기" onclick="groupOder();" >
+                    <input class="button_m" class="button" type="button" name="buy_all" value="전체 상품 주문하기" onclick="allOrder();">
                 </span>
             </div>
         </div>
     </div>
-   <aside class="mypage_ad">
-                <div class="mypage_ad_name"><p>최근본상품</p></div>
-                <div class="img_area">
-                    <img src="img/book.jpg" width="70px" height="100px">
-                </div>
-                <div style="text-align: center;">
-                    책이름
-                </div>
-            </aside> 
+   
+<jsp:include page="../include/quick.jsp"></jsp:include>
 </div> 
 <footer id="footer"></footer>
 <jsp:include page="../include/footer.jsp"></jsp:include>

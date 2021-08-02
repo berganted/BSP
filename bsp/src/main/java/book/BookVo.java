@@ -47,15 +47,10 @@ public class BookVo extends CommonVo {
 	private int tot;
 	private int isorder;
 
-
-
-	
 	
 	public int getIsorder() {
 		return isorder;
 	}
-
-
 
 	public void setIsorder(int isorder) {
 		this.isorder = isorder;

@@ -42,7 +42,6 @@ public class BookDao {
 		return sqlSession.insert("book.bookimgad",vo);
 	}
 
-	
 	public BookVo isOrder(BookVo vo) {
 		return sqlSession.selectOne("book.isOrder", vo);
 	}

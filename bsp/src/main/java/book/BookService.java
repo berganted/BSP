@@ -2,6 +2,8 @@ package book;
 
 import java.util.List;
 
+import order.OrderVo;
+
 
 public interface BookService {
 	List<BookVo> selectAll(BookVo vo);

@@ -98,6 +98,15 @@
     function sendPageRow() {
     	location.href='Book_Knew.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=DESC&pageRow='+$("#divnum").val();
     }
+    $(function(){
+    	$(".abc").each(function(){
+    		var idx = $(this).index('.abc');
+    		console.log($(this).val().length)
+    		if($(this).val().length>30){
+    			$('.blah').eq(idx).attr('src',$(this).val())
+    		}
+    		})
+    })
     </script>
 </head>
 <body>
@@ -135,15 +144,16 @@
                     <br>
                 </div>
          
-
             <!-- 1 -->
              <form id='frm' action="/bsp/cart/insert.do" method="get">
             <c:forEach var = "vo" items="${list }">
             <div class="best_wrap">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
+                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                    <img class="blah" src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
                 </div>
+                <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
                         <span class="s_bookTitle" style="font-size: 20px;">

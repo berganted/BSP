@@ -39,6 +39,7 @@
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}
  		</select>
+ 		
  		<!--전체주문내역 tot  -->
  		<select id="selectAllCnt" resultType="order.OrderVo" parameterType="order.OrderVo">
  		SELECT count(*),
@@ -146,7 +147,6 @@
  		</select>
  		<select id="countAdmin" resultType="int" parameterType="order.OrderVo">
 		SELECT count(*) FROM product_buy 
-		
 		<include refid="orderWhere"/>
 		</select>
 		<!-- 주문 등록 -->
@@ -162,4 +162,32 @@
 		<insert id="insertIo">
 		INSERT INTO product_io (pb_no,io_amount,io_date,b_no,ps_no) VALUES(#{pb_no},#{io_amount},NOW(),#{b_no},18)
 		</insert>
+		
+		 <!-- 결제창에 띄울 주문리스트 -->
+		<select id="selectPay" resultType="order.OrderVo" parameterType="order.OrderVo">
+		SELECT *, (SELECT count(*) from product_io pi where pi.pb_no=pb.pb_no)as count  
+		FROM product_buy pb
+		JOIN product_io pi
+		ON pb.pb_no = pi.pb_no
+		JOIN book b
+		ON pi.b_no = b.b_no
+		JOIN user u
+		ON pb.m_no=u.m_no
+		WHERE pb.m_no=#{m_no} AND pb.pb_no=#{pb_no}
+		</select>
+		
+		<!-- 카드결제 완료시 ps_no상태변경 (product_buy) -->
+		<update id="updatePb" parameterType="int">
+		UPDATE product_buy SET 
+		ps_no= 2
+		WHERE pb_no=#{pb_no} 
+		</update>
+		
+		<!-- 카드결제 완료시 ps_no상태변경 (product_io) -->
+		<update id="updatePi" parameterType="int">
+		UPDATE product_io SET 
+		ps_no= 2
+		WHERE io_no=#{io_no} 
+		</update>
+		
 	</mapper>

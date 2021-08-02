@@ -116,6 +116,21 @@ public class OrderServiceimpl implements OrderService {
 		return dao.insertIo(vo);
 	}
 
+	@Override
+	public OrderVo selectPay(OrderVo vo) {
+		return dao.selectPay(vo);
+	}
+
+	@Override
+	public void updatePb(int no) {
+		dao.updatePb(no);
+	}
+
+	@Override
+	public void updatePi(int no) {
+		dao.updatePi(no);
+	}
+
 
 
 

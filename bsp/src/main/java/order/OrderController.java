@@ -19,7 +19,6 @@ import cart.CartService;
 import cart.CartVo;
 import point.PointService;
 import point.PointVo;
-import returning.ReturningVo;
 import user.UserVo;
 
 
@@ -36,7 +35,7 @@ public class OrderController {
 	PointService pservice;
 
 	@RequestMapping("/order/buy.do")
-	public String buy(BookVo vo,Model model,HttpServletRequest req) {
+	public String buy(BookVo vo,Model model,HttpServletRequest req, HttpSession sess) {
 		 vo.setB_no(Integer.parseInt(req.getParameter("b_no")));
 		 vo.setIo_amount(Integer.parseInt(req.getParameter("io_amount")));
 			model.addAttribute("vo", bservice.deatil(vo));
@@ -69,7 +68,7 @@ public class OrderController {
 	public String orderList(Model model, OrderVo vo,HttpSession sess) {
 		UserVo uv = (UserVo)sess.getAttribute("userInfo");
 		vo.setM_no(uv.getM_no());
-		model.addAttribute("orderList",service.selectAdmin(vo));
+		model.addAttribute("orderList",service.selectAll(vo));
 		return "order/OrderList";
 	}
 	
@@ -80,7 +79,7 @@ public class OrderController {
 		return "order/OrderListDetails";
 	}
 	@RequestMapping("/order/insert.do")
-	public String insert(OrderVo vo ,CartVo cv,PointVo pv, Model model,HttpServletRequest req) {
+	public String insert(OrderVo vo ,CartVo cv, PointVo pv, Model model,HttpServletRequest req, HttpSession sess) {
 		String[] no = req.getParameterValues("b_no"); 
 		String[] ano = req.getParameterValues("io_amount") ;
 		String[] cno = req.getParameterValues("cart_no") ;
@@ -92,6 +91,7 @@ public class OrderController {
 			pv.setP_content("구매에 사용");
 			pv.setM_no(vo.getM_no());
 			service.insertIo(vo);
+			sess.setAttribute("pay", service.selectPay(vo)); 	/* 결제 api시 출력할 list (insert된 주문) */
 		}
 		if (r > 0) {
 			if(cno!=null) {
@@ -112,12 +112,26 @@ public class OrderController {
 				
 							
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
-			model.addAttribute("url", "list.do");
+			model.addAttribute("url", "pay.do");
 		} else {
 			model.addAttribute("msg", "등록실패.");
 			model.addAttribute("url", "return.do");
 		}
 		return "include/alert";
+	}
+	
+	/* 신용카드 결제(아임포트 api) */
+	@RequestMapping("/order/pay.do")
+	public String orderPay(Model model, OrderVo vo, HttpSession sess, HttpServletRequest req) {
+		return "order/PayForm";
+	}
+
+	/* 결제 완료시 ps_no (출고테이블/주문테이블) 변경 */
+	@RequestMapping("/order/buySuccess.do")
+	public String buySuccess(Model model, OrderVo vo,HttpSession sess, HttpServletRequest req) {
+		service.updatePb(Integer.parseInt(req.getParameter("pb_no")));
+		service.updatePi(Integer.parseInt(req.getParameter("io_no")));
+		return "order/BuySuccess";
 	}
 	
 	

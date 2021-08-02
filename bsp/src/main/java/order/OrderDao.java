@@ -34,7 +34,6 @@ public class OrderDao {
 	}
 	public int delete(OrderVo vo) {
 		return sessionTemplate.delete("order.delete", vo);
-
 	}
 	public List<OrderVo> selectAdmin(OrderVo vo){
 		return sessionTemplate.selectList("order.selectAdmin",vo);
@@ -50,5 +49,14 @@ public class OrderDao {
 	}
 	public int insertIo(OrderVo vo) {
 		return sessionTemplate.insert("order.insertIo",vo);
+	}
+	public OrderVo selectPay(OrderVo vo) {
+		return sessionTemplate.selectOne("order.selectPay",vo);
+	}
+	public void updatePb(int no) {
+		 sessionTemplate.update("order.updatePb",no);
+	}
+	public void updatePi(int no) {
+		 sessionTemplate.update("order.updatePi",no);
 	}
 }

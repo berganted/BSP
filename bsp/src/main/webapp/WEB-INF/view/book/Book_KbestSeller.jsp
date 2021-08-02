@@ -137,6 +137,7 @@
          
 
             <!-- 1 -->
+            <form id='frm' action="/bsp/cart/insert.do" method="get">
             <c:forEach var = "vo" items="${list }">
             <div class="best_wrap">
             <div class="SmallIndex_book">
@@ -158,26 +159,21 @@
                         </span>
                     </div>
                 </div>
-                <div class="s_payWrap">
+                   <div class="s_payWrap">
                     <div class="s_pay">
                         <div class="s_pay1">
-                           <!--  <input type="checkbox" name="bestcheck" > -->
-                            &nbsp;
-                          
-                           
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
-                                      
-                        
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="location.href='http://www.daum.net'" >
+                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" onClick="location.href='http://www.daum.net'">
+                            <input type="button"  class="btn2" value="바로구매" >
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>
@@ -188,16 +184,10 @@
             
             </div> 
             </c:forEach>
+            </form>
+              <jsp:include page="../include/quick.jsp"></jsp:include>	
         </div>  
-        <aside class="mypage_ad">
-            <div class="mypage_ad_name"><p>최근본상품</p></div>
-            <div class="img_area">
-                <img src="img/newEye1.jpg" width="70px" height="100px">
-            </div>
-            <div style="text-align: center;">
-                책이름
-            </div>
-        </aside> 
+  
          
     </div>
      

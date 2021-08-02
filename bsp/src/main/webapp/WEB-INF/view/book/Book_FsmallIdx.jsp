@@ -14,8 +14,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
-     <link rel="stylesheet" href="/bsp/css/edge.css">
-    <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
+    <!--  <link rel="stylesheet" href="/bsp/css/edge.css"> -->
+    <link rel="stylesheet" href="/bsp/css/index.css">
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>외국도서</title>
@@ -29,9 +29,10 @@
    	
    }
     .paging {
-   margin-left: 370px;
+  	 margin-left: 370px;
     text-align: center;
     float: left;
+    margin-top: -20px;
     
      }
     
@@ -76,7 +77,7 @@
     <div class="wrap">
         <jsp:include page="../include/sideFbig.jsp"></jsp:include>
             
-        </div>  
+      
 
         <div class="mem_content">
             <h2 class="main_top"> ${param.b_ctgdetail }</h2>   
@@ -127,6 +128,7 @@
          
             </div>
             <!-- 1 -->
+            <form id='frm' action="/bsp/cart/insert.do" method="get">
             <c:forEach var = "vo" items="${list }">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
@@ -147,49 +149,30 @@
                         </span>
                     </div>
                 </div>
-                <div class="s_payWrap">
+        		 <div class="s_payWrap">
                     <div class="s_pay">
                         <div class="s_pay1">
-                           <!--  <input type="checkbox" name="bestcheck" > -->
-                            &nbsp;
-                          
-                           
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown"  style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
-                                      
-                        
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="location.href='http://www.daum.net'" >
+                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" onClick="location.href='http://www.daum.net'">
+                            <input type="button"  class="btn2" value="바로구매" >
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>
              </div>
              </c:forEach>
-            
-
-
-
-
-          
-        
+               </form>
+              <jsp:include page="../include/quick.jsp"></jsp:include>
             </div>   
-         <aside class="mypage_ad">
-            <div class="mypage_ad_name"><p>최근본상품</p></div>
-            <div class="img_area">
-                <img src="/bsp/img/newEye1.jpg" width="70px" height="100px">
-            </div>
-            <div style="text-align: center;">
-                책이름
-            </div>
-        </aside> 
-    </div>
+	    </div>
      <%@ include file="/WEB-INF/view/include/footer.jsp" %> 
 
 </body>

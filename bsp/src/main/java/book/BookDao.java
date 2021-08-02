@@ -41,11 +41,10 @@ public class BookDao {
 	public int bookimgad(BookVo vo) {
 		return sqlSession.insert("book.bookimgad",vo);
 	}
+
 	
-	
-	
-	public List<BookVo> isOrder(BookVo vo) {
-		return sqlSession.selectList("book.isOrder", vo);
+	public BookVo isOrder(BookVo vo) {
+		return sqlSession.selectOne("book.isOrder", vo);
 	}
 	
 	public List<BookVo> selectAll1(BookVo vo) {

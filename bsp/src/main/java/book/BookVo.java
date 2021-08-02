@@ -45,6 +45,21 @@ public class BookVo extends CommonVo {
 	private float avg;
 	private int rcnt;
 	private int tot;
+	private int isorder;
+
+
+
+	
+	
+	public int getIsorder() {
+		return isorder;
+	}
+
+
+
+	public void setIsorder(int isorder) {
+		this.isorder = isorder;
+	}
 
 
 

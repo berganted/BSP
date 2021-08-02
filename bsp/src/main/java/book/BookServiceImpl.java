@@ -272,9 +272,10 @@ public class BookServiceImpl implements BookService {
 
 
 	@Override
-	public List<BookVo> isOrder(BookVo vo) {
+	public BookVo isOrder(BookVo vo) {
 		return dao.isOrder(vo);
 	}
+
 
 
 }

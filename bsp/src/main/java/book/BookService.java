@@ -2,12 +2,17 @@ package book;
 
 import java.util.List;
 
+import order.OrderVo;
+
 
 public interface BookService {
 	List<BookVo> selectAll(BookVo vo);
 	
 	
+	BookVo isOrder(BookVo vo);
 	List<BookVo> selectAllBasic(BookVo vo);
+	List<BookVo> solbestBook(BookVo vo);
+	List<BookVo> solnewBook(BookVo vo);
 	List<BookVo> selectAlladmin(BookVo vo);
 	List<BookVo> selectAll1(BookVo vo);
 	List<BookVo> selectAll2(BookVo vo);

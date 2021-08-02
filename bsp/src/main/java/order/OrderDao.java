@@ -59,4 +59,7 @@ public class OrderDao {
 	public void updatePi(int no) {
 		 sessionTemplate.update("order.updatePi",no);
 	}
+	public OrderVo lastaddr(OrderVo vo) {
+		return sessionTemplate.selectOne("order.lastaddr",vo);
+	}
 }

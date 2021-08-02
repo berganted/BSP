@@ -15,7 +15,7 @@ public class FAQBoardServiceImpl implements FAQBoardService {
 	FAQBoardDao dao;
 	
 	@Override
-	public List<FAQBoardVo> selectAll(FAQBoardVo vo) {
+	public List<FboardVo> selectAll(FboardVo vo) {
 		int totCount = dao.count(vo); // 총갯수
 		// 총페이지수
 		int totPage = totCount / vo.getPageRow();
@@ -35,7 +35,7 @@ public class FAQBoardServiceImpl implements FAQBoardService {
 	}
 
 	@Override
-	public int insert(FAQBoardVo vo) { 
+	public int insert(FboardVo vo) { 
 		return dao.insert(vo);
 	}
 	
@@ -45,12 +45,24 @@ public class FAQBoardServiceImpl implements FAQBoardService {
 //	}
 	
 	@Override
-	public int update(FAQBoardVo vo) {
+	public int update(FboardVo vo) {
 		return dao.update(vo);
 	}
 	
 	@Override
-	public int delete(FAQBoardVo vo) {
+	public int delete(FboardVo vo) {
 		return dao.delete(vo);
+	}
+
+	@Override
+	public FboardVo detail(FboardVo vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FboardVo edit(FboardVo vo) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

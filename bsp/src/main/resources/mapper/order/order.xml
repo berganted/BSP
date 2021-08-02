@@ -190,4 +190,7 @@
 		WHERE io_no=#{io_no} 
 		</update>
 		
+		<select id="lastaddr" parameterType="order.OrderVo" resultType="order.OrderVo">
+			SELECT * FROM bsp.product_buy WHERE m_no=#{m_no} ORDER BY pb_orderdate desc limit 1;		
+		</select>
 	</mapper>

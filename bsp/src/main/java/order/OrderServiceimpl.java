@@ -130,6 +130,9 @@ public class OrderServiceimpl implements OrderService {
 	public void updatePi(int no) {
 		dao.updatePi(no);
 	}
+	public OrderVo lastaddr(OrderVo vo) {
+		return dao.lastaddr(vo);
+	}
 
 
 

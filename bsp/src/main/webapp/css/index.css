@@ -392,6 +392,27 @@ li {
     color: #4232c2;
 }
 
+.support_change2 > ul {
+    float: right; 
+    margin-right: 10px;   
+    margin-top: 10px;
+}
+
+.support_change2 > ul > li {
+    float: left;
+    margin-left: 10px;
+    padding-left: 5px;
+    display: inline;
+    border-left: 1px solid #c9c9c9;
+
+}
+
+/* .support_change2 > ul > li > a:hover {
+    cursor: pointer;
+    font-size: 13px;
+    color: #4232c2;
+} */
+
 .support_title {    
     border-bottom: 1px solid rgb(211, 205, 205);
     padding-bottom: 15px;
@@ -642,10 +663,24 @@ li {
 .pagenate li a.board.last {background:#f3f3f3 url('/img/ico_last.png') no-repeat center center;}
 .pagenate li a.current {color:#fff; background-color:#221f1f; font-weight:bold;  border:1px solid #221f1f;}
 
+.pagenate1 {text-align:center; margin:6px auto 0;}
+.pagenate1 li {display:inline-block;}
+.pagenate1 li:first-child { margin-left:0px; }
+.pagenate1 li a{display:inline-block; text-decoration:none; padding:0; width:30px; height:30px; line-height:30px; border:1px solid #c7c8cc; box-sizing:border-box; margin-left:-1px; vertical-align:middle;}
+.pagenate1 li a:hover{background:#f6f6f6; font-weight:bold; text-decoration:none !important;}
+.pagenate1 li a.board { text-indent:-9999em; margin-left:4px; }
+.pagenate1 li a.board.first {background:#f3f3f3 url('/img/ico_first.png') no-repeat center center;}
+.pagenate1 li a.board.prev {margin-right:30px; background:#efefef url('/img/ico_prev.png') no-repeat center center;}
+.pagenate1 li a.board.next {margin-left:30px; background:#efefef url('/img/ico_next.png') no-repeat center center;}
+.pagenate1 li a.board.last {background:#f3f3f3 url('/img/ico_last.png') no-repeat center center;}
+.pagenate1 li a.current {color:#fff; background-color:#221f1f; font-weight:bold;  border:1px solid #221f1f;}
+
 
 
 /*index.html 영역 ---------------------------------------------------*/
 
+
+	
 /* [visual] ------------------------------------------------------------------ */
 .index_visual {
     height: 550px;
@@ -699,9 +734,11 @@ li {
     margin-left: 5px;
     margin-right: 5px;
     top: 30px;
+    
 }
 
 .swiper-slide {
+	height: 480px;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;   

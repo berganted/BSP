@@ -79,3 +79,31 @@
     
   })
  })
+ 
+ 
+ /*장바구니,바로구매*/
+     function gosave() {
+  	  $('#frm').attr('action','/bsp/cart/insert.do')
+  	  if($('#m_no').val()==0){
+  		  alert('로그인하세요')
+  		  return false
+  	  }
+  	  $('#frm').submit();
+  	  }
+    
+       
+    $(function() {
+		$('.btn2').click(function(){
+			$('#frm').attr('action','/bsp/order/buy.do')
+			console.log($(this).parent().parent().find("#numberUpDown").val())
+
+			if($('#m_no').val()==0){
+	  		  alert('로그인이 필요합니다.')
+	  		  location.href="/bsp/user/login.do"
+	  		  return false
+			}
+			$(this).next().attr("name","b_no");
+			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
+			$('#frm').submit();
+		})
+	})

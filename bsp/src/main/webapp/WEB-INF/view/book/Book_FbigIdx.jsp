@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="/bsp/css/big.css">
    <link rel="stylesheet" href="/bsp/css/style.css">
    <link rel="stylesheet" href="/bsp/css/reset.css">
-   <link rel="stylesheet" href="/bsp/css/index.css">
+    <link rel="stylesheet" href="/bsp/css/edge.css">
+   <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
      <script src="/bsp/js/main.js"></script>
      <script src="/bsp/js/big.js"></script>
      

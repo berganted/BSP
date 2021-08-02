@@ -126,7 +126,7 @@ $(function(){
 				<div class="img_section">
 					<div class="detail_bookImg">
 						<img src="/bsp/img/${vo.b_imgmain }" id="blah" alt="${vo.b_title }"
-							, title="${vo.b_title }" style="width: 250px; height: 310px;">
+							title="${vo.b_title }" style="width: 250px; height: 310px;">
 						<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
 					</div>
 				</div>
@@ -262,6 +262,8 @@ $(function(){
 						</colgroup>
 						<tbody>
 							<tr>
+								<c:if test="${userInfo == null }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
+										style="width: 100%; height: 80px"></textarea></td></c:if>
 								<c:if test="${isOrder.isorder >0 }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 										

@@ -53,4 +53,16 @@ public class FAQBoardServiceImpl implements FAQBoardService {
 	public int delete(FboardVo vo) {
 		return dao.delete(vo);
 	}
+
+	@Override
+	public FboardVo detail(FboardVo vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FboardVo edit(FboardVo vo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

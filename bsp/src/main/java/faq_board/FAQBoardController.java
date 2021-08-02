@@ -21,12 +21,14 @@ public class FAQBoardController {
 	@RequestMapping("/sample/FAQboard2.do")
 	public String index(Model model, FboardVo vo) {
 		model.addAttribute("list", service.selectAll(vo));
+		System.out.println(vo.getFaq_title());
 		return "sample/FAQboard2";
 	}
 	
 	@RequestMapping("/sample/FAQindexAdmin.do")
 	public String index2(Model model, FboardVo vo) {
 		model.addAttribute("list", service.selectAll(vo));
+		System.out.println(vo.getFaq_title());
 		return "sample/FAQindexAdmin";
 	}
 	

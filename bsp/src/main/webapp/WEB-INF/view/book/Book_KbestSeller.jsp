@@ -93,7 +93,6 @@
     display: inline-block;
 }
     </style>
-
     <script>
     $(function(){
     	$(".abc").each(function(){
@@ -102,8 +101,36 @@
     		if($(this).val().length>30){
     			$('.blah').eq(idx).attr('src',$(this).val())
     		}
-    		})
+    	})
+    	$('.btn2').click(function(){
+			$('#frm').attr('action','/bsp/order/buy.do')
+			console.log($(this).parent().parent().find("#numberUpDown").val())
+
+			if($('#m_no').val()==0){
+	  		  alert('로그인이 필요합니다.')
+	  		  location.href="/bsp/user/login.do"
+	  		  return false
+			}
+			$(this).next().attr("name","b_no");
+			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
+			$('#frm').submit();
+		})
+		$('.btn1').click(function(){
+			$('#frm').attr('action','/bsp/cart/insert.do')
+			if($('#m_no').val()==0){
+	  		  alert('로그인이 필요합니다.')
+	  		  location.href="/bsp/user/login.do"
+	  		  return false
+			}
+			$(this).next().attr("name","b_no");
+			console.log($(this).next().val())
+			$(this).next().next().attr("name","b_price");
+			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
+			console.log($(this).parent().parent().find("#numberUpDown").val())
+			$('#frm').submit();
+		})
     })
+   
     function sendPageRow() {
     	location.href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=DESC&pageRow='+$("#divnum").val();
     }
@@ -174,12 +201,16 @@
                         <div class="s_pay1">
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" name="" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
+                            <input type="button" class="btn1" value="카트에 넣기"  >
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="m_no" name="" value="${vo.b_price}"> 
+                            <input type="hidden" class="m_no" name="m_no" value="${userInfo.m_no }"> 
+                            
                         </div>
                         <div class="s_pay3">
                             <input type="button"  class="btn2" value="바로구매" >

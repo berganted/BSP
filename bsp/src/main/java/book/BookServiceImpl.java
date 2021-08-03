@@ -278,4 +278,10 @@ public class BookServiceImpl implements BookService {
 		return dao.isOrder(vo);
 	}
 
+
+
+	@Override
+	public BookVo isReview(BookVo vo) {
+		return dao.isReview(vo);
+	}
 }

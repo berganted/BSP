@@ -27,7 +27,7 @@
 text-align: center;
 }
 </style>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(function(){
 	$(".abc").each(function(){
 		var idx = $(this).index('.abc');
@@ -37,7 +37,7 @@ $(function(){
 		}
 		})
 })
-</script>
+</script> -->
 
 </head>
 

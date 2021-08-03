@@ -6,7 +6,7 @@
     <div class="index_wrap">
         <div class="header_top">
             <div class="header_search">
-                <form method="get" name="searchForm2" id="searchForm2" action="index_search.do">
+                <form method="get" name="searchForm2" id="searchForm2" action="/bsp/sample/index_search.do">
                     <input type="text" id="sval" name="sval" value="${param.sval }" placeholder="검색어를 입력하세요">
                 </form>
                 <div class="header_searchIcon">

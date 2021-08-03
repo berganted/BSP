@@ -18,7 +18,7 @@
 	<script>
     function reply() {
     	<c:if test="${!empty userInfo}">
-    	location.href='board.do?q_no=${vo.q_no}';
+    	location.href='board_reply.do?q_no=${vo.q_no}';
     	</c:if>
     	<c:if test="${empty userInfo}">
     	alert('로그인 후 사용가능합니다.');

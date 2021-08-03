@@ -51,31 +51,38 @@ $(function(){
   
 	function goReview() {
 		<c:if test="${!empty userInfo}">
-		if ($("#content").val().trim()==''){
-			alert('내용을 입력해 주세요');
-		} else {
-			if (confirm('리뷰를 등록하시겠습니까?')) {
-				$.ajax({
-        			url:'/bsp/review/insert.do',
-        			data:{
-            				r_content:$("#content").val(),
-            				r_no:${vo.r_no},
-            				m_no:${userInfo.m_no},
-            				b_no:${vo.b_no},
-            				r_grade:$("#r_grade").text()
-        			},
-        			success:function(res) {
-        				if (res.trim()=='true') {
-        					alert('리뷰가 등록되었습니다.');
-        					$("#content").val("");
-        					getComment();
-        				} else {
-        					alert('리뷰 등록 실패');
-        				}
-        			}
-        		});
+			<c:if test="${isReview.isreview == 0}">
+			if ($("#content").val().trim()==''){
+				alert('내용을 입력해 주세요');
+			} else if ($("#r_grade").text() == '0') {
+				alert('별점을 입력해 주세요');
+			} else {
+				if (confirm('리뷰를 등록하시겠습니까?')) {
+					$.ajax({
+	        			url:'/bsp/review/insert.do',
+	        			data:{
+	            				r_content:$("#content").val(),
+	            				r_no:${vo.r_no},
+	            				m_no:${userInfo.m_no},
+	            				b_no:${vo.b_no},
+	            				r_grade:$("#r_grade").text()
+	        			},
+	        			success:function(res) {
+	        				if (res.trim()=='true') {
+	        					alert('리뷰가 등록되었습니다.');
+	        					$("#content").val("");
+	        					getComment();
+	        				} else {
+	        					alert('리뷰 등록 실패');
+	        				}
+	        			}
+	        		});
+				}
 			}
-		}
+			</c:if>
+			<c:if test="${isReview.isreview != 0}">
+				alert('리뷰는 한번만 작성가능합니다.');
+			</c:if>
 		</c:if>
 		<c:if test="${empty userInfo}">
 			alert('리뷰는 로그인 후 등록 가능합니다.');
@@ -264,10 +271,13 @@ $(function(){
 							<tr>
 								<c:if test="${userInfo == null }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-								<c:if test="${isOrder.isorder >0 }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
+								<c:if test="${isOrder.isorder >0 && isReview.isreview >0}"><td><textarea name="r_content" id="content" placeholder="리뷰는 한 번만 작성가능합니다 :)" readonly
+										style="width: 100%; height: 80px"></textarea></td></c:if>
+								<c:if test="${isOrder.isorder >0 && isReview.isreview == 0}"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해 주세요:)"
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 										
-								<c:if test="${isOrder.isorder==0}"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
+										
+								<c:if test="${isOrder.isorder==0 }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 										
 								<td>
@@ -278,10 +288,6 @@ $(function(){
 							</tr>
 						</tbody>
 					</table>
-					
-					<script>
-
-                    </script>
 				</div>
 				<div id="reviewArea"></div>
 			</div>

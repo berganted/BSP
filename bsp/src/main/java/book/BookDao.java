@@ -45,6 +45,9 @@ public class BookDao {
 	public BookVo isOrder(BookVo vo) {
 		return sqlSession.selectOne("book.isOrder", vo);
 	}
+	public BookVo isReview(BookVo vo) {
+		return sqlSession.selectOne("book.isReview", vo);
+	}
 	
 	public List<BookVo> selectAll1(BookVo vo) {
 		return sqlSession.selectList("book.selectAll1", vo);

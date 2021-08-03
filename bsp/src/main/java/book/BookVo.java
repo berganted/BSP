@@ -46,8 +46,17 @@ public class BookVo extends CommonVo {
 	private int rcnt;
 	private int tot;
 	private int isorder;
+	private int isreview;
 
 	
+	public int getIsreview() {
+		return isreview;
+	}
+
+	public void setIsreview(int isreview) {
+		this.isreview = isreview;
+	}
+
 	public int getIsorder() {
 		return isorder;
 	}

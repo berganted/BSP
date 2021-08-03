@@ -20,7 +20,6 @@
  
 <style>
     .paging {
-  	
     text-align: center;
     float: left;
     margin-top: -10px;
@@ -43,7 +42,23 @@
 			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
 			$('#frm').submit();
 		}
+    
+    
+    
+/*  
 
+
+
+디테일 카트
+    function gosave() {
+  	  $('#frm').attr('action','/bsp/cart/insert.do')
+  	  if($('#m_no').val()==0){
+  		  alert('로그인하세요')
+  		  return false
+  	  }
+  	  $('#frm').submit();
+  	  }
+ */
 
     
     $(function() {
@@ -101,7 +116,6 @@
                             <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
                             <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
                         </select> 
-                 <!--           <input type='checkbox' name='bestcheck'  onclick='selectAll(this)'/> 전체선택 -->
                     </div>
                     <br>
                     <br>

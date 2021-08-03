@@ -92,4 +92,8 @@
 			$('.blah').eq(idx).attr('src',$(this).val())
 		}
 		})
+		
+		
+		
+		
 })

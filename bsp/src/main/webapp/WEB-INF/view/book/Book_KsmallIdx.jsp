@@ -38,7 +38,7 @@
     function sendPageRow() {
     	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
-    
+    function gosave(){
 			if($('#m_no').val()==0){
 	  		  alert('로그인이 필요합니다.')
 	  		  location.href="/bsp/user/login.do"
@@ -47,7 +47,8 @@
 			$(this).next().attr("name","b_no");
 			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
 			$('#frm').submit();
-		})
+		}
+		$(function(){
 		$(".abc").each(function(){
 		var idx = $(this).index('.abc');
 		console.log($(this).val().length)
@@ -145,7 +146,7 @@
                             <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" >
+                            <input type="button"  class="btn2" value="바로구매" onclick="goorder();" >
                             <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>

@@ -266,10 +266,8 @@ $(function(){
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 								<c:if test="${isOrder.isorder >0 }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-										
 								<c:if test="${isOrder.isorder==0}"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-										
 								<td>
 									<div class="btnSet" style="text-align: right;">
 										<a class="btn" href="javascript:goReview();">저장 </a>

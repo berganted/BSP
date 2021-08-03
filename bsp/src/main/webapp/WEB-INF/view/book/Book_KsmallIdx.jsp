@@ -40,6 +40,7 @@
 	  		  return false
 			}
 			$(this).next().attr("name","b_no");
+			console.log
 			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
 			$('#frm').submit();
 		}
@@ -152,16 +153,19 @@
                         <div class="s_pay1">
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" name="cart_cnt" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
+                            <input type="hidden" name="m_no"value="${userInfo.m_no }">
+                            <input type="hidden" name="cart_price"value="${vo.b_price }">
+                            <input type="hidden" name="m_no"value="${userInfo.m_no }">
                         </div>
                         <div class="s_pay3">
                             <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="b_no" name="b_no" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>

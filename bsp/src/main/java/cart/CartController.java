@@ -20,6 +20,9 @@ public class CartController {
 	@RequestMapping("/cart/insert.do")
 	public String insert(CartVo vo , Model model) {
 		vo.setB_price(vo.getIo_amount()*vo.getB_price());
+		if (vo.getCart_cnt()==0) {
+			vo.setCart_cnt(1);
+		}
 		int r = service.insert(vo);
 		if(r > 0) {
 			model.addAttribute("msg", "장바구니에 추가 되었습니다.");

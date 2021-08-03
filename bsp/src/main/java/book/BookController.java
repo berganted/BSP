@@ -58,8 +58,8 @@ public class BookController {
 		model.addAttribute("vo", service.deatil(vo));
 		sess.setAttribute("quick", service.deatil(vo));
 		if(sess.getAttribute("userInfo")!=null) {
-			UserVo u = (UserVo) sess.getAttribute("userInfo");
-			vo.setM_no(u.getM_no());
+			uv = (UserVo) sess.getAttribute("userInfo");
+			vo.setM_no(uv.getM_no());
 		model.addAttribute("isOrder", service.isOrder(vo));
 		model.addAttribute("isReview", service.isReview(vo));
 		System.out.println(vo.getIsorder());

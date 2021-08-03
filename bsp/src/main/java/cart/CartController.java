@@ -27,7 +27,7 @@ public class CartController {
 		}else {
 			model.addAttribute("msg", "추가 실패.");
 		}
-		return "include/alert2";		
+		return "include/alert3";		
 	}
 	@RequestMapping("/cart/delete.do")
 	public String delete(CartVo cv, Model model, HttpServletRequest req) {

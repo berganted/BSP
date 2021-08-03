@@ -153,8 +153,7 @@ $(function(){
 							<span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br> 
 							<span class="detail_bookAuthor">${vo.b_author }</span>
 							&nbsp;| <span class="detail_bookPub">${vo.b_publisher }</span>
-							&nbsp;| <span class="detail_bookDate"><fmt:formatDate
-									value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span
+							&nbsp;| <span class="detail_bookDate"><fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span
 								class="detail_grade"><fmt:formatNumber  value="${vo.avg }"  pattern="0.0"/>/5</span> &nbsp; <span
 								class="detail_review"><a href="#">회원리뷰(${vo.rcnt }건)</a></span> &nbsp;| <span
 								class="detail_sales">판매지수 ${vo.tot} </span>
@@ -277,10 +276,8 @@ $(function(){
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 								<c:if test="${isOrder.isorder >0 && isReview.isreview == 0}"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해 주세요:)"
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-										
 								<c:if test="${isOrder.isorder==0 }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-										
 								<td>
 									<div class="btnSet" style="text-align: right;">
 										<a class="btn" href="javascript:goReview();">저장 </a>

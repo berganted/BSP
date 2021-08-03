@@ -14,23 +14,17 @@
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
     <link rel="stylesheet" href="/bsp/css/index.css">
-    <!-- <link rel="stylesheet" href="/bsp/css/edge.css"> -->
- 
-    
-    <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>국내도서</title>
  
 <style>
     .paging {
-  	 margin-left: 370px;
+  	margin-left: 370px;
     text-align: center;
     float: left;
     margin-top: -10px;
-    
      }
-    
 </style>
     <script>
    
@@ -49,6 +43,7 @@
 			$('#frm').submit();
 		}
 		$(function(){
+		
 		$(".abc").each(function(){
 		var idx = $(this).index('.abc');
 		console.log($(this).val().length)

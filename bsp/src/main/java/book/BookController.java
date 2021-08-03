@@ -61,6 +61,7 @@ public class BookController {
 			uv = (UserVo) sess.getAttribute("userInfo");
 			vo.setM_no(uv.getM_no());
 		model.addAttribute("isOrder", service.isOrder(vo));
+		model.addAttribute("isReview", service.isReview(vo));
 		System.out.println(vo.getIsorder());
 	}
 		return "book/Book_detail";

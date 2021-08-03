@@ -2,6 +2,7 @@
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 				<table class="list">
                     <p><span><strong>총 ${reviewVo.totCount }개</strong>  |  ${reviewVo.reqPage}/${reviewVo.totPage }페이지</span></p>
                         <caption>게시판 목록</caption>
@@ -37,7 +38,7 @@
                         </tbody>
                     </table>
                     <div class="pagenate clear">
-                        <ul class='paging'>
+                        <ul class='paging' style=" margin-left: 480px;  text-align: center; float: left;">
                         <c:if test="${reviewVo.strPage > reviewVo.pageRange}">
                         	<li><a href="javascript:getComment(${reviewVo.strPage-1 })"><</a></li>
                         </c:if>

@@ -72,6 +72,7 @@ $(function(){
 	        					alert('리뷰가 등록되었습니다.');
 	        					$("#content").val("");
 	        					getComment();
+	        					window.location.reload()
 	        				} else {
 	        					alert('리뷰 등록 실패');
 	        				}
@@ -115,6 +116,7 @@ $(function(){
     				if (res.trim()=='true') {
         				alert('댓글이 삭제되었습니다.');
         				getComment(1);
+        				window.location.reload()
     				} else {
     					alert('댓글 삭제 오류');
     				}
@@ -275,7 +277,6 @@ $(function(){
 										style="width: 100%; height: 80px"></textarea></td></c:if>
 								<c:if test="${isOrder.isorder >0 && isReview.isreview == 0}"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해 주세요:)"
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-										
 										
 								<c:if test="${isOrder.isorder==0 }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>

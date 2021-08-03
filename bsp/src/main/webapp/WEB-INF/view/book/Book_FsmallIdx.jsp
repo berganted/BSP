@@ -22,21 +22,18 @@
  
 
     <style>
- 
-    
+
    .paging > li {
    	list-style : none; float: left; padding-left:20px; padding-top: 15px; display: inline-block;
    	
    }
     .paging {
-  	 margin-left: 370px;
+  	
     text-align: center;
     float: left;
     margin-top: -20px;
     
      }
-    
-
 
     #all{
         width: 100px; 

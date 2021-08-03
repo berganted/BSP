@@ -60,7 +60,7 @@ function openZipSearchRT() {
                             <td>출고번호</td>
                             <td>주문상품</td>
                             <td>수령인</td>
-                            <td>주문일</td>
+                            <td>주문일</td>  
                             <td>조회</td>
                             
                         </tr>

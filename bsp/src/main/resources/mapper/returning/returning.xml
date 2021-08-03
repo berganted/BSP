@@ -125,12 +125,14 @@
     	</selectKey>
 		</insert>
 		
+		<!-- 반품시 배송상태 변경 -> 반품신청완료  (반품테이블) -->
 		<update id="updatePs" parameterType="int">
 		UPDATE returning SET 
 		ps_no= 11
 		WHERE returning_no=#{returning_no} 
 		</update>
 		
+		<!-- 반품시 배송상태 변경 -> 반품신청완료  (출고 테이블) -->
 		<update id="updatePi" parameterType="int">
 		UPDATE product_io SET 
 		ps_no= 11

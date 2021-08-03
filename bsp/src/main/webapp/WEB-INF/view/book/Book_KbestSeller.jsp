@@ -117,7 +117,7 @@
 		})
 		$('.btn1').click(function(){
 			$('#frm').attr('action','/bsp/cart/insert.do')
-			if($('#m_no').val()==0){
+			if($('#m_no').val() == ""||0||null){
 	  		  alert('로그인이 필요합니다.')
 	  		  location.href="/bsp/user/login.do"
 	  		  return false
@@ -125,6 +125,7 @@
 			$(this).next().attr("name","b_no");
 			console.log($(this).next().val())
 			$(this).next().next().attr("name","b_price");
+			$(this).next().next().next().attr("name","m_no");
 			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
 			console.log($(this).parent().parent().find("#numberUpDown").val())
 			$('#frm').submit();
@@ -207,9 +208,9 @@
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기"  >
-                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
-                            <input type="hidden" class="m_no" name="" value="${vo.b_price}"> 
-                            <input type="hidden" class="m_no" name="m_no" value="${userInfo.m_no }"> 
+                            <input type="hidden" class="" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="" name="" value="${vo.b_price}"> 
+                            <input type="hidden" id="m_no" name="" value="${userInfo.m_no }"> 
                             
                         </div>
                         <div class="s_pay3">

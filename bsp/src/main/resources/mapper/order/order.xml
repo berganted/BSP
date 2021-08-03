@@ -70,7 +70,7 @@
 		
 		<!-- 페이징처리 -->
 		<select id="count" resultType="int" parameterType="order.OrderVo">
-		SELECT COUNT(*) FROM  product_buy 
+		SELECT COUNT(*) FROM  product_buy WHERE m_no=#{m_no}
 		<include refid="orderWhere"/>
 		</select>
 		

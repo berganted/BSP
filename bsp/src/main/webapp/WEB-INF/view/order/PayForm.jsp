@@ -87,7 +87,7 @@ $(function(){
    <div class="wrap">
 	<jsp:include page="../include/side2.jsp"></jsp:include>
     <div class="mem_content">
-        <h1>전체 주문 내역</h1>
+        <h1>주문 내역</h1>
         <article id="article">
              <table id="order_tb">
                 <tr>

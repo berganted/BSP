@@ -31,6 +31,7 @@
                                 <select id="orderby" name="orderby" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
                                     <option value="b_regdate"<c:if test="${param.orderby=='b_regdate'}"> selected</c:if>>날짜순</option>
                                     <option value="b_stock" <c:if test="${param.orderby=='b_stock'}"> selected</c:if>>재고</option>
+                                    <option value="b_ctgdetail" <c:if test="${param.orderby=='b_ctgdetail'}"> selected</c:if>>카테고리순</option>
                                 </select>
                                 <select id="direct" name="direct" class="dSelect" title="검색분류 선택" onchange="$('#searchForm').submit();">
                                     <option value="DESC"<c:if test="${param.direct=='DESC'}"> selected</c:if>>내림차순</option>
@@ -45,10 +46,16 @@
 												<c:if test="${param.stype=='b_publisher'}"> selected</c:if>>출판사</option>
 											<option value="b_author"
 												<c:if test="${param.stype=='b_author'}"> selected</c:if>>작가</option>
-										</select> <input type="text" name="sval" value=""
-											title="검색할 내용을 입력해주세요" /> <input type="image"
-											src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
-											class="sbtn" alt="검색" onclick="$('#searchForm').submit();"/>
+										</select> 
+										<select name="ctype">
+										<c:forEach var="ctg" items="${ctg }">
+										<option value="${ctg.b_ctgno2key }"
+										<c:if test="${param.ctype=='b_ctgno2key'}"> selected</c:if>>${ctg.b_ctgdetail }</option>
+										</c:forEach>
+										</select>
+										<input type="text" name="sval" value=""title="검색할 내용을 입력해주세요" /> 
+										<input type="image"src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
+												class="sbtn" alt="검색" onclick="$('#searchForm').submit();"/>
 									</div>
 								</form>
 							<span><strong>총 ${bookVo.totCount }개</strong>  |  ${bookVo.reqPage }/${bookVo.totPage }</span>
@@ -57,8 +64,8 @@
 								<colgroup>
 									<col class="w3" />
 									<col class="w4" />
+									<col class="w8" />
 									<col class="4" />
-									<col class="w10" />
 									<col class="w5" />
 									<col class="w6" />
 									<col class="w6" />
@@ -67,6 +74,7 @@
 									<tr>
 										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
 										<th scope="col">번호</th>
+										<th scope="col">카테고리</th>
 										<th scope="col">책이름</th> 
 										<th scope="col">등록일</th> 
 										<th scope="col">작가</th> 
@@ -79,6 +87,7 @@
 									<tr>
 										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
 										<td>${list.b_no }</td>
+										<td>${list.b_ctgdetail }</td>
 										<td class="title"><a href="view.do?b_no=${list.b_no }&reqPage=${bookVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${list.b_title }</a>
 										<td>${list.b_regdate}</td>
 										<td>${list.b_author }</td>
@@ -101,7 +110,7 @@
 							<!-- 페이징 처리 -->
 							<div class='page'>
 									<c:if test="${bookVo.strPage > bookVo.pageRange}">
-										<li><a href="index.do?reqPage=${bookVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"></a>
+										<li><a href="index.do?reqPage=${bookVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"> < </a>
 									</c:if>
 									<c:forEach var="rp" begin="${bookVo.strPage }"
 										end="${bookVo.endPage }">
@@ -111,8 +120,7 @@
 
 									</c:forEach>
 									<c:if test="${bookVo.totPage > bookVo.endPage}">
-										<a
-											href="index.do?reqPage=${bookVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
+										<a href="index.do?reqPage=${bookVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
 								</div>
 							<!-- //페이징 처리 -->
 							
@@ -133,7 +141,6 @@
 		<!-- E N D :: containerArea-->
 	</div>
 	<!--//canvas -->
-</div>
 <!--//wrap -->
 
 </body>

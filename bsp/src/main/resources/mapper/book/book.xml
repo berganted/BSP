@@ -7,6 +7,9 @@
 				<if test="sval != null and sval !=''">
 					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 			</if>
+			<!--<if test="ctype != null and ctype'">
+					
+			</if>  -->
 		</where>
 </sql>
 	
@@ -41,7 +44,9 @@
 	</select>
 		
 	<select id="selectAlladmin" resultType="book.BookVo" parameterType="book.BookVo"><!-- 건들지마샘 -->
-		SELECT * FROM book
+		SELECT *,
+		(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key =book.b_ctgno2key )as b_ctgdetail
+		 FROM book
 		<include refid="bookwhere"/>
 		 ORDER BY ${orderby} ${direct}	
 		 LIMIT ${strIdx},${pageRow} 

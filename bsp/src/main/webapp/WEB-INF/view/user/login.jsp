@@ -105,6 +105,7 @@ $(function(){
             </div>        
             <div class="log_form">                                    
                 <form action="login.do" method="POST" onsubmit="return loginCheck();">    
+              		<input type="hidden" name="url" value="${param.url}">
                     <div style="height: 24px;"></div>
                     <div class="log_input">
                         <span class="log_label">아이디</span> 

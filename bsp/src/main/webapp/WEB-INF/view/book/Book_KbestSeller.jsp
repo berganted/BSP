@@ -125,6 +125,7 @@
 			$(this).next().attr("name","b_no");
 			console.log($(this).next().val())
 			$(this).next().next().attr("name","b_price");
+			$(this).next().next().next().attr("name","m_no");
 			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
 			console.log($(this).parent().parent().find("#numberUpDown").val())
 			$('#frm').submit();
@@ -208,13 +209,13 @@
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기"  >
                             <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
-                            <input type="hidden" class="m_no" name="" value="${vo.b_price}"> 
-                            <input type="hidden" class="m_no" name="m_no" value="${userInfo.m_no }"> 
+                            <input type="hidden" class="" name="" value="${vo.b_price}"> 
+                            <input type="hidden" class="" id="m_no" name="" value="${userInfo.m_no }"> 
                             
                         </div>
                         <div class="s_pay3">
                             <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="b_no" id="m_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>
@@ -222,7 +223,6 @@
              <br>
              <br>
              <hr>
-            
             </div> 
             </c:forEach>
             </form>

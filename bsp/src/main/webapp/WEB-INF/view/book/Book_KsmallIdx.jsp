@@ -78,7 +78,7 @@
 		})
 	})
 	
-		$(function(){
+	$(function(){
 		$(".abc").each(function(){
 		var idx = $(this).index('.abc');
 		console.log($(this).val().length)

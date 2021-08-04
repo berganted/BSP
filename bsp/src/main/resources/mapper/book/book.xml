@@ -163,11 +163,22 @@
 	
 	
 	
-<!-- index.do 오늘의 책 -->
-	<select id="selectAll4" resultType="book.BookVo" parameterType="book.BookVo">
+	<!-- index.do 오늘의 책 -->
+	<select id="selectAll00" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
 		FROM book WHERE b_no BETWEEN 1 AND 5
 		<include refid="bookwhere"/>
+	</select>
+	<!-- index.do 베스트셀러 -->
+	<select id="selectAll4" resultType="book.BookVo" parameterType="book.BookVo">
+	 	SELECT * ,
+		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain,
+		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
+		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
+		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
+		FROM book WHERE b_ctgno1 =  #{b_ctgno1} 
+		ORDER BY tot DESC
+		LIMIT 5
 	</select>
 	<!-- test -->
 	<select id="selectbest" resultType="book.BookVo" parameterType="book.BookVo">
@@ -181,7 +192,7 @@
 		SELECT *,
 		(SELECT b_no FROM book WHERE ad_no = ad.ad_no) as b_no,
 		(SELECT b_title FROM book WHERE ad_no=ad.ad_no) as b_title
-		FROM ad where ad_no between 4 and 6 ORDER BY rand() LIMIT 1
+		FROM ad where ad_no between 1 and 3 ORDER BY rand() LIMIT 1
 		<include refid="bookwhere"/>
 	</select>
 	
@@ -189,7 +200,7 @@
 		SELECT *,
 		(SELECT b_no FROM book WHERE ad_no = ad.ad_no) as b_no,
 		(SELECT b_title FROM book WHERE ad_no=ad.ad_no) as b_title
-		FROM ad where ad_no between 1 and 3 ORDER BY rand() LIMIT 1 
+		FROM ad where ad_no between 4 and 6 ORDER BY rand() LIMIT 1 
 		<include refid="bookwhere"/>
 	</select>
 		

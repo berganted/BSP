@@ -779,7 +779,7 @@ li {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif  
 }
 
-.index_Ads01 > img {
+.index_Ads01 > a > img {
     height: 180px;
     width: 255px;
     padding-top: 5px;
@@ -790,7 +790,8 @@ li {
     border-bottom: 1px solid rgb(206, 205, 205);
 }
 
-.index_Ads02 > div> img {
+.index_Ads02 > a > img {
+	margin-top: 25px;
     height: 135px;
     width: 255px;
 }

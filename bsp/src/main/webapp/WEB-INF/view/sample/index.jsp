@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,10 +36,10 @@
             </div>
             <div class="swiper-container mySwiper">
                 <div class="swiper-wrapper">
-                  <div class="swiper-slide" style="background-image: url('/bsp/img/book05.jpg');">&nbsp;</div> <!-- &nbsp; 공백 -->
-                  <div class="swiper-slide" style="background-image: url('/bsp/img/book06.jpg');">&nbsp;</div>
-                  <div class="swiper-slide" style="background-image: url('/bsp/img/book07.jpg');">&nbsp;</div>
-                  <div class="swiper-slide" style="background-image: url('/bsp/img/book04.jpg');">&nbsp;</div> 
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/mbook01.png');">&nbsp;</div> <!-- &nbsp; 공백 -->
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/mbook02.png');">&nbsp;</div>
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/mbook03.png');">&nbsp;</div>
+                  <div class="swiper-slide" style="background-image: url('/bsp/img/mbook04.png');">&nbsp;</div> 
                 </div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
@@ -48,13 +49,13 @@
                 <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
                     	<div class="index_ad">AD</div>
-                        <img src="/bsp/ad/${vo.ad_img }" alt="">
+                        <a href="#"><img src="/bsp/ad/${vo.ad_img }" alt=""></a>
                     </div>
                  </c:forEach>  
                   <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
                     	<div class="index_ad">AD</div>
-                        <div><img src="/bsp/ad/${vo.ad_img }" alt=""></div>                        
+                        <a href="#"><img src="/bsp/ad/${vo.ad_img }" alt=""></a>                        
                    	</div>  
                   </c:forEach>                   
                 </div>
@@ -103,9 +104,9 @@
                                	<div class="index_searchRank">
                                  <ul>
                                  	<c:forEach var="vo" items="${popular }" varStatus="status">
-                                     	<li> ${vo.p_word } <span><c:if test="${vo.cnt >0}">▲${vo.cnt }</c:if>
-                                                                 <c:if test="${vo.cnt==0}">-${vo.cnt }</c:if>
-                                                                 <c:if test="${vo.cnt <0}"> ▼${vo.cnt }</c:if></span></li>
+                                     	<li> ${vo.p_word } <span><c:if test="${vo.cnt >0}"><img src="/bsp/img/logo/up.png" alt="">&nbsp;${vo.cnt }</c:if>
+                                                                 <c:if test="${vo.cnt==0}"><img src="/bsp/img/logo/equal.png" alt="">&nbsp;${vo.cnt }</c:if>
+                                                                 <c:if test="${vo.cnt <0}"><img src="/bsp/img/logo/down.png" alt="">&nbsp;${fn:replace(vo.cnt, '-', '')}</c:if></span></li>
                                     </c:forEach>                                                            
                                  </ul>
                                  </div>

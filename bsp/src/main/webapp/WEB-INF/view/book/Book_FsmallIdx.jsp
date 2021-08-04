@@ -82,7 +82,7 @@
             <div class="indexWrap">
                 <div class="indexPlace">
                     <span class="original"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
-                    <span class="sell"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
+                    <span class="sell"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
                     <span class="new"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">신상품순</a></span>
                     <span class="lowPrice"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC&pageRow=${param.pageRow}">최저가순</a></span>
                     <span class="highPrice"><a href="Book_FsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=DESC&pageRow=${param.pageRow}	">최고가순</a></span>
@@ -122,15 +122,16 @@
                         </ul> 
                     </div>
                 </div>
-         
             </div>
             <!-- 1 -->
             <form id='frm' action="/bsp/cart/insert.do" method="get">
             <c:forEach var = "vo" items="${list }">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
+                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                    <img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
                 </div>
+                <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
                         <span class="s_bookTitle" style="font-size: 20px;">
@@ -138,9 +139,9 @@
                         </span>
                         <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월" /></span> </span>
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
-                        <span class="s_grade" style="font-size: 16px;">회원리뷰(8건) ★★★★★ 9.3</span>
+                        <span class="s_grade" style="font-size: 16px;">회원리뷰(${vo.rcnt }건) ${vo.avg }/5</span>
                         																																										
-                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
+                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:605px; height:165px;">
                         ${vo.b_content } <br>
          
                         </span>
@@ -156,11 +157,15 @@
                                   </div> 
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
+                            <input type="button" class="btn1" value="카트에 넣기" style="cursor:pointer"  >
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="" name="" value="${vo.b_price}"> 
+                            <input type="hidden" class="" id="m_no" name="" value="${userInfo.m_no }"> 
+                            
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="button"  class="btn2" value="바로구매"  style="cursor:pointer">
+                            <input type="hidden" class="b_no" id="m_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>

@@ -74,8 +74,9 @@ $(function(){
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
-                        <img class="blah" src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></a></div>
+                        <div class="choiceImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                        	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                        	<img class="blah" src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></a></div>
                         <div class="chocieInfo">
                             <p class="choiceName"> ${vo.b_title } </p>
                             <p class="choice_pub">
@@ -112,7 +113,8 @@ $(function(){
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                        <div class="newEye_img"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                         <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 300px;"></a></div>
                     </div> 
                     <div class="newEye_infoSection">  
@@ -137,7 +139,8 @@ $(function(){
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <div class = "imgimg" style="width: 300px; height: 250px;"> <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                    <div class = "imgimg" style="width: 300px; height: 250px;"> <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                    <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                     <img class="blah" src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 250px;"></a></div>
                     <div class="newStar_info">
                         <ul> 

@@ -16,6 +16,17 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
 </head>
+<script>
+$(function(){
+	$(".abc").each(function(){
+		var idx = $(this).index('.abc');
+		console.log($(this).val().length)
+		if($(this).val().length>20){
+			$('.blah').eq(idx).attr('src',$(this).val())
+		}
+	})
+})
+</script>
 <body> 
     <jsp:include page="../include/header.jsp"></jsp:include>
     <!-- <form method="post" name="frm" id="frm" action="ad.do"
@@ -48,13 +59,15 @@
                 <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
                     	<div class="index_ad">AD</div>
-                        <img src="/bsp/ad/${vo.ad_img }" alt="">
+                        <img class="blah" src="/bsp/ad/${vo.ad_img }" alt="">
+                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                     </div>
                  </c:forEach>  
                   <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
                     	<div class="index_ad">AD</div>
-                        <div><img src="/bsp/ad/${vo.ad_img }" alt=""></div>                        
+                        <div><img class="blah" src="/bsp/ad/${vo.ad_img }" alt=""></div>
+                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>                        
                    	</div>  
                   </c:forEach>                   
                 </div>
@@ -63,7 +76,8 @@
                     <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail">
-                                <img src="/bsp/img/${vo.b_imgmain }" alt="">
+                                <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
+                                 <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>     
                             </div>
                             <div class="index_todayDetails">
                                 <div class="index_tdContext">오늘의 책</div>
@@ -119,7 +133,8 @@
                 <c:forEach var="vo" items="${list4 }" varStatus="status">
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
-                            <img src="/bsp/img/${vo.b_imgmain }" alt="">
+                             <img class="blah" src="/bsp/ad/${vo.ad_img }" alt="">
+                        	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/>    
                         </div>                        
                         <div class="index_NowBooksDetail">
                             <ul>
@@ -138,7 +153,8 @@
             <c:forEach var="vo" items="${list4 }" varStatus="status">
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
-                        <img src="/bsp/img/${vo.b_imgmain }" alt="">
+                        <img class="blah" src="/bsp/ad/${vo.ad_img }" alt="">
+                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>  
                     </div>
                     <div class="index_NowBooksDetail">
                         <ul>                            

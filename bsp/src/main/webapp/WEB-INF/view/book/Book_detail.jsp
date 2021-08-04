@@ -29,10 +29,10 @@ $(function(){
 	}
 })
 
-  function gosave() {
+   function gosave() {
 	  $('#frm').attr('action','/bsp/cart/insert.do')
 	  if($('#m_no').val()==0){
-		  alert('로그인하세요')
+		  alert('로그인이 필요합니다. 디테일카트담기')
 		  return false
 	  }
 	  $('#frm').submit();
@@ -41,13 +41,13 @@ $(function(){
   function goorder() {
 	  $('#frm').attr('action','/bsp/order/buy.do')
 	   if($('#m_no').val()==0){
-		  alert('로그인이 필요합니다.')
+		  alert('로그인이 필요합니다. 디테일바로구매')
 		  location.href="/bsp/user/login.do"
 		  return false
 	   }
 	  $('#frm').submit();
 	
-}
+} 
   
 	function goReview() {
 		<c:if test="${!empty userInfo}">
@@ -135,7 +135,7 @@ $(function(){
 				<div class="img_section">
 					<div class="detail_bookImg">
 						<img src="/bsp/img/${vo.b_imgmain }" id="blah" alt="${vo.b_title }"
-							, title="${vo.b_title }" style="width: 250px; height: 310px;">
+							title="${vo.b_title }" style="width: 250px; height: 310px;">
 						<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
 					</div>
 				</div>
@@ -184,12 +184,12 @@ $(function(){
 							</div>
 						</div>
 						<div class="detail_payWrap1">
-							<input type="button" class="btn1" value="카트에 넣기"
-								style="margin-left: 20px;" onclick="gosave();">
+							<input type="button" class="detail_btn1" value="카트에 넣기"
+								style="margin-left: 20px; cursor:pointer" onclick="gosave();">
 						</div>
 						<div class="detail_payWrap2">
-							<input type="button" class="btn2" value="바로구매"
-								style="margin-left: 20px;" onclick="goorder()">
+							<input type="button" class="detail_btn2" value="바로구매"
+								style="margin-left: 20px; cursor:pointer" onclick="goorder()">
 						</div>
 					</div>
 				</form>
@@ -197,7 +197,7 @@ $(function(){
 			
 			
 			
-
+			<c:if test="${vo.b_introbook !='nan'}">
 			<div class="detail_section">
 				<div class="bookintro">
 					<b>책소개</b>
@@ -205,20 +205,26 @@ $(function(){
 				<div>
 					<p class="bookintro1">
 						
-						${vo.b_introbook } <br> 동물들 대신 쓴 독특한 콘셉트의 에세이 『정말 별게 다
+						${vo.b_introbook } <br> 
 
 					</p>
 				</div>
 			</div>
+			</c:if>
+			<c:if test="${vo.b_introauthor !=''}">
 			<div class="detail_section">
-				<div class="bookAuthor" style="font-size: 25px;">
-					<b>저자</b>
+				<div class="bookAuthor" style="font-size: 25px; width: 100%">
+					<b>저자</b>  <b>${vo.b_author }</b>
+					
 				</div>
 				<p class="bookintro1" style="font-size: 17px;">
-					${vo.b_introauthor } <br> 저자 : 고바야시 유리코 <br> 1980년 일본 효고
+					${vo.b_introauthor } <br>
 
 				</p>
 			</div>
+			</c:if>
+			
+			
 
 
 			<div class="detail_section">
@@ -227,7 +233,7 @@ $(function(){
 				</div>
 				<div>
 					<p class="bookintro1" style="font-size: 17px;">
-						${vo.b_index } <br> 1. 「먹고 기도하고 사랑하라」와 치유의 와인<br> 2.
+						${vo.b_index } <br>
 
 					</p>
 				</div>

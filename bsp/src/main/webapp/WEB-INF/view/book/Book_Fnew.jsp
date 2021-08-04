@@ -137,12 +137,13 @@
          
 
             <!-- 1 -->
-             <form id='frm' action="/bsp/cart/insert.do" method="get">
+            <form id='frm' action="/bsp/cart/insert.do" method="get">
             <c:forEach var = "vo" items="${list }">
             <div class="best_wrap">
             <div class="SmallIndex_book">
                 <div class="s_imgSection">
-                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
+                    <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                    <img class="blah" src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
                 </div>
                 <div class="s_infoSectionWrap">
                     <div class="s_infoSection">
@@ -153,27 +154,31 @@
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
                         <span class="s_grade" style="font-size: 16px;">회원리뷰(${vo.rcnt }건) ${vo.avg }/5</span>
                         																																										
-                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
+                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:605px; height:165px;">
                         ${vo.b_content } <br>
          
                         </span>
                     </div>
                 </div>
-                <div class="s_payWrap">
+                   <div class="s_payWrap">
                     <div class="s_pay">
                         <div class="s_pay1">
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" name="" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
+                            <input type="button" class="btn1" value="카트에 넣기" style="cursor:pointer"  >
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="" name="" value="${vo.b_price}"> 
+                            <input type="hidden" class="" id="m_no" name="" value="${userInfo.m_no }"> 
+                            
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="button"  class="btn2" value="바로구매"  style="cursor:pointer">
+                            <input type="hidden" class="b_no" id="m_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>
@@ -181,7 +186,6 @@
              <br>
              <br>
              <hr>
-            
             </div> 
             </c:forEach>
             </form>

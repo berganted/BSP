@@ -61,6 +61,7 @@ public class AdminCotroller {
 //상품 리스트
 	@RequestMapping("admin/product/index.do")
 	public String productIndex(BookVo vo , Model model) {
+		model.addAttribute("ctg", bservice.ctg(vo));
 		vo.setDirect("asc");
 		model.addAttribute("list", bservice.selectAlladmin(vo));
 		

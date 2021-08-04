@@ -32,7 +32,8 @@ $(function(){
    function gosave() {
 	  $('#frm').attr('action','/bsp/cart/insert.do')
 	  if($('#m_no').val()==0){
-		  alert('로그인이 필요합니다. 디테일카트담기')
+		  alert('로그인하세요')
+		  location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
 		  return false
 	  }
 	  $('#frm').submit();
@@ -41,8 +42,8 @@ $(function(){
   function goorder() {
 	  $('#frm').attr('action','/bsp/order/buy.do')
 	   if($('#m_no').val()==0){
-		  alert('로그인이 필요합니다. 디테일바로구매')
-		  location.href="/bsp/user/login.do"
+		  alert('로그인이 필요합니다.')
+		  location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
 		  return false
 	   }
 	  $('#frm').submit();

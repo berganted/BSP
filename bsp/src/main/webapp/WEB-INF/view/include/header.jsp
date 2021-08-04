@@ -37,11 +37,10 @@
             <li><a class="header_depth1" href="category.html">&nbsp;</a></li>
             <li><a class="header_depth1">카테고리</a>
                 <ul class="header_depth2">
-                    <li><a href="#">BSP NOW</a></li>
+                   
+                    <li><a href="#"><b>국내</b></a></li>
                     <li><a href="#">국내도서</a></li>
-                    <li><a href="#">국내도서</a></li>
-                    <li><a href="#">외국도서</a></li>
-                    <li><a href="#">웹소설/코믹</a></li>
+                    <li><a href="#"><b>외국</b></a></li>
                 </ul>
             </li>
             <li><a class="header_depth1" href="/bsp/book/Book_KbigIdx.do">국내도서</a>

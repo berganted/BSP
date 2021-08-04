@@ -10,6 +10,7 @@ public interface BookService {
 	
 	
 	BookVo isOrder(BookVo vo);
+	BookVo isReview(BookVo vo);
 	List<BookVo> selectAllBasic(BookVo vo);
 	List<BookVo> solbestBook(BookVo vo);
 	List<BookVo> solnewBook(BookVo vo);

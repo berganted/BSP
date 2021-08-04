@@ -25,7 +25,7 @@ public class BookVo extends CommonVo {
 	private int b_price;
 	private int b_views;
 	private String b_index;
-	private int b_pages;
+	private String b_pages;
 	private String b_introauthor;
 	private String b_introbook;
 	private int b_point;
@@ -46,8 +46,17 @@ public class BookVo extends CommonVo {
 	private int rcnt;
 	private int tot;
 	private int isorder;
+	private int isreview;
 
 	
+	public int getIsreview() {
+		return isreview;
+	}
+
+	public void setIsreview(int isreview) {
+		this.isreview = isreview;
+	}
+
 	public int getIsorder() {
 		return isorder;
 	}
@@ -334,10 +343,10 @@ public class BookVo extends CommonVo {
 	public void setB_index(String b_index) {
 		this.b_index = b_index;
 	}
-	public int getB_pages() {
+	public String getB_pages() {
 		return b_pages;
 	}
-	public void setB_pages(int b_pages) {
+	public void setB_pages(String b_pages) {
 		this.b_pages = b_pages;
 	}
 	public String getB_introauthor() {

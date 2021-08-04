@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import order.OrderService;
+import order.OrderVo;
+
 
 
 @Controller
@@ -19,6 +22,8 @@ public class UserController {
 	
 	@Autowired
 	UserService service;
+	@Autowired
+	OrderService Oservice;
 	
 //	@RequestMapping("/user/index.do")
 //	public String index(Model model,UserVo vo) {
@@ -95,7 +100,6 @@ public class UserController {
 		UserVo u = service.login(vo);
 		if(u != null) {
 			 sess.setAttribute("userInfo", u);
-			 System.out.println(u.getM_name());
 			 return "include/alert2";			 
 		 }else {
 			 	model.addAttribute("msg", "아이디와 비밀번호를 확인해 주세요");
@@ -136,7 +140,10 @@ public class UserController {
 		return "include/result";
 	}
 	@RequestMapping("/user/mypage.do")
-	public String mypage() {
+	public String mypage(Model model, OrderVo vo,HttpSession sess) {
+		UserVo uv = (UserVo)sess.getAttribute("userInfo");
+		vo.setM_no(uv.getM_no());
+		model.addAttribute("myList",Oservice.selectAll(vo));
 		return "user/mypage";
 	}
 	@RequestMapping(value = "/user/update.do",method = RequestMethod.GET)

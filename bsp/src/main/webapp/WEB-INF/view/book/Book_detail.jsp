@@ -51,31 +51,39 @@ $(function(){
   
 	function goReview() {
 		<c:if test="${!empty userInfo}">
-		if ($("#content").val().trim()==''){
-			alert('내용을 입력해 주세요');
-		} else {
-			if (confirm('리뷰를 등록하시겠습니까?')) {
-				$.ajax({
-        			url:'/bsp/review/insert.do',
-        			data:{
-            				r_content:$("#content").val(),
-            				r_no:${vo.r_no},
-            				m_no:${userInfo.m_no},
-            				b_no:${vo.b_no},
-            				r_grade:$("#r_grade").text()
-        			},
-        			success:function(res) {
-        				if (res.trim()=='true') {
-        					alert('리뷰가 등록되었습니다.');
-        					$("#content").val("");
-        					getComment();
-        				} else {
-        					alert('리뷰 등록 실패');
-        				}
-        			}
-        		});
+			<c:if test="${isReview.isreview == 0}">
+			if ($("#content").val().trim()==''){
+				alert('내용을 입력해 주세요');
+			} else if ($("#r_grade").text() == '0') {
+				alert('별점을 입력해 주세요');
+			} else {
+				if (confirm('리뷰를 등록하시겠습니까?')) {
+					$.ajax({
+	        			url:'/bsp/review/insert.do',
+	        			data:{
+	            				r_content:$("#content").val(),
+	            				r_no:${vo.r_no},
+	            				m_no:${userInfo.m_no},
+	            				b_no:${vo.b_no},
+	            				r_grade:$("#r_grade").text()
+	        			},
+	        			success:function(res) {
+	        				if (res.trim()=='true') {
+	        					alert('리뷰가 등록되었습니다.');
+	        					$("#content").val("");
+	        					getComment();
+	        					window.location.reload()
+	        				} else {
+	        					alert('리뷰 등록 실패');
+	        				}
+	        			}
+	        		});
+				}
 			}
-		}
+			</c:if>
+			<c:if test="${isReview.isreview != 0}">
+				alert('리뷰는 한번만 작성가능합니다.');
+			</c:if>
 		</c:if>
 		<c:if test="${empty userInfo}">
 			alert('리뷰는 로그인 후 등록 가능합니다.');
@@ -108,6 +116,7 @@ $(function(){
     				if (res.trim()=='true') {
         				alert('댓글이 삭제되었습니다.');
         				getComment(1);
+        				window.location.reload()
     				} else {
     					alert('댓글 삭제 오류');
     				}
@@ -126,7 +135,7 @@ $(function(){
 				<div class="img_section">
 					<div class="detail_bookImg">
 						<img src="/bsp/img/${vo.b_imgmain }" id="blah" alt="${vo.b_title }"
-							, title="${vo.b_title }" style="width: 250px; height: 310px;">
+							title="${vo.b_title }" style="width: 250px; height: 310px;">
 						<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
 					</div>
 				</div>
@@ -144,8 +153,7 @@ $(function(){
 							<span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br> 
 							<span class="detail_bookAuthor">${vo.b_author }</span>
 							&nbsp;| <span class="detail_bookPub">${vo.b_publisher }</span>
-							&nbsp;| <span class="detail_bookDate"><fmt:formatDate
-									value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span
+							&nbsp;| <span class="detail_bookDate"><fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span
 								class="detail_grade"><fmt:formatNumber  value="${vo.avg }"  pattern="0.0"/>/5</span> &nbsp; <span
 								class="detail_review"><a href="#">회원리뷰(${vo.rcnt }건)</a></span> &nbsp;| <span
 								class="detail_sales">판매지수 ${vo.tot} </span>
@@ -189,7 +197,7 @@ $(function(){
 			
 			
 			
-
+			<c:if test="${vo.b_introbook !='nan'}">
 			<div class="detail_section">
 				<div class="bookintro">
 					<b>책소개</b>
@@ -197,20 +205,26 @@ $(function(){
 				<div>
 					<p class="bookintro1">
 						
-						${vo.b_introbook } <br> 동물들 대신 쓴 독특한 콘셉트의 에세이 『정말 별게 다
+						${vo.b_introbook } <br> 
 
 					</p>
 				</div>
 			</div>
+			</c:if>
+			<c:if test="${vo.b_introauthor !=''}">
 			<div class="detail_section">
-				<div class="bookAuthor" style="font-size: 25px;">
-					<b>저자</b>
+				<div class="bookAuthor" style="font-size: 25px; width: 100%">
+					<b>저자</b>  <b>${vo.b_author }</b>
+					
 				</div>
 				<p class="bookintro1" style="font-size: 17px;">
-					${vo.b_introauthor } <br> 저자 : 고바야시 유리코 <br> 1980년 일본 효고
+					${vo.b_introauthor } <br>
 
 				</p>
 			</div>
+			</c:if>
+			
+			
 
 
 			<div class="detail_section">
@@ -219,7 +233,7 @@ $(function(){
 				</div>
 				<div>
 					<p class="bookintro1" style="font-size: 17px;">
-						${vo.b_index } <br> 1. 「먹고 기도하고 사랑하라」와 치유의 와인<br> 2.
+						${vo.b_index } <br>
 
 					</p>
 				</div>
@@ -264,12 +278,12 @@ $(function(){
 							<tr>
 								<c:if test="${userInfo == null }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-								<c:if test="${isOrder.isorder >0 }"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해주세요 :)"
+								<c:if test="${isOrder.isorder >0 && isReview.isreview >0}"><td><textarea name="r_content" id="content" placeholder="리뷰는 한 번만 작성가능합니다 :)" readonly
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-										
-								<c:if test="${isOrder.isorder==0}"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
+								<c:if test="${isOrder.isorder >0 && isReview.isreview == 0}"><td><textarea name="r_content" id="content" placeholder="리뷰를 입력해 주세요:)"
 										style="width: 100%; height: 80px"></textarea></td></c:if>
-										
+								<c:if test="${isOrder.isorder==0 }"><td><textarea name="r_content" id="content" placeholder="리뷰는 구매후 작성할 수 있습니다:)" readonly
+										style="width: 100%; height: 80px"></textarea></td></c:if>
 								<td>
 									<div class="btnSet" style="text-align: right;">
 										<a class="btn" href="javascript:goReview();">저장 </a>
@@ -278,10 +292,6 @@ $(function(){
 							</tr>
 						</tbody>
 					</table>
-					
-					<script>
-
-                    </script>
 				</div>
 				<div id="reviewArea"></div>
 			</div>

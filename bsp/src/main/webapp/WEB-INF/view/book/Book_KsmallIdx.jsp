@@ -14,31 +14,44 @@
     <link rel="stylesheet" href="/bsp/css/base.css">
     <link rel="stylesheet" href="/bsp/css/big.css">
     <link rel="stylesheet" href="/bsp/css/index.css">
-    <!-- <link rel="stylesheet" href="/bsp/css/edge.css"> -->
- 
-    
-    <!-- 추가하면 css구조 깨짐. div class="wrap"으로 안감싸져있어서 그런듯? 근데 감싸면 페이징 부분이 깨짐 -->
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>국내도서</title>
  
 <style>
     .paging {
-  	 margin-left: 370px;
+  	
     text-align: center;
     float: left;
     margin-top: -10px;
-    
      }
-    
 </style>
     <script>
    
-    
     function sendPageRow() {
-    	location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
+        location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
+
+    function gosave(){
+    	$('#frm').attr('action','/bsp/cart/insert.do')
+			if($('#m_no').val()==0){
+	  		  alert('로그인이 필요합니다.')
+	  		  location.href="/bsp/user/login.do"
+	  		  return false
+			}
+			$(this).next().attr("name","b_no");
+			console.log
+			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
+			$('#frm').submit();
+		}
+
+
     
+    $(function() {
+		$('.btn2').click(function(){
+			$('#frm').attr('action','/bsp/order/buy.do')
+			console.log($(this).parent().parent().find("#numberUpDown").val())
+
 			if($('#m_no').val()==0){
 	  		  alert('로그인이 필요합니다.')
 	  		  location.href="/bsp/user/login.do"
@@ -48,6 +61,9 @@
 			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
 			$('#frm').submit();
 		})
+	})
+	
+		$(function(){
 		$(".abc").each(function(){
 		var idx = $(this).index('.abc');
 		console.log($(this).val().length)
@@ -126,7 +142,7 @@
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
                         <span class="s_grade" style="font-size: 16px;">회원리뷰(8건) ★★★★★ 9.3</span>
                         																																										
-                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
+                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100%; height:163px">
                         ${vo.b_content } <br>
          
                         </span>
@@ -137,16 +153,19 @@
                         <div class="s_pay1">
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" id="numberUpDown" name="cart_cnt" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
+                            <input type="hidden" name="m_no"value="${userInfo.m_no }">
+                            <input type="hidden" name="cart_price"value="${vo.b_price }">
+                            <input type="hidden" name="m_no"value="${userInfo.m_no }">
                         </div>
                         <div class="s_pay3">
                             <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="b_no" name="b_no" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>

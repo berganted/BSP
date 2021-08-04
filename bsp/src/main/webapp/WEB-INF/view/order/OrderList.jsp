@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문내역</title>
     <link rel='stylesheet' href='/bsp/css/yesol.css'/><!-- 예솔 css -->
-    <link rel='stylesheet' href='/bsp/css/base.css'/> 
+    <link rel='stylesheet' href='/bsp/css/base.css'/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
 </head>
@@ -57,7 +57,7 @@
                     <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	${list.pb_no}</a></td>
                     <td>${list.pb_resname}</td>
-                    <td>&nbsp;총 ${list.count }권</td>
+                    <td>${list.b_title }&nbsp;총 ${list.count }권</td>
                     <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	<input class="button_s" type="button" value="상세조회"></a></td>
                     <td>${list.ps_title}</td>

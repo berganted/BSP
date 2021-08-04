@@ -135,7 +135,7 @@ $(function(){
 				<div class="img_section">
 					<div class="detail_bookImg">
 						<img src="/bsp/img/${vo.b_imgmain }" id="blah" alt="${vo.b_title }"
-							, title="${vo.b_title }" style="width: 250px; height: 310px;">
+							title="${vo.b_title }" style="width: 250px; height: 310px;">
 						<input type="hidden" name=abc id="abc" value="${vo.b_imgmain }"/>
 					</div>
 				</div>
@@ -197,7 +197,7 @@ $(function(){
 			
 			
 			
-
+			<c:if test="${vo.b_introbook !='nan'}">
 			<div class="detail_section">
 				<div class="bookintro">
 					<b>책소개</b>
@@ -205,20 +205,26 @@ $(function(){
 				<div>
 					<p class="bookintro1">
 						
-						${vo.b_introbook } <br> 동물들 대신 쓴 독특한 콘셉트의 에세이 『정말 별게 다
+						${vo.b_introbook } <br> 
 
 					</p>
 				</div>
 			</div>
+			</c:if>
+			<c:if test="${vo.b_introauthor !=''}">
 			<div class="detail_section">
-				<div class="bookAuthor" style="font-size: 25px;">
-					<b>저자</b>
+				<div class="bookAuthor" style="font-size: 25px; width: 100%">
+					<b>저자</b>  <b>${vo.b_author }</b>
+					
 				</div>
 				<p class="bookintro1" style="font-size: 17px;">
-					${vo.b_introauthor } <br> 저자 : 고바야시 유리코 <br> 1980년 일본 효고
+					${vo.b_introauthor } <br>
 
 				</p>
 			</div>
+			</c:if>
+			
+			
 
 
 			<div class="detail_section">
@@ -227,7 +233,7 @@ $(function(){
 				</div>
 				<div>
 					<p class="bookintro1" style="font-size: 17px;">
-						${vo.b_index } <br> 1. 「먹고 기도하고 사랑하라」와 치유의 와인<br> 2.
+						${vo.b_index } <br>
 
 					</p>
 				</div>

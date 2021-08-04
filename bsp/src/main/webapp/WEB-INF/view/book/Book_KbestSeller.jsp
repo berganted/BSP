@@ -191,7 +191,7 @@
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
                         <span class="s_grade" style="font-size: 16px;">회원리뷰(${vo.rcnt }건) ${vo.avg }/5</span>
                         																																										
-                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:100% height:100%">
+                         <span class="s_story" style="font-size: 16px; overflow: hidden; width:100%; height:163px">
                         ${vo.b_content } <br>
          
                         </span>

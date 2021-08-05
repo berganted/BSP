@@ -117,9 +117,9 @@
 		<!-- 반품 전체 insert -->
 		<insert id="insertRt" parameterType="returning.ReturningVo">
 		INSERT INTO returning(returning_reason_no, return_reason_detail, returning_category, 
-								b_no, ps_no, rd_no, refund_no, returning_amount, io_no ,returning_regdate)
+								b_no, ps_no, rd_no, refund_info, returning_amount, io_no ,returning_regdate)
 		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category}, 
-			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{returning_amount},#{io_no}, NOW());
+			#{ b_no},#{ps_no},#{rd_no},#{refund_info},#{returning_amount},#{io_no}, NOW());
 		<selectKey resultType="int" keyProperty="returning_no" order="AFTER">
         SELECT LAST_INSERT_ID()    
     	</selectKey>

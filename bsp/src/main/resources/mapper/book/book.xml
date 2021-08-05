@@ -227,7 +227,7 @@
 		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
 		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
 		FROM book 
-		WHERE b_ctgno1 =  #{b_ctgno1}
+		WHERE <if test="b_ctgno1 ==0"> b_ctgno1=1</if><if test="b_ctgno1 !=0">b_ctgno1 =  #{b_ctgno1}</if>
 		ORDER BY tot DESC
 		LIMIT 6
 	</select>

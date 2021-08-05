@@ -12,12 +12,12 @@ import comment.CommentVo;
 public class ReviewController {
 	
 	@Autowired
-	ReviewService Service; 
+	ReviewService service; 
 	
 	
 	@RequestMapping("/review/insert.do")
 	public String reviewInsert(Model model, ReviewVo vo) {
-		int r = Service.insert(vo);
+		int r = service.insert(vo);
 		if (r > 0) {
 			model.addAttribute("result", "true");
 		} else {
@@ -28,13 +28,13 @@ public class ReviewController {
 	
 	@RequestMapping("/review/list.do")
 	public String reviewList(Model model, ReviewVo cv) {
-		model.addAttribute("list", Service.selectAll(cv));
+		model.addAttribute("list", service.selectAll(cv));
 		return "include/review";
 	}
 	
 	@RequestMapping("/review/delete.do")
 	public String commentDelete(Model model, ReviewVo vo) {
-		int r = Service.delete(vo);
+		int r = service.delete(vo);
 		if (r > 0) {
 			model.addAttribute("result", "true");
 		} else {

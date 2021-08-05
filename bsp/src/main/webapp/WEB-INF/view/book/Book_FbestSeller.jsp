@@ -17,12 +17,14 @@
     <script src="/bsp/js/big.js"></script>
     <title>외국베스트셀러</title>
     <script>
+
     function sendPageRow() {
     	location.href='Book_FbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=DESC&pageRow='+$("#divnum").val();
     }
     </script>
 </head>
 <body>
+	<jsp:include page="../include/btn.jsp"></jsp:include>
      <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
          <jsp:include page="../include/sideCategory.jsp"></jsp:include>
@@ -35,7 +37,7 @@
                 <div class="best_indexWrap">
                     <!-- <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;"> -->
                     <div class="pagenate1 clear" style=" margin: 0,auto !important;">
-                      <ul class='paging'> 
+                      <ul class='pagingbest'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
                         <li><a href="Book_FbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=tot&direct=DESC&pageRow=${bookVo.pageRow}"> < </a></li>
                         </c:if>
@@ -89,8 +91,8 @@
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
                                     <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
-                                      <button class="button_s" type="button" id="increaseQuantity">+</button>
-                                  </div> 
+                                    <button class="button_s" type="button" id="increaseQuantity">+</button>
+                                 </div> 
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" style="cursor:pointer"  >

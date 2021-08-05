@@ -122,7 +122,7 @@
         SELECT LAST_INSERT_ID()    
     	</selectKey>
 		</insert>
-		
+		    
 		<!-- 반품시 배송상태 변경 -> 반품신청완료  (반품테이블) -->
 		<update id="updatePs" parameterType="int">
 		UPDATE returnings SET 

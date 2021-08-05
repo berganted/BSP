@@ -27,36 +27,25 @@
 text-align: center;
 }
 </style>
-
 </head>
 
 <body>
  <jsp:include page="../include/header.jsp"></jsp:include>
-   <!--  <div id=header></div> -->
     <div class="wrap">
-
         <jsp:include page="../include/sideFbig.jsp"></jsp:include>
             
         <div class="mem_content">
-            
-
-
             <div class="BigIndex_newEye">  ${vo.b_ctgname2 } </div>
-
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
                 <c:forEach var = "vo" items="${selectctgnamed }">
                     <div class="cate2"><a href="Book_FsmallIdx.do?b_ctgno2key=${vo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow=${bookVo.pageRow}">${vo.b_ctgdetail } </a></div> 
-
                 </c:forEach>   
-                <!-- </div> -->
             </div>
 
 
 
         <div class="BigIndex_choice"> BSP의 선택 </div>
-       
-                
         <div class="swiper-container">
             <div class="swiper-wrapper">
             <c:forEach var = "vo" items="${list1 }">
@@ -152,8 +141,8 @@ text-align: center;
     <jsp:include page="../include/quick.jsp"></jsp:include>
            
     </div>
-     <jsp:include page="../include/footer.jsp"></jsp:include>
     </div>
+     <jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>
 </html>

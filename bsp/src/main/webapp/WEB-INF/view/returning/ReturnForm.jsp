@@ -169,8 +169,8 @@ function openZipSearchRT() {
 	                    <table id="retrn_account" class="retrn_tb">
 	                        <tr>
 	                            <td style="text-align: center;"> 
-	                            <input type="radio" name="refund_no" value="1">현금
-	                            <input type="radio" name="refund_no" value="2">신용카드 또는 기타결제 승인취소<br>
+	                            <input type="radio" name="refund_info" value="현금">현금
+	                            <input type="radio" name="refund_info" value="카드">신용카드 또는 기타결제 승인취소<br>
 	                            <div class="pwrap"><p>
 	                            * 주문 환불은 결제한 수단과 동일한 수단으로 환불을 원칙으로 합니다.<br>
 	                            * 결제한 수단으로 환불이 불가한 일부 상황에서는 예치금 및 환전캐시등의 결제 타입에 상응하는 부가결제 수단으로 환불합니다.<br>

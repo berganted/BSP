@@ -22,7 +22,7 @@
 		<!-- 반품/교환 전체 내역 -->
 			<select id="selectAll" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
-			FROM product_io PI JOIN returning r
+			FROM product_io PI JOIN returnings r
 			ON PI.io_no = r.io_no
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
@@ -39,7 +39,7 @@
 			<!-- 페이징처리 -->
 			<select id="count" resultType="int" parameterType="returning.ReturningVo">
 			SELECT COUNT(*) 
-			FROM product_io PI JOIN returning r
+			FROM product_io PI JOIN returnings r
 			ON PI.io_no = r.io_no
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
@@ -81,7 +81,7 @@
 		<!-- 반품/교환상세 공통 -->
 		<select id="detail1" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT * 
-			FROM product_io PI JOIN returning r
+			FROM product_io PI JOIN returnings r
 			ON PI.io_no = r.io_no
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
@@ -94,7 +94,7 @@
 		<!-- 반품/교환상세 개별(반품도서 종류) -->
 		<select id="detail2" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT * 
-			FROM product_io PI JOIN returning r
+			FROM product_io PI JOIN returnings r
 			ON PI.io_no = r.io_no
 			JOIN returning_delivery_info rd
 			ON rd.rd_no = r.rd_no
@@ -116,18 +116,16 @@
 		
 		<!-- 반품 전체 insert -->
 		<insert id="insertRt" parameterType="returning.ReturningVo">
-		INSERT INTO returning(returning_reason_no, return_reason_detail, returning_category, 
-								b_no, ps_no, rd_no, refund_no, returning_amount, io_no ,returning_regdate)
-		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category}, 
-			#{ b_no},#{ps_no},#{rd_no},#{refund_no},#{returning_amount},#{io_no}, NOW());
+		INSERT INTO returnings(returning_reason_no,return_reason_detail,returning_category,b_no,ps_no,rd_no,refund_info,returning_amount,io_no,returning_regdate)
+		VALUES(#{returning_reason_no},#{return_reason_detail},#{returning_category},#{b_no},#{ps_no},#{rd_no},#{refund_info},#{returning_amount},#{io_no}, NOW());
 		<selectKey resultType="int" keyProperty="returning_no" order="AFTER">
         SELECT LAST_INSERT_ID()    
     	</selectKey>
 		</insert>
-		
+		    
 		<!-- 반품시 배송상태 변경 -> 반품신청완료  (반품테이블) -->
 		<update id="updatePs" parameterType="int">
-		UPDATE returning SET 
+		UPDATE returnings SET 
 		ps_no= 11
 		WHERE returning_no=#{returning_no} 
 		</update>
@@ -142,7 +140,7 @@
 		<!-- admin -->
 		<select id="selectop" resultType="returning.ReturningVo">SELECT * FROM bsp.processing_status; </select>
 
-		<update id="updatepsno" parameterType="returning.ReturningVo">UPDATE returning set ps_no=#{ps_no} WHERE returning_no=#{returning_no}; </update>
+		<update id="updatepsno" parameterType="returning.ReturningVo">UPDATE returnings set ps_no=#{ps_no} WHERE returning_no=#{returning_no}; </update>
 
 		<update id="updateiopsno">UPDATE product_io set ps_no=#{ps_no} WHERE io_no=#{io_no} </update>
 

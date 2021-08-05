@@ -135,8 +135,11 @@
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
                             <td>${vo.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
-                            <td id="price"><span class="b_price">${vo.b_price }</span>원/<span class=point>${vo.b_point }</span>원</td>
-                            <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
+                            <td id="price"><span class="b_price">${vo.b_price }</span>원/<span class=point>${vo.b_point }</span>원
+                            
+                            </td>
+                            <td class="bseq_ea">${vo.b_stock }</td>  <!--  출력할 필요는 없음 -->
+                            
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
                              <input   type="text" class="pop_out"name="io_amount" value="${param.io_amount }" readonly="readonly" style="width: 50px; text-align: center;">

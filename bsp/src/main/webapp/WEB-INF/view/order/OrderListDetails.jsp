@@ -52,7 +52,7 @@ function rtnCheck(){
                 </tr>
                 <tr>
                     <td>주문하신분</td>
-                    <td>★나중에 가져올 회원이름★</td>
+                    <td>${userInfo.m_name}</td>
                     <td>받으시는분</td>
                     <td>${vo.pb_resname}</td>
                 </tr>
@@ -63,10 +63,10 @@ function rtnCheck(){
                     </td>
                 </tr>
                 <tr>
-                    <td>전화번호</td>
-                    <td></td>
                     <td>휴대번호</td>
                     <td>${vo.pb_restel}</td>
+                    <td>전화번호</td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>배송메세지</td>
@@ -74,12 +74,6 @@ function rtnCheck(){
                        ${vo.pb_req}
                     </td>
                 </tr>
-                    <tr>
-                        <td>거래명세서</td>
-                        <td colspan="3">
-                           ★★★  ★★★  ★★★
-                        </td>
-                    </tr>
                 </table>
         </article>
         
@@ -102,12 +96,12 @@ function rtnCheck(){
                     <td><input type="image" name="b_image"></td>
                     <td>${vo.b_title }
                         ${vo.b_author }
-                        <a href=""><input class="button_s" type="button" value="리뷰 쓰기"></a>
+                        <a href="/bsp/book/Book_detail.do?b_no=${vo.b_no}&m_no=${vo.m_no}"><input class="button_s" type="button" value="리뷰 쓰기"></a>
                     </td>
                  	<td>${vo.io_amount}</td>
                     <td>
-                    	가격: ${vo.b_price}<br>
-                        마일리지:1500원(5%)
+                    	가격: ${vo.b_price}원<br>
+                        마일리지:${vo.b_point}원(5%)
                    </td>
                     <td>
                     	<input class="button_s" type="button" value="반품 신청" style="margin: 5px"><br>

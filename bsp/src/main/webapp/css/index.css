@@ -765,7 +765,8 @@ li {
 .index_container > div {     
     float: left;
     position: relative;
-    margin-top: 10px;    
+    margin-top: 10px;
+    overflow: hidden;    
 }
 
 .index_randomAds {
@@ -845,7 +846,8 @@ li {
     /* 요거고침요 */
 }
 .index_todaysBooks1{
-    height: 400px;
+	overflow: hidden;
+	height: 400px;
     width: 60%;
     padding: 10px;
 }
@@ -861,7 +863,7 @@ li {
 }
 
 .index_todayDetails {
-    padding-top: 60px;
+    padding-top: 40px;
     padding-right: 10px;
     height: 360px;
     width: 65%;

@@ -26,18 +26,6 @@
 text-align: center;
 }
 </style>
-<script type="text/javascript">
-$(function(){
-	$(".abc").each(function(){
-		var idx = $(this).index('.abc');
-		console.log($(this).val().length)
-		if($(this).val().length>30){
-			$('.blah').eq(idx).attr('src',$(this).val())
-		}
-		})
-})
-</script> 
-
 </head>
 
 <body>
@@ -162,8 +150,8 @@ $(function(){
     <jsp:include page="../include/quick.jsp"></jsp:include>
            
     </div>
-     <jsp:include page="../include/footer.jsp"></jsp:include>
     </div>
+     <jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>
 </html>

@@ -17,56 +17,8 @@
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>국내도서</title>
- 
-<style>
-    .paging {
-    text-align: center;
-    float: left;
-    margin-top: -10px;
-     }
-</style>
+
     <script>
-    
-    
-    $(function(){
-    	$(".abc").each(function(){
-    		var idx = $(this).index('.abc');
-    		console.log($(this).val().length)
-    		if($(this).val().length>30){
-    			$('.blah').eq(idx).attr('src',$(this).val())
-    		}
-    	})
-    	$('.btn2').click(function(){
-			$('#frm').attr('action','/bsp/order/buy.do')
-			console.log($(this).parent().parent().find("#numberUpDown").val())
-
-			if($('#m_no').val()==0){
-	  		  alert('로그인이 필요합니다.')
-	  		 location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
-	  		  return false
-			}
-			$(this).next().attr("name","b_no");
-			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
-			$('#frm').submit();
-		})
-		$('.btn1').click(function(){
-			$('#frm').attr('action','/bsp/cart/insert.do')
-			if($('#m_no').val()==0){
-	  		  alert('로그인이 필요합니다.')
-	  		 location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
-	  		  return false
-			}
-			$(this).next().attr("name","b_no");
-			console.log($(this).next().val())
-			$(this).next().next().attr("name","b_price");
-			$(this).next().next().next().attr("name","m_no");
-			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
-			console.log($(this).parent().parent().find("#numberUpDown").val())
-			$('#frm').submit();
-		})
-    })
-
-   
     function sendPageRow() {
         location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
     }
@@ -76,6 +28,7 @@
 
 </head>
 <body>
+	<jsp:include page="../include/btn.jsp"></jsp:include>
  <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
        <jsp:include page="../include/sideKbig.jsp"></jsp:include>
@@ -106,9 +59,8 @@
                     <hr>
                  <!-- 페이지처리  -->                      
                     <div class="pagenate1 clear" style="text-align: center;">
-                        <ul class='paging'> 
+                        <ul class='smallpaging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
-                         <!-- Book_KsmallIdx.do?b_ctgno2key=1&b_ctgdetail=임신/출산&b_ctgno1=1 -->
                         <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}">  </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
@@ -150,9 +102,9 @@
                         <div class="s_pay1">
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown" name="cart_cnt" style="width: 50px; text-align: center;" value="1">
-                                      <button class="button_s" type="button" id="increaseQuantity">+</button>
-                                  </div> 
+                                    <input type="number" id="numberUpDown" style="width: 50px; text-align: center;" value="1">
+                                    <button class="button_s" type="button" id="increaseQuantity">+</button>
+                                </div> 
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기" style="cursor:pointer"  >

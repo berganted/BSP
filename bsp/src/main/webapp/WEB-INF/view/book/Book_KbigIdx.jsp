@@ -160,8 +160,8 @@ $(function(){
     <jsp:include page="../include/quick.jsp"></jsp:include>
            
     </div>
-     <jsp:include page="../include/footer.jsp"></jsp:include>
     </div>
+     <jsp:include page="../include/footer.jsp"></jsp:include>
 
 </body>
 </html>

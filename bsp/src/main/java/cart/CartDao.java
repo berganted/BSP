@@ -29,4 +29,10 @@ public class CartDao {
 	public CartVo selectone(CartVo vo) {
 		return sessionTemplate.selectOne("cart.selectone",vo);
 	}
+	public CartVo selectcheak(CartVo vo) {
+		return sessionTemplate.selectOne("cart.selectcheak",vo);
+	}
+	public int ifdue(CartVo vo) {
+		return sessionTemplate.update("cart.ifdue",vo);
+	}
 }

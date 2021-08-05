@@ -26,53 +26,48 @@
     margin-top: -10px;
      }
 </style>
-    <script>
-   
-    function sendPageRow() {
-        location.href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow='+$("#divnum").val();
-    }
-
-    function gosave(){
-    	$('#frm').attr('action','/bsp/cart/insert.do')
-			if($('#m_no').val()==0){
-	  		  alert('로그인이 필요합니다.')
-	  		  location.href="/bsp/user/login.do"
-	  		  return false
-			}
-			$(this).next().attr("name","b_no");
-			console.log
-			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
-			$('#frm').submit();
-		}
-
-
-    
-    $(function() {
-		$('.btn2').click(function(){
+  <script>
+    $(function(){
+    	$(".abc").each(function(){
+    		var idx = $(this).index('.abc');
+    		console.log($(this).val().length)
+    		if($(this).val().length>30){
+    			$('.blah').eq(idx).attr('src',$(this).val())
+    		}
+    	})
+    	$('.btn2').click(function(){
 			$('#frm').attr('action','/bsp/order/buy.do')
 			console.log($(this).parent().parent().find("#numberUpDown").val())
 
 			if($('#m_no').val()==0){
 	  		  alert('로그인이 필요합니다.')
-	  		  location.href="/bsp/user/login.do"
+	  		 location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
 	  		  return false
 			}
 			$(this).next().attr("name","b_no");
-			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
+			$(this).parent().parent().find(".numberUpDown").attr("name","io_amount");
 			$('#frm').submit();
 		})
-	})
-	
-		$(function(){
-		$(".abc").each(function(){
-		var idx = $(this).index('.abc');
-		console.log($(this).val().length)
-		if($(this).val().length>30){
-			$('.blah').eq(idx).attr('src',$(this).val())
-		}
+		$('.btn1').click(function(){
+			$('#frm').attr('action','/bsp/cart/insert.do')
+			if($('#m_no').val() == ""||0||null){
+	  		  alert('로그인이 필요합니다.')
+	  		  location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
+	  		  return false
+			}
+			$(this).next().attr("name","b_no");
+			console.log($(this).next().val())
+			$(this).next().next().attr("name","b_price");
+			$(this).next().next().next().attr("name","m_no");
+			$(this).parent().parent().find(".numberUpDown").attr("name","io_amount");
+			console.log($(this).parent().parent().find(".numberUpDown").val())
+			$('#frm').submit();
 		})
-	})
-	
+    })
+   
+    function sendPageRow() {
+    	location.href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=DESC&pageRow='+$("#divnum").val();
+    }
     </script>
 
 
@@ -89,7 +84,7 @@
  
             <div class="indexWrap">
                 <div class="indexPlace">
-                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_regdate&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
+                    <span class="original"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_regdate&direct=ASC&pageRow=${param.pageRow}">기본순</a></span>
                     <span class="sell"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=desc&pageRow=${param.pageRow}">판매량순</a></span>
                     <span class="new"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_intodate&direct=desc&pageRow=${param.pageRow}">신상품순</a></span>
                     <span class="lowPrice"><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=b_price&direct=ASC&pageRow=${param.pageRow}">최저가순</a></span>
@@ -153,19 +148,20 @@
                         <div class="s_pay1">
                                 <div class="number">
                                     <button  class="button_s" type ="button" id="decreaseQuantity">-</button> 
-                                    <input type="number" id="numberUpDown" name="cart_cnt" style="width: 50px; text-align: center;" value="1">
+                                    <input type="number" class="numberUpDown" name="" style="width: 50px; text-align: center;" value="1">
                                       <button class="button_s" type="button" id="increaseQuantity">+</button>
                                   </div> 
                         </div>
-                        <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기" onClick="gosave();" >
-                            <input type="hidden" name="m_no"value="${userInfo.m_no }">
-                            <input type="hidden" name="cart_price"value="${vo.b_price }">
-                            <input type="hidden" name="m_no"value="${userInfo.m_no }">
+                         <div class="s_pay2">
+                            <input type="button" class="btn1" value="카트에 넣기"  >
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="" name="" value="${vo.b_price}"> 
+                            <input type="hidden" id="m_no" name="" value="${userInfo.m_no }"> 
+                            
                         </div>
                         <div class="s_pay3">
                             <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="b_no" value="${vo.b_no }"> 
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>

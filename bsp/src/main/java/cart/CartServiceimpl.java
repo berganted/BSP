@@ -18,7 +18,11 @@ public class CartServiceimpl implements CartService {
 	
 	@Override
 	public int insert(CartVo vo) {
-		return dao.insert(vo);
+		if(dao.selectcheak(vo) != null) {
+			return dao.ifdue(vo);
+		}else {
+			return dao.insert(vo);
+		}
 	}
 
 	@Override

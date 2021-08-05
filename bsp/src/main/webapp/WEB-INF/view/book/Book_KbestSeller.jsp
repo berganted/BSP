@@ -108,7 +108,7 @@
 
 			if($('#m_no').val()==0){
 	  		  alert('로그인이 필요합니다.')
-	  		  location.href="/bsp/user/login.do"
+	  		 location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
 	  		  return false
 			}
 			$(this).next().attr("name","b_no");
@@ -119,7 +119,7 @@
 			$('#frm').attr('action','/bsp/cart/insert.do')
 			if($('#m_no').val() == ""||0||null){
 	  		  alert('로그인이 필요합니다.')
-	  		  location.href="/bsp/user/login.do"
+	  		  location.href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>"
 	  		  return false
 			}
 			$(this).next().attr("name","b_no");
@@ -208,7 +208,7 @@
                         </div>
                         <div class="s_pay2">
                             <input type="button" class="btn1" value="카트에 넣기"  >
-                            <input type="hidden" class="" name="" value="${vo.b_no }"> 
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                             <input type="hidden" class="" name="" value="${vo.b_price}"> 
                             <input type="hidden" id="m_no" name="" value="${userInfo.m_no }"> 
                             

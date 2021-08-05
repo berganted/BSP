@@ -99,7 +99,7 @@ $(function(){
     <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
        
-        <div class="mem_content">      
+        <div class="mem_content2">      
             <div class="head">
                 <h1> 로그인 </h1>
             </div>        

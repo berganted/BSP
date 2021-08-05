@@ -101,6 +101,11 @@ public class BookServiceImpl implements BookService {
 	public List<BookVo> selectAll7(BookVo vo) {
 		return dao.selectAll7(vo);
 	}
+	// index.do 신상
+	@Override
+	public List<BookVo> selectAll8(BookVo vo) {
+		return dao.selectAll8(vo);
+	}
 	// popular 인기검색어
 	@Override
 	public int popular(BookVo vo) {

@@ -65,7 +65,7 @@
 						<td>${list.pb_no }</td>
 						<td>${list.b_title } / ${list.returning_amount}</td>
 						<td>${list.rd_option }</td>
-						<td>${list.refund_no }</td>
+						<td>${list.refund_info }</td>
 						<td>${list.ps_title }</td>
 						<td><a href="detail.do?returning_no=${list.returning_no}&reqPage=${returningVo.reqPage}&stype=${returningVo.stype}&sval=${returningVo.sval}&orderby=${returningVo.orderby}&direct=${returningVo.direct}"><input
 								class="button_s" type="button" value="상세조회"></a></td>

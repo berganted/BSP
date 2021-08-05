@@ -131,10 +131,10 @@ $(function(){
                 </div>
                 <div class="index_NowBooks">
                     <div class="index_NowBooksTitle">BSP NOW ></div>
-                <c:forEach var="vo" items="${list4 }" varStatus="status">
+                <c:forEach var="vo" items="${newbook }" varStatus="status">
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
-                             <img class="blah" src="/bsp/ad/${vo.ad_img }" alt="">
+                             <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
                         	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/>    
                         </div>                        
                         <div class="index_NowBooksDetail">
@@ -154,7 +154,7 @@ $(function(){
             <c:forEach var="vo" items="${list4 }" varStatus="status">
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
-                        <img class="blah" src="/bsp/ad/${vo.ad_img }" alt="">
+                        <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
                         <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>  
                     </div>
                     <div class="index_NowBooksDetail">

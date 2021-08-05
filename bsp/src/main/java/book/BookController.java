@@ -212,13 +212,13 @@ public class BookController {
 	
 	//--------------------------외국도서 장르부분 (대분류중분류)---------------------------------------------------------------
 	
-	@RequestMapping("/book/Book_FbigIdx.do") // 가정살림
+	@RequestMapping("/book/Book_FbigIdx.do") // ELT사전
 	public String fbig(BookVo vo, Model model) {
 		//vo에 셋을 먼저 해줌
 		vo.setDirect("ASC");
 		vo.setB_ctgno1(2); //외국도서
-		vo.setB_ctgno2key(1); // 중분류 이름값이 나온다 (ex가정살림)
-		vo.setB_ctgno2(1); //상세분류 이름값(가정살림 안에 상세분류)
+		vo.setB_ctgno2key(31); // 중분류 이름값이 나온다 (ex가정살림)
+		vo.setB_ctgno2(9); //상세분류 이름값(가정살림 안에 상세분류)
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
 		model.addAttribute("list3", service.selectAll3(vo));
@@ -229,12 +229,12 @@ public class BookController {
 		
 	}
 	
-	@RequestMapping("/book/Book_FbigIdx1.do") // 경제경영
+	@RequestMapping("/book/Book_FbigIdx1.do") // 경제 경영
 	public String fbig1(BookVo vo, Model model) {
 		vo.setDirect("ASC");
 		vo.setB_ctgno1(2);
-		vo.setB_ctgno2key(5); 
-		vo.setB_ctgno2(2);
+		vo.setB_ctgno2key(35); 
+		vo.setB_ctgno2(10);
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
 		model.addAttribute("list3", service.selectAll3(vo));
@@ -250,12 +250,12 @@ public class BookController {
 		
 	}
 	
-	@RequestMapping("/book/Book_FbigIdx2.do") // 소설
+	@RequestMapping("/book/Book_FbigIdx2.do") // 라이프스타일
 	public String fbig2(BookVo vo, Model model) {
 		vo.setDirect("ASC");
 		vo.setB_ctgno1(2);
-		vo.setB_ctgno2key(8); 
-		vo.setB_ctgno2(3);
+		vo.setB_ctgno2key(39); 
+		vo.setB_ctgno2(11);
 		
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
@@ -266,12 +266,12 @@ public class BookController {
 		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
 		return "/book/Book_FbigIdx";
 	}
-	@RequestMapping("/book/Book_FbigIdx3.do") // 에세이
+	@RequestMapping("/book/Book_FbigIdx3.do") // 소설
 	public String fbig3(BookVo vo, Model model) {
 		vo.setDirect("ASC");
 		vo.setB_ctgno1(2);
-		vo.setB_ctgno2key(12); 
-		vo.setB_ctgno2(4);
+		vo.setB_ctgno2key(43); 
+		vo.setB_ctgno2(12);
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
 		model.addAttribute("list3", service.selectAll3(vo));
@@ -280,12 +280,12 @@ public class BookController {
 		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
 		return "/book/Book_FbigIdx";
 	}
-	@RequestMapping("/book/Book_FbigIdx4.do") // 여행
+	@RequestMapping("/book/Book_FbigIdx4.do") // 인문/사회
 	public String fbig4(BookVo vo, Model model) {
 		vo.setDirect("ASC");
 		vo.setB_ctgno1(2);
-		vo.setB_ctgno2key(16); 
-		vo.setB_ctgno2(5);
+		vo.setB_ctgno2key(47); 
+		vo.setB_ctgno2(13);
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
 		model.addAttribute("list3", service.selectAll3(vo));
@@ -294,12 +294,12 @@ public class BookController {
 		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
 		return "/book/Book_FbigIdx";
 	}
-	@RequestMapping("/book/Book_FbigIdx5.do") // 인문
+	@RequestMapping("/book/Book_FbigIdx5.do") // 해외잡지
 	public String fbig5(BookVo vo, Model model) {
 		vo.setDirect("ASC");
 		vo.setB_ctgno1(2);
-		vo.setB_ctgno2key(19); 
-		vo.setB_ctgno2(6);
+		vo.setB_ctgno2key(51); 
+		vo.setB_ctgno2(14);
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
 		model.addAttribute("list3", service.selectAll3(vo));
@@ -308,12 +308,12 @@ public class BookController {
 		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
 		return "/book/Book_FbigIdx";
 	}
-	@RequestMapping("/book/Book_FbigIdx6.do") // 자기계발
+	@RequestMapping("/book/Book_FbigIdx6.do") // 컴퓨터
 	public String fbig6(BookVo vo, Model model) {
 		vo.setDirect("ASC");
 		vo.setB_ctgno1(2);
-		vo.setB_ctgno2key(23); // 자연과학
-		vo.setB_ctgno2(7);
+		vo.setB_ctgno2key(54); // 자연과학
+		vo.setB_ctgno2(15);
 		model.addAttribute("list1", service.selectAll1(vo));
 		model.addAttribute("list2", service.selectAll2(vo));
 		model.addAttribute("list3", service.selectAll3(vo));
@@ -322,20 +322,7 @@ public class BookController {
 		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
 		return "/book/Book_FbigIdx";
 	}
-	@RequestMapping("/book/Book_FbigIdx7.do") // IT모바일
-	public String fbig7(BookVo vo, Model model) {
-		vo.setDirect("ASC");
-		vo.setB_ctgno1(2);
-		vo.setB_ctgno2key(27); // 자연과학
-		vo.setB_ctgno2(8);
-		model.addAttribute("list1", service.selectAll1(vo));
-		model.addAttribute("list2", service.selectAll2(vo));
-		model.addAttribute("list3", service.selectAll3(vo));
-		
-		model.addAttribute("vo", service.selectCtgno2(vo));
-		model.addAttribute("selectctgnamed", service.selectctgnamed(vo));
-		return "/book/Book_FbigIdx";
-	}
+
 	
 //-----------------------------------------------------------------------------------------------------------------------
 

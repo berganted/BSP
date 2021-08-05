@@ -16,122 +16,7 @@
     <script src="/bsp/js/main.js"></script>
     <script src="/bsp/js/big.js"></script>
     <title>국내베스트셀러</title>
-
-    <style>
-    
-    
-    
-    #all{
-        width: 100px; 
-        height: 30px; 
-        float : right; 
-        margin-right: 150px;
-        margin-top: -9px;
-    
-    }
-    #divnum{
-        width:100px;
-        height:40px; 
-        font-size: 13px;
-        margin-top: 7px;
-    position : absolute;
-    top:auto;
-    left:1160px;
-        
-    }
-
- 
-  .best_indexWrap{    
-   border: 1px solid gray;
-   width: 1000px;
-   height: 70px;
-   margin: auto;
-   margin-top: 20px;
-   
-   text-align: left;
-   border-radius: 30px;
-
-   
-}
-.indexPlace{
-   margin: 20px 10px;
-   width: 98%;
-   text-align: center;
-   text-decoration: none;
-  
-}
-
-.best_wrap {
-    width: 1150px;
-    height: auto;
-    margin-left: 100px;
-    margin-top: 10px;
-    padding: 20px 20px 0px 20px;
-
-}
-.best_clickNum {
-   position: relative;
-   font-size: 15px;
-   margin-top: 10px;
-   
-}
-.best_clickNum > *{
-   margin: 15px 10px;
-}
-
-.bestmain_top{
-    margin-left: 100px;
-   margin-top: 20px;
-}
-    .button_s{
-    font-size:12px; text-decoration:none !important; white-space:nowrap; display:inline-block; vertical-align:baseline; position:relative; cursor:pointer; padding:2px 10px; min-width:20px; border:2px solid #221f1f; color:#fff !important; margin:0 2px; text-align:center; font-weight:bold; border-radius:5px; background-color:#221f1f;
-    }
-    .pagingbest > li {
-    list-style: none;
-    padding-left: 18px;
-    padding-top: 15px;
-    display: inline-block;
-}
-    </style>
     <script>
-    $(function(){
-    	$(".abc").each(function(){
-    		var idx = $(this).index('.abc');
-    		console.log($(this).val().length)
-    		if($(this).val().length>30){
-    			$('.blah').eq(idx).attr('src',$(this).val())
-    		}
-    	})
-    	$('.btn2').click(function(){
-			$('#frm').attr('action','/bsp/order/buy.do')
-			console.log($(this).parent().parent().find("#numberUpDown").val())
-
-			if($('#m_no').val()==0){
-	  		  alert('로그인이 필요합니다.')
-	  		  location.href="/bsp/user/login.do"
-	  		  return false
-			}
-			$(this).next().attr("name","b_no");
-			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
-			$('#frm').submit();
-		})
-		$('.btn1').click(function(){
-			$('#frm').attr('action','/bsp/cart/insert.do')
-			if($('#m_no').val() == ""||0||null){
-	  		  alert('로그인이 필요합니다.')
-	  		  location.href="/bsp/user/login.do"
-	  		  return false
-			}
-			$(this).next().attr("name","b_no");
-			console.log($(this).next().val())
-			$(this).next().next().attr("name","b_price");
-			$(this).next().next().next().attr("name","m_no");
-			$(this).parent().parent().find("#numberUpDown").attr("name","io_amount");
-			console.log($(this).parent().parent().find("#numberUpDown").val())
-			$('#frm').submit();
-		})
-    })
-   
     function sendPageRow() {
     	location.href='Book_KbestSeller.do?b_ctgno1=${bookVo.b_ctgno1}&orderby=tot&direct=DESC&pageRow='+$("#divnum").val();
     }
@@ -142,13 +27,10 @@
     <div class="wrap">
          <jsp:include page="../include/sideCategory.jsp"></jsp:include>
             
-       
-
         <div class="mem_content">
             <h1 class="bestmain_top">국내도서 종합 베스트셀러</h1>
             
                 <div class="best_indexWrap">
-                    <!-- <div class="pagenate1 clear" style="text-align: center; margin: 0,auto !important;"> -->
                     <div class="pagenate1 clear" style=" margin: 0,auto !important;">
                       <ul class='paging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
@@ -191,7 +73,7 @@
                         <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
                         <span class="s_grade" style="font-size: 16px;">회원리뷰(${vo.rcnt }건) ${vo.avg }/5</span>
                         																																										
-                         <span class="s_story" style="font-size: 16px; overflow: hidden; width:100%; height:163px">
+                        <span class="s_story" style="font-size: 16px; overflow: hidden; width:605px; height:165px;">
                         ${vo.b_content } <br>
          
                         </span>
@@ -207,15 +89,15 @@
                                   </div> 
                         </div>
                         <div class="s_pay2">
-                            <input type="button" class="btn1" value="카트에 넣기"  >
-                            <input type="hidden" class="" name="" value="${vo.b_no }"> 
+                            <input type="button" class="btn1" value="카트에 넣기" style="cursor:pointer"  >
+                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
                             <input type="hidden" class="" name="" value="${vo.b_price}"> 
-                            <input type="hidden" id="m_no" name="" value="${userInfo.m_no }"> 
+                            <input type="hidden" class="" id="m_no" name="" value="${userInfo.m_no }"> 
                             
                         </div>
                         <div class="s_pay3">
-                            <input type="button"  class="btn2" value="바로구매" >
-                            <input type="hidden" class="b_no" name="" value="${vo.b_no }"> 
+                            <input type="button"  class="btn2" value="바로구매"  style="cursor:pointer">
+                            <input type="hidden" class="b_no" id="m_no" name="" value="${vo.b_no }"> 
                         </div>
                     </div>
                 </div>
@@ -223,7 +105,6 @@
              <br>
              <br>
              <hr>
-            
             </div> 
             </c:forEach>
             </form>

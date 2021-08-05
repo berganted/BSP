@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="/bsp/css/big.css">
    <link rel="stylesheet" href="/bsp/css/style.css">
    <link rel="stylesheet" href="/bsp/css/reset.css">
-    <link rel="stylesheet" href="/bsp/css/edge.css">
-   <!-- <link rel="stylesheet" href="/bsp/css/index.css"> -->
+
+   <link rel="stylesheet" href="/bsp/css/index.css">
      <script src="/bsp/js/main.js"></script>
      <script src="/bsp/js/big.js"></script>
      
@@ -46,7 +46,7 @@ text-align: center;
             <div class="smallCtg_area"> 
                 <!-- <div class="smallTitle">  -->
                 <c:forEach var = "vo" items="${selectctgnamed }">
-                    <div class="cate2"><a href="Book_FsmallIdx.do?b_ctgno2key=${vo.b_ctgno2key}&b_ctgdetail=${vo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow=${bookVo.pageRow}">${vo.b_ctgdetail } </a></div> 
+                    <div class="cate2"><a href="Book_FsmallIdx.do?b_ctgno2key=${vo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}&orderby=${bookVo.orderby}&direct=${bookVo.direct}&pageRow=${bookVo.pageRow}">${vo.b_ctgdetail } </a></div> 
 
                 </c:forEach>   
                 <!-- </div> -->
@@ -63,7 +63,9 @@ text-align: center;
                 <div class="swiper-slide">
                     <!-- 1번 -->
                     <div class="BigIndex_choice_wrap">
-                        <div class="choiceImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></a></div>
+                        <div class="choiceImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
+                        	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                        	<img class="blah" src = "/bsp/img/${vo.b_imgmain }"  style="height: 100%; width: 100%;"></a></div>
                         <div class="chocieInfo">
                             <p class="choiceName"> ${vo.b_title } </p>
                             <p class="choice_pub">
@@ -100,7 +102,9 @@ text-align: center;
                 
                 <div class="BigIndex_newEye_content">
                     <div class="newEye_imgSection">
-                        <div class="newEye_img"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 300px;"></a></div>
+                        <div class="newEye_img"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
+                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                        <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 300px;"></a></div>
                     </div> 
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
@@ -124,7 +128,9 @@ text-align: center;
           
              <c:forEach var = "vo" items="${list3 }">
                 <div class="BigIndex_newStar_contents">
-                    <div class = "imgimg" style="width: 300px; height: 250px;"> <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 250px;"></a></div>
+                    <div class = "imgimg" style="width: 300px; height: 250px;"> <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
+                    <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                    <img class="blah" src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="width: 200px; height: 250px;"></a></div>
                     <div class="newStar_info">
                         <ul> 
                             <li><a class="newStar_title">${vo.b_title }</a></li>

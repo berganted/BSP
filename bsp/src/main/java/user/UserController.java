@@ -1,6 +1,7 @@
 package user;
 
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -99,9 +100,15 @@ public class UserController {
 	public String loginexe(UserVo vo,HttpSession sess,HttpServletResponse res, HttpServletRequest req,Model model) throws Exception {
 		UserVo u = service.login(vo);
 		if(u != null) {
-			 sess.setAttribute("userInfo", u);
-			 return "include/alert2";			 
-		 }else {
+			sess.setAttribute("userInfo", u);
+			String url = "/bsp/sample/index.do";
+			System.out.println(req.getParameter("url"));
+			if (req.getParameter("url") != null && !"".equals(req.getParameter("url"))) {
+				url = req.getParameter("url");
+				System.out.println(url);
+			}
+			return "redirect: "+url;
+		}else {
 			 	model.addAttribute("msg", "아이디와 비밀번호를 확인해 주세요");
 				model.addAttribute("url", "login.do");
 				return "include/alert";

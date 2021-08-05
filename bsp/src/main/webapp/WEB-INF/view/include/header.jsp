@@ -18,7 +18,7 @@
             </div>
             <div class="header_login">
             <c:if test="${empty userInfo}">
-                <a href="/bsp/user/login.do">로그인</a>
+                <a href="/bsp/user/login.do?url=<%=request.getAttribute("javax.servlet.forward.request_uri")%>?<%=request.getQueryString()==null?"":request.getQueryString()%>&<%=request.getQueryString()==null?"":request.getQueryString()%>&<%=request.getQueryString()==null?"":request.getQueryString()%>">로그인</a> |
                 <a href="/bsp/user/reg.do">회원가입</a>
                 <a href="/bsp/order/cart.do">장바구니</a>                                       
                 <a href="/bsp/user/mypage.do">마이페이지</a>
@@ -35,12 +35,12 @@
         <div class="header_mainMenu">
             <ul>
             <li><a class="header_depth1" href="category.html">&nbsp;</a></li>
-            <li><a class="header_depth1" href="category.html">카테고리</a>
+            <li><a class="header_depth1">카테고리</a>
                 <ul class="header_depth2">
-                    <li><a href="#">BSP NOW</a></li>
+                   
+                    <li><a href="#"><b>국내</b></a></li>
                     <li><a href="#">국내도서</a></li>
-                    <li><a href="#">외국도서</a></li>
-                    <li><a href="#">웹소설/코믹</a></li>
+                    <li><a href="#"><b>외국</b></a></li>
                 </ul>
             </li>
             <li><a class="header_depth1" href="/bsp/book/Book_KbigIdx.do">국내도서</a>
@@ -72,9 +72,7 @@
                 <ul class="header_depth2">
                     <li><a href="/bsp/book/Book_KbestSeller.do">국내도서</a></li>
                     <li><a href="/bsp/book/Book_FbestSeller.do">외국도서</a></li>
-                    <li><a href="#">정가제 Free</a></li>
-                    <li><a href="#">웹소설/코믹</a></li>
-                    <li><a href="#">&nbsp;</a></li>
+
                 </ul>
             </li>
             <li><a class="header_depth1" href="/bsp/book/Book_Knew.do">신상품</a>

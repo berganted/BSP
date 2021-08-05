@@ -81,15 +81,27 @@
  })
  
  
-
-	
-	
-	$(function(){
-	$(".abc").each(function(){
-		var idx = $(this).index('.abc');
-		console.log($(this).val().length)
-		if($(this).val().length>30){
-			$('.blah').eq(idx).attr('src',$(this).val())
-		}
-		})
-})
+ 
+ 
+     $(function(){
+    	$(".abc").each(function(){
+    		var idx = $(this).index('.abc');
+    		console.log($(this).val().length)
+    		if($(this).val().length>30){
+    			$('.blah').eq(idx).attr('src',$(this).val())
+    		}
+    		})
+    })
+ 
+ /* 사진 + 카트담기, 바로구매 */
+ 
+    $(function(){
+    	$(".abc").each(function(){
+    		var idx = $(this).index('.abc');
+    		console.log($(this).val().length)
+    		if($(this).val().length>30){
+    			$('.blah').eq(idx).attr('src',$(this).val())
+    		}
+    	})
+    	
+    })

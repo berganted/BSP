@@ -99,12 +99,13 @@ $(function(){
     <jsp:include page="../include/header.jsp"></jsp:include>
     <div class="wrap">
        
-        <div class="mem_content">      
+        <div class="mem_content2">      
             <div class="head">
                 <h1> 로그인 </h1>
             </div>        
             <div class="log_form">                                    
                 <form action="login.do" method="POST" onsubmit="return loginCheck();">    
+              		<input type="hidden" name="url" value="${param.url}">
                     <div style="height: 24px;"></div>
                     <div class="log_input">
                         <span class="log_label">아이디</span> 

@@ -29,7 +29,7 @@ $(function(){
 	}
 })
 
-  function gosave() {
+   function gosave() {
 	  $('#frm').attr('action','/bsp/cart/insert.do')
 	  if($('#m_no').val()==0){
 		  alert('로그인하세요')
@@ -48,7 +48,7 @@ $(function(){
 	   }
 	  $('#frm').submit();
 	
-}
+} 
   
 	function goReview() {
 		<c:if test="${!empty userInfo}">
@@ -185,12 +185,12 @@ $(function(){
 							</div>
 						</div>
 						<div class="detail_payWrap1">
-							<input type="button" class="btn1" value="카트에 넣기"
-								style="margin-left: 20px;" onclick="gosave();">
+							<input type="button" class="detail_btn1" value="카트에 넣기"
+								style="margin-left: 20px; cursor:pointer" onclick="gosave();">
 						</div>
 						<div class="detail_payWrap2">
-							<input type="button" class="btn2" value="바로구매"
-								style="margin-left: 20px;" onclick="goorder()">
+							<input type="button" class="detail_btn2" value="바로구매"
+								style="margin-left: 20px; cursor:pointer" onclick="goorder()">
 						</div>
 					</div>
 				</form>

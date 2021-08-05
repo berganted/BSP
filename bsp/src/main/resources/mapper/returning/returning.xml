@@ -93,7 +93,8 @@
 		</select>
 		<!-- 반품/교환상세 개별(반품도서 종류) -->
 		<select id="detail2" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
-			SELECT * 
+			SELECT * ,
+			(SELECT b_imgmain FROM img WHERE b.b_imgno = img.b_imgno) as b_imgmain
 			FROM product_io PI JOIN returnings r
 			ON PI.io_no = r.io_no
 			JOIN returning_delivery_info rd

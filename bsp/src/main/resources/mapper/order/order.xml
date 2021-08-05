@@ -23,7 +23,7 @@
 		<select id="selectAll" resultType="order.OrderVo" parameterType="order.OrderVo">
 		SELECT *,
 		(SELECT SUM(io_amount) from product_io WHERE pb_no=product_buy.pb_no) as amount_sum,
-		(SELECT count(*) from product_io where pb_no=product_buy.pb_no)as count  
+		(SELECT count(*) from product_io where pb_no=product_buy.pb_no)as count
 		FROM product_buy 
 		JOIN product_io 
 		ON product_buy.pb_no = product_io.pb_no
@@ -85,8 +85,9 @@
 		
 		<!-- 주문상세 개별(도서종류) -->
 		<select id="detail2" resultType="order.OrderVo" parameterType="order.OrderVo">
-		SELECT * ,  PI.pb_no FROM  product_buy AS PB 
-		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
+		SELECT * , 
+		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
+		FROM  product_io AS PI 
 		JOIN book ON PI.b_no = book.b_no
 		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
 		</select>
@@ -174,6 +175,7 @@
 		JOIN user u
 		ON pb.m_no=u.m_no
 		WHERE pb.m_no=#{m_no} AND pb.pb_no=#{pb_no}
+		GROUP BY pb.pb_no
 		</select>
 		
 		<!-- 카드결제 완료시 ps_no상태변경 (product_buy) -->
@@ -189,8 +191,17 @@
 		ps_no= 2
 		WHERE io_no=#{io_no} 
 		</update>
-		
+		<!-- 최근배송지 -->
 		<select id="lastaddr" parameterType="order.OrderVo" resultType="order.OrderVo">
 			SELECT * FROM bsp.product_buy WHERE m_no=#{m_no} ORDER BY pb_orderdate desc limit 1;		
 		</select>
+		<!-- 반품신청 할 수 있는 리스트 -->
+		<select id="wantReturning" resultType="order.OrderVo" parameterType="order.OrderVo">
+		SELECT * FROM  product_io AS PI 
+		JOIN book ON PI.b_no = book.b_no
+		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
+		WHERE PI .ps_no = 10;
+		</select>
+		
+		
 	</mapper>

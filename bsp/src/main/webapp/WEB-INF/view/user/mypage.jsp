@@ -82,12 +82,12 @@
 				<h4>${userInfo.m_name}님이 주문한 내역</h4>
 				<table id="order_tb">
                 <tr>
-                    <td>주문일</td> 
-                    <td>주문번호</td> 
-                    <td>수령인</td>
-                    <td>주문상품</td>
-                    <td>조회</td>
-                    <td>배송상태</td>
+                    <th>주문일</th> 
+                    <th>주문번호</th> 
+                    <th>수령인</th>
+                    <th>주문상품</th>
+                    <th>조회</th>
+                    <th>배송상태</th>
                 </tr>
                 	<c:if test="${empty myList}">
 								<tr>

@@ -180,15 +180,21 @@
 		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
 		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
 		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
-		FROM book WHERE b_ctgno1 =  #{b_ctgno1} 
+		FROM book 
+		<!-- WHERE b_ctgno1 =  #{b_ctgno1} -->
 		ORDER BY tot DESC
 		LIMIT 5
 	</select>
-	<!-- test -->
-	<select id="selectbest" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-		FROM book WHERE b_ctgno1=${b_ctgno1}
-		<include refid="bookwhere"/>
+<!-- index.do 신간도서 -->
+	<select id="selectAll8" resultType="book.BookVo" parameterType="book.BookVo">
+	 	SELECT * ,
+		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain,
+		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
+		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt
+		FROM book 
+		<!--WHERE b_ctgno1 = #{b_ctgno1}--> 
+		ORDER BY b_intodate DESC
+		LIMIT 5
 	</select>
 
 <!-- index.do 광고 -->	
@@ -208,12 +214,17 @@
 		<include refid="bookwhere"/>
 	</select>
 		
-<!-- index.do 베스트샐러 -->
+<!-- index.do 베스트샐러 리스트 -->
 	<select id="selectAll7" resultType="book.BookVo" parameterType="book.BookVo">
-			SELECT *,
-			(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain
-			FROM book WHERE b_ctgno1 =<if test="b_ctgno1 != 0">${b_ctgno1}</if><if test="b_ctgno1 ==0">1</if>  LIMIT 6 
-			<include refid="bookwhere"/>
+			SELECT * ,
+		(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain,
+		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
+		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
+		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
+		FROM book 
+		WHERE b_ctgno1 =  #{b_ctgno1}
+		ORDER BY tot DESC
+		LIMIT 6
 	</select>
 <!--  popular Search 인기검색어 -->
 	<insert id="popular" parameterType="book.BookVo">

@@ -22,6 +22,7 @@ public interface BookService {
 	List<BookVo> selectAll5(BookVo vo);
 	List<BookVo> selectAll6(BookVo vo);
 	List<BookVo> selectAll7(BookVo vo);
+	List<BookVo> selectAll8(BookVo vo);
 	List<BookVo> selectctgnamed(BookVo vo);
 	List<BookVo> popular_search(BookVo vo);
 	List<BookVo> newBook(BookVo vo);

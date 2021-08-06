@@ -121,7 +121,7 @@ function rtnCheck(){
             <table id="order_list_tb">
                 <tr>
                     <th>총 주문 금액</th>
-                    <td>${vo.pb_totalprice}</td>
+                    <td>${vo.pb_totalprice+vo.p_used}원</td>
                 </tr>
                 <tr>
                     <td>적립금 결제</td>
@@ -129,11 +129,13 @@ function rtnCheck(){
                 </tr>
                 <tr>
                     <th>실 결제 금액</th>
-                    <td>28,000원</td>
+                    <td>${vo.pb_totalprice}원</td>
                 </tr>
                 <tr>
                     <th>결제방법</th>
-                    <td>카드결제(신한)</td>
+                    <td><c:if test="${vo.pb_payno == 0}">무통장 입금</c:if>
+                    	<c:if test="${vo.pb_payno == 1}">실시간계좌이체</c:if> 
+                    	<c:if test="${vo.pb_payno == 2}">카트결제</c:if>  </td>
                 </tr>
              </table>
         </article>

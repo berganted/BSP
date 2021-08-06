@@ -43,6 +43,9 @@ public class ReturningDao {
 	public void updatePi(int no) {
 		sessionTemplate.update("returnig.updatePi",no);
 	}
+	public void updatePb(int no) {
+		sessionTemplate.update("returnig.updatePb",no);
+	}
 	public int delete(ReturningVo vo) {
 		return sessionTemplate.delete("returnig.delete", vo);
 

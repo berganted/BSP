@@ -68,8 +68,10 @@ public class ReturningServiceimpl implements ReturningService {
 	}
 	@Override
 	public void updatePi(int no) {
+		dao.updatePb(no); /* 주문테이블/출고테이블 상태변경 동시에 */
 		dao.updatePi(no);
 	}
+	
 	@Override
 	public List<ReturningVo> selectop(ReturningVo vo) {
 		return dao.selectop(vo);

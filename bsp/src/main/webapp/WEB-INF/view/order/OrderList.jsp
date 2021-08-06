@@ -61,7 +61,8 @@
                     <td>${list.b_title }&nbsp;총 ${list.count }권</td>
                     <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	<input class="button_s" type="button" value="상세조회"></a></td>
-                    <td> <a href="wantReturning.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
+                    <td> 
+                    	<a href="wantReturning.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	<input class="button_s" type="button" value="반품/교환 신청"></a>
                     	</td>
                 </tr>

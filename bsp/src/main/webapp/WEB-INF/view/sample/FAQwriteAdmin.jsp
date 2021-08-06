@@ -30,7 +30,6 @@
     
                 <div class="bbs">
                <form method="post" name="frm" id="frm" action="insert2.do" enctype="multipart/form-data">
-                <input type="hidden" name="m_no" value="${userInfo.m_no }">    
                     <table class="board_write">
                         <tbody>
                         <tr>
@@ -50,12 +49,6 @@
                             <td>
                                 <textarea name="q_content" id="content" style="width:100%"></textarea>
                             </td>
-                        </tr>
-                        <tr>
-                        	<th>파일첨부</th>
-                        	<td>
-                        		<input type="file" name="file">
-                        	</td>
                         </tr>
                         </tbody>
                     </table>

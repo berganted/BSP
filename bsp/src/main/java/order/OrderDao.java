@@ -62,4 +62,8 @@ public class OrderDao {
 	public OrderVo lastaddr(OrderVo vo) {
 		return sessionTemplate.selectOne("order.lastaddr",vo);
 	}
+	
+	public List<OrderVo> wantReturning(OrderVo vo) {
+		return sessionTemplate.selectList("order.wantReturning",vo);
+	}
 }

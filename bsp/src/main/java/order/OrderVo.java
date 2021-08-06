@@ -30,6 +30,12 @@ public class OrderVo extends CommonVo {
 	private int b_price; // 도서 가격
 	private int b_point;
 	private int p_used;
+	private String m_id;
+	private int count;//주문번호안에 출고번호갯수
+	private int amount_sum;
+	private String m_name;
+	private String m_email;
+	private String m_email_d;
 	
 	
 	
@@ -55,24 +61,25 @@ public class OrderVo extends CommonVo {
 	}
 	private int m_no;	//회원번호
 	
+	private String b_imgmain;
 	
 	//어드민에서 사용
-	private String m_id;
-	private int count;//주문번호안에 출고번호갯수
-	private int amount_sum;
-	private String m_name;
-	private String m_email;
-	private String m_email_d;
 	
 	
-	public  OrderVo() {
-		
-		this.pageRow = 10;
-		this.reqPage = 1;
-		this.pageRange = 10;
-		this.orderby ="pb_orderdate";
-		this.direct = "DESC";
+	
+
+	
+
+	public String getB_imgmain() {
+		return b_imgmain;
 	}
+
+
+	public void setB_imgmain(String b_imgmain) {
+		this.b_imgmain = b_imgmain;
+	}
+
+
 	
 	
 	public int getB_no() {

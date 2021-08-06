@@ -233,7 +233,7 @@ li {
 
 .header_mainMenu > ul> li > a:hover {
     font-size: 17px;
-    color: blueviolet;
+    color: rgba(1, 140, 179, 1);
 }
 
 li {
@@ -314,7 +314,7 @@ li {
     height: 30px;
     right: -34px;
     font-size: 40px;
-    color: #4232c2;
+    color: #0197c2;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bolder;
 }
@@ -367,7 +367,7 @@ li {
 
 .FAQmore > a:hover {
 	cursor: pointer;
-	color: #6266ea;
+	color: rgba(1, 140, 179, 1);
 	text-decoration: underline;
 }
 
@@ -389,7 +389,7 @@ li {
 .support_change > ul > li > a:hover {
     cursor: pointer;
     font-size: 13px;
-    color: #4232c2;
+    color: rgba(1, 140, 179, 1);
 }
 
 .support_change2 > ul {
@@ -439,7 +439,7 @@ li {
 
 .support_t:hover {
     font-size: 20px;
-    color: #4232c2;
+    color: rgba(1, 140, 179, 1);
     cursor: pointer;
 }
 
@@ -691,7 +691,7 @@ li {
     float: left;
 }
 
-.index_sideCategory { 
+.index_sideCategory7 { 
     width: 150px;
     height: 480px;
     top: 100px;
@@ -702,19 +702,19 @@ li {
     border: 1px solid rgb(206, 205, 205);
 }
 
-.index_sideCategory > .index_quickCateDetail {
+.index_sideCategory7 > .index_quickCateDetail {
     padding-top: 30px;
 }
 
-.index_sideCategory > .index_quickCateDetail > li {
+.index_sideCategory7 > .index_quickCateDetail > li {
     padding-top: 10px;
 }
 
-.index_sideCategory > .index_quickCateDetail > li > a {
+.index_sideCategory7 > .index_quickCateDetail > li > a {
     color: black;
 }
 
-.index_sideCategory > .index_quickCateDetail > li > a:hover {
+.index_sideCategory7 > .index_quickCateDetail > li > a:hover {
     font-size: 16.5px;
 }
 
@@ -765,7 +765,8 @@ li {
 .index_container > div {     
     float: left;
     position: relative;
-    margin-top: 10px;    
+    margin-top: 10px;
+    overflow: hidden;    
 }
 
 .index_randomAds {
@@ -845,7 +846,8 @@ li {
     /* 요거고침요 */
 }
 .index_todaysBooks1{
-    height: 400px;
+	overflow: hidden;
+	height: 400px;
     width: 60%;
     padding: 10px;
 }
@@ -861,7 +863,7 @@ li {
 }
 
 .index_todayDetails {
-    padding-top: 60px;
+    padding-top: 40px;
     padding-right: 10px;
     height: 360px;
     width: 65%;
@@ -1052,11 +1054,11 @@ li {
 .mypage_ad{
     width: 110px;
     border: black 1px solid ;
-    height: 200px;
+    height: 210px;
     right: 100px;
     position: absolute;
     z-index: 9999;
-    
+    overflow: hidden;
     
 }
 .mypage_ad_name{

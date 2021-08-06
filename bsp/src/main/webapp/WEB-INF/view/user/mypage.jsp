@@ -107,19 +107,7 @@
                 </tr>
     				</c:forEach>
         </table>
-				<div class="pagenate clear">
-                        <ul class='paging'> 
-                        <c:if test="${orderVo.strPage > orderVo.pageRange}">
-                        	<li><a href="list.do?reqPage=${orderVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"><</a></li>
-                        </c:if>
-                        <c:forEach var="rp" begin="${orderVo.strPage}" end="${orderVo.endPage }">
-                            <li><a href='list.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' <c:if test="${rp==orderVo.reqPage }">class='current'</c:if>>${rp }</a></li>
-                        </c:forEach>
-                        <c:if test="${orderVo.totPage > orderVo.endPage}">
-                        	<li><a href="list.do?reqPage=${orderVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></li>
-                        </c:if>
-                        </ul> 
-                    </div>
+				
                     </article>
             
             

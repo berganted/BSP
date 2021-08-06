@@ -88,11 +88,15 @@ public class OrderController {
 		for (int i = 0; i < no.length; i++) {
 			vo.setB_no(Integer.parseInt(no[i]));
 			vo.setIo_amount(Integer.parseInt(ano[i]));
+			pv.setPb_no(vo.getPb_no());
 			pv.setP_state("사용");
 			pv.setP_content("구매에 사용");
 			pv.setM_no(vo.getM_no());
 			service.insertIo(vo);
 			sess.setAttribute("pay", service.selectPay(vo)); 	/* 결제 api시 출력할 list (insert된 주문) */
+			System.out.println(cno);
+			System.out.println(r);
+			System.out.println(pv.getP_used());
 		}
 		if (r > 0) {
 			if(cno!=null) {
@@ -103,9 +107,10 @@ public class OrderController {
 			}
 			
 			if(pv.getP_used()>0) {
-				int p=pservice.insertUse(pv);
+				pservice.insertUse(pv);
 				pservice.updateUse(pv);
 			}
+				pv.setPb_no(vo.getPb_no());
 				pv.setP_state("적립");
 				pv.setP_content("구매후 적립");
 				pservice.insertA(pv);

@@ -12,8 +12,14 @@ public class PointVo extends CommonVo {
 	private int p_usage;
 	private int p_used;
 	private String p_content;
+	private int pb_no;
 	
-	
+	public int getPb_no() {
+		return pb_no;
+	}
+	public void setPb_no(int pb_no) {
+		this.pb_no = pb_no;
+	}
 	public int getP_used() {
 		return p_used;
 	}

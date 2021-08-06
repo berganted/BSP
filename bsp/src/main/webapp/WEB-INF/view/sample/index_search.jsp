@@ -17,6 +17,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="/bsp/js/index.js"></script>
+    <script src="/bsp/js/big.js"></script>
+    
     <!-- <script src="/bsp/js/yesol.js"></script> -->
 </head>
 <style>
@@ -74,8 +76,10 @@
 	                        <c:forEach var = "vo" items="${list0 }">
 					           <div class="SmallIndex_book2">
 					               <div class="s_imgSection">
-					                   <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><img src = "/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }", title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
-					               </div>
+					                   <div class="s_bookImg"><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+					                    <img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 250px; width: 180px;"></a></div>
+                						<input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                					</div>
 					               <div class="s_infoSectionWrap">
 					                   <div class="s_infoSection">
 					                       <span class="s_bookTitle" style="font-size: 20px;">

@@ -122,7 +122,7 @@ function rtnCheck(){
                 </tr>
                 <tr>
                     <td>적립금 결제</td>
-                    <td>적립금 3000원</td>
+                    <td>적립금 ${vo.p_used }원</td>
                 </tr>
                 <tr>
                     <td>실 결제 금액</td>

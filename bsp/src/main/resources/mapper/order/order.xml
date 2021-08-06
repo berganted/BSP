@@ -79,7 +79,8 @@
 		SELECT * ,  PI.pb_no FROM  product_buy AS PB 
 		JOIN  product_io AS PI ON PB.pb_no = PI.pb_no
 		JOIN book ON PI.b_no = book.b_no
-		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
+		JOIN point ON PB.pb_no = point.pb_no
+		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = 43
 		GROUP BY PI.pb_no
 		</select>
 		

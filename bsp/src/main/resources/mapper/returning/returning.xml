@@ -92,17 +92,11 @@
 			GROUP BY returning_no;
 		</select>
 		<!-- 반품/교환상세 개별(반품도서 종류) -->
-		<select id="detail2" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
-			SELECT * 
-			FROM product_io PI JOIN returnings r
-			ON PI.io_no = r.io_no
-			JOIN returning_delivery_info rd
-			ON rd.rd_no = r.rd_no
-			JOIN book b
-			ON b.b_no = r.b_no		<!-- book과 조인시 환불(returning)테이블과 출고(product_io)테이블의 조건은 다름 -->
-			JOIN processing_status ps
-			ON ps.ps_no = r.ps_no AND returning_no=#{returning_no}
-		</select>
+		<select id="detail2" resultType="order.OrderVo" parameterType="order.OrderVo">
+        SELECT * FROM  product_io AS PI 
+        JOIN book ON PI.b_no = book.b_no
+        JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
+        </select>
 		
 
 		<!-- 회송정보 insert (회송번호(rd_no) 생성후 반품테이블 insert) -->

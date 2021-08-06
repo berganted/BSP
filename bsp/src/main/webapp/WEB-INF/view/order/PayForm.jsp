@@ -99,7 +99,7 @@ $(function(){
                    
                 </tr>
               
-                <tr>
+                <tr>  
                  	<td><input type="text" name="pb_no" id="pb_no" value="${pay.pb_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
                 	
                     <td><input type="text" name="pb_resname" value="${pay.pb_resname}" style="border:0 solid black; text-align: center; font: 16px"></td>
@@ -120,17 +120,9 @@ $(function(){
               </div>
         </article>
     </div>
-  <aside class="mypage_ad">
-			<div class="mypage_ad_name">
-				<p>최근본상품</p>
-			</div>
-			<div class="img_area">
-				<img src="img/book.jpg" width="70px" height="100px">
-			</div>
-			<div style="text-align: center;">책이름</div>
-		</aside>
+  
 </div> 
-<footer id="footer"></footer>
+<jsp:include page="../include/quick.jsp"></jsp:include>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

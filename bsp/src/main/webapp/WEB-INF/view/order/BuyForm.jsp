@@ -106,6 +106,15 @@
 		$('#total').text(a)
 		$('#total1').val(a)
     }
+    function openZipSearch() {
+        new daum.Postcode({
+             oncomplete: function (data) {
+                $('[name=pb_zipcode]').val(data.zonecode); // 우편번호 (5자리)
+                $('[name=pb_addr1]').val(data.address);
+                $('[name=pb_addr2]').val(data.buildingName);
+                }
+            }).open();
+        }
     
 
     </script>
@@ -228,7 +237,7 @@
                            <tr>
                                <td>적립금</td>
                                <td>보유액:<input type="text" readonly="readonly" id="po" value="${userInfo.m_point }">  원 ▷
-                                   <input type="text" id="savedmoney"name="savedmoney" >
+                                   <input type="text" id="savedmoney"name=p_used >
                                    <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 
                                </td>
                            </tr>

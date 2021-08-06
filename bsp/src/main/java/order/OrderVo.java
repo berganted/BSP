@@ -29,7 +29,22 @@ public class OrderVo extends CommonVo {
 	private String b_author; //저자명
 	private int b_price; // 도서 가격
 	private int b_point;
+	private int p_used;
 	
+	
+	
+
+
+	public int getP_used() {
+		return p_used;
+	}
+
+
+	public void setP_used(int p_used) {
+		this.p_used = p_used;
+	}
+
+
 	public int getB_point() {
 		return b_point;
 	}

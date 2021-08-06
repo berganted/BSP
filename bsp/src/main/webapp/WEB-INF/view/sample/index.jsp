@@ -36,7 +36,7 @@ $(function(){
         
         <!-- visual 부분 -->
         <div class="index_visual">
-            <div class="index_sideCategory">
+            <div class="index_sideCategory7">
                 <div class="index_quickCate">빠른분야찾기</div>
                 <div class="index_quickCateDetail">
                     <li><a href="#">BSP NOW</a></li>
@@ -47,6 +47,7 @@ $(function(){
             </div>
             <div class="swiper-container mySwiper">
                 <div class="swiper-wrapper">
+                
                   <div class="swiper-slide" style="background-image: url('/bsp/img/mbook01.png');">&nbsp;</div> <!-- &nbsp; 공백 -->
                   <div class="swiper-slide" style="background-image: url('/bsp/img/mbook02.png');">&nbsp;</div>
                   <div class="swiper-slide" style="background-image: url('/bsp/img/mbook03.png');">&nbsp;</div>
@@ -76,9 +77,9 @@ $(function(){
                     <div class=" swiper-wrapper">
                     <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
-                            <div class="index_todaysThumnail">
+                            <div class="index_todaysThumnail"><a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
                                 <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
-                                 <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>     
+                                 <input type="hidden"  class="abc" value="${vo.b_imgmain }"/></a>     
                             </div>
                             <div class="index_todayDetails">
                                 <div class="index_tdContext">오늘의 책</div>
@@ -109,7 +110,11 @@ $(function(){
 	                           <div class="bestCate_option">  
                                <c:forEach var="vo" items="${best }" varStatus="status">
                                   <ul>
-                                      <li>${vo.b_title } | ${vo.b_author }</li>
+                                  	<li>
+                                  	  <a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
+                                      ${vo.b_title } | ${vo.b_author }
+                                      </a>
+                                    </li>
                                   </ul>
                                </c:forEach>
                                </div> 
@@ -134,8 +139,10 @@ $(function(){
                 <c:forEach var="vo" items="${newbook }" varStatus="status">
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
+                        	 <a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
                              <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
-                        	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/>    
+                        	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/> 
+                        	</a>   
                         </div>                        
                         <div class="index_NowBooksDetail">
                             <ul>
@@ -154,8 +161,10 @@ $(function(){
             <c:forEach var="vo" items="${list4 }" varStatus="status">
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
+                    	<a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
                         <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
                         <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>  
+                        </a>
                     </div>
                     <div class="index_NowBooksDetail">
                         <ul>                            

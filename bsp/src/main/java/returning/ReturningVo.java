@@ -27,6 +27,7 @@ public class ReturningVo extends CommonVo{
 	private String ps_title; //처리상태
 	private String b_title; //상품명
 	private int[] checkOne;
+	private String b_imgmain;
 	
 	//----------------------------------------
 	private int rd_no; //반품회송번호
@@ -54,6 +55,13 @@ public class ReturningVo extends CommonVo{
 		this.orderby ="returning_regdate";
 		this.direct = "DESC";
 	}
+	
+	public String getB_imgmain() {
+		return b_imgmain;
+	}
+	public void setB_imgmain(String b_imgmain) {
+		this.b_imgmain = b_imgmain;
+	}
 	public String getRefund_info() {
 		return refund_info;
 	}
@@ -69,10 +77,10 @@ public class ReturningVo extends CommonVo{
 	public void setIo_nos(int[] io_nos) {
 		this.io_nos = io_nos;
 	}
-
+        
 	public int[] getCheckOne() {
 		return checkOne;
-	}
+	}   
 	public void setCheckOne(int[] checkOne) {
 		this.checkOne = checkOne;
 	}

@@ -136,12 +136,12 @@
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
                         <tr>
-                            <td>이미지</td>
-                            <td>상품명</td>
-                            <td id="price">가격</td>
-                            <td id="stock">재고</td>
-                            <td id="bseq_ea">수량</td>
-                            <td id="del">삭제</td>
+                            <th>이미지</th>
+                            <th>상품명</th>
+                            <th id="price">가격</th>
+                            <th id="stock">재고</th>
+                            <th id="bseq_ea">수량</th>
+                            <th id="del">삭제</th>
                         </tr>
                         <c:forEach var="list" items="${list }">
                         <tr>
@@ -150,7 +150,7 @@
                             <td>${list.b_title } <input type="hidden" name="b_no" value="${list.b_no }"/>
                             					 <input type="hidden" name=cart_no value="${list.cart_no }"/></td>
                             <td id="price"><span class="b_price">${list.b_price }</span>원/<span class=point>${list.b_point }</span>원</td>
-                            <td class="bseq_ea">500</td>  <!--  출력할 필요는 없음 -->
+                           <td class="bseq_ea">${vo.b_stock }</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
                              <input   type="text" class="pop_out"name="io_amount" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
@@ -238,7 +238,7 @@
                   <h4>적립금 사용</h4>
                     <table  id="buy_now" style="text-align: center;">
                            <tr>
-                               <td>적립금</td>
+                               <th>적립금</th>
                                <td>보유액:<input type="text" readonly="readonly" id="po" name="p_used" value="${userInfo.m_point }">  원 ▷
                                    <input type="text" id="savedmoney"name="savedmoney" >
                                    <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 

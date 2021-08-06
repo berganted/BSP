@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
     <%@ page import ="order.OrderVo" %>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,10 +99,8 @@ $(function(){
                     <td>주문일</td>
                    
                 </tr>
-              
                 <tr>
                  	<td><input type="text" name="pb_no" id="pb_no" value="${pay.pb_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
-                	
                     <td><input type="text" name="pb_resname" value="${pay.pb_resname}" style="border:0 solid black; text-align: center; font: 16px"></td>
                     <td><input type="text" name="b_title" value="${pay.b_title}&nbsp;총 ${pay.count }권" style="border:0 solid black; text-align: center; font: 16px"></td>
                     <td><input type="text" name="pb_totalprice" value="${pay.pb_totalprice}" style="border:0 solid black; text-align: center; font: 16px"></td>
@@ -114,6 +113,7 @@ $(function(){
             		</td>
                 </tr>
         </table>
+        <input type="hidden" name="totalprice" value="${sum}">
           	 <div class="retrn_submit" style="padding: 20px; text-align: center;">
                         <input class="button_m" type="button" id="check_module" value="결제" >
                         <input class="button_m" type="button" onclick="location.href='/bsp/order/list.do'" value="목록" >

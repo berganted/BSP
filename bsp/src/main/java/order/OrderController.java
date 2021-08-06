@@ -135,5 +135,13 @@ public class OrderController {
 		return "order/BuySuccess";
 	}
 	
+	@RequestMapping("/order/wantReturning.do")
+	public String wantReturning(Model model, OrderVo vo,HttpSession sess) {
+		UserVo uv = (UserVo)sess.getAttribute("userInfo");
+		vo.setM_no(uv.getM_no());
+		model.addAttribute("wantReturning",service.wantReturning(vo));
+		return "order/WantReturning";
+	}
+	
 	
 }

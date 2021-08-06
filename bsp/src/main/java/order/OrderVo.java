@@ -29,17 +29,7 @@ public class OrderVo extends CommonVo {
 	private String b_author; //저자명
 	private int b_price; // 도서 가격
 	private int b_point;
-	
-	public int getB_point() {
-		return b_point;
-	}
-
-
-	public void setB_point(int b_point) {
-		this.b_point = b_point;
-	}
-	private int m_no;	//회원번호
-	
+	private String b_imgmain;
 	
 	//어드민에서 사용
 	private String m_id;
@@ -58,6 +48,27 @@ public class OrderVo extends CommonVo {
 		this.orderby ="pb_orderdate";
 		this.direct = "DESC";
 	}
+	
+
+	public String getB_imgmain() {
+		return b_imgmain;
+	}
+
+
+	public void setB_imgmain(String b_imgmain) {
+		this.b_imgmain = b_imgmain;
+	}
+
+
+	public int getB_point() {
+		return b_point;
+	}
+
+
+	public void setB_point(int b_point) {
+		this.b_point = b_point;
+	}
+	private int m_no;	//회원번호
 	
 	
 	public int getB_no() {

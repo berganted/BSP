@@ -13,11 +13,14 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script>
+    <script src="/bsp/js/big.js"></script>
 <script>
 function rtnCheck(){
+		
 	if($("input:checkbox[name=checkOne]").is(":checked") == false) {
 		alert('상품을 하나이상 체크해주세요');
 		return false;
+
 	}
 }
 </script>
@@ -34,42 +37,42 @@ function rtnCheck(){
             <h4>기본/배송정보</h4>
                  <table id="order_list_tb">
                 <tr>
-                    <td>주문번호</td>
+                    <th>주문번호</th>
                     <td>${vo.pb_no}</td>
-                    <td>배송방법</td>
+                    <th>배송방법</th>
                     <td>${vo.pb_delivery}</td>
                 </tr>
                 <tr>
-                    <td>주문접수일</td>
+                    <th>주문접수일</th>
                     <td>${vo.pb_orderdate} </td>
-                    <td>결제일(입금 확인일)</td>
+                    <th>결제일(입금 확인일)</th>
                     <td>2020년 06월 14일 일 12시 40분 </td>
                 </tr>
                 <tr>
-                    <td>처리 상태</td>
+                    <th>처리 상태</th>
                     <td colspan="3">${vo.ps_title}<br>
                     운송장 : 35998978565, cj대한통운</td>
                 </tr>
                 <tr>
-                    <td>주문하신분</td>
+                    <th>주문하신분</th>
                     <td>${userInfo.m_name}</td>
-                    <td>받으시는분</td>
+                    <th>받으시는분</th>
                     <td>${vo.pb_resname}</td>
                 </tr>
                 <tr>
-                    <td>배송주소</td>
+                    <th>배송주소</th>
                     <td colspan="3">
                        ${vo.pb_zipcode}, ${vo.pb_addr1} ${vo.pb_addr2}
                     </td>
                 </tr>
                 <tr>
-                    <td>휴대번호</td>
+                    <th>휴대번호</th>
                     <td>${vo.pb_restel}</td>
-                    <td>전화번호</td>
+                    <th>전화번호</th>
                     <td></td>
                 </tr>
                 <tr>
-                    <td>배송메세지</td>
+                    <th>배송메세지</th>
                     <td colspan="3">
                        ${vo.pb_req}
                     </td>
@@ -82,18 +85,18 @@ function rtnCheck(){
             <h4>주문 상품 정보</h4>
             <table id="order_list_tb">
                 <tr> 
-               		<td><input type="checkbox" value="select" name="checkAll" ></td>
-                    <td>이미지</td>
-                    <td>상품명</td>
-                    <td>주문수량</td>
-                    <td>가격</td>
-                    <td>교환/반품신청</td>
-                    <td>출고번호</td>
+                    <th>이미지</th>
+                    <th>상품명</th>
+                    <th>주문수량</th>
+                    <th>가격</th>
+                    <th>출고번호</th>
+                    <th>배송상태</th>
                 </tr>
                 <c:forEach var="vo" items="${detail2 }">
                 <tr>
-                 	<td><input type="checkbox" value="${vo.io_no}"  name="checkOne" id='checkOne' ></td>
-                    <td><input type="image" name="b_image"></td>
+                    <td><img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 90px; width: 90px;">
+               		    <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+               		</td>
                     <td>${vo.b_title }
                         ${vo.b_author }
                         <a href="/bsp/book/Book_detail.do?b_no=${vo.b_no}&m_no=${vo.m_no}"><input class="button_s" type="button" value="리뷰 쓰기"></a>
@@ -103,11 +106,11 @@ function rtnCheck(){
                     	가격: ${vo.b_price}원<br>
                         마일리지:${vo.b_point}원(5%)
                    </td>
-                    <td>
-                    	<input class="button_s" type="button" value="반품 신청" style="margin: 5px"><br>
-                        <input class="button_s" type="button" value="교환 신청" style="margin: 5px">
-                    </td>
                     <td>  ${vo.io_no} </td>
+                    <td> ${vo.ps_title }
+                    <input type="hidden" id="ps_title" value="${vo.ps_title} ">
+                    <input type="hidden" id="ps_no" value="${vo.ps_no} ">
+                    </td>
                 </tr>
                 </c:forEach>
                   </table>   
@@ -117,27 +120,25 @@ function rtnCheck(){
             <h4>결제 정보</h4>
             <table id="order_list_tb">
                 <tr>
-                    <td>총 주문 금액</td>
+                    <th>총 주문 금액</th>
                     <td>${vo.pb_totalprice}</td>
                 </tr>
                 <tr>
-                    <td>적립금 결제</td>
+                    <th>적립금 결제</th>
                     <td>적립금 3000원</td>
                 </tr>
                 <tr>
-                    <td>실 결제 금액</td>
+                    <th>실 결제 금액</th>
                     <td>28,000원</td>
                 </tr>
                 <tr>
-                    <td>결제방법</td>
+                    <th>결제방법</th>
                     <td>카드결제(신한)</td>
                 </tr>
              </table>
         </article>
         <div style="text-align: center;">
-        <input class="button_m" type="submit" value="반품신청" onclick="javascript: form.action='/bsp/returning/returnSend.do';">
-        <input class="button_m" type="submit" value="교환신청" onclick="javascript: form.action='/bsp/returning/replaceSend.do';">
-       <a href="/bsp/order/list.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}';"> 
+       <a href="/bsp/order/list.do?reqPage=${param.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"> 
        <input class="button_m" type="button" value="주문 내역 목록" ></a>
         </div>
         </form>

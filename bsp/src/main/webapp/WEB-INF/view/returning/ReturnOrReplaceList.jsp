@@ -42,15 +42,15 @@
                     </div> 
 				<table id="return_list_tb">
 					<tr>
-						<td>반품번호</td>
-						<td>반품접수일</td>
-						<td>구분</td>
-						<td>원주문번호</td>
-						<td>상품명/수량</td>
-						<td>회송방법</td>
-						<td>환불방법</td>
-						<td>처리상태</td>
-						<td>조회</td>
+						<th>반품번호</th>
+						<th>반품접수일</th>
+						<th>구분</th>
+						<th>원주문번호</th>
+						<th>상품명/수량</th>
+						<th>회송방법</th>
+						<th>환불방법</th>
+						<th>처리상태</th>
+						<th>조회</th>
 					</tr>
 				<c:if test="${empty RList}">
 						<tr>

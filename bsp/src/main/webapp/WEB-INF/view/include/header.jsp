@@ -37,10 +37,12 @@
             <li><a class="header_depth1" href="category.html">&nbsp;</a></li>
             <li><a class="header_depth1">카테고리</a>
                 <ul class="header_depth2">
-                   
-                    <li><a href="#"><b>국내</b></a></li>
-                    <li><a href="#">국내도서</a></li>
-                    <li><a href="#"><b>외국</b></a></li>
+                    <li><a href="/bsp/book/Book_KbigIdx.do">국내 통합도서</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx.do">외국 통합도서</a></li>
+                    <li><a href="/bsp/book/Book_KbestSeller.do">국내 베스트</a></li>
+                    <li><a href="/bsp/book/Book_FbestSeller.do">외국 베스트</a></li>
+                    <li><a href="/bsp/book/Book_Knew.do">국내 신간</a></li>
+                    <li><a href="/bsp/book/Book_Fnew.do">외국 신간</a></li>
                 </ul>
             </li>
             <li><a class="header_depth1" href="/bsp/book/Book_KbigIdx.do">국내도서</a>
@@ -57,14 +59,14 @@
             </li>    
             <li><a class="header_depth1" href="/bsp/book/Book_FbigIdx.do">외국도서</a>
                 <ul class="header_depth2">
-                    <li><a href="/bsp/book/Book_FbigIdx.do">가정살림</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx.do">ELT사전</a></li>
                     <li><a href="/bsp/book/Book_FbigIdx1.do">경제 경영</a></li>
-                    <li><a href="/bsp/book/Book_FbigIdx2.do">소설</a></li>
-                    <li><a href="/bsp/book/Book_FbigIdx3.do">에세이</a></li> 
-                    <li><a href="/bsp/book/Book_FbigIdx4.do">여행</a></li> 
-                    <li><a href="/bsp/book/Book_FbigIdx5.do">인문</a></li> 
-                    <li><a href="/bsp/book/Book_FbigIdx6.do">자기계발</a></li> 
-                    <li><a href="/bsp/book/Book_FbigIdx7.do">IT모바일</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx2.do">라이프스타일</a></li>
+                    <li><a href="/bsp/book/Book_FbigIdx3.do">소설</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx4.do">인문/사회</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx5.do">해외잡지</a></li> 
+                    <li><a href="/bsp/book/Book_FbigIdx6.do">컴퓨터</a></li> 
+                    
                 </ul>
             </li>              
 

@@ -35,6 +35,15 @@
     text-align: center;
     padding: 20px 0;
 }
+
+body,td,input,select,textarea,button {
+ font-size:13px;
+ line-height:1.5;
+ font-family: 'Noto Sans KR', sans-serif; 
+ color:#2f3134
+}
+
+
 /*buy_form----------------------------------------------------------------------- */
 
 #buy_tb, #buy_now, #order_tb, #order_list_tb, #return_list_tb,#return_list_detil_tb, #retrn_popup {
@@ -53,6 +62,16 @@ td{
     text-align: center;
 }
 
+#order_tb> tbody > tr > th, #return_list_tb > tbody > tr> th ,
+ #return_list_detil_tb > tbody > tr> th, #order_list_tb > tbody > tr > th,
+ #buy_tb > tbody > tr > th{
+	background-color: rgb(0,0,0,0.8);
+	color: white;
+    padding: 8px;
+    border: 1px solid rgb(192,192,192);
+    border-collapse: collapse;
+   font-weight: normal;
+}
 /*cart_form----------------------------------------------------------------------- */
 #cart_tb{
     width: 98%;
@@ -302,4 +321,141 @@ li {
     font-size: 15px;
     color: #999;
 }
+	
+/* [visual] ------------------------------------------------------------------ */
+.index_visual {
+    height: 550px;
+    text-align: center;         
+}
+
+.index_visual > div {
+    float: left;
+}
+
+.index_sideCategory { 
+    width: 150px;
+    height: 480px;
+    top: 100px;
+    /* padding: 10px; */
+    margin: 5px;
+    margin-top: 40px;
+    margin-bottom: 1px;
+    border: 1px solid rgb(206, 205, 205);
+}
+
+.index_sideCategory > .index_quickCateDetail {
+    padding-top: 30px;
+}
+
+.index_sideCategory > .index_quickCateDetail > li {
+    padding-top: 10px;
+}
+
+.index_sideCategory > .index_quickCateDetail > li > a {
+    color: black;
+}
+
+.index_sideCategory > .index_quickCateDetail > li > a:hover {
+    font-size: 16.5px;
+}
+
+
+.index_quickCate {
+    width: 148px;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.swiper-container {
+    width: 1320px; 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
+    top: 30px;
+    
+}
+
+.swiper-slide {
+	height: 480px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;   
+}
+
+.swiper-container {
+    height: 100%;
+}
+
+.swiper-button-prev {
+    color: white;
+}
+
+.swiper-button-next {
+    color: white;
+}
+
+/* [visual] - container --------------------------------------------- */
+
+.index_container {
+    width: 100%;
+}
+
+.index_container > div {     
+    float: left;
+    position: relative;
+    margin-top: 10px;    
+}
+
+.index_randomAds {
+    z-index: 1;
+    border: 1px solid rgb(206, 205, 205);    
+    height: 400px;
+    width: 20%;
+    padding-top: 10px;  
+    font-size: 13px;
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif  
+}
+
+.index_Ads01 > img {
+    height: 180px;
+    width: 255px;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.index_Ads01 {
+    border-bottom: 1px solid rgb(206, 205, 205);
+}
+
+.index_Ads02 > img {
+	margin-top: 25px;
+    height: 135px;
+    width: 255px;
+}
+
+.index_Ads02 > div {
+    position: relative;
+    float: right;
+    padding: 20px;
+    padding-top: 5px;
+}
+
+.index_Ads01 > .index_ad {
+	position : relative;
+	padding-right: 10px;
+	text-align: right;
+	color: #999;
+}
+
+.index_Ads02 > .index_ad {
+	position : relative;
+	padding: 10px 10px 0px 0px;
+	text-align: right;
+	color: #999;
+}
+
 

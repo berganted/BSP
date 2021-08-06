@@ -13,6 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
 </head>
+
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
     <header id="header"> </header>
@@ -38,13 +39,13 @@
                         </form>                        
                     </div>                     
              <table id="order_tb">
-                <tr>
-                    <td>주문일</td> 
-                    <td>주문번호</td> 
-                    <td>수령인</td>
-                    <td>주문상품</td>
-                    <td>조회</td>
-                    <td>배송상태</td>
+                <tr >
+                    <th>주문일</th> 
+                    <th>주문번호</th> 
+                    <th>수령인</th>
+                    <th>주문상품</th>
+                    <th>조회</th>
+                    <th>반품/교환신청</th>
                 </tr>
                 	<c:if test="${empty orderList}">
 								<tr>
@@ -60,7 +61,9 @@
                     <td>${list.b_title }&nbsp;총 ${list.count }권</td>
                     <td><a href="detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	<input class="button_s" type="button" value="상세조회"></a></td>
-                    <td>${list.ps_title}</td>
+                    <td> <a href="wantReturning.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
+                    	<input class="button_s" type="button" value="반품/교환 신청"></a>
+                    	</td>
                 </tr>
     				</c:forEach>
         </table>

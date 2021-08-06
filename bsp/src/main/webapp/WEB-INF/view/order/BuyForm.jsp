@@ -125,12 +125,11 @@
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
                         <tr>
-                            <td>이미지</td>
-                            <td>상품명</td>
-                            <td id="price">가격</td>
-                            <td id="stock">재고</td>
-                            <td id="bseq_ea">수량</td>
-                            <td id="del">삭제</td>
+                            <th>이미지</th>
+                            <th>상품명</th>
+                            <th id="price">가격</th>
+                            <th id="stock">재고</th>
+                            <th id="bseq_ea">수량</th>
                         </tr>
                         <tr>
                             <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
@@ -145,14 +144,12 @@
                              <input   type="text" class="pop_out"name="io_amount" value="${param.io_amount }" readonly="readonly" style="width: 50px; text-align: center;">
                              <button class="button_s"type ="button" onclick="fnCalCount('p',this);">+</button>  
                              </td>
-                            <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
                         </tr>
-                        
                     </table>
                     <h4>배송 방법 선택</h4>
                     <table id="buy_tb" >
                         <tr>
-                            <td>배송방법</td>
+                            <th>배송방법</th>
                             <td >
                                <input type="radio" name="pb_delivery" value="cj">택배 <br>
                                <input type="radio" name="pb_delivery" value="post">우체국 택배 <br>
@@ -163,7 +160,7 @@
                     <h4>배송 정보 입력 (*필수 입력 항목)</h4>
                     <table id="buy_tb">
                      <tr>
-                         <td>배송지 선택</td>
+                         <th>배송지 선택</th>
                          <td>
                              <input type="radio" name="dvryOpt" value="1" checked>주문고객 정보와 동일
                              <input type="radio" name="dvryOpt" value="2">최근 배송지 주소
@@ -171,20 +168,20 @@
                          </td>
                      </tr>
                      <tr>
-                        <td>* 주문인</td>
+                        <th>* 주문인</th>
                         <td>
                             <input type="text" id="name" name="name" value="${userInfo.m_name } " checked><br>
                             휴대폰 번호: 010-**34-5648
                         </td>
                      </tr>
                      <tr>
-                        <td>* 받으시는 분</td>
+                        <th>* 받으시는 분</th>
                         <td>
                             <input type="text" id="pb_resname" name="pb_resname" value="전나나 " checked ><br>
                         </td>
                      </tr>
                      <tr>
-                        <td>* 주소</td>
+                        <th>* 주소</th>
                         <td>
                              <input type="text" id="pb_zipcode" name="pb_zipcode" maxlength="5" style="width:173px; " value="${userInfo.m_zipcode }" > 
                              <button class="button_s" type="button" onclick="openZipSearch()">검색</button>&nbsp;우편번호<br>
@@ -203,14 +200,14 @@
                         </td>
                      </tr>
                      <tr>
-                        <td>* 휴대전화번호</td>
+                        <th>* 휴대전화번호</th>
                         <td>
                             <input type="text" id="pb_restel" name="pb_restel" style="width: 310px;" value="${userInfo.m_tel }"> 
                            
                         </td>
                      </tr>
                      <tr>
-                        <td>전화번호 </td>
+                        <th>전화번호 </th>
                         <td>
                             <input type="text" name="phone numbers1" style="width: 100px;" > -
                             <input type="text" name="phone numbers2" style="width: 100px;"> -

@@ -134,6 +134,11 @@ public class OrderServiceimpl implements OrderService {
 		return dao.lastaddr(vo);
 	}
 
+	@Override
+	public List<OrderVo> wantReturning(OrderVo vo) {
+		return dao.wantReturning(vo);
+	}
+
 
 
 

@@ -12,6 +12,7 @@
     <link rel='stylesheet' href='/bsp/css/base.css'/> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
+    <script src="/bsp/js/big.js"></script>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -24,14 +25,14 @@
            <table id="return_list_detil_tb">
             <p></p>
                <tr>
-                   <td>반품접수일</td>
-                   <td>구분</td>
-                   <td>반품번호</td>
-                   <td>원주문번호</td>
-                   <td>상품명/수량</td>
-                   <td>회송방법</td>
-                   <td>환불방법</td>
-                   <td>처리상태</td>
+                   <th>반품접수일</th>
+                   <th>구분</th>
+                   <th>반품번호</th>
+                   <th>원주문번호</th>
+                   <th>상품명/수량</th>
+                   <th>회송방법</th>
+                   <th>환불방법</th>
+                   <th>처리상태</th>
                </tr>
                <tr>
                  	<td>${vo.returning_regdate }</td>
@@ -48,13 +49,18 @@
            <h4>상품정보</h4>
            <table id="return_list_detil_tb">
             <tr>
-                <td>상품명</td>
-                <td>구입 가격</td>
-                <td>반품 완료 수량</td>
-                <td>신청 수량</td>
+            	<th>이미지</th>
+                <th>상품명</th>
+                <th>구입 가격</th>
+                <th>반품 완료 수량</th>
+                <th>신청 수량</th>
             </tr>
            <c:forEach var="vo" items="${detail2}">
             <tr>
+            	<td>
+            		<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 90px; width: 90px;">
+               		<input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+               	</td>
                 <td>${vo.b_title }</td>
                 <td>${vo.b_price }</td>
                 <td>${vo.returning_amount}</td>
@@ -66,46 +72,46 @@
            <h4>환불정보</h4>
            <table id="return_list_detil_tb">
             <tr>
-                <td>원결제 방법</td>
+                <th>원결제 방법</th>
                 <td colspan="3">${vo.pb_payno}</td>
             </tr>
             <tr>
-                <td>환불 요청정보</td>
+                <th>환불 요청정보</th>
                 <td>현금 신한/110-4235-66998/전나나</td>
-                <td>환불 완료 정보</td>
+                <th>환불 완료 정보</th>
                 <td>현금</td>
             </tr>
             <tr>
-                <td>반품 신청액</td>
+                <th>반품 신청액</th>
                 <td>6,300원</td>
-                <td>실 반품액</td>
+                <th>실 반품액</th>
                 <td> </td>
             </tr>
             <tr>
-                <td>반송비 차감액</td>
+                <th>반송비 차감액</th>
                 <td>2,000원</td>
-                <td>환불 예정액</td>
+                <th>환불 예정액</th>
                 <td>4,300원 </td>
             </tr>
            </table>
            <h4>회송 정보</h4>
            <table id="return_list_detil_tb">
             <tr>
-                <td>회송 방법</td>
+                <th>회송 방법</th>
                 <td>${vo.rd_option}</td>
-                <td>방문예상일</td>
+                <th>방문예상일</th>
                 <td>2012-05-22</td>
             </tr>
             <tr>
-                <td>고객명</td>
+                <th>고객명</th>
                 <td>${vo.rd_name}</td>
-                <td>주소</td>
+                <th>주소</th>
                 <td> ${vo.rd_zipcode }, ${vo.rd_addr1 }, ${vo.rd_addr2 }</td>
             </tr>
             <tr>
-                <td>전화번호</td>
+                <th>전화번호</th>
                 <td>${vo.rd_tel }</td>
-                <td>요청사항</td>
+                <th>요청사항</th>
                 <td>${vo.rd_req }</td>
             </tr>
            </table>

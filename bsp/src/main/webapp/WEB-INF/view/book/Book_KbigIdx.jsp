@@ -49,12 +49,7 @@ text-align: center;
                 </c:forEach>   
                 <!-- </div> -->
             </div>
-
-
-
         <div class="BigIndex_choice"> BSP의 선택 </div>
-       
-                
         <div class="swiper-container">
             <div class="swiper-wrapper">
             <c:forEach var = "vo" items="${list1 }">
@@ -75,12 +70,8 @@ text-align: center;
                                 <span class="bps_price" style="font-size: 17px;">${vo.b_price }원</span>
                                 <span class="bps_point">  <img src = "/bsp/img/point.png" style="width: 25px; height:25px; margin-bottom: 3px; font-size: 17px;">${vo.b_point }</span>
                             </p>
-                            <div class="choice_intro">
-                            
-                                <span class="choice_infoStory"  style="font-size: 19px;overflow: hidden; width:100% height:100%" >
+                            <div class="choice_intro" style="font-size: 19px; overflow: hidden; width:718px; height:195px;">
                                 ${vo.b_content }
-                                
-                                </span>
                             </div>
                         </div>
                     </div>

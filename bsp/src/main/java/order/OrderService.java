@@ -24,7 +24,10 @@ public interface OrderService {
 	void updatePb(int no);
 	
 	void updatePi(int no);
+	
 	OrderVo lastaddr(OrderVo vo);
+	
+	List<OrderVo> wantReturning(OrderVo vo);
 //ADMIN
 	List<OrderVo> selectAdmin(OrderVo vo);
 	List<OrderVo> selectAdmindelist(OrderVo vo);

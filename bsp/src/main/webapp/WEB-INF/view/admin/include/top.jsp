@@ -90,7 +90,7 @@ $(function(){
 				<li><a href="<%=request.getContextPath()%>/admin/board/index.do" class="parent"><span>게시판</span></a>
 					<div class="standard_left">
 					<ul>
-						<li><a href="<%=request.getContextPath()%>/admin/board/index.do"><span>FAQ</span></a></li>
+						<li><a href="<%=request.getContextPath()%>/sample/FAQindexAdmin.do"><span>FAQ</span></a></li>
 						<li><a href="<%=request.getContextPath()%>/admin/board/index.do"><span>Q&A</span></a></li>
 					</ul>
 					</div>

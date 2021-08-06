@@ -136,7 +136,7 @@ public class OrderController {
 	@RequestMapping("/order/buySuccess.do")
 	public String buySuccess(Model model, OrderVo vo,HttpSession sess, HttpServletRequest req) {
 		service.updatePb(Integer.parseInt(req.getParameter("pb_no")));
-		service.updatePi(Integer.parseInt(req.getParameter("io_no")));
+		service.updatePi(Integer.parseInt(req.getParameter("pb_no")));
 		return "order/BuySuccess";
 	}
 	

@@ -134,6 +134,10 @@ function rtnCheck(){
                 <tr>
                     <th>결제방법</th>
                     <td>카드결제</td>
+                    <td><c:if test="${vo.pb_payno == 0}">무통장 입금</c:if>
+                    	<c:if test="${vo.pb_payno == 1}">실시간계좌이체</c:if> 
+                    	<c:if test="${vo.pb_payno == 2}">카트결제</c:if> 
+                    	 </td>
                 </tr>
              </table>
         </article>

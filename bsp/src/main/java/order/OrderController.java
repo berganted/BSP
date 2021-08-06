@@ -45,9 +45,11 @@ public class OrderController {
 	@RequestMapping("/order/cartbuy.do")
 	public String cartbuy(CartVo vo,OrderVo ov,Model model,HttpServletRequest req) {
 		String[] no = req.getParameterValues("checkOne");
+		String[] num= req.getParameterValues("pop_out");
 		List<CartVo> list  = new ArrayList<CartVo>(); 
 		for (int i = 0; i < no.length; i++) {
 			vo.setCart_no(Integer.parseInt(no[i]));
+			vo.setIo_amount(Integer.parseInt(num[i]));
 			CartVo rv= Cservice.selectone(vo);
 			list.add(rv);
 		}

@@ -28,14 +28,14 @@ public class FAQBoardController {
 	@RequestMapping("/admin/FAQindexAdmin.do")
 	public String index2(Model model, FboardVo vo) {
 		model.addAttribute("list", service.selectAll(vo));
-		return "admin/FAQindexAdmin";
+		return "sample/FAQindexAdmin";
 	}
 	
 	@RequestMapping("/admin/FAQviewAdmin.do")
 	public String detail(Model model, FboardVo vo, CommentVo cv) {
 		model.addAttribute("vo", service.detail(vo));
 		
-		return "admin/FAQviewAdmin";
+		return "sample/FAQviewAdmin";
 	}
 	
 //	@RequestMapping("/sample/board_write2.do")
@@ -45,15 +45,15 @@ public class FAQBoardController {
 	
 	@RequestMapping("/admin/FAQwriteAdmin.do")
 	public String write(Model model, FboardVo vo) {
-		return "admin/FAQwriteAdmin";
+		return "sample/FAQwriteAdmin";
 	}
 	
-	@RequestMapping("/sample/insert2.do")
+	@RequestMapping("/admin/insert2.do")
 	public String insert(Model model, FboardVo vo, HttpServletRequest req) {
 		int r = service.insert(vo);
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
-			model.addAttribute("url", "FAQboard2.do");
+			model.addAttribute("url", "FAQindexAdmin.do");
 		} else {
 			model.addAttribute("msg", "등록실패");
 			model.addAttribute("url", "FAQwriteAdmin.do"); 

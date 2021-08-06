@@ -56,8 +56,7 @@ public class FAQBoardServiceImpl implements FAQBoardService {
 
 	@Override
 	public FboardVo detail(FboardVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.detail(vo);
 	}
 
 	@Override

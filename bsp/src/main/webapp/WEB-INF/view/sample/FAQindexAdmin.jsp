@@ -51,7 +51,7 @@
 								<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
 								<td>${vo.faq_no }</td>
                                 <td class="txt_l" style="text-align: left;">
-                                    <a href="FAQindexAdmin.do?faq_no=${vo.faq_no }&reqPage=${fboardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
+                                    <a href="FAQviewAdmin.do?faq_no=${vo.faq_no }&reqPage=${fboardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
                                     ${vo.faq_title}</a>	
                                 </td>
                                 <td class="FAQboard_writer">

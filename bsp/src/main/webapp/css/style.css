@@ -119,7 +119,7 @@ li {
 
 .header_mainMenu > ul> li > a:hover {
     font-size: 17px;
-    color: blueviolet;
+    color: rgba(1, 140, 179, 1);
 }
 
 li {
@@ -169,12 +169,13 @@ li {
 /*footer 영역 ---------------------------------------------------*/
 .index_wrap1 {
      width:100%; height: 200px; 
-      margin:0 auto; background-color: #6266ea;
+      margin:0 auto; background-color: rgba(1, 140, 179, 1);
       
     }
 .footer {
     clear: both; /*float 속성 초기화*/
-    background-color: #6266ea;
+    /* background-color: #6266ea; */
+    background-color: rgba(1, 140, 179, 1); 
     color: white;
 }
 
@@ -187,6 +188,7 @@ li {
 
  .footer_copyRight {
     padding: 20px;
-    background-color: #4232c2;   
+    /* background-color: #4232c2; */   
+    background-color: rgba(1, 103, 151, 1);  
     text-align: right; 
 }

@@ -36,7 +36,15 @@ public class OrderVo extends CommonVo {
 	private String m_name;
 	private String m_email;
 	private String m_email_d;
-	
+
+	public  OrderVo() {
+		
+		this.pageRow = 10;
+		this.reqPage = 1;
+		this.pageRange = 10;
+		this.orderby ="pb_orderdate";
+		this.direct = "DESC";
+	}
 	
 	
 

@@ -273,9 +273,9 @@
                        <table id="buy_tb" style="text-align: center;">
                            <tr>
                                <td>  
-                                <input type="radio" name="paymentOption" value="accountN">무통장입금
-                                <input type="radio" name="paymentOption"value="creditcard">실시간 계좌이체 
-                                <input type="radio" name="paymentOption"value="accountY">신용카드 
+                                <input type="radio" name="pb_payno" value="0">무통장입금
+                                <input type="radio" name="pb_payno"value="1">실시간 계좌이체 
+                                <input type="radio" name="pb_payno"value="2">신용카드 
                                   
                             </td>
                            </tr>

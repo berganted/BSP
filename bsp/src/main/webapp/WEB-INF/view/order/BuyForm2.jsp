@@ -159,7 +159,7 @@
                             <td>${list.b_title } <input type="hidden" name="b_no" value="${list.b_no }"/>
                             					 <input type="hidden" name=cart_no value="${list.cart_no }"/></td>
                             <td id="price"><span class="b_price">${list.b_price }</span>원/<span class=point>${list.b_point }</span>원</td>
-                           <td class="bseq_ea">${vo.b_stock }</td>  <!--  출력할 필요는 없음 -->
+                           <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
                              <button  class="button_s" type="button" onclick="fnCalCount('m', this);">-</button>
                              <input   type="text" class="pop_out"name="io_amount" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
@@ -288,10 +288,9 @@
                        <table id="buy_tb" style="text-align: center;">
                            <tr>
                                <td>  
-                                <input type="radio" name="paymentOption" value="accountN">무통장입금
-                                <input type="radio" name="paymentOption"value="creditcard">실시간 계좌이체 
-                                <input type="radio" name="paymentOption"value="accountY">신용카드 
-                                  
+                                  <input type="radio" name="pb_payno" value="0">무통장입금
+                                <input type="radio" name="pb_payno"value="1">실시간 계좌이체 
+                                <input type="radio" name="pb_payno"value="2">신용카드 
                             </td>
                            </tr>
                        </table>

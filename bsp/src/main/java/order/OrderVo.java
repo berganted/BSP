@@ -36,10 +36,6 @@ public class OrderVo extends CommonVo {
 	private String m_name;
 	private String m_email;
 	private String m_email_d;
-	
-	
-	
-
 
 	public int getP_used() {
 		return p_used;
@@ -64,11 +60,6 @@ public class OrderVo extends CommonVo {
 	private String b_imgmain;
 	
 	//어드민에서 사용
-	
-	
-	
-
-	
 
 	public String getB_imgmain() {
 		return b_imgmain;
@@ -79,9 +70,6 @@ public class OrderVo extends CommonVo {
 		this.b_imgmain = b_imgmain;
 	}
 
-
-	
-	
 	public int getB_no() {
 		return b_no;
 	}

@@ -138,11 +138,7 @@
 		ps_no= 11
 		WHERE io_no=#{io_no} 
 		</update>
-		<update id="updatePb" parameterType="int">
-		UPDATE product_buy SET 
-		ps_no= 11
-		WHERE pb_no=#{pb_no} 
-		</update>
+	
 		
 		<!-- 반품시 배송상태 변경 -> 반품신청완료  (주문 테이블) -->
 		<update id="updatePb" parameterType="int">

@@ -67,10 +67,7 @@
                         <span class="remove_title"><label>이름</label></span>
                         <span class="remove_contents"><input type="text" value="${userInfo.m_name }" readonly></span>
                     </div>
-                    <div>
-                        <span class="remove_title"><label>비밀번호</label></span>
-                        <span class="remove_contents"><input type="password" name="m_pwd" id="m_pwd"></span>
-                    </div>
+                   
                     <div style="text-align: center;" >
                         <span class="remove_title_1"><label>탈퇴사유</label></span><br>
                         <span class="del_whyspan"><select class="del_why" id="m_del" name = "m_del" form="frm">

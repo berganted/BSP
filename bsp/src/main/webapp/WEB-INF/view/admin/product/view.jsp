@@ -126,9 +126,9 @@
 												<th scope="row"><label for="">가격</label></th>
 												<td colspan=""><input type="text" id="price"
 													name="b_price" class="w100" value="${vo.b_price }" /></td>
-												<th scope="row"><label for="">조회수</label></th>
+												<th scope="row"><label for="">판매량</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_views" class="w100" value="${vo.b_views }" /></td>
+													name="tot" class="w100" value="${vo.tot }" readonly="readonly" /></td>
 												<th scope="row"><label for="">적립금</label></th>
 												<td colspan=""><input type="text" id="b_point"
 													name="b_point" class="w100" value="${vo.b_point }" /></td>

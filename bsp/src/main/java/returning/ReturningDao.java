@@ -59,4 +59,7 @@ public class ReturningDao {
 	public void updateiopsno(ReturningVo vo) {
 		sessionTemplate.update("returnig.updateiopsno",vo);
 	}
+	public List<ReturningVo> selectAlladmin(ReturningVo vo){
+		return sessionTemplate.selectList("returnig.selectAlladmin",vo);
+	}
 }

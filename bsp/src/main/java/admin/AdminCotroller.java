@@ -78,7 +78,7 @@ public class AdminCotroller {
 //반품 리스트
 	@RequestMapping("admin/retune/index.do")
 	public String retuneIndex(ReturningVo vo , Model model) {
-		model.addAttribute("list", rservice.selectAll(vo));
+		model.addAttribute("list", rservice.selectAlladmin(vo));
 		
 		return "admin/retune/index";
 	}

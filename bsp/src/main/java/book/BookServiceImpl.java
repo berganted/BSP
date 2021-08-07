@@ -200,7 +200,7 @@ public class BookServiceImpl implements BookService {
 	// 관리자 상품 리스트
 	@Override
 	public List<BookVo> selectAlladmin(BookVo vo) {
-		int totCount = dao.count(vo); // 총갯수
+		int totCount = dao.selectAlladmincnt(vo); // 총갯수
 		// 총페이지수
 		int totPage = totCount / vo.getPageRow();
 		if (totCount % vo.getPageRow() > 0) totPage++;

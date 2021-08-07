@@ -6,6 +6,14 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 </head>
 <body> 
+<script type="text/javascript">
+$(function(){
+$('#ctype').change(function(){
+$('#searchForm').submit();
+})
+})
+
+</script>
 <div id="wrap">
 	<!-- canvas -->
 	<div id="canvas">
@@ -47,17 +55,21 @@
 											<option value="b_author"
 												<c:if test="${param.stype=='b_author'}"> selected</c:if>>작가</option>
 										</select> 
-										<select name="ctype">
-										<c:forEach var="ctg" items="${ctg }">
-										<option value="${ctg.b_ctgno2key }"
-										<c:if test="${param.ctype=='b_ctgno2key'}"> selected</c:if>>${ctg.b_ctgdetail }</option>
-										</c:forEach>
-										</select>
+										
 										<input type="text" name="sval" value=""title="검색할 내용을 입력해주세요" /> 
 										<input type="image"src="<%=request.getContextPath()%>/img/admin/btn_search.gif"
 												class="sbtn" alt="검색" onclick="$('#searchForm').submit();"/>
 									</div>
+								<select id="ctype" name="ctype">
+										<option value="0"<c:if test="${param.ctype == 0}"> selected</c:if>>전체</option>
+										<c:forEach var="ctg" items="${ctg }">
+										<option value="${ctg.b_ctgno2key }"
+										<c:if test="${param.ctype==ctg.b_ctgno2key}"> selected</c:if>>${ctg.b_ctgdetail }</option>
+										</c:forEach>
+										</select>
 								</form>
+								
+								
 							<span><strong>총 ${bookVo.totCount }개</strong>  |  ${bookVo.reqPage }/${bookVo.totPage }</span>
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
@@ -110,17 +122,17 @@
 							<!-- 페이징 처리 -->
 							<div class='page'>
 									<c:if test="${bookVo.strPage > bookVo.pageRange}">
-										<li><a href="index.do?reqPage=${bookVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"> < </a>
+										<li><a href="index.do?reqPage=${bookVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}&ctype=${param.ctype}"> < </a>
 									</c:if>
 									<c:forEach var="rp" begin="${bookVo.strPage }"
 										end="${bookVo.endPage }">
 										<c:if test="${rp==bookVo.reqPage }"><strong>${rp }</strong></c:if>
 										<c:if test="${rp!=bookVo.reqPage }">
-                                  	<a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' class='current'>${rp }</a></c:if>
+                                  	<a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}&ctype=${param.ctype}' class='current'>${rp }</a></c:if>
 
 									</c:forEach>
 									<c:if test="${bookVo.totPage > bookVo.endPage}">
-										<a href="index.do?reqPage=${bookVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
+										<a href="index.do?reqPage=${bookVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}&ctype=${param.ctype}">></a></c:if>
 								</div>
 							<!-- //페이징 처리 -->
 							

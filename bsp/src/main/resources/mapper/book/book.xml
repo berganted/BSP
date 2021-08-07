@@ -15,17 +15,18 @@
 	
  	<sql id="bookadwhere">
 		<where>
+				
 				<if test="sval != null and sval !=''">
 					<if test="stype == 'all'">
-					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+					 b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
 				</if>
-				<if test="ctype != null and ctype=''">
-					${ctype} = ${ctype}
-			</if>
-			</if>
+				</if>
+				<if test="ctype != 0">
+					AND b_ctgno2key = '${ctype}' 
+				</if>
 		</where>
 	</sql>  
 	
@@ -53,6 +54,14 @@
 		<include refid="bookadwhere"/>
 		 ORDER BY ${orderby} ${direct}	
 		 LIMIT ${strIdx},${pageRow} 
+	</select>
+	
+		<select id="selectAlladmincnt" resultType="int" parameterType="book.BookVo"><!-- 건들지마샘 -->
+		SELECT count(*),
+		(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key =book.b_ctgno2key )as b_ctgdetail
+		 FROM book
+		<include refid="bookadwhere"/>
+		  
 	</select>
 	
 

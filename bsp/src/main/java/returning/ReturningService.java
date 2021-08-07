@@ -25,6 +25,7 @@ public interface ReturningService {
 	List<ReturningVo> selectop(ReturningVo vo);
 	int updatepsno(ReturningVo vo);
 	
+	List<ReturningVo> selectAlladmin(ReturningVo vo);
 	
 
 

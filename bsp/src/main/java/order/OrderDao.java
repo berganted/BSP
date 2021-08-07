@@ -66,4 +66,7 @@ public class OrderDao {
 	public List<OrderVo> wantReturning(OrderVo vo) {
 		return sessionTemplate.selectList("order.wantReturning",vo);
 	}
+	public int wantReturningcount(OrderVo vo) {
+		return sessionTemplate.selectOne("order.wantReturningcount",vo);
+	}
 }

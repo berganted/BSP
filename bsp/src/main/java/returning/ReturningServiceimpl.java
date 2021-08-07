@@ -67,8 +67,8 @@ public class ReturningServiceimpl implements ReturningService {
 		dao.updatePs(no);
 	}
 	@Override
-	public void updatePi(int no) {
-		dao.updatePi(no);
+	public int updatePi(int no) {
+		return dao.updatePi(no);
 	}
 	@Override
 	public List<ReturningVo> selectop(ReturningVo vo) {
@@ -78,6 +78,10 @@ public class ReturningServiceimpl implements ReturningService {
 	public int updatepsno(ReturningVo vo) {
 		dao.updateiopsno(vo);
 		return  dao.updatepsno(vo);
+	}
+	@Override
+	public int updatePb(int no) {
+		return dao.updatePb(no);
 	}
 
 

@@ -18,7 +18,7 @@
 		<div id="container">
 			<div id="content">
 				<div class="con_tit">
-					<h2>회원 - [상세/수정]</h2>
+					<h2>주문 - [상세]</h2>
 				</div>
 				<!-- //con_tit -->
 				<div class="con">
@@ -66,7 +66,7 @@
 									<tr>
 							</table>
 							
-							<span><strong>총 ${orderVo.totCount }개</strong>  |  ${orderVo.reqPage }/${orderVo.totPage }</span>
+							
 							<form name="frm" id="frm" action="process.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>

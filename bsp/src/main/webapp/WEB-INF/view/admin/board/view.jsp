@@ -36,7 +36,7 @@
 									<tr>
 										<th scope="row"><label for="">제목</label></th>
 										<td colspan="">
-											${vo.q_title }
+											<input type="text" value="${vo.q_title }"/>
 										</td>
 										<th scope="row"><label for="">작성자</label></th>
 										<td colspan="">

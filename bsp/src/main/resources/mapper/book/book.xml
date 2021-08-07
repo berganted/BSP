@@ -49,7 +49,10 @@
 		
 	<select id="selectAlladmin" resultType="book.BookVo" parameterType="book.BookVo"><!-- 건들지마샘 -->
 		SELECT *,
-		(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key =book.b_ctgno2key )as b_ctgdetail
+		(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key =book.b_ctgno2key )as b_ctgdetail,
+		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
+		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
+		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
 		 FROM book
 		<include refid="bookadwhere"/>
 		 ORDER BY ${orderby} ${direct}	

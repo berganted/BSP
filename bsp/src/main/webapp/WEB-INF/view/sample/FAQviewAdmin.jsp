@@ -19,6 +19,31 @@
     $(function(){
         oEditors = setEditor("content"); // 반드시 id를 적어야한다
     });
+    
+    function isDel() {
+		if (confirm('삭제하시겠습니까?')) {
+			// 삭제처리
+			$.ajax({
+				url:'delete2.do',
+				data:{
+					'faq_no':${vo.faq_no}
+				},
+				method:'post',
+				success:function(res) {
+					console.log(res);
+					if (res.trim() == 'true') {
+						alert('정상적으로 삭제되었습니다.');
+						location.href='FAQindexAdmin.do';
+					} else {
+						alert('삭제 실패');
+					}
+				},
+				error : function(res) {
+					console.log(res);
+				}
+			});
+		}
+	}
     </script>
     
 </head>
@@ -38,7 +63,7 @@
                             <table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
                                 <colgroup>
                                     <col width="10%" />
-                                    <col width="20%" />
+                                    <col width="15%" />
                                     <col width="10%" />
                                     <col width="15%" />
                                     <col width="25%" />
@@ -49,6 +74,7 @@
                                         <th scope="row"><label for="">제목</label></th>
                                         <td>
                                 <input type="text" name="faq_title" id="title" class="wid100" value="${vo.faq_title }" style="width: 500px"/>
+                                <input type="hidden" name="faq_no" value="${vo.faq_no }"> 
                                 <select name="faq_cate" id="faq_cate">
                                 <c:if test="${vo.faq_cate =='주문'  }">
                                                 <option value="주문" selected="selected">주문</option>
@@ -99,6 +125,7 @@
                                 </div>
                                 <div class="btnRight">
                                     <a class="btns" style="cursor:pointer;" href="javascript:goSave();"><strong>저장</strong></a>
+                                    <a class="btns" style="cursor:pointer;" href="javascript:isDel();"><strong>삭제</strong></a>
                                 </div>
                             </div>
                             <!--//btn-->

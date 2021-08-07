@@ -74,7 +74,7 @@ $(function(){
 				<li><a href="<%=request.getContextPath()%>/admin/product/index.do?orderby=b_regdate" class="parent"><span>상품관리</span></a>
 					<div class="standard_left">
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/admin/product/index.do?orderby=b_regdate"><span>상품관리</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/admin/product/index.do?orderby=b_regdate&ctype=0"><span>상품관리</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/admin/productAD/index.do"><span>상품광고</span></a></li>
 						</ul>
 					</div>
@@ -82,7 +82,7 @@ $(function(){
 				<li><a href="<%=request.getContextPath()%>/admin/order/index.do?orderby=b_regdate" class="parent"><span>주문관리</span></a>
 					<div class="standard_left">
 						<ul>
-							<li><a href="<%=request.getContextPath()%>/admin/order/index.do?orderby=b_regdate&ctype=0"><span>주문관리</span></a></li>
+							<li><a href="<%=request.getContextPath()%>/admin/order/index.do"><span>주문관리</span></a></li>
 							<li><a href="<%=request.getContextPath()%>/admin/retune/index.do"><span>반품관리</span></a></li>
 						</ul>
 					</div>

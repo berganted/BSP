@@ -25,6 +25,43 @@ function openZipSearchRT() {
            }
        }).open();
 }
+$(function () {
+	calc();
+})
+
+function calc() {
+	var sum=0;
+	var psum=0;
+	var price=0;
+	$('.b_price').each(function(){
+		var idx = $(this).index('.b_price');
+		sum += $(".b_price").val()*Number($(".pop_out").eq(idx).val());
+	});
+
+	$("#total1").val(sum);
+	
+	
+}
+
+function fnCalCount(type, ths){
+    var $input = $(ths).parents("td").find(".pop_out"); //부모부분인 td의 자식 name pop_out [수량입력값]
+    var tCount = Number($input.val()); //입력값 숫자타입으로 변환
+	calc();
+    var tEqCount = $(".bseq_ea").val();
+                    //입력된 수량보다 +/-가 초과되지 않도록 Number($(ths).parents("tr").find("td.bseq_ea").html())
+
+    if(type=='p'){
+        if(tCount < tEqCount){
+        	$input.val(Number(tCount)+1);
+        	calc();//재고보다 작을경우 +1
+        }
+    }else{
+         if(tCount >0){
+        	 $input.val(Number(tCount)-1);    //0보다 클 경우 -1
+        	 calc();
+			}
+        }
+    }
 </script>
 </head>
 <body >
@@ -55,24 +92,27 @@ function openZipSearchRT() {
                             <td>주문번호</td>
                             <td>출고번호</td>
                             <td>주문상품</td>
+                            <td>금액</td>
+                            <td>수량</td>
                             <td>수령인</td>
                             <td>주문일</td>
-                            <td>조회</td>
                        	</tr>
                          	<c:forEach var="vo" items="${returnList}">
           			    <tr>
                 			<td><input type="text" name="pb_no" value="${vo.pb_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
                 			<td><input type="text" name="io_no" value="${vo.io_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
                			    <td><input type="text" name="b_title" value="${vo.b_title}" style="border:0 solid black; text-align: center; font: 16px"></td>
+               			    <td><input type="text" name="b_price" class="b_price" value="${vo.b_price}" style="border:0 solid black; text-align: center; font: 16px"></td>
+               			    <td id="ant">
+                             <input   type="text" class="pop_out"name="returning_amount" value="${vo.io_amount}" readonly="readonly" style="border:0 solid black; text-align: center; font: 16px">
+                             <input type="hidden" name="io_amount" class="bseq_ea" value="${vo.io_amount}"> 
+                             </td>
                			    <td><input type="text" name="pb_resname" value="${vo.pb_resname }" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a>
-                			 	<input type="hidden" name="b_no" value="${vo.b_no}" >
-            			 		<input type="hidden" name="io_amount" value="${vo.io_amount}" >
+                			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px">
+                				<input type="hidden" name="b_no" value="${vo.b_no}" >
             			 		<input type="hidden" name="ps_no" value="${vo.ps_no}" >
             			 		<input type="hidden" name="m_no" value="${vo.m_no}" >
                 			</td>
-            			 	
             			 </tr>
                 		</c:forEach>
                 		 
@@ -167,6 +207,7 @@ function openZipSearchRT() {
                 
 	                <div class="hwrap"><h4>환불정보 입력</h4></div>
 	                    <table id="retrn_account" class="retrn_tb">
+	                    <tr><td><b>환불금액: <input type="text" name="sum_price" id="total1"  value="" style="border:0 solid black; text-align: center; font: 25px"></b></td></tr>
 	                        <tr>
 	                            <td style="text-align: center;"> 
 	                            <input type="radio" name="refund_info" value="현금">현금

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import order.OrderService;
 import order.OrderVo;
+import user.UserVo;
 
 @Controller
 public class ReturningController {
@@ -67,7 +68,9 @@ public class ReturningController {
 		}
 
 	@RequestMapping("/returning/list.do")
-	public String ReturnOrReplaceList(Model model, ReturningVo vo) {
+	public String ReturnOrReplaceList(Model model, ReturningVo vo,HttpSession sess) {
+		UserVo uv = (UserVo) sess.getAttribute("userInfo");
+		vo.setM_no(uv.getM_no());
 		model.addAttribute("RList", service.selectAll(vo));
 		return "returning/ReturnOrReplaceList";
 	}

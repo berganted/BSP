@@ -65,7 +65,7 @@
                     	<a href="wantReturning.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	<input class="button_s" type="button" value="반품/교환 신청"></a>
                     	</c:if>
-                    	</td>
+                   </td>
                 </tr>
     				</c:forEach>
         </table>

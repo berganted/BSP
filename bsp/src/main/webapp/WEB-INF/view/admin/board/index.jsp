@@ -4,8 +4,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+ <script src="/bsp/js/script.js"></script>
 </head>
 <body> 
+
 <div id="wrap">
 	<!-- canvas -->
 	<div id="canvas">
@@ -26,6 +28,7 @@
 						<div id="blist">
 							<p><span><strong>총 ${boardVo.totCount }개</strong>  |  ${boardVo.reqPage}/${boardVo.totPage }페이지</span></p>
 							<form name="frm" id="frm" action="process.do" method="post">
+							<input type="hidden" id="admin" value="${adminInfo.empower }">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 								<col width="80px" />
@@ -37,7 +40,7 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="selectAll(this)"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">제목</th> 
 										<th scope="col">작성자</th> 
@@ -69,10 +72,9 @@
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="groupDel();"><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
-									<a class="wbtn" href="write.do"><strong>등록</strong> </a>
 								</div>
 							</div>
 							<!--//btn-->

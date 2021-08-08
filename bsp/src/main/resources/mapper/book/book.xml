@@ -15,18 +15,17 @@
 	
  	<sql id="bookadwhere">
 		<where>
-				
-				<if test="sval != null and sval !=''">
-					<if test="stype == 'all'">
+			<if test="sval != null and sval !=''">
+				<if test="stype == 'all'">
 					 b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
 				</if>
-				</if>
-				<if test="ctype != 0">
-					AND b_ctgno2key = '${ctype}' 
-				</if>
+			</if>
+			<if test="ctype != 0">
+				AND b_ctgno2key = '${ctype}' 
+			</if>
 		</where>
 	</sql>  
 	

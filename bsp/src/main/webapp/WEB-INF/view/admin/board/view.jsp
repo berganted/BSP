@@ -53,14 +53,6 @@
 											${vo.q_content }
 										</td>
 									</tr>
-									<tr>
-										<th scope="row"><label for="">첨부파일</label></th>
-										<td colspan="10">
-												<div class="weidtFile">
-													<p><a href="" target="_blank">test.gif</a><br />
-												</div>
-										</td>
-									</tr>
 								</tbody>
 							</table>
 							<div class="btn">
@@ -68,8 +60,8 @@
 									<a class="btns" href="index.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;" href=""><strong>수정</strong></a>
-									<a class="btns" style="cursor:pointer;" href=""><strong>답변</strong></a>
+									<a class="btns" style="cursor:pointer;" href="edit.do?q_no=${vo.q_no}"><strong>수정</strong></a>
+									<a class="btns" style="cursor:pointer;" href="reply.do?q_no=${vo.q_no }"><strong>답변</strong></a>
 								</div>
 							</div>
 							<!--//btn-->

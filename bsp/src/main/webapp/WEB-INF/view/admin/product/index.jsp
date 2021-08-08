@@ -5,6 +5,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+ <script src="/bsp/js/script.js"></script>
 </head>
 <style>
  td > select{
@@ -45,6 +46,7 @@ $('#searchForm').submit();
 						<div id="blist">
 						<div>
 						<form method="get" name="searchForm" id="searchForm" action=""> 
+						<input type="hidden" id="admin" value="${adminInfo.empower }">
 						<table id="head">
 						<tr>
 						<td class="first">카테고리</td>
@@ -76,17 +78,16 @@ $('#searchForm').submit();
                          </tr>
                          <tr>
                          <td class="first">검색조건</td>
-                         <td><select name="stype" title="검색을 선택해주세요">
-											<option value="all">전체</option>
-											<option value="b_title"
-												<c:if test="${param.stype=='b_title'}"> selected</c:if>>제목</option>
-											<option value="b_publisher"
-												<c:if test="${param.stype=='b_publisher'}"> selected</c:if>>출판사</option>
-											<option value="b_author"
-												<c:if test="${param.stype=='b_author'}"> selected</c:if>>작가</option>
-										</select> 
-										
-										
+                         <td>	
+                         		<select name="stype" title="검색을 선택해주세요">
+									<option value="all">전체</option>
+									<option value="b_title"
+											<c:if test="${param.stype=='b_title'}"> selected</c:if>>제목</option>
+									<option value="b_publisher"
+											<c:if test="${param.stype=='b_publisher'}"> selected</c:if>>출판사</option>
+									<option value="b_author"
+											<c:if test="${param.stype=='b_author'}"> selected</c:if>>작가</option>
+								</select> 
 							</td>
 							<td>검색어</td>
 							<td colspan="4"><input type="text" name="sval" value=""title="검색할 내용을 입력해주세요" /> 
@@ -116,7 +117,7 @@ $('#searchForm').submit();
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="selectAll(this)"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">카테고리</th>
 										<th scope="col">책이름</th> 
@@ -152,7 +153,7 @@ $('#searchForm').submit();
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="groupDel();"><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" href="write.do"><strong>등록</strong> </a>

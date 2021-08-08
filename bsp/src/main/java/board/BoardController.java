@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import comment.CommentService;
 import comment.CommentVo;
+import faq_board.FboardVo;
 
 @Controller
 public class BoardController {

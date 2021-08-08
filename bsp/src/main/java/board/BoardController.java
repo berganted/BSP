@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import comment.CommentService;
 import comment.CommentVo;
+import faq_board.FboardVo;
 
 @Controller
 public class BoardController {
@@ -187,5 +188,21 @@ public class BoardController {
 			model.addAttribute("result", "false");
 		}
 		return "include/result";
+	}
+	
+	//광고 그룹 삭제
+	@RequestMapping("admin/board/delete.do")
+	public String delete(Model model, HttpServletRequest req) {
+		String[] no = req.getParameterValues("no");
+		int count = 0;
+		for(int i = 0; i<no.length; i++) {
+			System.out.println(no[i]);
+			BoardVo vo= new BoardVo();
+			vo.setQ_no(Integer.parseInt(no[i]));
+			count+=service.delete(vo);
+		}
+		model.addAttribute("msg", "총" +count+"건이 삭제되었습니다.");
+		model.addAttribute("url", "index.do?orderby=b_regdate");
+		return "include/alert";		
 	}
 }

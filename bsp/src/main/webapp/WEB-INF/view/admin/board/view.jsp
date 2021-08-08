@@ -26,17 +26,17 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
-									<col width="15%" />
+									<col width="*" />
 									<col width="10%" />
 									<col width="15%" />
-									<col width="25%" />
-									<col width="25%" />
+									<col width="15%" />
+									<col width="15%" />
 								</colgroup>
 								<tbody>
 									<tr>
 										<th scope="row"><label for="">제목</label></th>
 										<td colspan="">
-											<input type="text" value="${vo.q_title }"/>
+											${vo.q_title }
 										</td>
 										<th scope="row"><label for="">작성자</label></th>
 										<td colspan="">
@@ -49,7 +49,7 @@
 									</tr>
 									<tr>
 										<th scope="row"><label for="">내용</label></th>
-										<td colspan="10">
+										<td colspan="10" height="300px">
 											${vo.q_content }
 										</td>
 									</tr>

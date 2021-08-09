@@ -49,8 +49,9 @@ public class OrderController {
 		List<CartVo> list  = new ArrayList<CartVo>(); 
 		for (int i = 0; i < no.length; i++) {
 			vo.setCart_no(Integer.parseInt(no[i]));
-			vo.setIo_amount(Integer.parseInt(num[i]));
+			System.out.println(Integer.parseInt(num[i]));
 			CartVo rv= Cservice.selectone(vo);
+			rv.setCart_cnt(Integer.parseInt(num[i]));
 			list.add(rv);
 		}
 		model.addAttribute("list", list);

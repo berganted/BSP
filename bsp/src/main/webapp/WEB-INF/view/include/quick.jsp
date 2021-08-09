@@ -4,10 +4,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 $(function(){
-	var abc=$("#abcd").val()
-	console.log(abc.length)
-	if($("#abdc").val().length>30){
-		$('#blahs').attr('src',abc)
+	var abcd=$("#abcd").val()
+	console.log(abcd.length)
+	if($("#abcd").val().length>30){
+		$('#blahs').attr('src',abcd)
 	}
 })
 </script>
@@ -19,7 +19,7 @@ $(function(){
         <img id="blahs" src="/bsp/img/${quick.b_imgmain }" width="70px" height="100px" style="cursor: pointer;"
         onclick="location.href='/bsp/book/Book_detail.do?b_no=${quick.b_no}&b_ctgno2key=${quick.b_ctgno2key}&b_ctgdetail=&b_ctgno1=${quick.b_ctgno1 }'">
     </div>
-    <input type="hidden" name="abc" id="abcd" value="${quick.b_imgmain }"/>
+    <input type="hidden" name="abcd" id="abcd" value="${quick.b_imgmain }"/>
     <div style="text-align: center;">
         ${quick.b_title}
     </div>

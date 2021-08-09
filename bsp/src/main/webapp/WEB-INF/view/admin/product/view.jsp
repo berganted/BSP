@@ -126,9 +126,8 @@
 												<th scope="row"><label for="">가격</label></th>
 												<td colspan=""><input type="text" id="price"
 													name="b_price" class="w100" value="${vo.b_price }" /></td>
-												<th scope="row"><label for="">조회수</label></th>
-												<td colspan=""><input type="text" id="title"
-													name="b_views" class="w100" value="${vo.b_views }" /></td>
+												<th scope="row"><label for="">판매량</label></th>
+												<td> ${vo.tot }</td>
 												<th scope="row"><label for="">적립금</label></th>
 												<td colspan=""><input type="text" id="b_point"
 													name="b_point" class="w100" value="${vo.b_point }" /></td>
@@ -161,12 +160,10 @@
 													<option value="${ctg.b_ctgno2key }"<c:if test="${ctg.b_ctgno2key == vo.b_ctgno2key }">selected="selected"</c:if>>${ctg.b_ctgdetail }</option>
 													</c:forEach>
 												</select></td>
-												<th></th>
-												<td><input type="text" id="b_ctgno1" name="b_ctgno1"
-													value="${vo.b_ctgno1 }"></td>
-												<th></th>
-												<td><input type="text" id="b_ctgno2key" name="b_ctgno2"
-													value="${vo.b_ctgno2 }"></td>
+												<th>평점</th>
+												<td>${vo.avg }</td>
+												<th>리뷰수</th>
+												<td>${vo.rcnt }</td>
 											</tr>
 											<tr>
 												<th scope="row" rowspan="4"><label for="">도서내용</label></th>

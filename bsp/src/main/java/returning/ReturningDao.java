@@ -40,11 +40,11 @@ public class ReturningDao {
 	public void updatePs(int no) {
 		 sessionTemplate.update("returnig.updatePs",no);
 	}
-	public void updatePi(int no) {
-		sessionTemplate.update("returnig.updatePi",no);
+	public int updatePi(int no) {
+		return sessionTemplate.update("returnig.updatePi",no);
 	}
-	public void updatePb(int no) {
-		sessionTemplate.update("returnig.updatePb",no);
+	public int updatePb(int no) {
+		return sessionTemplate.update("returnig.updatePb",no);
 	}
 	public int delete(ReturningVo vo) {
 		return sessionTemplate.delete("returnig.delete", vo);
@@ -58,5 +58,8 @@ public class ReturningDao {
 	}
 	public void updateiopsno(ReturningVo vo) {
 		sessionTemplate.update("returnig.updateiopsno",vo);
+	}
+	public List<ReturningVo> selectAlladmin(ReturningVo vo){
+		return sessionTemplate.selectList("returnig.selectAlladmin",vo);
 	}
 }

@@ -4,7 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+ <script src="/bsp/js/script.js"></script>
+
 </head>
+<script type="text/javascript">
+
+
+function check() {
+	if ($("#allChk").prop('checked')) {
+		for (var i=0; i<$('input[name="no"]').length; i++)
+		$('input[name="no"]').eq(i).prop('checked', 'checked');
+	} else {
+		for (var i=0; i<$('input[name="no"]').length; i++)
+		$('input[name="no"]').eq(i).prop('checked', '');
+	}
+}
+</script>
 <body> 
 <div id="wrap">
 	<!-- canvas -->
@@ -25,15 +40,15 @@
 					<div id="bbs">
 						<div id="blist">
 							<p><span><strong>총 ${fboardVo.totCount }개</strong>  |  ${fboardVo.reqPage}/${fboardVo.totPage }페이지</span></p>
-							<form name="frm" id="frm" action="process.do" method="post">
+							<form name="frm" id="frm" action="delete2.do" method="post">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 								<col width="80px" />
 								<col width="80px" />
 	                            <col width="*" />
 	                            <col width="100px" />
-	                            <col width="200px" />
-	                            <col width="80px" />
+	                            <col width="190px" />
+	                            <col width="90px" />
 								</colgroup>
 								<thead>
 									<tr>
@@ -42,13 +57,13 @@
 										<th scope="col">제목</th> 
 										<th scope="col">작성자</th> 
 										<th scope="col">작성일</th> 
-										<th scope="col" class="last">조회수</th>
+										<th scope="col" class="last">분류</th>
 									</tr>
 								</thead>
 								<tbody>
 								<c:forEach var="vo" items="${list }">
 									<tr>
-								<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+								<td class="first"><input type="checkbox" name="no" id="no" value="${vo.faq_no}"/></td>
 								<td>${vo.faq_no }</td>
                                 <td class="txt_l" style="text-align: left;">
                                     <a href="FAQviewAdmin.do?faq_no=${vo.faq_no }&reqPage=${fboardVo.reqPage}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">
@@ -58,7 +73,7 @@
                                     ${vo.a_id }
                                 </td>
                                 <td class="date">${vo.faq_regdate }</td>
-                                <td>${vo.faq_readcount }</td>
+                                <td>[${vo.faq_cate}]</td>
 									</tr>
 								</c:forEach>
 								</tbody>
@@ -66,7 +81,7 @@
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" action="delete2.do"><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="groupDel('no');"><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
 									<a class="wbtn" href="FAQwriteAdmin.do"><strong>등록</strong> </a>

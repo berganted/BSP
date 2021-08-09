@@ -59,7 +59,7 @@
 											<td><a href="">${vo.pb_no }</a></td>
 											<td>${vo.b_title }/ ${vo.returning_amount}</td>
 											<td>${vo.rd_option }</td>
-											<td>${vo.refund_no }</td>
+											<td>${vo.refund_info }</td>
 											<td><input type="hidden" value="${vo.ps_no }"> <select name="ps_no">
 													<c:forEach var="op" items="${op }">
 														<option value="${op.ps_no }"

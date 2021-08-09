@@ -179,7 +179,7 @@
 				success : function(res) {
 					if (res.trim() == 'true') {
 						alert('정상적으로 가입되었습니다.');
-						location.href = '/bsp/index.do';
+						location.href = '/bsp/sample/index.do';
 					} else {
 						alert('등록실패');
 					}

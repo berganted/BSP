@@ -4,8 +4,64 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
+ <script src="/bsp/js/script.js"></script>
 </head>
+<script>
+function groupDel() {
+	var cnt = 0;
+for(var i=0; i<$('input[name=no]').length;i++){
+	if($('input[name=no]').eq(i).prop('checked')){
+		cnt++;
+		break;
+	}
+}
+if( cnt == 0 ){
+	alert('하나 이상 체크해 주세요');
+}else{
+	if(confirm('삭제하시겠습니까?')){
+		$('#frm').submit();
+	}
+}
+}
+function selectAll(selectAll)  {
+  const checkboxes 
+     = document.getElementsByName('no');
+  
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = selectAll.checked
+  })
+}
+function checkSelectAll()  {
+  // 전체 체크박스
+  const checkboxes 
+    = document.querySelectorAll('input[name="no"]');
+  // 선택된 체크박스
+  const checked 
+    = document.querySelectorAll('input[name="no"]:checked');
+  // select all 체크박스
+  const selectAll 
+    = document.querySelector('input[name="allChk"]');
+  
+  if(checkboxes.length === checked.length)  {
+    selectAll.checked = true;
+  }else {
+    selectAll.checked = false;
+  }
+
+}
+
+function check() {
+	if ($("#allChk").prop('checked')) {
+		for (var i=0; i<$('input[name="no"]').length; i++)
+		$('input[name="no"]').eq(i).prop('checked', 'checked');
+	} else {
+		for (var i=0; i<$('input[name="no"]').length; i++)
+		$('input[name="no"]').eq(i).prop('checked', '');
+	}
+}
+</script>
 <body> 
+
 <div id="wrap">
 	<!-- canvas -->
 	<div id="canvas">
@@ -26,6 +82,7 @@
 						<div id="blist">
 							<p><span><strong>총 ${boardVo.totCount }개</strong>  |  ${boardVo.reqPage}/${boardVo.totPage }페이지</span></p>
 							<form name="frm" id="frm" action="process.do" method="post">
+							<input type="hidden" id="admin" value="${adminInfo.empower }">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 								<col width="80px" />
@@ -37,7 +94,7 @@
 								</colgroup>
 								<thead>
 									<tr>
-										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="check(this, document.frm.no)"/></th>
+										<th scope="col" class="first"><input type="checkbox" name="allChk" id="allChk" onClick="selectAll(this)"/></th>
 										<th scope="col">번호</th>
 										<th scope="col">제목</th> 
 										<th scope="col">작성자</th> 
@@ -69,10 +126,9 @@
 							</form>
 							<div class="btn">
 								<div class="btnLeft">
-									<a class="btns" href="#" onclick=""><strong>삭제</strong> </a>
+									<a class="btns" href="#" onclick="groupDel();"><strong>삭제</strong> </a>
 								</div>
 								<div class="btnRight">
-									<a class="wbtn" href="write.do"><strong>등록</strong> </a>
 								</div>
 							</div>
 							<!--//btn-->

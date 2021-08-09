@@ -139,6 +139,15 @@ public class OrderServiceimpl implements OrderService {
 		return dao.wantReturning(vo);
 	}
 
+	@Override
+	public int wantReturningcount(OrderVo vo) {
+		return dao.wantReturningcount(vo);
+	}
+
+	
+		 
+	
+
 
 
 

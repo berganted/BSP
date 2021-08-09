@@ -26,11 +26,11 @@
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리 기본내용입니다.">
 								<colgroup>
 									<col width="10%" />
-									<col width="15%" />
+									<col width="*" />
 									<col width="10%" />
 									<col width="15%" />
-									<col width="25%" />
-									<col width="25%" />
+									<col width="15%" />
+									<col width="15%" />
 								</colgroup>
 								<tbody>
 									<tr>
@@ -49,16 +49,8 @@
 									</tr>
 									<tr>
 										<th scope="row"><label for="">내용</label></th>
-										<td colspan="10">
+										<td colspan="10" height="300px">
 											${vo.q_content }
-										</td>
-									</tr>
-									<tr>
-										<th scope="row"><label for="">첨부파일</label></th>
-										<td colspan="10">
-												<div class="weidtFile">
-													<p><a href="" target="_blank">test.gif</a><br />
-												</div>
 										</td>
 									</tr>
 								</tbody>
@@ -68,8 +60,8 @@
 									<a class="btns" href="index.do"><strong>목록</strong></a>
 								</div>
 								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;" href=""><strong>수정</strong></a>
-									<a class="btns" style="cursor:pointer;" href=""><strong>답변</strong></a>
+									<a class="btns" style="cursor:pointer;" href="edit.do?q_no=${vo.q_no}"><strong>수정</strong></a>
+									<a class="btns" style="cursor:pointer;" href="reply.do?q_no=${vo.q_no }"><strong>답변</strong></a>
 								</div>
 							</div>
 							<!--//btn-->

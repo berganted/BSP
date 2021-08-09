@@ -204,5 +204,12 @@
 		WHERE PI .ps_no = 10;
 		</select>
 		
+		<select id="wantReturningcount" resultType="int" parameterType="order.OrderVo">
+		SELECT count(*)as count FROM  product_io AS PI 
+		JOIN book ON PI.b_no = book.b_no
+		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
+		WHERE PI .ps_no = 10;
+		</select>
+		
 		
 	</mapper>

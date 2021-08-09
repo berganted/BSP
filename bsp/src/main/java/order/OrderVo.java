@@ -36,6 +36,7 @@ public class OrderVo extends CommonVo {
 	private String m_name;
 	private String m_email;
 	private String m_email_d;
+	
 
 	public  OrderVo() {
 		

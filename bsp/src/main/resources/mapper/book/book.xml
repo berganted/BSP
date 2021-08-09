@@ -13,18 +13,21 @@
 		</where>
 </sql>
 	
-<!--  	<sql id="bookwhere">
+ 	<sql id="bookadwhere">
 		<where>
-				<if test="sval != null and sval !=''">
-					<if test="stype == 'all'">
-					b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
+			<if test="sval != null and sval !=''">
+				<if test="stype == 'all'">
+					 b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_stock LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
 				</if>
 				<if test="stype != 'all'">
 					${stype} LIKE '%${sval}%'
 				</if>
 			</if>
+			<if test="ctype != 0">
+				AND b_ctgno2key = '${ctype}' 
+			</if>
 		</where>
-	</sql>  -->
+	</sql>  
 	
 		<select id="countsearch" resultType="int" parameterType="book.BookVo">
 		SELECT COUNT(*) FROM book WHERE b_title LIKE '%${sval}%' OR b_publisher LIKE '%${sval}%' OR b_content LIKE '%${sval}%' OR b_author LIKE '%{sval}%'
@@ -45,11 +48,22 @@
 		
 	<select id="selectAlladmin" resultType="book.BookVo" parameterType="book.BookVo"><!-- 건들지마샘 -->
 		SELECT *,
-		(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key =book.b_ctgno2key )as b_ctgdetail
+		(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key =book.b_ctgno2key )as b_ctgdetail,
+		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
+		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
+		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
 		 FROM book
-		<include refid="bookwhere"/>
+		<include refid="bookadwhere"/>
 		 ORDER BY ${orderby} ${direct}	
 		 LIMIT ${strIdx},${pageRow} 
+	</select>
+	
+		<select id="selectAlladmincnt" resultType="int" parameterType="book.BookVo"><!-- 건들지마샘 -->
+		SELECT count(*),
+		(SELECT b_ctgdetail FROM categorysmall WHERE b_ctgno2key =book.b_ctgno2key )as b_ctgdetail
+		 FROM book
+		<include refid="bookadwhere"/>
+		  
 	</select>
 	
 

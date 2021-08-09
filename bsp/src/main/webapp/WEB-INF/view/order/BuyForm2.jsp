@@ -150,7 +150,6 @@
                             <th id="price">가격</th>
                             <th id="stock">재고</th>
                             <th id="bseq_ea">수량</th>
-                            <th id="del">삭제</th>
                         </tr>
                         <c:forEach var="list" items="${list }">
                         <tr>
@@ -165,7 +164,6 @@
                              <input   type="text" class="pop_out"name="io_amount" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
                              <button class="button_s"type ="button" onclick="fnCalCount('p',this);">+</button>  
                              </td>
-                            <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
                         </tr>
                         </c:forEach>
                         

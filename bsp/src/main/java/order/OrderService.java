@@ -28,6 +28,7 @@ public interface OrderService {
 	OrderVo lastaddr(OrderVo vo);
 	
 	List<OrderVo> wantReturning(OrderVo vo);
+	int wantReturningcount(OrderVo vo);
 //ADMIN
 	List<OrderVo> selectAdmin(OrderVo vo);
 	List<OrderVo> selectAdmindelist(OrderVo vo);

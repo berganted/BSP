@@ -13,6 +13,7 @@ public class CommonVo {
 	protected int pageRange;
 	private String stype;
 	private String sval;
+	private int ctype;
 	protected String orderby; // 정렬 컬럼
 	protected String direct; //오름차순 내림차순
 	private String filename_org;
@@ -32,11 +33,19 @@ public class CommonVo {
 		this.pageRow = 5;
 		this.reqPage = 1;
 		this.pageRange = 5;
+		this.ctype=0;
 
 		this.orderby ="q_regdate";
 		this.direct = "DESC";
 	}
 	
+	public int getCtype() {
+		return ctype;
+	}
+	
+	public void setCtype(int ctype) {
+		this.ctype = ctype;
+	}
 	public String getIsDel() {
 		return isDel;
 	}

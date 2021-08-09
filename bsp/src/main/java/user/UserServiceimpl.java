@@ -77,7 +77,9 @@ public class UserServiceimpl implements UserService {
 			uv.setM_pwd(tempPwd);
 			dao.updateTempPwd(uv);
 			//이메일 전송
-			SendMail.sendMail("cksgh901@naver.com", uv.getM_email()+'@'+uv.getM_email_d(), "임시비밀번호입니다.", "임시비밀번호:"+tempPwd);
+			SendMail.sendMail("cksgh901@naver.com", uv.getM_email()+'@'+uv.getM_email_d(),
+					"BSP 비밀번호 찾기 서비스입니다.",
+					uv.getM_name()+"님에 임시비밀번호는"+tempPwd+"입니다.");
 			
 		}
 		

@@ -31,7 +31,6 @@
                    <th>원주문번호</th>
                    <th>상품명/수량</th>
                    <th>회송방법</th>
-                   <th>환불방법</th>
                    <th>처리상태</th>
                </tr>
                <tr>
@@ -39,9 +38,8 @@
 					<td>${vo.returning_category }</td>
 					<td>${vo.returning_no }</td>
 					<td><a href="">${vo.pb_no }</a></td>
-					<td>${vo.b_title } / ${vo.returning_amount}</td>
+					<td>${vo.b_title } / ${vo.returning_amount}권</td>
 					<td>${vo.rd_option }</td>
-					<td>${vo.refund_info }</td>
 					<td>${vo.ps_title }</td>
                </tr>
            </table>
@@ -52,7 +50,7 @@
             	<th>이미지</th>
                 <th>상품명</th>
                 <th>구입 가격</th>
-                <th>반품 완료 수량</th>
+                <th>반품 수량</th>
                 <th>신청 수량</th>
             </tr>
            <c:forEach var="vo" items="${detail2}">
@@ -73,23 +71,21 @@
            <table id="return_list_detil_tb">
             <tr>
                 <th>원결제 방법</th>
-                <td colspan="3">${vo.pb_payno}</td>
+                <td colspan="3">
+                		<c:if test="${vo.pb_payno == 0}">무통장 입금</c:if>
+                    	<c:if test="${vo.pb_payno == 1}">실시간계좌이체</c:if> 
+                    	<c:if test="${vo.pb_payno == 2}">카트결제</c:if> 
+                </td>
             </tr>
             <tr>
                 <th>환불 요청정보</th>
                 <td>현금 신한/110-4235-66998/전나나</td>
-                <th>환불 완료 정보</th>
+                <th>환불 정보</th>
                 <td>현금</td>
             </tr>
             <tr>
                 <th>반품 신청액</th>
-                <td>6,300원</td>
-                <th>실 반품액</th>
-                <td> </td>
-            </tr>
-            <tr>
-                <th>반송비 차감액</th>
-                <td>2,000원</td>
+                <td >6,300원</td>
                 <th>환불 예정액</th>
                 <td>4,300원 </td>
             </tr>

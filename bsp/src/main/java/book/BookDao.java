@@ -147,4 +147,7 @@ public class BookDao {
 	public List<BookVo> newBook(BookVo vo) {
 		return sqlSession.selectList("book.newBook", vo);
 	}
+	public int selectAlladmincnt(BookVo vo) {
+		return sqlSession.selectOne("book.selectAlladmincnt",vo);
+	}
 }

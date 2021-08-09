@@ -55,29 +55,28 @@ function openZipSearchRT() {
                 <hr>
                  <div class="hwrap"><h4>반품예정상품</h4></div>
                 <table id="retrn_product" class="retrn_tb"  style="width: 80%"> <!-- 주소랑 같은 기능 -->
-                        <tr>
+                          <tr>
                             <td>주문번호</td>
                             <td>출고번호</td>
                             <td>주문상품</td>
+                            <td>금액</td>
+                            <td>수량</td>
                             <td>수령인</td>
-                            <td>주문일</td>  
-                            <td>조회</td>
-                            
-                        </tr>
-                         <c:forEach var="vo" items="${returnList}">
-          				  <tr>
+                            <td>주문일</td>
+                       	</tr>
+                         	<c:forEach var="vo" items="${returnList}">
+          			    <tr>
                 			<td><input type="text" name="pb_no" value="${vo.pb_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td ><input type="text" name="io_no" value="${vo.io_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
+                			<td><input type="text" name="io_no" value="${vo.io_no}" style="border:0 solid black; text-align: center; font: 16px"></td>
                			    <td><input type="text" name="b_title" value="${vo.b_title}" style="border:0 solid black; text-align: center; font: 16px"></td>
+               			    <td><input type="text" name="b_price" value="${vo.b_price}원 " style="border:0 solid black; text-align: center; font: 16px"></td>
+               			    <td><input type="text" name="io_amount" value="${vo.io_amount} " style="border:0 solid black; text-align: center; font: 16px"></td>
                			    <td><input type="text" name="pb_resname" value="${vo.pb_resname }" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a>
-                			 	<input type="hidden" name="b_no" value="${vo.b_no}" >
-            			 		<input type="hidden" name="io_amount" value="${vo.io_amount}" >
+                			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px">
+                				<input type="hidden" name="b_no" value="${vo.b_no}" >
             			 		<input type="hidden" name="ps_no" value="${vo.ps_no}" >
             			 		<input type="hidden" name="m_no" value="${vo.m_no}" >
                 			</td>
-            			 	
             			 </tr>
                 		</c:forEach>
                 </table><br>

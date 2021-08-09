@@ -6,21 +6,26 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 </head>
 <script type="text/javascript">
+
 function groupDel() {
+if($('#admin').val()==1){
 	var cnt = 0;
-for(var i=0; i<$('input[name=ad_no]').length;i++){
-	if($('input[name=ad_no]').eq(i).prop('checked')){
-		cnt++;
-		break;
+	for(var i=0; i<$('input[name=ad_no]').length;i++){
+		if($('input[name=ad_no]').eq(i).prop('checked')){
+			cnt++;
+			break;
+			}
+		}
+		if( cnt == 0 ){
+			alert('하나 이상 체크해 주세요');
+		}else{
+			if(confirm('삭제하시겠습니까?')){
+				$('#frm').submit();
+				}
+		}
+	}else{
+		alert('상위 관리자에게 문의하세요');
 	}
-}
-if( cnt == 0 ){
-	alert('하나 이상 체크해 주세요');
-}else{
-	if(confirm('삭제하시겠습니까?')){
-		$('#frm').submit();
-	}
-}
 }
 function selectAll(selectAll)  {
   const checkboxes 
@@ -95,6 +100,7 @@ function checkSelectAll()  {
 								</form>
 							<span><strong>총 ${bookVo.totCount }개</strong>  |  ${bookVo.reqPage }/${bookVo.totPage }</span>
 							<form name="frm" id="frm" action="grouDelete.do" method="post">
+							<input type="hidden" id="admin" value="${adminInfo.empower }">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" summary="관리자 관리목록입니다.">
 								<colgroup>
 									<col class="w3" />

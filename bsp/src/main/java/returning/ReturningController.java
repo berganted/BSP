@@ -13,6 +13,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import order.OrderService;
+import order.OrderVo;
+import user.UserVo;
 
 @Controller
 public class ReturningController {
@@ -66,7 +68,9 @@ public class ReturningController {
 		}
 
 	@RequestMapping("/returning/list.do")
-	public String ReturnOrReplaceList(Model model, ReturningVo vo) {
+	public String ReturnOrReplaceList(Model model, ReturningVo vo,HttpSession sess) {
+		UserVo uv = (UserVo) sess.getAttribute("userInfo");
+		vo.setM_no(uv.getM_no());
 		model.addAttribute("RList", service.selectAll(vo));
 		return "returning/ReturnOrReplaceList";
 	}
@@ -81,7 +85,7 @@ public class ReturningController {
 
 	/* 반품 insert */
 	@RequestMapping("/returning/insert.do")
-	public String insert(Model model, ReturningVo vo, HttpServletRequest req) {
+	public String insert(Model model, ReturningVo vo,OrderVo ov, HttpServletRequest req) {
 		String[] no = req.getParameterValues("b_no"); 
 		String[] ano = req.getParameterValues("io_amount") ;
 		String[] ino = req.getParameterValues("io_no") ;
@@ -95,6 +99,9 @@ public class ReturningController {
 			service.updatePs(vo.getReturning_no());
 			service.updatePi(vo.getIo_no());
 			System.out.println(no[i]);
+		}
+		if(Oservice.wantReturningcount(ov) == 0) {
+			service.updatePb(vo.getPb_no());
 		}
 		if (r > 0) {
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");

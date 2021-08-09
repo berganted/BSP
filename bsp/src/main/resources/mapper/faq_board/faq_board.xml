@@ -38,8 +38,8 @@
 	</update>  
 	 
 	<insert id="insert" parameterType="faq_board.FboardVo">
-		INSERT INTO faq_board (faq_no, faq_cate, faq_title, faq_content, a_id, faq_regdate, faq_readcount) 
-		VALUES (#{faq_no},#{faq_cate}, #{faq_title}, #{faq_content}, #{a_id}, NOW(), #{faq_readcount}) 
+		INSERT INTO faq_board ( faq_cate, faq_title, faq_content, a_id, faq_regdate, faq_readcount) 
+		VALUES (#{faq_cate}, #{faq_title}, #{faq_content}, #{a_id}, NOW(), #{faq_readcount}) 
 	</insert>
 	
 	<update id="update" parameterType="faq_board.FboardVo">

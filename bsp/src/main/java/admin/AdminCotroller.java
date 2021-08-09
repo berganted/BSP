@@ -62,7 +62,6 @@ public class AdminCotroller {
 	@RequestMapping("admin/product/index.do")
 	public String productIndex(BookVo vo , Model model) {
 		model.addAttribute("ctg", bservice.ctg(vo));
-		vo.setDirect("asc");
 		model.addAttribute("list", bservice.selectAlladmin(vo));
 		
 		return "admin/product/index";
@@ -78,7 +77,7 @@ public class AdminCotroller {
 //반품 리스트
 	@RequestMapping("admin/retune/index.do")
 	public String retuneIndex(ReturningVo vo , Model model) {
-		model.addAttribute("list", rservice.selectAll(vo));
+		model.addAttribute("list", rservice.selectAlladmin(vo));
 		
 		return "admin/retune/index";
 	}
@@ -296,5 +295,46 @@ public class AdminCotroller {
 		model.addAttribute("url", "index.do?orderby=b_regdate");
 		return "include/alert";		
 	}
-	
+	//보드 수정폼
+	@RequestMapping("admin/board/edit.do")
+	public String edit(Model model, BoardVo vo) {
+		model.addAttribute("vo", boservice.edit(vo));
+		return "admin/board/edit"; 
+	}
+	@RequestMapping("admin/board/update.do")
+	public String update(Model model, BoardVo vo, HttpServletRequest req) { // , @RequestParam MultipartFile file
+		int r = boservice.update(vo);
+		// r > 0 : 정상 -> alert -> 목록으로 이동
+		// r == 0 : 비정상 -> alert -> 이전페이지로 이동
+		if (r > 0) {
+			model.addAttribute("msg", "정상적으로 수정되었습니다.");
+			model.addAttribute("url", "index.do");
+		} else {
+			model.addAttribute("msg", "수정실패");
+			model.addAttribute("url", "edit.do?q_no="+vo.getQ_no());
+		}
+		return "include/alert";
+	}
+	@RequestMapping("admin/board/reply.do")
+	public String board(Model model, BoardVo vo) {
+		BoardVo rv = boservice.detail(vo);
+		model.addAttribute("q_gno", rv.getQ_gno());
+		model.addAttribute("q_ono", rv.getQ_ono());
+		model.addAttribute("q_nested", rv.getQ_nested());
+		
+		return "admin/board/reply";
+	}
+	@RequestMapping("/admin/board/insertReply.do")
+	public String insertReply(Model model, BoardVo vo, HttpServletRequest req) {
+		vo.setM_no(2);
+		int r = boservice.insertReply(vo);
+		if (r > 0) {
+			model.addAttribute("msg", "정상적으로 등록되었습니다.");
+			model.addAttribute("url", "index.do");
+		} else {
+			model.addAttribute("msg", "등록실패");
+			model.addAttribute("url", "board_write.do");
+		}
+		return "include/alert";
+	}
 }

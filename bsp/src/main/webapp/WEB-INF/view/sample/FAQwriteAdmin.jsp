@@ -30,13 +30,13 @@
     
                 <div class="bbs">
                <form method="post" name="frm" id="frm" action="insert2.do" enctype="multipart/form-data">
-                <input type="hidden" name="m_no" value="${userInfo.m_no }">    
+               	<input type="hidden" name="a_id" value="${adminInfo.a_id }">
                     <table class="board_write">
                         <tbody>
                         <tr>
                             <th>제목</th> 
                             <td>
-                                <input type="text" name="q_title" id="title" class="wid100" value="" style="width: 500px"/>
+                                <input type="text" name="faq_title" id="title" class="wid100" value="" style="width: 500px"/>
                                 <select name="faq_cate" id="faq_cate">
 											    <option value="주문">주문</option>
 											    <option value="배송">배송</option>
@@ -48,14 +48,8 @@
                         <tr>
                             <th>내용</th>
                             <td>
-                                <textarea name="q_content" id="content" style="width:100%"></textarea>
+                                <textarea name="faq_content" id="content" style="width:100%"></textarea>
                             </td>
-                        </tr>
-                        <tr>
-                        	<th>파일첨부</th>
-                        	<td>
-                        		<input type="file" name="file">
-                        	</td>
                         </tr>
                         </tbody>
                     </table>

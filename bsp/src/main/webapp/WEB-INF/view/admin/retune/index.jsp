@@ -99,7 +99,7 @@
 													<td>${list.pb_no }</td>
 													<td>${list.returning_amount}</td>
 													<td>${list.rd_option }</td>
-													<td>${list.refund_no }</td>
+													<td>${list.refund_info }</td>
 													<td>${list.ps_title }</td>
 													<td>${list.returning_category }</td>
 												</tr>

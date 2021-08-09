@@ -67,9 +67,10 @@ public class ReturningServiceimpl implements ReturningService {
 		dao.updatePs(no);
 	}
 	@Override
-	public void updatePi(int no) {
-		dao.updatePi(no);
+	public int updatePi(int no) {
+		return dao.updatePi(no);
 	}
+	
 	@Override
 	public List<ReturningVo> selectop(ReturningVo vo) {
 		return dao.selectop(vo);
@@ -78,6 +79,29 @@ public class ReturningServiceimpl implements ReturningService {
 	public int updatepsno(ReturningVo vo) {
 		dao.updateiopsno(vo);
 		return  dao.updatepsno(vo);
+	}
+	@Override
+	public int updatePb(int no) {
+		return dao.updatePb(no);
+	}
+	@Override
+	public List<ReturningVo> selectAlladmin(ReturningVo vo) {
+		int totCount = dao.count(vo); // 총갯수
+		// 총페이지수
+		int totPage = totCount / vo.getPageRow();
+		if (totCount % vo.getPageRow() > 0) totPage++;
+		// 시작페이지
+		int strPage = (vo.getReqPage()-1)/vo.getPageRange()
+						*vo.getPageRange()+1;
+		int endPage = strPage+vo.getPageRange()-1;
+		if (endPage > totPage) endPage = totPage;
+		
+		vo.setStrPage(strPage);
+		vo.setEndPage(endPage);
+		vo.setTotCount(totCount);
+		vo.setTotPage(totPage);
+		System.out.println(vo);
+		return dao.selectAlladmin(vo);
 	}
 
 

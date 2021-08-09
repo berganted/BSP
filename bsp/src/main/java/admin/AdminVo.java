@@ -6,6 +6,7 @@ public class AdminVo extends CommonVo {
 	private String a_id;
 	private String a_pwd;
 	private String a_name;
+	private int empower;
 	
 	public AdminVo() {
 		this.pageRow = 10;
@@ -15,6 +16,14 @@ public class AdminVo extends CommonVo {
 		this.direct = "DESC";
 	}
 	
+	public int getEmpower() {
+		return empower;
+	}
+
+	public void setEmpower(int empower) {
+		this.empower = empower;
+	}
+
 	public String getA_name() {
 		return a_name;
 	}

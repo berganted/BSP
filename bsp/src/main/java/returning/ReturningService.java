@@ -18,12 +18,14 @@ public interface ReturningService {
 	int insertRd(ReturningVo vo);
 	int insertRt(ReturningVo vo);
 	void updatePs(int no);
-	void updatePi(int no);
+	int updatePi(int no);
+	int updatePb(int no);
 	int delete(ReturningVo vo);
 	
 	List<ReturningVo> selectop(ReturningVo vo);
 	int updatepsno(ReturningVo vo);
 	
+	List<ReturningVo> selectAlladmin(ReturningVo vo);
 	
 
 

@@ -46,7 +46,16 @@ public class ReturningVo extends CommonVo{
 	private int b_price;
 	
 	private int[] io_nos; //반품신청서 넘어갈때 사용할 배열
+	private int refund_price; //환불 금액
 	
+	public int getRefund_price() {
+		return refund_price;
+	}
+
+	public void setRefund_price(int refund_price) {
+		this.refund_price = refund_price;
+	}
+
 	public  ReturningVo() {
 		
 		this.pageRow = 10;

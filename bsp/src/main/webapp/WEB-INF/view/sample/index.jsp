@@ -61,14 +61,14 @@ $(function(){
                 <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
                     	<div class="index_ad">AD</div>
-                        <img class="blah" src="/bsp/ad/${vo.ad_img }" alt="">
+                        <img  src="/bsp/ad/${vo.ad_img }">
                         <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                     </div>
                  </c:forEach>  
                   <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
                     	<div class="index_ad">AD</div>
-                        <div><img class="blah" src="/bsp/ad/${vo.ad_img }" alt=""></div>
+                        <img src="/bsp/ad/${vo.ad_img }">
                         <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>                        
                    	</div>  
                   </c:forEach>                   

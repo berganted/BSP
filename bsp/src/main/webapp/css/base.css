@@ -380,8 +380,8 @@ fieldset{
     
 }
 .reg_info{
-    height: 200px;
-    width: 50%;
+    height: 400px;
+    width: 100%;
     margin: 0 auto;
     line-height: 200px;
     border: 1px solid black;

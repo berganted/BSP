@@ -30,7 +30,7 @@
 		JOIN book
 		ON product_io.b_no = book.b_no
 		JOIN processing_status PS
-		ON product_io.ps_no=ps.ps_no
+		ON product_io.ps_no=PS.ps_no
 		JOIN user u
 		ON product_buy.m_no=u.m_no
 		WHERE product_buy.m_no=#{m_no}
@@ -194,7 +194,7 @@
 		</update>
 		<!-- 최근배송지 -->
 		<select id="lastaddr" parameterType="order.OrderVo" resultType="order.OrderVo">
-			SELECT * FROM bsp.product_buy WHERE m_no=#{m_no} ORDER BY pb_orderdate desc limit 1;		
+			SELECT * FROM product_buy WHERE m_no=#{m_no} ORDER BY pb_orderdate desc limit 1;		
 		</select>
 		<!-- 반품신청 할 수 있는 리스트 -->
 		<select id="wantReturning" resultType="order.OrderVo" parameterType="order.OrderVo">

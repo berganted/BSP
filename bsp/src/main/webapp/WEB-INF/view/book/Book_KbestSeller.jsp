@@ -48,7 +48,6 @@
                         </c:if>
                        </ul> 
                         <select name="pageRow" id="divnum" onchange="sendPageRow();">
-                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
                             <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
                             <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
                             <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 

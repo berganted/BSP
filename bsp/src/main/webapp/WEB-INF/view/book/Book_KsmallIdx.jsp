@@ -48,7 +48,6 @@
                     
                      <div class="divPlace">
                         <select name="pageRow" id="divnum" onchange="sendPageRow();">
-                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
                             <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
                             <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
                             <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
@@ -57,17 +56,18 @@
                     <br>
                     <br>
                     <hr>
+                    
                  <!-- 페이지처리  -->                      
                     <div class="pagenate1 clear" style="text-align: center;">
                         <ul class='smallpaging'> 
                         <c:if test="${bookVo.strPage > bookVo.pageRange}">
-                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}">  </a></li>
+                        <li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.strPage-1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}">  < </a></li>
                         </c:if>
                         <c:forEach var="rp" begin="${bookVo.strPage}" end="${bookVo.endPage }">
                             <li><a href='Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${rp}&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}' <c:if test="${rp==bookVo.reqPage }">class='current'</c:if>>${rp }</a></li>
                         </c:forEach>
                         <c:if test="${bookVo.totPage > bookVo.endPage}">
-                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}">  </a></li>
+                        	<li><a href="Book_KsmallIdx.do?b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}&reqPage=${bookVo.endPage+1 }&orderby=${bookVo.orderby}&direct=${param.direct}&pageRow=${param.pageRow}"> >  </a></li>
                         </c:if>
                         </ul> 
                     </div>

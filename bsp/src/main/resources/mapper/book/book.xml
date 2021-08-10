@@ -336,7 +336,7 @@
 	</update>
 <!-- 광고 상세 -->
 	<select id="detailAD" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM AD WHERE ad_no=#{ad_no}
+		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM ad WHERE ad_no=#{ad_no}
 	</select>
 <!-- 카테고리 -->
 	<select id="ctg" resultType="book.BookVo">

@@ -297,10 +297,9 @@ $(function(){
 				<div id="reviewArea"></div>
 			</div>
 		</div>
-	<%@ include file="/WEB-INF/view/include/quick.jsp"%>
+	 	<jsp:include page="../include/quick.jsp"></jsp:include>
 	</div>
-	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
-
+		<jsp:include page="../include/footer.jsp"></jsp:include>	
 	
 
 </body>

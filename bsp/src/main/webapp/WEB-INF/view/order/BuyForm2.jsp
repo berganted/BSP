@@ -14,7 +14,8 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
-    <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->
+    <script src="/bsp/js/yesol.js"></script> 
+    <script src="/bsp/js/big.js"></script> <!-- 예솔 js -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
     $(function(){
@@ -150,11 +151,11 @@
                             <th id="price">가격</th>
                             <th id="stock">재고</th>
                             <th id="bseq_ea">수량</th>
-                            <th id="del">삭제</th>
                         </tr>
                         <c:forEach var="list" items="${list }">
                         <tr>
-                            <td style="text-align: center;"><input type="image" src="/bsp/img/${list.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
+                            <td style="text-align: center;"><input type="hidden" class="abc" value="${list.b_imgmain }"/><a href="Book_detail.do?b_no=${list.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                            	<img class="blah" src ="/bsp/img/${list.b_imgmain }" alt="${list.b_title }"title="${list.b_title }" style="height: 200px; width: 100px;"></a></td>
 
                             <td>${list.b_title } <input type="hidden" name="b_no" value="${list.b_no }"/>
                             					 <input type="hidden" name=cart_no value="${list.cart_no }"/></td>
@@ -165,7 +166,6 @@
                              <input   type="text" class="pop_out"name="io_amount" value="${list.cart_cnt }" readonly="readonly" style="width: 50px; text-align: center;">
                              <button class="button_s"type ="button" onclick="fnCalCount('p',this);">+</button>  
                              </td>
-                            <td id="del"><input class="button_s" type="button" value="X" onclick="deleteRow(this);"></td>
                         </tr>
                         </c:forEach>
                         

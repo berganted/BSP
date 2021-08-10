@@ -260,9 +260,6 @@ public class AdminCotroller {
 	@RequestMapping("/admin/login.do")
 	public String login(AdminVo vo, HttpSession sess, HttpServletResponse res, HttpServletRequest req, Model model) {
 		AdminVo v = service.login(vo);
-		System.out.println(vo.getA_id());
-		System.out.println(vo.getA_pwd());
-		System.out.println(vo.getA_name());
 		if (v== null) {
 			model.addAttribute("msg", "아이디와 비밀번호를 확인해 주세요");
 			model.addAttribute("url", "/bsp/admin");

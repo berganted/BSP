@@ -16,6 +16,7 @@
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->
+    <script src="/bsp/js/big.js"></script> 
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
     $(function(){
@@ -141,7 +142,10 @@
                             <th id="bseq_ea">수량</th>
                         </tr>
                         <tr>
-                            <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
+                            <td style="text-align: center;">
+                            	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                            	<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 250px; width: 180px;"></a>
+                            </td>
                             <td>${vo.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
                             <td id="price"><span class="b_price">${vo.b_price }</span>원/<span class=point>${vo.b_point }</span>원
                             

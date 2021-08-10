@@ -218,18 +218,14 @@
 
 <!-- index.do 광고 -->	
 	<select id="selectAll5" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,
-		(SELECT b_no FROM book WHERE ad_no = ad.ad_no) as b_no,
-		(SELECT b_title FROM book WHERE ad_no=ad.ad_no) as b_title
-		FROM ad where ad_no between 1 and 2 ORDER BY rand() LIMIT 1
+		SELECT * FROM ad left join book on ad.b_no=book.b_no
+		 where ad.ad_no between 1 and 2 ORDER BY rand() LIMIT 1
 		<include refid="bookwhere"/>
 	</select>
 	
 	<select id="selectAll6" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,
-		(SELECT b_no FROM book WHERE ad_no = ad.ad_no) as b_no,
-		(SELECT b_title FROM book WHERE ad_no=ad.ad_no) as b_title
-		FROM ad where ad_no between 3 and 4 ORDER BY rand() LIMIT 1 
+		SELECT * FROM ad left join book on ad.b_no=book.b_no
+		where ad.ad_no between 3 and 4 ORDER BY rand() LIMIT 1 
 		<include refid="bookwhere"/>
 	</select>
 		
@@ -336,7 +332,7 @@
 	</update>
 <!-- 광고 상세 -->
 	<select id="detailAD" resultType="book.BookVo" parameterType="book.BookVo">
-		SELECT *,(SELECT b_no FROM book WHERE ad_no=ad.ad_no)as b_no,(SELECT b_title FROM book WHERE ad_no=ad.ad_no)as b_title FROM AD WHERE ad_no=#{ad_no}
+		SELECT * FROM ad JOIN   book ON book.b_no=ad.b_no AND ad.ad_no=#{ad_no}
 	</select>
 <!-- 카테고리 -->
 	<select id="ctg" resultType="book.BookVo">

@@ -136,8 +136,9 @@
 											</tr>
 											<tr>
 												<th scope="row"><label for="">카테고리</label></th>
-												<td colspan=""><select name="ctg1" id="ctg1"
+												<td colspan=""><select name="b_ctgno1" id="ctg1"
 													style="width: 90%">
+													
 														<c:if test="${vo.b_ctgno1 == 1 }">
 															<option value="1" selected="selected">국내도서</option>
 															<option value="2">외국도서</option>

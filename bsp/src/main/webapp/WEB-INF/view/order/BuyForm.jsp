@@ -11,8 +11,8 @@
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
     <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->

@@ -11,6 +11,7 @@
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
     <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+       <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
@@ -19,6 +20,7 @@
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
     $(function(){
+    	var bt="";
     	$('input[name=dvryOpt]').change(function(){
         	if($(this).val()==1){
         		$('#pb_zipcode').val($('#uz').val());
@@ -42,7 +44,6 @@
         		}
         	})
     	calc();
-    	bcalc();
     	$('#savedmoney').change(function(){
     		if($('#savedmoney').val() > $('#po').val() ){
     			alert('보유포인트를 초과할수 없습니다.')
@@ -71,13 +72,15 @@
     		psum += Number($(".point").eq(idx).text());
     		bsum += Number($(".pop_out").eq(idx).val());  /* 책수량 */
     		
+    		
     	});
     	$(".totalPrice").text(sum);
     	$("#total").text(sum);
     	$("#total1").val(sum);
     	$("#totPoint").val(psum);
-    	$("#bcunt").val(bsum);
-    	console.log(b_title)
+    	 bt= $('#b_title').val()+" "+"외"+(bsum-1)+"권";
+    	$("#bcunt").val(bt);
+    	
     }
   
     function fnCalCount(type, ths){
@@ -169,7 +172,7 @@
       	    	참고하세요.
       	    	나중에 포스팅 해볼게요.
       	    	*/
-      	    	name: $("#b_title").eq(0).val(),
+      	    	name: $("#bcunt").val(),
       	    	//결제창에서 보여질 이름
       	    	amount: $('input[name=pb_totalprice]').val(),
       	    	//가격
@@ -217,7 +220,7 @@
          <h1>주/문/과/정</h1>
             <form action="insert.do" method="POST" id=frm>
             <input type="hidden" name="m_no" value="${userInfo.m_no }">
-            <input type="hidden" name="bcunt" id="bcunt" value="">
+            <input type="hidden" name="bcunt" id="bcunt">
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">

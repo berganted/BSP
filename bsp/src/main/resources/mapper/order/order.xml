@@ -34,7 +34,6 @@
 		JOIN user u
 		ON product_buy.m_no=u.m_no
 		WHERE product_buy.m_no=#{m_no}
-		<include refid="orderWhere"/>
 		GROUP BY product_buy.pb_no
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}

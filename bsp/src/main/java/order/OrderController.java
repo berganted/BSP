@@ -121,7 +121,7 @@ public class OrderController {
 				
 							
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
-			model.addAttribute("url", "pay.do");
+			model.addAttribute("url", "list.do");
 		} else {
 			model.addAttribute("msg", "등록실패.");
 			model.addAttribute("url", "return.do");

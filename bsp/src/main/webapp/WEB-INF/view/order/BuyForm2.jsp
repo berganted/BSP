@@ -20,7 +20,6 @@
     <script> 
     $(function(){
     	$('input[name=dvryOpt]').change(function(){
-    		console.log($(this).val())
         	if($(this).val()==1){
         		$('#pb_zipcode').val($('#uz').val());
         		$('#pb_addr1').val($('#ua').val());
@@ -43,9 +42,8 @@
         		}
         	})
     	calc();
+    	bcalc();
     	$('#savedmoney').change(function(){
-    		console.log( $('#po').val() )
-    		console.log($('#savedmoney').val())
     		if($('#savedmoney').val() > $('#po').val() ){
     			alert('보유포인트를 초과할수 없습니다.')
     			$('#savedmoney').val('0')
@@ -61,19 +59,25 @@
     		$('#total1').val(a)
     	})
     })
+    /* 결제금액 계산 */
     function calc() {
     	var sum=0;
     	var psum=0;
+    	var bsum=0;
+    	
     	$('.b_price').each(function(){
     		var idx = $(this).index('.b_price');
     		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
     		psum += Number($(".point").eq(idx).text());
-    		console.log(psum)
+    		bsum += Number($(".pop_out").eq(idx).val());  /* 책수량 */
+    		
     	});
     	$(".totalPrice").text(sum);
     	$("#total").text(sum);
     	$("#total1").val(sum);
     	$("#totPoint").val(psum);
+    	$("#bcunt").val(bsum);
+    	console.log(b_title)
     }
   
     function fnCalCount(type, ths){
@@ -97,10 +101,6 @@
         }
     
    
-    $(function(){
-    	
-    
-    })
     //삭제 버튼 클릭시 행 삭제
     function deleteRow(ths){
         var ths = $(ths);
@@ -113,6 +113,7 @@
             return false;
         }
     }
+    
     function pointall() {
 		$('#savedmoney').val($('#po').val());
 		calc();
@@ -120,6 +121,7 @@
 		$('#total').text(a)
 		$('#total1').val(a)
     }
+    
     function openZipSearch() {
         new daum.Postcode({
              oncomplete: function (data) {
@@ -129,6 +131,79 @@
                 }
             }).open();
         }
+    
+
+    /* 아임포트 결제 */
+    $(function(){
+      	 $("#check_module").click(function () {
+      	    	var IMP = window.IMP; // 생략가능
+      	    	IMP.init('imp82310032');
+      	    	// 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용
+      	    	// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+      	    	IMP.request_pay({
+      	    	pg: 'html5_inicis', // version 1.1.0부터 지원.
+      	    	/*
+      	    	'kakao':카카오페이,
+      	    	html5_inicis':이니시스(웹표준결제)
+      	    	'nice':나이스페이
+      	    	'jtnet':제이티넷
+      	    	'uplus':LG유플러스
+      	    	'danal':다날
+      	    	'payco':페이코
+      	    	'syrup':시럽페이
+      	    	'paypal':페이팔
+      	    	*/
+      	    	pay_method: 'card',
+      	    	/*
+      	    	'samsung':삼성페이,
+      	    	'card':신용카드,
+      	    	'trans':실시간계좌이체,
+      	    	'vbank':가상계좌,
+      	    	'phone':휴대폰소액결제
+      	    	*/
+      	    	merchant_uid: 'merchant_' + new Date().getTime(),
+      	    	/*
+      	    	merchant_uid에 경우
+      	    	https://docs.iamport.kr/implementation/payment
+      	    	위에 url에 따라가시면 넣을 수 있는 방법이 있습니다.
+      	    	참고하세요.
+      	    	나중에 포스팅 해볼게요.
+      	    	*/
+      	    	name: $("#b_title").eq(0).val(),
+      	    	//결제창에서 보여질 이름
+      	    	amount: $('input[name=pb_totalprice]').val(),
+      	    	//가격
+      	    	buyer_email: $('input[name=m_email]').val(),
+      	    	buyer_name: $('input[name=pb_resname]').val(),
+      	    	buyer_tel: $('input[name=pb_restel]').val(),
+      	    	buyer_addr: $('input[name=pb_addr1]').val(),
+      	    	buyer_postcode:$('input[name=pb_zipcode]').val(),
+      	    	m_redirect_url: 'https://www.yourdomain.com/payments/complete'
+      	    	/*
+      	    	모바일 결제시,
+      	    	결제가 끝나고 랜딩되는 URL을 지정
+      	    	(카카오페이, 페이코, 다날의 경우는 필요없음. PC와 마찬가지로 callback함수로 결과가 떨어짐)
+      	    	*/
+      	    	}, function (rsp) {
+      	    	console.log(rsp);
+      	    	if (rsp.success) {
+      	    	var msg = '결제가 완료되었습니다.';
+      	    	msg += '고유ID : ' + rsp.imp_uid;
+      	    	msg += '상점 거래ID : ' + rsp.merchant_uid;
+      	    	msg += '결제 금액 : ' + rsp.paid_amount;
+      	    	msg += '카드 승인번호 : ' + rsp.apply_num;
+      	    	/* location.href="/bsp/order/buySuccess.do?pb_no="+$('#pb_no').val()+"&io_no="+$('#io_no').val(); */
+      	    	$("frm").submit();
+      	    	} else {
+      	    	var msg = '결제에 실패하였습니다.';
+      	    	msg += '에러내용 : ' + rsp.error_msg;
+      	    	}
+      	    	alert(msg);
+      	    	});
+      	    	});
+      });
+       
+       
     </script>
    
 </head>
@@ -142,9 +217,11 @@
          <h1>주/문/과/정</h1>
             <form action="insert.do" method="POST" id=frm>
             <input type="hidden" name="m_no" value="${userInfo.m_no }">
+            <input type="hidden" name="bcunt" id="bcunt" value="">
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
+                    
                         <tr>
                             <th>이미지</th>
                             <th>상품명</th>
@@ -157,8 +234,10 @@
                             <td style="text-align: center;"><input type="hidden" class="abc" value="${list.b_imgmain }"/><a href="Book_detail.do?b_no=${list.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
                             	<img class="blah" src ="/bsp/img/${list.b_imgmain }" alt="${list.b_title }"title="${list.b_title }" style="height: 200px; width: 100px;"></a></td>
 
-                            <td>${list.b_title } <input type="hidden" name="b_no" value="${list.b_no }"/>
-                            					 <input type="hidden" name=cart_no value="${list.cart_no }"/></td>
+                            <td>${list.b_title } 
+                           						 <input type="hidden" name="b_title" id="b_title" value="${list.b_title }"/>
+                            					 <input type="hidden" name="b_no" value="${list.b_no }"/>
+                            	</td>			 
                             <td id="price"><span class="b_price">${list.b_price }</span>원/<span class=point>${list.b_point }</span>원</td>
                            <td class="bseq_ea">${list.b_stock }</td>  <!--  출력할 필요는 없음 -->
                             <td id="ant">
@@ -296,8 +375,8 @@
                        </table>
                        
                             <div class="buy_submit">
-                                <input class="button_m" type="submit" value="결제" >
-                                <input class="button_m" type="reset" value="취소" >
+                               <input class="button_m" type="button" id="check_module" value="결제" >
+                                <input class="button_m" type="reset" value="취소" onclick="location.href='/bsp/order/list.do'" >
                             </div>
                 </div>    
             </form>

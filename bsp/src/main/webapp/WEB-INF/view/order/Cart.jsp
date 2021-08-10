@@ -62,7 +62,7 @@
     	
     	
     	
-    function groupDel() {
+    function groupDels() {
     	 $('#frm').attr('action','/bsp/cart/delete.do')
     	var cnt = 0;
         for(var i=0; i<$('input[name=checkOne]').length;i++){
@@ -124,7 +124,7 @@ th{height: 30px}
              <div id="cart_option" style="text-align: right; padding: 0px 20px 5px;">
                 <span id="cart">
                     <input class="button_m" type="button" name="buy_select" value="선택주문" onclick="groupOder();">
-                    <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="groupDel();">
+                    <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="groupDels();">
                     
                     </span>
             </div>

@@ -79,5 +79,8 @@
 		<update id="updateTempPwd" parameterType="user.UserVo" >
 			UPDATE user SET m_pwd = md5(#{m_pwd}) WHERE m_id=#{m_id} AND m_email=#{m_email}AND m_email_d=#{m_email_d}
 		</update>
+		<select id="selectpoint" resultType="int" parameterType="user.UserVo">
+			SELECT m_point FROM user WHERE m_no=#{m_no}
+		</select>
 		
 	</mapper>

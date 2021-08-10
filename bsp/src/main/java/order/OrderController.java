@@ -19,6 +19,7 @@ import cart.CartService;
 import cart.CartVo;
 import point.PointService;
 import point.PointVo;
+import user.UserService;
 import user.UserVo;
 
 
@@ -33,17 +34,21 @@ public class OrderController {
 	BookService bservice;
 	@Autowired
 	PointService pservice;
+	@Autowired
+	UserService uservice;
 
 	@RequestMapping("/order/buy.do")
-	public String buy(BookVo vo,OrderVo ov,Model model,HttpServletRequest req) {
+	public String buy(BookVo vo,OrderVo ov,Model model,HttpServletRequest req,HttpSession sess) {
 		 vo.setB_no(Integer.parseInt(req.getParameter("b_no")));
 		 vo.setIo_amount(Integer.parseInt(req.getParameter("io_amount")));
+		 UserVo uv = (UserVo) sess.getAttribute("userInfo");
+		 	model.addAttribute("uv",uservice.selectpoint(uv));
 			model.addAttribute("vo", bservice.deatil(vo));
 			model.addAttribute("ad",service.lastaddr(ov));
 			return "order/BuyForm";
 	}
 	@RequestMapping("/order/cartbuy.do")
-	public String cartbuy(CartVo vo,OrderVo ov,Model model,HttpServletRequest req) {
+	public String cartbuy(CartVo vo,OrderVo ov,Model model,HttpServletRequest req,HttpSession sess) {
 		String[] no = req.getParameterValues("checkOne");
 		String[] num= req.getParameterValues("pop_out");
 		List<CartVo> list  = new ArrayList<CartVo>(); 
@@ -54,6 +59,8 @@ public class OrderController {
 			rv.setCart_cnt(Integer.parseInt(num[i]));
 			list.add(rv);
 		}
+		UserVo uv = (UserVo) sess.getAttribute("userInfo");
+	 	model.addAttribute("uv",uservice.selectpoint(uv));
 		model.addAttribute("list", list);
 		model.addAttribute("ad",service.lastaddr(ov));
 		return "order/BuyForm2";

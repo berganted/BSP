@@ -261,7 +261,7 @@
                      <tr>
                         <th>* 받으시는 분</th>
                         <td>
-                            <input type="text" id="pb_resname" name="pb_resname" value="전나나 " checked ><br>
+                            <input type="text" id="pb_resname" name="pb_resname" value=" ${userInfo.m_name }" checked ><br>
                         </td>
                      </tr>
                      <tr>
@@ -308,7 +308,7 @@
                     <table  id="buy_now" style="text-align: center;">
                            <tr>
                                <td>적립금</td>
-                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${userInfo.m_point }">  원 ▷
+                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${uv }">  원 ▷
                                    <input type="text" id="savedmoney"name=p_used  value="0">
                                    <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 
                                </td>

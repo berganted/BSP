@@ -62,14 +62,12 @@ $(function(){
                     <div class="index_Ads01">
                     	<div class="index_ad">AD</div>
                         <img  src="/bsp/ad/${vo.ad_img }">
-                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
                     </div>
                  </c:forEach>  
                   <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
                     	<div class="index_ad">AD</div>
                         <img src="/bsp/ad/${vo.ad_img }">
-                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>                        
                    	</div>  
                   </c:forEach>                   
                 </div>
@@ -78,12 +76,11 @@ $(function(){
                     <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail"><a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
-                                <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
-                                 <input type="hidden"  class="abc" value="${vo.b_imgmain }"/></a>     
+                                <img  src="${vo.b_imgmain }" alt="">
                             </div>
                             <div class="index_todayDetails">
                                 <div class="index_tdContext">오늘의 책</div>
-                                ${vo.b_content }
+                               	<li style="overflow: hidden;height: 180px;"> ${vo.b_content }</li>
                                 <li>${vo.b_title } | ${vo.b_author }</li>
                             </div>
                         </div>
@@ -140,7 +137,7 @@ $(function(){
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
                         	 <a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
-                             <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
+                             <img src="${vo.b_imgmain }" alt="">
                         	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/> 
                         	</a>   
                         </div>                        
@@ -162,7 +159,7 @@ $(function(){
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
                     	<a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
-                        <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
+                        <img src="${vo.b_imgmain }" alt="">
                         <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>  
                         </a>
                     </div>

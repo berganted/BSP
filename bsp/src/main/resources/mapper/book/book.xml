@@ -283,8 +283,8 @@
 <!-- 책 상세 -->
 	<select id="detail" resultType="book.BookVo" parameterType="book.BookVo">
 		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain,
-		(select avg(r_grade)from review WHERE b_no= book.b_no )as avg,
-		(select count(r_grade)from review WHERE b_no= book.b_no )as rcnt,
+		(SELECT avg(r_grade)FROM review WHERE b_no= book.b_no )as avg,
+		(SELECT count(r_grade)FROM review WHERE b_no= book.b_no )as rcnt,
 		(SELECT sum(io_amount) FROM product_io WHERE b_no=book.b_no)as tot
 		 FROM book WHERE b_no = #{b_no}
 	</select>
@@ -300,7 +300,7 @@
 		<if test="b_imgno != 0">
 			b_imgno=#{b_imgno},
 			</if>
-			<if test="b_ctgno1 !=0">
+			<if test="b_ctgno1 != 0">
 			b_ctgno1=#{b_ctgno1},b_ctgno2key=#{b_ctgno2key},b_title=#{b_title},b_content=#{b_content},b_author=#{b_author},b_publisher=#{b_publisher}
 			,b_isbn=#{b_isbn},b_stock=#{b_stock},b_price=#{b_price},b_index=#{b_index},b_pages=#{b_pages},b_introauthor=#{b_introauthor},b_introbook=#{b_introbook}
 			,b_point=#{b_point},b_intodate=#{b_intodate}

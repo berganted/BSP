@@ -34,7 +34,6 @@
 		JOIN user u
 		ON product_buy.m_no=u.m_no
 		WHERE product_buy.m_no=#{m_no}
-		<include refid="orderWhere"/>
 		GROUP BY product_buy.pb_no
 		ORDER BY ${orderby} ${direct}
 		LIMIT ${strIdx},${pageRow}
@@ -51,7 +50,7 @@
 		JOIN book
 		ON product_io.b_no = book.b_no
 		JOIN processing_status PS
-		ON product_io.ps_no=ps.ps_no
+		ON product_io.ps_no=PS.ps_no
 		JOIN user u
 		ON product_buy.m_no=u.m_no
 		WHERE product_buy.m_no=#{m_no}
@@ -105,7 +104,7 @@
 		JOIN book
 		ON product_io.b_no = book.b_no
 		JOIN processing_status PS
-		ON product_io.ps_no=ps.ps_no
+		ON product_io.ps_no=PS.ps_no
 		JOIN user u
 		ON product_buy.m_no=u.m_no
 		<include refid="orderWhere"/>
@@ -122,7 +121,7 @@
 		join book
 		on product_io.b_no = book.b_no
 		JOIN processing_status PS
-		on product_io.ps_no=ps.ps_no
+		on product_io.ps_no=PS.ps_no
 		JOIN user u
 		on product_buy.m_no=u.m_no
         WHERE product_buy.pb_no=#{pb_no}
@@ -141,7 +140,7 @@
 		join book
 		on product_io.b_no = book.b_no
 		JOIN processing_status PS
-		on product_io.ps_no=ps.ps_no
+		on product_io.ps_no=PS.ps_no
 		JOIN user u
 		on product_buy.m_no=u.m_no
 		WHERE product_buy.pb_no=#{pb_no}
@@ -198,7 +197,7 @@
 		</select>
 		<!-- 반품신청 할 수 있는 리스트 -->
 		<select id="wantReturning" resultType="order.OrderVo" parameterType="order.OrderVo">
-		SELECT * FROM  product_io AS PI 
+		SELECT *,(SELECT b_imgmain FROM img WHERE book.b_imgno = img.b_imgno) as b_imgmain FROM  product_io AS PI 
 		JOIN book ON PI.b_no = book.b_no
 		JOIN processing_status PS ON PI.ps_no = PS.ps_no AND PI.pb_no = #{pb_no}
 		WHERE PI .ps_no = 10;

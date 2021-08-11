@@ -47,8 +47,9 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     	<!-- <property name="url" value="jdbc:mysql://localhost:3306/bsp"/> --><!-- add -->
-    	<!--  <property name="url" value="jdbc:mysql://183.111.199.157:3306/bookstoreprojec"/> -->
-    	 <property name="url" value="jdbc:mysql://localhost:3306/bookstoreprojec"/>
+    	 <property name="url" value="jdbc:mysql://183.111.199.157:3306/bookstoreprojec"/>
+    	<!-- <property name="url" value="jdbc:mysql://localhost:3306/bookstoreprojec"/>   -->
+    	<!-- <property name="url" value="jdbc:mysql://localhost:3307/bsp"/> -->
     	<property name="username" value="bookstoreprojec"/>
     	<property name="password" value="Bsp1q@w3e"/>
    </bean>
@@ -79,6 +80,12 @@
    				<mvc:mapping path="/order/cart.do"/>
    				<mvc:mapping path="/order/list.do"/>
    				<bean class="intercepter.LoginIntercepter"/>
+   		</mvc:interceptor>
+   		<mvc:interceptor>
+   			<mvc:mapping path="/admin/**"/>
+   			<mvc:exclude-mapping path="/admin"/>
+   			<mvc:exclude-mapping path="/admin/login.do"/>
+   			<bean class="intercepter.AdminIntercepter"/>
    		</mvc:interceptor>
    </mvc:interceptors>
 </beans>

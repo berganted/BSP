@@ -118,7 +118,7 @@ public class UserController {
 	public String logout(HttpSession sess, Model model) {
 		sess.invalidate();
 		model.addAttribute("msg", "로그아웃");
-		model.addAttribute("url", "/bsp/index.do");
+		model.addAttribute("url", "/bsp/sample/index.do");
 		return "include/alert";
 	}
 	@RequestMapping("/user/findidpwd.do")

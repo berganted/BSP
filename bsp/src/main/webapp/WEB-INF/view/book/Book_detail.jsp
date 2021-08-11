@@ -154,10 +154,10 @@ $(function(){
 							<span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br> 
 							<span class="detail_bookAuthor">${vo.b_author }</span>
 							&nbsp;| <span class="detail_bookPub">${vo.b_publisher }</span>
-							&nbsp;| <span class="detail_bookDate"><fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span
-								class="detail_grade"><fmt:formatNumber  value="${vo.avg }"  pattern="0.0"/>/5</span> &nbsp; <span
-								class="detail_review"><a href="#">회원리뷰(${vo.rcnt }건)</a></span> &nbsp;| <span
-								class="detail_sales">판매지수 ${vo.tot} </span>
+							&nbsp;| <span class="detail_bookDate"><fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> 
+								<span class="detail_grade"><fmt:formatNumber  value="${vo.avg }"  pattern="0.0"/>/5</span> &nbsp; 
+								<span class="detail_review"> <a href="#">회원리뷰(${vo.rcnt }건)</a></span> &nbsp;| 
+								<span class="detail_sales">판매지수 ${vo.tot} </span>
 							<hr>
 						</div>
 						<div class="bookInfo_bottom">

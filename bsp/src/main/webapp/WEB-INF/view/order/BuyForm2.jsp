@@ -197,8 +197,8 @@
                         </tr>
                         <c:forEach var="list" items="${list }">
                         <tr>
-                            <td style="text-align: center;"><input type="hidden" class="abc" value="${list.b_imgmain }"/><a href="Book_detail.do?b_no=${list.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
-                            	<img class="blah" src ="/bsp/img/${list.b_imgmain }" alt="${list.b_title }"title="${list.b_title }" style="height: 100px; width: 100px;"></a></td>
+                            <td style="text-align: center;"><input type="hidden" class="abc" value="${list.b_imgmain }"/><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                            	<img class="blah" src ="/bsp/img/${list.b_imgmain }" alt="${list.b_title }"title="${list.b_title }" style="height: 200px; width: 100px;"></a></td>
 
                             <td>${list.b_title } 
                            						 <input type="hidden" name="b_title" id="b_title" value="${list.b_title }"/>
@@ -246,7 +246,7 @@
                      <tr>
                         <th>* 받으시는 분</th>
                         <td>
-                             <input type="text" id="pb_resname" name="pb_resname" value="전나나 " checked ><br>
+                             <input type="text" id="pb_resname" name="pb_resname" value="${userInfo.m_name } " checked ><br>
                         </td>
                      </tr>
                      <tr>
@@ -300,7 +300,7 @@
                     <table  id="buy_now" style="text-align: center;">
                            <tr>
                                <th>적립금</th>
-                               <td>보유액:<input type="text" readonly="readonly" id="po" name="p_used" value="${userInfo.m_point }">  원 ▷
+                               <td>보유액:<input type="text" readonly="readonly" id="po" name="p_used" value="${uv}">  원 ▷
                                    <input type="text" id="savedmoney"name="p_used" value="0">
                                    <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 
                                </td>

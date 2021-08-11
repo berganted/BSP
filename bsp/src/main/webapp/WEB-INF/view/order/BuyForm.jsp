@@ -211,8 +211,8 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;">
-                            	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
-                            	<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 100px; width: 100px;"></a>
+                            	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/><a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                            	<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 250px; width: 180px;"></a>
                             </td>
                             <td>${vo.b_title }
                             <input type="hidden" name="b_no" value="${vo.b_no }"/>
@@ -260,7 +260,7 @@
                      <tr>
                         <th>* 받으시는 분</th>
                         <td>
-                            <input type="text" id="pb_resname" name="pb_resname" value="전나나 " checked ><br>
+                            <input type="text" id="pb_resname" name="pb_resname" value=" ${userInfo.m_name }" checked ><br>
                         </td>
                      </tr>
                      <tr>
@@ -313,7 +313,7 @@
                     <table  id="buy_now" style="text-align: center;">
                            <tr>
                                <td>적립금</td>
-                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${userInfo.m_point }">  원 ▷
+                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${uv }">  원 ▷
                                    <input type="text" id="savedmoney"name=p_used  value="0">
                                    <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 
                                </td>

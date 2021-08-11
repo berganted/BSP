@@ -114,11 +114,7 @@
 			alert('동의해주세요')
 			return false;
 		}
-		if(!$('input:radio[id=agree2]').is(':checked')){
-			alert('동의해라')
-			return false;
-		}
-
+		
 		if (!/^[a-zA-z0-9]{4,12}$/.test($('#pwd').val())) {
 			alert("비밀번호는 영문 대소문자와 숫자 4~12자리로 입력해야합니다!");
 			$('#pwd').val("");

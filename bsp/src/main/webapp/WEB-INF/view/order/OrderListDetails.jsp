@@ -14,16 +14,6 @@
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script>
     <script src="/bsp/js/big.js"></script>
-<script>
-function rtnCheck(){
-		
-	if($("input:checkbox[name=checkOne]").is(":checked") == false) {
-		alert('상품을 하나이상 체크해주세요');
-		return false;
-
-	}
-}
-</script>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -46,7 +36,7 @@ function rtnCheck(){
                     <th>주문접수일</th>
                     <td>${vo.pb_orderdate} </td>
                     <th>결제일(입금 확인일)</th>
-                    <td>2020년 06월 14일 일 12시 40분 </td>
+                    <td>${vo.pb_orderdate} </td>
                 </tr>
                 <tr>
                     <th>처리 상태</th>
@@ -148,7 +138,7 @@ function rtnCheck(){
     </div>
    
 </div> 
-<jsp:include page="../include/quick.jsp"></jsp:include>
+<%-- <jsp:include page="../include/quick.jsp"></jsp:include> --%>
 <footer id="footer"></footer>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>

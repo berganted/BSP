@@ -78,6 +78,7 @@
 			JOIN book B
 			ON PI.b_no = B.b_no AND PI.io_no = #{io_no}
 			</select>
+			
 		<!-- 반품/교환상세 공통 -->
 		<select id="detail1" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT * 
@@ -91,8 +92,8 @@
 			ON ps.ps_no = r.ps_no AND returning_no = #{returning_no}
 			GROUP BY returning_no;
 		</select>
+		
 		<!-- 반품/교환상세 개별(반품도서 종류) -->
-
 		<select id="detail2" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT * ,
 			(SELECT b_imgmain FROM img WHERE b.b_imgno = img.b_imgno) as b_imgmain

@@ -24,22 +24,6 @@
 		<div class="mem_content">
 			<h1>교환/반품 내역조회</h1>
 			<article id="article">
-			       <!-- 페이지처리 -->
-                        <div class="bbsSearch" style="margin-left: 756px" >
-                        <form method="get" name="searchForm" id="searchForm" action="">
-                            <span class="srchSelect">
-                                <select id="stype" name="stype" class="dSelect" title="검색분류 선택">
-                                    <option value="all">전체</option>
-                                    <option value="ps_title" <c:if test="${param.stype=='ps_title'}">selected</c:if>>처리상태</option>
-                                    <option value="b_title" <c:if test="${param.stype=='b_title'}">selected</c:if>>상품명</option>
-                                </select>
-                            </span>
-                            <span class="searchWord"  >
-                                <input type="text" id="sval" name="sval" value="${param.sval }"  title="검색어 입력">
-                                <input type="button" id="" value="검색" title="검색" onclick="$('#searchForm').submit();">
-                            </span>
-                        </form>                        
-                    </div> 
 				<table id="return_list_tb">
 					<tr>
 						<th>반품번호</th>

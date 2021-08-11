@@ -72,22 +72,23 @@
             <tr>
                 <th>원결제 방법</th>
                 <td colspan="3">
-                		<c:if test="${vo.pb_payno == 0}">무통장 입금</c:if>
+                		<%-- <c:if test="${vo.pb_payno == 0}">무통장 입금</c:if>
                     	<c:if test="${vo.pb_payno == 1}">실시간계좌이체</c:if> 
-                    	<c:if test="${vo.pb_payno == 2}">카트결제</c:if> 
+                    	<c:if test="${vo.pb_payno == 2}">카드결제</c:if>  --%>
+                    	카드결제
                 </td>
             </tr>
             <tr>
                 <th>환불 요청정보</th>
-                <td>현금 신한/110-4235-66998/전나나</td>
+                <td>카드승인취소</td>
                 <th>환불 정보</th>
-                <td>현금</td>
+                <td>카드승인취소</td>
             </tr>
             <tr>
                 <th>반품 신청액</th>
-                <td >6,300원</td>
+                <td >14400원</td>
                 <th>환불 예정액</th>
-                <td>4,300원 </td>
+                <td>14400원</td>
             </tr>
            </table>
            <h4>회송 정보</h4>

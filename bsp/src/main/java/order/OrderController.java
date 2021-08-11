@@ -96,7 +96,7 @@ public class OrderController {
 			pv.setP_content("구매에 사용");
 			pv.setM_no(vo.getM_no());
 			service.insertIo(vo);
-			sess.setAttribute("pay", service.selectPay(vo)); 	/* 결제 api시 출력할 list (insert된 주문) */
+			sess.setAttribute("pay", service.selectPay(vo)); 	/* 결제 후 출력할 list */
 			System.out.println(cno);
 			System.out.println(r);
 			System.out.println(pv.getP_used());
@@ -121,7 +121,7 @@ public class OrderController {
 				
 							
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
-			model.addAttribute("url", "list.do");
+			model.addAttribute("url", "buySuccess.do");
 		} else {
 			model.addAttribute("msg", "등록실패.");
 			model.addAttribute("url", "return.do");
@@ -129,17 +129,10 @@ public class OrderController {
 		return "include/alert";
 	}
 	
-	/* 신용카드 결제(아임포트 api) */
-	@RequestMapping("/order/pay.do")
-	public String orderPay(Model model, OrderVo vo, HttpSession sess, HttpServletRequest req) {
-		return "order/PayForm";
-	}
 
 	/* 결제 완료시 ps_no (출고테이블/주문테이블) 변경 */
 	@RequestMapping("/order/buySuccess.do")
 	public String buySuccess(Model model, OrderVo vo,HttpSession sess, HttpServletRequest req) {
-		service.updatePb(Integer.parseInt(req.getParameter("pb_no")));
-		service.updatePi(Integer.parseInt(req.getParameter("pb_no")));
 		return "order/BuySuccess";
 	}
 	

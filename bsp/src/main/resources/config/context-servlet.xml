@@ -49,7 +49,7 @@
     	<!-- <property name="url" value="jdbc:mysql://localhost:3306/bsp"/> --><!-- add -->
     	<!--<property name="url" value="jdbc:mysql://183.111.199.157:3306/bookstoreprojec"/>  -->
     	  <property name="url" value="jdbc:mysql://localhost:3306/bookstoreprojec"/>
-    	<!-- <property name="url" value="jdbc:mysql://localhost:3307/bsp"/> -->
+    	<!-- <property name="url" value="jdbc:mysql://localhost:3307/bsp"/> --> 
     	<property name="username" value="bookstoreprojec"/>
     	<property name="password" value="Bsp1q@w3e"/>
    </bean>

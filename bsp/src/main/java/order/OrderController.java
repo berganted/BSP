@@ -47,6 +47,7 @@ public class OrderController {
 			model.addAttribute("ad",service.lastaddr(ov));
 			return "order/BuyForm";
 	}
+	
 	@RequestMapping("/order/cartbuy.do")
 	public String cartbuy(CartVo vo,OrderVo ov,Model model,HttpServletRequest req,HttpSession sess) {
 		String[] no = req.getParameterValues("checkOne");
@@ -54,7 +55,6 @@ public class OrderController {
 		List<CartVo> list  = new ArrayList<CartVo>(); 
 		for (int i = 0; i < no.length; i++) {
 			vo.setCart_no(Integer.parseInt(no[i]));
-			System.out.println(Integer.parseInt(num[i]));
 			CartVo rv= Cservice.selectone(vo);
 			rv.setCart_cnt(Integer.parseInt(num[i]));
 			list.add(rv);
@@ -104,9 +104,6 @@ public class OrderController {
 			pv.setM_no(vo.getM_no());
 			service.insertIo(vo);
 			sess.setAttribute("pay", service.selectPay(vo)); 	/* 결제 후 출력할 list */
-			System.out.println(cno);
-			System.out.println(r);
-			System.out.println(pv.getP_used());
 		}
 		if (r > 0) {
 			if(cno!=null) {
@@ -115,7 +112,6 @@ public class OrderController {
 					Cservice.delete(cv);
 				}
 			}
-			
 			if(pv.getP_used()>0) {
 				pservice.insertUse(pv);
 				pservice.updateUse(pv);
@@ -126,7 +122,6 @@ public class OrderController {
 				pservice.insertA(pv);
 				pservice.update(pv);
 				
-							
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
 			model.addAttribute("url", "buySuccess.do");
 		} else {

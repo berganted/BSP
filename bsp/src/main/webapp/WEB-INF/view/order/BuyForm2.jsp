@@ -198,7 +198,7 @@
                         <c:forEach var="list" items="${list }">
                         <tr>
                             <td style="text-align: center;"><input type="hidden" class="abc" value="${list.b_imgmain }"/><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
-                            	<img class="blah" src ="/bsp/img/${list.b_imgmain }" alt="${list.b_title }"title="${list.b_title }" style="height: 200px; width: 100px;"></a></td>
+                            	<img class="blah" src ="/bsp/img/${list.b_imgmain }" alt="${list.b_title }"title="${list.b_title }" style="height: 100px; width: 100px;"></a></td>
 
                             <td>${list.b_title } 
                            						 <input type="hidden" name="b_title" id="b_title" value="${list.b_title }"/>

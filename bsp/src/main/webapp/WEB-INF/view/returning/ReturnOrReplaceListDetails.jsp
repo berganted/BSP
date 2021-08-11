@@ -118,17 +118,6 @@
       <input class="button_m" type="button" value="반품 내역 목록"  ></a>
        </div>
     </div>
-
-    <aside class="mypage_ad">
-        <div class="mypage_ad_name"><p>최근본상품</p></div>
-        <div class="img_area">
-            <img src="img/book.jpg" width="70px" height="100px">
-        </div>
-        <div style="text-align: center;">
-            책이름
-        </div>
-    </aside>        
-
     
 </div> 
 <footer  id="footer"></footer>

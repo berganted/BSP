@@ -56,7 +56,7 @@ function rtnCheck(){
                 <tr>
                  	<td><input type="checkbox" value="${vo.io_no}"  name="checkOne" id='checkOne' ></td>
                     <td><input type="hidden" class="abc" value="${vo.b_imgmain }"/><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
-                            	<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 200px; width: 100px;"></a></td>
+                            	<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 100px; width: 100px;"></a></td>
                     <td>${vo.b_title }
                         ${vo.b_author }
                     </td>

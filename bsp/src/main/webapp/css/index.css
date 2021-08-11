@@ -791,8 +791,13 @@ li {
     border-bottom: 1px solid rgb(206, 205, 205);
 }
 
+.index_Ads02 {
+    border-bottom: 1px solid rgb(206, 205, 205);
+    height: 200px;
+}
+
 .index_Ads02 > img {
-	margin-top: 25px;
+	margin: 10px;
     height: 135px;
     width: 255px;
 }

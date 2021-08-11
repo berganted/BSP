@@ -143,7 +143,7 @@
                         </tr>
                         <tr>
                             <td style="text-align: center;">
-                            	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/><a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                            	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/><a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
                             	<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 250px; width: 180px;"></a>
                             </td>
                             <td>${vo.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>

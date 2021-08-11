@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,11 +68,13 @@ text-align: center;
                                 <span class="chocie_pub" style="font-size : 17px;">${vo.b_publisher }</span>
                             </p>
                             <p class="choice_price">
-                                <span class="bps_price" style="font-size: 17px;">${vo.b_price }원</span>
+                                <span class="bps_price" style="font-size: 17px;"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/>원</span>
                                 <span class="bps_point">  <img src = "/bsp/img/point.png" style="width: 25px; height:25px; margin-bottom: 3px; font-size: 17px;">${vo.b_point }</span>
                             </p>
                             <div class="choice_intro" style="font-size: 19px; overflow: hidden; width:718px; height:195px;">
-                                ${vo.b_content }
+                            	<c:if test="${vo.b_content != 'nan' }">
+                                	${vo.b_content }
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -98,12 +101,11 @@ text-align: center;
                     <div class="newEye_infoSection">  
                         <div class="newEye_title"><b>${vo.b_title} </b></div>
                         <div class="newEye_authorPub">${vo.b_author } | ${vo.b_publisher }</div>
-                        <div class="newEye_price"><b>${vo.b_price }</b>원</div>
+                        <div class="newEye_price"><b><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/></b>원</div>
                         <div class="newEye_intro" style="font-size: 15px; overflow: hidden; width:280px; height:200px;">
-                   
-                            ${vo.b_content }
-                            <br> <!-- 임의로  -->
-
+                   			<c:if test="${vo.b_content != 'nan' }">
+                           	 	${vo.b_content }
+							</c:if>
                              
                         </div>
                     </div> 
@@ -125,7 +127,7 @@ text-align: center;
                             <li><a class="newStar_title">${vo.b_title }</a></li>
                             <li><a class="newStar_author">${vo.b_author }</a></li>
                             <li><a class="newStar_pub">${vo.b_publisher }</a></li>
-                            <li><a class="newStar_Price">${vo.b_price } 원</a></li>
+                            <li><a class="newStar_Price"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/> 원</a></li>
                         </ul>
                     </div>            
                  </div>

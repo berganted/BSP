@@ -76,12 +76,12 @@ $(function(){
                     <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail"><a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
-                                <img  src="${vo.b_imgmain }" alt="">
+                                <img src="${vo.b_imgmain }" alt=""></a>
                             </div>
                             <div class="index_todayDetails">
                                 <div class="index_tdContext">오늘의 책</div>
-                               	<li style="overflow: hidden;height: 180px;"> ${vo.b_content }</li>
-                                <li>${vo.b_title } | ${vo.b_author }</li>
+                               	<div class="index_todayDetails_in"> ${vo.b_content }</div>
+                                <div class="index_todayDetails_in">${vo.b_title } | ${vo.b_author }</div>
                             </div>
                         </div>
                         </c:forEach> 
@@ -146,7 +146,7 @@ $(function(){
                                 <li><a class="index_NowD1">${vo.b_author} 작가 신작</a></li>
                                 <li><a class="index_NowD2">${vo.b_title }</a></li>
                                 <li><a class="index_NowD3">${vo.b_author} | ${vo.b_publisher }</a></li>
-                                <li><a class="index_NowD4">${vo.b_price } 원</a></li>
+                                <li><a class="index_NowD4"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/> 원</a></li>
                             </ul>
                         </div>
                     </div>
@@ -167,7 +167,7 @@ $(function(){
                         <ul>                            
                             <li><a class="index_NowD2">${vo.b_title }</a></li>
                             <li><a class="index_NowD3">${vo.b_author} | ${vo.b_publisher }</a></li>
-                            <li><a class="index_NowD4">${vo.b_price } 원</a></li>
+                            <li><a class="index_NowD4"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/> 원</a></li>
                         </ul>
                     </div>
                 </div>  

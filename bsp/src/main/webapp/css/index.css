@@ -871,6 +871,7 @@ li {
     padding-top: 40px;
     padding-right: 10px;
     height: 360px;
+    width: 50%
     
 }
 
@@ -895,6 +896,14 @@ li {
     font-size: 15px;
     line-height: 35px;
     color: #999;
+}
+.index_todayDetails_in {
+	text-align: left;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px !important;
+    line-height: 35px;
+    color: #999;
+    overflow: hidden;height: 180px;
 }
 
 .index_todaysBooks img {

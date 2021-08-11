@@ -165,7 +165,7 @@ $(function(){
 								<span class="sellPrice"
 									style="font-size: 18px; font-weight: 600;">판매가</span>
 								&nbsp;&nbsp; <span class="sellPrice1"
-									style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;">${vo.b_price }원</span>
+									style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/>원</span>
 								<br> <span class="deliverInfo" style="font-size: 18px;">
 									
 									*배송비 : 무료</span>

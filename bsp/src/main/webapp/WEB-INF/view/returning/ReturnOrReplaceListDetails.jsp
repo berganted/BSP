@@ -13,6 +13,25 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/big.js"></script>
+    <script >
+    $(function () {
+		calc();
+	})
+    function calc() {
+    	var sum=0;
+    	var psum=0;
+    	$('.b_price').each(function(){
+    		var idx = $(this).index('.b_price');
+    		sum += parseInt(this.innerText)*Number($(".pop_out").eq(idx).val());
+    		psum += Number($(".point").eq(idx).text());
+    		console.log(psum)
+    	});
+    	$(".totalPrice").text(sum);
+    	$("#total").text(sum);
+    	$("#total1").val(sum);
+    	$("#totPoint").val(psum);
+    }
+    </script>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -72,23 +91,25 @@
             <tr>
                 <th>원결제 방법</th>
                 <td colspan="3">
-                		<%-- <c:if test="${vo.pb_payno == 0}">무통장 입금</c:if>
-                    	<c:if test="${vo.pb_payno == 1}">실시간계좌이체</c:if> 
-                    	<c:if test="${vo.pb_payno == 2}">카드결제</c:if>  --%>
-                    	카드결제
+                		<c:if test="${vo.pb_payno == 0}">기타</c:if> 
+                		<c:if test="${vo.pb_payno == 1}">카드결제</c:if> 
                 </td>
             </tr>
             <tr>
                 <th>환불 요청정보</th>
-                <td>카드승인취소</td>
+               <td> <c:if test="${vo.refund_info == '카드'}">카드승인취소</c:if> 
+                <c:if test="${vo.refund_info == '현금'}">현금</c:if>
+                </td>
                 <th>환불 정보</th>
-                <td>카드승인취소</td>
+                <td> <c:if test="${vo.refund_info == '카드'}">카드승인취소</c:if> 
+                <c:if test="${vo.refund_info == '현금'}">현금</c:if>
+                </td>
             </tr>
             <tr>
                 <th>반품 신청액</th>
-                <td >14400원</td>
+                <td >${vo.returning_amount*vo.b_price}원</td>
                 <th>환불 예정액</th>
-                <td>14400원</td>
+                <td>${vo.returning_amount*vo.b_price}원</td>
             </tr>
            </table>
            <h4>회송 정보</h4>

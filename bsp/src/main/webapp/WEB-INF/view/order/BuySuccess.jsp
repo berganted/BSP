@@ -62,7 +62,7 @@
                </div>
           	 <div class="retrn_submit" style="padding: 20px; text-align: center;">
                         <input class="button_m" type="button" onclick="location.href='/bsp/order/list.do'" value="주문조회" >
-                        <input class="button_m" type="button" onclick="location.href='/bsp/index.do'" value="홈으로" >
+                        <input class="button_m" type="button" onclick="location.href='/bsp/sample/index.do'" value="홈으로" >
               </div>
         </article>
     </div>

@@ -88,8 +88,8 @@ public class ReturningController {
 		String[] no = req.getParameterValues("b_no"); 
 		String[] ano = req.getParameterValues("io_amount") ;
 		String[] ino = req.getParameterValues("io_no") ;
-		int pay = Integer.parseInt(req.getParameter("paid_amount"));
-	if(pay == vo.getPb_totalprice()) {
+//		int pay = Integer.parseInt(req.getParameter("paid_amount"));
+//		if(pay == vo.getPb_totalprice()) {
 		int r = service.insertRd(vo);
 		for (int i = 0; i < no.length; i++) {
 			vo.setB_no(Integer.parseInt(no[i]));
@@ -110,7 +110,7 @@ public class ReturningController {
 			model.addAttribute("msg", "등록실패.");
 			model.addAttribute("url", "return.do");
 		}
-	}
+//	}
 		return "include/alert";
 	}
 	

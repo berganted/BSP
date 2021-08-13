@@ -1,6 +1,7 @@
 package returning;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import util.CommonVo;
 
@@ -292,5 +293,18 @@ public class ReturningVo extends CommonVo{
 	public void setB_title(String b_title) {
 		this.b_title = b_title;
 	}
+	public String getPb_orderdate2() {
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(pb_orderdate);
+	}
+	public String getIo_date2() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(io_date);
+	}
+	public String getReturning_regdate2() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(returning_regdate);
+	}
+	
 
 }

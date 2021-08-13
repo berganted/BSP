@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,7 +73,7 @@ function openZipSearchRT() {
                			    <td><input type="text" name="b_price" value="${vo.b_price}원 " style="border:0 solid black; text-align: center; font: 16px"></td>
                			    <td><input type="text" name="io_amount" value="${vo.io_amount} " style="border:0 solid black; text-align: center; font: 16px"></td>
                			    <td><input type="text" name="pb_resname" value="${vo.pb_resname }" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px">
+                			<td><input type="text" name="pb_orderdate" value='${vo.pb_orderdate2}' style="border:0 solid black; text-align: center; font: 16px">
                 				<input type="hidden" name="b_no" value="${vo.b_no}" >
             			 		<input type="hidden" name="ps_no" value="${vo.ps_no}" >
             			 		<input type="hidden" name="m_no" value="${vo.m_no}" >

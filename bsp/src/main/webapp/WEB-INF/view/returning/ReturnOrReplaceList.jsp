@@ -44,7 +44,7 @@
 					<c:forEach var="list" items="${RList}">
 					<tr>
 						<td><a href="detail.do?returning_no=${list.returning_no}&reqPage=${returningVo.reqPage}&stype=${returningVo.stype}&sval=${returningVo.sval}&orderby=${returningVo.orderby}&direct=${returningVo.direct}">${list.returning_no }</a></td>
-						<td>${list.returning_regdate }</td>
+						<td>${list.returning_regdate2 }</td>
 						<td>${list.returning_category }</td>
 						<td>${list.pb_no }</td>
 						<td>${list.b_title } / ${list.returning_amount}</td>

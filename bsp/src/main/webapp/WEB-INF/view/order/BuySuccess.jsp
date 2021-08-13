@@ -57,7 +57,7 @@
              <div id="b_success_info">
              	 주문번호 : <input type="text" value="${pay.pb_no}">
              <br>
-            	 주문일자 : <input type="text" value="${pay.pb_orderdate }">
+            	 주문일자 : <input type="text" value="${pay.pb_orderdate2 }">
              
                </div>
           	 <div class="retrn_submit" style="padding: 20px; text-align: center;">

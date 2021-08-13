@@ -53,7 +53,7 @@
                    <th>처리상태</th>
                </tr>
                <tr>
-                 	<td>${vo.returning_regdate }</td>
+                 	<td>${vo.returning_regdate2 }</td>
 					<td>${vo.returning_category }</td>
 					<td>${vo.returning_no }</td>
 					<td><a href="">${vo.pb_no }</a></td>

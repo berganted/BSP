@@ -96,7 +96,7 @@
 					</c:if>
 					<c:forEach var="list" items="${myList}">  
                 <tr>
-                    <td>${list.pb_orderdate }</td>
+                    <td>${list.pb_orderdate2 }</td>
                     <td><a href="/bsp/order/detail.do?pb_no=${list.pb_no}&reqPage=${orderVo.reqPage}&stype=${orderVo.stype}&sval=${orderVo.sval}&orderby=${orderVo.orderby}&direct=${orderVo.direct}">
                     	${list.pb_no}</a></td>
                     <td>${list.pb_resname}</td>

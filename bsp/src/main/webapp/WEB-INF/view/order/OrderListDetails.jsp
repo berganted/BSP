@@ -34,9 +34,9 @@
                 </tr>
                 <tr>
                     <th>주문접수일</th>
-                    <td>${vo.pb_orderdate} </td>
+                    <td>${vo.pb_orderdate2} </td>
                     <th>결제일(입금 확인일)</th>
-                    <td>${vo.pb_orderdate} </td>
+                    <td>${vo.pb_orderdate2} </td>
                 </tr>
                 <tr>
                     <th>처리 상태</th>

@@ -47,8 +47,8 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
     	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     	<!-- <property name="url" value="jdbc:mysql://localhost:3306/bsp"/> --><!-- add -->
-    	<property name="url" value="jdbc:mysql://183.111.199.157:3306/bookstoreprojec"/>
-    	<!-- <property name="url" value="jdbc:mysql://localhost:3306/bookstoreprojec"/>   -->
+    	<!-- <property name="url" value="jdbc:mysql://183.111.199.157:3306/bookstoreprojec"/> -->
+    	<property name="url" value="jdbc:mysql://localhost:3306/bookstoreprojec"/>
     	<!-- <property name="url" value="jdbc:mysql://localhost:3307/bsp"/> -->
     	<!-- <property name="username" value="bsp"/>
     	<property name="password" value="bsp1234"/> -->

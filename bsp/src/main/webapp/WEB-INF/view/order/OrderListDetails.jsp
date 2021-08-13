@@ -30,7 +30,11 @@
                     <th>주문번호</th>
                     <td>${vo.pb_no}</td>
                     <th>배송방법</th>
-                    <td>${vo.pb_delivery}</td>
+                    <td>
+                    	<c:if test="${vo.pb_delivery == 'cj'}">택배</c:if> 
+                		<c:if test="${vo.pb_delivery == 'post'}">우체국 택배</c:if> 
+                		<c:if test="${vo.pb_delivery == 'conv'}">>편의점 방문 픽업</c:if> 
+                    </td>
                 </tr>
                 <tr>
                     <th>주문접수일</th>

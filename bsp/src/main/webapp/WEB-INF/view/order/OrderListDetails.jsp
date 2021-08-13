@@ -40,8 +40,7 @@
                 </tr>
                 <tr>
                     <th>처리 상태</th>
-                    <td colspan="3">${vo.ps_title}<br>
-                    운송장 : 35998978565, cj대한통운</td>
+                    <td colspan="3">${vo.ps_title}<br></td>
                 </tr>
                 <tr>
                     <th>주문하신분</th>
@@ -95,7 +94,7 @@
                     <td>
                     	가격: ${vo.b_price}원<br>
                         마일리지:${vo.b_point}원(5%)
-                   </td>
+                    </td>
                     <td>  ${vo.io_no} </td>
                     <td> ${vo.ps_title }
                     <input type="hidden" id="ps_title" value="${vo.ps_title} ">

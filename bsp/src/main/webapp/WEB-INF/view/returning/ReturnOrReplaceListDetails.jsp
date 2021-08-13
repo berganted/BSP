@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/big.js"></script>
-    <script >
+    <script>
     $(function () {
 		calc();
 	})
@@ -117,8 +117,6 @@
             <tr>
                 <th>회송 방법</th>
                 <td>${vo.rd_option}</td>
-                <th>방문예상일</th>
-                <td>2012-05-22</td>
             </tr>
             <tr>
                 <th>고객명</th>
@@ -139,7 +137,6 @@
       <input class="button_m" type="button" value="반품 내역 목록"  ></a>
        </div>
     </div>
-    
 </div> 
 <footer  id="footer"></footer>
 <jsp:include page="../include/footer.jsp"></jsp:include>

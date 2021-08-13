@@ -116,7 +116,7 @@
            <table id="return_list_detil_tb">
             <tr>
                 <th>회송 방법</th>
-                <td>${vo.rd_option}</td>
+                <td colspan="3">${vo.rd_option}</td>
             </tr>
             <tr>
                 <th>고객명</th>

@@ -240,7 +240,6 @@
                         <th>* 주문인</th>
                         <td>
                             <input type="text" name="name" value="${userInfo.m_name } " checked><br>
-                            휴대폰 번호: 010-**34-5648
                         </td>
                      </tr>
                      <tr>
@@ -272,15 +271,6 @@
                         <th>* 휴대전화번호</th>
                         <td>
                             <input type="text" id="pb_restel" name="pb_restel" style="width: 310px;" value="${userInfo.m_tel }"> 
-                           
-                        </td>
-                     </tr>
-                     <tr>
-                        <th>전화번호 </th>
-                        <td>
-                            <input type="text" name="phone numbers1" style="width: 100px;" > -
-                            <input type="text" name="phone numbers2" style="width: 100px;"> -
-                            <input type="text" name="phone numbers3" style="width: 100px;"> 
                            
                         </td>
                      </tr>
@@ -352,17 +342,7 @@
                 </div>    
             </form>
         </div>
-   <aside class="mypage_ad">
-                <div class="mypage_ad_name"><p>최근본상품</p></div>
-                <div class="img_area">
-                    <img src="img/book.jpg" width="70px" height="100px">
-                </div>
-                <div style="text-align: center;">
-                    책이름
-                </div>
-            </aside> 
     </div>
-    
     <div id="footer"></div>
     <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>

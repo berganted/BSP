@@ -33,7 +33,7 @@
                     <td>
                     	<c:if test="${vo.pb_delivery == 'cj'}">택배</c:if> 
                 		<c:if test="${vo.pb_delivery == 'post'}">우체국 택배</c:if> 
-                		<c:if test="${vo.pb_delivery == 'conv'}">>편의점 방문 픽업</c:if> 
+                		<c:if test="${vo.pb_delivery == 'conv'}">편의점 방문 픽업</c:if> 
                     </td>
                 </tr>
                 <tr>
@@ -60,9 +60,7 @@
                 </tr>
                 <tr>
                     <th>휴대번호</th>
-                    <td>${vo.pb_restel}</td>
-                    <th>전화번호</th>
-                    <td></td>
+                    <td colspan="3">${vo.pb_restel}</td>
                 </tr>
                 <tr>
                     <th>배송메세지</th>

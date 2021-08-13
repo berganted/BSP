@@ -44,6 +44,7 @@ public class OrderController {
 		 UserVo uv = (UserVo) sess.getAttribute("userInfo");
 		 	model.addAttribute("uv",uservice.selectpoint(uv));
 			model.addAttribute("vo", bservice.deatil(vo));
+			ov.setM_no(uv.getM_no());
 			model.addAttribute("ad",service.lastaddr(ov));
 			return "order/BuyForm";
 	}
@@ -62,6 +63,7 @@ public class OrderController {
 		UserVo uv = (UserVo) sess.getAttribute("userInfo");
 	 	model.addAttribute("uv",uservice.selectpoint(uv));
 		model.addAttribute("list", list);
+		ov.setM_no(uv.getM_no());
 		model.addAttribute("ad",service.lastaddr(ov));
 		return "order/BuyForm2";
 	}

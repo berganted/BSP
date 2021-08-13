@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	<mapper namespace="returnig">
-		<sql id="returnigWhere">
+	<sql id="returnigWhere">
 		<where>
 			<if test="sval != null and sval != ''">
 				<if test="stype == 'all'">
@@ -12,9 +12,9 @@
 					${stype} LIKE '%${sval}%'
 				</if>
 			</if>
-		<!-- 	<if test="m_no != 0">
+			<if test="m_no != 0">
 				AND m_no=#{m_no}
-			</if> -->
+			</if>
 		</where>
 	</sql>
 	
@@ -51,17 +51,6 @@
 			</select>
 		
 		
-		<!-- 메인창에 출력할 쿼리 (팝업에서 받아오는 리스트) -->
-	<!-- 	<select id="selectPopup" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
-			SELECT *
-			FROM product_buy PB RIGHT JOIN  product_io PI
-			ON PI.pb_no = PB.pb_no
-			JOIN book B
-			ON PI.b_no = B.b_no AND PI.io_no IN
-			<foreach collection="io_nos" index="index" item="no" open="(" close=")" separator=",">
-			#{io_no}
-			</foreach>
-		</select>  -->
 		<!-- 반품신청서로 값넘김 -->
 		<select id="selectPopupRt" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
@@ -158,6 +147,7 @@
 		<update id="updateiopsno">UPDATE product_io set ps_no=#{ps_no} WHERE io_no=#{io_no} </update>
 
 		<update id="updatereturnaddr">UPDATE product_io set ps_no=#{ps_no} WHERE io_no=#{io_no} </update>
+		
 		<select id="selectAlladmin" resultType="returning.ReturningVo" parameterType="returning.ReturningVo">
 			SELECT *
 			FROM product_io PI JOIN returnings r

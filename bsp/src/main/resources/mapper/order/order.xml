@@ -146,6 +146,7 @@
 		WHERE product_buy.pb_no=#{pb_no}
 		GROUP BY product_buy.pb_no
  		</select>
+ 		
  		<select id="countAdmin" resultType="int" parameterType="order.OrderVo">
 		SELECT count(*) FROM product_buy 
 		<include refid="orderWhere"/>

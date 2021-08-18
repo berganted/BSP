@@ -292,6 +292,20 @@ public class AdminCotroller {
 		model.addAttribute("url", "index.do?orderby=b_regdate");
 		return "include/alert";		
 	}
+	@RequestMapping("admin/product/grouDelete.do")
+	public String deletebook(Model model, HttpServletRequest req) {
+		String[] no = req.getParameterValues("no");
+		int count = 0;
+		for(int i = 0; i<no.length; i++) {
+			System.out.println(no[i]);
+			BookVo vo= new BookVo();
+			vo.setAd_no(Integer.parseInt(no[i]));
+			count+=bservice.delete(vo);
+		}
+		model.addAttribute("msg", "총" +count+"건이 삭제되었습니다.");
+		model.addAttribute("url", "index.do?orderby=b_regdate");
+		return "include/alert";		
+	}
 	//보드 수정폼
 	@RequestMapping("admin/board/edit.do")
 	public String edit(Model model, BoardVo vo) {

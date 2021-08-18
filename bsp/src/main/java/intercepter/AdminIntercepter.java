@@ -26,7 +26,7 @@ public class AdminIntercepter implements HandlerInterceptor {
 			PrintWriter out = res.getWriter();
 			out.println("<script>");
 			out.println("alert('로그인후 사용가능');");
-			out.println("location.href='/bsp/admin/';");
+			out.println("location.href='/bsp/admin';");
 			out.println("</script>");
 			return false;
 		}else {

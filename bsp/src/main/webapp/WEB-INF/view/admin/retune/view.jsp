@@ -90,61 +90,52 @@
 									</table>
 
 									<h4>환불정보</h4>
-									<table id="return_list_detil_tb">
-										<tr>
-											<td>원결제 방법</td>
-											<td colspan="3">${vo.pb_payno}</td>
-										</tr>
-										<tr>
-											<td>환불 요청정보</td>
-											<td><input type="text" value=""></td>
-											<td>환불 완료 정보</td>
-											<td>현금</td>
-										</tr>
-										<tr>
-											<td>반품 신청액</td>
-											<td>6,300원</td>
-											<td>실 반품액</td>
-											<td></td>
-										</tr>
-										<tr>
-											<td>반송비 차감액</td>
-											<td>2,000원</td>
-											<td>환불 예정액</td>
-											<td>4,300원</td>
-										</tr>
-									</table>
-									<h4>회송 정보</h4>
-									<table id="return_list_detil_tb">
-										<tr>
-											<td>회송 방법</td>
-											<td>${vo.rd_option}</td>
-											<td>방문예상일</td>
-											<td>2012-05-22</td>
-										</tr>
-										<tr>
-											<td>고객명</td>
-											<td>${vo.rd_name}</td>
-											<td>주소</td>
-											<td><input name="rd_zipcode" type="text"
-												value="${vo.rd_zipcode }"> <input name="rd_addr1"
-												type="text" value="${vo.rd_addr1 }"> <input
-												name="rd_addr2" type="text" value="${vo.rd_addr2 }">
-												<span class="addbtn"><button
-														class="btn bgGray button_s" type="button"
-														onclick="openZipSearch();">검색</button></span></td>
-										</tr>
-										<tr>
-											<td>전화번호</td>
-											<td><input type="text" value="${vo.rd_tel }"></td>
-											<td>요청사항</td>
-											<td>${vo.rd_req }</td>
-										</tr>
-									</table>
-									</form>
-								</article>
-
-								<!--//btn-->
+							           <table id="return_list_detil_tb">
+							            <tr>
+							                <th>원결제 방법</th>
+							                <td colspan="3">
+							                		<c:if test="${vo.pb_payno == 0}">기타</c:if> 
+							                		<c:if test="${vo.pb_payno == 1}">카드결제</c:if> 
+							                </td>
+							            </tr>
+							            <tr>
+							                <th>환불 요청정보</th>
+							               <td> <c:if test="${vo.refund_info == '카드'}">카드승인취소</c:if> 
+							                <c:if test="${vo.refund_info == '현금'}">현금</c:if>
+							                </td>
+							                <th>환불 정보</th>
+							                <td> <c:if test="${vo.refund_info == '카드'}">카드승인취소</c:if> 
+							                <c:if test="${vo.refund_info == '현금'}">현금</c:if>
+							                </td>
+							            </tr>
+							            <tr>
+							                <th>반품 신청액</th>
+							                <td >${vo.returning_amount*vo.b_price}원</td>
+							                <th>환불 예정액</th>
+							                <td>${vo.returning_amount*vo.b_price}원</td>
+							            </tr>
+							           </table>
+							           <h4>회송 정보</h4>
+							           <table id="return_list_detil_tb">
+							            <tr>
+							                <th>회송 방법</th>
+							                <td>${vo.rd_option}</td>
+							            </tr>
+							            <tr>
+							                <th>고객명</th>
+							                <td>${vo.rd_name}</td>
+							                <th>주소</th>
+							                <td> ${vo.rd_zipcode }, ${vo.rd_addr1 }, ${vo.rd_addr2 }</td>
+							            </tr>
+							            <tr>
+							                <th>전화번호</th>
+							                <td>${vo.rd_tel }</td>
+							                <th>요청사항</th>
+							                <td>${vo.rd_req }</td>
+							            </tr>
+							           </table>
+							       </article>
+															<!--//btn-->
 
 
 

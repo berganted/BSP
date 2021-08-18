@@ -56,25 +56,25 @@ public class BoardController {
 	
 	@RequestMapping("/sample/insert.do")
 	public String insert(Model model, BoardVo vo, 
-						@RequestParam MultipartFile file, HttpServletRequest req) {
+						 HttpServletRequest req) { //@RequestParam MultipartFile file,
 		//service.insert(vo, filename, req)
-		if (!file.isEmpty()) { // 첨부파일이 있으면!
-			try {
-				String org = file.getOriginalFilename(); // 원본파일명..
-				String ext = ""; //확장자
-				
-				ext = org.substring(org.lastIndexOf("."));
-				String real = new Date().getTime()+ext; // 서버에 저장할 파일명
-				// 파일 저장
-				String path = req.getRealPath("/upload/"); // 경로
-				file.transferTo(new File(path+real)); // 경로+파일명 저장
-				// vo에 set
-				vo.setFilename_org(org);
-				vo.setFilename_real(real);
-			} catch (Exception e) {
-				
-			}
-		}
+//		if (!file.isEmpty()) { // 첨부파일이 있으면!
+//			try {
+//				String org = file.getOriginalFilename(); // 원본파일명..
+//				String ext = ""; //확장자
+//				
+//				ext = org.substring(org.lastIndexOf("."));
+//				String real = new Date().getTime()+ext; // 서버에 저장할 파일명
+//				// 파일 저장
+//				String path = req.getRealPath("/upload/"); // 경로
+//				file.transferTo(new File(path+real)); // 경로+파일명 저장
+//				// vo에 set
+//				vo.setFilename_org(org);
+//				vo.setFilename_real(real);
+//			} catch (Exception e) {
+//				
+//			}
+//		}
 		int r = service.insert(vo);
 		// r > 0 : 정상 -> alert -> 목록으로 이동
 		// r == 0 : 비정상 -> alert -> 이전페이지로 이동

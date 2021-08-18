@@ -51,12 +51,6 @@
                                 <textarea name="q_content" id="content" style="width:100%"></textarea>
                             </td>
                         </tr>
-                        <tr>
-                        	<th>파일첨부</th>
-                        	<td>
-                        		<input type="file" name="file">
-                        	</td>
-                        </tr>
                         </tbody>
                     </table>
                     <div class="btnSet"  style="text-align:right;">

@@ -61,13 +61,15 @@ $(function(){
                 <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
                     	<div class="index_ad">AD</div>
-                        <img  src="/bsp/ad/${vo.ad_img }">
+                        <a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
+                        <img  src="/bsp/ad/${vo.ad_img }"></a>
                     </div>
                  </c:forEach>  
                   <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
                     	<div class="index_ad">AD</div>
-                        <img src="/bsp/ad/${vo.ad_img }">
+                    	<a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
+                        <img src="/bsp/ad/${vo.ad_img }"></a>
                    	</div>  
                   </c:forEach>                   
                 </div>

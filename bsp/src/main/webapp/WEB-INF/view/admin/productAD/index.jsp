@@ -6,6 +6,7 @@
 <%@ include file="/WEB-INF/view/admin/include/headHtml.jsp" %>
 </head>
 <script type="text/javascript">
+
 function groupDel() {
 if($('#admin').val()==1){
 	var cnt = 0;
@@ -13,16 +14,15 @@ if($('#admin').val()==1){
 		if($('input[name=ad_no]').eq(i).prop('checked')){
 			cnt++;
 			break;
-		}
-	}
-	if( cnt == 0 ){
-		alert('하나 이상 체크해 주세요');
-	}else{
-		if(confirm('삭제하시겠습니까?')){
-			$('#frm').submit();
 			}
-	}
-	
+		}
+		if( cnt == 0 ){
+			alert('하나 이상 체크해 주세요');
+		}else{
+			if(confirm('삭제하시겠습니까?')){
+				$('#frm').submit();
+				}
+		}
 	}else{
 		alert('상위 관리자에게 문의하세요');
 	}

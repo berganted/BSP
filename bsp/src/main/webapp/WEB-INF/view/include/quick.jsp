@@ -4,11 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script>
 $(function(){
-	var abcd=$("#abcd").val()
-	console.log(abcd.length)
-	if($("#abcd").val().length>30){
-		$('#blahs').attr('src',abcd)
-	}
+   var abcd=$("#abcd").val()
+   console.log(abcd.length)
+   if($("#abcd").val().length>30){
+      $('#blahs').attr('src',abcd)
+   }
 })
 </script>
 <aside class="mypage_ad">
@@ -24,4 +24,4 @@ $(function(){
         ${quick.b_title}
     </div>
     </c:if>
-</aside>    
+</aside>  

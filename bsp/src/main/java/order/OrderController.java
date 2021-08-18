@@ -19,6 +19,7 @@ import cart.CartService;
 import cart.CartVo;
 import point.PointService;
 import point.PointVo;
+import user.UserService;
 import user.UserVo;
 
 
@@ -33,28 +34,36 @@ public class OrderController {
 	BookService bservice;
 	@Autowired
 	PointService pservice;
+	@Autowired
+	UserService uservice;
 
 	@RequestMapping("/order/buy.do")
-	public String buy(BookVo vo,OrderVo ov,Model model,HttpServletRequest req) {
+	public String buy(BookVo vo,OrderVo ov,Model model,HttpServletRequest req,HttpSession sess) {
 		 vo.setB_no(Integer.parseInt(req.getParameter("b_no")));
 		 vo.setIo_amount(Integer.parseInt(req.getParameter("io_amount")));
+		 UserVo uv = (UserVo) sess.getAttribute("userInfo");
+		 	model.addAttribute("uv",uservice.selectpoint(uv));
 			model.addAttribute("vo", bservice.deatil(vo));
+			ov.setM_no(uv.getM_no());
 			model.addAttribute("ad",service.lastaddr(ov));
 			return "order/BuyForm";
 	}
+	
 	@RequestMapping("/order/cartbuy.do")
-	public String cartbuy(CartVo vo,OrderVo ov,Model model,HttpServletRequest req) {
+	public String cartbuy(CartVo vo,OrderVo ov,Model model,HttpServletRequest req,HttpSession sess) {
 		String[] no = req.getParameterValues("checkOne");
 		String[] num= req.getParameterValues("pop_out");
 		List<CartVo> list  = new ArrayList<CartVo>(); 
 		for (int i = 0; i < no.length; i++) {
 			vo.setCart_no(Integer.parseInt(no[i]));
-			System.out.println(Integer.parseInt(num[i]));
 			CartVo rv= Cservice.selectone(vo);
 			rv.setCart_cnt(Integer.parseInt(num[i]));
 			list.add(rv);
 		}
+		UserVo uv = (UserVo) sess.getAttribute("userInfo");
+	 	model.addAttribute("uv",uservice.selectpoint(uv));
 		model.addAttribute("list", list);
+		ov.setM_no(uv.getM_no());
 		model.addAttribute("ad",service.lastaddr(ov));
 		return "order/BuyForm2";
 	}
@@ -96,10 +105,7 @@ public class OrderController {
 			pv.setP_content("구매에 사용");
 			pv.setM_no(vo.getM_no());
 			service.insertIo(vo);
-			sess.setAttribute("pay", service.selectPay(vo)); 	/* 결제 api시 출력할 list (insert된 주문) */
-			System.out.println(cno);
-			System.out.println(r);
-			System.out.println(pv.getP_used());
+			sess.setAttribute("pay", service.selectPay(vo)); 	/* 결제 후 출력할 list */
 		}
 		if (r > 0) {
 			if(cno!=null) {
@@ -108,7 +114,6 @@ public class OrderController {
 					Cservice.delete(cv);
 				}
 			}
-			
 			if(pv.getP_used()>0) {
 				pservice.insertUse(pv);
 				pservice.updateUse(pv);
@@ -119,9 +124,8 @@ public class OrderController {
 				pservice.insertA(pv);
 				pservice.update(pv);
 				
-							
 			model.addAttribute("msg", "정상적으로 등록되었습니다.");
-			model.addAttribute("url", "pay.do");
+			model.addAttribute("url", "buySuccess.do");
 		} else {
 			model.addAttribute("msg", "등록실패.");
 			model.addAttribute("url", "return.do");
@@ -129,17 +133,10 @@ public class OrderController {
 		return "include/alert";
 	}
 	
-	/* 신용카드 결제(아임포트 api) */
-	@RequestMapping("/order/pay.do")
-	public String orderPay(Model model, OrderVo vo, HttpSession sess, HttpServletRequest req) {
-		return "order/PayForm";
-	}
 
 	/* 결제 완료시 ps_no (출고테이블/주문테이블) 변경 */
 	@RequestMapping("/order/buySuccess.do")
 	public String buySuccess(Model model, OrderVo vo,HttpSession sess, HttpServletRequest req) {
-		service.updatePb(Integer.parseInt(req.getParameter("pb_no")));
-		service.updatePi(Integer.parseInt(req.getParameter("pb_no")));
 		return "order/BuySuccess";
 	}
 	

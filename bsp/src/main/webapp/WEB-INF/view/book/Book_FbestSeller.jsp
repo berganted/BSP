@@ -49,7 +49,6 @@
                         </c:if>
                        </ul> 
                         <select name="pageRow" id="divnum" onchange="sendPageRow();">
-                            <option value ="1" <c:if test="${bookVo.pageRow==1}"> selected</c:if>>1개씩 보기</option>
                             <option value ="5" <c:if test="${bookVo.pageRow==5}"> selected</c:if>>5개씩 보기</option>
                             <option value ="10" <c:if test="${bookVo.pageRow==10}"> selected</c:if>>10개씩 보기</option>
                             <option value ="15" <c:if test="${bookVo.pageRow==15}"> selected</c:if>>15개씩 보기</option> 
@@ -76,12 +75,13 @@
                             <a href="Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}"><b>${vo.b_title }</b></a>
                         </span>
                         <span class="s_bookAuthor" style="font-size: 17px;">${vo.b_author } <span class="s_bookPub"> | ${vo.b_publisher }</span><span class="s_bookDate"> | <fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월" /></span> </span>
-                        <span class="s_price"><b>${vo.b_price }</b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
+                        <span class="s_price"><b><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/></b>원  &nbsp; 적립금 : ${vo.b_point }P</span>
                         <span class="s_grade" style="font-size: 16px;">회원리뷰(${vo.rcnt }건) ${vo.avg }/5</span>
                         																																										
                         <span class="s_story" style="font-size: 16px; overflow: hidden; width:605px; height:165px;">
-                        ${vo.b_content } <br>
-         
+	                        <c:if test="${vo.b_content != 'nan' }">
+	                        	${vo.b_content } 
+	        				</c:if>
                         </span>
                     </div>
                 </div>

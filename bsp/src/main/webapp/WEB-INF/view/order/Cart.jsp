@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="/bsp/css/index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
-    <script src="/bsp/js/yesol.js"></script> <!-- 예솔 스크립트 -->
+    <script src="/bsp/js/yesol.js"></script>
+    <script src="/bsp/js/big.js"></script> <!-- 예솔 스크립트 -->
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script>
     function calc() {
@@ -61,7 +62,7 @@
     	
     	
     	
-    function groupDel() {
+    function groupDels() {
     	 $('#frm').attr('action','/bsp/cart/delete.do')
     	var cnt = 0;
         for(var i=0; i<$('input[name=checkOne]').length;i++){
@@ -123,7 +124,7 @@ th{height: 30px}
              <div id="cart_option" style="text-align: right; padding: 0px 20px 5px;">
                 <span id="cart">
                     <input class="button_m" type="button" name="buy_select" value="선택주문" onclick="groupOder();">
-                    <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="groupDel();">
+                    <input class="button_m" type="button" name="buy_del" value="선택삭제" onclick="groupDels();">
                     
                     </span>
             </div>
@@ -156,7 +157,8 @@ th{height: 30px}
 			<c:forEach var="list" items="${cartList}">  
 	            <tr data-tr_value="1">
 	                <td><input type="checkbox" value="${list.cart_no}"  name="checkOne"></td>
-	                <td	style="text-align:center;"><img src="/bsp/img/${list.b_imgmain}" style="height: 100px;width: 100%; cursor: pointer; " onclick="location.href='/bsp/book/Book_detail.do?b_no=${list.b_no }'"></td> 
+	                <td	style="text-align:center;"><input type="hidden" class="abc" value="${list.b_imgmain }"/><a href="Book_detail.do?b_no=${list.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                            	<img class="blah" src ="/bsp/img/${list.b_imgmain }" alt="${list.b_title }"title="${list.b_title }" style="height: 100px; width: 100px;"></a></td> 
 	                <td><a href="/bsp/book/Book_detail.do?b_no=${list.b_no }"> ${list.b_title }<br> *내일수령가능</a></td> 
 	                <td><span class="b_price">${list.b_price }</span><br>
 	                    <span class="point">${list.b_point }</span>(5%)

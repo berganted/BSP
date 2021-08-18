@@ -108,7 +108,8 @@ function fnCalCount(type, ths){
                              <input type="hidden" name="io_amount" class="bseq_ea" value="${vo.io_amount}"> 
                              </td>
                			    <td><input type="text" name="pb_resname" value="${vo.pb_resname }" style="border:0 solid black; text-align: center; font: 16px"></td>
-                			<td><input type="text" name="pb_orderdate" value="${vo.pb_orderdate}" style="border:0 solid black; text-align: center; font: 16px">
+                			<td><input type="text" name="pb_orderdate2" value="${vo.pb_orderdate2}" style="border:0 solid black; text-align: center; font: 16px">
+                				<input type="hidden" name="pb_orderdate" value="${vo.pb_orderdate}" >
                 				<input type="hidden" name="b_no" value="${vo.b_no}" >
             			 		<input type="hidden" name="ps_no" value="${vo.ps_no}" >
             			 		<input type="hidden" name="m_no" value="${vo.m_no}" >
@@ -211,10 +212,11 @@ function fnCalCount(type, ths){
 	                        <tr>
 	                            <td style="text-align: center;"> 
 	                            <input type="radio" name="refund_info" value="현금">현금
-	                            <input type="radio" name="refund_info" value="카드">신용카드 또는 기타결제 승인취소<br>
+	                            <input type="radio" name="refund_info" value="카드" checked="checked">신용카드 또는 기타결제 승인취소<br>
 	                            <div class="pwrap"><p>
 	                            * 주문 환불은 결제한 수단과 동일한 수단으로 환불을 원칙으로 합니다.<br>
-	                            * 결제한 수단으로 환불이 불가한 일부 상황에서는 예치금 및 환전캐시등의 결제 타입에 상응하는 부가결제 수단으로 환불합니다.<br>
+	                            * 결제한 수단으로 환불이 불가한 일부 상황에서는 현금 및 예치금(적립금)등의 결제 타입에 상응하는 부가결제 수단으로 환불합니다.<br>
+	                            * 현금 타입을 결제 환불은 게시판에 문의게시판을 이용해주세요.<br>
 	                            * 취소로 빈번한 환불, 또는 주문대비 환불액이 큰 경우 내부 방침상, 최종구매액 재결제 요청 후 승인취소로 환불됩니다.<br>
 	                            * 신용카드 거래의 경우 취소 후 카드사 반영에 3-4일 소요될 수 있습니다.<br>
 	                            </p></div>
@@ -228,16 +230,6 @@ function fnCalCount(type, ths){
                  </form>
             </div>
      </div>
-     <aside class="mypage_ad">
-         <div class="mypage_ad_name"><p>최근본상품</p></div>
-         <div class="img_area">
-             <img src="img/book.jpg" width="70px" height="100px">
-         </div>
-         <div style="text-align: center;">
-             책이름
-         </div>
-     </aside>        
- </div> 
  <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

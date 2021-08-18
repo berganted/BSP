@@ -39,6 +39,9 @@ public class UserDao {
 	public int isDuplicateemail(UserVo vo) {
 		return sessionTemplate.selectOne("user.isDuplicateemail", vo);
 	}
+	public int selectpoint(UserVo vo) {
+		return sessionTemplate.selectOne("user.selectpoint", vo);
+	}
 	public UserVo login(UserVo vo) {
 		return sessionTemplate.selectOne("user.login",vo);
 	}

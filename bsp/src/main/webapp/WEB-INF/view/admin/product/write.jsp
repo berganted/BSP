@@ -126,12 +126,12 @@
 												<th scope="row"><label for="">카테고리</label></th>
 												<td colspan=""><select name="b_ctgno1" id="ctg1"
 													style="width: 90%">
-														<option value="1">국내도서</option>
+														<option value="1" selected="selected">국내도서</option>
 														<option value="2">외국도서</option>
 												</select></td>
 
 												<th scope="row"><label for="">카테고리2</label></th>
-												<td colspan=""><select name="b_ctgno2" id="ctg2"
+												<td colspan=""><select name="b_ctgno2key" id="ctg2"
 													style="width: 90%">
 													<c:forEach var="ctg" items="${ctg }">
 													<option value="${ctg.b_ctgno2key }">${ctg.b_ctgdetail }</option>

@@ -61,15 +61,13 @@ $(function(){
                 <c:forEach var="vo" items="${list5 }" varStatus="status">
                     <div class="index_Ads01">
                     	<div class="index_ad">AD</div>
-                        <img class="blah" src="/bsp/ad/${vo.ad_img }" alt="">
-                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>
+                        <img  src="/bsp/ad/${vo.ad_img }">
                     </div>
                  </c:forEach>  
                   <c:forEach var="vo" items="${list6 }" varStatus="status">  
                     <div class="index_Ads02">
                     	<div class="index_ad">AD</div>
-                        <div><img class="blah" src="/bsp/ad/${vo.ad_img }" alt=""></div>
-                        <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>                        
+                        <img src="/bsp/ad/${vo.ad_img }">
                    	</div>  
                   </c:forEach>                   
                 </div>
@@ -78,13 +76,12 @@ $(function(){
                     <c:forEach var="vo" items="${list4 }" varStatus="status">
                         <div class=" index_todaysBooks swiper-slide">
                             <div class="index_todaysThumnail"><a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
-                                <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
-                                 <input type="hidden"  class="abc" value="${vo.b_imgmain }"/></a>     
+                                <img src="${vo.b_imgmain }" alt=""></a>
                             </div>
                             <div class="index_todayDetails">
                                 <div class="index_tdContext">오늘의 책</div>
-                                ${vo.b_content }
-                                <li>${vo.b_title } | ${vo.b_author }</li>
+                               	<div class="index_todayDetails_in"> ${vo.b_content }</div>
+                                <div class="index_todayDetails_in">${vo.b_title } | ${vo.b_author }</div>
                             </div>
                         </div>
                         </c:forEach> 
@@ -140,7 +137,7 @@ $(function(){
                     <div class="index_NowBooksContents">
                         <div class="index_NowBooksImg">
                         	 <a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
-                             <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
+                             <img src="${vo.b_imgmain }" alt="">
                         	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/> 
                         	</a>   
                         </div>                        
@@ -149,7 +146,7 @@ $(function(){
                                 <li><a class="index_NowD1">${vo.b_author} 작가 신작</a></li>
                                 <li><a class="index_NowD2">${vo.b_title }</a></li>
                                 <li><a class="index_NowD3">${vo.b_author} | ${vo.b_publisher }</a></li>
-                                <li><a class="index_NowD4">${vo.b_price } 원</a></li>
+                                <li><a class="index_NowD4"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/> 원</a></li>
                             </ul>
                         </div>
                     </div>
@@ -162,7 +159,7 @@ $(function(){
                 <div class="index_NowBooksContents">
                     <div class="index_NowBooksImg">
                     	<a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgno1=${bookVo.b_ctgno1}">
-                        <img class="blah" src="/bsp/img/${vo.b_imgmain }" alt="">
+                        <img src="${vo.b_imgmain }" alt="">
                         <input type="hidden"  class="abc" value="${vo.b_imgmain }"/>  
                         </a>
                     </div>
@@ -170,7 +167,7 @@ $(function(){
                         <ul>                            
                             <li><a class="index_NowD2">${vo.b_title }</a></li>
                             <li><a class="index_NowD3">${vo.b_author} | ${vo.b_publisher }</a></li>
-                            <li><a class="index_NowD4">${vo.b_price } 원</a></li>
+                            <li><a class="index_NowD4"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/> 원</a></li>
                         </ul>
                     </div>
                 </div>  

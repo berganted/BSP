@@ -97,5 +97,9 @@ public class UserServiceimpl implements UserService {
 	public int insertwhydel(UserVo vo) {
 		return dao.insertwhydel(vo);
 	}
+	@Override
+	public int selectpoint(UserVo vo) {
+		return dao.selectpoint(vo);
+	}
 
 }

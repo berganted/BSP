@@ -51,7 +51,7 @@
                 <td>${list.pb_no }</td>
                 <td><a href="">${list.b_title}</a></td>
                 <td>${list.pb_resname }</td>
-                <td>${list.pb_orderdate }</td>
+                <td>${list.pb_orderdate2 }</td>
                 <td><a href="Order list(details).html"><input class="button_s" type="button" value="상세조회"></a></td>
             </tr>
                 </c:forEach>

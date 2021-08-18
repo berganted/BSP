@@ -1,6 +1,7 @@
 package order;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 import util.CommonVo;
 
@@ -273,6 +274,15 @@ public class OrderVo extends CommonVo {
 	public void setPs_title(String ps_title) {
 		this.ps_title = ps_title;
 	}
+	public String getPb_orderdate2() {
+		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+		return sdf.format(pb_orderdate);
+	}
+	public String getIo_date2() {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(io_date);
+	}
+	
 
 	
 }

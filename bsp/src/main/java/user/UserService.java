@@ -28,4 +28,6 @@ public interface UserService {
 	UserVo searchpwd(UserVo vo);
 	
 	int insertwhydel(UserVo vo);
+	
+	int selectpoint(UserVo vo);
 }

@@ -14,16 +14,6 @@
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script>
     <script src="/bsp/js/big.js"></script>
-<script>
-function rtnCheck(){
-		
-	if($("input:checkbox[name=checkOne]").is(":checked") == false) {
-		alert('상품을 하나이상 체크해주세요');
-		return false;
-
-	}
-}
-</script>
 </head>
 <body>
 <jsp:include page="../include/header.jsp"></jsp:include>
@@ -40,18 +30,21 @@ function rtnCheck(){
                     <th>주문번호</th>
                     <td>${vo.pb_no}</td>
                     <th>배송방법</th>
-                    <td>${vo.pb_delivery}</td>
+                    <td>
+                    	<c:if test="${vo.pb_delivery == 'cj'}">택배</c:if> 
+                		<c:if test="${vo.pb_delivery == 'post'}">우체국 택배</c:if> 
+                		<c:if test="${vo.pb_delivery == 'conv'}">편의점 방문 픽업</c:if> 
+                    </td>
                 </tr>
                 <tr>
                     <th>주문접수일</th>
-                    <td>${vo.pb_orderdate} </td>
+                    <td>${vo.pb_orderdate2} </td>
                     <th>결제일(입금 확인일)</th>
-                    <td>2020년 06월 14일 일 12시 40분 </td>
+                    <td>${vo.pb_orderdate2} </td>
                 </tr>
                 <tr>
                     <th>처리 상태</th>
-                    <td colspan="3">${vo.ps_title}<br>
-                    운송장 : 35998978565, cj대한통운</td>
+                    <td colspan="3">${vo.ps_title}<br></td>
                 </tr>
                 <tr>
                     <th>주문하신분</th>
@@ -67,9 +60,7 @@ function rtnCheck(){
                 </tr>
                 <tr>
                     <th>휴대번호</th>
-                    <td>${vo.pb_restel}</td>
-                    <th>전화번호</th>
-                    <td></td>
+                    <td colspan="3">${vo.pb_restel}</td>
                 </tr>
                 <tr>
                     <th>배송메세지</th>
@@ -105,7 +96,7 @@ function rtnCheck(){
                     <td>
                     	가격: ${vo.b_price}원<br>
                         마일리지:${vo.b_point}원(5%)
-                   </td>
+                    </td>
                     <td>  ${vo.io_no} </td>
                     <td> ${vo.ps_title }
                     <input type="hidden" id="ps_title" value="${vo.ps_title} ">
@@ -133,10 +124,9 @@ function rtnCheck(){
                 </tr>
                 <tr>
                     <th>결제방법</th>
-                    <td><c:if test="${vo.pb_payno == 0}">무통장 입금</c:if>
-                    	<c:if test="${vo.pb_payno == 1}">실시간계좌이체</c:if> 
-                    	<c:if test="${vo.pb_payno == 2}">카트결제</c:if> 
-                    	 </td>
+                    	<td>
+                    	<c:if test="${vo.pb_payno == 1}">카드결제</c:if> 
+                    	</td>
                 </tr>
              </table>
         </article>
@@ -148,7 +138,7 @@ function rtnCheck(){
     </div>
    
 </div> 
-<jsp:include page="../include/quick.jsp"></jsp:include>
+<%-- <jsp:include page="../include/quick.jsp"></jsp:include> --%>
 <footer id="footer"></footer>
 <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>

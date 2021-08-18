@@ -154,10 +154,10 @@ $(function(){
 							<span class="detail_bookTilte" style="font-weight: 600; font-size: 25px;">${vo.b_title} </span> <br> 
 							<span class="detail_bookAuthor">${vo.b_author }</span>
 							&nbsp;| <span class="detail_bookPub">${vo.b_publisher }</span>
-							&nbsp;| <span class="detail_bookDate"><fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> <span
-								class="detail_grade"><fmt:formatNumber  value="${vo.avg }"  pattern="0.0"/>/5</span> &nbsp; <span
-								class="detail_review"><a href="#">회원리뷰(${vo.rcnt }건)</a></span> &nbsp;| <span
-								class="detail_sales">판매지수 ${vo.tot} </span>
+							&nbsp;| <span class="detail_bookDate"><fmt:formatDate value="${vo.b_intodate}" pattern="yyyy년 MM월 dd일" /></span><br> 
+								<span class="detail_grade"><fmt:formatNumber  value="${vo.avg }"  pattern="0.0"/>/5</span> &nbsp; 
+								<span class="detail_review"> <a href="#">회원리뷰(${vo.rcnt }건)</a></span> &nbsp;| 
+								<span class="detail_sales">판매지수 ${vo.tot} </span>
 							<hr>
 						</div>
 						<div class="bookInfo_bottom">
@@ -165,7 +165,7 @@ $(function(){
 								<span class="sellPrice"
 									style="font-size: 18px; font-weight: 600;">판매가</span>
 								&nbsp;&nbsp; <span class="sellPrice1"
-									style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;">${vo.b_price }원</span>
+									style="color: rgb(231, 60, 60); font-size: 20px; font-weight: 600;"><fmt:formatNumber type="currency" value="${vo.b_price }" pattern="#,###"/>원</span>
 								<br> <span class="deliverInfo" style="font-size: 18px;">
 									
 									*배송비 : 무료</span>
@@ -297,10 +297,9 @@ $(function(){
 				<div id="reviewArea"></div>
 			</div>
 		</div>
-	<%@ include file="/WEB-INF/view/include/quick.jsp"%>
+	 	<jsp:include page="../include/quick.jsp"></jsp:include>
 	</div>
-	<%@ include file="/WEB-INF/view/include/footer.jsp"%>
-
+		<jsp:include page="../include/footer.jsp"></jsp:include>	
 	
 
 </body>

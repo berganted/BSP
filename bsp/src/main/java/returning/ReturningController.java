@@ -41,7 +41,6 @@ public class ReturningController {
 	public String returnSend(ReturningVo vo, HttpServletRequest req, HttpSession sess , Model model) {
 		String[] no = req.getParameterValues("checkOne");
 		List<ReturningVo>list  = new ArrayList<ReturningVo>(); 
-		System.out.println("test1");
 		for (int i = 0; i < no.length; i++) {
 			System.out.println("test2 : "+no[i]);
 			vo.setIo_no(Integer.parseInt(no[i]));
@@ -89,7 +88,8 @@ public class ReturningController {
 		String[] no = req.getParameterValues("b_no"); 
 		String[] ano = req.getParameterValues("io_amount") ;
 		String[] ino = req.getParameterValues("io_no") ;
-	
+//		int pay = Integer.parseInt(req.getParameter("paid_amount"));
+//		if(pay == vo.getPb_totalprice()) {
 		int r = service.insertRd(vo);
 		for (int i = 0; i < no.length; i++) {
 			vo.setB_no(Integer.parseInt(no[i]));
@@ -104,13 +104,15 @@ public class ReturningController {
 			service.updatePb(vo.getPb_no());
 		}
 		if (r > 0) {
-			model.addAttribute("msg", "정상적으로 등록되었습니다.");
+			model.addAttribute("msg", "반품/교환 접수가 완료 되었습니다.");
 			model.addAttribute("url", "list.do");
 		} else {
 			model.addAttribute("msg", "등록실패.");
 			model.addAttribute("url", "return.do");
 		}
+//	}
 		return "include/alert";
 	}
+	
 
 }

@@ -11,14 +11,48 @@
     <link rel='stylesheet' href='/bsp/css/yesol.css'/> <!-- 예솔 css -->
     <link rel="stylesheet" href="/bsp/css/base.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script type="text/javascript" src="https://service.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>  <!--주소 script -->
     <script src="/bsp/js/main.js"></script><!--여기에 헤더 div에 넣을수있는 스크립트있음-->
     <script src="/bsp/js/yesol.js"></script>  <!-- 예솔 js -->
+    <script src="/bsp/js/big.js"></script> 
     <!-- ↓빼면 안되용 ㅠㅠ -->
     <script> 
     $(function(){
+    	
+    	$("#check_module").click(function () {
+   	    	var IMP = window.IMP; // 생략가능
+   	    	IMP.init('imp82310032');
+   	    	IMP.request_pay({
+   	    	pg: 'html5_inicis', 
+   	    	pay_method: 'card',
+   	    	merchant_uid: 'merchant_' + new Date().getTime(),
+   	    	name: $('input[name=b_title]').val(),
+   	    	//결제창에서 보여질 이름
+   	    	amount: $('input[name=pb_totalprice]').val(),
+   	    	//가격
+   	    	buyer_email: $('input[name=m_email]').val(),
+   	    	buyer_name: $('input[name=pb_resname]').val(),
+   	    	buyer_tel: $('input[name=pb_restel]').val(),
+   	    	buyer_addr: $('input[name=pb_addr1]').val(),
+   	    	buyer_postcode:$('input[name=pb_zipcode]').val(),
+   	    	}, function (rsp) {
+   	    	console.log(rsp);
+   	    	if (rsp.success) {
+   	    		
+   	    	var msg = '결제가 완료되었습니다.';
+   	    	
+   	    	$('input[name=paid_amount]').val(rsp.paid_amount);
+   	    	$("#frm").submit();
+   	    	} else {
+   	    	var msg = '결제에 실패하였습니다.';
+   	    	msg += '에러내용 : ' + rsp.error_msg;
+   	    	}
+   	    	alert(msg);
+   	    	});
+   	   	});
+    	
     	$('input[name=dvryOpt]').change(function(){
     	if($(this).val()==1){
     		$('#pb_zipcode').val($('#uz').val());
@@ -116,7 +150,6 @@
             }).open();
         }
     
-
     </script>
    
 </head>
@@ -128,8 +161,10 @@
 		<jsp:include page="../include/side2.jsp"></jsp:include>
         <div class="mem_content">
          <h1>주/문/과/정</h1>
-            <form action="insert.do" method="POST">
+            <form action="insert.do" method="POST" id="frm">
             	<input type="hidden" name="m_no"value="${userInfo.m_no}"> 
+            	<input type="hidden" name="m_email" value="${userInfo.m_email}@${userInfo.m_email_d}" >
+            	<input type="hidden" name="paid_amount" >
                 <div id="article">
                  <h4>주문 상품 정보</h4>
                     <table id="buy_tb" class="buy_info">
@@ -141,8 +176,13 @@
                             <th id="bseq_ea">수량</th>
                         </tr>
                         <tr>
-                            <td style="text-align: center;"><input type="image" src="/bsp/img/${vo.b_imgmain }" name="bookimage" style="width: 100px; height: 150px" ></td>
-                            <td>${vo.b_title }<input type="hidden" name="b_no" value="${vo.b_no }"/></td>
+                            <td style="text-align: center;">
+                            	<input type="hidden"  class="abc" value="${vo.b_imgmain }"/><a href="/bsp/book/Book_detail.do?b_no=${vo.b_no }&b_ctgno2key=${bookVo.b_ctgno2key}&b_ctgdetail=${bookVo.b_ctgdetail}&b_ctgno1=${bookVo.b_ctgno1}">
+                            	<img class="blah" src ="/bsp/img/${vo.b_imgmain }" alt="${vo.b_title }"title="${vo.b_title }" style="height: 250px; width: 180px;"></a>
+                            </td>
+                            <td>${vo.b_title }
+                            <input type="hidden" name="b_no" value="${vo.b_no }"/>
+                            <input type="hidden" name="b_title" value="${vo.b_title }"/></td>
                             <td id="price"><span class="b_price">${vo.b_price }</span>원/<span class=point>${vo.b_point }</span>원
                             
                             </td>
@@ -180,13 +220,12 @@
                         <th>* 주문인</th>
                         <td>
                             <input type="text" id="name" name="name" value="${userInfo.m_name } " checked><br>
-                            휴대폰 번호: 010-**34-5648
                         </td>
                      </tr>
                      <tr>
                         <th>* 받으시는 분</th>
                         <td>
-                            <input type="text" id="pb_resname" name="pb_resname" value="전나나 " checked ><br>
+                            <input type="text" id="pb_resname" name="pb_resname" value=" ${userInfo.m_name }" checked ><br>
                         </td>
                      </tr>
                      <tr>
@@ -215,15 +254,21 @@
                            
                         </td>
                      </tr>
-                     <tr>
+                    <!--  <tr>
                         <th>전화번호 </th>
                         <td>
                             <input type="text" name="phone numbers1" style="width: 100px;" > -
                             <input type="text" name="phone numbers2" style="width: 100px;"> -
                             <input type="text" name="phone numbers3" style="width: 100px;"> 
-                           
+                        </td>
+                     </tr> -->
+                      <tr>
+                        <th>배송메세지 </th>
+                        <td>
+                       		<textarea cols="100" rows="10" name="pb_req"></textarea>
                         </td>
                      </tr>
+                                   
                     </table>
 
                 </div>
@@ -233,7 +278,7 @@
                     <table  id="buy_now" style="text-align: center;">
                            <tr>
                                <td>적립금</td>
-                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${userInfo.m_point }">  원 ▷
+                               <td>보유액:<input type="text" readonly="readonly" id="po" value="${uv }">  원 ▷
                                    <input type="text" id="savedmoney"name=p_used  value="0">
                                    <input class="button_s" type="button" name="전액" value="전액" onclick="pointall();"> 
                                </td>
@@ -273,30 +318,19 @@
                        <table id="buy_tb" style="text-align: center;">
                            <tr>
                                <td>  
-                                <input type="radio" name="pb_payno" value="0">무통장입금
-                                <input type="radio" name="pb_payno"value="1">실시간 계좌이체 
-                                <input type="radio" name="pb_payno"value="2">신용카드 
+                                <input type="radio" name="pb_payno" value="1" checked="checked">신용카드 
                                   
                             </td>
                            </tr>
                        </table>
                        
                             <div class="buy_submit">
-                                <input class="button_m" type="submit" value="결제" >
-                                <input class="button_m" type="reset" value="취소" >
+                                <input class="button_m" type="button" id="check_module" value="결제" >
+                                <input class="button_m" type="reset" value="취소" onclick="location.href='/bsp/order/list.do'" >
                             </div>
                 </div>    
             </form>
         </div>
-   <aside class="mypage_ad">
-                <div class="mypage_ad_name"><p>최근본상품</p></div>
-                <div class="img_area">
-                    <img src="img/book.jpg" width="70px" height="100px">
-                </div>
-                <div style="text-align: center;">
-                    책이름
-                </div>
-            </aside> 
     </div>
     
     <div id="footer"></div>

@@ -140,7 +140,7 @@
 		</update>
 		
 		<!-- admin -->
-		<select id="selectop" resultType="returning.ReturningVo">SELECT * FROM bsp.processing_status; </select>
+		<select id="selectop" resultType="returning.ReturningVo">SELECT * FROM processing_status; </select>
 
 		<update id="updatepsno" parameterType="returning.ReturningVo">UPDATE returnings set ps_no=#{ps_no} WHERE returning_no=#{returning_no}; </update>
 

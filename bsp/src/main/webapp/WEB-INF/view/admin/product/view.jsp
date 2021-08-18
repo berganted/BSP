@@ -119,7 +119,7 @@
 													name="b_stock" class="w100" value="${vo.b_stock }" /></td>
 												<th scope="row"><label for="">등록일</label></th>
 												<td colspan=""><input type="text" id="title"
-													name="b_regdate" class="w100" value="${vo.b_regdate }" /></td>
+													name="b_regdate" class="w100" value="<fmt:formatDate value="${vo.b_regdate}" pattern="yyyy-MM-dd"/>" /></td>
 											</tr>
 
 											<tr>

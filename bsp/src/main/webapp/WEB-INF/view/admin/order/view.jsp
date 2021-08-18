@@ -106,30 +106,12 @@
 							
 							<!--//btn-->
 							<!-- 페이징 처리 -->
-							<div class='page'>
-									<c:if test="${orderVo.strPage > orderVo.pageRange}">
-										<li><a href="index.do?reqPage=${orderVo.strPage-1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}"></a>
-									</c:if>
-									<c:forEach var="rp" begin="${orderVo.strPage }"
-										end="${orderVo.endPage }">
-										<c:if test="${rp==orderVo.reqPage }"> <strong>${rp }</strong></c:if>
-										<c:if test="${rp!=orderVo.reqPage }">
-                                  	<a href='index.do?reqPage=${rp}&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}' class='current'>${rp }</a></c:if>
-
-									</c:forEach>
-									<c:if test="${orderVo.totPage > orderVo.endPage}">
-										<a
-											href="index.do?reqPage=${orderVo.endPage+1 }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">></a></c:if>
-								</div>
+							
 									
 									
 							<div class="btn">
 								<div class="btnLeft">
 									<a class="btns" href="index.do"><strong>목록</strong></a>
-								</div>
-								<div class="btnRight">
-									<a class="btns" style="cursor:pointer;" href=""><strong>수정</strong></a>
-									<a class="btns" style="cursor:pointer;" href=""><strong>답변</strong></a>
 								</div>
 							</div>
 							<!--//btn-->

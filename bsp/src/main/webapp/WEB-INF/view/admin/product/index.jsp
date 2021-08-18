@@ -134,7 +134,7 @@ $('#searchForm').submit();
 								<tbody>
 									<c:forEach var="list" items="${list }">
 									<tr>
-										<td class="first"><input type="checkbox" name="no" id="no" value=""/></td>
+										<td class="first"><input type="checkbox" name="no" id="no" value="${list.b_no }"/></td>
 										<td>${list.b_no }</td>
 										<td>${list.b_ctgdetail }</td>
 										<td class="title"><a href="view.do?b_no=${list.b_no }&reqPage=${bookVo.reqPage }&stype=${param.stype}&sval=${param.sval}&orderby=${param.orderby}&direct=${param.direct}">${list.b_title }</a>
